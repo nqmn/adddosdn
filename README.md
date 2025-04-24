@@ -2,6 +2,11 @@
 
 A comprehensive Python-based workflow for generating, capturing, processing, and documenting network traffic datasets in a Software-Defined Networking (SDN) environment using Mininet and a Ryu (or generic) controller.
 
+This is a unified Python toolkit that lets you:
+
+1. **Launch a suite of adversarial DDoS attacks** (TCP SYN, UDP, ICMP, HTTP floods) with evasion, hybrid, randomized timing, and adaptive-rate options.  
+2. **Automate an SDN dataset pipeline** in Mininet + Ryu (or remote) controller: topology setup, traffic capture, CICFlowMeter flow extraction, labeling, merging, REST flow stats, and Markdown docs.
+
 ---
 
 ## 📦 Repository Structure
@@ -66,8 +71,22 @@ python sdn_dataset_workflow.py \
   --output ./sdn_datasets
 ```
 
-### 3. Run attack suite only
+---
 
+### 3. Run adversarial attack suite
+
+Choose one or fire them all:
+
+- **TCP SYN Flood** (`--run-all` or call `send_hybrid_attack`, `send_packet_randomized`, `send_mimic_traffic`, `send_evasive_traffic`, `adaptive_attack` directly in code)
+- **UDP Flood** (with randomized ports)
+- **ICMP Ping Flood**
+- **HTTP Request Mimicry**
+- **Hybrid Mix**: interleave normal ICMP ping + TCP SYN flood
+- **Randomized Timing**: random delays (10–100 ms)
+- **Evasion Techniques**: random TTL and window sizes, fragmentation
+- **Adaptive Rate**: adjust flood rate based on CPU usage of attack host
+
+**Quick Attack-Only Run**:
 ```bash
 python sdn_dataset_workflow.py --run-all
 ```
