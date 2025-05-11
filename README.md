@@ -1,4 +1,4 @@
-# SDN Dataset Workflow
+# AD-SDN Dataset Workflow
 
 A comprehensive Python-based workflow for generating, capturing, processing, and documenting network traffic datasets in a Software-Defined Networking (SDN) environment using Mininet and a Ryu (or generic) controller.
 
@@ -103,6 +103,40 @@ This fires all custom attack variants (hybrid, evasive, randomized, mimic, adapt
 - **Feature Extraction:** Configure additional flags or plug in alternative flow extractors.
 
 ---
+
+## Updated with Advanced Adversarial Attacks
+
+**Here are the major improvements:**
+1. Advanced Evasion Mechanisms
+
+- **IP Rotation System:** Implements a systematic IP address rotation system that avoids reusing source IPs too frequently
+- Protocol Fingerprinting Evasion: Randomizes TCP parameters (window sizes, TTL, sequence numbers) to avoid signature-based detection
+- Temporal Pattern Avoidance: Uses variable timing between packets and connections to prevent timing-based detection
+
+2. Sophisticated Attack Vectors
+
+Slow Read Attack: Implements the "Slowloris" technique that establishes legitimate connections but reads responses extremely slowly, exhausting server connection pools
+TCP State Exhaustion: Advanced version that correctly manipulates TCP state by sending valid handshakes but keeping connections half-open
+Distributed Application Layer Attack: Targets resource-intensive endpoints with semantically valid HTTP requests
+
+3. Legitimate Traffic Mimicry
+
+HTTP Header Manipulation: Uses realistic HTTP headers, User-Agents, and referrers to appear legitimate
+Session Maintenance: Creates and maintains persistent sessions with cookies and realistic browsing patterns
+Request Diversity: Varies HTTP methods, paths, and parameters to mimic real user behavior
+
+4. Intelligent Adaptation
+
+Defensive Countermeasure Detection: Probes for WAFs, rate limiting, or other defenses
+Adaptive Attack Parameters: Adjusts attack intensity and technique based on target response times
+Multi-threaded Coordination: Executes multiple attack vectors simultaneously with coordinated timing
+
+5. Monitoring and Feedback Loop
+
+Response Time Monitoring: Tracks target performance to gauge attack effectiveness
+Defense Detection: Identifies when protection mechanisms activate (Cloudflare, captchas, WAFs)
+Dynamic Strategy Switching: Changes attack vectors when current methods are detected or blocked
+
 
 ## 📝 License
 
