@@ -28,6 +28,8 @@ class ThreeTierTopo(Topo):
 
         # Connect tier 1 switches to controller (done by Mininet)
         # Connect tier 2 switches to tier 1
+        # Connect tier 1 switches
+        self.addLink(s1, s2)
         self.addLink(s1, s3)
         self.addLink(s1, s4)
         self.addLink(s2, s5)
