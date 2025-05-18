@@ -30,10 +30,13 @@ These are designed to be run simultaneously using the Ryu framework.
 
 ## Topology
 
-- Remote controller at 192.168.159.132:6633
+![rangka kerja metodologi (69)](https://github.com/user-attachments/assets/07dbcecd-afa8-4a92-acd6-79370e2b152c)
+
+
+- Remote controller at `192.168.159.132:6633`
 - 1 switch
   - Hardware interface (default `ens32`) attached
-- Four hosts (h2–h5) with custom IPs (10.0.0.2–.5)
+- Four hosts (`h2–h5`) with custom IPs (`10.0.0.2–.5`)
 
 **Make sure your real interface (e.g., `ens32`) is UP and has no IP assigned:
 
