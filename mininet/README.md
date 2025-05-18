@@ -28,6 +28,15 @@ These are designed to be run simultaneously using the Ryu framework.
 
 ---
 
+## Topology
+
+- Remote controller at 192.168.159.132:6633
+- 1 switch
+  - Hardware interface (default `ens32`) attached
+- Four hosts (h2–h5) with custom IPs (10.0.0.2–.5)
+
+**Make sure your real interface (e.g., `ens32`) is UP and has no IP assigned:
+
 ## Requirements
 
 * Python 3.x
@@ -47,13 +56,13 @@ pip install ryu scapy
 Run the following command to start all apps together:
 
 ```bash
-sudo python3 custom-3-tier2.py
+sudo python3 custom5.py # this is the latest version; add hardware interface to connect to other vm.
 ```
 
 Or, directly with the Ryu manager:
 
 ```bash
-ryu-manager simple_switch_13.py packet_in_monitor.py mitigate.py log_w.py
+ryu-manager simple_switch_13.py # packet_in_monitor.py mitigate.py log_w.py (this is advanced)
 ```
 
 > **Note:**
@@ -63,7 +72,7 @@ ryu-manager simple_switch_13.py packet_in_monitor.py mitigate.py log_w.py
 
 ## Files Description
 
-* **custom-3-tier2.py**
+* **custom5.py**
   *Entry-point script (if used, must import and start all apps above).*
 
 * **simple\_switch\_13.py**
