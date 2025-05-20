@@ -1,6 +1,6 @@
 # AD-DDoSDN2025 Dataset Workflow
 
-A comprehensive Python-based workflow for generating, capturing, processing, and documenting network traffic datasets in a Software-Defined Networking (SDN) environment using Mininet and a Ryu (or generic) controller.
+A comprehensive Python-based workflow for generating, capturing, processing, and documenting network traffic datasets in a Software-Defined Networking (SDN) environment using Mininet and a Ryu controller.
 
 This is a unified Python toolkit that lets you:
 
