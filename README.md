@@ -1,11 +1,11 @@
-# AD-SDN Dataset Workflow
+# AD-DDoSDN2025 Dataset Workflow
 
-A comprehensive Python-based workflow for generating, capturing, processing, and documenting network traffic datasets in a Software-Defined Networking (SDN) environment using Mininet and a Ryu (or generic) controller.
+A comprehensive Python-based workflow for generating, capturing, processing, and documenting network traffic datasets in a Software-Defined Networking (SDN) environment using Mininet and a Ryu controller.
 
 This is a unified Python toolkit that lets you:
 
-1. **Launch a suite of adversarial DDoS attacks** (TCP SYN, UDP, ICMP, HTTP floods) with evasion, hybrid, randomized timing, and adaptive-rate options.  
-2. **Automate an SDN dataset pipeline** in Mininet + Ryu (or remote) controller: topology setup, traffic capture, CICFlowMeter flow extraction, labeling, merging, REST flow stats, and Markdown docs.
+1. **Launch a suite of adversarial DDoS attacks** (TCP SYN, UDP, ICMP, HTTP floods) with evasion, hybrid, randomized timing, and adaptive-rate options. This covers both high rate and low rate DDoS attacks. 
+2. **Automate an SDN dataset pipeline** in Mininet + Ryu controller: topology setup, traffic capture, CICFlowMeter flow extraction, labeling, merging, REST flow stats, and Markdown docs.
 
 ---
 
