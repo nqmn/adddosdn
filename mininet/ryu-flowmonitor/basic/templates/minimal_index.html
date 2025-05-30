@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal SDN Web GUI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .panel {
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            background: #34495e;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+        }
+
+        .panel-content {
+            padding: 20px;
+        }
+
+        .status {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .status-running {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-stopped {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .btn-success {
+            background: #27ae60;
+        }
+
+        .btn-success:hover {
+            background: #229954;
+        }
+
+        .input-group {
+            margin: 15px 0;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .command-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+        }
+
+        .command-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .command-form input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .logs-section {
+            grid-column: 1 / -1;
+            margin-top: 20px;
+        }
+
+        .logs-container {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 3px;
+        }
+
+        .log-info {
+            color: #3498db;
+        }
+
+        .log-warning {
+            color: #f39c12;
+        }
+
+        .log-error {
+            color: #e74c3c;
+        }
+
+        .topology {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-family: monospace;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .refresh-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .refresh-btn:hover {
+            background: #229954;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script>
+        // Auto-refresh every 30 seconds
+        setTimeout(function() {
+            window.location.reload();
+        }, 30000);
+    </script>
+</head>
+<body>
+    <button class="refresh-btn" onclick="window.location.reload()">🔄 Refresh</button>
+    
+    <div class="container">
+        <div class="header">
+            <h1>🌐 Minimal SDN Web GUI</h1>
+            <p>Mininet Network & Ryu Controller Management</p>
+        </div>
+
+        <div class="main-content">
+            <!-- Ryu Controller Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    🎛️ Ryu Controller
+                </div>
+                <div class="panel-content">
+                    <div class="status {% if status.controller_status == 'running' %}status-running{% else %}status-stopped{% endif %}">
+                        Status: {{ status.controller_status.title() }}
+                    </div>
+
+                    <div style="text-align: center;">
+                        {% if status.controller_status == 'stopped' %}
+                        <a href="/start_controller" class="btn btn-success">
+                            ▶️ Start Controller
+                        </a>
+                        {% else %}
+                        <a href="/stop_controller" class="btn btn-danger">
+                            ⏹️ Stop Controller
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <div class="topology">
+                        <strong>Controller Info:</strong><br>
+                        📡 Ryu Controller<br>
+                        ├── OpenFlow 1.3<br>
+                        ├── MAC Learning<br>
+                        └── Flow Management
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mininet Network Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    🌐 Mininet Network
+                </div>
+                <div class="panel-content">
+                    <div class="status {% if status.network_status == 'running' %}status-running{% else %}status-stopped{% endif %}">
+                        Status: {{ status.network_status.title() }}
+                    </div>
+
+                    {% if status.network_status == 'stopped' %}
+                    <form action="/start_network" method="get">
+                        <div class="input-group">
+                            <label for="interface">Hardware Interface:</label>
+                            <input type="text" name="interface" value="ens32" placeholder="Enter interface name">
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn btn-success">
+                                ▶️ Start Network
+                            </button>
+                        </div>
+                    </form>
+                    {% else %}
+                    <div style="text-align: center;">
+                        <a href="/stop_network" class="btn btn-danger">
+                            ⏹️ Stop Network
+                        </a>
+                    </div>
+                    {% endif %}
+
+                    <div class="command-section">
+                        <h4>Mininet Commands</h4>
+                        <form action="/execute_command" method="post">
+                            <div class="command-form">
+                                <input type="text" name="command" placeholder="Enter command (e.g., pingall, h2 ping h3)" 
+                                       {% if status.network_status != 'running' %}disabled{% endif %}>
+                                <button type="submit" class="btn" {% if status.network_status != 'running' %}disabled{% endif %}>Execute</button>
+                            </div>
+                        </form>
+                        
+                        <div style="font-size: 0.9em; color: #666;">
+                            <strong>Common commands:</strong> pingall, net, dump, h2 ping h3
+                        </div>
+                    </div>
+
+                    <div class="topology">
+                        <strong>Network Topology:</strong><br>
+                        🖥️ Hardware Interface<br>
+                        │<br>
+                        🔄 Switch (s1)<br>
+                        ├── 💻 h2 (10.0.0.2)<br>
+                        ├── 💻 h3 (10.0.0.3)<br>
+                        ├── 💻 h4 (10.0.0.4)<br>
+                        └── 💻 h5 (10.0.0.5)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logs Section -->
+        <div class="panel logs-section">
+            <div class="panel-header">
+                📋 Recent Logs
+            </div>
+            <div class="panel-content">
+                <div class="logs-container">
+                    {% if logs %}
+                        {% for log in logs %}
+                        <div class="log-entry log-{{ log.level }}">
+                            [{{ log.timestamp }}] {{ log.message }}
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="log-entry log-info">
+                            [System] Web GUI ready. Start controller first, then network.
+                        </div>
+                    {% endif %}
+                </div>
+                <div style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                    Page auto-refreshes every 30 seconds. Click refresh for immediate update.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

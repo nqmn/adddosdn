@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDN Web GUI - Mininet & Ryu Controller</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            background: #34495e;
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .panel-content {
+            padding: 20px;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-running {
+            background: #27ae60;
+            box-shadow: 0 0 10px rgba(39, 174, 96, 0.5);
+        }
+
+        .status-stopped {
+            background: #e74c3c;
+            box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+        }
+
+        .btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .btn-success {
+            background: #27ae60;
+        }
+
+        .btn-success:hover {
+            background: #229954;
+        }
+
+        .input-group {
+            margin: 15px 0;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ecf0f1;
+            border-radius: 6px;
+            font-size: 1em;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .command-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+        }
+
+        .command-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .command-input input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #ecf0f1;
+            border-radius: 6px;
+        }
+
+        .logs-section {
+            grid-column: 1 / -1;
+            margin-top: 20px;
+        }
+
+        .logs-container {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .log-entry {
+            margin-bottom: 8px;
+            padding: 5px;
+            border-radius: 3px;
+        }
+
+        .log-info {
+            background: rgba(52, 152, 219, 0.2);
+        }
+
+        .log-warning {
+            background: rgba(241, 196, 15, 0.2);
+        }
+
+        .log-error {
+            background: rgba(231, 76, 60, 0.2);
+        }
+
+        .system-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #3498db;
+        }
+
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .topology-view {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 15px;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .network-diagram {
+            font-family: monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .system-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌐 SDN Web GUI</h1>
+            <p>Mininet Network & Ryu Controller Management Interface</p>
+        </div>
+
+        <div class="main-content">
+            <!-- Ryu Controller Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    🎛️ Ryu Controller Management
+                </div>
+                <div class="panel-content">
+                    <div class="system-stats">
+                        <div class="stat-card">
+                            <div class="stat-value" id="controller-status">
+                                <span class="status-indicator status-stopped"></span>Stopped
+                            </div>
+                            <div class="stat-label">Controller Status</div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <button class="btn btn-success" id="start-controller" onclick="startController()">
+                            ▶️ Start Controller
+                        </button>
+                        <button class="btn btn-danger" id="stop-controller" onclick="stopController()" disabled>
+                            ⏹️ Stop Controller
+                        </button>
+                    </div>
+
+                    <div class="topology-view">
+                        <h4>Controller Information</h4>
+                        <div class="network-diagram">
+                            📡 Ryu Controller (simple_switch_13.py)<br>
+                            ├── OpenFlow 1.3 Support<br>
+                            ├── MAC Learning Switch<br>
+                            ├── Flow Table Management<br>
+                            └── Packet Processing
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mininet Network Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    🌐 Mininet Network Management
+                </div>
+                <div class="panel-content">
+                    <div class="system-stats">
+                        <div class="stat-card">
+                            <div class="stat-value" id="network-status">
+                                <span class="status-indicator status-stopped"></span>Stopped
+                            </div>
+                            <div class="stat-label">Network Status</div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="interface-name">Hardware Interface:</label>
+                        <input type="text" id="interface-name" value="ens32" placeholder="Enter interface name">
+                    </div>
+
+                    <div style="text-align: center;">
+                        <button class="btn btn-success" id="start-network" onclick="startNetwork()">
+                            ▶️ Start Network
+                        </button>
+                        <button class="btn btn-danger" id="stop-network" onclick="stopNetwork()" disabled>
+                            ⏹️ Stop Network
+                        </button>
+                    </div>
+
+                    <div class="command-section">
+                        <h4>Mininet Commands</h4>
+                        <div class="command-input">
+                            <input type="text" id="mininet-command" placeholder="Enter Mininet command (e.g., pingall, h2 ping h3)" disabled>
+                            <button class="btn" onclick="executeCommand()" id="execute-btn" disabled>Execute</button>
+                        </div>
+                    </div>
+
+                    <div class="topology-view">
+                        <h4>Network Topology</h4>
+                        <div class="network-diagram">
+                            🖥️ Hardware Interface (ens32)<br>
+                            │<br>
+                            🔄 Switch (s1)<br>
+                            ├── 💻 Host h2 (10.0.0.2/24)<br>
+                            ├── 💻 Host h3 (10.0.0.3/24)<br>
+                            ├── 💻 Host h4 (10.0.0.4/24)<br>
+                            └── 💻 Host h5 (10.0.0.5/24)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logs Section -->
+        <div class="panel logs-section">
+            <div class="panel-header">
+                📋 System Logs
+            </div>
+            <div class="panel-content">
+                <div class="logs-container" id="logs-container">
+                    <div class="log-entry log-info">
+                        <strong>[System]</strong> Web GUI initialized. Ready to manage SDN components.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Socket.IO connection
+        const socket = io();
+        
+        // Global state
+        let controllerRunning = false;
+        let networkRunning = false;
+
+        // Socket event handlers
+        socket.on('connect', function() {
+            console.log('Connected to server');
+            addLog('Connected to SDN Web GUI server', 'info');
+        });
+
+        socket.on('log_update', function(data) {
+            addLog(data.message, data.level, data.timestamp);
+        });
+
+        socket.on('controller_status', function(data) {
+            updateControllerStatus(data.status === 'running');
+        });
+
+        socket.on('network_status', function(data) {
+            updateNetworkStatus(data.status === 'running');
+        });
+
+        socket.on('status_update', function(data) {
+            updateControllerStatus(data.controller_status === 'running');
+            updateNetworkStatus(data.network_status === 'running');
+        });
+
+        // Controller management functions
+        async function startController() {
+            try {
+                const response = await fetch('/api/start_controller', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'}
+                });
+                const result = await response.json();
+                if (result.success) {
+                    addLog('Ryu controller start command sent', 'info');
+                } else {
+                    addLog('Failed to start Ryu controller', 'error');
+                }
+            } catch (error) {
+                addLog('Error starting controller: ' + error.message, 'error');
+            }
+        }
+
+        async function stopController() {
+            try {
+                const response = await fetch('/api/stop_controller', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'}
+                });
+                const result = await response.json();
+                if (result.success) {
+                    addLog('Ryu controller stop command sent', 'info');
+                } else {
+                    addLog('Failed to stop Ryu controller', 'error');
+                }
+            } catch (error) {
+                addLog('Error stopping controller: ' + error.message, 'error');
+            }
+        }
+
+        // Network management functions
+        async function startNetwork() {
+            const interface = document.getElementById('interface-name').value || 'ens32';
+            try {
+                const response = await fetch('/api/start_network', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({interface: interface})
+                });
+                const result = await response.json();
+                if (result.success) {
+                    addLog(`Mininet network start command sent with interface ${interface}`, 'info');
+                } else {
+                    addLog('Failed to start Mininet network', 'error');
+                }
+            } catch (error) {
+                addLog('Error starting network: ' + error.message, 'error');
+            }
+        }
+
+        async function stopNetwork() {
+            try {
+                const response = await fetch('/api/stop_network', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'}
+                });
+                const result = await response.json();
+                if (result.success) {
+                    addLog('Mininet network stop command sent', 'info');
+                } else {
+                    addLog('Failed to stop Mininet network', 'error');
+                }
+            } catch (error) {
+                addLog('Error stopping network: ' + error.message, 'error');
+            }
+        }
+
+        async function executeCommand() {
+            const command = document.getElementById('mininet-command').value;
+            if (!command.trim()) return;
+
+            try {
+                const response = await fetch('/api/execute_command', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({command: command})
+                });
+                const result = await response.json();
+                if (result.success) {
+                    addLog(`Command executed: ${command}`, 'info');
+                    addLog(`Output: ${result.output}`, 'info');
+                } else {
+                    addLog(`Command failed: ${result.output}`, 'error');
+                }
+                document.getElementById('mininet-command').value = '';
+            } catch (error) {
+                addLog('Error executing command: ' + error.message, 'error');
+            }
+        }
+
+        // UI update functions
+        function updateControllerStatus(running) {
+            controllerRunning = running;
+            const statusElement = document.getElementById('controller-status');
+            const startBtn = document.getElementById('start-controller');
+            const stopBtn = document.getElementById('stop-controller');
+
+            if (running) {
+                statusElement.innerHTML = '<span class="status-indicator status-running"></span>Running';
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+            } else {
+                statusElement.innerHTML = '<span class="status-indicator status-stopped"></span>Stopped';
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+            }
+        }
+
+        function updateNetworkStatus(running) {
+            networkRunning = running;
+            const statusElement = document.getElementById('network-status');
+            const startBtn = document.getElementById('start-network');
+            const stopBtn = document.getElementById('stop-network');
+            const commandInput = document.getElementById('mininet-command');
+            const executeBtn = document.getElementById('execute-btn');
+
+            if (running) {
+                statusElement.innerHTML = '<span class="status-indicator status-running"></span>Running';
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+                commandInput.disabled = false;
+                executeBtn.disabled = false;
+            } else {
+                statusElement.innerHTML = '<span class="status-indicator status-stopped"></span>Stopped';
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+                commandInput.disabled = true;
+                executeBtn.disabled = true;
+            }
+        }
+
+        function addLog(message, level = 'info', timestamp = null) {
+            const logsContainer = document.getElementById('logs-container');
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry log-${level}`;
+            
+            const time = timestamp || new Date().toLocaleTimeString();
+            logEntry.innerHTML = `<strong>[${time}]</strong> ${message}`;
+            
+            logsContainer.appendChild(logEntry);
+            logsContainer.scrollTop = logsContainer.scrollHeight;
+
+            // Keep only last 50 log entries
+            while (logsContainer.children.length > 50) {
+                logsContainer.removeChild(logsContainer.firstChild);
+            }
+        }
+
+        // Handle Enter key in command input
+        document.getElementById('mininet-command').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                executeCommand();
+            }
+        });
+
+        // Request initial status
+        socket.emit('request_status');
+    </script>
+</body>
+</html>

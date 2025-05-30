@@ -1,0 +1,5 @@
+2025-05-30 23:32:38,134 - root - ERROR - DDoS detection error: This IsolationForest instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.
+2025-05-30 23:32:38,135 - SimpleController_controller_1748619158 - INFO - [INFO] Test log message
+2025-05-30 23:32:38,136 - root - ERROR - DDoS detection error: This IsolationForest instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.
+2025-05-30 23:32:38,136 - root - ERROR - DDoS detection error: This IsolationForest instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.
+2025-05-30 23:32:38,137 - SimpleController_controller_1748619158 - INFO - [WARNING] DDoS detected with confidence 0.60
