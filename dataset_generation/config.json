@@ -1,0 +1,49 @@
+
+{
+    "mininet_topology": "dataset_generation/topology.py",
+    "ryu_app": "dataset_generation/controller/ryu_controller_app.py",
+    "controller_port": 6633,
+    "api_port": 8080,
+    "traffic_types": {
+        "normal": {
+            "duration": 60,
+            "scapy_commands": [
+                {"host": "h3", "command": "sendp(Ether()/IP(dst='10.0.0.5')/TCP(dport=80, flags='S'), loop=1, inter=0.1)"},
+                {"host": "h5", "command": "sendp(Ether()/IP(dst='10.0.0.3')/UDP(dport=53), loop=1, inter=0.1)"}
+            ]
+        },
+        "attacks": [
+            {
+                "type": "syn_flood",
+                "duration": 30,
+                "attacker": "h1",
+                "victim": "h6",
+                "scapy_command": "sendp(Ether()/IP(dst='10.0.0.6')/TCP(dport=80, flags='S'), loop=1, inter=0.001)"
+            },
+            {
+                "type": "udp_flood",
+                "duration": 30,
+                "attacker": "h2",
+                "victim": "h4",
+                "script_name": "gen_udp_flood.py"
+            },
+            {
+                "type": "icmp_flood",
+                "duration": 30,
+                "attacker": "h2",
+                "victim": "h4",
+                "script_name": "gen_icmp_flood.py"
+            }
+        ]
+    },
+    "offline_collection": {
+        "pcap_file": "traffic.pcap",
+        "cicflowmeter_path": "/path/to/cicflowmeter/bin/cicflowmeter.sh",
+        "output_file": "offline_dataset.csv"
+    },
+    "online_collection": {
+        "output_file": "online_dataset.csv",
+        "poll_interval": 2
+    },
+    "label_timeline_file": "label_timeline.csv"
+}
