@@ -48,7 +48,7 @@ This project generates two primary datasets:
 
 ### `packet_features.csv`
 
-A CSV file containing processed offline traffic data, derived from the raw `traffic.pcap` capture. This dataset provides **packet-level features** and is ideal for detailed analysis of individual packet characteristics and for building models that require granular network information.
+A CSV file containing processed offline traffic data, derived from the raw `traffic.pcap` capture. This dataset provides **packet-level features** and is ideal for detailed analysis of individual packet characteristics and for building models that require granular network information. It contains **20 features** including the labels.
 
 *   `timestamp`: Packet capture timestamp.
 *   `packet_length`: Total length of the captured packet in bytes.
@@ -73,7 +73,7 @@ A CSV file containing processed offline traffic data, derived from the raw `traf
 
 ### `ryu_flow_features.csv`
 
-A CSV file containing flow statistics polled from the Ryu controller. This dataset provides **flow-level features** directly from the SDN controller, making it suitable for real-time anomaly detection and control plane analysis.
+A CSV file containing flow statistics polled from the Ryu controller. This dataset provides **flow-level features** directly from the SDN controller, making it suitable for real-time anomaly detection and control plane analysis. It contains **13 features** including the labels.
 
 *   `timestamp`: The timestamp when the flow statistics were polled.
 *   `datapath_id`: The unique identifier of the OpenFlow switch (DPID).
@@ -91,6 +91,6 @@ A CSV file containing flow statistics polled from the Ryu controller. This datas
 
 ### `cicflow_dataset.csv`
 
-A CSV file generated from `traffic.pcap` using CICFlowMeter. This dataset provides **advanced flow-level features** derived from packet data, offering a richer set of statistical metrics for in-depth traffic analysis and machine learning model training. It contains 83 flow features extracted by CICFlowMeter and an additional `Label_multi` and `Label_binary` column.
+A CSV file generated from `traffic.pcap` using CICFlowMeter. This dataset provides **advanced flow-level features** derived from packet data, offering a richer set of statistical metrics for in-depth traffic analysis and machine learning model training. It contains 83 flow features extracted by CICFlowMeter and an additional `Label_multi` and `Label_binary` column, totaling **85 features**.
 
 **Generation:** This dataset is generated independently using the `generate_cicflow_dataset.py` script, which takes a PCAP file and a label as input.

@@ -195,7 +195,7 @@ By following these steps, `main.py` will automatically discover and execute your
 
 Upon successful completion, verify that the following files have been created in the `dataset_generation` directory:
 
--   `packet_features.csv`: A CSV file containing processed offline traffic data. This dataset provides **packet-level features** and is ideal for detailed analysis of individual packet characteristics and for building models that require granular network information.
+-   `packet_features.csv`: A CSV file containing processed offline traffic data. This dataset provides **packet-level features** and is ideal for detailed analysis of individual packet characteristics and for building models that require granular network information. It contains **20 features** including the labels.
     -   `timestamp`: Packet capture timestamp.
     -   `packet_length`: Total length of the captured packet in bytes.
     -   `eth_type`: Ethernet type (e.g., 0x0800 for IPv4).
@@ -217,7 +217,7 @@ Upon successful completion, verify that the following files have been created in
     -   `Label_multi`: This column provides a multi-class label indicating the specific type of traffic or attack (e.g., 'normal', 'syn_flood', 'udp_flood', 'icmp_flood', 'ad_syn_flood', 'ad_udp_flood', 'ad_icmp_flood', 'ad_multi_vector'). This is useful for fine-grained classification tasks.
     -   `Label_binary`: This column provides a binary label for traffic classification, where `0` indicates 'normal' traffic and `1` indicates any type of 'attack' traffic. This is suitable for binary classification (anomaly detection) models.
 
--   `ryu_flow_features.csv`: A CSV file containing flow statistics polled from the Ryu controller. This dataset provides **flow-level features** directly from the SDN controller, making it suitable for real-time anomaly detection and control plane analysis.
+-   `ryu_flow_features.csv`: A CSV file containing flow statistics polled from the Ryu controller. This dataset provides **flow-level features** directly from the SDN controller, making it suitable for real-time anomaly detection and control plane analysis. It contains **13 features** including the labels.
     -   `timestamp`: The timestamp when the flow statistics were polled.
     -   `datapath_id`: The unique identifier of the OpenFlow switch (DPID).
     -   `flow_id`: A unique identifier for the flow (Ryu's cookie).
@@ -235,6 +235,6 @@ Upon successful completion, verify that the following files have been created in
 -   `traffic.pcap`: The raw packet capture from the simulation.
 -   `label_timeline.csv`: A CSV file containing the timeline of normal and attack traffic labels.
 
--   `cicflow_dataset.csv`: A CSV file generated from `traffic.pcap` using CICFlowMeter. This dataset provides **advanced flow-level features** derived from packet data, offering a richer set of statistical metrics for in-depth traffic analysis and machine learning model training. It contains 83 flow features extracted by CICFlowMeter and an additional `Label_multi` and `Label_binary` column.
+-   `cicflow_dataset.csv`: A CSV file generated from `traffic.pcap` using CICFlowMeter. This dataset provides **advanced flow-level features** derived from packet data, offering a richer set of statistical metrics for in-depth traffic analysis and machine learning model training. It contains 83 flow features extracted by CICFlowMeter and an additional `Label_multi` and `Label_binary` column, totaling **85 features**.
 
 If these files are present, the operation was a success.
