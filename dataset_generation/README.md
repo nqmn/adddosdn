@@ -324,7 +324,7 @@ Modify `config.json` to customize the experiment:
    }
    ```
 
-## 📊 Dataset Format
+<!-- ## 📊 Dataset Format
 
 ### Packet-Level Features (`packet_features.csv`)
 - Timestamp
@@ -352,7 +352,7 @@ Modify `config.json` to customize the experiment:
   - Label (attack type)
 
 
----
+--- -->
 
 ## 🔄 Execution Workflow
 
