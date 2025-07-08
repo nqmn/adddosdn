@@ -140,10 +140,10 @@ sudo python3 dataset_generation/main.py
 4.  **Traffic Generation**: The script will proceed through two phases:
     - **Normal Traffic Period (60s)**: The simulation will run for 60 seconds with only benign background traffic.
     - **Attack Traffic Period (30s)**: Multiple attacks will be launched:
-        - A SYN flood from `h1` to `h6`.
-        - A SYN flood from `h2` to `h6`.
-        - A UDP flood from `h2` to `h4`.
-        - An ICMP flood from `h2` to `h4`.
+        - A SYN flood from `h1` to `h6` (Controller-based / Application-based).
+        - A SYN flood from `h2` to `h6` (Controller-based / Application-based).
+        - A UDP flood from `h2` to `h4` (Data Plane-based).
+        - An ICMP flood from `h2` to `h4` (Data Plane-based).
 5.  **Shutdown and Cleanup**: Once traffic generation is complete, the script will:
     - Stop the data collection threads.
     - Process `traffic.pcap` to generate `offline_dataset.csv`.
