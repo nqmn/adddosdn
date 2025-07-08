@@ -1,5 +1,4 @@
-ryu
-mininet
 requests
 webob
 scapy
+paramiko

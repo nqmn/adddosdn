@@ -36,7 +36,7 @@ class DatasetGenerator:
 
         logging.info("Starting dataset generation process.")
         self._start_ryu_controller()
-        time.sleep(5)
+        time.sleep(15)
         self._start_mininet()
 
         offline_collector = threading.Thread(target=self._collect_offline_data)
@@ -53,7 +53,7 @@ class DatasetGenerator:
 
         self._stop_mininet()
         self._stop_ryu_controller()
-        self._process_offline_data()
+        
         self._write_label_timeline()
         logging.info("Dataset generation process finished.")
 
@@ -62,7 +62,7 @@ class DatasetGenerator:
         ryu_app_path = os.path.join(self.project_root, self.config['ryu_app'])
         self.ryu_process = subprocess.Popen(
             ['ryu-manager', ryu_app_path, '--ofp-tcp-listen-port', str(self.config['controller_port']), '--wsapi-port', str(self.config['api_port'])],
-            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+            stdout=open(os.path.join(self.project_root, "ryu_controller.log"), "w"), stderr=subprocess.STDOUT
         )
 
     def _stop_ryu_controller(self):
@@ -140,7 +140,7 @@ class DatasetGenerator:
         for cmd_info in normal_scapy_commands:
             host = self.hosts[cmd_info['host']]
             scapy_command = f"from scapy.all import *; {cmd_info['command']}"
-            process = host.cmd(f'python3 -c "{scapy_command}" > /dev/null 2>&1 &')
+            process = host.popen(f'python3 -c "{scapy_command}"', shell=True)
             normal_traffic_processes.append(process)
 
         time.sleep(normal_duration)
@@ -154,7 +154,7 @@ class DatasetGenerator:
             attack_type = attack['type']
             attack_duration = attack['duration']
             attacker_host = self.hosts[attack['attacker']]
-            scapy_command = attack['scapy_command']
+            
 
             logging.info(f"Generating {attack_type} attack from {attack['attacker']} to {attack['victim']} for {attack_duration} seconds.")
             start_time = time.time()
@@ -177,22 +177,12 @@ class DatasetGenerator:
     def _collect_offline_data(self):
         logging.info("Starting offline data collection.")
         pcap_file = os.path.join(self.project_root, self.config['offline_collection']['pcap_file'])
-        self.tcpdump_process = subprocess.Popen(['dumpcap', '-i', 'any', '-w', pcap_file], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        self.tcpdump_process = subprocess.Popen(['dumpcap', '-i', 'any', '-w', pcap_file],             stdout=open(os.path.join(self.project_root, "dumpcap.log"), "w"), stderr=subprocess.STDOUT)
         self.stop_event.wait()
         self.tcpdump_process.terminate()
         self.tcpdump_process.wait()
 
-    def _process_offline_data(self):
-        logging.info("Processing offline data.")
-        pcap_file = os.path.join(self.project_root, self.config['offline_collection']['pcap_file'])
-        output_file = os.path.join(self.project_root, self.config['offline_collection']['output_file'])
-        cicflowmeter_path = self.config['offline_collection']['cicflowmeter_path']
-
-        if not os.path.exists(cicflowmeter_path):
-            logging.error(f"CICFlowMeter not found at {cicflowmeter_path}. Skipping offline data processing.")
-            return
-
-        subprocess.run([cicflowmeter_path, pcap_file, output_file], check=True)
+    
 
     def _write_label_timeline(self):
         logging.info("Writing label timeline to CSV.")

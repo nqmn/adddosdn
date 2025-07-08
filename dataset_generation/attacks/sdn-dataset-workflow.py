@@ -172,17 +172,7 @@ def run_all():
     adaptive_attack(src, dst, 500, 2000)
 
 # 5. Feature Extraction
-def process_with_cicflowmeter(input_pcap, output_dir):
-    info(f"*** Processing {input_pcap}\n")
-    os.makedirs(output_dir, exist_ok=True)
-    base = os.path.splitext(os.path.basename(input_pcap))[0]
-    csv_out = os.path.join(output_dir, f"{base}.csv")
-    cmd = f"cicflowmeter -f {input_pcap} -c {csv_out}"
-    try:
-        subprocess.run(cmd, shell=True, check=True)
-        return csv_out
-    except subprocess.CalledProcessError:
-        return None
+
 
 # 6. Labeling
 def label_dataset(csv_file, attack_info):
@@ -257,7 +247,7 @@ def generate_sdn_dataset(output_dir, controller_ip, controller_port):
         generate_normal_traffic(net, 60)
         time.sleep(5)
         subprocess.call("pkill -f tcpdump", shell=True)
-        csv = process_with_cicflowmeter(pcap, csv_dir)
+    
         if csv: csvs.append(csv)
         # Attack types
         for at in ('tcp_syn_flood','icmp_flood','udp_flood','http_flood'):
@@ -269,7 +259,7 @@ def generate_sdn_dataset(output_dir, controller_ip, controller_port):
             attack_info.append({'type':at,'start_time':start,'end_time':end})
             time.sleep(5)
             subprocess.call("pkill -f tcpdump", shell=True)
-            csv = process_with_cicflowmeter(pcap, csv_dir)
+        
             if csv:
                 lbl = label_dataset(csv, [{'type':at,'start_time':start,'end_time':end}])
                 csvs.append(lbl)

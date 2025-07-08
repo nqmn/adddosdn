@@ -18,7 +18,14 @@
                 "duration": 30,
                 "attacker": "h1",
                 "victim": "h6",
-                "scapy_command": "sendp(Ether()/IP(dst='10.0.0.6')/TCP(dport=80, flags='S'), loop=1, inter=0.001)"
+                "script_name": "gen_syn_flood.py"
+            },
+            {
+                "type": "syn_flood",
+                "duration": 30,
+                "attacker": "h2",
+                "victim": "h6",
+                "script_name": "gen_syn_flood.py"
             },
             {
                 "type": "udp_flood",
@@ -38,7 +45,6 @@
     },
     "offline_collection": {
         "pcap_file": "traffic.pcap",
-        "cicflowmeter_path": "/path/to/cicflowmeter/bin/cicflowmeter.sh",
         "output_file": "offline_dataset.csv"
     },
     "online_collection": {

@@ -181,20 +181,7 @@ def run_all():
     send_mimic_traffic(src, dst, num_flood_packets)
     adaptive_attack(src, dst, base_flood_rate=500, max_flood_rate=2000)
 
-# 6. Feature Extraction with CICFlowMeter
-def process_with_cicflowmeter(input_pcap, output_dir):
-    info(f"*** Processing {input_pcap} with CICFlowMeter\n")
-    os.makedirs(output_dir, exist_ok=True)
-    base = os.path.splitext(os.path.basename(input_pcap))[0]
-    csv_out = os.path.join(output_dir, f"{base}.csv")
-    cmd = f"cicflowmeter -f {input_pcap} -c {csv_out}"
-    try:
-        subprocess.run(cmd, shell=True, check=True)
-        info(f"*** Features saved to {csv_out}\n")
-        return csv_out
-    except subprocess.CalledProcessError as e:
-        info(f"*** CICFlowMeter error: {e}\n")
-        return None
+
 
 # 7. Data Labeling & Annotation
 def label_dataset(csv_file, attack_info):

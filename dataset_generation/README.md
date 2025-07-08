@@ -33,11 +33,36 @@ Run the following command to install the required Python libraries:
 pip3 install requests mininet
 ```
 
+### 1.7. Sudo Configuration for Mininet and Ryu
+
+Mininet and Ryu often require `sudo` privileges to operate, especially when running in non-interactive environments (e.g., via SSH scripts). If you encounter `sudo: no tty present and no askpass program specified` errors, you need to configure `sudoers` to allow passwordless execution for the commands `mn` and `ryu-manager`.
+
+**Steps to configure `sudoers`:**
+
+1.  **Access the remote server:** Log in to your remote server via an interactive SSH session.
+2.  **Edit `sudoers`:** Use `sudo visudo` to safely edit the `sudoers` file.
+    ```bash
+    sudo visudo
+    ```
+3.  **Add NOPASSWD entries:** Add the following lines to the `sudoers` file, replacing `your_username` with the actual username you are using on the remote server. These lines allow `your_username` to execute `mn` and `ryu-manager` without a password.
+
+    ```
+    # Allow passwordless sudo for Mininet
+    your_username ALL=(ALL) NOPASSWD: /usr/bin/mn
+
+    # Allow passwordless sudo for Ryu Manager
+    your_username ALL=(ALL) NOPASSWD: /usr/local/bin/ryu-manager
+    ```
+    *   **Note:** The paths `/usr/bin/mn` and `/usr/local/bin/ryu-manager` are common, but you should verify the exact paths on your system using `which mn` and `which ryu-manager` on the remote server.
+    *   **Security Warning:** Allowing `NOPASSWD` for `ALL` commands (`your_username ALL=(ALL) NOPASSWD: ALL`) is generally discouraged due to security risks. Only use it if you fully understand the implications and are in a controlled environment.
+
+4.  **Save and Exit:** Save the changes and exit the `visudo` editor (usually by pressing `Ctrl+X`, then `Y` to confirm, then `Enter` for the filename).
+
 ## 2. Configuration
 
-The `config.json` file is the single source of truth for this operation. The critical value to configure is `cicflowmeter_path`.
+The `config.json` file is the single source of truth for this operation.
 
-- **Action:** You must locate the `cicflowmeter.sh` (or equivalent) executable on the system and update the `cicflowmeter_path` value in `config.json` with its absolute path.
+
 
 **Example `config.json`:**
 ```json
@@ -48,23 +73,52 @@ The `config.json` file is the single source of truth for this operation. The cri
     "api_port": 8080,
     "traffic_types": {
         "normal": {
-            "duration": 60
+            "duration": 60,
+            "scapy_commands": [
+                {"host": "h3", "command": "sendp(Ether()/IP(dst='10.0.0.5')/TCP(dport=80, flags='S'), loop=1, inter=0.1)"},
+                {"host": "h5", "command": "sendp(Ether()/IP(dst='10.0.0.3')/UDP(dport=53), loop=1, inter=0.1)"}
+            ]
         },
-        "attack": {
-            "type": "syn_flood",
-            "duration": 30,
-            "hping3_options": "-S --flood -V"
-        }
+        "attacks": [
+            {
+                "type": "syn_flood",
+                "duration": 30,
+                "attacker": "h1",
+                "victim": "h6",
+                "script_name": "gen_syn_flood.py"
+            },
+            {
+                "type": "syn_flood",
+                "duration": 30,
+                "attacker": "h2",
+                "victim": "h6",
+                "script_name": "gen_syn_flood.py"
+            },
+            {
+                "type": "udp_flood",
+                "duration": 30,
+                "attacker": "h2",
+                "victim": "h4",
+                "script_name": "gen_udp_flood.py"
+            },
+            {
+                "type": "icmp_flood",
+                "duration": 30,
+                "attacker": "h2",
+                "victim": "h4",
+                "script_name": "gen_icmp_flood.py"
+            }
+        ]
     },
     "offline_collection": {
         "pcap_file": "traffic.pcap",
-        "cicflowmeter_path": "/path/to/your/cicflowmeter/bin/cicflowmeter.sh",
         "output_file": "offline_dataset.csv"
     },
     "online_collection": {
         "output_file": "online_dataset.csv",
         "poll_interval": 2
-    }
+    },
+    "label_timeline_file": "label_timeline.csv"
 }
 ```
 
@@ -85,14 +139,15 @@ sudo python3 dataset_generation/main.py
     - **Online Collector**: A polling mechanism will begin querying the Ryu controller's REST API every 2 seconds for flow statistics.
 4.  **Traffic Generation**: The script will proceed through two phases:
     - **Normal Traffic Period (60s)**: The simulation will run for 60 seconds with only benign background traffic.
-    - **Attack Traffic Period (30s)**: `hping3` will be launched on host `h1` to execute a SYN flood attack against host `h2` for 30 seconds.
+    - **Attack Traffic Period (30s)**: Multiple attacks will be launched:
+        - A SYN flood from `h1` to `h6`.
+        - A SYN flood from `h2` to `h6`.
+        - A UDP flood from `h2` to `h4`.
+        - An ICMP flood from `h2` to `h4`.
 5.  **Shutdown and Cleanup**: Once traffic generation is complete, the script will:
     - Stop the data collection threads.
     - Terminate the Mininet network.
     - Stop the Ryu controller.
-6.  **Offline Data Processing**: The script will invoke CICFlowMeter to process the `traffic.pcap` file and generate the final `offline_dataset.csv`.
-
-## 5. Deliverables Verification
 
 ## 4. Adding New Attacks
 
@@ -132,10 +187,13 @@ To add a new attack type to the dataset generation process, follow these steps:
 
 By following these steps, `main.py` will automatically discover and execute your new attack script during the dataset generation process.
 
+## 5. Deliverables Verification
+
 Upon successful completion, verify that the following files have been created in the `dataset_generation` directory:
 
-- `offline_dataset.csv`: A CSV file containing flow features extracted by CICFlowMeter.
+- `offline_dataset.csv`: A CSV file containing processed offline traffic data.
 - `online_dataset.csv`: A CSV file containing flow statistics polled from the Ryu controller.
 - `traffic.pcap`: The raw packet capture from the simulation.
+- `label_timeline.csv`: A CSV file containing the timeline of normal and attack traffic labels.
 
 If these files are present, the operation was a success.
