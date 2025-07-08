@@ -10,6 +10,7 @@ from mininet.net import Mininet
 from mininet.node import RemoteController
 import sys
 import importlib.util
+from process_pcap_to_csv import process_pcap_to_csv # Import the function
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -50,6 +51,11 @@ class DatasetGenerator:
         self.stop_event.set()
         offline_collector.join()
         online_collector.join()
+
+        # Process the pcap file to generate offline_dataset.csv
+        pcap_file = os.path.join(self.project_root, self.config['offline_collection']['pcap_file'])
+        offline_output_file = os.path.join(self.project_root, self.config['offline_collection']['output_file'])
+        process_pcap_to_csv(pcap_file, offline_output_file)
 
         self._stop_mininet()
         self._stop_ryu_controller()

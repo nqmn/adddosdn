@@ -36,3 +36,46 @@ The dataset generation process proceeds through distinct traffic generation phas
 2.  **Attack Traffic Period:** During this phase, the configured attackers (`h1`, `h2`) will launch their respective DDoS attacks against their designated victims (`h4`, `h6`). These attacks run concurrently with any ongoing normal traffic.
 
 This structured approach ensures that the generated dataset accurately reflects a mix of normal network operations and various types of DDoS attacks.
+
+## Dataset Features
+
+This project generates two primary datasets:
+
+### `offline_dataset.csv`
+
+A CSV file containing processed offline traffic data, derived from the raw `traffic.pcap` capture. This file is generated automatically by `main.py` after the `traffic.pcap` capture is complete. It includes the following packet-level features:
+
+*   `timestamp`: Packet capture timestamp.
+*   `packet_length`: Total length of the captured packet in bytes.
+*   `eth_type`: Ethernet type (e.g., 0x0800 for IPv4).
+*   `ip_src`: Source IP address.
+*   `ip_dst`: Destination IP address.
+*   `ip_proto`: IP protocol number (e.g., 6 for TCP, 17 for UDP, 1 for ICMP).
+*   `ip_ttl`: Time to Live.
+*   `ip_id`: IP identification field.
+*   `ip_flags`: IP flags (e.g., Don't Fragment, More Fragments).
+*   `ip_len`: Total length of the IP packet (including IP header and data).
+*   `src_port`: Source port (for TCP/UDP packets).
+*   `dst_port`: Destination port (for TCP/UDP packets).
+*   `tcp_flags`: TCP flags (e.g., SYN, ACK, FIN, RST, PSH, URG).
+*   `tcp_seq`: TCP Sequence Number.
+*   `tcp_ack`: TCP Acknowledgment Number.
+*   `tcp_window`: TCP Window Size.
+*   `icmp_type`: ICMP Type (for ICMP packets).
+*   `icmp_code`: ICMP Code (for ICMP packets).
+
+### `online_dataset.csv`
+
+A CSV file containing flow statistics polled from the Ryu controller. This file includes the following flow-level features:
+
+*   `timestamp`: The timestamp when the flow statistics were polled.
+*   `datapath_id`: The unique identifier of the OpenFlow switch (DPID).
+*   `flow_id`: A unique identifier for the flow (Ryu's cookie).
+*   `ip_src`: Source IP address of the flow.
+*   `ip_dst`: Destination IP address of the flow.
+*   `port_src`: Source port of the flow (TCP or UDP).
+*   `port_dst`: Destination port of the flow (TCP or UDP).
+*   `ip_proto`: IP protocol number of the flow.
+*   `packet_count`: Number of packets that matched this flow entry.
+*   `byte_count`: Number of bytes that matched this flow entry.
+*   `duration_sec`: Duration of the flow in seconds.
