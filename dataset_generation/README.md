@@ -139,11 +139,14 @@ sudo python3 dataset_generation/main.py
     - **Online Collector**: A polling mechanism will begin querying the Ryu controller's REST API every 2 seconds for flow statistics.
 4.  **Traffic Generation**: The script will proceed through two phases:
     - **Normal Traffic Period (60s)**: The simulation will run for 60 seconds with only benign background traffic.
-    - **Attack Traffic Period (30s)**: Multiple attacks will be launched:
-        - A SYN flood from `h1` to `h6` (Controller-based / Application-based).
-        - A SYN flood from `h2` to `h6` (Controller-based / Application-based).
-        - A UDP flood from `h2` to `h4` (Data Plane-based).
-        - An ICMP flood from `h2` to `h4` (Data Plane-based).
+    - **Attack Traffic Period**: Multiple attacks will be launched, including both traditional and advanced adversarial DDoS attacks:
+        - SYN flood (traditional)
+        - UDP flood (traditional)
+        - ICMP flood (traditional)
+        - Adversarial SYN flood (e.g., TCP state exhaustion)
+        - Adversarial UDP flood (e.g., application layer attack)
+        - Adversarial ICMP flood (e.g., slow read attack)
+        - Multi-vector adversarial attacks
 5.  **Shutdown and Cleanup**: Once traffic generation is complete, the script will:
     - Stop the data collection threads.
     - Process `traffic.pcap` to generate `offline_dataset.csv`.
@@ -211,7 +214,8 @@ Upon successful completion, verify that the following files have been created in
     -   `tcp_window`: TCP Window Size.
     -   `icmp_type`: ICMP Type (for ICMP packets).
     -   `icmp_code`: ICMP Code (for ICMP packets).
-    -   `Label`: The label indicating the traffic type (e.g., 'normal', 'syn_flood').
+    -   `Label_multi`: This column provides a multi-class label indicating the specific type of traffic or attack (e.g., 'normal', 'syn_flood', 'udp_flood', 'icmp_flood', 'ad_syn_flood', 'ad_udp_flood', 'ad_icmp_flood', 'ad_multi_vector'). This is useful for fine-grained classification tasks.
+    -   `Label_binary`: This column provides a binary label for traffic classification, where `0` indicates 'normal' traffic and `1` indicates any type of 'attack' traffic. This is suitable for binary classification (anomaly detection) models.
 
 -   `ryu_flow_features.csv`: A CSV file containing flow statistics polled from the Ryu controller. This dataset provides **flow-level features** directly from the SDN controller, making it suitable for real-time anomaly detection and control plane analysis.
     -   `timestamp`: The timestamp when the flow statistics were polled.
@@ -225,11 +229,12 @@ Upon successful completion, verify that the following files have been created in
     -   `packet_count`: Number of packets that matched this flow entry.
     -   `byte_count`: Number of bytes that matched this flow entry.
     -   `duration_sec`: Duration of the flow in seconds.
-    -   `Label`: The label indicating the traffic type (e.g., 'normal', 'syn_flood').
+    -   `Label_multi`: This column provides a multi-class label indicating the specific type of traffic or attack (e.g., 'normal', 'syn_flood', 'udp_flood', 'icmp_flood', 'ad_syn_flood', 'ad_udp_flood', 'ad_icmp_flood', 'ad_multi_vector'). This is useful for fine-grained classification tasks.
+    -   `Label_binary`: This column provides a binary label for traffic classification, where `0` indicates 'normal' traffic and `1` indicates any type of 'attack' traffic. This is suitable for binary classification (anomaly detection) models.
 
 -   `traffic.pcap`: The raw packet capture from the simulation.
 -   `label_timeline.csv`: A CSV file containing the timeline of normal and attack traffic labels.
 
--   `cicflow_dataset.csv`: A CSV file generated from `traffic.pcap` using CICFlowMeter. This dataset provides **advanced flow-level features** derived from packet data, offering a richer set of statistical metrics for in-depth traffic analysis and machine learning model training. It contains 83 flow features extracted by CICFlowMeter and an additional `Label` column. This dataset is generated independently and can be used for advanced flow-based analysis.
+-   `cicflow_dataset.csv`: A CSV file generated from `traffic.pcap` using CICFlowMeter. This dataset provides **advanced flow-level features** derived from packet data, offering a richer set of statistical metrics for in-depth traffic analysis and machine learning model training. It contains 83 flow features extracted by CICFlowMeter and an additional `Label_multi` and `Label_binary` column.
 
 If these files are present, the operation was a success.

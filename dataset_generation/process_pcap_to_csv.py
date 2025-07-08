@@ -24,7 +24,7 @@ def process_pcap_to_csv(pcap_file, output_csv_file, label_timeline=None):
             'ip_src', 'ip_dst', 'ip_proto', 'ip_ttl', 'ip_id', 'ip_flags', 'ip_len',
             'src_port', 'dst_port',
             'tcp_flags', 'tcp_seq', 'tcp_ack', 'tcp_window',
-            'icmp_type', 'icmp_code', 'Label'
+            'icmp_type', 'icmp_code', 'Label_multi', 'Label_binary'
         ]
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
@@ -49,7 +49,8 @@ def process_pcap_to_csv(pcap_file, output_csv_file, label_timeline=None):
                 'tcp_window': '',
                 'icmp_type': '',
                 'icmp_code': '',
-                'Label': 'unknown'
+                'Label_multi': 'unknown',
+                'Label_binary': 0 # Default to 0 (normal)
             }
 
             if Ether in packet:
@@ -79,7 +80,9 @@ def process_pcap_to_csv(pcap_file, output_csv_file, label_timeline=None):
                     row['icmp_code'] = packet[ICMP].code
             
             if label_timeline is not None:
-                row['Label'] = _get_label_for_timestamp(packet.time, label_timeline)
+                row['Label_multi'] = _get_label_for_timestamp(packet.time, label_timeline)
+                if row['Label_multi'] != 'normal':
+                    row['Label_binary'] = 1
             
             writer.writerow(row)
     

@@ -1,4 +1,3 @@
-
 {
     "mininet_topology": "dataset_generation/topology.py",
     "ryu_app": "dataset_generation/controller/ryu_controller_app.py",
@@ -40,6 +39,38 @@
                 "attacker": "h2",
                 "victim": "h4",
                 "script_name": "gen_icmp_flood.py"
+            },
+            {
+                "type": "ad_syn_flood",
+                "duration": 30,
+                "attacker": "h1",
+                "victim": "h6",
+                "script_name": "gen_advanced_adversarial_ddos_attacks.py",
+                "attack_variant": "tcp_state_exhaustion"
+            },
+            {
+                "type": "ad_udp_flood",
+                "duration": 30,
+                "attacker": "h2",
+                "victim": "h4",
+                "script_name": "gen_advanced_adversarial_ddos_attacks.py",
+                "attack_variant": "application_layer"
+            },
+            {
+                "type": "ad_icmp_flood",
+                "duration": 30,
+                "attacker": "h2",
+                "victim": "h4",
+                "script_name": "gen_advanced_adversarial_ddos_attacks.py",
+                "attack_variant": "slow_read"
+            },
+            {
+                "type": "ad_multi_vector",
+                "duration": 60,
+                "attacker": "h1",
+                "victim": "h6",
+                "script_name": "gen_advanced_adversarial_ddos_attacks.py",
+                "attack_variant": "multi_vector"
             }
         ]
     },

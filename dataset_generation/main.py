@@ -90,7 +90,7 @@ class DatasetGenerator:
 
         with open(output_file, 'w', newline='') as f:
             writer = csv.writer(f)
-            writer.writerow(['timestamp', 'datapath_id', 'flow_id', 'ip_src', 'ip_dst', 'port_src', 'port_dst', 'ip_proto', 'packet_count', 'byte_count', 'duration_sec', 'Label'])
+            writer.writerow(['timestamp', 'datapath_id', 'flow_id', 'ip_src', 'ip_dst', 'port_src', 'port_dst', 'ip_proto', 'packet_count', 'byte_count', 'duration_sec', 'Label_multi', 'Label_binary'])
 
             while not self.stop_event.is_set():
                 try:
@@ -114,7 +114,8 @@ class DatasetGenerator:
                                 flow.get('packet_count'),
                                 flow.get('byte_count'),
                                 flow.get('duration_sec'),
-                                current_label
+                                current_label,
+                                0 if current_label == 'normal' else 1
                             ])
                 except requests.exceptions.ConnectionError:
                     logging.warning("Could not connect to Ryu controller API. Retrying...")

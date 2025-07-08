@@ -26,9 +26,10 @@ def generate_cicflow_dataset(input_pcap_file, output_csv_file, label):
 
         # Read the generated CSV, add label, and save
         df = pd.read_csv(temp_csv_file)
-        df['Label'] = label
+        df['Label_multi'] = label
+        df['Label_binary'] = 0 if label == 'normal' else 1
         df.to_csv(output_csv_file, index=False)
-        print(f"Successfully generated dataset with {len(df.columns)} features (83 CICFlowMeter + 1 Label).")
+        print(f"Successfully generated dataset with {len(df.columns)} features (83 CICFlowMeter + 2 Labels).")
 
     except FileNotFoundError:
         print("Error: 'cicflowmeter' command not found. Please ensure CICFlowMeter is installed and in your system's PATH.")

@@ -11,10 +11,15 @@ The Mininet topology consists of a single OpenFlow switch (`s1`) connected to si
 ### Attackers
 
 *   **h1 (Attacker 1):** Launches a **TCP-based DDoS attack (SYN Flood)** against the web server (`h6`). This is primarily a **Controller-based** attack, as it can overwhelm the controller's flow table and processing capabilities, and also has an **Application-based** impact by exhausting server resources.
-*   **h2 (Attacker 2):** Launches multiple attacks:
+*   **h2 (Attacker 2):** Launches multiple attacks, including traditional and adversarial DDoS attacks:
     *   A **TCP-based DDoS attack (SYN Flood)** against the web server (`h6`). This is primarily a **Controller-based** attack, as it can overwhelm the controller's flow table and processing capabilities, and also has an **Application-based** impact by exhausting server resources.
     *   A **UDP Flood attack** against the victim host (`h4`). This is a **Data Plane-based** attack, aiming to saturate the victim's network interface and consume bandwidth.
     *   An **ICMP Flood attack** against the victim host (`h4`). This is also a **Data Plane-based** attack, similar to UDP flood, focusing on overwhelming the victim's network resources.
+    *   **Adversarial DDoS Attacks**: These attacks leverage advanced techniques to evade detection and mitigation, including:
+        *   **Adversarial SYN Flood (e.g., TCP State Exhaustion)**: Mimics legitimate TCP handshakes to exhaust server resources.
+        *   **Adversarial UDP Flood (e.g., Application Layer Attack)**: Generates traffic that appears legitimate at the network layer but targets resource-intensive application endpoints.
+        *   **Adversarial ICMP Flood (e.g., Slow Read Attack)**: Establishes connections and reads data very slowly to tie up server resources.
+        *   **Multi-vector Adversarial Attacks**: Combines multiple adversarial techniques simultaneously to increase effectiveness and evade detection.
 
 ### Victims
 
@@ -63,7 +68,8 @@ A CSV file containing processed offline traffic data, derived from the raw `traf
 *   `tcp_window`: TCP Window Size.
 *   `icmp_type`: ICMP Type (for ICMP packets).
 *   `icmp_code`: ICMP Code (for ICMP packets).
-*   `Label`: The label indicating the traffic type (e.g., 'normal', 'syn_flood').
+*   `Label_multi`: This column provides a multi-class label indicating the specific type of traffic or attack (e.g., 'normal', 'syn_flood', 'udp_flood', 'icmp_flood', 'ad_syn_flood', 'ad_udp_flood', 'ad_icmp_flood', 'ad_multi_vector'). This is useful for fine-grained classification tasks.
+*   `Label_binary`: This column provides a binary label for traffic classification, where `0` indicates 'normal' traffic and `1` indicates any type of 'attack' traffic. This is suitable for binary classification (anomaly detection) models.
 
 ### `ryu_flow_features.csv`
 
@@ -80,10 +86,11 @@ A CSV file containing flow statistics polled from the Ryu controller. This datas
 *   `packet_count`: Number of packets that matched this flow entry.
 *   `byte_count`: Number of bytes that matched this flow entry.
 *   `duration_sec`: Duration of the flow in seconds.
-*   `Label`: The label indicating the traffic type (e.g., 'normal', 'syn_flood').
+*   `Label_multi`: This column provides a multi-class label indicating the specific type of traffic or attack (e.g., 'normal', 'syn_flood', 'udp_flood', 'icmp_flood', 'ad_syn_flood', 'ad_udp_flood', 'ad_icmp_flood', 'ad_multi_vector'). This is useful for fine-grained classification tasks.
+*   `Label_binary`: This column provides a binary label for traffic classification, where `0` indicates 'normal' traffic and `1` indicates any type of 'attack' traffic. This is suitable for binary classification (anomaly detection) models.
 
 ### `cicflow_dataset.csv`
 
-A CSV file generated from `traffic.pcap` using CICFlowMeter. This dataset provides **advanced flow-level features** derived from packet data, offering a richer set of statistical metrics for in-depth traffic analysis and machine learning model training. It contains 83 flow features extracted by CICFlowMeter and an additional `Label` column.
+A CSV file generated from `traffic.pcap` using CICFlowMeter. This dataset provides **advanced flow-level features** derived from packet data, offering a richer set of statistical metrics for in-depth traffic analysis and machine learning model training. It contains 83 flow features extracted by CICFlowMeter and an additional `Label_multi` and `Label_binary` column.
 
 **Generation:** This dataset is generated independently using the `generate_cicflow_dataset.py` script, which takes a PCAP file and a label as input.
