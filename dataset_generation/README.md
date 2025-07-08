@@ -1,205 +1,289 @@
-# AI Agent Onboarding: SDN DDoS Dataset Generation
+<div align="center">
 
-This project provides a robust framework for generating a comprehensive DDoS attack dataset within a Mininet-emulated Software-Defined Networking (SDN) environment. The primary objective is to produce diverse network traffic data, including normal, traditional high-rate DDoS attacks (SYN, UDP, ICMP floods), and advanced adversarial DDoS attacks. These advanced attacks, which can manifest as both high-rate and low-rate, are characterized by their stealth and evasion techniques. These advanced attacks are designed to be more stealthy and evasive, incorporating techniques such as:
-- **TCP State Exhaustion:** Manipulating TCP sequence numbers and window sizes to keep connections half-open, consuming server resources.
-- **Distributed Application Layer Attacks:** Mimicking legitimate HTTP traffic patterns but targeting resource-intensive endpoints to overload applications.
-- **Hybrid Mix Attacks:** Interleaving normal traffic with attack traffic (e.g., ICMP ping with TCP SYN flood) to blend in.
-- **Randomized Timing:** Introducing random delays (10-100 ms) between packets to avoid detection based on consistent patterns.
-- **Evasion Techniques:** Varying TTL (Time-to-Live) and TCP window sizes, and employing fragmentation to bypass security mechanisms.
-- **Adaptive Rate Control:** Adjusting the attack flood rate dynamically based on the perceived CPU usage or response time of the target host to optimize impact and evade detection.
+# 🛡️ SDN DDoS Dataset Generation Framework
 
-The generated datasets, namely `packet_features.csv` (packet-level), `ryu_flow_features.csv` (SDN controller flow-level), and `cicflow_dataset.csv` (advanced flow-level), are enriched with both multi-class (`Label_multi`) and binary (`Label_binary`) labels. This rich, labeled dataset is designed to support in-depth network traffic analysis, machine learning model training for anomaly detection, and the development of advanced DDoS mitigation strategies.
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.6%2B-blue.svg)](https://www.python.org/)
+[![Mininet](https://img.shields.io/badge/Mininet-2.3.0-orange.svg)](http://mininet.org/)
+[![Ryu](https://img.shields.io/badge/Ryu-4.34-red.svg)](https://ryu-sdn.org/)
 
-**Objective:** This guide provides a comprehensive, step-by-step workflow for an AI agent to deploy and operate this dataset generation module. The goal is to produce `offline_dataset.csv` and `online_dataset.csv` by simulating a DDoS attack in a Mininet-emulated SDN environment.
+</div>
 
-## 1. Environment Verification and Setup
+## 🌟 Overview
 
-Before execution, verify that the following dependencies are installed and available in the system's `PATH`. Execute the following commands to check for their presence:
+This project provides a comprehensive framework for generating labeled DDoS attack datasets in a Software-Defined Networking (SDN) environment. It simulates both normal network traffic and various types of DDoS attacks to create realistic datasets for training and evaluating machine learning-based intrusion detection systems.
 
-```bash
-# 1.1. Verify Python and Pip
-python3 --version
-pip3 --version
+### 🎯 Key Features
 
-# 1.2. Verify Mininet
-sudo mn --version
+- **Diverse Attack Vectors**: Simulates both traditional and advanced adversarial DDoS attacks
+- **SDN Environment**: Leverages Mininet for network emulation and Ryu as the SDN controller
+- **Rich Dataset**: Generates multiple dataset formats including packet-level and flow-level features
+- **Extensible Architecture**: Easy to add new attack types and traffic patterns
+- **Comprehensive Labeling**: Includes both binary and multi-class labels for machine learning
 
-# 1.3. Verify Ryu SDN Framework
-ryu-manager --version
-
-
-
-# 1.5. Verify dumpcap (or tcpdump on Linux)
-dumpcap --version
-```
-
-If any of these commands fail, the dependency is not met. The agent must install the missing software before proceeding.
-
-### 1.6. Install Python Libraries
-
-Run the following command to install the required Python libraries:
+### 🚀 Quick Start
 
 ```bash
-pip3 install requests mininet
+# Clone the repository
+git clone https://github.com/yourusername/sdn-ddos-dataset.git
+cd sdn-ddos-dataset/dataset_generation
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Start the dataset generation (requires sudo)
+sudo python3 main.py
 ```
 
-### 1.7. Sudo Configuration for Mininet and Ryu
+## 🏗️ System Architecture
 
-Mininet and Ryu often require `sudo` privileges to operate, especially when running in non-interactive environments (e.g., via SSH scripts). If you encounter `sudo: no tty present and no askpass program specified` errors, you need to configure `sudoers` to allow passwordless execution for the commands `mn` and `ryu-manager`.
+```mermaid
+graph TD
+    A[Mininet Network] -->|Raw Traffic| B[Packet Capture]
+    A -->|Flow Stats| C[Ryu Controller]
+    B --> D[PCAP Processing]
+    C --> E[Flow Statistics]
+    D --> F[Dataset Generation]
+    E --> F
+    F --> G[packet_features.csv]
+    F --> H[ryu_flow_features.csv]
+    F --> I[cicflow_dataset.csv]
+```
 
-**Steps to configure `sudoers`:**
+## 🔍 Dataset Overview
 
-1.  **Access the remote server:** Log in to your remote server via an interactive SSH session.
-2.  **Edit `sudoers`:** Use `sudo visudo` to safely edit the `sudoers` file.
-    ```bash
-    sudo visudo
-    ```
-3.  **Add NOPASSWD entries:** Add the following lines to the `sudoers` file, replacing `your_username` with the actual username you are using on the remote server. These lines allow `your_username` to execute `mn` and `ryu-manager` without a password.
+The framework generates three main datasets, each serving different analysis purposes:
 
-    ```
-    # Allow passwordless sudo for Mininet
-    your_username ALL=(ALL) NOPASSWD: /usr/bin/mn
+| Dataset | Level | Features | Format | Description |
+|---------|-------|----------|--------|-------------|
+| `packet_features.csv` | Packet | 20+ | CSV | Raw packet captures with extracted headers |
+| `ryu_flow_features.csv` | Flow | 15+ | CSV | SDN controller flow statistics |
+| `cicflow_dataset.csv` | Flow | 80+ | CSV | Advanced flow features using CICFlowMeter |
 
-    # Allow passwordless sudo for Ryu Manager
-    your_username ALL=(ALL) NOPASSWD: /usr/local/bin/ryu-manager
-    ```
-    *   **Note:** The paths `/usr/bin/mn` and `/usr/local/bin/ryu-manager` are common, but you should verify the exact paths on your system using `which mn` and `which ryu-manager` on the remote server.
-    *   **Security Warning:** Allowing `NOPASSWD` for `ALL` commands (`your_username ALL=(ALL) NOPASSWD: ALL`) is generally discouraged due to security risks. Only use it if you fully understand the implications and are in a controlled environment.
+### 📊 Attack Types
 
-4.  **Save and Exit:** Save the changes and exit the `visudo` editor (usually by pressing `Ctrl+X`, then `Y` to confirm, then `Enter` for the filename).
+| Attack Category | Type | Target | Description |
+|-----------------|------|--------|-------------|
+| **Traditional** | SYN Flood | Network | Overwhelms target with SYN packets |
+| | UDP Flood | Network | Floods target with UDP packets |
+| | ICMP Flood | Network | Overloads target with ICMP Echo Requests |
+| **Adversarial** | Slow Read | Application | Slowly consumes server resources |
+| | Slowloris | Application | Keeps connections open as long as possible |
+| | RUDY | Application | Sends slow HTTP POST requests |
+| | HULK | Application | Generates unique obfuscated traffic |
 
-## 2. Configuration
+## 🛠️ Installation
 
-The `config.json` file is the single source of truth for this operation.
+### Prerequisites
 
+- Ubuntu 18.04/20.04 LTS (recommended)
+- Python 3.6+
+- Mininet 2.3.0+
+- Ryu SDN Framework 4.34+
+- tcpdump/dumpcap
+- Scapy 2.4.0+
 
+### Step-by-Step Setup
 
-**Example `config.json`:**
+1. **Install System Dependencies**
+   ```bash
+   # Update package lists
+   sudo apt-get update
+   
+   # Install required packages
+   sudo apt-get install -y python3-pip mininet tcpdump
+   
+   # Install Ryu SDN Framework
+   pip3 install ryu
+   
+   # Install Python dependencies
+   pip3 install -r requirements.txt
+   ```
+
+2. **Configure Sudoers (Optional)**
+   ```bash
+   # Allow passwordless sudo for Mininet and Ryu
+   echo "$USER ALL=(ALL) NOPASSWD: /usr/bin/mn" | sudo tee -a /etc/sudoers
+   echo "$USER ALL=(ALL) NOPASSWD: $(which ryu-manager)" | sudo tee -a /etc/sudoers
+   ```
+
+## 🚦 Usage
+
+### Basic Execution
+
+```bash
+# Start the dataset generation
+sudo python3 main.py
+```
+
+### Configuration
+
+Modify `config.json` to customize the experiment:
+
 ```json
 {
-    "mininet_topology": "dataset_generation/topology.py",
-    "ryu_app": "dataset_generation/controller/ryu_controller_app.py",
+    "mininet_topology": "topology.py",
+    "ryu_app": "controller/ryu_controller_app.py",
     "controller_port": 6633,
     "api_port": 8080,
     "traffic_types": {
         "normal": {
-            "duration": 60,
+            "duration": 300,
             "scapy_commands": [
-                {"host": "h3", "command": "sendp(Ether()/IP(dst='10.0.0.5')/TCP(dport=80, flags='S'), loop=1, inter=0.1)"},
-                {"host": "h5", "command": "sendp(Ether()/IP(dst='10.0.0.3')/UDP(dport=53), loop=1, inter=0.1)"}
+                {"host": "h3", "command": "sendp(Ether()/IP(dst='10.0.0.5')/TCP(dport=80, flags='S'), loop=1, inter=0.1)"}
             ]
         },
         "attacks": [
             {
                 "type": "syn_flood",
-                "duration": 30,
+                "duration": 60,
                 "attacker": "h1",
                 "victim": "h6",
                 "script_name": "gen_syn_flood.py"
-            },
-            {
-                "type": "syn_flood",
-                "duration": 30,
-                "attacker": "h2",
-                "victim": "h6",
-                "script_name": "gen_syn_flood.py"
-            },
-            {
-                "type": "udp_flood",
-                "duration": 30,
-                "attacker": "h2",
-                "victim": "h4",
-                "script_name": "gen_udp_flood.py"
-            },
-            {
-                "type": "icmp_flood",
-                "duration": 30,
-                "attacker": "h2",
-                "victim": "h4",
-                "script_name": "gen_icmp_flood.py"
             }
         ]
-    },
-    "offline_collection": {
-        "pcap_file": "traffic.pcap",
-        "output_file": "offline_dataset.csv"
-    },
-    "online_collection": {
-        "output_file": "online_dataset.csv",
-        "poll_interval": 2
-    },
-    "label_timeline_file": "label_timeline.csv"
+    }
 }
 ```
 
-## 3. Execution Workflow
+### Adding New Attacks
 
-Execute the main script with `sudo` privileges. This is non-negotiable, as Mininet requires root access to create and manage virtual network interfaces.
+1. Create a new attack script in the `attacks/` directory:
+   ```python
+   # attacks/gen_new_attack.py
+   from scapy.all import *
+   import time
+   
+   def run_attack(attacker_host, victim_ip, duration):
+       print(f"Starting attack from {attacker_host.name} to {victim_ip}")
+       start_time = time.time()
+       while time.time() - start_time < duration:
+           # Your attack logic here
+           send(IP(dst=victim_ip)/TCP(dport=80, flags='S'), verbose=0)
+   ```
 
-```bash
-sudo python3 dataset_generation/main.py
+2. Add the attack to `config.json`:
+   ```json
+   {
+       "type": "new_attack",
+       "duration": 45,
+       "attacker": "h1",
+       "victim": "h4",
+       "script_name": "gen_new_attack.py"
+   }
+   ```
+
+## 📊 Dataset Format
+
+### Packet-Level Features (`packet_features.csv`)
+- Timestamp
+- Source/Destination IP and Port
+- Protocol
+- Packet size
+- TCP flags
+- TTL
+- And more...
+
+### Flow-Level Features (`ryu_flow_features.csv`)
+- Flow start/end time
+- Source/Destination IP and Port
+- Protocol
+- Packet/Byte counts
+- Flow duration
+- Label (attack type)
+
+### CICFlow Features (`cicflow_dataset.csv`)
+- 80+ statistical features including:
+  - Flow duration
+  - Packet length statistics
+  - Inter-arrival times
+  - Protocol-specific features
+  - Label (attack type)
+
+## 📚 Documentation
+
+For detailed documentation, please refer to:
+
+- [Scenario Documentation](scenario.md) - Detailed network topology and attack scenarios
+- [Installation Guide](install.md) - Complete installation instructions
+- [Analysis](analysis.md) - Dataset analysis and statistics
+- [Progress](progress.md) - Development progress and roadmap
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read our [contributing guidelines](CONTRIBUTING.md) before submitting pull requests.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📧 Contact
+
+For questions or feedback, please open an issue or contact [your-email@example.com](mailto:your-email@example.com).
+
+---
+
+<div align="center">
+  Made with ❤️ for Network Security Research
+</div>
+
+## 🔄 Execution Workflow
+
+### Expected Execution Sequence
+
+1. **Environment Initialization**
+   - Verify all dependencies and permissions
+   - Load configuration from `config.json`
+   - Initialize logging and output directories
+
+2. **SDN Controller Launch**
+   - Start Ryu SDN controller with the specified application
+   - Initialize REST API for flow statistics collection
+
+3. **Mininet Network Setup**
+   - Create virtual network topology
+   - Configure Open vSwitch with SDN controller
+   - Set up host networking and routes
+
+4. **Data Collection Initialization**
+   - Start packet capture on all interfaces
+   - Initialize flow statistics collection
+   - Set up dataset storage
+
+5. **Traffic Generation**
+   - **Phase 1: Normal Traffic**
+     - Generate baseline network traffic
+     - Collect labeled normal traffic samples
+     
+   - **Phase 2: Attack Traffic**
+     - Launch configured DDoS attacks
+     - Monitor network behavior during attacks
+     - Collect attack traffic samples
+
+6. **Data Processing**
+   - Process PCAP files to extract features
+   - Aggregate flow statistics
+   - Generate labeled datasets
+
+7. **Cleanup**
+   - Stop all network traffic
+   - Terminate Mininet network
+   - Stop SDN controller
+   - Finalize dataset files
+
+### Monitoring Progress
+
+During execution, the system provides real-time feedback:
+
+```
+[INFO] Starting SDN DDoS Dataset Generation
+[STATUS] Ryu Controller: RUNNING (http://localhost:8080)
+[STATUS] Mininet Network: INITIALIZED
+[PROGRESS] Phase 1/2: Normal Traffic (60s remaining)
+[STATUS] Capturing: 1,245 packets (45.6 MB)
+[STATUS] Flows: 342 active
 ```
 
-### Expected Execution Sequence:
-
-1.  **Ryu Controller Launch**: The script will first launch the Ryu controller application in the background.
-2.  **Mininet Initialization**: The custom 6-host topology will be loaded, and the Mininet network will start.
-3.  **Data Collector Activation**: Two background threads will be initiated:
-    - **Offline Collector**: `dumpcap` will start capturing all network traffic on the `any` interface, saving it to `traffic.pcap`.
-    - **Online Collector**: A polling mechanism will begin querying the Ryu controller's REST API every 2 seconds for flow statistics.
-4.  **Traffic Generation**: The script will proceed through two phases:
-    - **Normal Traffic Period (60s)**: The simulation will run for 60 seconds with only benign background traffic.
-    - **Attack Traffic Period**: Multiple attacks will be launched, including both traditional high-rate and advanced adversarial low-rate DDoS attacks:
-        - SYN flood (traditional)
-        - UDP flood (traditional)
-        - ICMP flood (traditional)
-        - Adversarial SYN flood (e.g., TCP state exhaustion)
-        - Adversarial UDP flood (e.g., application layer attack)
-        - Adversarial ICMP flood (e.g., slow read attack)
-        - Multi-vector adversarial attacks
-5.  **Shutdown and Cleanup**: Once traffic generation is complete, the script will:
-    - Stop the data collection threads.
-    - Process `traffic.pcap` to generate `offline_dataset.csv`.
-    - Terminate the Mininet network.
-    - Stop the Ryu controller.
-
-## 4. Adding New Attacks
-
-To add a new attack type to the dataset generation process, follow these steps:
-
-1.  **Create an Attack Script**: In the `attacks/` directory, create a new Python file (e.g., `gen_new_attack.py`). This script must contain a function named `run_attack` that accepts three arguments:
-    -   `attacker_host`: The Mininet host object from which the attack will originate.
-    -   `victim_ip`: The IP address of the target victim.
-    -   `duration`: The duration (in seconds) for which the attack should run.
-
-    Example structure for `gen_new_attack.py`:
-    ```python
-    from scapy.all import Ether, IP, TCP, sendp
-    import time
-
-    def run_attack(attacker_host, victim_ip, duration):
-        print(f"Starting New Attack from {attacker_host.name} to {victim_ip} for {duration} seconds.")
-        start_time = time.time()
-        while time.time() - start_time < duration:
-            # Your attack logic here, e.g., sendp(Ether()/IP(dst=victim_ip)/TCP(dport=80, flags='S'))
-            pass
-        print(f"New Attack from {attacker_host.name} to {victim_ip} finished.")
-    ```
-
-2.  **Update `config.json`**: Open `config.json` and add a new entry to the `traffic_types.attacks` array. This entry should specify the `type` of the attack, its `duration`, the `attacker` host, the `victim` host, and the `script_name` (the filename of your new attack script).
-
-    Example addition to `config.json`:
-    ```json
-    {
-        "type": "new_attack_type",
-        "duration": 45,
-        "attacker": "h1",
-        "victim": "h3",
-        "script_name": "gen_new_attack.py"
-    }
-    ```
-
-By following these steps, `main.py` will automatically discover and execute your new attack script during the dataset generation process.
 
 ## 5. Deliverables Verification
 
@@ -253,3 +337,101 @@ The provision of three distinct datasets—packet-level, SDN controller flow-lev
 -   `cicflow_dataset.csv`: A CSV file generated from `traffic.pcap` using CICFlowMeter. This dataset provides **advanced flow-level features** derived from packet data, offering a richer set of statistical metrics for in-depth traffic analysis and machine learning model training. It contains 83 flow features extracted by CICFlowMeter and an additional `Label_multi` and `Label_binary` column, totaling **85 features**.
 
 If these files are present, the operation was a success.
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+1. **Permission Denied Errors**
+   ```bash
+   # Ensure proper sudo configuration
+   sudo visudo
+   # Add: username ALL=(ALL) NOPASSWD: /usr/bin/mn, /usr/local/bin/ryu-manager
+   ```
+
+2. **Port Conflicts**
+   ```bash
+   # Check for processes using required ports
+   sudo lsof -i :6633  # Controller port
+   sudo lsof -i :8080  # REST API port
+   ```
+
+3. **Missing Dependencies**
+   ```bash
+   # Verify all required packages
+   pip3 install -r requirements.txt
+   sudo apt-get install -y mininet openvswitch-testcontroller
+   ```
+
+### Getting Help
+
+For additional support:
+<!-- - Check the [issue tracker](https://github.com/yourusername/sdn-ddos-dataset/issues) -->
+- Review the [documentation](docs/)
+<!-- - Join our [community forum](https://github.com/yourusername/sdn-ddos-dataset/discussions) -->
+
+## 📈 Performance Considerations
+
+### Resource Requirements
+
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| CPU Cores | 2 | 4+ |
+| RAM | 4GB | 8GB+ |
+| Storage | 10GB | 50GB+ (for large captures) |
+| OS | Ubuntu 18.04+ | Ubuntu 20.04 LTS |
+
+### Optimization Tips
+
+1. **For Better Performance**
+   - Use SSD storage for packet capture
+   - Increase system limits for file descriptors
+   - Run with minimal GUI overhead (use `--link=tc` in Mininet)
+
+2. **For Larger Deployments**
+   - Distribute components across multiple machines
+   - Use hardware-accelerated Open vSwitch
+   - Implement sampling for high-speed networks
+
+## 🤝 Community & Support
+
+### Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on how to contribute to this project.
+
+### Getting Help
+
+- **Documentation**: [Read the Docs](https://sdn-ddos-dataset.readthedocs.io/)
+<!-- - **Issues**: [Report a Bug](https://github.com/yourusername/sdn-ddos-dataset/issues) -->
+<!-- - **Discussions**: [Join the Conversation](https://github.com/yourusername/sdn-ddos-dataset/discussions) -->
+
+### Related Projects
+
+- [Mininet](http://mininet.org/)
+- [Ryu SDN Framework](https://ryu-sdn.org/)
+- [CICFlowMeter](https://www.unb.ca/cic/datasets/andmalnet-doc.html)
+
+## 📜 Citation
+
+If you use this dataset in your research, please cite our work:
+
+```bibtex
+@misc{sdn_ddos_dataset_2023,
+  title = {{AdDDoS-SDN - A Novel Dataset for Adversarial DDoS Detection for SDNs}},
+  author = {Mohd Adil. Mokti},
+  year = {2025},
+  publisher = {GitHub},
+  howpublished = {\url{https://github.com/nqmn/AdDDoSSDN-novel_adversarial_ddos_sdn_dataset}}
+}
+```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+  <p>Built with ❤️ for the Network Security Community</p>
+  <p>© 2025 NQMN</p>
+</div>
