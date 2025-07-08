@@ -71,7 +71,7 @@ The remote server has been shut down, so no further actions can be performed at 
 *   **Action:** Checked `main.py` status and `output.log`.
 *   **Issue:** `main.py` was not running, and `output.log` still showed the `AttributeError` and `ryu_controller.log` was not found. This indicates the `main.py` changes are still not consistently applied to the remote server.
 
-### 7. Incorporating Adversarial Attacks and Dataset Balancing (Planned)
+### 7. Incorporating Adversarial Attacks and Dataset Balancing (Planned - *Now Implemented*)
 *   **Goal:** Modify `config.json` and `main.py` to include and differentiate between basic and adversarial attacks, and to balance the dataset.
 *   **Planned `config.json` changes:**
     *   Rename existing basic attack types (e.g., `syn_flood` to `basic_syn_flood`).

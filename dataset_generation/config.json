@@ -1,11 +1,11 @@
 {
-    "mininet_topology": "dataset_generation/topology.py",
-    "ryu_app": "dataset_generation/controller/ryu_controller_app.py",
+    "mininet_topology": "topology.py",
+    "ryu_app": "controller/ryu_controller_app.py",
     "controller_port": 6633,
     "api_port": 8080,
     "traffic_types": {
         "normal": {
-            "duration": 60,
+            "duration": 1800,
             "scapy_commands": [
                 {"host": "h3", "command": "sendp(Ether()/IP(dst='10.0.0.5')/TCP(dport=80, flags='S'), loop=1, inter=0.1)"},
                 {"host": "h5", "command": "sendp(Ether()/IP(dst='10.0.0.3')/UDP(dport=53), loop=1, inter=0.1)"}

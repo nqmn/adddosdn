@@ -82,7 +82,7 @@ sudo python3 dataset_generation/main.py
     -   **Normal Traffic Period**: A configured duration of benign background traffic.
     -   **Attack Traffic Period**: Multiple attacks will be launched, including both traditional high-rate (e.g., SYN, UDP, ICMP floods) and advanced adversarial (e.g., TCP state exhaustion, application layer, multi-vector) DDoS attacks, as defined in `config.json`.
 5.  **Shutdown and Cleanup**: Data collection stops, Mininet terminates, and the Ryu controller stops.
-6.  **Offline Data Processing**: `process_pcap_to_csv.py` processes `traffic.pcap` to generate `offline_dataset.csv`. Subsequently, CICFlowMeter processes `traffic.pcap` to generate `cicflow_dataset.csv`.
+6.  **Offline Data Processing**: `process_pcap_to_csv.py` processes `traffic.pcap` to generate `packet_features.csv`. Subsequently, CICFlowMeter processes `traffic.pcap` to generate `cicflow_dataset.csv`.
 
 ## 4. Deliver Results to the User
 

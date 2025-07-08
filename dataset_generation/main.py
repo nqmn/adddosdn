@@ -11,6 +11,7 @@ from mininet.node import RemoteController
 import sys
 import importlib.util
 from process_pcap_to_csv import process_pcap_to_csv # Import the function
+from generate_cicflow_dataset import generate_cicflow_dataset # Import the function
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -58,6 +59,18 @@ class DatasetGenerator:
         pcap_file = os.path.join(self.project_root, self.config['offline_collection']['pcap_file'])
         offline_output_file = os.path.join(self.project_root, self.config['offline_collection']['output_file'])
         process_pcap_to_csv(pcap_file, offline_output_file, self.label_timeline)
+
+        # Generate CICFlow dataset
+        cicflow_output_file = os.path.join(self.project_root, "cicflow_dataset.csv")
+        # For CICFlow, we need a single label for the entire PCAP. For simplicity, we'll use 'mixed' or 'attack' if any attack occurred, else 'normal'.
+        # A more sophisticated approach would involve segmenting the PCAP based on the timeline.
+        # For now, we'll use a simplified label based on whether any attack was present.
+        overall_label = 'normal'
+        for entry in self.label_timeline:
+            if entry['label'] != 'normal':
+                overall_label = 'attack'
+                break
+        generate_cicflow_dataset(pcap_file, cicflow_output_file, overall_label)
 
         self._stop_mininet()
         self._stop_ryu_controller()
@@ -183,7 +196,13 @@ class DatasetGenerator:
             try:
                 attack_module = import_module_from_path(attack_type, attack_script_path)
                 victim_ip = self.hosts[attack['victim']].IP()
-                attack_thread = threading.Thread(target=attack_module.run_attack, args=(attacker_host, victim_ip, attack_duration))
+                
+                # Check if attack_variant is specified for advanced attacks
+                if 'attack_variant' in attack:
+                    attack_thread = threading.Thread(target=attack_module.run_attack, args=(attacker_host, victim_ip, attack_duration, attack['attack_variant']))
+                else:
+                    attack_thread = threading.Thread(target=attack_module.run_attack, args=(attacker_host, victim_ip, attack_duration))
+                
                 attack_thread.start()
                 attack_thread.join() # Wait for the attack thread to complete
             except Exception as e:

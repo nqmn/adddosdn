@@ -11,7 +11,7 @@ The Mininet topology consists of a single OpenFlow switch (`s1`) connected to si
 ### Attackers
 
 *   **h1 (Attacker 1):** Launches a **TCP-based DDoS attack (SYN Flood)** against the web server (`h6`). This is primarily a **Controller-based** attack, as it can overwhelm the controller's flow table and processing capabilities, and also has an **Application-based** impact by exhausting server resources.
-*   **h2 (Attacker 2):** Launches multiple attacks, including traditional high-rate and advanced adversarial low-rate DDoS attacks:
+*   **h2 (Attacker 2):** Launches multiple attacks, including traditional high-rate and advanced adversarial DDoS attacks (which can be both high-rate and low-rate):
     *   A **TCP-based DDoS attack (SYN Flood)** against the web server (`h6`). This is primarily a **Controller-based** attack, as it can overwhelm the controller's flow table and processing capabilities, and also has an **Application-based** impact by exhausting server resources.
     *   A **UDP Flood attack** against the victim host (`h4`). This is a **Data Plane-based** attack, aiming to saturate the victim's network interface and consume bandwidth.
     *   An **ICMP Flood attack** against the victim host (`h4`). This is also a **Data Plane-based** attack, similar to UDP flood, focusing on overwhelming the victim's network resources.
@@ -42,55 +42,3 @@ The dataset generation process proceeds through distinct traffic generation phas
 
 This structured approach ensures that the generated dataset accurately reflects a mix of normal network operations and various types of DDoS attacks.
 
-## Dataset Features
-
-This project generates two primary datasets:
-
-### `packet_features.csv`
-
-A CSV file containing processed offline traffic data, derived from the raw `traffic.pcap` capture. This dataset provides **packet-level features** and is ideal for detailed analysis of individual packet characteristics and for building models that require granular network information. It contains **20 features** including the labels.
-
-*   `timestamp`: Packet capture timestamp.
-*   `packet_length`: Total length of the captured packet in bytes.
-*   `eth_type`: Ethernet type (e.g., 0x0800 for IPv4).
-*   `ip_src`: Source IP address.
-*   `ip_dst`: Destination IP address.
-*   `ip_proto`: IP protocol number (e.g., 6 for TCP, 17 for UDP, 1 for ICMP).
-*   `ip_ttl`: Time to Live.
-*   `ip_id`: IP identification field.
-*   `ip_flags`: IP flags (e.g., Don't Fragment, More Fragments).
-*   `ip_len`: Total length of the IP packet (including IP header and data).
-*   `src_port`: Source port (for TCP/UDP packets).
-*   `dst_port`: Destination port (for TCP/UDP packets).
-*   `tcp_flags`: TCP flags (e.g., SYN, ACK, FIN, RST, PSH, URG).
-*   `tcp_seq`: TCP Sequence Number.
-*   `tcp_ack`: TCP Acknowledgment Number.
-*   `tcp_window`: TCP Window Size.
-*   `icmp_type`: ICMP Type (for ICMP packets).
-*   `icmp_code`: ICMP Code (for ICMP packets).
-*   `Label_multi`: This column provides a multi-class label indicating the specific type of traffic or attack (e.g., 'normal', 'syn_flood', 'udp_flood', 'icmp_flood', 'ad_syn_flood', 'ad_udp_flood', 'ad_icmp_flood', 'ad_multi_vector'). This is useful for fine-grained classification tasks.
-*   `Label_binary`: This column provides a binary label for traffic classification, where `0` indicates 'normal' traffic and `1` indicates any type of 'attack' traffic. This is suitable for binary classification (anomaly detection) models.
-
-### `ryu_flow_features.csv`
-
-A CSV file containing flow statistics polled from the Ryu controller. This dataset provides **flow-level features** directly from the SDN controller, making it suitable for real-time anomaly detection and control plane analysis. It contains **13 features** including the labels.
-
-*   `timestamp`: The timestamp when the flow statistics were polled.
-*   `datapath_id`: The unique identifier of the OpenFlow switch (DPID).
-*   `flow_id`: A unique identifier for the flow (Ryu's cookie).
-*   `ip_src`: Source IP address of the flow.
-*   `ip_dst`: Destination IP address of the flow.
-*   `port_src`: Source port of the flow (TCP or UDP).
-*   `port_dst`: Destination port of the flow (TCP or UDP).
-*   `ip_proto`: IP protocol number of the flow.
-*   `packet_count`: Number of packets that matched this flow entry.
-*   `byte_count`: Number of bytes that matched this flow entry.
-*   `duration_sec`: Duration of the flow in seconds.
-*   `Label_multi`: This column provides a multi-class label indicating the specific type of traffic or attack (e.g., 'normal', 'syn_flood', 'udp_flood', 'icmp_flood', 'ad_syn_flood', 'ad_udp_flood', 'ad_icmp_flood', 'ad_multi_vector'). This is useful for fine-grained classification tasks.
-*   `Label_binary`: This column provides a binary label for traffic classification, where `0` indicates 'normal' traffic and `1` indicates any type of 'attack' traffic. This is suitable for binary classification (anomaly detection) models.
-
-### `cicflow_dataset.csv`
-
-A CSV file generated from `traffic.pcap` using CICFlowMeter. This dataset provides **advanced flow-level features** derived from packet data, offering a richer set of statistical metrics for in-depth traffic analysis and machine learning model training. It contains 83 flow features extracted by CICFlowMeter and an additional `Label_multi` and `Label_binary` column, totaling **85 features**.
-
-**Generation:** This dataset is generated independently using the `generate_cicflow_dataset.py` script, which takes a PCAP file and a label as input.
