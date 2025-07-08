@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🛡️ SDN DDoS Dataset Generation Framework
+# 🛡️ AdDDoS-SDN Dataset Generation Framework
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.6%2B-blue.svg)](https://www.python.org/)
@@ -23,45 +23,44 @@ This project provides a comprehensive framework for generating labeled DDoS atta
 
 ### ⚔️ Attack Types
 
-The framework simulates the following DDoS attack vectors:
+The framework simulates various DDoS attack vectors, each with specific characteristics and targets:
 
-#### Traditional Attacks
-- **SYN Flood** (h1 → h6): High-rate TCP SYN packets to overwhelm the web server
-- **UDP Flood** (h2 → h4): High-volume UDP traffic targeting port 53
-- **ICMP Flood** (h2 → h4): High-rate ICMP echo requests
+| Attack Type | Target Plane | Source | Destination | Protocol/Port | Description | Impact |
+|-------------|--------------|--------|-------------|----------------|-------------|--------|
+| **SYN Flood** | Data | h1 (10.0.0.1) | h6 (10.0.0.6) | TCP/80 | High-rate TCP SYN packets without completing handshakes | Web server resource exhaustion |
+| **UDP Flood** | Data | h2 (10.0.0.2) | h4 (10.0.0.4) | UDP/53 | High-volume UDP packets to DNS service | DNS service disruption, bandwidth consumption |
+| **ICMP Flood** | Data | h2 (10.0.0.2) | h4 (10.0.0.4) | ICMP | High-rate ICMP Echo Requests | Network congestion, service degradation |
+| **Adversarial SYN** | Data/App | h2 (10.0.0.2) | h6 (10.0.0.6) | TCP/80 | Variable-rate SYN with TCP state exhaustion | Evades rate limiting, persistent connections |
+| **Adversarial UDP** | Data/App | h2 (10.0.0.2) | h4 (10.0.0.4) | UDP/53 | Application layer mimicry with variable patterns | Harder detection, bypasses basic filters |
+| **Multi-vector** | Data/App | h2 (10.0.0.2) | h4,h6 (10.0.0.4, 10.0.0.6) | Multiple | Combined attack vectors | Multi-layered impact across services |
 
-#### Advanced Adversarial Attacks
-- **Adversarial SYN Flood** (h2 → h6): Variable rate with TCP state exhaustion techniques
-- **Adversarial UDP Flood** (h2 → h4): Application layer mimicry with variable patterns
-- **Multi-vector Attacks** (h2 → h4,h6): Combined attack vectors for sophisticated scenarios
+<!-- ### 🎯 Plane-based Attack Classification
 
-### 🎯 Plane-based Attack Classification
-
-| Attack Type | Target Plane | Description | Impact | Mitigation |
-|-------------|---------------|-------------|--------|------------|
-| **SYN Flood** | Data Plane | Overwhelms target with SYN packets | Resource exhaustion, service disruption | SYN cookies, rate limiting |
-| **UDP Flood** | Data Plane | Floods target with UDP packets | Bandwidth consumption, service degradation | UDP filtering, rate limiting |
-| **ICMP Flood** | Data Plane | Overloads target with ICMP Echo Requests | Network congestion, service degradation | ICMP rate limiting, filtering |
-| **Adversarial SYN** | Control Plane | Targets SDN controller with crafted flows | Controller overload, flow table saturation | Flow table timeouts, controller hardening |
-| **Multi-vector** | Multiple Planes | Combined attack on multiple planes | Complex impact across infrastructure | Multi-layered defense strategy |
+| Attack Type | Target Plane | Description | Impact |
+|-------------|---------------|-------------|--------|
+| **SYN Flood** | Data Plane | Overwhelms target with TCP SYN packets (port 80) | Web server resource exhaustion |
+| **UDP Flood** | Data Plane | Floods target with UDP packets (port 53) | DNS service disruption, bandwidth consumption |
+| **ICMP Flood** | Data Plane | Overloads target with ICMP Echo Requests | Network congestion, service degradation |
+| **Adversarial DDoS** | Data/Application | Advanced techniques with IP rotation and protocol manipulation | Evasion of traditional defenses |
+| **Multi-vector** | Data/Application | Combined attack using multiple techniques | Multi-layered impact on services |
 
 #### Attack Characteristics by Plane:
 
-1. **Control Plane Attacks**
-   - Target SDN controller resources
-   - Cause flow table overflow
-   - Disrupt network policy enforcement
-   - Example: Adversarial SYN with crafted flow rules
+1. **Data Plane Attacks** (Primary Focus)
+   - **SYN Flood**: Targets web server resources
+   - **UDP Flood**: Targets DNS services
+   - **ICMP Flood**: Targets network infrastructure
+   - **Impact**: Bandwidth consumption, service degradation
 
-2. **Data Plane Attacks**
-   - Target network bandwidth and host resources
-   - Cause service degradation
-   - Example: UDP/ICMP flood attacks
+2. **Application Layer Attacks** (Adversarial)
+   - IP rotation to evade blacklisting
+   - Protocol manipulation
+   - Slow-rate attacks
+   - **Impact**: Evasion of rate limiting, harder detection
 
-3. **Management Plane Attacks**
-   - Target management interfaces
-   - Disrupt network monitoring/configuration
-   - Example: Brute force login attempts (not currently implemented)
+3. **Control/Management Plane** (Not directly targeted in current implementation)
+   - No direct attacks on SDN controller or management interfaces
+   - Focus remains on data plane and application layer -->
 
 ### 🚀 Quick Start
 
