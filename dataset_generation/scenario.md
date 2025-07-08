@@ -11,7 +11,7 @@ The Mininet topology consists of a single OpenFlow switch (`s1`) connected to si
 ### Attackers
 
 *   **h1 (Attacker 1):** Launches a **TCP-based DDoS attack (SYN Flood)** against the web server (`h6`). This is primarily a **Controller-based** attack, as it can overwhelm the controller's flow table and processing capabilities, and also has an **Application-based** impact by exhausting server resources.
-*   **h2 (Attacker 2):** Launches multiple attacks, including traditional and adversarial DDoS attacks:
+*   **h2 (Attacker 2):** Launches multiple attacks, including traditional high-rate and advanced adversarial low-rate DDoS attacks:
     *   A **TCP-based DDoS attack (SYN Flood)** against the web server (`h6`). This is primarily a **Controller-based** attack, as it can overwhelm the controller's flow table and processing capabilities, and also has an **Application-based** impact by exhausting server resources.
     *   A **UDP Flood attack** against the victim host (`h4`). This is a **Data Plane-based** attack, aiming to saturate the victim's network interface and consume bandwidth.
     *   An **ICMP Flood attack** against the victim host (`h4`). This is also a **Data Plane-based** attack, similar to UDP flood, focusing on overwhelming the victim's network resources.

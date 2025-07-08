@@ -139,7 +139,7 @@ sudo python3 dataset_generation/main.py
     - **Online Collector**: A polling mechanism will begin querying the Ryu controller's REST API every 2 seconds for flow statistics.
 4.  **Traffic Generation**: The script will proceed through two phases:
     - **Normal Traffic Period (60s)**: The simulation will run for 60 seconds with only benign background traffic.
-    - **Attack Traffic Period**: Multiple attacks will be launched, including both traditional and advanced adversarial DDoS attacks:
+    - **Attack Traffic Period**: Multiple attacks will be launched, including both traditional high-rate and advanced adversarial low-rate DDoS attacks:
         - SYN flood (traditional)
         - UDP flood (traditional)
         - ICMP flood (traditional)
