@@ -243,32 +243,8 @@ Modify `config.json` to customize the experiment:
   - Protocol-specific features
   - Label (attack type)
 
-## 📚 Documentation
-
-For detailed documentation, please refer to:
-
-- [Scenario Documentation](scenario.md) - Detailed network topology and attack scenarios
-- [Installation Guide](install.md) - Complete installation instructions
-- [Analysis](analysis.md) - Dataset analysis and statistics
-- [Progress](progress.md) - Development progress and roadmap
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read our [contributing guidelines](CONTRIBUTING.md) before submitting pull requests.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📧 Contact
-
-For questions or feedback, please open an issue or contact [your-email@example.com](mailto:your-email@example.com).
 
 ---
-
-<div align="center">
-  Made with ❤️ for Network Security Research
-</div>
 
 ## 🔄 Execution Workflow
 
