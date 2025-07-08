@@ -1,4 +1,4 @@
-# AdDDoSSDN Dataset Workflow
+# AdDDoSDN Dataset Workflow
 
 A comprehensive Python-based workflow for generating, capturing, processing, and documenting network traffic datasets in a Software-Defined Networking (SDN) environment using Mininet and a Ryu controller.
 
