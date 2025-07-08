@@ -35,6 +35,34 @@ The framework simulates the following DDoS attack vectors:
 - **Adversarial UDP Flood** (h2 → h4): Application layer mimicry with variable patterns
 - **Multi-vector Attacks** (h2 → h4,h6): Combined attack vectors for sophisticated scenarios
 
+### 🎯 Plane-based Attack Classification
+
+| Attack Type | Target Plane | Description | Impact | Mitigation |
+|-------------|---------------|-------------|--------|------------|
+| **SYN Flood** | Data Plane | Overwhelms target with SYN packets | Resource exhaustion, service disruption | SYN cookies, rate limiting |
+| **UDP Flood** | Data Plane | Floods target with UDP packets | Bandwidth consumption, service degradation | UDP filtering, rate limiting |
+| **ICMP Flood** | Data Plane | Overloads target with ICMP Echo Requests | Network congestion, service degradation | ICMP rate limiting, filtering |
+| **Adversarial SYN** | Control Plane | Targets SDN controller with crafted flows | Controller overload, flow table saturation | Flow table timeouts, controller hardening |
+| **Multi-vector** | Multiple Planes | Combined attack on multiple planes | Complex impact across infrastructure | Multi-layered defense strategy |
+
+#### Attack Characteristics by Plane:
+
+1. **Control Plane Attacks**
+   - Target SDN controller resources
+   - Cause flow table overflow
+   - Disrupt network policy enforcement
+   - Example: Adversarial SYN with crafted flow rules
+
+2. **Data Plane Attacks**
+   - Target network bandwidth and host resources
+   - Cause service degradation
+   - Example: UDP/ICMP flood attacks
+
+3. **Management Plane Attacks**
+   - Target management interfaces
+   - Disrupt network monitoring/configuration
+   - Example: Brute force login attempts (not currently implemented)
+
 ### 🚀 Quick Start
 
 ```bash
@@ -456,9 +484,9 @@ The framework generates three complementary datasets, each offering unique insig
 
 We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on how to contribute to this project. -->
 
-### Getting Help
+<!-- ### Getting Help -->
 
-- **Documentation**: [Read the Docs](https://sdn-ddos-dataset.readthedocs.io/)
+<!-- - **Documentation**: [Read the Docs](https://sdn-ddos-dataset.readthedocs.io/) -->
 <!-- - **Issues**: [Report a Bug](https://github.com/yourusername/sdn-ddos-dataset/issues) -->
 <!-- - **Discussions**: [Join the Conversation](https://github.com/yourusername/sdn-ddos-dataset/discussions) -->
 
