@@ -1,6 +1,14 @@
 # AI Agent Onboarding: SDN DDoS Dataset Generation
 
-This project provides a robust framework for generating a comprehensive DDoS attack dataset within a Mininet-emulated Software-Defined Networking (SDN) environment. The primary objective is to produce diverse network traffic data, including normal, traditional high-rate DDoS attacks (SYN, UDP, ICMP floods), and advanced adversarial low-rate DDoS attacks (e.g., slow read, TCP state exhaustion, application layer, multi-vector). The generated datasets, namely `packet_features.csv` (packet-level), `ryu_flow_features.csv` (SDN controller flow-level), and `cicflow_dataset.csv` (advanced flow-level), are enriched with both multi-class (`Label_multi`) and binary (`Label_binary`) labels. This rich, labeled dataset is designed to support in-depth network traffic analysis, machine learning model training for anomaly detection, and the development of advanced DDoS mitigation strategies.
+This project provides a robust framework for generating a comprehensive DDoS attack dataset within a Mininet-emulated Software-Defined Networking (SDN) environment. The primary objective is to produce diverse network traffic data, including normal, traditional high-rate DDoS attacks (SYN, UDP, ICMP floods), and advanced adversarial low-rate DDoS attacks. These advanced attacks are designed to be more stealthy and evasive, incorporating techniques such as:
+- **TCP State Exhaustion:** Manipulating TCP sequence numbers and window sizes to keep connections half-open, consuming server resources.
+- **Distributed Application Layer Attacks:** Mimicking legitimate HTTP traffic patterns but targeting resource-intensive endpoints to overload applications.
+- **Hybrid Mix Attacks:** Interleaving normal traffic with attack traffic (e.g., ICMP ping with TCP SYN flood) to blend in.
+- **Randomized Timing:** Introducing random delays (10-100 ms) between packets to avoid detection based on consistent patterns.
+- **Evasion Techniques:** Varying TTL (Time-to-Live) and TCP window sizes, and employing fragmentation to bypass security mechanisms.
+- **Adaptive Rate Control:** Adjusting the attack flood rate dynamically based on the perceived CPU usage or response time of the target host to optimize impact and evade detection.
+
+The generated datasets, namely `packet_features.csv` (packet-level), `ryu_flow_features.csv` (SDN controller flow-level), and `cicflow_dataset.csv` (advanced flow-level), are enriched with both multi-class (`Label_multi`) and binary (`Label_binary`) labels. This rich, labeled dataset is designed to support in-depth network traffic analysis, machine learning model training for anomaly detection, and the development of advanced DDoS mitigation strategies.
 
 **Objective:** This guide provides a comprehensive, step-by-step workflow for an AI agent to deploy and operate this dataset generation module. The goal is to produce `offline_dataset.csv` and `online_dataset.csv` by simulating a DDoS attack in a Mininet-emulated SDN environment.
 
