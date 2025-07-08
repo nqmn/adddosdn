@@ -31,8 +31,10 @@ Mininet and Ryu SDN Framework are already installed on the remote server. Python
 Install the required Python libraries using pip:
 
 ```bash
-pip3 install ryu mininet requests webob scapy
+pip3 install -r requirements.txt
 ```
+
+Note: `ryu` and `mininet` are system-level prerequisites and should be installed separately if not already present, as detailed in the `README.md`.
 
 ### 2.4. Transferring the Project Files
 
@@ -77,10 +79,10 @@ sudo python3 dataset_generation/main.py
     -   **Offline Collector**: `dumpcap` captures network traffic to `traffic.pcap`.
     -   **Online Collector**: Polls the Ryu controller's REST API for flow statistics every 2 seconds.
 4.  **Traffic Generation**:
-    -   **Normal Traffic Period**: 60 seconds of benign background traffic.
-    -   **Attack Traffic Period**: `hping3` executes a SYN flood attack from `h1` to `h2` for 30 seconds.
+    -   **Normal Traffic Period**: A configured duration of benign background traffic.
+    -   **Attack Traffic Period**: Multiple attacks will be launched, including both traditional high-rate (e.g., SYN, UDP, ICMP floods) and advanced adversarial (e.g., TCP state exhaustion, application layer, multi-vector) DDoS attacks, as defined in `config.json`.
 5.  **Shutdown and Cleanup**: Data collection stops, Mininet terminates, and the Ryu controller stops.
-6.  **Offline Data Processing**: CICFlowMeter processes `traffic.pcap` to generate `offline_dataset.csv`.
+6.  **Offline Data Processing**: `process_pcap_to_csv.py` processes `traffic.pcap` to generate `offline_dataset.csv`. Subsequently, CICFlowMeter processes `traffic.pcap` to generate `cicflow_dataset.csv`.
 
 ## 4. Deliver Results to the User
 
@@ -88,9 +90,11 @@ sudo python3 dataset_generation/main.py
 
 Upon successful completion, verify the presence of the following files in the `dataset_generation` directory:
 
--   `offline_dataset.csv`: CSV file with flow features.
--   `online_dataset.csv`: CSV file with flow statistics.
+-   `offline_dataset.csv`: CSV file with packet-level features.
+-   `online_dataset.csv`: CSV file with Ryu flow statistics.
+-   `cicflow_dataset.csv`: CSV file with advanced flow-level features.
 -   `traffic.pcap`: Raw packet capture.
+-   `label_timeline.csv`: CSV file containing the timeline of normal and attack traffic labels.
 
 ### 4.2. Adding New Attacks (Optional)
 
