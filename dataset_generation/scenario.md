@@ -41,9 +41,9 @@ This structured approach ensures that the generated dataset accurately reflects 
 
 This project generates two primary datasets:
 
-### `offline_dataset.csv`
+### `packet_features.csv`
 
-A CSV file containing processed offline traffic data, derived from the raw `traffic.pcap` capture. This file is generated automatically by `main.py` after the `traffic.pcap` capture is complete. It includes the following packet-level features:
+A CSV file containing processed offline traffic data, derived from the raw `traffic.pcap` capture. This dataset provides **packet-level features** and is ideal for detailed analysis of individual packet characteristics and for building models that require granular network information.
 
 *   `timestamp`: Packet capture timestamp.
 *   `packet_length`: Total length of the captured packet in bytes.
@@ -63,10 +63,11 @@ A CSV file containing processed offline traffic data, derived from the raw `traf
 *   `tcp_window`: TCP Window Size.
 *   `icmp_type`: ICMP Type (for ICMP packets).
 *   `icmp_code`: ICMP Code (for ICMP packets).
+*   `Label`: The label indicating the traffic type (e.g., 'normal', 'syn_flood').
 
-### `online_dataset.csv`
+### `ryu_flow_features.csv`
 
-A CSV file containing flow statistics polled from the Ryu controller. This file includes the following flow-level features:
+A CSV file containing flow statistics polled from the Ryu controller. This dataset provides **flow-level features** directly from the SDN controller, making it suitable for real-time anomaly detection and control plane analysis.
 
 *   `timestamp`: The timestamp when the flow statistics were polled.
 *   `datapath_id`: The unique identifier of the OpenFlow switch (DPID).
@@ -79,3 +80,10 @@ A CSV file containing flow statistics polled from the Ryu controller. This file 
 *   `packet_count`: Number of packets that matched this flow entry.
 *   `byte_count`: Number of bytes that matched this flow entry.
 *   `duration_sec`: Duration of the flow in seconds.
+*   `Label`: The label indicating the traffic type (e.g., 'normal', 'syn_flood').
+
+### `cicflow_dataset.csv`
+
+A CSV file generated from `traffic.pcap` using CICFlowMeter. This dataset provides **advanced flow-level features** derived from packet data, offering a richer set of statistical metrics for in-depth traffic analysis and machine learning model training. It contains 83 flow features extracted by CICFlowMeter and an additional `Label` column.
+
+**Generation:** This dataset is generated independently using the `generate_cicflow_dataset.py` script, which takes a PCAP file and a label as input.

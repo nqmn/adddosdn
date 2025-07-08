@@ -45,10 +45,10 @@
     },
     "offline_collection": {
         "pcap_file": "traffic.pcap",
-        "output_file": "offline_dataset.csv"
+        "output_file": "packet_features.csv"
     },
     "online_collection": {
-        "output_file": "online_dataset.csv",
+        "output_file": "ryu_flow_features.csv",
         "poll_interval": 2
     },
     "label_timeline_file": "label_timeline.csv"

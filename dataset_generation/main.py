@@ -41,7 +41,7 @@ class DatasetGenerator:
         self._start_mininet()
 
         offline_collector = threading.Thread(target=self._collect_offline_data)
-        online_collector = threading.Thread(target=self._collect_online_data)
+        online_collector = threading.Thread(target=self._collect_online_data, args=(self.label_timeline,))
 
         offline_collector.start()
         online_collector.start()
@@ -52,15 +52,15 @@ class DatasetGenerator:
         offline_collector.join()
         online_collector.join()
 
+        self._write_label_timeline()
+
         # Process the pcap file to generate offline_dataset.csv
         pcap_file = os.path.join(self.project_root, self.config['offline_collection']['pcap_file'])
         offline_output_file = os.path.join(self.project_root, self.config['offline_collection']['output_file'])
-        process_pcap_to_csv(pcap_file, offline_output_file)
+        process_pcap_to_csv(pcap_file, offline_output_file, self.label_timeline)
 
         self._stop_mininet()
         self._stop_ryu_controller()
-        
-        self._write_label_timeline()
         logging.info("Dataset generation process finished.")
 
     def _start_ryu_controller(self):
@@ -76,7 +76,13 @@ class DatasetGenerator:
         self.ryu_process.terminate()
         self.ryu_process.wait()
 
-    def _collect_online_data(self):
+    def _get_label_for_timestamp(self, timestamp, label_timeline):
+        for entry in label_timeline:
+            if entry['start_time'] <= timestamp < entry['end_time']:
+                return entry['label']
+        return "unknown" # Default label if no match
+
+    def _collect_online_data(self, label_timeline):
         logging.info("Starting online data collection.")
         output_file = os.path.join(self.project_root, self.config['online_collection']['output_file'])
         poll_interval = self.config['online_collection']['poll_interval']
@@ -84,7 +90,7 @@ class DatasetGenerator:
 
         with open(output_file, 'w', newline='') as f:
             writer = csv.writer(f)
-            writer.writerow(['timestamp', 'datapath_id', 'flow_id', 'ip_src', 'ip_dst', 'port_src', 'port_dst', 'ip_proto', 'packet_count', 'byte_count', 'duration_sec'])
+            writer.writerow(['timestamp', 'datapath_id', 'flow_id', 'ip_src', 'ip_dst', 'port_src', 'port_dst', 'ip_proto', 'packet_count', 'byte_count', 'duration_sec', 'Label'])
 
             while not self.stop_event.is_set():
                 try:
@@ -93,6 +99,7 @@ class DatasetGenerator:
                     if response.status_code == 200:
                         flows = response.json()
                         timestamp = time.time()
+                        current_label = self._get_label_for_timestamp(timestamp, label_timeline)
                         for flow in flows:
                             match = flow.get('match', {})
                             writer.writerow([
@@ -106,7 +113,8 @@ class DatasetGenerator:
                                 match.get('ip_proto'),
                                 flow.get('packet_count'),
                                 flow.get('byte_count'),
-                                flow.get('duration_sec')
+                                flow.get('duration_sec'),
+                                current_label
                             ])
                 except requests.exceptions.ConnectionError:
                     logging.warning("Could not connect to Ryu controller API. Retrying...")

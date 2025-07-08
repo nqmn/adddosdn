@@ -1,8 +1,15 @@
 from scapy.all import rdpcap, Ether, IP, TCP, UDP, ICMP
 import csv
 import os
+import sys
 
-def process_pcap_to_csv(pcap_file, output_csv_file):
+def _get_label_for_timestamp(timestamp, label_timeline):
+    for entry in label_timeline:
+        if entry['start_time'] <= timestamp < entry['end_time']:
+            return entry['label']
+    return "unknown" # Default label if no match
+
+def process_pcap_to_csv(pcap_file, output_csv_file, label_timeline=None):
     print(f"Processing {pcap_file} to {output_csv_file}...")
     
     if not os.path.exists(pcap_file):
@@ -17,7 +24,7 @@ def process_pcap_to_csv(pcap_file, output_csv_file):
             'ip_src', 'ip_dst', 'ip_proto', 'ip_ttl', 'ip_id', 'ip_flags', 'ip_len',
             'src_port', 'dst_port',
             'tcp_flags', 'tcp_seq', 'tcp_ack', 'tcp_window',
-            'icmp_type', 'icmp_code'
+            'icmp_type', 'icmp_code', 'Label'
         ]
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
@@ -41,7 +48,8 @@ def process_pcap_to_csv(pcap_file, output_csv_file):
                 'tcp_ack': '',
                 'tcp_window': '',
                 'icmp_type': '',
-                'icmp_code': ''
+                'icmp_code': '',
+                'Label': 'unknown'
             }
 
             if Ether in packet:
@@ -70,19 +78,36 @@ def process_pcap_to_csv(pcap_file, output_csv_file):
                     row['icmp_type'] = packet[ICMP].type
                     row['icmp_code'] = packet[ICMP].code
             
+            if label_timeline is not None:
+                row['Label'] = _get_label_for_timestamp(packet.time, label_timeline)
+            
             writer.writerow(row)
     
     print(f"Successfully processed {len(packets)} packets to {output_csv_file}")
 
 if __name__ == "__main__":
-    # Default file paths (can be changed if script is run with arguments)
+    # This block is for standalone execution. When called from main.py, label_timeline is passed directly.
+    # If run standalone, it will attempt to read label_timeline.csv if available.
     default_pcap_file = "traffic.pcap"
-    default_output_csv_file = "offline_dataset.csv"
+    default_output_csv_file = "packet_features.csv"
+    default_label_timeline_file = "label_timeline.csv"
 
-    # You can run this script from the command line like:
-    # python process_pcap_to_csv.py [input_pcap_file] [output_csv_file]
-    import sys
     pcap_file_arg = sys.argv[1] if len(sys.argv) > 1 else default_pcap_file
     output_csv_file_arg = sys.argv[2] if len(sys.argv) > 2 else default_output_csv_file
 
-    process_pcap_to_csv(pcap_file_arg, output_csv_file_arg)
+    timeline = None
+    if os.path.exists(default_label_timeline_file):
+        try:
+            with open(default_label_timeline_file, 'r', newline='') as f:
+                reader = csv.DictReader(f)
+                timeline = []
+                for row in reader:
+                    timeline.append({
+                        'start_time': float(row['start_time']),
+                        'end_time': float(row['end_time']),
+                        'label': row['label']
+                    })
+        except Exception as e:
+            print(f"Warning: Could not read label_timeline.csv for standalone execution: {e}")
+
+    process_pcap_to_csv(pcap_file_arg, output_csv_file_arg, timeline)

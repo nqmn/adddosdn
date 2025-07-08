@@ -2,3 +2,5 @@ requests
 webob
 scapy
 paramiko
+cicflowmeter
+pandas
