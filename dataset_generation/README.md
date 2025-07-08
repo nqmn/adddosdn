@@ -1,6 +1,6 @@
 # AI Agent Onboarding: SDN DDoS Dataset Generation
 
-This project provides a robust framework for generating a comprehensive DDoS attack dataset within a Mininet-emulated Software-Defined Networking (SDN) environment. The primary objective is to produce diverse network traffic data, including normal, traditional high-rate DDoS attacks (SYN, UDP, ICMP floods), and advanced adversarial low-rate DDoS attacks. These advanced attacks are designed to be more stealthy and evasive, incorporating techniques such as:
+This project provides a robust framework for generating a comprehensive DDoS attack dataset within a Mininet-emulated Software-Defined Networking (SDN) environment. The primary objective is to produce diverse network traffic data, including normal, traditional high-rate DDoS attacks (SYN, UDP, ICMP floods), and advanced adversarial DDoS attacks. These advanced attacks, which can manifest as both high-rate and low-rate, are characterized by their stealth and evasion techniques. These advanced attacks are designed to be more stealthy and evasive, incorporating techniques such as:
 - **TCP State Exhaustion:** Manipulating TCP sequence numbers and window sizes to keep connections half-open, consuming server resources.
 - **Distributed Application Layer Attacks:** Mimicking legitimate HTTP traffic patterns but targeting resource-intensive endpoints to overload applications.
 - **Hybrid Mix Attacks:** Interleaving normal traffic with attack traffic (e.g., ICMP ping with TCP SYN flood) to blend in.
