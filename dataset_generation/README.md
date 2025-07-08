@@ -1,27 +1,25 @@
-<div align="center">
-
-# 🛡️ AdDDoS-SDN Dataset Generation Framework
+# 🛡️ AdDDoSDN Dataset Generation Framework
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.6%2B-blue.svg)](https://www.python.org/)
 [![Mininet](https://img.shields.io/badge/Mininet-2.3.0-orange.svg)](http://mininet.org/)
 [![Ryu](https://img.shields.io/badge/Ryu-4.34-red.svg)](https://ryu-sdn.org/)
-
-</div>
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/nqmn/AdDDoSSDN-novel_adversarial_ddos_sdn_dataset/issues)
 
 ## 🌟 Overview
 
-This project provides a comprehensive framework for generating labeled DDoS attack datasets in a Software-Defined Networking (SDN) environment. It simulates both normal network traffic and various types of DDoS attacks to create realistic datasets for training and evaluating machine learning-based intrusion detection systems.
+The AdDDoSDN Dataset Generation Framework is a powerful tool for creating comprehensive, labeled datasets of DDoS attacks in Software-Defined Networking (SDN) environments. This framework enables researchers and network security professionals to generate realistic network traffic scenarios, including both normal traffic patterns and various types of DDoS attacks, specifically designed to test and improve SDN-based intrusion detection systems.
 
-### 🎯 Key Features
+### Key Features
 
-- **Diverse Attack Vectors**: Simulates both traditional and advanced adversarial DDoS attacks
-- **SDN Environment**: Leverages Mininet for network emulation and Ryu as the SDN controller
-- **Rich Dataset**: Generates multiple dataset formats including packet-level and flow-level features
-- **Extensible Architecture**: Easy to add new attack types and traffic patterns
-- **Comprehensive Labeling**: Includes both binary and multi-class labels for machine learning
+- 🚀 **Multiple Attack Vectors**: Simulate various DDoS attack types including SYN Flood, UDP Flood, ICMP Flood, and advanced adversarial attacks
+- 📊 **Rich Dataset Output**: Generates packet-level features, flow statistics, and CICFlowMeter-compatible datasets
+- 🔍 **SDN Integration**: Native support for OpenFlow/SDN environments via Ryu controller
+- 🧪 **Reproducible Experiments**: Configurable scenarios and parameters for consistent results
+- 📈 **Performance Monitoring**: Real-time traffic and attack monitoring
+- 🛠️ **Extensible Architecture**: Easy to add new attack types and network topologies
 
-### ⚔️ Attack Types
+### ⚔️ Attack Types Involved
 
 The framework simulates various DDoS attack vectors, each with specific characteristics and targets:
 
@@ -34,107 +32,117 @@ The framework simulates various DDoS attack vectors, each with specific characte
 | **Adversarial UDP** | Data/App | h2 (10.0.0.2) | h4 (10.0.0.4) | UDP/53 | Application layer mimicry with variable patterns | Harder detection, bypasses basic filters |
 | **Multi-vector** | Data/App | h2 (10.0.0.2) | h4,h6 (10.0.0.4, 10.0.0.6) | Multiple | Combined attack vectors | Multi-layered impact across services |
 
-<!-- ### 🎯 Plane-based Attack Classification
 
-| Attack Type | Target Plane | Description | Impact |
-|-------------|---------------|-------------|--------|
-| **SYN Flood** | Data Plane | Overwhelms target with TCP SYN packets (port 80) | Web server resource exhaustion |
-| **UDP Flood** | Data Plane | Floods target with UDP packets (port 53) | DNS service disruption, bandwidth consumption |
-| **ICMP Flood** | Data Plane | Overloads target with ICMP Echo Requests | Network congestion, service degradation |
-| **Adversarial DDoS** | Data/Application | Advanced techniques with IP rotation and protocol manipulation | Evasion of traditional defenses |
-| **Multi-vector** | Data/Application | Combined attack using multiple techniques | Multi-layered impact on services |
 
-#### Attack Characteristics by Plane:
+## 🚀 Quick Start
 
-1. **Data Plane Attacks** (Primary Focus)
-   - **SYN Flood**: Targets web server resources
-   - **UDP Flood**: Targets DNS services
-   - **ICMP Flood**: Targets network infrastructure
-   - **Impact**: Bandwidth consumption, service degradation
+### Prerequisites
 
-2. **Application Layer Attacks** (Adversarial)
-   - IP rotation to evade blacklisting
-   - Protocol manipulation
-   - Slow-rate attacks
-   - **Impact**: Evasion of rate limiting, harder detection
+- **OS**: Linux (Ubuntu 18.04/20.04 recommended)
+- **Python**: 3.6 or higher
+- **Root/Administrator privileges** (required for network emulation)
+- **Mininet**: 2.3.0 or higher
+- **Ryu SDN Framework**: 4.34 or higher
+- **Other Dependencies**: See `config/requirements.txt`
 
-3. **Control/Management Plane** (Not directly targeted in current implementation)
-   - No direct attacks on SDN controller or management interfaces
-   - Focus remains on data plane and application layer -->
+### Installation
 
-### 🚀 Quick Start
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/nqmn/AdDDoSSDN-novel_adversarial_ddos_sdn_dataset.git
+   cd AdDDoSSDN-novel_adversarial_ddos_sdn_dataset/dataset_generation
+   ```
 
-```bash
-# Clone the repository
-git clone https://github.com/nqmn/AdDDoSSDN-novel_adversarial_ddos_sdn_dataset.git
-cd AdDDoSSDN-novel_adversarial_ddos_sdn_dataset/dataset_generation
+2. **Install system dependencies**
+   ```bash
+   # For Ubuntu/Debian
+   sudo apt-get update
+   sudo apt-get install -y python3-pip mininet openvswitch-switch
+   ```
 
-# Install dependencies
-pip install -r requirements.txt
+3. **Install Python dependencies**
+   ```bash
+   pip3 install -r config/requirements.txt
+   pip3 install ryu  # Install Ryu SDN framework
+   ```
 
-# Start the dataset generation (requires sudo)
-sudo python3 main.py
+### Basic Usage
+
+1. **Run with default configuration**
+   ```bash
+   sudo python3 main.py
+   ```
+
+2. **Use a custom configuration file**
+   ```bash
+   sudo python3 main.py --config config/test_config.json
+   ```
+
+3. **Enable debug logging**
+   ```bash
+   sudo python3 main.py --debug
+   ```
+
+## 📂 Project Structure
+
+```
+dataset_generation/
+├── config/                 # Configuration files
+│   ├── config.json        # Main configuration
+│   ├── test_config.json   # Test configuration
+│   └── requirements.txt   # Python dependencies
+│
+├── data/                  # Generated datasets and logs
+│   ├── *.pcap            # Raw packet captures
+│   ├── *.csv             # Generated datasets
+│   └── *.log             # Log files
+│
+├── docs/                  # Comprehensive documentation
+│   ├── README.md         # Documentation overview
+│   ├── progress.md       # Development progress
+│   ├── analysis.md       # Dataset analysis
+│   ├── scenario.md       # Attack scenarios
+│   └── install.md        # Detailed installation guide
+│
+├── src/                   # Source code
+│   ├── attacks/          # Attack generation scripts
+│   │   ├── gen_syn_flood.py     # SYN flood attack
+│   │   ├── gen_udp_flood.py     # UDP flood attack
+│   │   └── gen_advanced_adversarial_ddos_attacks.py  # Advanced attacks
+│   │
+│   ├── controller/       # SDN controller code
+│   │   └── ryu_controller_app.py  # Ryu controller application
+│   │
+│   ├── scripts/          # Utility scripts
+│   ├── test/             # Test scripts
+│   │   ├── simple_test.py       # Basic test
+│   │   ├── run_remote_test.py   # Remote testing
+│   │   └── check_remote.py      # Remote server checker
+│   │
+│   ├── utils/            # Helper functions
+│   └── topology.py       # Network topology definition
+│
+└── main.py               # Main entry point
 ```
 
-## 🏗️ System Architecture
+## 📊 Dataset Format
 
-```mermaid
-graph TD
-    %% Network Layer
-    A[Mininet Network] -->|Raw Traffic| B[Packet Capture]
-    A -->|Flow Stats| C[Ryu Controller]
-    
-    %% Data Collection
-    B --> D[traffic.pcap]
-    C --> E[Flow Statistics]
-    
-    %% Dataset Generation Paths
-    D --> F[PCAP Processing]
-    F --> G[packet_features.csv]
-    
-    D --> H[CICFlowMeter]
-    H --> I[cicflow_dataset.csv]
-    
-    E --> J[Flow Aggregation]
-    J --> K[ryu_flow_features.csv]
-    
-    %% Legend
-    classDef network fill:#f9f,stroke:#333,stroke-width:2px;
-    classDef data fill:#bbf,stroke:#333,stroke-width:2px;
-    classDef process fill:#bfb,stroke:#333,stroke-width:2px;
-    classDef dataset fill:#fbb,stroke:#333,stroke-width:2px;
-    
-    class A network;
-    class B,C process;
-    class D,E data;
-    class F,H,J process;
-    class G,I,K dataset;
-```
+The framework generates three complementary datasets:
 
-### Data Flow Explanation:
+1. **Packet-level Features** (`packet_features.csv`)
+   - Individual packet headers and metadata
+   - 20+ features including IP/TCP/UDP headers
+   - Binary and multi-class attack labels
 
-1. **Network Traffic Generation**
-   - Mininet generates both normal and attack traffic
-   - All traffic is captured to `traffic.pcap`
-   - Flow statistics are collected via Ryu SDN Controller
+2. **SDN Flow Features** (`ryu_flow_features.csv`)
+   - Flow statistics from Ryu controller
+   - 13+ flow-based features
+   - Real-time monitoring capabilities
 
-2. **Dataset Generation Paths**:
-   
-   a) **Packet-level Features** (`packet_features.csv`):
-   - Directly processed from `traffic.pcap`
-   - Extracts individual packet headers and metadata
-   
-   b) **SDN Flow Features** (`ryu_flow_features.csv`):
-   - Aggregated from Ryu controller's flow statistics
-   - Provides real-time flow monitoring capabilities
-   
-   c) **CICFlow Features** (`cicflow_dataset.csv`):
-   - Generated by processing `traffic.pcap` with CICFlowMeter
-   - Produces 83+ statistical flow features
-   - Includes bidirectional flow analysis
-
-
-## 📊 Dataset Documentation
+3. **CICFlow Features** (`cicflow_dataset.csv`)
+   - Comprehensive flow analysis
+   - 85+ statistical features
+   - Compatible with CICFlowMeter format
 
 ### Dataset Overview
 
@@ -214,62 +222,132 @@ This comprehensive dataset includes 83 flow-based features generated by CICFlowM
 | **Size** | Large | Medium | Very Large |
 | **Processing** | Light | Light | Heavy |
 
-### Additional Files
+## 🌐 Deployment Architecture
 
-| File | Description |
-|------|-------------|
-| `traffic.pcap` | Raw packet capture in PCAP format |
-| `label_timeline.csv` | Timeline of normal and attack traffic periods |
-| `config.json` | Configuration file for dataset generation |
-| `requirements.txt` | Python dependencies |
+### Remote Server Deployment
 
-## 🛠️ Installation
+The framework can be deployed in a remote server environment for large-scale testing and data collection. Below is the detailed architecture:
 
-### Prerequisites
+```mermaid
+graph TD
+    subgraph Windows_Workstation[Windows PC]
+        A[User] -->|SSH/Remote Desktop| B[Local Terminal]
+        B -->|SCP/RSYNC| C[Remote Server]
+        B -->|SSH| C
+        D[Web Browser] -->|HTTPS| E[Remote Web Interface]
+        F[Python Scripts] -->|API Calls| C
+    end
 
-- Ubuntu 18.04/20.04 LTS (recommended)
-- Python 3.6+
-- Mininet 2.3.0+
-- Ryu SDN Framework 4.34+
-- tcpdump/dumpcap
-- Scapy 2.4.0+
+    subgraph Remote_Server[Remote Linux Server]
+        C -->|Authentication| G[SSH Daemon]
+        G --> H[Mininet Environment]
+        H --> I[Virtual Network]
+        I --> J[Hosts h1-h6]
+        I --> K[Open vSwitch]
+        K --> L[Ryu Controller]
+        
+        M[Data Collection]
+        J -->|Traffic| M
+        K -->|Flow Stats| M
+        L -->|Control| K
+        
+        N[Storage]
+        M -->|Saves to| N
+        N --> O[Datasets]
+        N --> P[PCAP Files]
+        N --> Q[Logs]
+        
+        R[Web Interface]
+        S[API Server]
+        T[Monitoring]
+        
+        O -->|Accessible via| S
+        P -->|Accessible via| S
+        Q -->|Feeds into| T
+        S -->|Serves| E
+    end
 
-### Step-by-Step Setup
-
-1. **Install System Dependencies**
-   ```bash
-   # Update package lists
-   sudo apt-get update
-   
-   # Install required packages
-   sudo apt-get install -y python3-pip mininet tcpdump
-   
-   # Install Ryu SDN Framework
-   pip3 install ryu
-   
-   # Install Python dependencies
-   pip3 install -r requirements.txt
-   ```
-
-2. **Configure Sudoers (Optional)**
-   ```bash
-   # Allow passwordless sudo for Mininet and Ryu
-   echo "$USER ALL=(ALL) NOPASSWD: /usr/bin/mn" | sudo tee -a /etc/sudoers
-   echo "$USER ALL=(ALL) NOPASSWD: $(which ryu-manager)" | sudo tee -a /etc/sudoers
-   ```
-
-## 🚦 Usage
-
-### Basic Execution
-
-```bash
-# Start the dataset generation
-sudo python3 main.py
+    subgraph External_Services[External Services]
+        U[Git Repository]
+        V[Monitoring Dashboard]
+        
+        U <-->|Pull/Push| Windows_Workstation
+        V <-->|Data| Remote_Server
+    end
 ```
 
-### Configuration
+### Component Details
 
-Modify `config.json` to customize the experiment:
+#### Windows PC Components
+1. **Local Terminal**
+   - SSH client for remote server access
+   - SCP/RSYNC for file transfers
+   - Git for version control
+
+2. **Web Browser**
+   - Access to web-based monitoring dashboards
+   - Remote desktop access if GUI is needed
+
+3. **Python Environment**
+   - Local development and testing
+   - API clients for remote server interaction
+
+#### Remote Server Components
+1. **SSH Daemon**
+   - Secure remote access
+   - Key-based authentication
+   - Port forwarding capabilities
+
+2. **Mininet Environment**
+   - Network emulation
+   - Virtual hosts and switches
+   - Traffic generation
+
+3. **Ryu Controller**
+   - SDN controller application
+   - Flow table management
+   - Network monitoring
+
+4. **Data Pipeline**
+   - Real-time traffic capture
+   - Flow statistics collection
+   - Log aggregation
+
+5. **Storage**
+   - Structured datasets (CSV)
+   - Raw packet captures (PCAP)
+   - System and application logs
+
+6. **Web Services**
+   - RESTful API server
+   - Real-time monitoring dashboard
+   - Data visualization
+
+### Network Flow
+1. **Control Plane**
+   - User commands from Windows PC → SSH → Remote Server
+   - SDN controller → Open vSwitch (OVS) for flow management
+
+2. **Data Plane**
+   - Virtual hosts generate traffic through OVS
+   - Traffic is monitored and logged
+   - Flow statistics are collected by the controller
+
+3. **Data Flow**
+   - Raw data → Processing pipeline → Storage
+   - Storage → Analytics → Visualization
+   - Alerts and notifications for anomalies
+
+### Security Considerations
+- All remote access uses SSH with key-based authentication
+- Firewall rules restrict access to necessary ports
+- Data in transit is encrypted (SSH/HTTPS)
+- Regular security updates and patches
+- Role-based access control for different users
+
+## 🔧 Configuration
+
+Customize the dataset generation by modifying `config/config.json`:
 
 ```json
 {
@@ -277,227 +355,66 @@ Modify `config.json` to customize the experiment:
     "ryu_app": "controller/ryu_controller_app.py",
     "controller_port": 6633,
     "api_port": 8080,
-    "traffic_types": {
-        "normal": {
-            "duration": 300,
-            "scapy_commands": [
-                {"host": "h3", "command": "sendp(Ether()/IP(dst='10.0.0.5')/TCP(dport=80, flags='S'), loop=1, inter=0.1)"}
-            ]
-        },
-        "attacks": [
-            {
-                "type": "syn_flood",
-                "duration": 60,
-                "attacker": "h1",
-                "victim": "h6",
-                "script_name": "gen_syn_flood.py"
-            }
-        ]
-    }
+    "attack_duration": 300,
+    "normal_duration": 300,
+    "output_dir": "data",
+    "pcap_file": "traffic.pcap",
+    "features_file": "packet_features.csv",
+    "flow_features_file": "flow_features.csv",
+    "timeline_file": "timeline.csv",
+    "attacks": [
+        {
+            "name": "syn_flood",
+            "start_time": 60,
+            "duration": 120,
+            "target": "10.0.0.6",
+            "target_port": 80,
+            "rate": 1000
+        }
+    ]
 }
 ```
 
+## 🛠️ Development
+
 ### Adding New Attacks
 
-1. Create a new attack script in the `attacks/` directory:
-   ```python
-   # attacks/gen_new_attack.py
-   from scapy.all import *
-   import time
-   
-   def run_attack(attacker_host, victim_ip, duration):
-       print(f"Starting attack from {attacker_host.name} to {victim_ip}")
-       start_time = time.time()
-       while time.time() - start_time < duration:
-           # Your attack logic here
-           send(IP(dst=victim_ip)/TCP(dport=80, flags='S'), verbose=0)
-   ```
+1. Create a new attack script in `src/attacks/`
+2. Implement the attack logic following existing patterns
+3. Update the configuration file to include your new attack
+4. Test using the test framework
 
-2. Add the attack to `config.json`:
-   ```json
-   {
-       "type": "new_attack",
-       "duration": 45,
-       "attacker": "h1",
-       "victim": "h4",
-       "script_name": "gen_new_attack.py"
-   }
-   ```
+### Running Tests
 
-<!-- ## 📊 Dataset Format
+```bash
+# Run all tests
+python -m pytest src/test/
 
-### Packet-Level Features (`packet_features.csv`)
-- Timestamp
-- Source/Destination IP and Port
-- Protocol
-- Packet size
-- TCP flags
-- TTL
-- And more...
-
-### Flow-Level Features (`ryu_flow_features.csv`)
-- Flow start/end time
-- Source/Destination IP and Port
-- Protocol
-- Packet/Byte counts
-- Flow duration
-- Label (attack type)
-
-### CICFlow Features (`cicflow_dataset.csv`)
-- 80+ statistical features including:
-  - Flow duration
-  - Packet length statistics
-  - Inter-arrival times
-  - Protocol-specific features
-  - Label (attack type)
-
-
---- -->
-
-## 🔄 Execution Workflow
-
-### Expected Execution Sequence
-
-1. **Environment Initialization**
-   - Verify all dependencies and permissions
-   - Load configuration from `config.json`
-   - Initialize logging and output directories
-
-2. **SDN Controller Launch**
-   - Start Ryu SDN controller with the specified application
-   - Initialize REST API for flow statistics collection
-
-3. **Mininet Network Setup**
-   - Create virtual network topology
-   - Configure Open vSwitch with SDN controller
-   - Set up host networking and routes
-
-4. **Data Collection Initialization**
-   - Start packet capture on all interfaces
-   - Initialize flow statistics collection
-   - Set up dataset storage
-
-5. **Traffic Generation**
-   - **Phase 1: Normal Traffic**
-     - Generate baseline network traffic
-     - Collect labeled normal traffic samples
-     
-   - **Phase 2: Attack Traffic**
-     - Launch configured DDoS attacks
-     - Monitor network behavior during attacks
-     - Collect attack traffic samples
-
-6. **Data Processing**
-   - Process PCAP files to extract features
-   - Aggregate flow statistics
-   - Generate labeled datasets
-
-7. **Cleanup**
-   - Stop all network traffic
-   - Terminate Mininet network
-   - Stop SDN controller
-   - Finalize dataset files
-
-<!-- ### Monitoring Progress
-
-During execution, the system provides real-time feedback:
-
+# Run specific test
+python -m pytest src/test/test_feature_extraction.py -v
 ```
-[INFO] Starting SDN DDoS Dataset Generation
-[STATUS] Ryu Controller: RUNNING (http://localhost:8080)
-[STATUS] Mininet Network: INITIALIZED
-[PROGRESS] Phase 1/2: Normal Traffic (60s remaining)
-[STATUS] Capturing: 1,245 packets (45.6 MB)
-[STATUS] Flows: 342 active
-``` -->
 
+## 🤝 Contributing
 
-<!-- ## 📊 Dataset Overview
+Contributions are welcome! Please follow these steps:
 
-The framework generates three complementary datasets, each offering unique insights into network traffic patterns and attack behaviors:
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-| Dataset | Description | Features | Best For |
-|---------|-------------|----------|----------| -->
+## 📚 Documentation
 
+For detailed documentation, including API references and usage examples, please see the [documentation](docs/README.md).
 
-<!-- If these files are present, the operation was a success. -->
+## 📄 License
 
-<!-- ## 🔧 Troubleshooting
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-### Common Issues
+## 📝 Citation
 
-1. **Permission Denied Errors**
-   ```bash
-   # Ensure proper sudo configuration
-   sudo visudo
-   # Add: username ALL=(ALL) NOPASSWD: /usr/bin/mn, /usr/local/bin/ryu-manager
-   ```
-
-2. **Port Conflicts**
-   ```bash
-   # Check for processes using required ports
-   sudo lsof -i :6633  # Controller port
-   sudo lsof -i :8080  # REST API port
-   ```
-
-3. **Missing Dependencies**
-   ```bash
-   # Verify all required packages
-   pip3 install -r requirements.txt
-   sudo apt-get install -y mininet openvswitch-testcontroller
-   ``` -->
-
-<!-- ### Getting Help -->
-
-<!-- For additional support: -->
-<!-- - Check the [issue tracker](https://github.com/yourusername/sdn-ddos-dataset/issues) -->
-<!-- - Review the [documentation](docs/) -->
-<!-- - Join our [community forum](https://github.com/yourusername/sdn-ddos-dataset/discussions) -->
-
-## 📈 Performance Considerations
-
-### Resource Requirements
-
-| Component | Minimum | Recommended |
-|-----------|---------|-------------|
-| CPU Cores | 2 | 4+ |
-| RAM | 4GB | 8GB+ |
-| Storage | 10GB | 50GB+ (for large captures) |
-| OS | Ubuntu 18.04+ | Ubuntu 20.04 LTS |
-
-<!-- ### Optimization Tips
-
-1. **For Better Performance**
-   - Use SSD storage for packet capture
-   - Increase system limits for file descriptors
-   - Run with minimal GUI overhead (use `--link=tc` in Mininet)
-
-2. **For Larger Deployments**
-   - Distribute components across multiple machines
-   - Use hardware-accelerated Open vSwitch
-   - Implement sampling for high-speed networks -->
-
-## 🤝 Community & Support
-
-<!-- ### Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details on how to contribute to this project. -->
-
-<!-- ### Getting Help -->
-
-<!-- - **Documentation**: [Read the Docs](https://sdn-ddos-dataset.readthedocs.io/) -->
-<!-- - **Issues**: [Report a Bug](https://github.com/yourusername/sdn-ddos-dataset/issues) -->
-<!-- - **Discussions**: [Join the Conversation](https://github.com/yourusername/sdn-ddos-dataset/discussions) -->
-
-### Related Projects
-
-- [Mininet](http://mininet.org/)
-- [Ryu SDN Framework](https://ryu-sdn.org/)
-- [CICFlowMeter](https://www.unb.ca/cic/datasets/andmalnet-doc.html)
-
-## 📜 Citation
-
-If you use this dataset in your research, please cite our work:
+If you use this dataset or framework in your research, please cite our work:
 
 ```bibtex
 @misc{sdn_ddos_dataset_2023,
@@ -509,9 +426,9 @@ If you use this dataset in your research, please cite our work:
 }
 ```
 
-## 📄 License
+## 📧 Contact
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+For questions or support, please open an issue on the [GitHub repository](https://github.com/nqmn/AdDDoSSDN-novel_adversarial_ddos_sdn_dataset/issues).
 
 ---
 

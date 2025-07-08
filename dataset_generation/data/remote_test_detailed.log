@@ -1,0 +1,29 @@
+2025-07-08 19:12:57,451 - INFO - Starting remote test with detailed logging...
+2025-07-08 19:12:57,452 - INFO - Connecting to user@jtmksrv:656
+2025-07-08 19:12:57,518 - INFO - Connected (version 2.0, client OpenSSH_7.6p1)
+2025-07-08 19:12:57,695 - INFO - Authentication (password) successful!
+2025-07-08 19:12:57,937 - INFO - [chan 0] Opened sftp connection (server version 3)
+2025-07-08 19:12:57,937 - INFO - SSH connection established
+2025-07-08 19:12:57,938 - INFO - Executing: mkdir -p \home\user\dataset\test_run
+2025-07-08 19:12:58,081 - INFO - Executing: mkdir -p /home/user/dataset/test_run/controller
+2025-07-08 19:12:58,285 - INFO - Executing: mkdir -p /home/user/dataset/test_run/attacks
+2025-07-08 19:12:58,467 - INFO - Uploading simple_test.py to /home/user/dataset/test_run/simple_test.py
+2025-07-08 19:12:58,723 - INFO - Uploaded simple_test.py successfully
+2025-07-08 19:12:58,724 - INFO - Uploading main.py to /home/user/dataset/test_run/main.py
+2025-07-08 19:12:58,845 - INFO - Uploaded main.py successfully
+2025-07-08 19:12:58,846 - INFO - Uploading config.json to /home/user/dataset/test_run/config.json
+2025-07-08 19:12:58,988 - INFO - Uploaded config.json successfully
+2025-07-08 19:12:58,988 - INFO - Uploading topology.py to /home/user/dataset/test_run/topology.py
+2025-07-08 19:12:59,048 - INFO - Uploaded topology.py successfully
+2025-07-08 19:12:59,048 - INFO - Uploading controller\ryu_controller_app.py to /home/user/dataset/test_run/controller/ryu_controller_app.py
+2025-07-08 19:12:59,155 - INFO - Uploaded controller\ryu_controller_app.py successfully
+2025-07-08 19:12:59,155 - INFO - Uploading attacks\gen_syn_flood.py to /home/user/dataset/test_run/attacks/gen_syn_flood.py
+2025-07-08 19:12:59,223 - INFO - Uploaded attacks\gen_syn_flood.py successfully
+2025-07-08 19:12:59,223 - INFO - Uploading attacks\gen_udp_flood.py to /home/user/dataset/test_run/attacks/gen_udp_flood.py
+2025-07-08 19:12:59,295 - INFO - Uploaded attacks\gen_udp_flood.py successfully
+2025-07-08 19:12:59,296 - INFO - Uploading attacks\gen_advanced_adversarial_ddos_attacks.py to /home/user/dataset/test_run/attacks/gen_advanced_adversarial_ddos_attacks.py
+2025-07-08 19:12:59,411 - INFO - Uploaded attacks\gen_advanced_adversarial_ddos_attacks.py successfully
+2025-07-08 19:12:59,412 - INFO - Uploading run_test_with_logging.py to /home/user/dataset/test_run/run_test_with_logging.py
+2025-07-08 19:12:59,519 - INFO - Uploaded run_test_with_logging.py successfully
+2025-07-08 19:12:59,519 - INFO - Running test with detailed logging...
+2025-07-08 19:12:59,519 - INFO - Executing: cd \home\user\dataset\test_run && sudo python3 /home/user/dataset/test_run/run_test_with_logging.py

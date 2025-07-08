@@ -1,7 +1,63 @@
-# Progress on Running Application on Remote Server
+# Adversarial DDoS Attacks SDN Dataset - Progress
 
-## Current Status
-The remote server has been shut down, so no further actions can be performed at this time. The application is not yet successfully running on the remote server.
+## Current Status (2025-07-08)
+- Successfully connected to the remote server (jtmksrv:656)
+- Uploaded all necessary files for testing
+- Installed required dependencies (mininet, ryu, scapy, pandas)
+- Currently running tests with detailed logging
+- Reorganized test files into a dedicated `test` directory
+
+## File Organization
+
+```
+dataset_generation/
+├── attacks/                 # Attack generation scripts
+├── controller/              # SDN controller code
+├── test/                    # Test scripts and logs
+│   ├── simple_test.py       # Basic environment check
+│   ├── run_remote_test.py   # Remote test execution
+│   ├── check_remote.py      # Remote server checker
+│   ├── remote_exec.py       # Remote execution helper
+│   ├── run_test_with_logging.py  # Detailed test runner
+│   └── *.log                # Log files
+├── config.json              # Main configuration
+├── main.py                  # Main dataset generation script
+├── progress.md              # This file
+└── README.md                # Project documentation
+```
+
+## Recent Progress
+
+### 1. Test Environment Setup
+- Created a dedicated `test` directory for better organization
+- Moved all test-related scripts and logs to the `test` directory
+- Fixed path handling issues for cross-platform compatibility
+
+### 2. Remote Testing Improvements
+- Implemented robust SSH connection handling
+- Added detailed logging for remote command execution
+- Created helper scripts for checking remote server status
+- Fixed file upload/download functionality
+
+### 3. Test Execution
+- Running with detailed logging enabled
+- Monitoring progress through log files
+- Expected output files:
+  - `test_traffic.pcap`
+  - `test_features.csv`
+  - `test_flow_features.csv`
+  - `test_timeline.csv`
+
+## Known Issues
+1. Some log files couldn't be moved due to being in use
+2. Need to verify all dependencies are correctly installed on the remote server
+3. May need to adjust timeouts for long-running tests
+
+## Next Steps
+1. Monitor the remote test execution
+2. Download and analyze the generated dataset files
+3. Document any issues encountered and their solutions
+4. Update the README with setup and usage instructions
 
 ## Detailed Implementation and Debugging Log:
 

@@ -6,12 +6,17 @@ import csv
 import requests
 import threading
 import time
-from mininet.net import Mininet
-from mininet.node import RemoteController
 import sys
 import importlib.util
-from process_pcap_to_csv import process_pcap_to_csv # Import the function
-from generate_cicflow_dataset import generate_cicflow_dataset # Import the function
+from pathlib import Path
+
+# Add src directory to Python path
+sys.path.append(str(Path(__file__).parent / 'src'))
+
+from mininet.net import Mininet
+from mininet.node import RemoteController
+from src.utils.process_pcap_to_csv import process_pcap_to_csv
+from src.utils.generate_cicflow_dataset import generate_cicflow_dataset
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -27,7 +32,7 @@ class DatasetGenerator:
     def __init__(self, config_path):
         with open(config_path, 'r') as f:
             self.config = json.load(f)
-        self.project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '.'))
+        self.project_root = os.path.abspath(os.path.dirname(__file__))
         self.stop_event = threading.Event()
         self.label_timeline = []
 
@@ -228,5 +233,8 @@ class DatasetGenerator:
                 writer.writerow([entry['start_time'], entry['end_time'], entry['label']])
 
 if __name__ == '__main__':
-    generator = DatasetGenerator('config.json')
+    config_path = os.path.join('config', 'config.json')
+    if not os.path.exists(config_path):
+        raise FileNotFoundError(f"Configuration file not found at {config_path}")
+    generator = DatasetGenerator(config_path)
     generator.run()
