@@ -1,0 +1,5 @@
+Running as user "root" and group "root". This could be dangerous.
+Capturing on 'any'
+tshark: The file to which the capture would be saved ("/home/user/Desktop/dataset_generation/output/capture.pcap") could not be opened: Permission denied.
+
+0 packets captured

@@ -1,0 +1,14 @@
+/home/user/.local/lib/python3.6/site-packages/OpenSSL/_util.py:6: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  from cryptography.hazmat.bindings.openssl.binding import Binding
+loading app /home/user/Desktop/dataset_generation/src/controller/ryu_controller_app.py
+loading app ryu.topology.switches
+loading app ryu.controller.ofp_handler
+creating context wsgi
+instantiating app /home/user/Desktop/dataset_generation/src/controller/ryu_controller_app.py of FlowMonitorController
+[INFO] Ryu Flow Monitor Controller started
+instantiating app ryu.topology.switches of Switches
+instantiating app ryu.controller.ofp_handler of OFPHandler
+(39641) wsgi starting up on http://0.0.0.0:8080
+(39641) accepted ('127.0.0.1', 45682)
+127.0.0.1 - - [10/Jul/2025 19:24:35] "GET /hello HTTP/1.1" 200 173 0.001048
+[INFO] Switch 0x1 connected

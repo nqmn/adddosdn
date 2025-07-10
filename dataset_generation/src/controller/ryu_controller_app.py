@@ -13,7 +13,7 @@ from ryu.ofproto import ofproto_v1_3
 from ryu.lib.packet import packet, ethernet, ether_types, arp, ipv4, tcp, udp, icmp
 from ryu.topology import event as topo_event
 from ryu.topology.api import get_switch, get_link, get_host
-from ryu.app.wsgi import ControllerWSGI, route
+from ryu.app.wsgi import WSGIApplication, route, ControllerBase
 
 import json
 import time
@@ -24,7 +24,7 @@ from webob import Response
 
 class FlowMonitorController(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
-    _CONTEXTS = {'wsgi': ControllerWSGI}
+    _CONTEXTS = {'wsgi': WSGIApplication}
 
     def __init__(self, *args, **kwargs):
         super(FlowMonitorController, self).__init__(*args, **kwargs)
@@ -38,13 +38,18 @@ class FlowMonitorController(app_manager.RyuApp):
         self.packet_count = 0
         self.byte_count = 0
 
-        wsgi = kwargs['wsgi']
-        wsgi.register(FlowMonitorAPI, {'controller': self})
+        if 'wsgi' in kwargs:
+            wsgi = kwargs['wsgi']
+            wsgi.register(FlowMonitorAPI, self)
+        else:
+            self.logger.warning("WSGI context not provided to FlowMonitorController. REST API will not be available.")
 
         self.stats_thread = threading.Thread(target=self._collect_stats_periodically)
         self.stats_thread.daemon = True
         self.stats_thread.start()
         self.log_activity('info', 'Ryu Flow Monitor Controller started')
+
+        
 
     def log_activity(self, level, message):
         timestamp = datetime.now().strftime('%H:%M:%S')
@@ -159,16 +164,15 @@ class FlowMonitorController(app_manager.RyuApp):
                 all_flows.append(flow)
         return all_flows
 
-class FlowMonitorAPI(app_manager.RyuApp):
-    _CONTEXTS = {'wsgi': ControllerWSGI}
+class FlowMonitorAPI(ControllerBase):
 
-    def __init__(self, *args, **kwargs):
-        super(FlowMonitorAPI, self).__init__(*args, **kwargs)
-        self.controller = kwargs['wsgi'].data['controller']
+    def __init__(self, req, link, data, **config):
+        super().__init__(req, link, data, **config)
+        self.controller = data
 
     @route('api', '/flows', methods=['GET'])
     def list_flows(self, req, **kwargs):
-        body = json.dumps(self.controller.get_flow_stats_all())
+        body = json.dumps(self.controller.get_flow_stats_all()).encode('utf-8')
         return Response(content_type='application/json', body=body)
 
     @route('api', '/flows/{dpid}', methods=['GET'])
@@ -177,7 +181,30 @@ class FlowMonitorAPI(app_manager.RyuApp):
             dpid_int = int(dpid, 16)
             if dpid_int not in self.controller.flow_stats:
                 return Response(status=404)
-            body = json.dumps(self.controller.flow_stats[dpid_int])
+            body = json.dumps(self.controller.flow_stats[dpid_int]).encode('utf-8')
             return Response(content_type='application/json', body=body)
         except (ValueError, KeyError):
             return Response(status=400)
+
+    @route('api', '/hello', methods=['GET'])
+    def hello_world(self, req, **kwargs):
+        body = json.dumps({"message": "Hello from Ryu Controller!"}).encode('utf-8')
+        return Response(content_type='application/json', body=body)
+
+    @route('api', '/topology/switches', methods=['GET'])
+    def list_switches(self, req, **kwargs):
+        switches = get_switch(self.controller)
+        body = json.dumps([s.to_dict() for s in switches]).encode('utf-8')
+        return Response(content_type='application/json', body=body)
+
+    @route('api', '/topology/links', methods=['GET'])
+    def list_links(self, req, **kwargs):
+        links = get_link(self.controller)
+        body = json.dumps([l.to_dict() for l in links]).encode('utf-8')
+        return Response(content_type='application/json', body=body)
+
+    @route('api', '/topology/hosts', methods=['GET'])
+    def list_hosts(self, req, **kwargs):
+        hosts = get_host(self.controller)
+        body = json.dumps([h.to_dict() for h in hosts]).encode('utf-8')
+        return Response(content_type='application/json', body=body)

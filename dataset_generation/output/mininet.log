@@ -1,0 +1,882 @@
+2025-07-10 19:24:36,155 - mininet - DEBUG - *** errRun: ['grep', '-c', 'processor', '/proc/cpuinfo'] 
+
+2025-07-10 19:24:36,159 - mininet - DEBUG - 4
+  0
+2025-07-10 19:24:36,159 - mininet - DEBUG - *** Setting resource limits
+
+2025-07-10 19:24:36,160 - mininet - DEBUG - *** errRun: ['which', 'mnexec'] 
+
+2025-07-10 19:24:36,163 - mininet - DEBUG - /usr/bin/mnexec
+  0
+2025-07-10 19:24:36,163 - mininet - DEBUG - *** errRun: ['which', 'ifconfig'] 
+
+2025-07-10 19:24:36,165 - mininet - DEBUG - /sbin/ifconfig
+  0
+2025-07-10 19:24:36,168 - mininet - DEBUG - _popen ['mnexec', '-cd', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:c0'] 40237
+2025-07-10 19:24:36,171 - mininet - DEBUG - *** c0 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-10 19:24:36,171 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-10 19:24:36,172 - mininet - DEBUG - 
+2025-07-10 19:24:36,172 - mininet - DEBUG - *** c0 : ('echo A | telnet -e A 127.0.0.1 6653',)
+
+2025-07-10 19:24:36,174 - mininet - DEBUG - Telnet escape character is 'A'.
+Trying 127.0.0.1...
+
+2025-07-10 19:24:36,175 - mininet - DEBUG - Connected to 127.0.0.1.
+Escape character is 'A'.
+
+telnet> Connection closed.
+
+2025-07-10 19:24:36,175 - mininet - INFO - *** Creating network
+
+2025-07-10 19:24:36,175 - mininet - INFO - *** Adding hosts:
+
+2025-07-10 19:24:36,175 - mininet - DEBUG - *** errRun: ['which', 'mnexec'] 
+
+2025-07-10 19:24:36,177 - mininet - DEBUG - /usr/bin/mnexec
+  0
+2025-07-10 19:24:36,178 - mininet - DEBUG - *** errRun: ['which', 'ifconfig'] 
+
+2025-07-10 19:24:36,180 - mininet - DEBUG - /sbin/ifconfig
+  0
+2025-07-10 19:24:36,182 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h1'] 40253
+2025-07-10 19:24:36,186 - mininet - DEBUG - *** h1 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-10 19:24:36,187 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-10 19:24:36,187 - mininet - DEBUG - 
+2025-07-10 19:24:36,188 - mininet - INFO - h1 
+2025-07-10 19:24:36,189 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h2'] 40259
+2025-07-10 19:24:36,193 - mininet - DEBUG - *** h2 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-10 19:24:36,194 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-10 19:24:36,195 - mininet - DEBUG - 
+2025-07-10 19:24:36,195 - mininet - INFO - h2 
+2025-07-10 19:24:36,197 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h3'] 40265
+2025-07-10 19:24:36,201 - mininet - DEBUG - *** h3 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-10 19:24:36,201 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-10 19:24:36,202 - mininet - DEBUG - 
+2025-07-10 19:24:36,202 - mininet - INFO - h3 
+2025-07-10 19:24:36,204 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h4'] 40269
+2025-07-10 19:24:36,208 - mininet - DEBUG - *** h4 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-10 19:24:36,208 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-10 19:24:36,209 - mininet - DEBUG - 
+2025-07-10 19:24:36,209 - mininet - INFO - h4 
+2025-07-10 19:24:36,212 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h5'] 40278
+2025-07-10 19:24:36,215 - mininet - DEBUG - *** h5 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-10 19:24:36,216 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-10 19:24:36,216 - mininet - DEBUG - 
+2025-07-10 19:24:36,216 - mininet - INFO - h5 
+2025-07-10 19:24:36,219 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h6'] 40283
+2025-07-10 19:24:36,223 - mininet - DEBUG - *** h6 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-10 19:24:36,223 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-10 19:24:36,224 - mininet - DEBUG - 
+2025-07-10 19:24:36,224 - mininet - INFO - h6 
+2025-07-10 19:24:36,224 - mininet - INFO - 
+*** Adding switches:
+
+2025-07-10 19:24:36,224 - mininet - DEBUG - *** errRun: ['which', 'ovs-vsctl'] 
+
+2025-07-10 19:24:36,226 - mininet - DEBUG - /usr/bin/ovs-vsctl
+  0
+2025-07-10 19:24:36,226 - mininet - DEBUG - *** errRun: ['ovs-vsctl', '-t', '1', 'show'] 
+
+2025-07-10 19:24:36,231 - mininet - DEBUG - df6e9c01-0abd-46aa-981e-d48f78358bac
+    ovs_version: "2.9.8"
+  0
+2025-07-10 19:24:36,231 - mininet - DEBUG - *** errRun: ['ovs-vsctl', '--version'] 
+
+2025-07-10 19:24:36,234 - mininet - DEBUG - ovs-vsctl (Open vSwitch) 2.9.8
+DB Schema 7.15.1
+  0
+2025-07-10 19:24:36,237 - mininet - DEBUG - _popen ['mnexec', '-cd', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:s1'] 40292
+2025-07-10 19:24:36,240 - mininet - DEBUG - *** s1 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-10 19:24:36,240 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-10 19:24:36,241 - mininet - DEBUG - 
+2025-07-10 19:24:36,241 - mininet - DEBUG - 
+
+2025-07-10 19:24:36,241 - mininet - DEBUG - added intf lo (0) to node s1
+
+2025-07-10 19:24:36,241 - mininet - DEBUG - *** s1 : ('ifconfig', 'lo', 'up')
+
+2025-07-10 19:24:36,242 - mininet - DEBUG - 
+2025-07-10 19:24:36,242 - mininet - INFO - s1 
+2025-07-10 19:24:36,242 - mininet - INFO - 
+*** Adding links:
+
+2025-07-10 19:24:36,242 - mininet - DEBUG - *** h1 : ('ip link add name h1-eth0 address 2a:00:00:a2:3a:2e type veth peer name s1-eth1 address 26:9e:07:78:8c:42 netns 40292',)
+
+2025-07-10 19:24:36,244 - mininet - DEBUG - 
+2025-07-10 19:24:36,244 - mininet - DEBUG - 
+
+2025-07-10 19:24:36,244 - mininet - DEBUG - added intf h1-eth0 (0) to node h1
+
+2025-07-10 19:24:36,244 - mininet - DEBUG - moving h1-eth0 into namespace for h1 
+
+2025-07-10 19:24:36,244 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'up')
+
+2025-07-10 19:24:36,249 - mininet - DEBUG - 
+2025-07-10 19:24:36,250 - mininet - DEBUG - 
+
+2025-07-10 19:24:36,250 - mininet - DEBUG - added intf s1-eth1 (1) to node s1
+
+2025-07-10 19:24:36,250 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth1', 'up')
+
+2025-07-10 19:24:36,252 - mininet - DEBUG - 
+2025-07-10 19:24:36,252 - mininet - INFO - (h1, s1) 
+2025-07-10 19:24:36,252 - mininet - DEBUG - *** h2 : ('ip link add name h2-eth0 address 62:e8:9f:a2:99:4e type veth peer name s1-eth2 address 86:b5:aa:da:a9:a3 netns 40292',)
+
+2025-07-10 19:24:36,259 - mininet - DEBUG - 
+2025-07-10 19:24:36,259 - mininet - DEBUG - 
+
+2025-07-10 19:24:36,259 - mininet - DEBUG - added intf h2-eth0 (0) to node h2
+
+2025-07-10 19:24:36,259 - mininet - DEBUG - moving h2-eth0 into namespace for h2 
+
+2025-07-10 19:24:36,259 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'up')
+
+2025-07-10 19:24:36,261 - mininet - DEBUG - 
+2025-07-10 19:24:36,261 - mininet - DEBUG - 
+
+2025-07-10 19:24:36,261 - mininet - DEBUG - added intf s1-eth2 (2) to node s1
+
+2025-07-10 19:24:36,261 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth2', 'up')
+
+2025-07-10 19:24:36,263 - mininet - DEBUG - 
+2025-07-10 19:24:36,263 - mininet - INFO - (h2, s1) 
+2025-07-10 19:24:36,263 - mininet - DEBUG - *** h3 : ('ip link add name h3-eth0 address 76:a8:60:d2:1c:ec type veth peer name s1-eth3 address d2:99:fd:55:ad:7e netns 40292',)
+
+2025-07-10 19:24:36,265 - mininet - DEBUG - 
+2025-07-10 19:24:36,265 - mininet - DEBUG - 
+
+2025-07-10 19:24:36,265 - mininet - DEBUG - added intf h3-eth0 (0) to node h3
+
+2025-07-10 19:24:36,265 - mininet - DEBUG - moving h3-eth0 into namespace for h3 
+
+2025-07-10 19:24:36,266 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'up')
+
+2025-07-10 19:24:36,268 - mininet - DEBUG - 
+2025-07-10 19:24:36,268 - mininet - DEBUG - 
+
+2025-07-10 19:24:36,268 - mininet - DEBUG - added intf s1-eth3 (3) to node s1
+
+2025-07-10 19:24:36,268 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth3', 'up')
+
+2025-07-10 19:24:36,270 - mininet - DEBUG - 
+2025-07-10 19:24:36,270 - mininet - INFO - (h3, s1) 
+2025-07-10 19:24:36,270 - mininet - DEBUG - *** h4 : ('ip link add name h4-eth0 address 7e:0d:3f:12:5c:5f type veth peer name s1-eth4 address ce:c2:a7:ca:2e:c7 netns 40292',)
+
+2025-07-10 19:24:36,272 - mininet - DEBUG - 
+2025-07-10 19:24:36,272 - mininet - DEBUG - 
+
+2025-07-10 19:24:36,272 - mininet - DEBUG - added intf h4-eth0 (0) to node h4
+
+2025-07-10 19:24:36,272 - mininet - DEBUG - moving h4-eth0 into namespace for h4 
+
+2025-07-10 19:24:36,272 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'up')
+
+2025-07-10 19:24:36,280 - mininet - DEBUG - 
+2025-07-10 19:24:36,280 - mininet - DEBUG - 
+
+2025-07-10 19:24:36,280 - mininet - DEBUG - added intf s1-eth4 (4) to node s1
+
+2025-07-10 19:24:36,280 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth4', 'up')
+
+2025-07-10 19:24:36,282 - mininet - DEBUG - 
+2025-07-10 19:24:36,283 - mininet - INFO - (h4, s1) 
+2025-07-10 19:24:36,283 - mininet - DEBUG - *** h5 : ('ip link add name h5-eth0 address ca:99:b3:29:9b:35 type veth peer name s1-eth5 address 8e:ba:0d:aa:8a:01 netns 40292',)
+
+2025-07-10 19:24:36,285 - mininet - DEBUG - 
+2025-07-10 19:24:36,285 - mininet - DEBUG - 
+
+2025-07-10 19:24:36,285 - mininet - DEBUG - added intf h5-eth0 (0) to node h5
+
+2025-07-10 19:24:36,285 - mininet - DEBUG - moving h5-eth0 into namespace for h5 
+
+2025-07-10 19:24:36,285 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'up')
+
+2025-07-10 19:24:36,289 - mininet - DEBUG - 
+2025-07-10 19:24:36,289 - mininet - DEBUG - 
+
+2025-07-10 19:24:36,289 - mininet - DEBUG - added intf s1-eth5 (5) to node s1
+
+2025-07-10 19:24:36,289 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth5', 'up')
+
+2025-07-10 19:24:36,291 - mininet - DEBUG - 
+2025-07-10 19:24:36,292 - mininet - INFO - (h5, s1) 
+2025-07-10 19:24:36,292 - mininet - DEBUG - *** h6 : ('ip link add name h6-eth0 address 2e:73:9d:40:a9:4e type veth peer name s1-eth6 address 9a:c4:ca:22:de:df netns 40292',)
+
+2025-07-10 19:24:36,293 - mininet - DEBUG - 
+2025-07-10 19:24:36,294 - mininet - DEBUG - 
+
+2025-07-10 19:24:36,294 - mininet - DEBUG - added intf h6-eth0 (0) to node h6
+
+2025-07-10 19:24:36,294 - mininet - DEBUG - moving h6-eth0 into namespace for h6 
+
+2025-07-10 19:24:36,294 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'up')
+
+2025-07-10 19:24:36,295 - mininet - DEBUG - 
+2025-07-10 19:24:36,295 - mininet - DEBUG - 
+
+2025-07-10 19:24:36,295 - mininet - DEBUG - added intf s1-eth6 (6) to node s1
+
+2025-07-10 19:24:36,295 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth6', 'up')
+
+2025-07-10 19:24:36,297 - mininet - DEBUG - 
+2025-07-10 19:24:36,297 - mininet - INFO - (h6, s1) 
+2025-07-10 19:24:36,297 - mininet - INFO - 
+
+2025-07-10 19:24:36,297 - mininet - INFO - *** Configuring hosts
+
+2025-07-10 19:24:36,297 - mininet - INFO - h1 
+2025-07-10 19:24:36,297 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'down')
+
+2025-07-10 19:24:36,301 - mininet - DEBUG - 
+2025-07-10 19:24:36,301 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'hw', 'ether', '00:00:00:00:00:01')
+
+2025-07-10 19:24:36,305 - mininet - DEBUG - 
+2025-07-10 19:24:36,305 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'up')
+
+2025-07-10 19:24:36,307 - mininet - DEBUG - 
+2025-07-10 19:24:36,307 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', '10.0.0.1/24', 'up')
+
+2025-07-10 19:24:36,309 - mininet - DEBUG - 
+2025-07-10 19:24:36,309 - mininet - DEBUG - *** h1 : ('ifconfig lo up',)
+
+2025-07-10 19:24:36,311 - mininet - DEBUG - 
+2025-07-10 19:24:36,311 - mininet - INFO - h2 
+2025-07-10 19:24:36,311 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'down')
+
+2025-07-10 19:24:36,313 - mininet - DEBUG - 
+2025-07-10 19:24:36,313 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'hw', 'ether', '00:00:00:00:00:02')
+
+2025-07-10 19:24:36,316 - mininet - DEBUG - 
+2025-07-10 19:24:36,316 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'up')
+
+2025-07-10 19:24:36,320 - mininet - DEBUG - 
+2025-07-10 19:24:36,320 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', '10.0.0.2/24', 'up')
+
+2025-07-10 19:24:36,322 - mininet - DEBUG - 
+2025-07-10 19:24:36,322 - mininet - DEBUG - *** h2 : ('ifconfig lo up',)
+
+2025-07-10 19:24:36,323 - mininet - DEBUG - 
+2025-07-10 19:24:36,323 - mininet - INFO - h3 
+2025-07-10 19:24:36,323 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'down')
+
+2025-07-10 19:24:36,325 - mininet - DEBUG - 
+2025-07-10 19:24:36,325 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'hw', 'ether', '00:00:00:00:00:03')
+
+2025-07-10 19:24:36,327 - mininet - DEBUG - 
+2025-07-10 19:24:36,327 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'up')
+
+2025-07-10 19:24:36,328 - mininet - DEBUG - 
+2025-07-10 19:24:36,328 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', '10.0.0.3/24', 'up')
+
+2025-07-10 19:24:36,329 - mininet - DEBUG - 
+2025-07-10 19:24:36,329 - mininet - DEBUG - *** h3 : ('ifconfig lo up',)
+
+2025-07-10 19:24:36,331 - mininet - DEBUG - 
+2025-07-10 19:24:36,331 - mininet - INFO - h4 
+2025-07-10 19:24:36,331 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'down')
+
+2025-07-10 19:24:36,332 - mininet - DEBUG - 
+2025-07-10 19:24:36,332 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'hw', 'ether', '00:00:00:00:00:04')
+
+2025-07-10 19:24:36,333 - mininet - DEBUG - 
+2025-07-10 19:24:36,333 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'up')
+
+2025-07-10 19:24:36,336 - mininet - DEBUG - 
+2025-07-10 19:24:36,336 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', '10.0.0.4/24', 'up')
+
+2025-07-10 19:24:36,337 - mininet - DEBUG - 
+2025-07-10 19:24:36,338 - mininet - DEBUG - *** h4 : ('ifconfig lo up',)
+
+2025-07-10 19:24:36,339 - mininet - DEBUG - 
+2025-07-10 19:24:36,339 - mininet - INFO - h5 
+2025-07-10 19:24:36,339 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'down')
+
+2025-07-10 19:24:36,340 - mininet - DEBUG - 
+2025-07-10 19:24:36,340 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'hw', 'ether', '00:00:00:00:00:05')
+
+2025-07-10 19:24:36,342 - mininet - DEBUG - 
+2025-07-10 19:24:36,342 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'up')
+
+2025-07-10 19:24:36,344 - mininet - DEBUG - 
+2025-07-10 19:24:36,344 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', '10.0.0.5/24', 'up')
+
+2025-07-10 19:24:36,345 - mininet - DEBUG - 
+2025-07-10 19:24:36,345 - mininet - DEBUG - *** h5 : ('ifconfig lo up',)
+
+2025-07-10 19:24:36,346 - mininet - DEBUG - 
+2025-07-10 19:24:36,346 - mininet - INFO - h6 
+2025-07-10 19:24:36,346 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'down')
+
+2025-07-10 19:24:36,347 - mininet - DEBUG - 
+2025-07-10 19:24:36,347 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'hw', 'ether', '00:00:00:00:00:06')
+
+2025-07-10 19:24:36,349 - mininet - DEBUG - 
+2025-07-10 19:24:36,349 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'up')
+
+2025-07-10 19:24:36,350 - mininet - DEBUG - 
+2025-07-10 19:24:36,350 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', '10.0.0.6/24', 'up')
+
+2025-07-10 19:24:36,352 - mininet - DEBUG - 
+2025-07-10 19:24:36,352 - mininet - DEBUG - *** h6 : ('ifconfig lo up',)
+
+2025-07-10 19:24:36,353 - mininet - DEBUG - 
+2025-07-10 19:24:36,353 - mininet - INFO - 
+
+2025-07-10 19:24:36,353 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-10 19:24:36,354 - mininet - DEBUG - 
+2025-07-10 19:24:36,354 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-10 19:24:36,355 - mininet - DEBUG - 
+2025-07-10 19:24:36,355 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-10 19:24:36,356 - mininet - DEBUG - 
+2025-07-10 19:24:36,356 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-10 19:24:36,357 - mininet - DEBUG - 
+2025-07-10 19:24:36,358 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-10 19:24:36,358 - mininet - DEBUG - 
+2025-07-10 19:24:36,359 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-10 19:24:36,360 - mininet - DEBUG - 
+2025-07-10 19:24:36,360 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-10 19:24:36,361 - mininet - DEBUG - 
+2025-07-10 19:24:36,361 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-10 19:24:36,362 - mininet - DEBUG - 
+2025-07-10 19:24:36,363 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-10 19:24:36,363 - mininet - DEBUG - 
+2025-07-10 19:24:36,364 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-10 19:24:36,364 - mininet - DEBUG - 
+2025-07-10 19:24:36,364 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-10 19:24:36,365 - mininet - DEBUG - 
+2025-07-10 19:24:36,365 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-10 19:24:36,366 - mininet - DEBUG - 
+2025-07-10 19:24:36,366 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-10 19:24:36,367 - mininet - DEBUG - 
+2025-07-10 19:24:36,367 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-10 19:24:36,368 - mininet - DEBUG - 
+2025-07-10 19:24:36,368 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-10 19:24:36,369 - mininet - DEBUG - 
+2025-07-10 19:24:36,369 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-10 19:24:36,370 - mininet - DEBUG - 
+2025-07-10 19:24:36,370 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-10 19:24:36,371 - mininet - DEBUG - 
+2025-07-10 19:24:36,371 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-10 19:24:36,371 - mininet - DEBUG - 
+2025-07-10 19:24:36,372 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-10 19:24:36,372 - mininet - DEBUG - 
+2025-07-10 19:24:36,372 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-10 19:24:36,373 - mininet - DEBUG - 
+2025-07-10 19:24:36,373 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-10 19:24:36,374 - mininet - DEBUG - 
+2025-07-10 19:24:36,374 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-10 19:24:36,375 - mininet - DEBUG - 
+2025-07-10 19:24:36,375 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-10 19:24:36,376 - mininet - DEBUG - 
+2025-07-10 19:24:36,376 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-10 19:24:36,377 - mininet - DEBUG - 
+2025-07-10 19:24:36,377 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-10 19:24:36,378 - mininet - DEBUG - 
+2025-07-10 19:24:36,378 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-10 19:24:36,380 - mininet - DEBUG - 
+2025-07-10 19:24:36,380 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-10 19:24:36,381 - mininet - DEBUG - 
+2025-07-10 19:24:36,381 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-10 19:24:36,382 - mininet - DEBUG - 
+2025-07-10 19:24:36,382 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-10 19:24:36,383 - mininet - DEBUG - 
+2025-07-10 19:24:36,383 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-10 19:24:36,384 - mininet - DEBUG - 
+2025-07-10 19:24:36,384 - mininet - INFO - *** Starting controller
+
+2025-07-10 19:24:36,384 - mininet - INFO - c0 
+2025-07-10 19:24:36,384 - mininet - INFO - 
+
+2025-07-10 19:24:36,384 - mininet - INFO - *** Starting 1 switches
+
+2025-07-10 19:24:36,384 - mininet - INFO - s1 
+2025-07-10 19:24:36,385 - mininet - INFO - ...
+2025-07-10 19:24:36,385 - mininet - DEBUG - *** errRun: ovs-vsctl -- --id=@s1c0 create Controller target=\"tcp:127.0.0.1:6653\" max_backoff=1000 -- --if-exists del-br s1 -- add-br s1 -- set bridge s1 controller=[@s1c0] other_config:datapath-id=0000000000000001 fail_mode=secure other-config:disable-in-band=true protocols=OpenFlow13 other-config:dp-desc=s1 -- add-port s1 s1-eth1 -- set Interface s1-eth1 ofport_request=1 -- add-port s1 s1-eth2 -- set Interface s1-eth2 ofport_request=2 -- add-port s1 s1-eth3 -- set Interface s1-eth3 ofport_request=3 -- add-port s1 s1-eth4 -- set Interface s1-eth4 ofport_request=4 -- add-port s1 s1-eth5 -- set Interface s1-eth5 ofport_request=5 -- add-port s1 s1-eth6 -- set Interface s1-eth6 ofport_request=6 
+
+2025-07-10 19:24:36,405 - mininet - DEBUG - 3d601098-12ac-4ae7-8e35-e79e2fa9abc6
+  0
+2025-07-10 19:24:36,405 - mininet - INFO - 
+
+2025-07-10 19:24:41,412 - mininet - Level 25 - *** Ping: testing ping reachability
+
+2025-07-10 19:24:41,412 - mininet - Level 25 - h1 -> 
+2025-07-10 19:24:41,412 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-10 19:24:41,413 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-10 19:24:41,417 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=3.34 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+2025-07-10 19:24:41,417 - mininet - DEBUG - 
+rtt min/avg/max/mdev = 3.346/3.346/3.346/0.000 ms
+
+2025-07-10 19:24:41,417 - mininet - DEBUG - 
+2025-07-10 19:24:41,417 - mininet - Level 25 - h2 
+2025-07-10 19:24:41,417 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-10 19:24:41,418 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+
+2025-07-10 19:24:41,420 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=2.10 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+2025-07-10 19:24:41,421 - mininet - DEBUG - 
+rtt min/avg/max/mdev = 2.104/2.104/2.104/0.000 ms
+
+2025-07-10 19:24:41,421 - mininet - DEBUG - 
+2025-07-10 19:24:41,421 - mininet - Level 25 - h3 
+2025-07-10 19:24:41,421 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-10 19:24:41,422 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-10 19:24:41,424 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.08 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.087/2.087/2.087/0.000 ms
+
+2025-07-10 19:24:41,424 - mininet - DEBUG - 
+2025-07-10 19:24:41,424 - mininet - Level 25 - h4 
+2025-07-10 19:24:41,424 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-10 19:24:41,425 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-10 19:24:41,429 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=3.43 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 3.437/3.437/3.437/0.000 ms
+2025-07-10 19:24:41,429 - mininet - DEBUG - 
+
+2025-07-10 19:24:41,429 - mininet - DEBUG - 
+2025-07-10 19:24:41,429 - mininet - Level 25 - h5 
+2025-07-10 19:24:41,429 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-10 19:24:41,430 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-10 19:24:41,432 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.22 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.223/2.223/2.223/0.000 ms
+
+2025-07-10 19:24:41,432 - mininet - DEBUG - 
+2025-07-10 19:24:41,432 - mininet - Level 25 - h6 
+2025-07-10 19:24:41,432 - mininet - Level 25 - 
+
+2025-07-10 19:24:41,433 - mininet - Level 25 - h2 -> 
+2025-07-10 19:24:41,433 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-10 19:24:41,434 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-10 19:24:41,434 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.111 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.111/0.111/0.111/0.000 ms
+
+2025-07-10 19:24:41,434 - mininet - DEBUG - 
+2025-07-10 19:24:41,434 - mininet - Level 25 - h1 
+2025-07-10 19:24:41,434 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-10 19:24:41,435 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+2025-07-10 19:24:41,435 - mininet - DEBUG - 
+
+2025-07-10 19:24:41,437 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=2.15 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.159/2.159/2.159/0.000 ms
+
+2025-07-10 19:24:41,437 - mininet - DEBUG - 
+2025-07-10 19:24:41,437 - mininet - Level 25 - h3 
+2025-07-10 19:24:41,437 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-10 19:24:41,438 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-10 19:24:41,441 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.11 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.112/2.112/2.112/0.000 ms
+
+2025-07-10 19:24:41,441 - mininet - DEBUG - 
+2025-07-10 19:24:41,441 - mininet - Level 25 - h4 
+2025-07-10 19:24:41,441 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-10 19:24:41,442 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-10 19:24:41,444 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.02 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.027/2.027/2.027/0.000 ms
+
+2025-07-10 19:24:41,444 - mininet - DEBUG - 
+2025-07-10 19:24:41,444 - mininet - Level 25 - h5 
+2025-07-10 19:24:41,444 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-10 19:24:41,445 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-10 19:24:41,447 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.01 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.011/2.011/2.011/0.000 ms
+
+2025-07-10 19:24:41,447 - mininet - DEBUG - 
+2025-07-10 19:24:41,448 - mininet - Level 25 - h6 
+2025-07-10 19:24:41,448 - mininet - Level 25 - 
+
+2025-07-10 19:24:41,448 - mininet - Level 25 - h3 -> 
+2025-07-10 19:24:41,448 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-10 19:24:41,449 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-10 19:24:41,449 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.088 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.088/0.088/0.088/0.000 ms
+
+2025-07-10 19:24:41,449 - mininet - DEBUG - 
+2025-07-10 19:24:41,449 - mininet - Level 25 - h1 
+2025-07-10 19:24:41,449 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-10 19:24:41,450 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-10 19:24:41,450 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.015 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.015/0.015/0.015/0.000 ms
+
+2025-07-10 19:24:41,450 - mininet - DEBUG - 
+2025-07-10 19:24:41,450 - mininet - Level 25 - h2 
+2025-07-10 19:24:41,450 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-10 19:24:41,451 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-10 19:24:41,453 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.07 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.075/2.075/2.075/0.000 ms
+
+2025-07-10 19:24:41,453 - mininet - DEBUG - 
+2025-07-10 19:24:41,453 - mininet - Level 25 - h4 
+2025-07-10 19:24:41,454 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-10 19:24:41,454 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+2025-07-10 19:24:41,455 - mininet - DEBUG - 
+
+2025-07-10 19:24:41,457 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.00 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.007/2.007/2.007/0.000 ms
+
+2025-07-10 19:24:41,457 - mininet - DEBUG - 
+2025-07-10 19:24:41,457 - mininet - Level 25 - h5 
+2025-07-10 19:24:41,457 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-10 19:24:41,458 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-10 19:24:41,460 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.11 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.112/2.112/2.112/0.000 ms
+
+2025-07-10 19:24:41,460 - mininet - DEBUG - 
+2025-07-10 19:24:41,460 - mininet - Level 25 - h6 
+2025-07-10 19:24:41,460 - mininet - Level 25 - 
+
+2025-07-10 19:24:41,460 - mininet - Level 25 - h4 -> 
+2025-07-10 19:24:41,460 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-10 19:24:41,461 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.080 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.080/0.080/0.080/0.000 ms
+
+2025-07-10 19:24:41,462 - mininet - DEBUG - 
+2025-07-10 19:24:41,462 - mininet - Level 25 - h1 
+2025-07-10 19:24:41,462 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-10 19:24:41,463 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-10 19:24:41,463 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.015 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.015/0.015/0.015/0.000 ms
+
+2025-07-10 19:24:41,463 - mininet - DEBUG - 
+2025-07-10 19:24:41,463 - mininet - Level 25 - h2 
+2025-07-10 19:24:41,463 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-10 19:24:41,464 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+
+2025-07-10 19:24:41,464 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.016 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.016/0.016/0.016/0.000 ms
+
+2025-07-10 19:24:41,464 - mininet - DEBUG - 
+2025-07-10 19:24:41,464 - mininet - Level 25 - h3 
+2025-07-10 19:24:41,464 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-10 19:24:41,465 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-10 19:24:41,467 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.06 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.065/2.065/2.065/0.000 ms
+
+2025-07-10 19:24:41,467 - mininet - DEBUG - 
+2025-07-10 19:24:41,467 - mininet - Level 25 - h5 
+2025-07-10 19:24:41,467 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-10 19:24:41,468 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-10 19:24:41,471 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.24 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.240/2.240/2.240/0.000 ms
+
+2025-07-10 19:24:41,471 - mininet - Level 25 - h6 
+2025-07-10 19:24:41,471 - mininet - Level 25 - 
+
+2025-07-10 19:24:41,471 - mininet - Level 25 - h5 -> 
+2025-07-10 19:24:41,471 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-10 19:24:41,472 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-10 19:24:41,472 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.087 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.087/0.087/0.087/0.000 ms
+
+2025-07-10 19:24:41,473 - mininet - DEBUG - 
+2025-07-10 19:24:41,473 - mininet - Level 25 - h1 
+2025-07-10 19:24:41,473 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-10 19:24:41,474 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-10 19:24:41,474 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.016 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.016/0.016/0.016/0.000 ms
+
+2025-07-10 19:24:41,474 - mininet - DEBUG - 
+2025-07-10 19:24:41,474 - mininet - Level 25 - h2 
+2025-07-10 19:24:41,474 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-10 19:24:41,476 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.016 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.016/0.016/0.016/0.000 ms
+
+2025-07-10 19:24:41,476 - mininet - DEBUG - 
+2025-07-10 19:24:41,476 - mininet - Level 25 - h3 
+2025-07-10 19:24:41,476 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-10 19:24:41,477 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-10 19:24:41,477 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=0.016 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.016/0.016/0.016/0.000 ms
+
+2025-07-10 19:24:41,477 - mininet - DEBUG - 
+2025-07-10 19:24:41,477 - mininet - Level 25 - h4 
+2025-07-10 19:24:41,477 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-10 19:24:41,478 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-10 19:24:41,480 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.56 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.566/2.566/2.566/0.000 ms
+
+2025-07-10 19:24:41,481 - mininet - DEBUG - 
+2025-07-10 19:24:41,481 - mininet - Level 25 - h6 
+2025-07-10 19:24:41,481 - mininet - Level 25 - 
+
+2025-07-10 19:24:41,481 - mininet - Level 25 - h6 -> 
+2025-07-10 19:24:41,481 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-10 19:24:41,482 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-10 19:24:41,482 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.081 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.081/0.081/0.081/0.000 ms
+
+2025-07-10 19:24:41,482 - mininet - DEBUG - 
+2025-07-10 19:24:41,482 - mininet - Level 25 - h1 
+2025-07-10 19:24:41,482 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-10 19:24:41,483 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-10 19:24:41,483 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.015 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.015/0.015/0.015/0.000 ms
+
+2025-07-10 19:24:41,483 - mininet - DEBUG - 
+2025-07-10 19:24:41,483 - mininet - Level 25 - h2 
+2025-07-10 19:24:41,483 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-10 19:24:41,484 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.016 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.016/0.016/0.016/0.000 ms
+
+2025-07-10 19:24:41,485 - mininet - DEBUG - 
+2025-07-10 19:24:41,485 - mininet - Level 25 - h3 
+2025-07-10 19:24:41,485 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-10 19:24:41,486 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-10 19:24:41,486 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=0.014 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.014/0.014/0.014/0.000 ms
+
+2025-07-10 19:24:41,486 - mininet - DEBUG - 
+2025-07-10 19:24:41,486 - mininet - Level 25 - h4 
+2025-07-10 19:24:41,486 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-10 19:24:41,487 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-10 19:24:41,487 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=0.025 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.025/0.025/0.025/0.000 ms
+
+2025-07-10 19:24:41,487 - mininet - DEBUG - 
+2025-07-10 19:24:41,487 - mininet - Level 25 - h5 
+2025-07-10 19:24:41,487 - mininet - Level 25 - 
+
+2025-07-10 19:24:41,487 - mininet - Level 25 - *** Results: 0% dropped (30/30 received)
+
+2025-07-10 19:24:41,487 - src.utils.enhanced_pcap_processing - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/output/capture.pcap
+2025-07-10 19:24:41,487 - src.utils.enhanced_pcap_processing - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/output/capture.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-10 19:24:41,490 - mininet - DEBUG - _popen ['mnexec', '-da', '40292', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/output/capture.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 42920
+2025-07-10 19:24:43,495 - src.utils.enhanced_pcap_processing - INFO - tcpdump started successfully with PID: 42920
+2025-07-10 19:24:50,504 - mininet - DEBUG - *** h5 : ('nc -lk 12345 > /dev/null 2>&1 &',)
+
+2025-07-10 19:24:50,505 - mininet - DEBUG - 
+2025-07-10 19:24:50,505 - mininet - DEBUG - *** h5 : ('nc -luk 12346 > /dev/null 2>&1 &',)
+
+2025-07-10 19:24:50,505 - mininet - DEBUG - [2] 47230
+
+2025-07-10 19:24:50,506 - mininet - DEBUG - 
+2025-07-10 19:24:50,506 - mininet - DEBUG - *** h5 : ('nc -lk 23 > /dev/null 2>&1 &',)
+
+2025-07-10 19:24:50,506 - mininet - DEBUG - 
+2025-07-10 19:24:50,506 - mininet - DEBUG - 
+2025-07-10 19:24:50,506 - mininet - DEBUG - *** h5 : ('nc -lk 22 > /dev/null 2>&1 &',)
+
+2025-07-10 19:24:50,507 - mininet - DEBUG - 
+2025-07-10 19:24:50,507 - mininet - DEBUG - *** h5 : ('nc -lk 21 > /dev/null 2>&1 &',)
+
+2025-07-10 19:24:50,507 - mininet - DEBUG - 
+2025-07-10 19:24:50,507 - mininet - DEBUG - 
+2025-07-10 19:24:50,507 - mininet - DEBUG - *** h3 : ('ping -c 1 10.0.0.5 > /dev/null',)
+
+2025-07-10 19:24:50,509 - mininet - DEBUG - 
+2025-07-10 19:24:50,509 - mininet - DEBUG - *** h5 : ('ping -c 1 10.0.0.3 > /dev/null',)
+
+2025-07-10 19:24:50,510 - mininet - DEBUG - 
+2025-07-10 19:24:50,510 - mininet - DEBUG - *** h3 : ('echo "TCP benign traffic 0" | nc -w 1 10.0.0.5 12345 > /dev/null 2>&1',)
+
+2025-07-10 19:24:50,517 - mininet - DEBUG - 
+2025-07-10 19:24:50,517 - mininet - DEBUG - *** h3 : ('echo "UDP benign traffic 0" | nc -u -w 1 10.0.0.5 12346 > /dev/null 2>&1',)
+
+2025-07-10 19:24:51,521 - mininet - DEBUG - 
+2025-07-10 19:24:51,521 - mininet - DEBUG - *** h3 : ('echo "Telnet benign traffic 0" | nc -w 1 10.0.0.5 23 > /dev/null 2>&1',)
+
+2025-07-10 19:24:52,524 - mininet - DEBUG - 
+2025-07-10 19:24:52,524 - mininet - DEBUG - *** h3 : ('echo "SSH benign traffic 0" | nc -w 1 10.0.0.5 22 > /dev/null 2>&1',)
+
+2025-07-10 19:24:53,527 - mininet - DEBUG - 
+2025-07-10 19:24:53,527 - mininet - DEBUG - *** h3 : ('echo "FTP benign traffic 0" | nc -w 1 10.0.0.5 21 > /dev/null 2>&1',)
+
+2025-07-10 19:24:54,530 - mininet - DEBUG - 
+2025-07-10 19:24:55,532 - mininet - DEBUG - *** h5 : ('killall -q nc',)
+
+2025-07-10 19:24:55,539 - mininet - DEBUG - 
+2025-07-10 19:24:55,543 - mininet - DEBUG - _popen ['mnexec', '-da', '40253', 'python3', '-c', "from scapy.all import *; sendp(Ether()/IP(dst='10.0.0.6')/TCP(dport=80, flags='S'), loop=1, inter=0.01, verbose=0, iface='h1-eth0')"] 49637
+2025-07-10 19:25:00,641 - mininet - DEBUG - _popen ['mnexec', '-da', '40259', 'python3', '-c', "from scapy.all import *; sendp(Ether()/IP(dst='10.0.0.4')/UDP(dport=53), loop=1, inter=0.01, verbose=0, iface='h2-eth0')"] 52045
+2025-07-10 19:25:05,737 - mininet - DEBUG - _popen ['mnexec', '-da', '40259', 'python3', '-c', "from scapy.all import *; sendp(Ether()/IP(dst='10.0.0.4')/ICMP(), loop=1, inter=0.01, verbose=0, iface='h2-eth0')"] 54476
+2025-07-10 19:26:28,879 - src.utils.enhanced_pcap_processing - INFO - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/output/capture.pcap
+2025-07-10 19:26:29,767 - src.utils.enhanced_pcap_processing - INFO - PCAP integrity check passed. Found 4339 packets.
+2025-07-10 19:26:29,767 - src.utils.enhanced_pcap_processing - INFO - Skipping timestamp validation as tcpdump is used.
+2025-07-10 19:26:30,675 - src.utils.enhanced_pcap_processing - INFO - Passing PCAP to processing function.

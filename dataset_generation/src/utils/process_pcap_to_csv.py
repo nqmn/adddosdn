@@ -7,7 +7,7 @@ def _get_label_for_timestamp(timestamp, label_timeline):
     for entry in label_timeline:
         if entry['start_time'] <= timestamp < entry['end_time']:
             return entry['label']
-    return "unknown" # Default label if no match
+    return "normal" # Default label if no match
 
 def process_pcap_to_csv(pcap_file, output_csv_file, label_timeline=None):
     print(f"Processing {pcap_file} to {output_csv_file}...")
@@ -30,8 +30,12 @@ def process_pcap_to_csv(pcap_file, output_csv_file, label_timeline=None):
         writer.writeheader()
 
         for packet in packets:
+            if packet.time == 0.0:
+                # Skip packets with 0.0 timestamp as they are likely malformed or incomplete
+                continue
+
             row = {
-                'timestamp': packet.time,
+                'timestamp': f"{float(packet.time):.6f}",
                 'packet_length': len(packet),
                 'eth_type': '',
                 'ip_src': '',
