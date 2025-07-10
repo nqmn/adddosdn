@@ -67,7 +67,13 @@ SRC_DIR = BASE_DIR / "src"
 ATTACKS_DIR = SRC_DIR / "attacks"
 UTILS_DIR = SRC_DIR / "utils"
 OUTPUT_DIR = BASE_DIR / "output"
-PCAP_FILE = OUTPUT_DIR / "capture.pcap"
+PCAP_FILE_NORMAL = OUTPUT_DIR / "normal.pcap"
+PCAP_FILE_SYN_FLOOD = OUTPUT_DIR / "syn_flood.pcap"
+PCAP_FILE_UDP_FLOOD = OUTPUT_DIR / "udp_flood.pcap"
+PCAP_FILE_ICMP_FLOOD = OUTPUT_DIR / "icmp_flood.pcap"
+PCAP_FILE_AD_SYN = OUTPUT_DIR / "ad_syn.pcap"
+PCAP_FILE_AD_UDP = OUTPUT_DIR / "ad_udp.pcap"
+PCAP_FILE_AD_SLOW = OUTPUT_DIR / "ad_slow.pcap"
 OUTPUT_CSV_FILE = OUTPUT_DIR / "packet_features.csv"
 OUTPUT_LABELED_CSV_FILE = OUTPUT_DIR / "labeled_packet_features.csv"
 RYU_CONTROLLER_APP = SRC_DIR / "controller" / "ryu_controller_app.py" # Assuming this is the app
@@ -91,7 +97,7 @@ def verify_tools():
         logger.error("Please install Wireshark/tshark package.")
         sys.exit(1)
 
-    required_tools = ["ryu-manager", "mn", "tshark"]
+    required_tools = ["ryu-manager", "mn", "tshark", "slowhttptest"]
     for tool in required_tools:
         if not shutil.which(tool):
             logger.error(f"Tool not found: '{tool}'. Please install it manually.")
@@ -323,10 +329,8 @@ def run_traffic_scenario(net):
         return
 
     logger.info("Starting traffic generation scenario...")
-    capture_proc = start_capture(net, PCAP_FILE)
-    
-    # Give capture a moment to start
-    time.sleep(2)
+
+    capture_procs = {} # Dictionary to hold all capture processes
 
     try:
         # --- Phase 1: Initialization (5s) ---
@@ -335,39 +339,66 @@ def run_traffic_scenario(net):
 
         # --- Phase 2: Normal Traffic (5s) ---
         logger.info("Phase 2: Normal Traffic (5s)...")
+        capture_procs['normal'] = start_capture(net, PCAP_FILE_NORMAL)
+        time.sleep(2) # Give capture a moment to start
         run_benign_traffic(net, 5)
+        stop_capture(capture_procs['normal'])
 
         # --- Phase 3.1: Traditional DDoS Attacks ---
         logger.info("Phase 3.1: Traditional DDoS Attacks (15s total)...")
         h1, h2, h4, h6 = net.get('h1', 'h2', 'h4', 'h6')
 
         logger.info("Attack: SYN Flood (5s) | h1 -> h6")
+        capture_procs['syn_flood'] = start_capture(net, PCAP_FILE_SYN_FLOOD)
+        time.sleep(2)
         run_syn_flood(h1, HOST_IPS['h6'], duration=5)
-        
+        stop_capture(capture_procs['syn_flood'])
+
         logger.info("Attack: UDP Flood (5s) | h2 -> h4")
+        capture_procs['udp_flood'] = start_capture(net, PCAP_FILE_UDP_FLOOD)
+        time.sleep(2)
         run_udp_flood(h2, HOST_IPS['h4'], duration=5)
+        stop_capture(capture_procs['udp_flood'])
 
         logger.info("Attack: ICMP Flood (5s) | h2 -> h4")
+        capture_procs['icmp_flood'] = start_capture(net, PCAP_FILE_ICMP_FLOOD)
+        time.sleep(2)
         run_icmp_flood(h2, HOST_IPS['h4'], duration=5)
+        stop_capture(capture_procs['icmp_flood'])
 
-        # --- Phase 3.2: Adversarial DDoS Attacks (15s total) ---
-        logger.info("Phase 3.2: Adversarial DDoS Attacks (15s total)...")
+        # --- Phase 3.2: Adversarial DDoS Attacks (20s total) ---
+        logger.info("Phase 3.2: Adversarial DDoS Attacks (20s total)...")
 
         logger.info("Attack: Adversarial TCP State Exhaustion (5s) | h2 -> h6")
+        capture_procs['ad_syn'] = start_capture(net, PCAP_FILE_AD_SYN)
+        time.sleep(2)
         run_adv_ddos(h2, HOST_IPS['h6'], duration=5, attack_variant="ad_syn")
+        stop_capture(capture_procs['ad_syn'])
 
         logger.info("Attack: Adversarial Application Layer (5s) | h2 -> h6")
+        capture_procs['ad_udp'] = start_capture(net, PCAP_FILE_AD_UDP)
+        time.sleep(2)
         run_adv_ddos(h2, HOST_IPS['h6'], duration=5, attack_variant="ad_udp")
+        stop_capture(capture_procs['ad_udp'])
 
-        logger.info("Attack: Adversarial Multi-Vector (5s) | h2 -> h6")
-        run_adv_ddos(h2, HOST_IPS['h6'], duration=5, attack_variant="multivector")
+        logger.info("Attack: Adversarial Slow Read (5s) | h2 -> h6")
+        capture_procs['ad_slow'] = start_capture(net, PCAP_FILE_AD_SLOW)
+        time.sleep(2)
+        run_adv_ddos(h2, HOST_IPS['h6'], duration=5, attack_variant="ad_slow", output_dir=OUTPUT_DIR)
+        stop_capture(capture_procs['ad_slow'])
 
         # --- Phase 4: Cooldown (5s) ---
         logger.info("Phase 4: Cooldown (5s)...")
         time.sleep(5)
 
+    except Exception as e:
+        logger.error(f"An error occurred during traffic scenario: {e}", exc_info=True)
     finally:
-        stop_capture(capture_proc)
+        # Ensure all captures are stopped in case of an error
+        for proc_name, proc in capture_procs.items():
+            if proc and proc.poll() is None: # Check if process is still running
+                logger.warning(f"Capture process for {proc_name} was still running. Stopping it.")
+                stop_capture(proc)
         logger.info("Traffic generation scenario finished.")
 
 
@@ -457,7 +488,6 @@ def verify_labels_in_csv(csv_file_path, label_timeline):
 def main():
     """Main entry point for the pcap generation framework."""
     parser = argparse.ArgumentParser(description="AdDDoSDN PCAP Generation Framework")
-    # Add any arguments if needed, e.g., --duration-multiplier
     args = parser.parse_args()
 
     # Ensure output directory exists
@@ -508,121 +538,84 @@ def main():
         run_traffic_scenario(mininet_network)
 
         logger.info("PCAP generation complete.")
-        logger.info(f"Output file located at: {PCAP_FILE}")
 
-        # Verify PCAP integrity before processing
-        integrity_results = verify_pcap_integrity(PCAP_FILE)
-        if not integrity_results['valid']:
-            logger.error(f"PCAP integrity check failed: {integrity_results['error']}")
-            # Continue with processing but log the warning
-            logger.warning("Continuing with PCAP processing despite integrity issues...")
+        # List of PCAP files and their corresponding labels
+        pcap_files_to_process = [
+            (PCAP_FILE_NORMAL, 'normal'),
+            (PCAP_FILE_SYN_FLOOD, 'syn_flood'),
+            (PCAP_FILE_UDP_FLOOD, 'udp_flood'),
+            (PCAP_FILE_ICMP_FLOOD, 'icmp_flood'),
+            (PCAP_FILE_AD_SYN, 'ad_syn'),
+            (PCAP_FILE_AD_UDP, 'ad_udp'),
+            (PCAP_FILE_AD_SLOW, 'ad_slow'),
+        ]
+
+        all_labeled_dfs = []
+
+        for pcap_file, label_name in pcap_files_to_process:
+            logger.info(f"Processing {pcap_file} with label '{label_name}'...")
+            
+            if not pcap_file.exists():
+                logger.warning(f"PCAP file not found: {pcap_file}. Skipping.")
+                continue
+
+            # Verify PCAP integrity before processing
+            integrity_results = verify_pcap_integrity(pcap_file)
+            if not integrity_results['valid']:
+                logger.error(f"PCAP integrity check failed for {pcap_file}: {integrity_results['error']}")
+                logger.warning("Continuing with PCAP processing despite integrity issues...")
+            else:
+                logger.info(f"PCAP integrity check passed for {pcap_file}: {integrity_results['total_packets']} packets")
+                if integrity_results['corruption_rate'] > 0:
+                    logger.warning(f"Timestamp corruption detected in {pcap_file}: {integrity_results['corruption_rate']:.2f}%")
+
+            try:
+                corrected_packets, stats = validate_and_fix_pcap_timestamps(pcap_file)
+                pcap_start_time = stats['baseline_time']
+                logger.info(f"Using baseline timestamp for labeling {pcap_file}: {pcap_start_time}")
+            except Exception as e:
+                logger.error(f"Could not process PCAP timestamps for {pcap_file}: {e}. Skipping labeling for this file.")
+                continue
+
+            # Create a simple label timeline for the current PCAP file
+            # Assuming each PCAP contains only one type of traffic for its entire duration
+            # The duration here is arbitrary, as the actual duration will be determined by the packets in the PCAP
+            # We set end_time far in the future to ensure all packets are covered
+            label_timeline = [{
+                'start_time': pcap_start_time,
+                'end_time': pcap_start_time + 3600, # 1 hour, should be enough
+                'label': label_name
+            }]
+            
+            temp_csv_file = OUTPUT_DIR / f"temp_{label_name}.csv"
+            enhanced_process_pcap_to_csv(
+                str(pcap_file), 
+                str(temp_csv_file), 
+                label_timeline,
+                validate_timestamps=True
+            )
+            
+            if temp_csv_file.exists():
+                import pandas as pd
+                df = pd.read_csv(temp_csv_file)
+                all_labeled_dfs.append(df)
+                temp_csv_file.unlink() # Delete temporary CSV
+            else:
+                logger.warning(f"No CSV generated for {pcap_file}.")
+
+        if all_labeled_dfs:
+            import pandas as pd
+            final_df = pd.concat(all_labeled_dfs, ignore_index=True)
+            final_df.to_csv(OUTPUT_LABELED_CSV_FILE, index=False)
+            logger.info(f"Combined labeled CSV generated at: {OUTPUT_LABELED_CSV_FILE}")
+            # 5. Verify labels in CSV (can be adapted for combined CSV if needed, or individual verification)
+            # For now, we'll just check if the file exists
+            if OUTPUT_LABELED_CSV_FILE.exists():
+                logger.info("Final combined CSV created successfully.")
+            else:
+                logger.error("Failed to create final combined CSV.")
         else:
-            logger.info(f"PCAP integrity check passed: {integrity_results['total_packets']} packets")
-            if integrity_results['corruption_rate'] > 0:
-                logger.warning(f"Timestamp corruption detected: {integrity_results['corruption_rate']:.2f}%")
-
-        # Get the timestamp of the first packet in the PCAP for timeline synchronization
-        try:
-            # Use the enhanced timestamp validation
-            corrected_packets, stats = validate_and_fix_pcap_timestamps(PCAP_FILE)
-            
-            if stats['corrupted_packets'] > 0:
-                logger.warning(f"Fixed {stats['corrupted_packets']} corrupted timestamps")
-            
-            # Use the first valid timestamp
-            pcap_start_time = stats['baseline_time']
-            logger.info(f"Using baseline timestamp for labeling: {pcap_start_time}")
-            
-        except Exception as e:
-            logger.error(f"Could not process PCAP timestamps: {e}. Using scenario_start_time for labeling.")
-            pcap_start_time = scenario_start_time
-
-        # 4. Process PCAP to CSV and add labels with enhanced processing
-        logger.info("Processing PCAP to CSV and adding labels...")
-        
-        # Define the label timeline (same as before)
-        current_time_offset = 0
-        label_timeline = []
-
-        # Phase 1: Initialization (5s)
-        label_timeline.append({
-            'start_time': pcap_start_time + current_time_offset,
-            'end_time': pcap_start_time + current_time_offset + 5,
-            'label': 'normal'
-        })
-        current_time_offset += 5
-
-        # Phase 2: Normal Traffic (5s)
-        label_timeline.append({
-            'start_time': pcap_start_time + current_time_offset,
-            'end_time': pcap_start_time + current_time_offset + 5,
-            'label': 'normal'
-        })
-        current_time_offset += 5
-
-        # Phase 3.1: Traditional DDoS Attacks (15s total)
-        label_timeline.append({
-            'start_time': pcap_start_time + current_time_offset,
-            'end_time': pcap_start_time + current_time_offset + 5,
-            'label': 'syn_flood'
-        })
-        current_time_offset += 5
-
-        label_timeline.append({
-            'start_time': pcap_start_time + current_time_offset,
-            'end_time': pcap_start_time + current_time_offset + 5,
-            'label': 'udp_flood'
-        })
-        current_time_offset += 5
-
-        label_timeline.append({
-            'start_time': pcap_start_time + current_time_offset,
-            'end_time': pcap_start_time + current_time_offset + 5,
-            'label': 'icmp_flood'
-        })
-        current_time_offset += 5
-
-        # Phase 3.2: Adversarial DDoS Attacks (15s total)
-        label_timeline.append({
-            'start_time': pcap_start_time + current_time_offset,
-            'end_time': pcap_start_time + current_time_offset + 5,
-            'label': 'ad_syn'
-        })
-        current_time_offset += 5
-
-        label_timeline.append({
-            'start_time': pcap_start_time + current_time_offset,
-            'end_time': pcap_start_time + current_time_offset + 5,
-            'label': 'ad_udp'
-        })
-        current_time_offset += 5
-
-        label_timeline.append({
-            'start_time': pcap_start_time + current_time_offset,
-            'end_time': pcap_start_time + current_time_offset + 5,
-            'label': 'multivector'
-        })
-        current_time_offset += 5
-
-        # Phase 4: Cooldown (5s)
-        label_timeline.append({
-            'start_time': pcap_start_time + current_time_offset,
-            'end_time': pcap_start_time + current_time_offset + 5,
-            'label': 'normal'
-        })
-
-        # Use enhanced processing with timestamp validation
-        enhanced_process_pcap_to_csv(
-            str(PCAP_FILE), 
-            str(OUTPUT_LABELED_CSV_FILE), 
-            label_timeline,
-            validate_timestamps=True
-        )
-        
-        logger.info(f"Labeled CSV generated at: {OUTPUT_LABELED_CSV_FILE}")
-
-        # 5. Verify labels in CSV
-        verify_labels_in_csv(OUTPUT_LABELED_CSV_FILE, label_timeline)
+            logger.error("No labeled dataframes were generated. Final CSV will not be created.")
 
     except Exception as e:
         logger.error(f"An unexpected error occurred: {e}", exc_info=True)

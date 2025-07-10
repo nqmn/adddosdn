@@ -12,4 +12,4 @@ This directory contains the core components for generating the InSDN DDoS datase
     *   `src/utils/`: Utility functions for PCAP processing and other tasks.
 *   **`output/`**: Directory for storing generated PCAP files, CSV outputs, and logs.
 
-For detailed information on the dataset generation process, refer to the `test.py` script and its internal documentation.
+For detailed information on the dataset generation process, refer to the `test.py` script and its comprehensive documentation in [TEST.md](TEST.md).

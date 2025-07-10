@@ -1,13 +1,13 @@
-from scapy.all import rdpcap, Ether, IP, TCP, UDP, ICMP
+from scapy.all import rdpcap, Ether, IP, TCP, UDP, ICMP, CookedLinux
 import csv
 import os
 import sys
 
 def _get_label_for_timestamp(timestamp, label_timeline):
     for entry in label_timeline:
-        if entry['start_time'] <= timestamp < entry['end_time']:
+        if entry['start_time'] <= timestamp <= entry['end_time']:
             return entry['label']
-    return "normal" # Default label if no match
+    return "unknown" # Default label if no match
 
 def process_pcap_to_csv(pcap_file, output_csv_file, label_timeline=None):
     print(f"Processing {pcap_file} to {output_csv_file}...")
@@ -23,8 +23,7 @@ def process_pcap_to_csv(pcap_file, output_csv_file, label_timeline=None):
             'timestamp', 'packet_length', 'eth_type',
             'ip_src', 'ip_dst', 'ip_proto', 'ip_ttl', 'ip_id', 'ip_flags', 'ip_len',
             'src_port', 'dst_port',
-            'tcp_flags', 'tcp_seq', 'tcp_ack', 'tcp_window',
-            'icmp_type', 'icmp_code', 'Label_multi', 'Label_binary'
+            'tcp_flags', 'Label_multi', 'Label_binary'
         ]
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
@@ -48,16 +47,14 @@ def process_pcap_to_csv(pcap_file, output_csv_file, label_timeline=None):
                 'src_port': '',
                 'dst_port': '',
                 'tcp_flags': '',
-                'tcp_seq': '',
-                'tcp_ack': '',
-                'tcp_window': '',
-                'icmp_type': '',
-                'icmp_code': '',
+                
                 'Label_multi': 'unknown',
                 'Label_binary': 0 # Default to 0 (normal)
             }
 
-            if Ether in packet:
+            if CookedLinux in packet:
+                row['eth_type'] = hex(packet[CookedLinux].proto)
+            elif Ether in packet:
                 row['eth_type'] = hex(packet[Ether].type)
 
             if IP in packet:
@@ -73,15 +70,11 @@ def process_pcap_to_csv(pcap_file, output_csv_file, label_timeline=None):
                     row['src_port'] = packet[TCP].sport
                     row['dst_port'] = packet[TCP].dport
                     row['tcp_flags'] = str(packet[TCP].flags)
-                    row['tcp_seq'] = packet[TCP].seq
-                    row['tcp_ack'] = packet[TCP].ack
-                    row['tcp_window'] = packet[TCP].window
+                    
                 elif UDP in packet:
                     row['src_port'] = packet[UDP].sport
                     row['dst_port'] = packet[UDP].dport
-                elif ICMP in packet:
-                    row['icmp_type'] = packet[ICMP].type
-                    row['icmp_code'] = packet[ICMP].code
+                
             
             if label_timeline is not None:
                 row['Label_multi'] = _get_label_for_timestamp(packet.time, label_timeline)

@@ -8,7 +8,7 @@ instantiating app /home/user/Desktop/dataset_generation/src/controller/ryu_contr
 [INFO] Ryu Flow Monitor Controller started
 instantiating app ryu.topology.switches of Switches
 instantiating app ryu.controller.ofp_handler of OFPHandler
-(39641) wsgi starting up on http://0.0.0.0:8080
-(39641) accepted ('127.0.0.1', 45682)
-127.0.0.1 - - [10/Jul/2025 19:24:35] "GET /hello HTTP/1.1" 200 173 0.001048
+(44565) wsgi starting up on http://0.0.0.0:8080
+(44565) accepted ('127.0.0.1', 38846)
+127.0.0.1 - - [10/Jul/2025 21:33:31] "GET /hello HTTP/1.1" 200 173 0.001059
 [INFO] Switch 0x1 connected

