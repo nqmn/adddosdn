@@ -15,9 +15,13 @@ import time
 import logging
 import argparse
 import subprocess
+import threading
 from pathlib import Path
 import shutil
 from scapy.all import rdpcap, Ether, IP, TCP, UDP, Raw, RandShort, sendp
+import requests # New: For making HTTP requests to the Ryu controller
+import pandas as pd # New: For data manipulation and CSV writing
+from datetime import datetime # New: For timestamping flow data
 
 # Suppress Scapy warnings
 import logging
@@ -30,6 +34,7 @@ from src.utils.enhanced_pcap_processing import (
     improve_capture_reliability,
     verify_pcap_integrity
 )
+from src.utils.process_pcap_to_csv import _get_label_for_timestamp # New: For labeling flow data
 
 # Mininet imports
 from mininet.net import Mininet
@@ -61,6 +66,9 @@ console_handler = logging.StreamHandler()
 console_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
 logger.addHandler(console_handler)
 
+# Suppress debug messages from requests/urllib3
+logging.getLogger("urllib3").setLevel(logging.WARNING)
+
 # --- Configuration ---
 BASE_DIR = Path(__file__).parent.resolve()
 SRC_DIR = BASE_DIR / "src"
@@ -75,7 +83,8 @@ PCAP_FILE_AD_SYN = OUTPUT_DIR / "ad_syn.pcap"
 PCAP_FILE_AD_UDP = OUTPUT_DIR / "ad_udp.pcap"
 PCAP_FILE_AD_SLOW = OUTPUT_DIR / "ad_slow.pcap"
 OUTPUT_CSV_FILE = OUTPUT_DIR / "packet_features.csv"
-OUTPUT_LABELED_CSV_FILE = OUTPUT_DIR / "labeled_packet_features.csv"
+
+OUTPUT_FLOW_CSV_FILE = OUTPUT_DIR / "flow_features.csv" # New: Flow-level dataset output
 RYU_CONTROLLER_APP = SRC_DIR / "controller" / "ryu_controller_app.py" # Assuming this is the app
 
 # Host IPs from scenario.md
@@ -311,6 +320,112 @@ def run_benign_traffic(net, duration):
     logger.info("Benign traffic finished.")
     # No netcat processes to kill
 
+def parse_flow_match_actions(match_str, actions_str):
+    """
+    Parses the match and actions strings from Ryu flow stats to extract specific fields.
+    """
+    in_port = None
+    eth_src = None
+    eth_dst = None
+    out_port = None
+
+    # Parse match string
+    match_pattern = re.compile(r"'in_port': (\d+).*'eth_src': '([0-9a-fA-F:]+)'.*'eth_dst': '([0-9a-fA-F:]+)'")
+    match_match = match_pattern.search(match_str)
+    if match_match:
+        in_port = int(match_match.group(1))
+        eth_src = match_match.group(2)
+        eth_dst = match_match.group(3)
+
+    # Parse actions string
+    actions_pattern = re.compile(r"port=(\d+)")
+    actions_match = actions_pattern.search(actions_str)
+    if actions_match:
+        out_port = int(actions_match.group(1))
+
+    return in_port, eth_src, eth_dst, out_port
+
+def collect_flow_stats(duration, output_file, flow_label_timeline, controller_ip='127.0.0.1', controller_port=8080):
+    """
+    Collects flow statistics from the Ryu controller's REST API periodically
+    and saves them to a CSV file.
+    """
+    logger.info(f"Starting flow statistics collection for {duration} seconds...")
+    flow_data = []
+    start_time = time.time()
+    api_url = f"http://{controller_ip}:{controller_port}/flows"
+
+    while time.time() - start_time < duration:
+        try:
+            response = requests.get(api_url)
+            response.raise_for_status() # Raise an exception for HTTP errors
+            flows = response.json()
+            
+            timestamp = datetime.now().timestamp() # Use timestamp for labeling
+            for flow in flows:
+                in_port, eth_src, eth_dst, out_port = parse_flow_match_actions(flow.get('match', ''), flow.get('actions', ''))
+
+                # Determine labels based on the current timestamp
+                label_multi = _get_label_for_timestamp(timestamp, flow_label_timeline)
+                label_binary = 1 if label_multi != 'normal' else 0
+
+                flow_entry = {
+                    'timestamp': timestamp,
+                    'switch_id': flow.get('switch_id'),
+                    'table_id': flow.get('table_id'),
+                    'cookie': flow.get('cookie'),
+                    'priority': flow.get('priority'),
+                    'in_port': in_port,
+                    'eth_src': eth_src,
+                    'eth_dst': eth_dst,
+                    'out_port': out_port,
+                    'packet_count': flow.get('packet_count'),
+                    'byte_count': flow.get('byte_count'),
+                    'duration_sec': flow.get('duration_sec'),
+                    'duration_nsec': flow.get('duration_nsec'),
+                    'avg_pkt_size': 0,
+                    'pkt_rate': 0,
+                    'byte_rate': 0,
+                    'Label_multi': label_multi,
+                    'Label_binary': label_binary
+                }
+                
+                duration_sec = flow.get('duration_sec', 0)
+                duration_nsec = flow.get('duration_nsec', 0)
+                packet_count = flow.get('packet_count', 0)
+                byte_count = flow.get('byte_count', 0)
+
+                total_duration = duration_sec + (duration_nsec / 1_000_000_000)
+
+                if packet_count > 0:
+                    flow_entry['avg_pkt_size'] = byte_count / packet_count
+                if total_duration > 0:
+                    flow_entry['pkt_rate'] = packet_count / total_duration
+                    flow_entry['byte_rate'] = byte_count / total_duration
+                
+                flow_data.append(flow_entry)
+            time.sleep(1) # Collect every second
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error collecting flow stats: {e}")
+            time.sleep(5) # Wait longer on error before retrying
+    
+    if flow_data:
+        df = pd.DataFrame(flow_data)
+        # Define the desired order of columns
+        ordered_columns = [
+            'timestamp', 'switch_id', 'table_id', 'cookie', 'priority',
+            'in_port', 'eth_src', 'eth_dst', 'out_port',
+            'packet_count', 'byte_count', 'duration_sec', 'duration_nsec',
+            'avg_pkt_size', 'pkt_rate', 'byte_rate',
+            'Label_multi', 'Label_binary'
+        ]
+        # Reindex the DataFrame to ensure the columns are in the desired order
+        df = df.reindex(columns=ordered_columns)
+        df.to_csv(output_file, index=False)
+        logger.info(f"Flow statistics saved to {output_file}")
+    else:
+        logger.warning("No flow data collected.")
+
 def stop_capture(process):
     """Stop the tcpdump process."""
     logger.info(f"Stopping packet capture (PID: {process.pid})...")
@@ -322,7 +437,7 @@ def stop_capture(process):
         process.kill()
     logger.info("Packet capture stopped.")
 
-def run_traffic_scenario(net):
+def run_traffic_scenario(net, flow_label_timeline):
     """Orchestrate the traffic generation phases."""
     if not net:
         logger.error("Mininet network object is not valid. Aborting traffic scenario.")
@@ -331,8 +446,18 @@ def run_traffic_scenario(net):
     logger.info("Starting traffic generation scenario...")
 
     capture_procs = {} # Dictionary to hold all capture processes
+    flow_collector_thread = None # Thread for collecting flow stats
 
     try:
+        # Start flow collection in a separate thread
+        flow_collector_thread = threading.Thread(
+            target=collect_flow_stats,
+            args=(50, OUTPUT_FLOW_CSV_FILE, flow_label_timeline)
+        )
+        flow_collector_thread.daemon = True # Allow main thread to exit even if this thread is running
+        flow_collector_thread.start()
+        logger.info("Flow statistics collection started in background.")
+
         # --- Phase 1: Initialization (5s) ---
         logger.info("Phase 1: Initialization (5s)...")
         time.sleep(5)
@@ -401,21 +526,6 @@ def run_traffic_scenario(net):
                 stop_capture(proc)
         logger.info("Traffic generation scenario finished.")
 
-
-def cleanup(controller_proc, mininet_running):
-    """Clean up all running processes and network configurations."""
-    logger.info("Cleaning up resources...")
-    if controller_proc:
-        logger.info(f"Terminating Ryu controller (PID: {controller_proc.pid})...")
-        controller_proc.terminate()
-        controller_proc.wait()
-
-    # Clean up Mininet
-    logger.info("Cleaning up Mininet environment...")
-    cleanup_cmd = ["mn", "-c"]
-    subprocess.run(cleanup_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    
-    logger.info("Cleanup complete.")
 
 def cleanup(controller_proc, mininet_running):
     """Clean up all running processes and network configurations."""
@@ -533,9 +643,29 @@ def main():
         # Run pingall test
         run_mininet_pingall_test(mininet_network)
 
-        # 3. Run Scenario
+        # Get scenario start time after Mininet setup
         scenario_start_time = time.time()
-        run_traffic_scenario(mininet_network)
+
+        # Define the label timeline for flow data based on scenario phases
+        flow_label_timeline = [
+            # Phase 1: Initialization (5s)
+            {'start_time': scenario_start_time, 'end_time': scenario_start_time + 5, 'label': 'normal'},
+            # Phase 2: Normal Traffic (5s)
+            {'start_time': scenario_start_time + 5, 'end_time': scenario_start_time + 10, 'label': 'normal'},
+            # Phase 3.1: Traditional DDoS Attacks (15s total)
+            {'start_time': scenario_start_time + 10, 'end_time': scenario_start_time + 15, 'label': 'syn_flood'},
+            {'start_time': scenario_start_time + 15, 'end_time': scenario_start_time + 20, 'label': 'udp_flood'},
+            {'start_time': scenario_start_time + 20, 'end_time': scenario_start_time + 25, 'label': 'icmp_flood'},
+            # Phase 3.2: Adversarial DDoS Attacks (20s total)
+            {'start_time': scenario_start_time + 25, 'end_time': scenario_start_time + 30, 'label': 'ad_syn'},
+            {'start_time': scenario_start_time + 30, 'end_time': scenario_start_time + 35, 'label': 'ad_udp'},
+            {'start_time': scenario_start_time + 35, 'end_time': scenario_start_time + 40, 'label': 'ad_slow'},
+            # Phase 4: Cooldown (5s)
+            {'start_time': scenario_start_time + 40, 'end_time': scenario_start_time + 45, 'label': 'normal'},
+        ]
+
+        # 3. Run Scenario
+        run_traffic_scenario(mininet_network, flow_label_timeline)
 
         logger.info("PCAP generation complete.")
 
@@ -604,18 +734,23 @@ def main():
                 logger.warning(f"No CSV generated for {pcap_file}.")
 
         if all_labeled_dfs:
-            import pandas as pd
             final_df = pd.concat(all_labeled_dfs, ignore_index=True)
-            final_df.to_csv(OUTPUT_LABELED_CSV_FILE, index=False)
-            logger.info(f"Combined labeled CSV generated at: {OUTPUT_LABELED_CSV_FILE}")
+            final_df.to_csv(OUTPUT_CSV_FILE, index=False)
+            logger.info(f"Combined labeled CSV generated at: {OUTPUT_CSV_FILE}")
             # 5. Verify labels in CSV (can be adapted for combined CSV if needed, or individual verification)
             # For now, we'll just check if the file exists
-            if OUTPUT_LABELED_CSV_FILE.exists():
+            if OUTPUT_CSV_FILE.exists():
                 logger.info("Final combined CSV created successfully.")
             else:
                 logger.error("Failed to create final combined CSV.")
         else:
             logger.error("No labeled dataframes were generated. Final CSV will not be created.")
+
+        # Check if flow data was collected
+        if OUTPUT_FLOW_CSV_FILE.exists():
+            logger.info(f"Flow-level dataset generated at: {OUTPUT_FLOW_CSV_FILE}")
+        else:
+            logger.warning("No flow-level dataset was generated.")
 
     except Exception as e:
         logger.error(f"An unexpected error occurred: {e}", exc_info=True)
@@ -629,56 +764,3 @@ if __name__ == "__main__":
         logger.error("This script must be run as root for Mininet.")
         sys.exit(1)
     main()
-
-def verify_labels_in_csv(csv_file_path, label_timeline):
-    """
-    Verifies the presence and validity of labels in the generated CSV file.
-    """
-    logger.info(f"Verifying labels in {csv_file_path}...")
-    try:
-        import pandas as pd
-        df = pd.read_csv(csv_file_path)
-
-        if df.empty:
-            logger.error("CSV file is empty. No labels to verify.")
-            return False
-
-        # Expected labels from the timeline
-        expected_multi_labels = set(entry['label'] for entry in label_timeline)
-        expected_multi_labels.discard('normal') # Normal is handled separately for binary check
-
-        # Actual labels in the CSV
-        actual_multi_labels = set(df['Label_multi'].unique())
-
-        # Check if all expected attack labels are present
-        missing_labels = expected_multi_labels - actual_multi_labels
-        if missing_labels:
-            logger.error(f"Missing expected attack labels in CSV: {missing_labels}")
-            return False
-        else:
-            logger.info("All expected attack labels are present in CSV.")
-
-        # Verify Label_binary consistency
-        # All attack labels should have Label_binary = 1
-        attack_labels_in_df = [label for label in actual_multi_labels if label != 'normal']
-        for label in attack_labels_in_df:
-            if not (df[df['Label_multi'] == label]['Label_binary'] == 1).all():
-                logger.error(f"Inconsistent Label_binary for attack label '{label}'. Expected 1.")
-                return False
-
-        # All normal labels should have Label_binary = 0
-        if 'normal' in actual_multi_labels:
-            if not (df[df['Label_multi'] == 'normal']['Label_binary'] == 0).all():
-                logger.error("Inconsistent Label_binary for 'normal' label. Expected 0.")
-                return False
-
-        logger.info("Label_binary consistency check passed.")
-        logger.info("CSV label verification complete and successful.")
-        return True
-
-    except FileNotFoundError:
-        logger.error(f"CSV file not found at {csv_file_path}")
-        return False
-    except Exception as e:
-        logger.error(f"Error during CSV label verification: {e}", exc_info=True)
-        return False
