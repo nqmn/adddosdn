@@ -51,24 +51,6 @@ from gen_icmp_flood import run_attack as run_icmp_flood
 # Assuming a similar structure for the advanced attacks script
 from gen_advanced_adversarial_ddos_attacks import run_attack as run_adv_ddos
 
-# Configure logging
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-logger.propagate = False # Prevent messages from being passed to the root logger
-
-# File handler
-file_handler = logging.FileHandler('test.log')
-file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-logger.addHandler(file_handler)
-
-# Console handler
-console_handler = logging.StreamHandler()
-console_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-logger.addHandler(console_handler)
-
-# Suppress debug messages from requests/urllib3
-logging.getLogger("urllib3").setLevel(logging.WARNING)
-
 # --- Configuration ---
 BASE_DIR = Path(__file__).parent.resolve()
 SRC_DIR = BASE_DIR / "src"
@@ -86,6 +68,40 @@ OUTPUT_CSV_FILE = OUTPUT_DIR / "packet_features.csv"
 
 OUTPUT_FLOW_CSV_FILE = OUTPUT_DIR / "flow_features.csv" # New: Flow-level dataset output
 RYU_CONTROLLER_APP = SRC_DIR / "controller" / "ryu_controller_app.py" # Assuming this is the app
+
+# Configure logging
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+logger.propagate = False # Prevent messages from being passed to the root logger
+
+# File handler
+file_handler = logging.FileHandler('test.log')
+file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+logger.addHandler(file_handler)
+
+# Console handler
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+logger.addHandler(console_handler)
+
+# Configure a dedicated logger for attack details
+attack_logger = logging.getLogger('attack_logger')
+attack_logger.setLevel(logging.DEBUG)
+attack_logger.propagate = False # Prevent messages from being passed to the root logger
+
+# File handler for attack.log
+attack_log_file_handler = logging.FileHandler(OUTPUT_DIR / 'attack.log')
+attack_log_file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+attack_logger.addHandler(attack_log_file_handler)
+
+# Console handler for attack_logger
+attack_console_handler = logging.StreamHandler()
+attack_console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+attack_console_handler.setLevel(logging.WARNING)
+attack_logger.addHandler(attack_console_handler)
+
+# Suppress debug messages from requests/urllib3
+logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 # Host IPs from scenario.md
 HOST_IPS = {
@@ -206,7 +222,7 @@ def setup_mininet(controller_ip='127.0.0.1', controller_port=6653):
     
     # Also set the root logger to ensure all mininet logs are captured
     root_logger = logging.getLogger()
-    root_logger.setLevel(logging.DEBUG)
+    root_logger.setLevel(logging.INFO)
     root_logger.addHandler(file_handler)
     
     # Log Mininet version for debugging
@@ -476,20 +492,26 @@ def run_traffic_scenario(net, flow_label_timeline):
         logger.info("Attack: SYN Flood (5s) | h1 -> h6")
         capture_procs['syn_flood'] = start_capture(net, PCAP_FILE_SYN_FLOOD)
         time.sleep(2)
-        run_syn_flood(h1, HOST_IPS['h6'], duration=5)
+        attack_proc_syn = run_syn_flood(h1, HOST_IPS['h6'], duration=5)
+        attack_proc_syn.wait() # Wait for the process to terminate
         stop_capture(capture_procs['syn_flood'])
+        attack_logger.info("Attack: SYN Flood completed.")
 
         logger.info("Attack: UDP Flood (5s) | h2 -> h4")
         capture_procs['udp_flood'] = start_capture(net, PCAP_FILE_UDP_FLOOD)
         time.sleep(2)
-        run_udp_flood(h2, HOST_IPS['h4'], duration=5)
+        attack_proc_udp = run_udp_flood(h2, HOST_IPS['h4'], duration=5)
+        attack_proc_udp.wait() # Wait for the process to terminate
         stop_capture(capture_procs['udp_flood'])
+        attack_logger.info("Attack: UDP Flood completed.")
 
         logger.info("Attack: ICMP Flood (5s) | h2 -> h4")
         capture_procs['icmp_flood'] = start_capture(net, PCAP_FILE_ICMP_FLOOD)
         time.sleep(2)
-        run_icmp_flood(h2, HOST_IPS['h4'], duration=5)
+        attack_proc_icmp = run_icmp_flood(h2, HOST_IPS['h4'], duration=5)
+        attack_proc_icmp.wait() # Wait for the process to terminate
         stop_capture(capture_procs['icmp_flood'])
+        attack_logger.info("Attack: ICMP Flood completed.")
 
         # --- Phase 3.2: Adversarial DDoS Attacks (20s total) ---
         logger.info("Phase 3.2: Adversarial DDoS Attacks (20s total)...")
@@ -509,8 +531,24 @@ def run_traffic_scenario(net, flow_label_timeline):
         logger.info("Attack: Adversarial Slow Read (5s) | h2 -> h6")
         capture_procs['ad_slow'] = start_capture(net, PCAP_FILE_AD_SLOW)
         time.sleep(2)
-        run_adv_ddos(h2, HOST_IPS['h6'], duration=5, attack_variant="ad_slow", output_dir=OUTPUT_DIR)
+        
+        # Start a simple HTTP server on h6 for the slowhttptest attack
+        h6 = net.get('h6')
+        h6_ip = HOST_IPS['h6']
+        http_server_cmd = f"python3 -m http.server 80 --bind {h6_ip}"
+        logger.info(f"Starting HTTP server on h6 ({h6_ip}:80)...")
+        http_server_proc = h6.popen(http_server_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        time.sleep(1) # Give server a moment to start
+
+        attack_proc_ad_slow = run_adv_ddos(h2, HOST_IPS['h6'], duration=5, attack_variant="ad_slow", output_dir=OUTPUT_DIR)
         stop_capture(capture_procs['ad_slow'])
+        attack_logger.info("Attack: Adversarial Slow Read completed.")
+        
+        # Stop the HTTP server on h6
+        logger.info("Stopping HTTP server on h6...")
+        http_server_proc.terminate()
+        http_server_proc.wait(timeout=5)
+        logger.info("HTTP server on h6 stopped.")
 
         # --- Phase 4: Cooldown (5s) ---
         logger.info("Phase 4: Cooldown (5s)...")
