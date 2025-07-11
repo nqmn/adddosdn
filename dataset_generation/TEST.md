@@ -53,7 +53,7 @@ The `test.py` script automates the following steps:
         | Adversarial TCP State Exhaustion | `h2` | `h6` | Control/Data | Advanced SYN flood variant designed to evade detection. |
         | Adversarial Application Layer | `h2` | `h6` | Application | Targets application layer vulnerabilities, harder to detect than volumetric attacks. |
         | Adversarial Slow Read | `h2` | `h6` | Application | Keeps connections open by reading data slowly, exhausting server resources. |
-    *   **Phase 4: Cooldown (5 seconds):** A final pause after all traffic generation.
+    *   **Phase 4: Cooldown (5 seconds):** A final pause after all traffic generation. For flow data collection, this phase is extended to cover the entire 50-second duration of flow statistics collection, ensuring all lingering flow entries are labeled as normal.
 
 3.  **Data Collection and Dataset Creation:**
     *   **Concurrent Flow Statistics Collection:** Simultaneously with traffic generation, the script continuously queries the Ryu controller's REST API (`/flows` endpoint) to collect real-time flow statistics. This data is saved to `output/flow_features.csv`.
@@ -130,6 +130,31 @@ Upon successful execution, the `output/` directory will contain:
     | `Label_multi` | Multi-class label indicating the type of traffic (e.g., 'normal', 'syn_flood', 'udp_flood'). | Primary label for multi-class classification tasks. |
     | `Label_binary` | Binary label indicating whether the traffic is normal (0) or attack (1). | Primary label for binary classification tasks. |
 
-## Verification
+## Labeling Process
 
-The script includes internal verification steps, such as `verify_tools()`, `check_controller_health()`, `run_mininet_pingall_test()`, and `verify_pcap_integrity()`. Additionally, the `verify_labels_in_csv` function (though not called in `main` for the final combined CSV) demonstrates the logic for ensuring that the generated `packet_features.csv` contains the expected labels and that binary labels are consistent with multi-class labels.
+The dataset generation employs a time-based labeling mechanism to assign appropriate attack or normal labels to both packet-level and flow-level data. This ensures that each data point is correctly categorized based on the traffic scenario phase it belongs to.
+
+### Packet-Level Labeling
+
+For packet-level data, labeling occurs during the processing of individual PCAP files:
+1.  **Individual PCAP Files:** Each PCAP file (`normal.pcap`, `syn_flood.pcap`, etc.) is generated during a specific, isolated traffic phase.
+2.  **Timestamp Baseline:** Before feature extraction, `validate_and_fix_pcap_timestamps` is used to establish a reliable baseline timestamp for the packets within that specific PCAP file.
+3.  **Phase-Specific Timeline:** A `label_timeline` is created for each PCAP. This timeline is simple, typically covering the entire duration of the PCAP with a single label corresponding to the traffic type captured (e.g., 'normal' for `normal.pcap`, 'syn_flood' for `syn_flood.pcap`).
+4.  **Feature Extraction and Label Assignment:** The `enhanced_process_pcap_to_csv` function extracts features from the packets. For each packet, its timestamp is compared against the phase-specific `label_timeline` using the `_get_label_for_timestamp` helper function.
+    *   `Label_multi`: Assigned the specific attack type (e.g., 'syn_flood', 'ad_slow') or 'normal'.
+    *   `Label_binary`: Assigned `1` for any attack type and `0` for 'normal' traffic.
+5.  **Consolidation:** After individual processing, all temporary CSVs are concatenated into the final `packet_features.csv`.
+
+### Flow-Level Labeling
+
+Flow-level data is labeled concurrently with the entire traffic generation scenario:
+1.  **Continuous Collection:** The `collect_flow_stats` function runs in a separate thread, continuously polling the Ryu controller's `/flows` API endpoint.
+2.  **Real-time Timestamping:** Each time flow statistics are collected, the current system timestamp (`datetime.now().timestamp()`) is recorded for the flow entries.
+3.  **Overall Scenario Timeline:** A single, comprehensive `flow_label_timeline` is defined in the `main` function. This timeline spans the entire duration of the traffic generation scenario, with precise start and end times for each phase (Initialization, Normal, Traditional Attacks, Adversarial Attacks, Cooldown).
+4.  **Robust Time Matching:** To account for potential delays in flow reporting by the controller and the persistence of flow entries in the flow table (which can linger for several seconds after the actual traffic has ceased), a small epsilon (e.g., 0.1 seconds) is added to the `end_time` of each phase in the `flow_label_timeline`. This ensures that flow records collected slightly after a phase's nominal end are still correctly associated with that phase's label.
+5.  **Label Assignment:** For each collected flow entry, its `timestamp` is compared against this overall `flow_label_timeline` using the `_get_label_for_timestamp` helper function.
+    *   `Label_multi`: Assigned the specific attack type or 'normal' based on the current timestamp's position within the `flow_label_timeline`.
+    *   `Label_binary`: Assigned `1` for any attack type and `0` for 'normal' traffic.
+6.  **Direct Output:** All collected and labeled flow entries are directly written to `flow_features.csv`.
+
+This dual-layer labeling approach ensures that both granular packet-level events and aggregated flow-level behaviors are accurately categorized according to the experimental design, providing a rich dataset for analysis.

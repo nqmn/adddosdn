@@ -1,1088 +1,1138 @@
-2025-07-10 21:33:31,821 - mininet - DEBUG - *** errRun: ['grep', '-c', 'processor', '/proc/cpuinfo'] 
+2025-07-11 09:15:07,174 - mininet - DEBUG - *** errRun: ['grep', '-c', 'processor', '/proc/cpuinfo'] 
 
-2025-07-10 21:33:31,825 - mininet - DEBUG - 4
+2025-07-11 09:15:07,179 - mininet - DEBUG - 4
   0
-2025-07-10 21:33:31,825 - mininet - DEBUG - *** Setting resource limits
+2025-07-11 09:15:07,179 - mininet - DEBUG - *** Setting resource limits
 
-2025-07-10 21:33:31,825 - mininet - DEBUG - *** errRun: ['which', 'mnexec'] 
+2025-07-11 09:15:07,180 - mininet - DEBUG - *** errRun: ['which', 'mnexec'] 
 
-2025-07-10 21:33:31,828 - mininet - DEBUG - /usr/bin/mnexec
+2025-07-11 09:15:07,184 - mininet - DEBUG - /usr/bin/mnexec
   0
-2025-07-10 21:33:31,828 - mininet - DEBUG - *** errRun: ['which', 'ifconfig'] 
+2025-07-11 09:15:07,184 - mininet - DEBUG - *** errRun: ['which', 'ifconfig'] 
 
-2025-07-10 21:33:31,831 - mininet - DEBUG - /sbin/ifconfig
+2025-07-11 09:15:07,187 - mininet - DEBUG - /sbin/ifconfig
   0
-2025-07-10 21:33:31,834 - mininet - DEBUG - _popen ['mnexec', '-cd', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:c0'] 45141
-2025-07-10 21:33:31,837 - mininet - DEBUG - *** c0 : ('unset HISTFILE; stty -echo; set +m',)
+2025-07-11 09:15:07,191 - mininet - DEBUG - _popen ['mnexec', '-cd', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:c0'] 70340
+2025-07-11 09:15:07,194 - mininet - DEBUG - *** c0 : ('unset HISTFILE; stty -echo; set +m',)
 
-2025-07-10 21:33:31,837 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+2025-07-11 09:15:07,195 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
 
-2025-07-10 21:33:31,838 - mininet - DEBUG - 
-2025-07-10 21:33:31,838 - mininet - DEBUG - *** c0 : ('echo A | telnet -e A 127.0.0.1 6653',)
+2025-07-11 09:15:07,195 - mininet - DEBUG - 
+2025-07-11 09:15:07,195 - mininet - DEBUG - *** c0 : ('echo A | telnet -e A 127.0.0.1 6653',)
 
-2025-07-10 21:33:31,840 - mininet - DEBUG - Telnet escape character is 'A'.
+2025-07-11 09:15:07,197 - mininet - DEBUG - Telnet escape character is 'A'.
 Trying 127.0.0.1...
+2025-07-11 09:15:07,197 - mininet - DEBUG - 
 
-2025-07-10 21:33:31,840 - mininet - DEBUG - Connected to 127.0.0.1.
+2025-07-11 09:15:07,198 - mininet - DEBUG - Connected to 127.0.0.1.
 Escape character is 'A'.
 
-2025-07-10 21:33:31,840 - mininet - DEBUG - 
 telnet> Connection closed.
 
-2025-07-10 21:33:31,840 - mininet - DEBUG - 
-2025-07-10 21:33:31,840 - mininet - INFO - *** Creating network
+2025-07-11 09:15:07,198 - mininet - INFO - *** Creating network
 
-2025-07-10 21:33:31,840 - mininet - INFO - *** Adding hosts:
+2025-07-11 09:15:07,198 - mininet - INFO - *** Adding hosts:
 
-2025-07-10 21:33:31,841 - mininet - DEBUG - *** errRun: ['which', 'mnexec'] 
+2025-07-11 09:15:07,199 - mininet - DEBUG - *** errRun: ['which', 'mnexec'] 
 
-2025-07-10 21:33:31,843 - mininet - DEBUG - /usr/bin/mnexec
+2025-07-11 09:15:07,202 - mininet - DEBUG - /usr/bin/mnexec
   0
-2025-07-10 21:33:31,843 - mininet - DEBUG - *** errRun: ['which', 'ifconfig'] 
+2025-07-11 09:15:07,202 - mininet - DEBUG - *** errRun: ['which', 'ifconfig'] 
 
-2025-07-10 21:33:31,845 - mininet - DEBUG - /sbin/ifconfig
+2025-07-11 09:15:07,205 - mininet - DEBUG - /sbin/ifconfig
   0
-2025-07-10 21:33:31,847 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h1'] 45155
-2025-07-10 21:33:31,852 - mininet - DEBUG - *** h1 : ('unset HISTFILE; stty -echo; set +m',)
+2025-07-11 09:15:07,208 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h1'] 70353
+2025-07-11 09:15:07,213 - mininet - DEBUG - *** h1 : ('unset HISTFILE; stty -echo; set +m',)
 
-2025-07-10 21:33:31,852 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+2025-07-11 09:15:07,213 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
 
-2025-07-10 21:33:31,853 - mininet - DEBUG - 
-2025-07-10 21:33:31,853 - mininet - INFO - h1 
-2025-07-10 21:33:31,855 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h2'] 45157
-2025-07-10 21:33:31,859 - mininet - DEBUG - *** h2 : ('unset HISTFILE; stty -echo; set +m',)
+2025-07-11 09:15:07,214 - mininet - DEBUG - 
+2025-07-11 09:15:07,214 - mininet - INFO - h1 
+2025-07-11 09:15:07,217 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h2'] 70358
+2025-07-11 09:15:07,221 - mininet - DEBUG - *** h2 : ('unset HISTFILE; stty -echo; set +m',)
 
-2025-07-10 21:33:31,859 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+2025-07-11 09:15:07,221 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
 
-2025-07-10 21:33:31,860 - mininet - DEBUG - 
-2025-07-10 21:33:31,860 - mininet - INFO - h2 
-2025-07-10 21:33:31,862 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h3'] 45161
-2025-07-10 21:33:31,866 - mininet - DEBUG - *** h3 : ('unset HISTFILE; stty -echo; set +m',)
+2025-07-11 09:15:07,222 - mininet - DEBUG - 
+2025-07-11 09:15:07,222 - mininet - INFO - h2 
+2025-07-11 09:15:07,225 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h3'] 70362
+2025-07-11 09:15:07,229 - mininet - DEBUG - *** h3 : ('unset HISTFILE; stty -echo; set +m',)
 
-2025-07-10 21:33:31,867 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+2025-07-11 09:15:07,230 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
 
-2025-07-10 21:33:31,867 - mininet - DEBUG - 
-2025-07-10 21:33:31,867 - mininet - INFO - h3 
-2025-07-10 21:33:31,870 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h4'] 45171
-2025-07-10 21:33:31,874 - mininet - DEBUG - *** h4 : ('unset HISTFILE; stty -echo; set +m',)
+2025-07-11 09:15:07,230 - mininet - DEBUG - 
+2025-07-11 09:15:07,230 - mininet - INFO - h3 
+2025-07-11 09:15:07,234 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h4'] 70372
+2025-07-11 09:15:07,238 - mininet - DEBUG - *** h4 : ('unset HISTFILE; stty -echo; set +m',)
 
-2025-07-10 21:33:31,874 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+2025-07-11 09:15:07,238 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
 
-2025-07-10 21:33:31,875 - mininet - DEBUG - 
-2025-07-10 21:33:31,875 - mininet - INFO - h4 
-2025-07-10 21:33:31,877 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h5'] 45175
-2025-07-10 21:33:31,881 - mininet - DEBUG - *** h5 : ('unset HISTFILE; stty -echo; set +m',)
+2025-07-11 09:15:07,239 - mininet - DEBUG - 
+2025-07-11 09:15:07,239 - mininet - INFO - h4 
+2025-07-11 09:15:07,242 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h5'] 70376
+2025-07-11 09:15:07,246 - mininet - DEBUG - *** h5 : ('unset HISTFILE; stty -echo; set +m',)
 
-2025-07-10 21:33:31,881 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+2025-07-11 09:15:07,246 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
 
-2025-07-10 21:33:31,882 - mininet - DEBUG - 
-2025-07-10 21:33:31,882 - mininet - INFO - h5 
-2025-07-10 21:33:31,884 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h6'] 45177
-2025-07-10 21:33:31,888 - mininet - DEBUG - *** h6 : ('unset HISTFILE; stty -echo; set +m',)
+2025-07-11 09:15:07,247 - mininet - DEBUG - 
+2025-07-11 09:15:07,247 - mininet - INFO - h5 
+2025-07-11 09:15:07,250 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h6'] 70382
+2025-07-11 09:15:07,254 - mininet - DEBUG - *** h6 : ('unset HISTFILE; stty -echo; set +m',)
 
-2025-07-10 21:33:31,888 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+2025-07-11 09:15:07,254 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
 
-2025-07-10 21:33:31,889 - mininet - DEBUG - 
-2025-07-10 21:33:31,889 - mininet - INFO - h6 
-2025-07-10 21:33:31,889 - mininet - INFO - 
+2025-07-11 09:15:07,255 - mininet - DEBUG - 
+2025-07-11 09:15:07,255 - mininet - INFO - h6 
+2025-07-11 09:15:07,255 - mininet - INFO - 
 *** Adding switches:
 
-2025-07-10 21:33:31,889 - mininet - DEBUG - *** errRun: ['which', 'ovs-vsctl'] 
+2025-07-11 09:15:07,256 - mininet - DEBUG - *** errRun: ['which', 'ovs-vsctl'] 
 
-2025-07-10 21:33:31,891 - mininet - DEBUG - /usr/bin/ovs-vsctl
+2025-07-11 09:15:07,259 - mininet - DEBUG - /usr/bin/ovs-vsctl
   0
-2025-07-10 21:33:31,892 - mininet - DEBUG - *** errRun: ['ovs-vsctl', '-t', '1', 'show'] 
+2025-07-11 09:15:07,259 - mininet - DEBUG - *** errRun: ['ovs-vsctl', '-t', '1', 'show'] 
 
-2025-07-10 21:33:31,896 - mininet - DEBUG - df6e9c01-0abd-46aa-981e-d48f78358bac
+2025-07-11 09:15:07,264 - mininet - DEBUG - df6e9c01-0abd-46aa-981e-d48f78358bac
     ovs_version: "2.9.8"
   0
-2025-07-10 21:33:31,896 - mininet - DEBUG - *** errRun: ['ovs-vsctl', '--version'] 
+2025-07-11 09:15:07,265 - mininet - DEBUG - *** errRun: ['ovs-vsctl', '--version'] 
 
-2025-07-10 21:33:31,900 - mininet - DEBUG - ovs-vsctl (Open vSwitch) 2.9.8
+2025-07-11 09:15:07,269 - mininet - DEBUG - ovs-vsctl (Open vSwitch) 2.9.8
 DB Schema 7.15.1
   0
-2025-07-10 21:33:31,902 - mininet - DEBUG - _popen ['mnexec', '-cd', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:s1'] 45194
-2025-07-10 21:33:31,905 - mininet - DEBUG - *** s1 : ('unset HISTFILE; stty -echo; set +m',)
+2025-07-11 09:15:07,272 - mininet - DEBUG - _popen ['mnexec', '-cd', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:s1'] 70395
+2025-07-11 09:15:07,275 - mininet - DEBUG - *** s1 : ('unset HISTFILE; stty -echo; set +m',)
 
-2025-07-10 21:33:31,905 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+2025-07-11 09:15:07,275 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
 
-2025-07-10 21:33:31,906 - mininet - DEBUG - 
-2025-07-10 21:33:31,906 - mininet - DEBUG - 
+2025-07-11 09:15:07,276 - mininet - DEBUG - 
+2025-07-11 09:15:07,276 - mininet - DEBUG - 
 
-2025-07-10 21:33:31,906 - mininet - DEBUG - added intf lo (0) to node s1
+2025-07-11 09:15:07,276 - mininet - DEBUG - added intf lo (0) to node s1
 
-2025-07-10 21:33:31,906 - mininet - DEBUG - *** s1 : ('ifconfig', 'lo', 'up')
+2025-07-11 09:15:07,277 - mininet - DEBUG - *** s1 : ('ifconfig', 'lo', 'up')
 
-2025-07-10 21:33:31,907 - mininet - DEBUG - 
-2025-07-10 21:33:31,908 - mininet - INFO - s1 
-2025-07-10 21:33:31,908 - mininet - INFO - 
+2025-07-11 09:15:07,278 - mininet - DEBUG - 
+2025-07-11 09:15:07,278 - mininet - INFO - s1 
+2025-07-11 09:15:07,278 - mininet - INFO - 
 *** Adding links:
 
-2025-07-10 21:33:31,908 - mininet - DEBUG - *** h1 : ('ip link add name h1-eth0 address d6:e0:53:3f:dc:0a type veth peer name s1-eth1 address de:40:3e:20:b1:ee netns 45194',)
+2025-07-11 09:15:07,278 - mininet - DEBUG - *** h1 : ('ip link add name h1-eth0 address 9e:85:7b:b0:06:d4 type veth peer name s1-eth1 address fa:0d:42:7c:92:ea netns 70395',)
 
-2025-07-10 21:33:31,910 - mininet - DEBUG - 
-2025-07-10 21:33:31,910 - mininet - DEBUG - 
+2025-07-11 09:15:07,280 - mininet - DEBUG - 
+2025-07-11 09:15:07,280 - mininet - DEBUG - 
 
-2025-07-10 21:33:31,910 - mininet - DEBUG - added intf h1-eth0 (0) to node h1
+2025-07-11 09:15:07,280 - mininet - DEBUG - added intf h1-eth0 (0) to node h1
 
-2025-07-10 21:33:31,910 - mininet - DEBUG - moving h1-eth0 into namespace for h1 
+2025-07-11 09:15:07,280 - mininet - DEBUG - moving h1-eth0 into namespace for h1 
 
-2025-07-10 21:33:31,910 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'up')
+2025-07-11 09:15:07,280 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'up')
 
-2025-07-10 21:33:31,911 - mininet - DEBUG - 
-2025-07-10 21:33:31,911 - mininet - DEBUG - 
+2025-07-11 09:15:07,281 - mininet - DEBUG - 
+2025-07-11 09:15:07,281 - mininet - DEBUG - 
 
-2025-07-10 21:33:31,911 - mininet - DEBUG - added intf s1-eth1 (1) to node s1
+2025-07-11 09:15:07,281 - mininet - DEBUG - added intf s1-eth1 (1) to node s1
 
-2025-07-10 21:33:31,911 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth1', 'up')
+2025-07-11 09:15:07,281 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth1', 'up')
 
-2025-07-10 21:33:31,916 - mininet - DEBUG - 
-2025-07-10 21:33:31,916 - mininet - INFO - (h1, s1) 
-2025-07-10 21:33:31,916 - mininet - DEBUG - *** h2 : ('ip link add name h2-eth0 address 6e:63:c5:f6:4b:f4 type veth peer name s1-eth2 address 62:c5:60:97:a2:31 netns 45194',)
+2025-07-11 09:15:07,284 - mininet - DEBUG - 
+2025-07-11 09:15:07,284 - mininet - INFO - (h1, s1) 
+2025-07-11 09:15:07,284 - mininet - DEBUG - *** h2 : ('ip link add name h2-eth0 address fe:ba:dd:f1:5d:e1 type veth peer name s1-eth2 address 06:b0:df:38:a9:97 netns 70395',)
 
-2025-07-10 21:33:31,918 - mininet - DEBUG - 
-2025-07-10 21:33:31,918 - mininet - DEBUG - 
+2025-07-11 09:15:07,287 - mininet - DEBUG - 
+2025-07-11 09:15:07,287 - mininet - DEBUG - 
 
-2025-07-10 21:33:31,918 - mininet - DEBUG - added intf h2-eth0 (0) to node h2
+2025-07-11 09:15:07,287 - mininet - DEBUG - added intf h2-eth0 (0) to node h2
 
-2025-07-10 21:33:31,918 - mininet - DEBUG - moving h2-eth0 into namespace for h2 
+2025-07-11 09:15:07,287 - mininet - DEBUG - moving h2-eth0 into namespace for h2 
 
-2025-07-10 21:33:31,919 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'up')
+2025-07-11 09:15:07,287 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'up')
 
-2025-07-10 21:33:31,923 - mininet - DEBUG - 
-2025-07-10 21:33:31,923 - mininet - DEBUG - 
+2025-07-11 09:15:07,291 - mininet - DEBUG - 
+2025-07-11 09:15:07,291 - mininet - DEBUG - 
 
-2025-07-10 21:33:31,923 - mininet - DEBUG - added intf s1-eth2 (2) to node s1
+2025-07-11 09:15:07,291 - mininet - DEBUG - added intf s1-eth2 (2) to node s1
 
-2025-07-10 21:33:31,923 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth2', 'up')
+2025-07-11 09:15:07,291 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth2', 'up')
 
-2025-07-10 21:33:31,926 - mininet - DEBUG - 
-2025-07-10 21:33:31,926 - mininet - INFO - (h2, s1) 
-2025-07-10 21:33:31,927 - mininet - DEBUG - *** h3 : ('ip link add name h3-eth0 address 7a:27:94:96:a9:3f type veth peer name s1-eth3 address ba:63:c6:84:89:c8 netns 45194',)
+2025-07-11 09:15:07,292 - mininet - DEBUG - 
+2025-07-11 09:15:07,292 - mininet - INFO - (h2, s1) 
+2025-07-11 09:15:07,293 - mininet - DEBUG - *** h3 : ('ip link add name h3-eth0 address 66:fb:56:ef:cd:4c type veth peer name s1-eth3 address 6a:2d:49:89:4e:21 netns 70395',)
 
-2025-07-10 21:33:31,933 - mininet - DEBUG - 
-2025-07-10 21:33:31,933 - mininet - DEBUG - 
+2025-07-11 09:15:07,297 - mininet - DEBUG - 
+2025-07-11 09:15:07,297 - mininet - DEBUG - 
 
-2025-07-10 21:33:31,933 - mininet - DEBUG - added intf h3-eth0 (0) to node h3
+2025-07-11 09:15:07,297 - mininet - DEBUG - added intf h3-eth0 (0) to node h3
 
-2025-07-10 21:33:31,933 - mininet - DEBUG - moving h3-eth0 into namespace for h3 
+2025-07-11 09:15:07,297 - mininet - DEBUG - moving h3-eth0 into namespace for h3 
 
-2025-07-10 21:33:31,934 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'up')
+2025-07-11 09:15:07,297 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'up')
 
-2025-07-10 21:33:31,938 - mininet - DEBUG - 
-2025-07-10 21:33:31,938 - mininet - DEBUG - 
+2025-07-11 09:15:07,299 - mininet - DEBUG - 
+2025-07-11 09:15:07,299 - mininet - DEBUG - 
 
-2025-07-10 21:33:31,938 - mininet - DEBUG - added intf s1-eth3 (3) to node s1
+2025-07-11 09:15:07,299 - mininet - DEBUG - added intf s1-eth3 (3) to node s1
 
-2025-07-10 21:33:31,938 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth3', 'up')
+2025-07-11 09:15:07,299 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth3', 'up')
 
-2025-07-10 21:33:31,940 - mininet - DEBUG - 
-2025-07-10 21:33:31,940 - mininet - INFO - (h3, s1) 
-2025-07-10 21:33:31,940 - mininet - DEBUG - *** h4 : ('ip link add name h4-eth0 address 82:0b:7c:3d:e4:07 type veth peer name s1-eth4 address 5e:dc:d1:d2:2f:90 netns 45194',)
+2025-07-11 09:15:07,301 - mininet - DEBUG - 
+2025-07-11 09:15:07,301 - mininet - INFO - (h3, s1) 
+2025-07-11 09:15:07,301 - mininet - DEBUG - *** h4 : ('ip link add name h4-eth0 address 6a:8f:cc:13:07:3e type veth peer name s1-eth4 address 72:da:b6:95:5f:78 netns 70395',)
 
-2025-07-10 21:33:31,943 - mininet - DEBUG - 
-2025-07-10 21:33:31,943 - mininet - DEBUG - 
+2025-07-11 09:15:07,303 - mininet - DEBUG - 
+2025-07-11 09:15:07,303 - mininet - DEBUG - 
 
-2025-07-10 21:33:31,943 - mininet - DEBUG - added intf h4-eth0 (0) to node h4
+2025-07-11 09:15:07,304 - mininet - DEBUG - added intf h4-eth0 (0) to node h4
 
-2025-07-10 21:33:31,943 - mininet - DEBUG - moving h4-eth0 into namespace for h4 
+2025-07-11 09:15:07,304 - mininet - DEBUG - moving h4-eth0 into namespace for h4 
 
-2025-07-10 21:33:31,943 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'up')
+2025-07-11 09:15:07,304 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'up')
 
-2025-07-10 21:33:31,944 - mininet - DEBUG - 
-2025-07-10 21:33:31,944 - mininet - DEBUG - 
+2025-07-11 09:15:07,306 - mininet - DEBUG - 
+2025-07-11 09:15:07,306 - mininet - DEBUG - 
 
-2025-07-10 21:33:31,944 - mininet - DEBUG - added intf s1-eth4 (4) to node s1
+2025-07-11 09:15:07,306 - mininet - DEBUG - added intf s1-eth4 (4) to node s1
 
-2025-07-10 21:33:31,944 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth4', 'up')
+2025-07-11 09:15:07,307 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth4', 'up')
 
-2025-07-10 21:33:31,948 - mininet - DEBUG - 
-2025-07-10 21:33:31,949 - mininet - INFO - (h4, s1) 
-2025-07-10 21:33:31,949 - mininet - DEBUG - *** h5 : ('ip link add name h5-eth0 address 22:1b:93:f8:8c:8d type veth peer name s1-eth5 address 3e:ac:8e:0b:c1:43 netns 45194',)
+2025-07-11 09:15:07,308 - mininet - DEBUG - 
+2025-07-11 09:15:07,308 - mininet - INFO - (h4, s1) 
+2025-07-11 09:15:07,308 - mininet - DEBUG - *** h5 : ('ip link add name h5-eth0 address 82:4d:aa:e2:f1:97 type veth peer name s1-eth5 address b2:fe:a6:47:79:0c netns 70395',)
 
-2025-07-10 21:33:31,952 - mininet - DEBUG - 
-2025-07-10 21:33:31,952 - mininet - DEBUG - 
+2025-07-11 09:15:07,312 - mininet - DEBUG - 
+2025-07-11 09:15:07,312 - mininet - DEBUG - 
 
-2025-07-10 21:33:31,952 - mininet - DEBUG - added intf h5-eth0 (0) to node h5
+2025-07-11 09:15:07,312 - mininet - DEBUG - added intf h5-eth0 (0) to node h5
 
-2025-07-10 21:33:31,952 - mininet - DEBUG - moving h5-eth0 into namespace for h5 
+2025-07-11 09:15:07,312 - mininet - DEBUG - moving h5-eth0 into namespace for h5 
 
-2025-07-10 21:33:31,952 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'up')
+2025-07-11 09:15:07,312 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'up')
 
-2025-07-10 21:33:31,958 - mininet - DEBUG - 
-2025-07-10 21:33:31,958 - mininet - DEBUG - 
+2025-07-11 09:15:07,313 - mininet - DEBUG - 
+2025-07-11 09:15:07,314 - mininet - DEBUG - 
 
-2025-07-10 21:33:31,958 - mininet - DEBUG - added intf s1-eth5 (5) to node s1
+2025-07-11 09:15:07,314 - mininet - DEBUG - added intf s1-eth5 (5) to node s1
 
-2025-07-10 21:33:31,958 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth5', 'up')
+2025-07-11 09:15:07,314 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth5', 'up')
 
-2025-07-10 21:33:31,959 - mininet - DEBUG - 
-2025-07-10 21:33:31,959 - mininet - INFO - (h5, s1) 
-2025-07-10 21:33:31,959 - mininet - DEBUG - *** h6 : ('ip link add name h6-eth0 address 46:35:10:4c:17:84 type veth peer name s1-eth6 address ea:7e:e7:64:e1:76 netns 45194',)
+2025-07-11 09:15:07,315 - mininet - DEBUG - 
+2025-07-11 09:15:07,316 - mininet - INFO - (h5, s1) 
+2025-07-11 09:15:07,316 - mininet - DEBUG - *** h6 : ('ip link add name h6-eth0 address ba:2d:f6:56:37:f4 type veth peer name s1-eth6 address 8a:57:f7:21:1a:19 netns 70395',)
 
-2025-07-10 21:33:31,966 - mininet - DEBUG - 
-2025-07-10 21:33:31,966 - mininet - DEBUG - 
+2025-07-11 09:15:07,317 - mininet - DEBUG - 
+2025-07-11 09:15:07,318 - mininet - DEBUG - 
 
-2025-07-10 21:33:31,966 - mininet - DEBUG - added intf h6-eth0 (0) to node h6
+2025-07-11 09:15:07,318 - mininet - DEBUG - added intf h6-eth0 (0) to node h6
 
-2025-07-10 21:33:31,966 - mininet - DEBUG - moving h6-eth0 into namespace for h6 
+2025-07-11 09:15:07,318 - mininet - DEBUG - moving h6-eth0 into namespace for h6 
 
-2025-07-10 21:33:31,966 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'up')
+2025-07-11 09:15:07,318 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'up')
 
-2025-07-10 21:33:31,969 - mininet - DEBUG - 
-2025-07-10 21:33:31,969 - mininet - DEBUG - 
+2025-07-11 09:15:07,321 - mininet - DEBUG - 
+2025-07-11 09:15:07,321 - mininet - DEBUG - 
 
-2025-07-10 21:33:31,969 - mininet - DEBUG - added intf s1-eth6 (6) to node s1
+2025-07-11 09:15:07,321 - mininet - DEBUG - added intf s1-eth6 (6) to node s1
 
-2025-07-10 21:33:31,969 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth6', 'up')
+2025-07-11 09:15:07,321 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth6', 'up')
 
-2025-07-10 21:33:31,972 - mininet - DEBUG - 
-2025-07-10 21:33:31,972 - mininet - INFO - (h6, s1) 
-2025-07-10 21:33:31,972 - mininet - INFO - 
+2025-07-11 09:15:07,324 - mininet - DEBUG - 
+2025-07-11 09:15:07,325 - mininet - INFO - (h6, s1) 
+2025-07-11 09:15:07,325 - mininet - INFO - 
 
-2025-07-10 21:33:31,972 - mininet - INFO - *** Configuring hosts
+2025-07-11 09:15:07,325 - mininet - INFO - *** Configuring hosts
 
-2025-07-10 21:33:31,972 - mininet - INFO - h1 
-2025-07-10 21:33:31,972 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'down')
+2025-07-11 09:15:07,325 - mininet - INFO - h1 
+2025-07-11 09:15:07,325 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'down')
 
-2025-07-10 21:33:31,975 - mininet - DEBUG - 
-2025-07-10 21:33:31,975 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'hw', 'ether', '00:00:00:00:00:01')
+2025-07-11 09:15:07,327 - mininet - DEBUG - 
+2025-07-11 09:15:07,327 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'hw', 'ether', '00:00:00:00:00:01')
 
-2025-07-10 21:33:31,976 - mininet - DEBUG - 
-2025-07-10 21:33:31,976 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'up')
+2025-07-11 09:15:07,328 - mininet - DEBUG - 
+2025-07-11 09:15:07,329 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'up')
 
-2025-07-10 21:33:31,978 - mininet - DEBUG - 
-2025-07-10 21:33:31,978 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', '10.0.0.1/24', 'up')
+2025-07-11 09:15:07,330 - mininet - DEBUG - 
+2025-07-11 09:15:07,330 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', '10.0.0.1/24', 'up')
 
-2025-07-10 21:33:31,980 - mininet - DEBUG - 
-2025-07-10 21:33:31,980 - mininet - DEBUG - *** h1 : ('ifconfig lo up',)
+2025-07-11 09:15:07,332 - mininet - DEBUG - 
+2025-07-11 09:15:07,332 - mininet - DEBUG - *** h1 : ('ifconfig lo up',)
 
-2025-07-10 21:33:31,983 - mininet - DEBUG - 
-2025-07-10 21:33:31,983 - mininet - INFO - h2 
-2025-07-10 21:33:31,983 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'down')
+2025-07-11 09:15:07,333 - mininet - DEBUG - 
+2025-07-11 09:15:07,333 - mininet - INFO - h2 
+2025-07-11 09:15:07,333 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'down')
 
-2025-07-10 21:33:31,984 - mininet - DEBUG - 
-2025-07-10 21:33:31,984 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'hw', 'ether', '00:00:00:00:00:02')
+2025-07-11 09:15:07,335 - mininet - DEBUG - 
+2025-07-11 09:15:07,335 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'hw', 'ether', '00:00:00:00:00:02')
 
-2025-07-10 21:33:31,987 - mininet - DEBUG - 
-2025-07-10 21:33:31,987 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'up')
+2025-07-11 09:15:07,341 - mininet - DEBUG - 
+2025-07-11 09:15:07,341 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'up')
 
-2025-07-10 21:33:31,988 - mininet - DEBUG - 
-2025-07-10 21:33:31,988 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', '10.0.0.2/24', 'up')
+2025-07-11 09:15:07,342 - mininet - DEBUG - 
+2025-07-11 09:15:07,342 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', '10.0.0.2/24', 'up')
 
-2025-07-10 21:33:31,989 - mininet - DEBUG - 
-2025-07-10 21:33:31,989 - mininet - DEBUG - *** h2 : ('ifconfig lo up',)
+2025-07-11 09:15:07,344 - mininet - DEBUG - 
+2025-07-11 09:15:07,344 - mininet - DEBUG - *** h2 : ('ifconfig lo up',)
 
-2025-07-10 21:33:31,990 - mininet - DEBUG - 
-2025-07-10 21:33:31,990 - mininet - INFO - h3 
-2025-07-10 21:33:31,990 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'down')
+2025-07-11 09:15:07,345 - mininet - DEBUG - 
+2025-07-11 09:15:07,345 - mininet - INFO - h3 
+2025-07-11 09:15:07,345 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'down')
 
-2025-07-10 21:33:31,993 - mininet - DEBUG - 
-2025-07-10 21:33:31,993 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'hw', 'ether', '00:00:00:00:00:03')
+2025-07-11 09:15:07,347 - mininet - DEBUG - 
+2025-07-11 09:15:07,347 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'hw', 'ether', '00:00:00:00:00:03')
 
-2025-07-10 21:33:31,994 - mininet - DEBUG - 
-2025-07-10 21:33:31,994 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'up')
+2025-07-11 09:15:07,349 - mininet - DEBUG - 
+2025-07-11 09:15:07,349 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'up')
 
-2025-07-10 21:33:31,995 - mininet - DEBUG - 
-2025-07-10 21:33:31,996 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', '10.0.0.3/24', 'up')
+2025-07-11 09:15:07,350 - mininet - DEBUG - 
+2025-07-11 09:15:07,350 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', '10.0.0.3/24', 'up')
 
-2025-07-10 21:33:31,997 - mininet - DEBUG - 
-2025-07-10 21:33:31,997 - mininet - DEBUG - *** h3 : ('ifconfig lo up',)
+2025-07-11 09:15:07,354 - mininet - DEBUG - 
+2025-07-11 09:15:07,354 - mininet - DEBUG - *** h3 : ('ifconfig lo up',)
 
-2025-07-10 21:33:31,998 - mininet - DEBUG - 
-2025-07-10 21:33:31,998 - mininet - INFO - h4 
-2025-07-10 21:33:31,998 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'down')
+2025-07-11 09:15:07,356 - mininet - DEBUG - 
+2025-07-11 09:15:07,356 - mininet - INFO - h4 
+2025-07-11 09:15:07,356 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'down')
 
-2025-07-10 21:33:32,000 - mininet - DEBUG - 
-2025-07-10 21:33:32,000 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'hw', 'ether', '00:00:00:00:00:04')
+2025-07-11 09:15:07,358 - mininet - DEBUG - 
+2025-07-11 09:15:07,358 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'hw', 'ether', '00:00:00:00:00:04')
 
-2025-07-10 21:33:32,001 - mininet - DEBUG - 
-2025-07-10 21:33:32,001 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'up')
+2025-07-11 09:15:07,360 - mininet - DEBUG - 
+2025-07-11 09:15:07,360 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'up')
 
-2025-07-10 21:33:32,003 - mininet - DEBUG - 
-2025-07-10 21:33:32,003 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', '10.0.0.4/24', 'up')
+2025-07-11 09:15:07,363 - mininet - DEBUG - 
+2025-07-11 09:15:07,363 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', '10.0.0.4/24', 'up')
 
-2025-07-10 21:33:32,004 - mininet - DEBUG - 
-2025-07-10 21:33:32,004 - mininet - DEBUG - *** h4 : ('ifconfig lo up',)
+2025-07-11 09:15:07,364 - mininet - DEBUG - 
+2025-07-11 09:15:07,364 - mininet - DEBUG - *** h4 : ('ifconfig lo up',)
 
-2025-07-10 21:33:32,005 - mininet - DEBUG - 
-2025-07-10 21:33:32,005 - mininet - INFO - h5 
-2025-07-10 21:33:32,005 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'down')
+2025-07-11 09:15:07,365 - mininet - DEBUG - 
+2025-07-11 09:15:07,365 - mininet - INFO - h5 
+2025-07-11 09:15:07,365 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'down')
 
-2025-07-10 21:33:32,007 - mininet - DEBUG - 
-2025-07-10 21:33:32,007 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'hw', 'ether', '00:00:00:00:00:05')
+2025-07-11 09:15:07,367 - mininet - DEBUG - 
+2025-07-11 09:15:07,367 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'hw', 'ether', '00:00:00:00:00:05')
 
-2025-07-10 21:33:32,010 - mininet - DEBUG - 
-2025-07-10 21:33:32,010 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'up')
+2025-07-11 09:15:07,369 - mininet - DEBUG - 
+2025-07-11 09:15:07,369 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'up')
 
-2025-07-10 21:33:32,011 - mininet - DEBUG - 
-2025-07-10 21:33:32,011 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', '10.0.0.5/24', 'up')
+2025-07-11 09:15:07,370 - mininet - DEBUG - 
+2025-07-11 09:15:07,370 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', '10.0.0.5/24', 'up')
 
-2025-07-10 21:33:32,013 - mininet - DEBUG - 
-2025-07-10 21:33:32,013 - mininet - DEBUG - *** h5 : ('ifconfig lo up',)
+2025-07-11 09:15:07,372 - mininet - DEBUG - 
+2025-07-11 09:15:07,372 - mininet - DEBUG - *** h5 : ('ifconfig lo up',)
 
-2025-07-10 21:33:32,014 - mininet - DEBUG - 
-2025-07-10 21:33:32,014 - mininet - INFO - h6 
-2025-07-10 21:33:32,014 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'down')
+2025-07-11 09:15:07,373 - mininet - DEBUG - 
+2025-07-11 09:15:07,373 - mininet - INFO - h6 
+2025-07-11 09:15:07,373 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'down')
 
-2025-07-10 21:33:32,016 - mininet - DEBUG - 
-2025-07-10 21:33:32,016 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'hw', 'ether', '00:00:00:00:00:06')
+2025-07-11 09:15:07,375 - mininet - DEBUG - 
+2025-07-11 09:15:07,375 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'hw', 'ether', '00:00:00:00:00:06')
 
-2025-07-10 21:33:32,018 - mininet - DEBUG - 
-2025-07-10 21:33:32,018 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'up')
+2025-07-11 09:15:07,376 - mininet - DEBUG - 
+2025-07-11 09:15:07,376 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'up')
 
-2025-07-10 21:33:32,020 - mininet - DEBUG - 
-2025-07-10 21:33:32,020 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', '10.0.0.6/24', 'up')
+2025-07-11 09:15:07,378 - mininet - DEBUG - 
+2025-07-11 09:15:07,378 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', '10.0.0.6/24', 'up')
 
-2025-07-10 21:33:32,021 - mininet - DEBUG - 
-2025-07-10 21:33:32,021 - mininet - DEBUG - *** h6 : ('ifconfig lo up',)
+2025-07-11 09:15:07,380 - mininet - DEBUG - 
+2025-07-11 09:15:07,380 - mininet - DEBUG - *** h6 : ('ifconfig lo up',)
 
-2025-07-10 21:33:32,022 - mininet - DEBUG - 
-2025-07-10 21:33:32,022 - mininet - INFO - 
+2025-07-11 09:15:07,381 - mininet - DEBUG - 
+2025-07-11 09:15:07,381 - mininet - INFO - 
 
-2025-07-10 21:33:32,022 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+2025-07-11 09:15:07,381 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
 
-2025-07-10 21:33:32,023 - mininet - DEBUG - 
-2025-07-10 21:33:32,023 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+2025-07-11 09:15:07,382 - mininet - DEBUG - 
+2025-07-11 09:15:07,382 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
 
-2025-07-10 21:33:32,024 - mininet - DEBUG - 
-2025-07-10 21:33:32,024 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+2025-07-11 09:15:07,383 - mininet - DEBUG - 
+2025-07-11 09:15:07,383 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
 
-2025-07-10 21:33:32,025 - mininet - DEBUG - 
-2025-07-10 21:33:32,025 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+2025-07-11 09:15:07,384 - mininet - DEBUG - 
+2025-07-11 09:15:07,384 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
 
-2025-07-10 21:33:32,026 - mininet - DEBUG - 
-2025-07-10 21:33:32,026 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+2025-07-11 09:15:07,385 - mininet - DEBUG - 
+2025-07-11 09:15:07,385 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
 
-2025-07-10 21:33:32,027 - mininet - DEBUG - 
-2025-07-10 21:33:32,027 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+2025-07-11 09:15:07,386 - mininet - DEBUG - 
+2025-07-11 09:15:07,386 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
 
-2025-07-10 21:33:32,028 - mininet - DEBUG - 
-2025-07-10 21:33:32,028 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+2025-07-11 09:15:07,387 - mininet - DEBUG - 
+2025-07-11 09:15:07,387 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
 
-2025-07-10 21:33:32,030 - mininet - DEBUG - 
-2025-07-10 21:33:32,030 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+2025-07-11 09:15:07,388 - mininet - DEBUG - 
+2025-07-11 09:15:07,388 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
 
-2025-07-10 21:33:32,031 - mininet - DEBUG - 
-2025-07-10 21:33:32,031 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+2025-07-11 09:15:07,389 - mininet - DEBUG - 
+2025-07-11 09:15:07,389 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
 
-2025-07-10 21:33:32,032 - mininet - DEBUG - 
-2025-07-10 21:33:32,032 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+2025-07-11 09:15:07,390 - mininet - DEBUG - 
+2025-07-11 09:15:07,390 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
 
-2025-07-10 21:33:32,033 - mininet - DEBUG - 
-2025-07-10 21:33:32,033 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+2025-07-11 09:15:07,391 - mininet - DEBUG - 
+2025-07-11 09:15:07,391 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
 
-2025-07-10 21:33:32,034 - mininet - DEBUG - 
-2025-07-10 21:33:32,034 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+2025-07-11 09:15:07,392 - mininet - DEBUG - 
+2025-07-11 09:15:07,392 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
 
-2025-07-10 21:33:32,035 - mininet - DEBUG - 
-2025-07-10 21:33:32,035 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+2025-07-11 09:15:07,393 - mininet - DEBUG - 
+2025-07-11 09:15:07,393 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
 
-2025-07-10 21:33:32,036 - mininet - DEBUG - 
-2025-07-10 21:33:32,036 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+2025-07-11 09:15:07,394 - mininet - DEBUG - 
+2025-07-11 09:15:07,394 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
 
-2025-07-10 21:33:32,037 - mininet - DEBUG - 
-2025-07-10 21:33:32,037 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+2025-07-11 09:15:07,395 - mininet - DEBUG - 
+2025-07-11 09:15:07,395 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
 
-2025-07-10 21:33:32,038 - mininet - DEBUG - 
-2025-07-10 21:33:32,038 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+2025-07-11 09:15:07,396 - mininet - DEBUG - 
+2025-07-11 09:15:07,396 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
 
-2025-07-10 21:33:32,039 - mininet - DEBUG - 
-2025-07-10 21:33:32,039 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+2025-07-11 09:15:07,397 - mininet - DEBUG - 
+2025-07-11 09:15:07,397 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
 
-2025-07-10 21:33:32,040 - mininet - DEBUG - 
-2025-07-10 21:33:32,040 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+2025-07-11 09:15:07,398 - mininet - DEBUG - 
+2025-07-11 09:15:07,398 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
 
-2025-07-10 21:33:32,041 - mininet - DEBUG - 
-2025-07-10 21:33:32,041 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+2025-07-11 09:15:07,399 - mininet - DEBUG - 
+2025-07-11 09:15:07,399 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
 
-2025-07-10 21:33:32,042 - mininet - DEBUG - 
-2025-07-10 21:33:32,042 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+2025-07-11 09:15:07,400 - mininet - DEBUG - 
+2025-07-11 09:15:07,400 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
 
-2025-07-10 21:33:32,043 - mininet - DEBUG - 
-2025-07-10 21:33:32,043 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+2025-07-11 09:15:07,401 - mininet - DEBUG - 
+2025-07-11 09:15:07,401 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
 
-2025-07-10 21:33:32,044 - mininet - DEBUG - 
-2025-07-10 21:33:32,044 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+2025-07-11 09:15:07,402 - mininet - DEBUG - 
+2025-07-11 09:15:07,402 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
 
-2025-07-10 21:33:32,045 - mininet - DEBUG - 
-2025-07-10 21:33:32,045 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+2025-07-11 09:15:07,403 - mininet - DEBUG - 
+2025-07-11 09:15:07,403 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
 
-2025-07-10 21:33:32,046 - mininet - DEBUG - 
-2025-07-10 21:33:32,046 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+2025-07-11 09:15:07,404 - mininet - DEBUG - 
+2025-07-11 09:15:07,404 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
 
-2025-07-10 21:33:32,047 - mininet - DEBUG - 
-2025-07-10 21:33:32,047 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+2025-07-11 09:15:07,405 - mininet - DEBUG - 
+2025-07-11 09:15:07,405 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
 
-2025-07-10 21:33:32,048 - mininet - DEBUG - 
-2025-07-10 21:33:32,048 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+2025-07-11 09:15:07,406 - mininet - DEBUG - 
+2025-07-11 09:15:07,406 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
 
-2025-07-10 21:33:32,048 - mininet - DEBUG - 
-2025-07-10 21:33:32,049 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+2025-07-11 09:15:07,407 - mininet - DEBUG - 
+2025-07-11 09:15:07,407 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
 
-2025-07-10 21:33:32,049 - mininet - DEBUG - 
-2025-07-10 21:33:32,049 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+2025-07-11 09:15:07,408 - mininet - DEBUG - 
+2025-07-11 09:15:07,408 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
 
-2025-07-10 21:33:32,050 - mininet - DEBUG - 
-2025-07-10 21:33:32,050 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+2025-07-11 09:15:07,409 - mininet - DEBUG - 
+2025-07-11 09:15:07,409 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
 
-2025-07-10 21:33:32,051 - mininet - DEBUG - 
-2025-07-10 21:33:32,051 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+2025-07-11 09:15:07,410 - mininet - DEBUG - 
+2025-07-11 09:15:07,410 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
 
-2025-07-10 21:33:32,052 - mininet - DEBUG - 
-2025-07-10 21:33:32,052 - mininet - INFO - *** Starting controller
+2025-07-11 09:15:07,411 - mininet - DEBUG - 
+2025-07-11 09:15:07,411 - mininet - INFO - *** Starting controller
 
-2025-07-10 21:33:32,052 - mininet - INFO - c0 
-2025-07-10 21:33:32,052 - mininet - INFO - 
+2025-07-11 09:15:07,411 - mininet - INFO - c0 
+2025-07-11 09:15:07,411 - mininet - INFO - 
 
-2025-07-10 21:33:32,052 - mininet - INFO - *** Starting 1 switches
+2025-07-11 09:15:07,411 - mininet - INFO - *** Starting 1 switches
 
-2025-07-10 21:33:32,052 - mininet - INFO - s1 
-2025-07-10 21:33:32,053 - mininet - INFO - ...
-2025-07-10 21:33:32,053 - mininet - DEBUG - *** errRun: ovs-vsctl -- --id=@s1c0 create Controller target=\"tcp:127.0.0.1:6653\" max_backoff=1000 -- --if-exists del-br s1 -- add-br s1 -- set bridge s1 controller=[@s1c0] other_config:datapath-id=0000000000000001 fail_mode=secure other-config:disable-in-band=true protocols=OpenFlow13 other-config:dp-desc=s1 -- add-port s1 s1-eth1 -- set Interface s1-eth1 ofport_request=1 -- add-port s1 s1-eth2 -- set Interface s1-eth2 ofport_request=2 -- add-port s1 s1-eth3 -- set Interface s1-eth3 ofport_request=3 -- add-port s1 s1-eth4 -- set Interface s1-eth4 ofport_request=4 -- add-port s1 s1-eth5 -- set Interface s1-eth5 ofport_request=5 -- add-port s1 s1-eth6 -- set Interface s1-eth6 ofport_request=6 
+2025-07-11 09:15:07,411 - mininet - INFO - s1 
+2025-07-11 09:15:07,411 - mininet - INFO - ...
+2025-07-11 09:15:07,412 - mininet - DEBUG - *** errRun: ovs-vsctl -- --id=@s1c0 create Controller target=\"tcp:127.0.0.1:6653\" max_backoff=1000 -- --if-exists del-br s1 -- add-br s1 -- set bridge s1 controller=[@s1c0] other_config:datapath-id=0000000000000001 fail_mode=secure other-config:disable-in-band=true protocols=OpenFlow13 other-config:dp-desc=s1 -- add-port s1 s1-eth1 -- set Interface s1-eth1 ofport_request=1 -- add-port s1 s1-eth2 -- set Interface s1-eth2 ofport_request=2 -- add-port s1 s1-eth3 -- set Interface s1-eth3 ofport_request=3 -- add-port s1 s1-eth4 -- set Interface s1-eth4 ofport_request=4 -- add-port s1 s1-eth5 -- set Interface s1-eth5 ofport_request=5 -- add-port s1 s1-eth6 -- set Interface s1-eth6 ofport_request=6 
 
-2025-07-10 21:33:32,074 - mininet - DEBUG - a182e3d7-3bf8-4669-84e6-63eee727bb56
+2025-07-11 09:15:07,436 - mininet - DEBUG - 199acfe0-c759-47ca-9f02-76a4eaba4c09
   0
-2025-07-10 21:33:32,075 - mininet - INFO - 
+2025-07-11 09:15:07,437 - mininet - INFO - 
 
-2025-07-10 21:33:37,081 - mininet - Level 25 - *** Ping: testing ping reachability
+2025-07-11 09:15:12,439 - mininet - Level 25 - *** Ping: testing ping reachability
 
-2025-07-10 21:33:37,081 - mininet - Level 25 - h1 -> 
-2025-07-10 21:33:37,081 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.2',)
+2025-07-11 09:15:12,439 - mininet - Level 25 - h1 -> 
+2025-07-11 09:15:12,439 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.2',)
 
-2025-07-10 21:33:37,082 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+2025-07-11 09:15:12,440 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
 
-2025-07-10 21:33:37,085 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=2.55 ms
+2025-07-11 09:15:12,443 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=2.57 ms
 
 --- 10.0.0.2 ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 2.551/2.551/2.551/0.000 ms
+rtt min/avg/max/mdev = 2.577/2.577/2.577/0.000 ms
 
-2025-07-10 21:33:37,085 - mininet - DEBUG - 
-2025-07-10 21:33:37,086 - mininet - Level 25 - h2 
-2025-07-10 21:33:37,086 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.3',)
+2025-07-11 09:15:12,443 - mininet - DEBUG - 
+2025-07-11 09:15:12,444 - mininet - Level 25 - h2 
+2025-07-11 09:15:12,444 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.3',)
 
-2025-07-10 21:33:37,087 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+2025-07-11 09:15:12,445 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
 
-2025-07-10 21:33:37,089 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=2.22 ms
+2025-07-11 09:15:12,447 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=2.10 ms
 
 --- 10.0.0.3 ping statistics ---
-2025-07-10 21:33:37,089 - mininet - DEBUG - 
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 2.223/2.223/2.223/0.000 ms
+rtt min/avg/max/mdev = 2.106/2.106/2.106/0.000 ms
 
-2025-07-10 21:33:37,089 - mininet - DEBUG - 
-2025-07-10 21:33:37,089 - mininet - Level 25 - h3 
-2025-07-10 21:33:37,090 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.4',)
+2025-07-11 09:15:12,447 - mininet - DEBUG - 
+2025-07-11 09:15:12,447 - mininet - Level 25 - h3 
+2025-07-11 09:15:12,447 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.4',)
 
-2025-07-10 21:33:37,090 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+2025-07-11 09:15:12,448 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
 
-2025-07-10 21:33:37,093 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.09 ms
+2025-07-11 09:15:12,451 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.25 ms
 
 --- 10.0.0.4 ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 2.094/2.094/2.094/0.000 ms
+rtt min/avg/max/mdev = 2.250/2.250/2.250/0.000 ms
 
-2025-07-10 21:33:37,093 - mininet - DEBUG - 
-2025-07-10 21:33:37,093 - mininet - Level 25 - h4 
-2025-07-10 21:33:37,093 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.5',)
+2025-07-11 09:15:12,451 - mininet - Level 25 - h4 
+2025-07-11 09:15:12,451 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.5',)
 
-2025-07-10 21:33:37,094 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+2025-07-11 09:15:12,452 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
 
-2025-07-10 21:33:37,096 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.04 ms
+2025-07-11 09:15:12,454 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.01 ms
 
 --- 10.0.0.5 ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 2.049/2.049/2.049/0.000 ms
+rtt min/avg/max/mdev = 2.018/2.018/2.018/0.000 ms
 
-2025-07-10 21:33:37,096 - mininet - DEBUG - 
-2025-07-10 21:33:37,096 - mininet - Level 25 - h5 
-2025-07-10 21:33:37,096 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.6',)
+2025-07-11 09:15:12,454 - mininet - DEBUG - 
+2025-07-11 09:15:12,454 - mininet - Level 25 - h5 
+2025-07-11 09:15:12,454 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.6',)
 
-2025-07-10 21:33:37,097 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+2025-07-11 09:15:12,455 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
 
-2025-07-10 21:33:37,100 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=1.97 ms
+2025-07-11 09:15:12,457 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.05 ms
 
 --- 10.0.0.6 ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 1.976/1.976/1.976/0.000 ms
+rtt min/avg/max/mdev = 2.059/2.059/2.059/0.000 ms
 
-2025-07-10 21:33:37,100 - mininet - DEBUG - 
-2025-07-10 21:33:37,100 - mininet - Level 25 - h6 
-2025-07-10 21:33:37,100 - mininet - Level 25 - 
+2025-07-11 09:15:12,457 - mininet - DEBUG - 
+2025-07-11 09:15:12,457 - mininet - Level 25 - h6 
+2025-07-11 09:15:12,457 - mininet - Level 25 - 
 
-2025-07-10 21:33:37,100 - mininet - Level 25 - h2 -> 
-2025-07-10 21:33:37,100 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.1',)
+2025-07-11 09:15:12,457 - mininet - Level 25 - h2 -> 
+2025-07-11 09:15:12,457 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.1',)
 
-2025-07-10 21:33:37,101 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+2025-07-11 09:15:12,459 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.131 ms
 
-2025-07-10 21:33:37,101 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.108 ms
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.131/0.131/0.131/0.000 ms
+
+2025-07-11 09:15:12,459 - mininet - Level 25 - h1 
+2025-07-11 09:15:12,459 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-11 09:15:12,460 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+
+2025-07-11 09:15:12,462 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=2.07 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.073/2.073/2.073/0.000 ms
+
+2025-07-11 09:15:12,462 - mininet - DEBUG - 
+2025-07-11 09:15:12,462 - mininet - Level 25 - h3 
+2025-07-11 09:15:12,462 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-11 09:15:12,463 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-11 09:15:12,465 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.06 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.069/2.069/2.069/0.000 ms
+
+2025-07-11 09:15:12,465 - mininet - DEBUG - 
+2025-07-11 09:15:12,466 - mininet - Level 25 - h4 
+2025-07-11 09:15:12,466 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-11 09:15:12,467 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-11 09:15:12,469 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.18 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.182/2.182/2.182/0.000 ms
+
+2025-07-11 09:15:12,469 - mininet - DEBUG - 
+2025-07-11 09:15:12,469 - mininet - Level 25 - h5 
+2025-07-11 09:15:12,469 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-11 09:15:12,470 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-11 09:15:12,473 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.64 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.648/2.648/2.648/0.000 ms
+
+2025-07-11 09:15:12,473 - mininet - DEBUG - 
+2025-07-11 09:15:12,473 - mininet - Level 25 - h6 
+2025-07-11 09:15:12,473 - mininet - Level 25 - 
+
+2025-07-11 09:15:12,473 - mininet - Level 25 - h3 -> 
+2025-07-11 09:15:12,473 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-11 09:15:12,474 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-11 09:15:12,474 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.085 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.085/0.085/0.085/0.000 ms
+
+2025-07-11 09:15:12,475 - mininet - DEBUG - 
+2025-07-11 09:15:12,475 - mininet - Level 25 - h1 
+2025-07-11 09:15:12,475 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-11 09:15:12,476 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-11 09:15:12,476 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.014 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.014/0.014/0.014/0.000 ms
+
+2025-07-11 09:15:12,476 - mininet - DEBUG - 
+2025-07-11 09:15:12,476 - mininet - Level 25 - h2 
+2025-07-11 09:15:12,476 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-11 09:15:12,477 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-11 09:15:12,479 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.04 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.046/2.046/2.046/0.000 ms
+
+2025-07-11 09:15:12,479 - mininet - DEBUG - 
+2025-07-11 09:15:12,479 - mininet - Level 25 - h4 
+2025-07-11 09:15:12,479 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-11 09:15:12,480 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-11 09:15:12,482 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.00 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.007/2.007/2.007/0.000 ms
+
+2025-07-11 09:15:12,483 - mininet - DEBUG - 
+2025-07-11 09:15:12,483 - mininet - Level 25 - h5 
+2025-07-11 09:15:12,483 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-11 09:15:12,484 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-11 09:15:12,486 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.03 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.037/2.037/2.037/0.000 ms
+
+2025-07-11 09:15:12,486 - mininet - DEBUG - 
+2025-07-11 09:15:12,486 - mininet - Level 25 - h6 
+2025-07-11 09:15:12,486 - mininet - Level 25 - 
+
+2025-07-11 09:15:12,486 - mininet - Level 25 - h4 -> 
+2025-07-11 09:15:12,486 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-11 09:15:12,487 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-11 09:15:12,487 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.065 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.065/0.065/0.065/0.000 ms
+
+2025-07-11 09:15:12,487 - mininet - DEBUG - 
+2025-07-11 09:15:12,487 - mininet - Level 25 - h1 
+2025-07-11 09:15:12,487 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-11 09:15:12,488 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-11 09:15:12,488 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.015 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.015/0.015/0.015/0.000 ms
+
+2025-07-11 09:15:12,488 - mininet - DEBUG - 
+2025-07-11 09:15:12,488 - mininet - Level 25 - h2 
+2025-07-11 09:15:12,488 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-11 09:15:12,489 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+
+2025-07-11 09:15:12,489 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.015 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.015/0.015/0.015/0.000 ms
+
+2025-07-11 09:15:12,490 - mininet - DEBUG - 
+2025-07-11 09:15:12,490 - mininet - Level 25 - h3 
+2025-07-11 09:15:12,490 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-11 09:15:12,491 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+2025-07-11 09:15:12,491 - mininet - DEBUG - 
+
+2025-07-11 09:15:12,493 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=1.93 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 1.939/1.939/1.939/0.000 ms
+
+2025-07-11 09:15:12,493 - mininet - DEBUG - 
+2025-07-11 09:15:12,493 - mininet - Level 25 - h5 
+2025-07-11 09:15:12,493 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-11 09:15:12,494 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-11 09:15:12,496 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.10 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.108/2.108/2.108/0.000 ms
+
+2025-07-11 09:15:12,496 - mininet - DEBUG - 
+2025-07-11 09:15:12,496 - mininet - Level 25 - h6 
+2025-07-11 09:15:12,496 - mininet - Level 25 - 
+
+2025-07-11 09:15:12,496 - mininet - Level 25 - h5 -> 
+2025-07-11 09:15:12,496 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-11 09:15:12,497 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-11 09:15:12,498 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.108 ms
 
 --- 10.0.0.1 ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
 rtt min/avg/max/mdev = 0.108/0.108/0.108/0.000 ms
 
-2025-07-10 21:33:37,101 - mininet - DEBUG - 
-2025-07-10 21:33:37,101 - mininet - Level 25 - h1 
-2025-07-10 21:33:37,101 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.3',)
+2025-07-11 09:15:12,498 - mininet - DEBUG - 
+2025-07-11 09:15:12,498 - mininet - Level 25 - h1 
+2025-07-11 09:15:12,498 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.2',)
 
-2025-07-10 21:33:37,102 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+2025-07-11 09:15:12,499 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
 
-2025-07-10 21:33:37,105 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=2.68 ms
-
---- 10.0.0.3 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 2.685/2.685/2.685/0.000 ms
-
-2025-07-10 21:33:37,105 - mininet - DEBUG - 
-2025-07-10 21:33:37,105 - mininet - Level 25 - h3 
-2025-07-10 21:33:37,105 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.4',)
-
-2025-07-10 21:33:37,106 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
-
-2025-07-10 21:33:37,109 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.91 ms
-
---- 10.0.0.4 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 2.919/2.919/2.919/0.000 ms
-
-2025-07-10 21:33:37,109 - mininet - DEBUG - 
-2025-07-10 21:33:37,109 - mininet - Level 25 - h4 
-2025-07-10 21:33:37,109 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.5',)
-
-2025-07-10 21:33:37,111 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
-
-2025-07-10 21:33:37,113 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.22 ms
-
---- 10.0.0.5 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 2.228/2.228/2.228/0.000 ms
-
-2025-07-10 21:33:37,113 - mininet - DEBUG - 
-2025-07-10 21:33:37,113 - mininet - Level 25 - h5 
-2025-07-10 21:33:37,113 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.6',)
-
-2025-07-10 21:33:37,114 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
-
-2025-07-10 21:33:37,116 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.13 ms
-
---- 10.0.0.6 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 2.135/2.135/2.135/0.000 ms
-
-2025-07-10 21:33:37,116 - mininet - DEBUG - 
-2025-07-10 21:33:37,116 - mininet - Level 25 - h6 
-2025-07-10 21:33:37,116 - mininet - Level 25 - 
-
-2025-07-10 21:33:37,117 - mininet - Level 25 - h3 -> 
-2025-07-10 21:33:37,117 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.1',)
-
-2025-07-10 21:33:37,118 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
-
-2025-07-10 21:33:37,118 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.183 ms
-
---- 10.0.0.1 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.183/0.183/0.183/0.000 ms
-
-2025-07-10 21:33:37,118 - mininet - DEBUG - 
-2025-07-10 21:33:37,118 - mininet - Level 25 - h1 
-2025-07-10 21:33:37,118 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.2',)
-
-2025-07-10 21:33:37,119 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
-
-2025-07-10 21:33:37,119 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.015 ms
-
---- 10.0.0.2 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.015/0.015/0.015/0.000 ms
-
-2025-07-10 21:33:37,119 - mininet - DEBUG - 
-2025-07-10 21:33:37,119 - mininet - Level 25 - h2 
-2025-07-10 21:33:37,119 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.4',)
-
-2025-07-10 21:33:37,120 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
-
-2025-07-10 21:33:37,123 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.58 ms
-
---- 10.0.0.4 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 2.580/2.580/2.580/0.000 ms
-
-2025-07-10 21:33:37,123 - mininet - Level 25 - h4 
-2025-07-10 21:33:37,123 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.5',)
-
-2025-07-10 21:33:37,124 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
-
-2025-07-10 21:33:37,126 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.02 ms
-
---- 10.0.0.5 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 2.025/2.025/2.025/0.000 ms
-
-2025-07-10 21:33:37,126 - mininet - DEBUG - 
-2025-07-10 21:33:37,126 - mininet - Level 25 - h5 
-2025-07-10 21:33:37,126 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.6',)
-
-2025-07-10 21:33:37,128 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
-
-2025-07-10 21:33:37,130 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.16 ms
-
---- 10.0.0.6 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 2.163/2.163/2.163/0.000 ms
-
-2025-07-10 21:33:37,130 - mininet - DEBUG - 
-2025-07-10 21:33:37,130 - mininet - Level 25 - h6 
-2025-07-10 21:33:37,130 - mininet - Level 25 - 
-
-2025-07-10 21:33:37,130 - mininet - Level 25 - h4 -> 
-2025-07-10 21:33:37,130 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.1',)
-
-2025-07-10 21:33:37,131 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
-2025-07-10 21:33:37,131 - mininet - DEBUG - 
-
-2025-07-10 21:33:37,131 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.082 ms
-
---- 10.0.0.1 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.082/0.082/0.082/0.000 ms
-
-2025-07-10 21:33:37,131 - mininet - DEBUG - 
-2025-07-10 21:33:37,131 - mininet - Level 25 - h1 
-2025-07-10 21:33:37,131 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.2',)
-
-2025-07-10 21:33:37,132 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
-
-2025-07-10 21:33:37,132 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.015 ms
-
---- 10.0.0.2 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.015/0.015/0.015/0.000 ms
-
-2025-07-10 21:33:37,132 - mininet - DEBUG - 
-2025-07-10 21:33:37,132 - mininet - Level 25 - h2 
-2025-07-10 21:33:37,133 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.3',)
-
-2025-07-10 21:33:37,133 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
-
-2025-07-10 21:33:37,134 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.016 ms
-
---- 10.0.0.3 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.016/0.016/0.016/0.000 ms
-
-2025-07-10 21:33:37,134 - mininet - DEBUG - 
-2025-07-10 21:33:37,134 - mininet - Level 25 - h3 
-2025-07-10 21:33:37,134 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.5',)
-
-2025-07-10 21:33:37,135 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
-
-2025-07-10 21:33:37,137 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.07 ms
-
---- 10.0.0.5 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 2.078/2.078/2.078/0.000 ms
-
-2025-07-10 21:33:37,137 - mininet - DEBUG - 
-2025-07-10 21:33:37,137 - mininet - Level 25 - h5 
-2025-07-10 21:33:37,137 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.6',)
-
-2025-07-10 21:33:37,138 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
-
-2025-07-10 21:33:37,140 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.09 ms
-
---- 10.0.0.6 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 2.095/2.095/2.095/0.000 ms
-
-2025-07-10 21:33:37,140 - mininet - DEBUG - 
-2025-07-10 21:33:37,140 - mininet - Level 25 - h6 
-2025-07-10 21:33:37,140 - mininet - Level 25 - 
-
-2025-07-10 21:33:37,140 - mininet - Level 25 - h5 -> 
-2025-07-10 21:33:37,141 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.1',)
-
-2025-07-10 21:33:37,142 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
-
-2025-07-10 21:33:37,142 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.084 ms
-
---- 10.0.0.1 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.084/0.084/0.084/0.000 ms
-
-2025-07-10 21:33:37,142 - mininet - DEBUG - 
-2025-07-10 21:33:37,142 - mininet - Level 25 - h1 
-2025-07-10 21:33:37,142 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.2',)
-
-2025-07-10 21:33:37,143 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
-
-2025-07-10 21:33:37,143 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.015 ms
-
---- 10.0.0.2 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.015/0.015/0.015/0.000 ms
-
-2025-07-10 21:33:37,143 - mininet - DEBUG - 
-2025-07-10 21:33:37,143 - mininet - Level 25 - h2 
-2025-07-10 21:33:37,143 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.3',)
-
-2025-07-10 21:33:37,144 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
-
-2025-07-10 21:33:37,144 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.015 ms
-
---- 10.0.0.3 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.015/0.015/0.015/0.000 ms
-
-2025-07-10 21:33:37,144 - mininet - DEBUG - 
-2025-07-10 21:33:37,144 - mininet - Level 25 - h3 
-2025-07-10 21:33:37,145 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.4',)
-
-2025-07-10 21:33:37,145 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
-
-2025-07-10 21:33:37,145 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=0.014 ms
-
---- 10.0.0.4 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.014/0.014/0.014/0.000 ms
-
-2025-07-10 21:33:37,146 - mininet - DEBUG - 
-2025-07-10 21:33:37,146 - mininet - Level 25 - h4 
-2025-07-10 21:33:37,146 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.6',)
-
-2025-07-10 21:33:37,147 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
-
-2025-07-10 21:33:37,149 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.10 ms
-
---- 10.0.0.6 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 2.105/2.105/2.105/0.000 ms
-
-2025-07-10 21:33:37,149 - mininet - Level 25 - h6 
-2025-07-10 21:33:37,149 - mininet - Level 25 - 
-
-2025-07-10 21:33:37,149 - mininet - Level 25 - h6 -> 
-2025-07-10 21:33:37,149 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.1',)
-
-2025-07-10 21:33:37,150 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
-2025-07-10 21:33:37,151 - mininet - DEBUG - 
-
-2025-07-10 21:33:37,151 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.659 ms
-
---- 10.0.0.1 ping statistics ---
-1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.659/0.659/0.659/0.000 ms
-
-2025-07-10 21:33:37,151 - mininet - DEBUG - 
-2025-07-10 21:33:37,151 - mininet - Level 25 - h1 
-2025-07-10 21:33:37,151 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.2',)
-
-2025-07-10 21:33:37,152 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
-
-2025-07-10 21:33:37,152 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.016 ms
+2025-07-11 09:15:12,499 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.016 ms
 
 --- 10.0.0.2 ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
 rtt min/avg/max/mdev = 0.016/0.016/0.016/0.000 ms
 
-2025-07-10 21:33:37,153 - mininet - DEBUG - 
-2025-07-10 21:33:37,153 - mininet - Level 25 - h2 
-2025-07-10 21:33:37,153 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.3',)
+2025-07-11 09:15:12,499 - mininet - DEBUG - 
+2025-07-11 09:15:12,499 - mininet - Level 25 - h2 
+2025-07-11 09:15:12,500 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.3',)
 
-2025-07-10 21:33:37,154 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+2025-07-11 09:15:12,500 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
 
-2025-07-10 21:33:37,154 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.015 ms
+2025-07-11 09:15:12,501 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.016 ms
 
 --- 10.0.0.3 ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.015/0.015/0.015/0.000 ms
 
-2025-07-10 21:33:37,154 - mininet - DEBUG - 
-2025-07-10 21:33:37,154 - mininet - Level 25 - h3 
-2025-07-10 21:33:37,154 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.4',)
+2025-07-11 09:15:12,501 - mininet - DEBUG - rtt min/avg/max/mdev = 0.016/0.016/0.016/0.000 ms
 
-2025-07-10 21:33:37,155 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+2025-07-11 09:15:12,501 - mininet - DEBUG - 
+2025-07-11 09:15:12,501 - mininet - Level 25 - h3 
+2025-07-11 09:15:12,501 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.4',)
 
-2025-07-10 21:33:37,155 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=0.014 ms
+2025-07-11 09:15:12,502 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-11 09:15:12,502 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=0.014 ms
 
 --- 10.0.0.4 ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
 rtt min/avg/max/mdev = 0.014/0.014/0.014/0.000 ms
 
-2025-07-10 21:33:37,155 - mininet - DEBUG - 
-2025-07-10 21:33:37,155 - mininet - Level 25 - h4 
-2025-07-10 21:33:37,155 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.5',)
+2025-07-11 09:15:12,502 - mininet - DEBUG - 
+2025-07-11 09:15:12,502 - mininet - Level 25 - h4 
+2025-07-11 09:15:12,502 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.6',)
 
-2025-07-10 21:33:37,156 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+2025-07-11 09:15:12,504 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
 
-2025-07-10 21:33:37,156 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=0.014 ms
+2025-07-11 09:15:12,506 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.06 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.067/2.067/2.067/0.000 ms
+
+2025-07-11 09:15:12,506 - mininet - DEBUG - 
+2025-07-11 09:15:12,506 - mininet - Level 25 - h6 
+2025-07-11 09:15:12,506 - mininet - Level 25 - 
+
+2025-07-11 09:15:12,506 - mininet - Level 25 - h6 -> 
+2025-07-11 09:15:12,506 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-11 09:15:12,507 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-11 09:15:12,507 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.070 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.070/0.070/0.070/0.000 ms
+
+2025-07-11 09:15:12,507 - mininet - DEBUG - 
+2025-07-11 09:15:12,507 - mininet - Level 25 - h1 
+2025-07-11 09:15:12,507 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-11 09:15:12,508 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-11 09:15:12,508 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.015 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.015/0.015/0.015/0.000 ms
+
+2025-07-11 09:15:12,508 - mininet - DEBUG - 
+2025-07-11 09:15:12,509 - mininet - Level 25 - h2 
+2025-07-11 09:15:12,509 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-11 09:15:12,510 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.016 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.016/0.016/0.016/0.000 ms
+
+2025-07-11 09:15:12,510 - mininet - DEBUG - 
+2025-07-11 09:15:12,510 - mininet - Level 25 - h3 
+2025-07-11 09:15:12,510 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-11 09:15:12,511 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-11 09:15:12,511 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=0.020 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.020/0.020/0.020/0.000 ms
+
+2025-07-11 09:15:12,511 - mininet - DEBUG - 
+2025-07-11 09:15:12,511 - mininet - Level 25 - h4 
+2025-07-11 09:15:12,511 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-11 09:15:12,512 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-11 09:15:12,512 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=0.015 ms
 
 --- 10.0.0.5 ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
-rtt min/avg/max/mdev = 0.014/0.014/0.014/0.000 ms
+rtt min/avg/max/mdev = 0.015/0.015/0.015/0.000 ms
 
-2025-07-10 21:33:37,156 - mininet - DEBUG - 
-2025-07-10 21:33:37,156 - mininet - Level 25 - h5 
-2025-07-10 21:33:37,156 - mininet - Level 25 - 
+2025-07-11 09:15:12,512 - mininet - DEBUG - 
+2025-07-11 09:15:12,512 - mininet - Level 25 - h5 
+2025-07-11 09:15:12,512 - mininet - Level 25 - 
 
-2025-07-10 21:33:37,156 - mininet - Level 25 - *** Results: 0% dropped (30/30 received)
+2025-07-11 09:15:12,512 - mininet - Level 25 - *** Results: 0% dropped (30/30 received)
 
-2025-07-10 21:33:37,156 - src.utils.enhanced_pcap_processing - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/output/capture.pcap
-2025-07-10 21:33:37,157 - src.utils.enhanced_pcap_processing - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/output/capture.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
-2025-07-10 21:33:37,160 - mininet - DEBUG - _popen ['mnexec', '-da', '45194', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/output/capture.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 47873
-2025-07-10 21:33:39,164 - src.utils.enhanced_pcap_processing - INFO - tcpdump started successfully with PID: 47873
-2025-07-10 21:33:46,171 - mininet - DEBUG - *** h3 : ('ping -c 1 10.0.0.5 > /dev/null',)
+2025-07-11 09:15:17,524 - src.utils.enhanced_pcap_processing - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/output/normal.pcap
+2025-07-11 09:15:17,525 - src.utils.enhanced_pcap_processing - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/output/normal.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-11 09:15:17,529 - mininet - DEBUG - _popen ['mnexec', '-da', '70395', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/output/normal.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 75389
+2025-07-11 09:15:19,531 - src.utils.enhanced_pcap_processing - INFO - tcpdump started successfully with PID: 75389
+2025-07-11 09:15:21,533 - mininet - DEBUG - *** h3 : ('ping -c 1 10.0.0.5 > /dev/null',)
 
-2025-07-10 21:33:46,172 - mininet - DEBUG - 
-2025-07-10 21:33:46,172 - mininet - DEBUG - *** h5 : ('ping -c 1 10.0.0.3 > /dev/null',)
+2025-07-11 09:15:21,535 - mininet - DEBUG - 
+2025-07-11 09:15:21,535 - mininet - DEBUG - *** h5 : ('ping -c 1 10.0.0.3 > /dev/null',)
 
-2025-07-10 21:33:46,173 - mininet - DEBUG - 
-2025-07-10 21:33:46,173 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=12345, flags="PA")/Raw(load="TCP benign traffic 0"); sendp(tcp_packet, iface=\'h3-eth0\', verbose=0)"',)
+2025-07-11 09:15:21,536 - mininet - DEBUG - 
+2025-07-11 09:15:21,536 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=12345, flags="PA")/Raw(load="TCP benign traffic 0"); sendp(tcp_packet, iface=\'h3-eth0\', verbose=0)"',)
 
-2025-07-10 21:33:46,261 - mininet - DEBUG -   File "<string>", line 1
+2025-07-11 09:15:21,624 - mininet - DEBUG -   File "<string>", line 1
     from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=12345, flags=PA)/Raw(load=TCP
 
-2025-07-10 21:33:46,261 - mininet - DEBUG -                                                                                                                                                                                       ^
+2025-07-11 09:15:21,624 - mininet - DEBUG -                                                                                                                                                                                       ^
 SyntaxError: unexpected EOF while parsing
 
-2025-07-10 21:33:46,272 - mininet - DEBUG - 
-2025-07-10 21:33:46,272 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;udp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=RandShort(), dport=12346)/Raw(load="UDP benign traffic 0"); sendp(udp_packet, iface=\'h3-eth0\', verbose=0)"',)
+2025-07-11 09:15:21,635 - mininet - DEBUG - 
+2025-07-11 09:15:21,635 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;udp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=RandShort(), dport=12346)/Raw(load="UDP benign traffic 0"); sendp(udp_packet, iface=\'h3-eth0\', verbose=0)"',)
 
-2025-07-10 21:33:46,360 - mininet - DEBUG -   File "<string>", line 1
+2025-07-11 09:15:21,722 - mininet - DEBUG -   File "<string>", line 1
     from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;udp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/UDP(sport=RandShort(), dport=12346)/Raw(load=UDP
 
-2025-07-10 21:33:46,360 - mininet - DEBUG -                                                                                                                                                                             ^
+2025-07-11 09:15:21,722 - mininet - DEBUG -                                                                                                                                                                             ^
 SyntaxError: unexpected EOF while parsing
 
-2025-07-10 21:33:46,371 - mininet - DEBUG - 
-2025-07-10 21:33:46,371 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;telnet_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=23, flags="PA")/Raw(load="Telnet benign traffic 0"); sendp(telnet_packet, iface=\'h3-eth0\', verbose=0)"',)
+2025-07-11 09:15:21,733 - mininet - DEBUG - 
+2025-07-11 09:15:21,733 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;telnet_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=23, flags="PA")/Raw(load="Telnet benign traffic 0"); sendp(telnet_packet, iface=\'h3-eth0\', verbose=0)"',)
 
-2025-07-10 21:33:46,457 - mininet - DEBUG -   File "<string>", line 1
+2025-07-11 09:15:21,821 - mininet - DEBUG -   File "<string>", line 1
     from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;telnet_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=23, flags=PA)/Raw(load=Telnet
+2025-07-11 09:15:21,821 - mininet - DEBUG - 
 
-2025-07-10 21:33:46,458 - mininet - DEBUG -                                                                                                                                                                                          ^
+2025-07-11 09:15:21,821 - mininet - DEBUG -                                                                                                                                                                                          ^
 SyntaxError: unexpected EOF while parsing
 
-2025-07-10 21:33:46,468 - mininet - DEBUG - 
-2025-07-10 21:33:46,468 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ssh_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=22, flags="PA")/Raw(load="SSH benign traffic 0"); sendp(ssh_packet, iface=\'h3-eth0\', verbose=0)"',)
+2025-07-11 09:15:21,832 - mininet - DEBUG - 
+2025-07-11 09:15:21,832 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ssh_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=22, flags="PA")/Raw(load="SSH benign traffic 0"); sendp(ssh_packet, iface=\'h3-eth0\', verbose=0)"',)
 
-2025-07-10 21:33:46,555 - mininet - DEBUG -   File "<string>", line 1
+2025-07-11 09:15:21,918 - mininet - DEBUG -   File "<string>", line 1
     from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ssh_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=22, flags=PA)/Raw(load=SSH
 
-2025-07-10 21:33:46,555 - mininet - DEBUG -                                                                                                                                                                                    ^
+2025-07-11 09:15:21,918 - mininet - DEBUG -                                                                                                                                                                                    ^
 SyntaxError: unexpected EOF while parsing
 
-2025-07-10 21:33:46,566 - mininet - DEBUG - 
-2025-07-10 21:33:46,566 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ftp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=21, flags="PA")/Raw(load="FTP benign traffic 0"); sendp(ftp_packet, iface=\'h3-eth0\', verbose=0)"',)
+2025-07-11 09:15:21,929 - mininet - DEBUG - 
+2025-07-11 09:15:21,929 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ftp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=21, flags="PA")/Raw(load="FTP benign traffic 0"); sendp(ftp_packet, iface=\'h3-eth0\', verbose=0)"',)
 
-2025-07-10 21:33:46,652 - mininet - DEBUG -   File "<string>", line 1
+2025-07-11 09:15:22,016 - mininet - DEBUG -   File "<string>", line 1
     from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ftp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=21, flags=PA)/Raw(load=FTP
-
-2025-07-10 21:33:46,652 - mininet - DEBUG -                                                                                                                                                                                    ^
-SyntaxError: unexpected EOF while parsing
-
-2025-07-10 21:33:46,662 - mininet - DEBUG - 
-2025-07-10 21:33:46,662 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=80, flags="PA")/Raw(load=b\'GET / HTTP/1.1\nHost: 10.0.0.5\nUser-Agent: ScapyBenignTraffic\nConnection: close\n\n\'); sendp(http_packet, iface=\'h3-eth0\', verbose=0)"',)
-
-2025-07-10 21:33:46,663 - mininet - DEBUG - > > 
-2025-07-10 21:33:46,663 - mininet - DEBUG - > > > 
-2025-07-10 21:33:46,749 - mininet - DEBUG -   File "<string>", line 1
-    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=80, flags=PA)/Raw(load=b'GET / HTTP/1.1
-
-2025-07-10 21:33:46,749 - mininet - DEBUG -                                                                                                                                                                                                  ^
-SyntaxError: EOL while scanning string literal
-
-2025-07-10 21:33:46,760 - mininet - DEBUG - 
-2025-07-10 21:33:47,762 - mininet - DEBUG - *** h3 : ('ping -c 1 10.0.0.5 > /dev/null',)
-
-2025-07-10 21:33:47,763 - mininet - DEBUG - 
-2025-07-10 21:33:47,763 - mininet - DEBUG - *** h5 : ('ping -c 1 10.0.0.3 > /dev/null',)
-
-2025-07-10 21:33:47,764 - mininet - DEBUG - 
-2025-07-10 21:33:47,764 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=12345, flags="PA")/Raw(load="TCP benign traffic 1"); sendp(tcp_packet, iface=\'h3-eth0\', verbose=0)"',)
-
-2025-07-10 21:33:47,851 - mininet - DEBUG -   File "<string>", line 1
-    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=12345, flags=PA)/Raw(load=TCP
-
-2025-07-10 21:33:47,852 - mininet - DEBUG -                                                                                                                                                                                       ^
-SyntaxError: unexpected EOF while parsing
-
-2025-07-10 21:33:47,862 - mininet - DEBUG - 
-2025-07-10 21:33:47,862 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;udp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=RandShort(), dport=12346)/Raw(load="UDP benign traffic 1"); sendp(udp_packet, iface=\'h3-eth0\', verbose=0)"',)
-
-2025-07-10 21:33:47,949 - mininet - DEBUG -   File "<string>", line 1
-    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;udp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/UDP(sport=RandShort(), dport=12346)/Raw(load=UDP
-
-2025-07-10 21:33:47,949 - mininet - DEBUG -                                                                                                                                                                             ^
-SyntaxError: unexpected EOF while parsing
-
-2025-07-10 21:33:47,960 - mininet - DEBUG - 
-2025-07-10 21:33:47,960 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;telnet_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=23, flags="PA")/Raw(load="Telnet benign traffic 1"); sendp(telnet_packet, iface=\'h3-eth0\', verbose=0)"',)
-
-2025-07-10 21:33:48,046 - mininet - DEBUG -   File "<string>", line 1
-    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;telnet_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=23, flags=PA)/Raw(load=Telnet
-
-2025-07-10 21:33:48,046 - mininet - DEBUG -                                                                                                                                                                                          ^
-SyntaxError: unexpected EOF while parsing
-
-2025-07-10 21:33:48,056 - mininet - DEBUG - 
-2025-07-10 21:33:48,057 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ssh_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=22, flags="PA")/Raw(load="SSH benign traffic 1"); sendp(ssh_packet, iface=\'h3-eth0\', verbose=0)"',)
-
-2025-07-10 21:33:48,143 - mininet - DEBUG -   File "<string>", line 1
-    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ssh_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=22, flags=PA)/Raw(load=SSH
-
-2025-07-10 21:33:48,143 - mininet - DEBUG -                                                                                                                                                                                    ^
-SyntaxError: unexpected EOF while parsing
-
-2025-07-10 21:33:48,154 - mininet - DEBUG - 
-2025-07-10 21:33:48,154 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ftp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=21, flags="PA")/Raw(load="FTP benign traffic 1"); sendp(ftp_packet, iface=\'h3-eth0\', verbose=0)"',)
-
-2025-07-10 21:33:48,242 - mininet - DEBUG -   File "<string>", line 1
-    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ftp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=21, flags=PA)/Raw(load=FTP
-
-2025-07-10 21:33:48,242 - mininet - DEBUG -                                                                                                                                                                                    ^
-SyntaxError: unexpected EOF while parsing
-
-2025-07-10 21:33:48,252 - mininet - DEBUG - 
-2025-07-10 21:33:48,252 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=80, flags="PA")/Raw(load=b\'GET / HTTP/1.1\nHost: 10.0.0.5\nUser-Agent: ScapyBenignTraffic\nConnection: close\n\n\'); sendp(http_packet, iface=\'h3-eth0\', verbose=0)"',)
-
-2025-07-10 21:33:48,253 - mininet - DEBUG - > > > > > 
-2025-07-10 21:33:48,339 - mininet - DEBUG -   File "<string>", line 1
-    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=80, flags=PA)/Raw(load=b'GET / HTTP/1.1
-
-2025-07-10 21:33:48,339 - mininet - DEBUG -                                                                                                                                                                                                  ^
-SyntaxError: EOL while scanning string literal
-
-2025-07-10 21:33:48,350 - mininet - DEBUG - 
-2025-07-10 21:33:49,352 - mininet - DEBUG - *** h3 : ('ping -c 1 10.0.0.5 > /dev/null',)
-
-2025-07-10 21:33:49,353 - mininet - DEBUG - 
-2025-07-10 21:33:49,353 - mininet - DEBUG - *** h5 : ('ping -c 1 10.0.0.3 > /dev/null',)
-
-2025-07-10 21:33:49,354 - mininet - DEBUG - 
-2025-07-10 21:33:49,355 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=12345, flags="PA")/Raw(load="TCP benign traffic 2"); sendp(tcp_packet, iface=\'h3-eth0\', verbose=0)"',)
-
-2025-07-10 21:33:49,441 - mininet - DEBUG -   File "<string>", line 1
-    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=12345, flags=PA)/Raw(load=TCP
-2025-07-10 21:33:49,442 - mininet - DEBUG - 
-
-2025-07-10 21:33:49,442 - mininet - DEBUG -                                                                                                                                                                                       ^
-SyntaxError: unexpected EOF while parsing
-
-2025-07-10 21:33:49,452 - mininet - DEBUG - 
-2025-07-10 21:33:49,452 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;udp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=RandShort(), dport=12346)/Raw(load="UDP benign traffic 2"); sendp(udp_packet, iface=\'h3-eth0\', verbose=0)"',)
-
-2025-07-10 21:33:49,539 - mininet - DEBUG -   File "<string>", line 1
-    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;udp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/UDP(sport=RandShort(), dport=12346)/Raw(load=UDP
-
-2025-07-10 21:33:49,539 - mininet - DEBUG -                                                                                                                                                                             ^
-SyntaxError: unexpected EOF while parsing
-
-2025-07-10 21:33:49,550 - mininet - DEBUG - 
-2025-07-10 21:33:49,550 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;telnet_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=23, flags="PA")/Raw(load="Telnet benign traffic 2"); sendp(telnet_packet, iface=\'h3-eth0\', verbose=0)"',)
-
-2025-07-10 21:33:49,637 - mininet - DEBUG -   File "<string>", line 1
-    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;telnet_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=23, flags=PA)/Raw(load=Telnet
-2025-07-10 21:33:49,638 - mininet - DEBUG - 
-                                                                                                                                                                                         ^
-SyntaxError: unexpected EOF while parsing
-
-2025-07-10 21:33:49,648 - mininet - DEBUG - 
-2025-07-10 21:33:49,648 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ssh_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=22, flags="PA")/Raw(load="SSH benign traffic 2"); sendp(ssh_packet, iface=\'h3-eth0\', verbose=0)"',)
-
-2025-07-10 21:33:49,735 - mininet - DEBUG -   File "<string>", line 1
-
-2025-07-10 21:33:49,736 - mininet - DEBUG -     from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ssh_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=22, flags=PA)/Raw(load=SSH
                                                                                                                                                                                    ^
-SyntaxError: unexpected EOF while parsing
 
-2025-07-10 21:33:49,747 - mininet - DEBUG - 
-2025-07-10 21:33:49,747 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ftp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=21, flags="PA")/Raw(load="FTP benign traffic 2"); sendp(ftp_packet, iface=\'h3-eth0\', verbose=0)"',)
+2025-07-11 09:15:22,016 - mininet - DEBUG - SyntaxError: unexpected EOF while parsing
 
-2025-07-10 21:33:49,833 - mininet - DEBUG -   File "<string>", line 1
-    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ftp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=21, flags=PA)/Raw(load=FTP
-2025-07-10 21:33:49,833 - mininet - DEBUG - 
+2025-07-11 09:15:22,026 - mininet - DEBUG - 
+2025-07-11 09:15:22,026 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=80, flags="PA")/Raw(load=b\'GET / HTTP/1.1\nHost: 10.0.0.5\nUser-Agent: ScapyBenignTraffic\nConnection: close\n\n\'); sendp(http_packet, iface=\'h3-eth0\', verbose=0)"',)
 
-2025-07-10 21:33:49,833 - mininet - DEBUG -                                                                                                                                                                                    ^
-SyntaxError: unexpected EOF while parsing
-
-2025-07-10 21:33:49,844 - mininet - DEBUG - 
-2025-07-10 21:33:49,844 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=80, flags="PA")/Raw(load=b\'GET / HTTP/1.1\nHost: 10.0.0.5\nUser-Agent: ScapyBenignTraffic\nConnection: close\n\n\'); sendp(http_packet, iface=\'h3-eth0\', verbose=0)"',)
-
-2025-07-10 21:33:49,844 - mininet - DEBUG - > > > > 
-2025-07-10 21:33:49,844 - mininet - DEBUG - > 
-2025-07-10 21:33:49,930 - mininet - DEBUG -   File "<string>", line 1
+2025-07-11 09:15:22,027 - mininet - DEBUG - > > > > > 
+2025-07-11 09:15:22,113 - mininet - DEBUG -   File "<string>", line 1
     from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=80, flags=PA)/Raw(load=b'GET / HTTP/1.1
-2025-07-10 21:33:49,930 - mininet - DEBUG - 
-                                                                                                                                                                                                 ^
+
+2025-07-11 09:15:22,113 - mininet - DEBUG -                                                                                                                                                                                                  ^
 SyntaxError: EOL while scanning string literal
 
-2025-07-10 21:33:49,941 - mininet - DEBUG - 
-2025-07-10 21:33:50,943 - mininet - DEBUG - *** h3 : ('ping -c 1 10.0.0.5 > /dev/null',)
+2025-07-11 09:15:22,123 - mininet - DEBUG - 
+2025-07-11 09:15:23,126 - mininet - DEBUG - *** h3 : ('ping -c 1 10.0.0.5 > /dev/null',)
 
-2025-07-10 21:33:50,945 - mininet - DEBUG - 
-2025-07-10 21:33:50,945 - mininet - DEBUG - *** h5 : ('ping -c 1 10.0.0.3 > /dev/null',)
+2025-07-11 09:15:23,127 - mininet - DEBUG - 
+2025-07-11 09:15:23,127 - mininet - DEBUG - *** h5 : ('ping -c 1 10.0.0.3 > /dev/null',)
 
-2025-07-10 21:33:50,946 - mininet - DEBUG - 
-2025-07-10 21:33:50,946 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=12345, flags="PA")/Raw(load="TCP benign traffic 3"); sendp(tcp_packet, iface=\'h3-eth0\', verbose=0)"',)
+2025-07-11 09:15:23,128 - mininet - DEBUG - 
+2025-07-11 09:15:23,128 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=12345, flags="PA")/Raw(load="TCP benign traffic 1"); sendp(tcp_packet, iface=\'h3-eth0\', verbose=0)"',)
 
-2025-07-10 21:33:51,033 - mininet - DEBUG -   File "<string>", line 1
-    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=12345, flags=PA)/Raw(load=TCP
-2025-07-10 21:33:51,033 - mininet - DEBUG - 
+2025-07-11 09:15:23,215 - mininet - DEBUG -   File "<string>", line 1
+
+2025-07-11 09:15:23,215 - mininet - DEBUG -     from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=12345, flags=PA)/Raw(load=TCP
                                                                                                                                                                                       ^
 SyntaxError: unexpected EOF while parsing
 
-2025-07-10 21:33:51,044 - mininet - DEBUG - 
-2025-07-10 21:33:51,044 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;udp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=RandShort(), dport=12346)/Raw(load="UDP benign traffic 3"); sendp(udp_packet, iface=\'h3-eth0\', verbose=0)"',)
+2025-07-11 09:15:23,226 - mininet - DEBUG - 
+2025-07-11 09:15:23,226 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;udp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=RandShort(), dport=12346)/Raw(load="UDP benign traffic 1"); sendp(udp_packet, iface=\'h3-eth0\', verbose=0)"',)
 
-2025-07-10 21:33:51,131 - mininet - DEBUG -   File "<string>", line 1
+2025-07-11 09:15:23,313 - mininet - DEBUG -   File "<string>", line 1
     from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;udp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/UDP(sport=RandShort(), dport=12346)/Raw(load=UDP
-
-2025-07-10 21:33:51,131 - mininet - DEBUG -                                                                                                                                                                             ^
+2025-07-11 09:15:23,314 - mininet - DEBUG - 
+                                                                                                                                                                            ^
 SyntaxError: unexpected EOF while parsing
 
-2025-07-10 21:33:51,141 - mininet - DEBUG - 
-2025-07-10 21:33:51,141 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;telnet_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=23, flags="PA")/Raw(load="Telnet benign traffic 3"); sendp(telnet_packet, iface=\'h3-eth0\', verbose=0)"',)
+2025-07-11 09:15:23,325 - mininet - DEBUG - 
+2025-07-11 09:15:23,325 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;telnet_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=23, flags="PA")/Raw(load="Telnet benign traffic 1"); sendp(telnet_packet, iface=\'h3-eth0\', verbose=0)"',)
 
-2025-07-10 21:33:51,228 - mininet - DEBUG -   File "<string>", line 1
+2025-07-11 09:15:23,411 - mininet - DEBUG -   File "<string>", line 1
     from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;telnet_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=23, flags=PA)/Raw(load=Telnet
 
-2025-07-10 21:33:51,228 - mininet - DEBUG -                                                                                                                                                                                          ^
+2025-07-11 09:15:23,412 - mininet - DEBUG -                                                                                                                                                                                          ^
 SyntaxError: unexpected EOF while parsing
 
-2025-07-10 21:33:51,239 - mininet - DEBUG - 
-2025-07-10 21:33:51,239 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ssh_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=22, flags="PA")/Raw(load="SSH benign traffic 3"); sendp(ssh_packet, iface=\'h3-eth0\', verbose=0)"',)
+2025-07-11 09:15:23,422 - mininet - DEBUG - 
+2025-07-11 09:15:23,422 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ssh_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=22, flags="PA")/Raw(load="SSH benign traffic 1"); sendp(ssh_packet, iface=\'h3-eth0\', verbose=0)"',)
 
-2025-07-10 21:33:51,325 - mininet - DEBUG -   File "<string>", line 1
+2025-07-11 09:15:23,509 - mininet - DEBUG -   File "<string>", line 1
     from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ssh_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=22, flags=PA)/Raw(load=SSH
-                                                                                                                                                                                   ^
+
+2025-07-11 09:15:23,509 - mininet - DEBUG -                                                                                                                                                                                    ^
 SyntaxError: unexpected EOF while parsing
 
-2025-07-10 21:33:51,335 - mininet - DEBUG - 
-2025-07-10 21:33:51,335 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ftp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=21, flags="PA")/Raw(load="FTP benign traffic 3"); sendp(ftp_packet, iface=\'h3-eth0\', verbose=0)"',)
+2025-07-11 09:15:23,520 - mininet - DEBUG - 
+2025-07-11 09:15:23,520 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ftp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=21, flags="PA")/Raw(load="FTP benign traffic 1"); sendp(ftp_packet, iface=\'h3-eth0\', verbose=0)"',)
 
-2025-07-10 21:33:51,422 - mininet - DEBUG -   File "<string>", line 1
+2025-07-11 09:15:23,606 - mininet - DEBUG -   File "<string>", line 1
     from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ftp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=21, flags=PA)/Raw(load=FTP
 
-2025-07-10 21:33:51,422 - mininet - DEBUG -                                                                                                                                                                                    ^
+2025-07-11 09:15:23,606 - mininet - DEBUG -                                                                                                                                                                                    ^
 SyntaxError: unexpected EOF while parsing
 
-2025-07-10 21:33:51,433 - mininet - DEBUG - 
-2025-07-10 21:33:51,433 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=80, flags="PA")/Raw(load=b\'GET / HTTP/1.1\nHost: 10.0.0.5\nUser-Agent: ScapyBenignTraffic\nConnection: close\n\n\'); sendp(http_packet, iface=\'h3-eth0\', verbose=0)"',)
+2025-07-11 09:15:23,617 - mininet - DEBUG - 
+2025-07-11 09:15:23,617 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=80, flags="PA")/Raw(load=b\'GET / HTTP/1.1\nHost: 10.0.0.5\nUser-Agent: ScapyBenignTraffic\nConnection: close\n\n\'); sendp(http_packet, iface=\'h3-eth0\', verbose=0)"',)
 
-2025-07-10 21:33:51,433 - mininet - DEBUG - > > > > > 
-2025-07-10 21:33:51,519 - mininet - DEBUG -   File "<string>", line 1
+2025-07-11 09:15:23,617 - mininet - DEBUG - > > 
+2025-07-11 09:15:23,618 - mininet - DEBUG - > > > 
+2025-07-11 09:15:23,704 - mininet - DEBUG -   File "<string>", line 1
+    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=80, flags=PA)/Raw(load=b'GET / HTTP/1.1
 
-2025-07-10 21:33:51,520 - mininet - DEBUG -     from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=80, flags=PA)/Raw(load=b'GET / HTTP/1.1
-                                                                                                                                                                                                 ^
+2025-07-11 09:15:23,704 - mininet - DEBUG -                                                                                                                                                                                                  ^
 SyntaxError: EOL while scanning string literal
 
-2025-07-10 21:33:51,530 - mininet - DEBUG - 
-2025-07-10 21:33:52,535 - mininet - DEBUG - _popen ['mnexec', '-da', '45155', 'python3', '-c', "from scapy.all import *; sendp(Ether()/IP(dst='10.0.0.6')/TCP(dport=80, flags='S'), loop=1, inter=0.01, verbose=0, iface='h1-eth0')"] 55175
-2025-07-10 21:33:57,630 - mininet - DEBUG - _popen ['mnexec', '-da', '45157', 'python3', '-c', "from scapy.all import *; sendp(Ether()/IP(dst='10.0.0.4')/UDP(dport=53), loop=1, inter=0.01, verbose=0, iface='h2-eth0')"] 57597
-2025-07-10 21:34:02,728 - mininet - DEBUG - _popen ['mnexec', '-da', '45157', 'python3', '-c', "from scapy.all import *; sendp(Ether()/IP(dst='10.0.0.4')/ICMP(), loop=1, inter=0.01, verbose=0, iface='h2-eth0')"] 60010
-2025-07-10 21:35:26,974 - src.utils.enhanced_pcap_processing - INFO - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/output/capture.pcap
-2025-07-10 21:35:27,863 - src.utils.enhanced_pcap_processing - INFO - PCAP integrity check passed. Found 4281 packets.
-2025-07-10 21:35:27,863 - src.utils.enhanced_pcap_processing - INFO - Skipping timestamp validation as tcpdump is used.
-2025-07-10 21:35:28,774 - src.utils.enhanced_pcap_processing - INFO - Passing PCAP to processing function.
+2025-07-11 09:15:23,715 - mininet - DEBUG - 
+2025-07-11 09:15:24,717 - mininet - DEBUG - *** h3 : ('ping -c 1 10.0.0.5 > /dev/null',)
+
+2025-07-11 09:15:24,718 - mininet - DEBUG - 
+2025-07-11 09:15:24,718 - mininet - DEBUG - *** h5 : ('ping -c 1 10.0.0.3 > /dev/null',)
+
+2025-07-11 09:15:24,719 - mininet - DEBUG - 
+2025-07-11 09:15:24,719 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=12345, flags="PA")/Raw(load="TCP benign traffic 2"); sendp(tcp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-11 09:15:24,806 - mininet - DEBUG -   File "<string>", line 1
+    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=12345, flags=PA)/Raw(load=TCP
+
+2025-07-11 09:15:24,806 - mininet - DEBUG -                                                                                                                                                                                       ^
+SyntaxError: unexpected EOF while parsing
+
+2025-07-11 09:15:24,817 - mininet - DEBUG - 
+2025-07-11 09:15:24,817 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;udp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=RandShort(), dport=12346)/Raw(load="UDP benign traffic 2"); sendp(udp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-11 09:15:24,905 - mininet - DEBUG -   File "<string>", line 1
+    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;udp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/UDP(sport=RandShort(), dport=12346)/Raw(load=UDP
+
+2025-07-11 09:15:24,905 - mininet - DEBUG -                                                                                                                                                                             ^
+SyntaxError: unexpected EOF while parsing
+
+2025-07-11 09:15:24,916 - mininet - DEBUG - 
+2025-07-11 09:15:24,917 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;telnet_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=23, flags="PA")/Raw(load="Telnet benign traffic 2"); sendp(telnet_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-11 09:15:25,003 - mininet - DEBUG -   File "<string>", line 1
+    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;telnet_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=23, flags=PA)/Raw(load=Telnet
+
+2025-07-11 09:15:25,003 - mininet - DEBUG -                                                                                                                                                                                          ^
+SyntaxError: unexpected EOF while parsing
+
+2025-07-11 09:15:25,014 - mininet - DEBUG - 
+2025-07-11 09:15:25,014 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ssh_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=22, flags="PA")/Raw(load="SSH benign traffic 2"); sendp(ssh_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-11 09:15:25,101 - mininet - DEBUG -   File "<string>", line 1
+    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ssh_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=22, flags=PA)/Raw(load=SSH
+
+2025-07-11 09:15:25,101 - mininet - DEBUG -                                                                                                                                                                                    ^
+SyntaxError: unexpected EOF while parsing
+
+2025-07-11 09:15:25,113 - mininet - DEBUG - 
+2025-07-11 09:15:25,113 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ftp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=21, flags="PA")/Raw(load="FTP benign traffic 2"); sendp(ftp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-11 09:15:25,199 - mininet - DEBUG -   File "<string>", line 1
+    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ftp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=21, flags=PA)/Raw(load=FTP
+
+2025-07-11 09:15:25,199 - mininet - DEBUG -                                                                                                                                                                                    ^
+SyntaxError: unexpected EOF while parsing
+
+2025-07-11 09:15:25,210 - mininet - DEBUG - 
+2025-07-11 09:15:25,210 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=80, flags="PA")/Raw(load=b\'GET / HTTP/1.1\nHost: 10.0.0.5\nUser-Agent: ScapyBenignTraffic\nConnection: close\n\n\'); sendp(http_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-11 09:15:25,210 - mininet - DEBUG - > > > > > 
+2025-07-11 09:15:25,296 - mininet - DEBUG -   File "<string>", line 1
+    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=80, flags=PA)/Raw(load=b'GET / HTTP/1.1
+
+2025-07-11 09:15:25,296 - mininet - DEBUG -                                                                                                                                                                                                  ^
+SyntaxError: EOL while scanning string literal
+
+2025-07-11 09:15:25,307 - mininet - DEBUG - 
+2025-07-11 09:15:26,309 - mininet - DEBUG - *** h3 : ('ping -c 1 10.0.0.5 > /dev/null',)
+
+2025-07-11 09:15:26,311 - mininet - DEBUG - 
+2025-07-11 09:15:26,311 - mininet - DEBUG - *** h5 : ('ping -c 1 10.0.0.3 > /dev/null',)
+
+2025-07-11 09:15:26,312 - mininet - DEBUG - 
+2025-07-11 09:15:26,312 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=12345, flags="PA")/Raw(load="TCP benign traffic 3"); sendp(tcp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-11 09:15:26,400 - mininet - DEBUG -   File "<string>", line 1
+    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;tcp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=12345, flags=PA)/Raw(load=TCP
+
+2025-07-11 09:15:26,400 - mininet - DEBUG -                                                                                                                                                                                       ^
+SyntaxError: unexpected EOF while parsing
+
+2025-07-11 09:15:26,411 - mininet - DEBUG - 
+2025-07-11 09:15:26,411 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;udp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=RandShort(), dport=12346)/Raw(load="UDP benign traffic 3"); sendp(udp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-11 09:15:26,498 - mininet - DEBUG -   File "<string>", line 1
+    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;udp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/UDP(sport=RandShort(), dport=12346)/Raw(load=UDP
+
+2025-07-11 09:15:26,499 - mininet - DEBUG -                                                                                                                                                                             ^
+SyntaxError: unexpected EOF while parsing
+
+2025-07-11 09:15:26,509 - mininet - DEBUG - 
+2025-07-11 09:15:26,509 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;telnet_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=23, flags="PA")/Raw(load="Telnet benign traffic 3"); sendp(telnet_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-11 09:15:26,595 - mininet - DEBUG -   File "<string>", line 1
+    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;telnet_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=23, flags=PA)/Raw(load=Telnet
+
+2025-07-11 09:15:26,596 - mininet - DEBUG -                                                                                                                                                                                          ^
+SyntaxError: unexpected EOF while parsing
+
+2025-07-11 09:15:26,606 - mininet - DEBUG - 
+2025-07-11 09:15:26,606 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ssh_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=22, flags="PA")/Raw(load="SSH benign traffic 3"); sendp(ssh_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-11 09:15:26,693 - mininet - DEBUG -   File "<string>", line 1
+    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ssh_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=22, flags=PA)/Raw(load=SSH
+
+2025-07-11 09:15:26,693 - mininet - DEBUG -                                                                                                                                                                                    ^
+SyntaxError: unexpected EOF while parsing
+
+2025-07-11 09:15:26,703 - mininet - DEBUG - 
+2025-07-11 09:15:26,703 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ftp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=21, flags="PA")/Raw(load="FTP benign traffic 3"); sendp(ftp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-11 09:15:26,790 - mininet - DEBUG -   File "<string>", line 1
+    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;ftp_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=21, flags=PA)/Raw(load=FTP
+                                                                                                                                                                                   ^
+
+2025-07-11 09:15:26,790 - mininet - DEBUG - SyntaxError: unexpected EOF while parsing
+
+2025-07-11 09:15:26,801 - mininet - DEBUG - 
+2025-07-11 09:15:26,801 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=RandShort(), dport=80, flags="PA")/Raw(load=b\'GET / HTTP/1.1\nHost: 10.0.0.5\nUser-Agent: ScapyBenignTraffic\nConnection: close\n\n\'); sendp(http_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-11 09:15:26,801 - mininet - DEBUG - > > > > > 
+2025-07-11 09:15:26,887 - mininet - DEBUG -   File "<string>", line 1
+    from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;http_packet = Ether()/IP(src='10.0.0.3', dst='10.0.0.5')/TCP(sport=RandShort(), dport=80, flags=PA)/Raw(load=b'GET / HTTP/1.1
+
+2025-07-11 09:15:26,887 - mininet - DEBUG -                                                                                                                                                                                                  ^
+SyntaxError: EOL while scanning string literal
+
+2025-07-11 09:15:26,898 - mininet - DEBUG - 
+2025-07-11 09:15:27,938 - src.utils.enhanced_pcap_processing - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/output/syn_flood.pcap
+2025-07-11 09:15:27,938 - src.utils.enhanced_pcap_processing - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/output/syn_flood.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-11 09:15:27,943 - mininet - DEBUG - _popen ['mnexec', '-da', '70395', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/output/syn_flood.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 80299
+2025-07-11 09:15:29,945 - src.utils.enhanced_pcap_processing - INFO - tcpdump started successfully with PID: 80299
+2025-07-11 09:15:31,948 - gen_syn_flood - INFO - Starting SYN Flood from h1 to 10.0.0.6 for 5 seconds.
+2025-07-11 09:15:31,952 - mininet - DEBUG - _popen ['mnexec', '-da', '70353', 'python3', '-c', "from scapy.all import *; sendp(Ether()/IP(dst='10.0.0.6')/TCP(dport=80, flags='S'), loop=1, inter=0.01, verbose=0, iface='h1-eth0')"] 82179
+2025-07-11 09:15:37,042 - gen_syn_flood - INFO - SYN Flood from h1 to 10.0.0.6 finished.
+2025-07-11 09:15:37,111 - src.utils.enhanced_pcap_processing - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/output/udp_flood.pcap
+2025-07-11 09:15:37,111 - src.utils.enhanced_pcap_processing - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/output/udp_flood.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-11 09:15:37,115 - mininet - DEBUG - _popen ['mnexec', '-da', '70395', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/output/udp_flood.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 84601
+2025-07-11 09:15:39,118 - src.utils.enhanced_pcap_processing - INFO - tcpdump started successfully with PID: 84601
+2025-07-11 09:15:41,119 - gen_udp_flood - INFO - Starting UDP Flood from h2 to 10.0.0.4 for 5 seconds.
+2025-07-11 09:15:41,124 - mininet - DEBUG - _popen ['mnexec', '-da', '70358', 'python3', '-c', "from scapy.all import *; sendp(Ether()/IP(dst='10.0.0.4')/UDP(dport=53), loop=1, inter=0.01, verbose=0, iface='h2-eth0')"] 86504
+2025-07-11 09:15:46,214 - gen_udp_flood - INFO - UDP Flood from h2 to 10.0.0.4 finished.
+2025-07-11 09:15:46,284 - src.utils.enhanced_pcap_processing - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/output/icmp_flood.pcap
+2025-07-11 09:15:46,284 - src.utils.enhanced_pcap_processing - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/output/icmp_flood.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-11 09:15:46,289 - mininet - DEBUG - _popen ['mnexec', '-da', '70395', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/output/icmp_flood.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 88933
+2025-07-11 09:15:48,292 - src.utils.enhanced_pcap_processing - INFO - tcpdump started successfully with PID: 88933
+2025-07-11 09:15:50,296 - gen_icmp_flood - INFO - Starting ICMP Flood from h2 to 10.0.0.4 for 5 seconds.
+2025-07-11 09:15:50,300 - mininet - DEBUG - _popen ['mnexec', '-da', '70358', 'python3', '-c', "from scapy.all import *; sendp(Ether()/IP(dst='10.0.0.4')/ICMP(), loop=1, inter=0.01, verbose=0, iface='h2-eth0')"] 90818
+2025-07-11 09:15:55,389 - gen_icmp_flood - INFO - ICMP Flood from h2 to 10.0.0.4 finished.
+2025-07-11 09:15:55,458 - src.utils.enhanced_pcap_processing - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/output/ad_syn.pcap
+2025-07-11 09:15:55,458 - src.utils.enhanced_pcap_processing - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/output/ad_syn.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-11 09:15:55,463 - mininet - DEBUG - _popen ['mnexec', '-da', '70395', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/output/ad_syn.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 93264
+2025-07-11 09:15:57,463 - src.utils.enhanced_pcap_processing - INFO - tcpdump started successfully with PID: 93264
+2025-07-11 09:16:16,924 - src.utils.enhanced_pcap_processing - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/output/ad_udp.pcap
+2025-07-11 09:16:16,924 - src.utils.enhanced_pcap_processing - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/output/ad_udp.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-11 09:16:16,930 - mininet - DEBUG - _popen ['mnexec', '-da', '70395', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/output/ad_udp.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 102052
+2025-07-11 09:16:18,932 - src.utils.enhanced_pcap_processing - INFO - tcpdump started successfully with PID: 102052
+2025-07-11 09:16:35,082 - src.utils.enhanced_pcap_processing - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/output/ad_slow.pcap
+2025-07-11 09:16:35,082 - src.utils.enhanced_pcap_processing - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/output/ad_slow.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-11 09:16:35,087 - mininet - DEBUG - _popen ['mnexec', '-da', '70395', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/output/ad_slow.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 110409
+2025-07-11 09:16:37,088 - src.utils.enhanced_pcap_processing - INFO - tcpdump started successfully with PID: 110409
+2025-07-11 09:16:39,094 - mininet - DEBUG - _popen ['mnexec', '-da', '70358', '/bin/bash', '-c', 'slowhttptest -c 100 -H -i 10 -r 20 -l 5 -u http://10.0.0.6:80/ -t SR'] 112264
+2025-07-11 09:16:49,174 - src.utils.enhanced_pcap_processing - INFO - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/output/normal.pcap
+2025-07-11 09:16:49,184 - src.utils.enhanced_pcap_processing - INFO - PCAP integrity check passed. Found 32 packets.
+2025-07-11 09:16:49,185 - src.utils.enhanced_pcap_processing - INFO - Skipping timestamp validation as tcpdump is used.
+2025-07-11 09:16:49,195 - src.utils.enhanced_pcap_processing - INFO - Passing PCAP to processing function.
+2025-07-11 09:16:49,214 - src.utils.enhanced_pcap_processing - INFO - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/output/syn_flood.pcap
+2025-07-11 09:16:49,437 - src.utils.enhanced_pcap_processing - INFO - PCAP integrity check passed. Found 1248 packets.
+2025-07-11 09:16:49,437 - src.utils.enhanced_pcap_processing - INFO - Skipping timestamp validation as tcpdump is used.
+2025-07-11 09:16:49,661 - src.utils.enhanced_pcap_processing - INFO - Passing PCAP to processing function.
+2025-07-11 09:16:50,015 - src.utils.enhanced_pcap_processing - INFO - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/output/udp_flood.pcap
+2025-07-11 09:16:50,108 - src.utils.enhanced_pcap_processing - INFO - PCAP integrity check passed. Found 558 packets.
+2025-07-11 09:16:50,109 - src.utils.enhanced_pcap_processing - INFO - Skipping timestamp validation as tcpdump is used.
+2025-07-11 09:16:50,201 - src.utils.enhanced_pcap_processing - INFO - Passing PCAP to processing function.
+2025-07-11 09:16:50,349 - src.utils.enhanced_pcap_processing - INFO - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/output/icmp_flood.pcap
+2025-07-11 09:16:50,584 - src.utils.enhanced_pcap_processing - INFO - PCAP integrity check passed. Found 1052 packets.
+2025-07-11 09:16:50,584 - src.utils.enhanced_pcap_processing - INFO - Skipping timestamp validation as tcpdump is used.
+2025-07-11 09:16:50,818 - src.utils.enhanced_pcap_processing - INFO - Passing PCAP to processing function.
+2025-07-11 09:16:51,134 - src.utils.enhanced_pcap_processing - INFO - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/output/ad_syn.pcap
+2025-07-11 09:16:51,135 - src.utils.enhanced_pcap_processing - INFO - PCAP integrity check passed. Found 4 packets.
+2025-07-11 09:16:51,135 - src.utils.enhanced_pcap_processing - INFO - Skipping timestamp validation as tcpdump is used.
+2025-07-11 09:16:51,137 - src.utils.enhanced_pcap_processing - INFO - Passing PCAP to processing function.
+2025-07-11 09:16:51,141 - src.utils.enhanced_pcap_processing - INFO - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/output/ad_udp.pcap
+2025-07-11 09:16:51,146 - src.utils.enhanced_pcap_processing - INFO - PCAP integrity check passed. Found 1 packets.
+2025-07-11 09:16:51,147 - src.utils.enhanced_pcap_processing - INFO - Skipping timestamp validation as tcpdump is used.
+2025-07-11 09:16:51,148 - src.utils.enhanced_pcap_processing - INFO - Passing PCAP to processing function.
+2025-07-11 09:16:51,152 - src.utils.enhanced_pcap_processing - INFO - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/output/ad_slow.pcap
+2025-07-11 09:16:51,215 - src.utils.enhanced_pcap_processing - INFO - PCAP integrity check passed. Found 336 packets.
+2025-07-11 09:16:51,216 - src.utils.enhanced_pcap_processing - INFO - Skipping timestamp validation as tcpdump is used.
+2025-07-11 09:16:51,279 - src.utils.enhanced_pcap_processing - INFO - Passing PCAP to processing function.

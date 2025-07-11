@@ -661,7 +661,7 @@ def main():
             {'start_time': scenario_start_time + 30, 'end_time': scenario_start_time + 35, 'label': 'ad_udp'},
             {'start_time': scenario_start_time + 35, 'end_time': scenario_start_time + 40, 'label': 'ad_slow'},
             # Phase 4: Cooldown (5s)
-            {'start_time': scenario_start_time + 40, 'end_time': scenario_start_time + 45, 'label': 'normal'},
+            {'start_time': scenario_start_time + 40, 'end_time': scenario_start_time + 50, 'label': 'normal'},
         ]
 
         # 3. Run Scenario
