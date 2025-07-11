@@ -1,6 +1,6 @@
 # SDN DDoS Dataset Generation Scenario
 
-This document provides a comprehensive overview of the Mininet host scenario for DDoS dataset generation, including detailed network architecture, host roles, traffic patterns, and attack flows.
+This document provides a comprehensive overview of the Mininet host scenario for DDoS dataset generation, including detailed network architecture, host roles, traffic patterns, and attack flows, as orchestrated by `dataset_generation/main.py` and configured by `dataset_generation/config.json`.
 
 ## Network Architecture
 
@@ -44,142 +44,81 @@ The Mininet topology consists of the following components:
 | Host | IP | Attack Type | Target | Impact | Description |
 |------|----|-------------|--------|--------|-------------|
 | h1 | 10.0.0.1 | SYN Flood | h6 (Web Server) | Controller & Application | Overwhelms controller flow tables and exhausts server resources |
-| h2 | 10.0.0.2 | Multiple Attacks | h4 & h6 | Various | Launches various attacks including SYN, UDP, and ICMP floods |
+| h2 | 10.0.0.2 | Multiple Attacks | h4 & h6 | Various | Launches various attacks including UDP, ICMP, and advanced adversarial attacks. |
 
 #### Detailed Attack Vectors from h2:
 
-| Attack Type | Target | Rate | Protocol | Port | Evasion Technique |
-|-------------|--------|------|----------|------|-------------------|
-| SYN Flood | h6 | High | TCP | 80 | None |
-| UDP Flood | h4 | High | UDP | 53 | None |
-| ICMP Flood | h4 | High | ICMP | N/A | None |
-| Adversarial SYN | h6 | Variable | TCP | 80 | TCP State Exhaustion |
-| Adversarial UDP | h4 | Variable | UDP | 53 | Application Layer Mimicry |
-| Multi-vector | h4, h6 | Variable | Multiple | Multiple | Multiple Techniques |
+| Attack Type | Target | Protocol | Port | Evasion Technique |
+|-------------|--------|----------|------|-------------------|
+| UDP Flood | h4 | UDP | 53 | High Rate |
+| ICMP Flood | h4 | ICMP | N/A | High Rate |
+| Adversarial SYN | h6 | TCP | 80 | TCP State Exhaustion |
+| Adversarial UDP | h6 | UDP | 53 | Application Layer Mimicry |
+| Adversarial Slow Read | h6 | TCP | 80 | Slow HTTP Request |
 
 ### Victims
 
 | Host | IP | Role | Attack Types | Impact |
 |------|----|------|--------------|--------|
 | h4 | 10.0.0.4 | General Victim | UDP Flood, ICMP Flood | Network Saturation |
-| h6 | 10.0.0.6 | Web Server | SYN Flood | Service Disruption |
+| h6 | 10.0.0.6 | Web Server | SYN Flood, Adversarial Attacks | Service Disruption |
 
 ### Normal Traffic Generators
 
-| Host | IP | Traffic Type | Destination | Protocol | Purpose |
-|------|----|--------------|-------------|----------|---------|
-| h3 | 10.0.0.3 | Benign | h5 | TCP | Simulate normal web traffic |
-| h5 | 10.0.0.5 | Benign | h3 | UDP | Simulate normal UDP-based services |
-
-## Attack Flow Diagrams
-
-### Traditional DDoS Attack Flow
-```mermaid
-sequenceDiagram
-    participant A as Attacker (h1/h2)
-    participant S as Switch (s1)
-    participant C as SDN Controller
-    participant V as Victim (h4/h6)
-    
-    A->>S: SYN Flood Traffic
-    S->>C: PacketIn (First Packet)
-    C->>S: Install Flow Rule
-    S->>V: Forward Traffic
-    V->>S: SYN-ACK (if applicable)
-    S->>A: Forward Response
-    loop Attack Traffic
-        A->>S: Continuous Attack Packets
-        S->>V: Forward Using Flow Rules
-    end
-```
-
-### Adversarial DDoS Attack Flow
-```mermaid
-sequenceDiagram
-    participant A as Attacker (h2)
-    participant S as Switch (s1)
-    participant C as SDN Controller
-    participant V as Victim (h4/h6)
-    
-    A->>S: Low-Rate Attack Traffic
-    S->>C: PacketIn (First Packet)
-    C->>S: Install Flow Rule
-    S->>V: Forward Traffic
-    loop Evasion Techniques
-        A->>S: Variable Rate Traffic
-        S->>V: Forward Traffic
-        A->>S: Protocol Manipulation
-        S->>V: Forward Traffic
-    end
-```
+| Host | IP | Traffic Type | Destination | Protocols | Purpose |
+|------|----|--------------|-------------|-----------|---------|
+| h3 | 10.0.0.3 | Benign | h5 | ICMP, TCP, UDP, etc. | Simulate normal web and network traffic |
+| h5 | 10.0.0.5 | Benign | h3 | ICMP, TCP, UDP, etc. | Simulate normal web and network traffic |
 
 ## Traffic Generation Phases
 
-The dataset generation process follows a structured timeline with distinct phases, as orchestrated by `dataset_generation/test.py`:
+The dataset generation process follows a structured timeline with distinct phases. The duration of each phase is configurable in `dataset_generation/config.json`.
 
-### 1. Initialization Phase
-- Duration: 5 seconds
-- Purpose: Network stabilization and controller initialization
-- Traffic: Minimal control traffic only
-
-### 2. Normal Traffic Phase
-- Duration: 5 seconds
-- Purpose: Establish baseline network behavior
-- Traffic: Benign traffic (ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP) between h3 and h5.
-
-### 3. Attack Traffic Phases (Total 30 seconds)
-
-#### Phase 3.1: Traditional DDoS Attacks (15 seconds total)
-- **SYN Flood**: 5 seconds | h1 -> h6
-- **UDP Flood**: 5 seconds | h2 -> h4
-- **ICMP Flood**: 5 seconds | h2 -> h4
-
-#### Phase 3.2: Adversarial DDoS Attacks (15 seconds total)
-- **Adversarial TCP State Exhaustion (ad_syn)**: 5 seconds | h2 -> h6
-- **Adversarial Application Layer (ad_udp)**: 5 seconds | h2 -> h6
-- **Adversarial Multi-Vector (multivector)**: 5 seconds | h2 -> h6
-
-### 4. Cooldown Phase
-- Duration: 5 seconds
-- Purpose: Allow network to stabilize
-- Traffic: Reduction of traffic after attacks.
+| Phase | Default Duration | Label | Description |
+|-------|------------------|-------|-------------|
+| Initialization | 5s | normal | Network stabilization and controller initialization. |
+| Normal Traffic | 5s | normal | Benign traffic (ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP) between h3 and h5. |
+| SYN Flood | 5s | syn_flood | Traditional SYN flood attack from h1 to h6. |
+| UDP Flood | 5s | udp_flood | Traditional UDP flood attack from h2 to h4. |
+| ICMP Flood | 5s | icmp_flood | Traditional ICMP flood attack from h2 to h4. |
+| Adversarial SYN | 5s | ad_syn | Adversarial TCP State Exhaustion attack from h2 to h6. |
+| Adversarial UDP | 5s | ad_udp | Adversarial Application Layer attack from h2 to h6. |
+| Adversarial Slow Read | 5s | ad_slow | Adversarial Slow Read attack from h2 to h6. |
+| Cooldown | 10s | normal | Allow network to stabilize and ensure final flow stats are captured. |
 
 ## Data Collection Architecture
 
 ```mermaid
 graph LR
     subgraph Mininet Network
-        s1 -->|Traffic| PCAP_Capture[Packet Capture (tshark)]
+        s1[Switch s1]
+        h1[h1..h6]
+        h1 -- Traffic --> s1
     end
-    PCAP_Capture -->|capture.pcap| PCAP_Processing[PCAP Processing (enhanced_pcap_processing.py)]
-    PCAP_Processing -->|labeled_packet_features.csv| Dataset_Storage[Dataset Storage]
+
+    subgraph Data Collectors
+        Ryu[Ryu Controller]
+        Tshark[Packet Capture (tshark)]
+    end
+
+    s1 -- OpenFlow Stats --> Ryu
+    s1 -- Mirrored Traffic --> Tshark
+
+    Ryu -->|Flow Stats API| main_py[main.py]
+    Tshark -->|PCAP files| main_py
+
+    main_py -->|flow_features.csv| Dataset_Storage[Output Directory]
+    main_py -->|packet_features.csv| Dataset_Storage
 ```
 
-## Dataset Structure
+## Dataset Outputs
 
-The generated dataset includes the following files in `dataset_generation/output/`:
+The generated datasets in `dataset_generation/main_output/` include:
 
-1.  **capture.pcap**
-    -   The raw packet capture file in PCAP format.
+1.  **`packet_features.csv`**
+    -   The primary packet-level dataset with extracted features and labels.
+    -   Each packet is associated with a label indicating the traffic phase (e.g., `normal`, `syn_flood`, `ad_slow`).
 
-2.  **labeled_packet_features.csv**
-    -   The primary output dataset with extracted packet features and labels.
-    -   Each packet is associated with a label indicating the traffic phase (e.g., `normal`, `syn_flood`, `ad_syn`).
-
-## Labeling Strategy
-
-The `labeled_packet_features.csv` dataset is labeled based on the following timeline:
-
-| Phase | Duration (seconds) | Label |
-|-------|--------------------|-------|
-| Initialization | 5 | normal |
-| Normal Traffic | 5 | normal |
-| SYN Flood | 5 | syn_flood |
-| UDP Flood | 5 | udp_flood |
-| ICMP Flood | 5 | icmp_flood |
-| Adversarial SYN | 5 | ad_syn |
-| Adversarial UDP | 5 | ad_udp |
-| Multi-vector | 5 | multivector |
-| Cooldown | 5 | normal |
-
-This comprehensive approach ensures the generated dataset accurately reflects both normal network operations and various types of DDoS attacks, making it valuable for training and evaluating intrusion detection systems.
+2.  **`flow_features.csv`**
+    -   A flow-based dataset containing statistics collected from the Ryu controller.
+    -   Features include packet/byte counts, duration, and derived rates, labeled based on the active traffic phase.

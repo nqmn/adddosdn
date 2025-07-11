@@ -56,7 +56,7 @@ BASE_DIR = Path(__file__).parent.resolve()
 SRC_DIR = BASE_DIR / "src"
 ATTACKS_DIR = SRC_DIR / "attacks"
 UTILS_DIR = SRC_DIR / "utils"
-OUTPUT_DIR = BASE_DIR / "output"
+OUTPUT_DIR = BASE_DIR / "test_output"
 PCAP_FILE_NORMAL = OUTPUT_DIR / "normal.pcap"
 PCAP_FILE_SYN_FLOOD = OUTPUT_DIR / "syn_flood.pcap"
 PCAP_FILE_UDP_FLOOD = OUTPUT_DIR / "udp_flood.pcap"
@@ -74,8 +74,11 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 logger.propagate = False # Prevent messages from being passed to the root logger
 
+# Ensure output directory exists before setting up file handlers
+OUTPUT_DIR.mkdir(exist_ok=True)
+
 # File handler
-file_handler = logging.FileHandler('test.log')
+file_handler = logging.FileHandler(OUTPUT_DIR / 'test.log')
 file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
 logger.addHandler(file_handler)
 

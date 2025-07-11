@@ -11,26 +11,26 @@ docs/
 ├── analysis.md         # Dataset analysis and statistics
 ├── scenario.md         # Attack scenarios and configurations
 ├── install.md          # Detailed installation guide
-└── api/               # API documentation (if applicable)
+└── summary.md          # High-level summary of the project
 ```
 
 ## 🔍 Getting Started with Documentation
 
 1. **New Users**
-   - Start with the main [README.md](../README.md) for an overview
-   - Check [install.md](install.md) for detailed setup instructions
-   - Review [scenario.md](scenario.md) for attack scenarios
-   - Refer to `dataset_generation/TEST.md` for detailed information on `test.py`
+   - Start with the main [README.md](../README.md) for an overview.
+   - Check [install.md](install.md) for detailed setup instructions.
+   - Review [scenario.md](scenario.md) for attack scenarios and traffic generation details.
+   - Refer to `dataset_generation/main.py` and `dataset_generation/config.json` for the primary generation script and its configuration.
 
 2. **Developers**
-   - [progress.md](progress.md) - Development history and future plans
-   - [analysis.md](analysis.md) - Dataset statistics and characteristics
-   - Source code documentation in respective module directories
+   - [progress.md](progress.md) - Development history and future plans.
+   - [analysis.md](analysis.md) - Dataset statistics and characteristics.
+   - Source code documentation in respective module directories.
 
 3. **Researchers**
-   - [analysis.md](analysis.md) - Detailed dataset analysis
-   - [scenario.md](scenario.md) - Attack scenarios and configurations
-   - [progress.md](progress.md) - Evolution of the dataset
+   - [analysis.md](analysis.md) - Detailed dataset analysis.
+   - [scenario.md](scenario.md) - Attack scenarios and configurations.
+   - [progress.md](progress.md) - Evolution of the dataset.
 
 ## 📄 Documentation Files
 

@@ -4,25 +4,27 @@ A comprehensive Python-based framework for generating, capturing, processing, an
 
 ## 🚀 Features
 
-- **Multiple Attack Vectors**: SYN Flood, UDP Flood, ICMP Flood, and advanced adversarial attacks
-- **SDN Integration**: Native support for OpenFlow/SDN environments via Ryu controller
-- **Rich Dataset Output**: Generates packet-level features, flow statistics, and CICFlowMeter-compatible datasets
-- **Advanced Evasion Techniques**: IP rotation, protocol fingerprinting evasion, and temporal pattern avoidance
-- **Legitimate Traffic Mimicry**: Realistic HTTP headers, sessions, and request patterns
+- **Multiple Attack Vectors**: SYN Flood, UDP Flood, ICMP Flood, Slow Read, and advanced adversarial attacks.
+- **SDN Integration**: Native support for OpenFlow/SDN environments via Ryu controller, with REST API for flow monitoring.
+- **Rich Dataset Output**: Generates both packet-level and flow-level feature datasets (`packet_features.csv`, `flow_features.csv`).
+- **Configurable Scenarios**: Easily configure traffic generation durations and parameters via `config.json`.
+- **Advanced Evasion Techniques**: Includes TCP State Exhaustion, Application Layer Mimicry, and Slow Read attacks.
+- **Modular and Extensible**: Cleanly structured with separate modules for attacks, controller logic, and utilities.
 
 ## 📦 Repository Structure
 
 ```
 .
 ├── dataset_generation/      # Dataset generation module
-│   ├── output/             # Output directory for generated data
+│   ├── main_output/        # Default output directory for main.py
 │   ├── src/                # Source code for dataset generation
 │   │   ├── attacks/        # Attack implementations
 │   │   ├── controller/     # Ryu controller application
 │   │   └── utils/          # Utility functions
-│   ├── TEST.md             # Documentation for test.py
-│   ├── test.py             # Main script for dataset generation
-│   └── requirements.txt    # Python dependencies for dataset generation
+│   ├── config.json         # Configuration file for traffic scenarios
+│   ├── main.py             # Primary script for dataset generation
+│   ├── test.py             # Script for quick testing
+│   └── requirements.txt    # Python dependencies
 ├── LICENSE
 ├── README.md
 └── .git/...
@@ -34,7 +36,7 @@ A comprehensive Python-based framework for generating, capturing, processing, an
     ```bash
     # On Ubuntu/Debian
     sudo apt update
-    sudo apt install -y python3-pip python3-venv git default-jre
+    sudo apt install -y python3-pip python3-venv git default-jre tshark slowhttptest
     ```
 
 2.  **Clone the repository**
@@ -56,10 +58,21 @@ A comprehensive Python-based framework for generating, capturing, processing, an
 
 ## 🚀 Quick Start
 
-### Run the dataset generator
-```bash
-python dataset_generation/test.py
-```
+1.  **(Optional) Configure the scenario**
+    - Edit `dataset_generation/config.json` to change the duration of traffic phases.
+
+2.  **Run the dataset generator**
+    ```bash
+    sudo python3 dataset_generation/main.py
+    ```
+    - The generated datasets (`packet_features.csv`, `flow_features.csv`) and logs will be saved in `dataset_generation/main_output/`.
+
+3.  **Run a quick test**
+    - For a shorter, non-configurable test run, use `test.py`.
+    ```bash
+    sudo python3 dataset_generation/test.py
+    ```
+    - Test outputs will be saved in `dataset_generation/test_output/`.
 
 
 

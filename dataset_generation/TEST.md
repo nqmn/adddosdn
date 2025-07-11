@@ -29,17 +29,17 @@ The `test.py` script automates the following steps:
 1.  **Environment Setup:**
     *   **Cleanup:** Clears any previous Mininet instances to ensure a clean slate.
     *   **Tool Verification:** Checks for the presence of all necessary command-line tools (`ryu-manager`, `mn`, `tshark`, `slowhttptest`).
-    *   **Ryu Controller Initialization:** Starts the Ryu SDN controller in the background, logging its output to `output/ryu.log`.
+    *   **Ryu Controller Initialization:** Starts the Ryu SDN controller in the background, logging its output to `test_output/ryu.log`.
     *   **Controller Health Check:** Verifies that the Ryu controller is running and listening on its designated port (6653). It also tests a `/hello` endpoint to confirm API responsiveness.
-    *   **Mininet Network Creation:** Builds a custom Mininet topology consisting of one OpenFlow switch (`s1`) and six hosts (`h1` to `h6`). The switch is connected to the remote Ryu controller. Mininet logs are saved to `output/mininet.log`.
+    *   **Mininet Network Creation:** Builds a custom Mininet topology consisting of one OpenFlow switch (`s1`) and six hosts (`h1` to `h6`). The switch is connected to the remote Ryu controller. Mininet logs are saved to `test_output/mininet.log`.
     *   **Connectivity Test:** Runs `pingAll` within Mininet to confirm basic network connectivity between all hosts.
 
 2.  **Traffic Generation Scenario:**
-    The script orchestrates a multi-phase traffic generation process, capturing network traffic for each phase into separate PCAP files.
+    The script orchestrates a multi-phase traffic generation process, capturing network traffic for each phase into separate PCAP files. Unlike `main.py`, `test.py` uses fixed, shorter durations for each phase, making it suitable for quick validation.
 
     *   **Phase 1: Initialization (5 seconds):** A brief pause before traffic generation begins.
     *   **Phase 2: Normal Traffic (5 seconds):**
-        *   Captures benign traffic to `output/normal.pcap`.
+        *   Captures benign traffic to `test_output/normal.pcap`.
         *   Generates various types of legitimate traffic (ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP) between `h3` and `h5`.
     *   **Phase 3.1: Traditional DDoS Attacks (15 seconds total):**
         | Attack Type | Source | Destination | Affected Plane | Relevance |
@@ -56,13 +56,13 @@ The `test.py` script automates the following steps:
     *   **Phase 4: Cooldown (5 seconds):** A final pause after all traffic generation. For flow data collection, this phase is extended to cover the entire 50-second duration of flow statistics collection, ensuring all lingering flow entries are labeled as normal.
 
 3.  **Data Collection and Dataset Creation:**
-    *   **Concurrent Flow Statistics Collection:** Simultaneously with traffic generation, the script continuously queries the Ryu controller's REST API (`/flows` endpoint) to collect real-time flow statistics. This data is saved to `output/flow_features.csv`.
+    *   **Concurrent Flow Statistics Collection:** Simultaneously with traffic generation, the script continuously queries the Ryu controller's REST API (`/flows` endpoint) to collect real-time flow statistics. This data is saved to `test_output/flow_features.csv`.
     *   **PCAP Processing:** For each generated PCAP file:
         *   It performs an integrity check to ensure the PCAP is valid.
         *   It validates and fixes any timestamp inconsistencies within the PCAP.
         *   It extracts network features and applies appropriate labels (e.g., 'normal', 'syn_flood') based on the traffic type. This process generates temporary CSV files.
     *   **Packet-Level Dataset Consolidation:** All temporary labeled packet-level CSV files are concatenated into a single, comprehensive dataset.
-    *   **Final Packet-Level CSV:** The combined packet-level dataset is saved as `output/packet_features.csv`.
+    *   **Final Packet-Level CSV:** The combined packet-level dataset is saved as `test_output/packet_features.csv`.
 
 4.  **Cleanup:**
     *   Gracefully terminates the Ryu controller process.
@@ -70,12 +70,13 @@ The `test.py` script automates the following steps:
 
 ## Expected Outputs
 
-Upon successful execution, the `output/` directory will contain:
+Upon successful execution, the `test_output/` directory will contain:
 
 *   **Log Files:**
     *   `test.log`: Main script execution logs.
     *   `ryu.log`: Logs from the Ryu SDN controller.
     *   `mininet.log`: Logs from the Mininet network simulation.
+    *   `attack.log`: A dedicated log for details about the executed attacks.
 *   **PCAP Files (Raw Traffic Captures):**
     *   `normal.pcap`
     *   `syn_flood.pcap`
@@ -86,6 +87,10 @@ Upon successful execution, the `output/` directory will contain:
     *   `ad_slow.pcap`
 *   **Labeled Dataset:**
     *   `packet_features.csv`: The final CSV file containing extracted packet-level network features and corresponding binary and multi-class labels for all traffic types.
+    *   `flow_features.csv`: The CSV file containing flow-level statistics collected from the Ryu controller.
+*   **Feature Names:**
+    *   `packet_feature_names.txt`: A text file listing the column headers for `packet_features.csv`.
+    *   `flow_feature_names.txt`: A text file listing the column headers for `flow_features.csv`.
 
     ### Packet-Level Features
     | Feature Name | Description | Relevance |
@@ -105,8 +110,6 @@ Upon successful execution, the `output/` directory will contain:
     | `tcp_flags` | TCP flags (e.g., SYN, ACK, FIN). | Essential for analyzing TCP connection states and identifying SYN floods or other TCP-based attacks. |
     | `Label_multi` | Multi-class label indicating the type of traffic (e.g., 'normal', 'syn_flood', 'udp_flood'). | Primary label for multi-class classification tasks. |
     | `Label_binary` | Binary label indicating whether the traffic is normal (0) or attack (1). | Primary label for binary classification tasks. |
-
-*   `flow_features.csv`: The CSV file containing flow-level statistics collected from the Ryu controller.
 
     ### Flow-Level Features
     | Feature Name | Description | Relevance |
@@ -151,7 +154,7 @@ Flow-level data is labeled concurrently with the entire traffic generation scena
 1.  **Continuous Collection:** The `collect_flow_stats` function runs in a separate thread, continuously polling the Ryu controller's `/flows` API endpoint.
 2.  **Real-time Timestamping:** Each time flow statistics are collected, the current system timestamp (`datetime.now().timestamp()`) is recorded for the flow entries.
 3.  **Overall Scenario Timeline:** A single, comprehensive `flow_label_timeline` is defined in the `main` function. This timeline spans the entire duration of the traffic generation scenario, with precise start and end times for each phase (Initialization, Normal, Traditional Attacks, Adversarial Attacks, Cooldown).
-4.  **Robust Time Matching:** To account for potential delays in flow reporting by the controller and the persistence of flow entries in the flow table (which can linger for several seconds after the actual traffic has ceased), a small epsilon (e.g., 0.1 seconds) is added to the `end_time` of each phase in the `flow_label_timeline`. This ensures that flow records collected slightly after a phase's nominal end are still correctly associated with that phase's label.
+4.  **Robust Time Matching:** To account for potential delays in flow reporting by the controller and the persistence of flow entries in the flow table (which can linger for several seconds after a phase's nominal end), a small epsilon (e.g., 0.1 seconds) is added to the `end_time` of each phase in the `flow_label_timeline`. This ensures that flow records collected slightly after a phase's nominal end are still correctly associated with that phase's label.
 5.  **Label Assignment:** For each collected flow entry, its `timestamp` is compared against this overall `flow_label_timeline` using the `_get_label_for_timestamp` helper function.
     *   `Label_multi`: Assigned the specific attack type or 'normal' based on the current timestamp's position within the `flow_label_timeline`.
     *   `Label_binary`: Assigned `1` for any attack type and `0` for 'normal' traffic.

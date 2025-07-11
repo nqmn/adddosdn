@@ -1,0 +1,203 @@
+2025-07-11 19:14:20,428 - INFO - Starting SYN Flood from h1 to 10.0.0.6 for 5 seconds.
+2025-07-11 19:14:25,532 - INFO - SYN Flood from h1 to 10.0.0.6 finished.
+2025-07-11 19:14:25,601 - INFO - Attack: SYN Flood completed.
+2025-07-11 19:14:29,614 - INFO - Starting UDP Flood from h2 to 10.0.0.4 for 5 seconds.
+2025-07-11 19:14:34,709 - INFO - UDP Flood from h2 to 10.0.0.4 finished.
+2025-07-11 19:14:34,778 - INFO - Attack: UDP Flood completed.
+2025-07-11 19:14:38,791 - INFO - Starting ICMP Flood from h2 to 10.0.0.4 for 5 seconds.
+2025-07-11 19:14:43,883 - INFO - ICMP Flood from h2 to 10.0.0.4 finished.
+2025-07-11 19:14:43,952 - INFO - Attack: ICMP Flood completed.
+2025-07-11 19:14:47,964 - INFO - Starting advanced adversarial attack 'ad_syn' against 10.0.0.6 for 5 seconds.
+2025-07-11 19:14:47,965 - INFO - Starting TCP state exhaustion attack against 10.0.0.6:80 for 5 seconds
+2025-07-11 19:14:49,080 - DEBUG - Attempting to send SYN packet from 172.23.249.230:36800 to 10.0.0.6:80
+2025-07-11 19:14:49,232 - DEBUG - SYN packet sent. Reply: None
+2025-07-11 19:14:49,232 - DEBUG - No SYN-ACK received or invalid reply for 172.23.249.230:36800.
+2025-07-11 19:15:05,514 - DEBUG - Attempting to send SYN packet from 10.205.177.180:4173 to 10.0.0.6:80
+2025-07-11 19:15:05,621 - DEBUG - SYN packet sent. Reply: None
+2025-07-11 19:15:05,621 - DEBUG - No SYN-ACK received or invalid reply for 10.205.177.180:4173.
+2025-07-11 19:15:09,740 - INFO - Starting advanced adversarial attack 'ad_udp' against 10.0.0.6 for 5 seconds.
+2025-07-11 19:15:09,740 - INFO - Starting distributed application layer attack against 10.0.0.6:80 for 5 seconds
+2025-07-11 19:15:10,312 - DEBUG - App Layer: Attempting to send OPTIONS request from 172.21.236.99 to 10.0.0.6:80 for path /search?q=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+2025-07-11 19:15:10,319 - DEBUG - App Layer: OPTIONS request sent from 172.21.236.99 to 10.0.0.6:80
+2025-07-11 19:15:10,978 - DEBUG - App Layer: Attempting to send HEAD request from 172.31.244.110 to 10.0.0.6:80 for path /images/highres_5665.jpg
+2025-07-11 19:15:10,983 - DEBUG - App Layer: HEAD request sent from 172.31.244.110 to 10.0.0.6:80
+2025-07-11 19:15:11,615 - DEBUG - App Layer: Attempting to send HEAD request from 172.21.72.97 to 10.0.0.6:80 for path /api/products?page=1&size=100&sort=price
+2025-07-11 19:15:11,621 - DEBUG - App Layer: HEAD request sent from 172.21.72.97 to 10.0.0.6:80
+2025-07-11 19:15:11,721 - DEBUG - App Layer: Attempting to send OPTIONS request from 192.168.3.58 to 10.0.0.6:80 for path /download?file=large_report.pdf
+2025-07-11 19:15:11,727 - DEBUG - App Layer: OPTIONS request sent from 192.168.3.58 to 10.0.0.6:80
+2025-07-11 19:15:26,270 - DEBUG - App Layer: Attempting to send GET request from 10.9.130.150 to 10.0.0.6:80 for path /images/highres_5665.jpg
+2025-07-11 19:15:26,300 - DEBUG - App Layer: GET request sent from 10.9.130.150 to 10.0.0.6:80
+2025-07-11 19:15:31,430 - INFO - Starting advanced adversarial attack 'ad_slow' against 10.0.0.6 for 5 seconds.
+2025-07-11 19:15:31,430 - INFO - Starting advanced adversarial attack 'ad_slow' against 10.0.0.6 for 5 seconds.
+2025-07-11 19:15:31,430 - INFO - Starting slowhttptest (Slow Read) from h2 to 10.0.0.6 for 5 seconds.
+2025-07-11 19:15:31,430 - INFO - Starting slowhttptest (Slow Read) from h2 to 10.0.0.6 for 5 seconds.
+2025-07-11 19:15:31,430 - INFO - Executing slowhttptest command: slowhttptest -c 100 -H -i 10 -r 20 -l 5 -u http://10.0.0.6:80/ -t SR
+2025-07-11 19:15:31,430 - INFO - Executing slowhttptest command: slowhttptest -c 100 -H -i 10 -r 20 -l 5 -u http://10.0.0.6:80/ -t SR
+2025-07-11 19:15:43,758 - INFO - slowhttptest output: Fri Jul 11 19:15:37 2025:[H[2JFri Jul 11 19:15:37 2025:
+	[1;36mslowhttptest version 1.6
+ - https://code.google.com/p/slowhttptest/ -
+[0;34mtest type:[1;34m                        SLOW HEADERS
+[0;34mnumber of connections:[1;34m            100
+[0;34mURL:[1;34m                              http://10.0.0.6:80/
+[0;34mverb:[1;34m                             SR
+[0;34mContent-Length header value:[1;34m      4096
+[0;34mfollow up data max size:[1;34m          68
+[0;34minterval between follow up data:[1;34m  10 seconds
+[0;34mconnections per seconds:[1;34m          20
+[0;34mprobe connection timeout:[1;34m         5 seconds
+[0;34mtest duration:[1;34m                    5 seconds
+[0;34musing proxy:[1;34m                      no proxy 
+
+[0mFri Jul 11 19:15:37 2025:[1;32m
+slow HTTP test status on [0;32m0[1;32mth second:
+
+[1;32minitializing:[1;32m        0
+[1;32mpending:     [1;32m        1
+[1;32mconnected:   [1;32m        0
+[1;32merror:       [1;32m        0
+[1;32mclosed:      [1;32m        0
+[1;32mservice available:[1;32m   [1;32mYES[0m
+[0mFri Jul 11 19:15:42 2025:[H[2JFri Jul 11 19:15:42 2025:
+	[1;36mslowhttptest version 1.6
+ - https://code.google.com/p/slowhttptest/ -
+[0;34mtest type:[1;34m                        SLOW HEADERS
+[0;34mnumber of connections:[1;34m            100
+[0;34mURL:[1;34m                              http://10.0.0.6:80/
+[0;34mverb:[1;34m                             SR
+[0;34mContent-Length header value:[1;34m      4096
+[0;34mfollow up data max size:[1;34m          68
+[0;34minterval between follow up data:[1;34m  10 seconds
+[0;34mconnections per seconds:[1;34m          20
+[0;34mprobe connection timeout:[1;34m         5 seconds
+[0;34mtest duration:[1;34m                    5 seconds
+[0;34musing proxy:[1;34m                      no proxy 
+
+[0mFri Jul 11 19:15:42 2025:[1;32m
+slow HTTP test status on [0;32m5[1;32mth second:
+
+[1;32minitializing:[1;32m        0
+[1;32mpending:     [1;32m        90
+[1;32mconnected:   [1;32m        7
+[1;32merror:       [1;32m        0
+[1;32mclosed:      [1;32m        0
+[1;32mservice available:[1;32m   [1;32mYES[0m
+[0mFri Jul 11 19:15:43 2025:[0;36m
+Test ended on 6th second
+Exit status:[1;36m Hit test time limit
+[0m
+2025-07-11 19:15:43,758 - INFO - slowhttptest output: Fri Jul 11 19:15:37 2025:[H[2JFri Jul 11 19:15:37 2025:
+	[1;36mslowhttptest version 1.6
+ - https://code.google.com/p/slowhttptest/ -
+[0;34mtest type:[1;34m                        SLOW HEADERS
+[0;34mnumber of connections:[1;34m            100
+[0;34mURL:[1;34m                              http://10.0.0.6:80/
+[0;34mverb:[1;34m                             SR
+[0;34mContent-Length header value:[1;34m      4096
+[0;34mfollow up data max size:[1;34m          68
+[0;34minterval between follow up data:[1;34m  10 seconds
+[0;34mconnections per seconds:[1;34m          20
+[0;34mprobe connection timeout:[1;34m         5 seconds
+[0;34mtest duration:[1;34m                    5 seconds
+[0;34musing proxy:[1;34m                      no proxy 
+
+[0mFri Jul 11 19:15:37 2025:[1;32m
+slow HTTP test status on [0;32m0[1;32mth second:
+
+[1;32minitializing:[1;32m        0
+[1;32mpending:     [1;32m        1
+[1;32mconnected:   [1;32m        0
+[1;32merror:       [1;32m        0
+[1;32mclosed:      [1;32m        0
+[1;32mservice available:[1;32m   [1;32mYES[0m
+[0mFri Jul 11 19:15:42 2025:[H[2JFri Jul 11 19:15:42 2025:
+	[1;36mslowhttptest version 1.6
+ - https://code.google.com/p/slowhttptest/ -
+[0;34mtest type:[1;34m                        SLOW HEADERS
+[0;34mnumber of connections:[1;34m            100
+[0;34mURL:[1;34m                              http://10.0.0.6:80/
+[0;34mverb:[1;34m                             SR
+[0;34mContent-Length header value:[1;34m      4096
+[0;34mfollow up data max size:[1;34m          68
+[0;34minterval between follow up data:[1;34m  10 seconds
+[0;34mconnections per seconds:[1;34m          20
+[0;34mprobe connection timeout:[1;34m         5 seconds
+[0;34mtest duration:[1;34m                    5 seconds
+[0;34musing proxy:[1;34m                      no proxy 
+
+[0mFri Jul 11 19:15:42 2025:[1;32m
+slow HTTP test status on [0;32m5[1;32mth second:
+
+[1;32minitializing:[1;32m        0
+[1;32mpending:     [1;32m        90
+[1;32mconnected:   [1;32m        7
+[1;32merror:       [1;32m        0
+[1;32mclosed:      [1;32m        0
+[1;32mservice available:[1;32m   [1;32mYES[0m
+[0mFri Jul 11 19:15:43 2025:[0;36m
+Test ended on 6th second
+Exit status:[1;36m Hit test time limit
+[0m
+2025-07-11 19:15:48,772 - INFO - Sent SIGINT to slowhttptest process 85710
+2025-07-11 19:15:48,772 - INFO - Sent SIGINT to slowhttptest process 85710
+2025-07-11 19:15:49,779 - INFO - slowhttptest stdout: Fri Jul 11 19:15:43 2025:[H[2JFri Jul 11 19:15:43 2025:
+	[1;36mslowhttptest version 1.6
+ - https://code.google.com/p/slowhttptest/ -
+[0;34mtest type:[1;34m                        SLOW HEADERS
+[0;34mnumber of connections:[1;34m            100
+[0;34mURL:[1;34m                              http://10.0.0.6:80/
+[0;34mverb:[1;34m                             SR
+[0;34mContent-Length header value:[1;34m      4096
+[0;34mfollow up data max size:[1;34m          68
+[0;34minterval between follow up data:[1;34m  10 seconds
+[0;34mconnections per seconds:[1;34m          20
+[0;34mprobe connection timeout:[1;34m         5 seconds
+[0;34mtest duration:[1;34m                    5 seconds
+[0;34musing proxy:[1;34m                      no proxy 
+
+[0mFri Jul 11 19:15:43 2025:[1;32m
+slow HTTP test status on [0;32m0[1;32mth second:
+
+[1;32minitializing:[1;32m        0
+[1;32mpending:     [1;32m        1
+[1;32mconnected:   [1;32m        0
+[1;32merror:       [1;32m        0
+[1;32mclosed:      [1;32m        0
+[1;32mservice available:[1;32m   [1;32mYES[0m
+[0mFri Jul 11 19:15:48 2025:[0;36m
+Test ended on 4th second
+Exit status:[1;36m Cancelled by user
+[0m
+2025-07-11 19:15:49,779 - INFO - slowhttptest stdout: Fri Jul 11 19:15:43 2025:[H[2JFri Jul 11 19:15:43 2025:
+	[1;36mslowhttptest version 1.6
+ - https://code.google.com/p/slowhttptest/ -
+[0;34mtest type:[1;34m                        SLOW HEADERS
+[0;34mnumber of connections:[1;34m            100
+[0;34mURL:[1;34m                              http://10.0.0.6:80/
+[0;34mverb:[1;34m                             SR
+[0;34mContent-Length header value:[1;34m      4096
+[0;34mfollow up data max size:[1;34m          68
+[0;34minterval between follow up data:[1;34m  10 seconds
+[0;34mconnections per seconds:[1;34m          20
+[0;34mprobe connection timeout:[1;34m         5 seconds
+[0;34mtest duration:[1;34m                    5 seconds
+[0;34musing proxy:[1;34m                      no proxy 
+
+[0mFri Jul 11 19:15:43 2025:[1;32m
+slow HTTP test status on [0;32m0[1;32mth second:
+
+[1;32minitializing:[1;32m        0
+[1;32mpending:     [1;32m        1
+[1;32mconnected:   [1;32m        0
+[1;32merror:       [1;32m        0
+[1;32mclosed:      [1;32m        0
+[1;32mservice available:[1;32m   [1;32mYES[0m
+[0mFri Jul 11 19:15:48 2025:[0;36m
+Test ended on 4th second
+Exit status:[1;36m Cancelled by user
+[0m
+2025-07-11 19:15:49,779 - DEBUG - slowhttptest stderr: (empty)
+2025-07-11 19:15:49,779 - DEBUG - slowhttptest stderr: (empty)
+2025-07-11 19:15:49,779 - INFO - slowhttptest (Slow Read) from h2 to 10.0.0.6 finished.
+2025-07-11 19:15:49,779 - INFO - slowhttptest (Slow Read) from h2 to 10.0.0.6 finished.
+2025-07-11 19:15:49,887 - INFO - Attack: Adversarial Slow Read completed.
+2025-07-11 19:15:49,887 - INFO - Attack: Adversarial Slow Read completed.

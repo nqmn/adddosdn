@@ -4,11 +4,13 @@ This guide outlines the steps to set up and run the SDN DDoS dataset generation 
 
 ## 1. Study and Understand the Code
 
-Before proceeding, it is recommended to familiarize yourself with the project's code structure and requirements. The primary script for dataset generation is `dataset_generation/test.py`. Key directories and files to review include:
+Before proceeding, it is recommended to familiarize yourself with the project's code structure. The primary script for dataset generation is `dataset_generation/main.py`, which is configured via `dataset_generation/config.json`. Key directories and files to review include:
 
--   `dataset_generation/test.py`: The main execution script for dataset generation.
--   `dataset_generation/src/attacks/`: Directory containing various attack scripts used by `test.py`.
--   `dataset_generation/src/controller/`: Contains the Ryu controller application used by `test.py`.
+-   `dataset_generation/main.py`: The main execution script for dataset generation.
+-   `dataset_generation/config.json`: Configuration file for scenario durations.
+-   `dataset_generation/test.py`: A smaller, self-contained script for testing purposes.
+-   `dataset_generation/src/attacks/`: Directory containing various attack scripts.
+-   `dataset_generation/src/controller/`: Contains the Ryu controller application.
 -   `dataset_generation/src/utils/`: Contains utility functions for PCAP processing and other tasks.
 
 ## 2. Remote Server Access and Environment Setup
@@ -23,7 +25,12 @@ ssh user@jtmksrv -p 656
 
 ### 2.2. Prerequisites
 
-Mininet and Ryu SDN Framework are already installed on the remote server. Python 3, Pip, and `tshark` (or `tcpdump` on Linux) are also confirmed to be installed.
+Ensure that Mininet, Ryu, Python 3, Pip, and the following command-line tools are installed on the remote server. On a fresh Ubuntu system, you can install them with:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y mininet ryu-bin python3-pip tshark slowhttptest
+```
 
 ### 2.3. Install Python Libraries
 
@@ -32,8 +39,6 @@ Install the required Python libraries using pip:
 ```bash
 pip3 install -r dataset_generation/requirements.txt
 ```
-
-Note: `ryu` and `mininet` are system-level prerequisites and should be installed separately if not already present, as detailed in the main `README.md`.
 
 ### 2.4. Transferring the Project Files
 
@@ -47,43 +52,44 @@ Replace `/path/to/remote/directory/` with the desired location on the remote ser
 
 ## 3. Deploy and Implement the Dataset Generation
 
-### 3.1. Execution
+### 3.1. Configuration
+
+Before running the main script, you can customize the duration of each traffic phase by editing `dataset_generation/config.json`.
+
+### 3.2. Execution
 
 Execute the main dataset generation script with `sudo` privileges, as Mininet requires root access:
 
 ```bash
-sudo python3 dataset_generation/test.py
+sudo python3 dataset_generation/main.py
 ```
 
-#### Expected Workflow (Orchestrated by `dataset_generation/test.py`):
+#### Expected Workflow (Orchestrated by `main.py`):
 
 1.  **Cleanup**: Clears any previous Mininet instances.
-2.  **Tool Verification**: Checks for the presence of essential command-line tools (`ryu-manager`, `mn`, `tshark`).
-3.  **Ryu Controller Startup**: Starts the `ryu_controller_app.py` as a background process and verifies its health.
-4.  **Mininet Topology Setup**: Defines and starts a custom Mininet topology with a Ryu controller.
-5.  **Connectivity Test**: Runs Mininet's `pingall` test to confirm basic network connectivity.
+2.  **Tool Verification**: Checks for essential tools (`ryu-manager`, `mn`, `tshark`, `slowhttptest`).
+3.  **Ryu Controller Startup**: Starts the `ryu_controller_app.py` and verifies its health via its REST API.
+4.  **Mininet Topology Setup**: Starts a custom Mininet topology with a Ryu controller.
+5.  **Connectivity Test**: Runs `pingall` to confirm network connectivity.
 6.  **Traffic Generation Scenario**:
-    -   Initiates packet capture using `tshark`.
-    -   Generates benign traffic.
-    -   Launches various traditional DDoS attacks (SYN Flood, UDP Flood, ICMP Flood).
-    -   Launches advanced adversarial DDoS attacks (TCP State Exhaustion, Application Layer, Multi-Vector).
-    -   Includes cooldown periods between phases.
-    -   Terminates packet capture.
+    *   Starts a background thread to collect **flow statistics** from the Ryu controller's API.
+    *   For each phase in `config.json` (normal, syn_flood, etc.):
+        *   Starts a dedicated packet capture (`tshark`).
+        *   Executes the corresponding traffic/attack script.
+        *   Stops the packet capture.
 7.  **Data Processing**:
-    -   Verifies PCAP integrity.
-    -   Validates and fixes PCAP timestamps.
-    -   Converts the captured PCAP data into a labeled CSV file (`labeled_packet_features.csv`), associating each packet with its corresponding traffic phase label.
-8.  **Cleanup**: Terminates the Ryu controller process and performs a final Mininet cleanup.
+    *   The flow statistics collector saves its data to `flow_features.csv`.
+    *   Each individual `.pcap` file is processed to fix timestamps and extract packet-level features.
+    *   The resulting data is combined into a single `packet_features.csv` file.
+8.  **Cleanup**: Terminates the Ryu controller and cleans up the Mininet environment.
 
 ## 4. Deliver Results to the User
 
 ### 4.1. Deliverables Verification
 
-Upon successful completion, verify the presence of the following files in the `dataset_generation/output/` directory:
+Upon successful completion, verify the presence of the following files in the `dataset_generation/main_output/` directory:
 
--   `capture.pcap`: The raw packet capture file.
--   `labeled_packet_features.csv`: The primary output dataset with extracted packet features and labels.
--   `ryu.log`: Log file for the Ryu SDN controller.
--   `mininet.log`: Log file for Mininet.
--   `test.log`: The main log file for the `test.py` script.
--   `capture.csv.log`: Error log specifically for the `tshark` capture process.
+-   `packet_features.csv`: The primary packet-level dataset.
+-   `flow_features.csv`: The flow-level dataset.
+-   Individual `.pcap` files for each phase (e.g., `normal.pcap`, `syn_flood.pcap`).
+-   Log files: `main.log`, `ryu.log`, `mininet.log`, `attack.log`.
