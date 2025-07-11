@@ -18,15 +18,15 @@ import subprocess
 import threading
 from pathlib import Path
 import shutil
-from scapy.all import rdpcap, Ether, IP, TCP, UDP, Raw, RandShort, sendp
+from scapy.all import rdpcap
+from src.gen_benign_traffic import run_benign_traffic
 import requests # New: For making HTTP requests to the Ryu controller
 import pandas as pd # New: For data manipulation and CSV writing
 from datetime import datetime # New: For timestamping flow data
 import json # New: For reading config.json
 
 # Suppress Scapy warnings
-import logging
-logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
+
 
 from src.utils.process_pcap_to_csv import process_pcap_to_csv
 from src.utils.enhanced_pcap_processing import (
@@ -292,53 +292,7 @@ def start_capture(net, outfile):
     """Start improved tcpdump on a host with better timestamp handling."""
     return improve_capture_reliability(net, outfile)
 
-def run_benign_traffic(net, duration):
-    logger.info(f"Starting benign traffic for {duration} seconds...")
-    h3 = net.get('h3')
-    h5 = net.get('h5')
-    h3_ip = HOST_IPS["h3"]
-    h5_ip = HOST_IPS["h5"]
-    h3_intf = h3.intfNames()[0] # Get the interface name of h3
-    end_time = time.time() + duration
-    
-    traffic_count = 0
-    while time.time() < end_time:
-        # ICMP traffic (using Mininet's ping command)
-        h3.cmd(f'ping -c 1 {h5_ip} > /dev/null')
-        h5.cmd(f'ping -c 1 {h3_ip} > /dev/null')
 
-        # Scapy commands to be executed within h3's namespace
-        scapy_base_cmd = "from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp;"
-
-        # TCP traffic (h3 to h5, port 12345)
-        tcp_scapy_cmd = f"tcp_packet = Ether()/IP(src='{h3_ip}', dst='{h5_ip}')/TCP(sport=RandShort(), dport=12345, flags=\"PA\")/Raw(load=\"TCP benign traffic {traffic_count}\"); sendp(tcp_packet, iface='{h3_intf}', verbose=0)"
-        h3.cmd(f'python3 -c "{scapy_base_cmd}{tcp_scapy_cmd}"')
-
-        # UDP traffic (h3 to h5, port 12346)
-        udp_scapy_cmd = f"udp_packet = Ether()/IP(src='{h3_ip}', dst='{h5_ip}')/UDP(sport=RandShort(), dport=12346)/Raw(load=\"UDP benign traffic {traffic_count}\"); sendp(udp_packet, iface='{h3_intf}', verbose=0)"
-        h3.cmd(f'python3 -c "{scapy_base_cmd}{udp_scapy_cmd}"')
-
-        # Telnet traffic (h3 to h5, port 23)
-        telnet_scapy_cmd = f"telnet_packet = Ether()/IP(src='{h3_ip}', dst='{h5_ip}')/TCP(sport=RandShort(), dport=23, flags=\"PA\")/Raw(load=\"Telnet benign traffic {traffic_count}\"); sendp(telnet_packet, iface='{h3_intf}', verbose=0)"
-        h3.cmd(f'python3 -c "{scapy_base_cmd}{telnet_scapy_cmd}"')
-
-        # SSH traffic (h3 to h5, port 22)
-        ssh_scapy_cmd = f"ssh_packet = Ether()/IP(src='{h3_ip}', dst='{h5_ip}')/TCP(sport=RandShort(), dport=22, flags=\"PA\")/Raw(load=\"SSH benign traffic {traffic_count}\"); sendp(ssh_packet, iface='{h3_intf}', verbose=0)"
-        h3.cmd(f'python3 -c "{scapy_base_cmd}{ssh_scapy_cmd}"')
-
-        # FTP traffic (h3 to h5, port 21)
-        ftp_scapy_cmd = f"ftp_packet = Ether()/IP(src='{h3_ip}', dst='{h5_ip}')/TCP(sport=RandShort(), dport=21, flags=\"PA\")/Raw(load=\"FTP benign traffic {traffic_count}\"); sendp(ftp_packet, iface='{h3_intf}', verbose=0)"
-        h3.cmd(f'python3 -c "{scapy_base_cmd}{ftp_scapy_cmd}"')
-
-        # HTTP traffic (h3 to h5, port 80)
-        http_scapy_cmd = f"http_packet = Ether()/IP(src='{h3_ip}', dst='{h5_ip}')/TCP(sport=RandShort(), dport=80, flags=\"PA\")/Raw(load=b'GET / HTTP/1.1\nHost: {h5_ip}\nUser-Agent: ScapyBenignTraffic\nConnection: close\n\n'); sendp(http_packet, iface='{h3_intf}', verbose=0)"
-        h3.cmd(f'python3 -c "{scapy_base_cmd}{http_scapy_cmd}"')
-        
-        traffic_count += 1
-        time.sleep(1) # Send traffic every second
-    
-    logger.info("Benign traffic finished.")
-    # No netcat processes to kill
 
 def parse_flow_match_actions(match_str, actions_str):
     """
@@ -486,7 +440,7 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         logger.info(f"Phase 2: Normal Traffic ({scenario_durations['normal_traffic']}s)...")
         capture_procs['normal'] = start_capture(net, PCAP_FILE_NORMAL)
         time.sleep(2) # Give capture a moment to start
-        run_benign_traffic(net, scenario_durations['normal_traffic'])
+        run_benign_traffic(net, normal_traffic_duration, OUTPUT_DIR, HOST_IPS)
         stop_capture(capture_procs['normal'])
 
         # --- Phase 3.1: Traditional DDoS Attacks ---
