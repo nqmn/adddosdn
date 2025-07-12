@@ -4,10 +4,26 @@ import os
 import sys
 
 def _get_label_for_timestamp(timestamp, label_timeline):
+    """
+    Get label for timestamp from dynamic timeline.
+    For ongoing phases without end_time, check if timestamp >= start_time.
+    """
+    current_label = "unknown"
+    
     for entry in label_timeline:
-        if entry['start_time'] <= timestamp <= entry['end_time']:
-            return entry['label']
-    return "unknown" # Default label if no match
+        start_time = entry['start_time']
+        end_time = entry.get('end_time')  # Use get() to handle missing end_time
+        
+        if end_time is not None:
+            # Completed phase - check if timestamp is within range
+            if start_time <= timestamp <= end_time:
+                current_label = entry['label']
+        else:
+            # Ongoing phase - check if timestamp is after start
+            if timestamp >= start_time:
+                current_label = entry['label']
+    
+    return current_label
 
 def process_pcap_to_csv(pcap_file, output_csv_file, label_timeline=None):
     print(f"Processing {os.path.basename(pcap_file)} to {os.path.basename(output_csv_file)}...")

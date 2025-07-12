@@ -22,29 +22,31 @@ def run_attack(attacker_host, victim_ip, duration):
     attack_logger.info(f"[udp_flood] [Run ID: {run_id}] Starting UDP Flood from {attacker_host.name} to {victim_ip} for {duration} seconds.")
     attack_logger.info(f"[udp_flood] [Run ID: {run_id}] Attack Phase: Traditional UDP Flood - Attacker: {attacker_host.name}, Target: {victim_ip}:53, Duration: {duration}s")
     
-    # Test target reachability
-    try:
-        ping_start = time.time()
-        ping_reply = sr1(IP(dst=victim_ip)/ICMP(), timeout=2, verbose=0)
-        ping_time = time.time() - ping_start
-        if ping_reply:
-            attack_logger.info(f"[udp_flood] [Run ID: {run_id}] Target {victim_ip} is reachable (ping: {ping_time:.3f}s)")
-        else:
-            attack_logger.warning(f"[udp_flood] [Run ID: {run_id}] Target {victim_ip} ping timeout after {ping_time:.3f}s")
-    except Exception as e:
-        attack_logger.warning(f"[udp_flood] [Run ID: {run_id}] Unable to ping target {victim_ip}: {e}")
+    # Test target reachability - COMMENTED OUT to avoid delays in dataset generation
+    # Uncomment if you need connectivity testing for debugging
+    # try:
+    #     ping_start = time.time()
+    #     ping_reply = sr1(IP(dst=victim_ip)/ICMP(), timeout=2, verbose=0)
+    #     ping_time = time.time() - ping_start
+    #     if ping_reply:
+    #         attack_logger.info(f"[udp_flood] [Run ID: {run_id}] Target {victim_ip} is reachable (ping: {ping_time:.3f}s)")
+    #     else:
+    #         attack_logger.warning(f"[udp_flood] [Run ID: {run_id}] Target {victim_ip} ping timeout after {ping_time:.3f}s")
+    # except Exception as e:
+    #     attack_logger.warning(f"[udp_flood] [Run ID: {run_id}] Unable to ping target {victim_ip}: {e}")
     
-    # Test UDP service connectivity (DNS port 53)
-    try:
-        udp_start = time.time()
-        udp_reply = sr1(IP(dst=victim_ip)/UDP(dport=53)/b"\x00\x01\x01\x00\x00\x01\x00\x00\x00\x00\x00\x00\x07example\x03com\x00\x00\x01\x00\x01", timeout=2, verbose=0)
-        udp_time = time.time() - udp_start
-        if udp_reply:
-            attack_logger.info(f"[udp_flood] [Run ID: {run_id}] UDP service {victim_ip}:53 responded (time: {udp_time:.3f}s)")
-        else:
-            attack_logger.warning(f"[udp_flood] [Run ID: {run_id}] UDP service {victim_ip}:53 no response (time: {udp_time:.3f}s)")
-    except Exception as e:
-        attack_logger.warning(f"[udp_flood] [Run ID: {run_id}] Unable to test UDP service {victim_ip}:53: {e}")
+    # Test UDP service connectivity (DNS port 53) - COMMENTED OUT to avoid delays in dataset generation
+    # Uncomment if you need connectivity testing for debugging
+    # try:
+    #     udp_start = time.time()
+    #     udp_reply = sr1(IP(dst=victim_ip)/UDP(dport=53)/b"\x00\x01\x01\x00\x00\x01\x00\x00\x00\x00\x00\x00\x07example\x03com\x00\x00\x01\x00\x01", timeout=2, verbose=0)
+    #     udp_time = time.time() - udp_start
+    #     if udp_reply:
+    #         attack_logger.info(f"[udp_flood] [Run ID: {run_id}] UDP service {victim_ip}:53 responded (time: {udp_time:.3f}s)")
+    #     else:
+    #         attack_logger.warning(f"[udp_flood] [Run ID: {run_id}] UDP service {victim_ip}:53 no response (time: {udp_time:.3f}s)")
+    # except Exception as e:
+    #     attack_logger.warning(f"[udp_flood] [Run ID: {run_id}] Unable to test UDP service {victim_ip}:53: {e}")
     
     # Start the attack with enhanced monitoring
     attack_logger.debug(f"[udp_flood] [Run ID: {run_id}] Starting UDP packet generation with 0.01s interval")

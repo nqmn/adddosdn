@@ -1,0 +1,836 @@
+2025-07-12 20:06:03,550 - attack_logger - INFO - Attack: SYN Flood (5s) | h1 -> h6
+2025-07-12 20:06:07,565 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Starting SYN Flood from h1 to 10.0.0.6 for 5 seconds.
+2025-07-12 20:06:07,565 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Attack Phase: Traditional SYN Flood - Attacker: h1, Target: 10.0.0.6:80, Duration: 5s
+2025-07-12 20:06:07,614 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Target 10.0.0.6 is reachable (ping: 0.049s)
+2025-07-12 20:06:07,636 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Service 10.0.0.6:80 is active (SYN-ACK: 0.021s)
+2025-07-12 20:06:07,636 - attack_logger - DEBUG - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Starting SYN packet generation with 0.01s interval
+2025-07-12 20:06:07,641 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] SYN flood process started (PID: 128361)
+2025-07-12 20:06:08,671 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Attack progress: 1.1s elapsed, ~110 packets sent, Rate: 99.5 pps
+2025-07-12 20:06:08,671 - attack_logger - DEBUG - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Process stats - CPU: 0.0%, Memory: 60.4MB
+2025-07-12 20:06:09,690 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Attack progress: 2.1s elapsed, ~212 packets sent, Rate: 99.8 pps
+2025-07-12 20:06:09,690 - attack_logger - DEBUG - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Process stats - CPU: 0.0%, Memory: 60.6MB
+2025-07-12 20:06:10,704 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Attack progress: 3.1s elapsed, ~313 packets sent, Rate: 99.7 pps
+2025-07-12 20:06:10,704 - attack_logger - DEBUG - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Process stats - CPU: 0.0%, Memory: 60.6MB
+2025-07-12 20:06:11,722 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Attack progress: 4.2s elapsed, ~415 packets sent, Rate: 99.8 pps
+2025-07-12 20:06:11,722 - attack_logger - DEBUG - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Process stats - CPU: 0.0%, Memory: 60.6MB
+2025-07-12 20:06:12,640 - attack_logger - DEBUG - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Sent SIGINT to SYN flood process 128361
+2025-07-12 20:06:13,141 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] SYN Flood from h1 to 10.0.0.6 finished.
+2025-07-12 20:06:13,142 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Attack completed. Total packets sent = 507, Average rate = 99.90 packets/sec.
+2025-07-12 20:06:13,142 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] --- Attack Summary ---
+2025-07-12 20:06:13,142 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Total packets sent: 507
+2025-07-12 20:06:13,142 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Actual duration: 5.07s
+2025-07-12 20:06:13,142 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Average rate: 99.90 packets/sec
+2025-07-12 20:06:13,142 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Target port: 80
+2025-07-12 20:06:13,142 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] Attack method: TCP SYN Flood
+2025-07-12 20:06:13,142 - attack_logger - INFO - [syn_flood] [Run ID: ec91cd3b-30fa-4d93-8df2-e95b9e1bc016] --------------------
+2025-07-12 20:06:13,211 - attack_logger - INFO - Attack: SYN Flood completed.
+2025-07-12 20:06:13,211 - attack_logger - INFO - Attack: UDP Flood (5s) | h2 -> h4
+2025-07-12 20:06:20,225 - attack_logger - INFO - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] Starting UDP Flood from h2 to 10.0.0.4 for 5 seconds.
+2025-07-12 20:06:20,225 - attack_logger - INFO - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] Attack Phase: Traditional UDP Flood - Attacker: h2, Target: 10.0.0.4:53, Duration: 5s
+2025-07-12 20:06:24,283 - attack_logger - WARNING - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] Target 10.0.0.4 ping timeout after 4.058s
+2025-07-12 20:06:28,337 - attack_logger - WARNING - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] UDP service 10.0.0.4:53 no response (time: 4.054s)
+2025-07-12 20:06:28,337 - attack_logger - DEBUG - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] Starting UDP packet generation with 0.01s interval
+2025-07-12 20:06:28,343 - attack_logger - INFO - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] UDP flood process started (PID: 128367)
+2025-07-12 20:06:28,343 - attack_logger - DEBUG - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] Sent SIGINT to UDP flood process 128367
+2025-07-12 20:06:28,847 - attack_logger - INFO - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] UDP Flood from h2 to 10.0.0.4 finished.
+2025-07-12 20:06:28,847 - attack_logger - INFO - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] Attack completed. Total packets sent = 811, Average rate = 99.90 packets/sec.
+2025-07-12 20:06:28,847 - attack_logger - INFO - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] --- Attack Summary ---
+2025-07-12 20:06:28,847 - attack_logger - INFO - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] Total packets sent: 811
+2025-07-12 20:06:28,847 - attack_logger - INFO - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] Actual duration: 8.12s
+2025-07-12 20:06:28,847 - attack_logger - INFO - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] Average rate: 99.90 packets/sec
+2025-07-12 20:06:28,847 - attack_logger - INFO - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] Target port: 53 (DNS)
+2025-07-12 20:06:28,847 - attack_logger - INFO - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] Attack method: UDP Flood
+2025-07-12 20:06:28,847 - attack_logger - INFO - [udp_flood] [Run ID: b9fa5fa5-4afd-4774-b950-b471cf76666a] --------------------
+2025-07-12 20:06:28,936 - attack_logger - INFO - Attack: UDP Flood completed.
+2025-07-12 20:06:28,936 - attack_logger - INFO - Attack: ICMP Flood (5s) | h2 -> h4
+2025-07-12 20:06:32,957 - attack_logger - INFO - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] Starting ICMP Flood from h2 to 10.0.0.4 for 5 seconds.
+2025-07-12 20:06:32,957 - attack_logger - INFO - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] Attack Phase: Traditional ICMP Flood - Attacker: h2, Target: 10.0.0.4, Duration: 5s
+2025-07-12 20:06:37,043 - attack_logger - WARNING - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] Target 10.0.0.4 ICMP timeout after 4.086s
+2025-07-12 20:06:40,232 - attack_logger - DEBUG - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] ICMP type 8 no response from 10.0.0.4 (time: 3.188s)
+2025-07-12 20:06:43,280 - attack_logger - DEBUG - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] ICMP type 13 no response from 10.0.0.4 (time: 3.048s)
+2025-07-12 20:06:46,406 - attack_logger - DEBUG - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] ICMP type 15 no response from 10.0.0.4 (time: 3.126s)
+2025-07-12 20:06:46,406 - attack_logger - DEBUG - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] Starting ICMP packet generation with 0.01s interval
+2025-07-12 20:06:46,411 - attack_logger - INFO - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] ICMP flood process started (PID: 128369)
+2025-07-12 20:06:46,412 - attack_logger - DEBUG - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] Sent SIGINT to ICMP flood process 128369
+2025-07-12 20:06:46,914 - attack_logger - INFO - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] ICMP Flood from h2 to 10.0.0.4 finished.
+2025-07-12 20:06:46,914 - attack_logger - INFO - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] Attack completed. Total packets sent = 1345, Average rate = 99.96 packets/sec.
+2025-07-12 20:06:46,914 - attack_logger - INFO - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] --- Attack Summary ---
+2025-07-12 20:06:46,914 - attack_logger - INFO - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] Total packets sent: 1345
+2025-07-12 20:06:46,914 - attack_logger - INFO - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] Actual duration: 13.46s
+2025-07-12 20:06:46,914 - attack_logger - INFO - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] Average rate: 99.96 packets/sec
+2025-07-12 20:06:46,914 - attack_logger - INFO - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] ICMP type: Echo Request (8)
+2025-07-12 20:06:46,914 - attack_logger - INFO - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] Attack method: ICMP Flood
+2025-07-12 20:06:46,914 - attack_logger - INFO - [icmp_flood] [Run ID: 0db30119-2ff5-43bf-beb1-69efe7794bba] --------------------
+2025-07-12 20:06:47,076 - attack_logger - INFO - Attack: ICMP Flood completed.
+2025-07-12 20:06:47,076 - attack_logger - INFO - Attack: Adversarial TCP State Exhaustion (10s) | h2 -> h6
+2025-07-12 20:06:51,097 - attack_logger - INFO - [ad_syn] Starting advanced adversarial attack against 10.0.0.6 for 10 seconds.
+2025-07-12 20:06:51,098 - attack_logger - INFO - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Attack Phase: TCP State Exhaustion - Target: 10.0.0.6:80, Duration: 10s
+2025-07-12 20:06:51,105 - attack_logger - INFO - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Target 10.0.0.6 is reachable (ping: 0.007s)
+2025-07-12 20:06:51,180 - attack_logger - INFO - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Service 10.0.0.6:80 is active (SYN-ACK: 0.075s)
+2025-07-12 20:06:51,180 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Starting burst of 1 packets
+2025-07-12 20:06:52,267 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Attempting to send SYN packet from 172.24.147.211:30190 to 10.0.0.6:80
+2025-07-12 20:06:53,308 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] SYN packet sent in 1.042s. Reply: None
+2025-07-12 20:06:53,308 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] No TCP reply or invalid reply for 172.24.147.211:30190.
+2025-07-12 20:06:53,308 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Burst completed in 2.128s
+2025-07-12 20:06:53,309 - attack_logger - INFO - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Emission rate: 0.94 packets/sec, Total sent = 2
+2025-07-12 20:06:53,427 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Burst sleep: planned=0.113s, actual=0.119s
+2025-07-12 20:06:53,427 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Starting burst of 1 packets
+2025-07-12 20:06:54,501 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Attempting to send SYN packet from 172.29.168.163:39493 to 10.0.0.6:80
+2025-07-12 20:06:55,547 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] SYN packet sent in 1.046s. Reply: None
+2025-07-12 20:06:55,547 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] No TCP reply or invalid reply for 172.29.168.163:39493.
+2025-07-12 20:06:55,547 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Burst completed in 2.120s
+2025-07-12 20:06:55,547 - attack_logger - INFO - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Emission rate: 0.92 packets/sec, Total sent = 4
+2025-07-12 20:06:55,665 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Burst sleep: planned=0.115s, actual=0.118s
+2025-07-12 20:06:55,665 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Starting burst of 1 packets
+2025-07-12 20:06:55,701 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Attempting to send SYN packet from 192.168.194.65:14983 to 10.0.0.6:80
+2025-07-12 20:06:56,711 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] SYN packet sent in 1.010s. Reply: None
+2025-07-12 20:06:56,711 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] No TCP reply or invalid reply for 192.168.194.65:14983.
+2025-07-12 20:06:56,711 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Burst completed in 1.046s
+2025-07-12 20:06:56,711 - attack_logger - INFO - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Emission rate: 1.08 packets/sec, Total sent = 6
+2025-07-12 20:06:56,824 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Burst sleep: planned=0.108s, actual=0.113s
+2025-07-12 20:06:56,824 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Starting burst of 1 packets
+2025-07-12 20:07:11,002 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Attempting to send SYN packet from 10.62.50.76:38421 to 10.0.0.6:80
+2025-07-12 20:07:12,053 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] SYN packet sent in 1.051s. Reply: None
+2025-07-12 20:07:12,053 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] No TCP reply or invalid reply for 10.62.50.76:38421.
+2025-07-12 20:07:12,053 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Burst completed in 15.229s
+2025-07-12 20:07:12,053 - attack_logger - INFO - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Emission rate: 0.38 packets/sec, Total sent = 8
+2025-07-12 20:07:12,141 - attack_logger - DEBUG - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Burst sleep: planned=0.087s, actual=0.088s
+2025-07-12 20:07:12,141 - attack_logger - INFO - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Attack finished. Total packets sent = 8, Average rate = 0.38 packets/sec.
+2025-07-12 20:07:12,141 - attack_logger - INFO - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] --- Attack Summary ---
+2025-07-12 20:07:12,141 - attack_logger - INFO - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Total packets sent: 4
+2025-07-12 20:07:12,141 - attack_logger - INFO - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] Average rate: 0.38 packets/sec
+2025-07-12 20:07:12,141 - attack_logger - INFO - [ad_syn] [Run ID: bc1b8d52-76e1-49de-9671-0fd48f25334e] --------------------
+2025-07-12 20:07:12,215 - attack_logger - INFO - Attack: Adversarial Application Layer (10s) | h2 -> h6
+2025-07-12 20:07:16,229 - attack_logger - INFO - [ad_udp] Starting advanced adversarial attack against 10.0.0.6 for 10 seconds.
+2025-07-12 20:07:16,229 - attack_logger - INFO - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] Attack Phase: Distributed Application Layer - Target: 10.0.0.6:80, Duration: 10s
+2025-07-12 20:07:16,233 - attack_logger - INFO - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] HTTP service 10.0.0.6:80 is active (status: 200, time: 0.003s)
+2025-07-12 20:07:16,233 - attack_logger - DEBUG - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] Starting burst of 1 HTTP requests
+2025-07-12 20:07:16,270 - attack_logger - DEBUG - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] App Layer: GET request to 10.0.0.6:80/api/users/verify?token=1kmdmb639limtz6qtcuma1q3pmzpgzhxx1nlt7xgx2sz5apcmrlgg3l0i0buwq2g from 192.168.235.180 - Status: 404, Time: 2.18ms
+2025-07-12 20:07:16,270 - attack_logger - DEBUG - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] Burst completed in 0.037s
+2025-07-12 20:07:16,354 - attack_logger - DEBUG - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] Burst sleep: planned=0.083s, actual=0.084s
+2025-07-12 20:07:16,354 - attack_logger - DEBUG - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] Starting burst of 1 HTTP requests
+2025-07-12 20:07:30,176 - attack_logger - DEBUG - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] App Layer: OPTIONS request to 10.0.0.6:80/api/users/verify?token=1kmdmb639limtz6qtcuma1q3pmzpgzhxx1nlt7xgx2sz5apcmrlgg3l0i0buwq2g from 10.142.241.55 - Status: 200, Time: 2.45ms
+2025-07-12 20:07:30,176 - attack_logger - DEBUG - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] Burst completed in 13.822s
+2025-07-12 20:07:30,176 - attack_logger - INFO - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] Emission rate: 0.14 requests/sec, Total sent = 2, Successful = 2, Failed = 0
+2025-07-12 20:07:30,293 - attack_logger - DEBUG - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] Burst sleep: planned=0.114s, actual=0.116s
+2025-07-12 20:07:30,293 - attack_logger - INFO - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] Attack finished. Total requests sent = 2, Successful = 2, Failed = 0, Average rate = 0.14 requests/sec.
+2025-07-12 20:07:30,293 - attack_logger - INFO - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] --- Attack Summary ---
+2025-07-12 20:07:30,293 - attack_logger - INFO - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] Total requests sent: 2
+2025-07-12 20:07:30,293 - attack_logger - INFO - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] Average rate: 0.14 requests/sec
+2025-07-12 20:07:30,293 - attack_logger - WARNING - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] Warning: Low request count (2) for expected duration (10s) and rate (6 rps). Expected ~60 requests.
+2025-07-12 20:07:30,293 - attack_logger - INFO - [ad_udp] [Run ID: 611e7473-eff3-4151-b053-532ed8cee819] --------------------
+2025-07-12 20:07:30,367 - attack_logger - INFO - Attack: Adversarial Slow Read (10s) | h2 -> h6
+2025-07-12 20:11:17,432 - attack_logger - INFO - Attack: SYN Flood (5s) | h1 -> h6
+2025-07-12 20:11:21,448 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Starting SYN Flood from h1 to 10.0.0.6 for 5 seconds.
+2025-07-12 20:11:21,448 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Attack Phase: Traditional SYN Flood - Attacker: h1, Target: 10.0.0.6:80, Duration: 5s
+2025-07-12 20:11:21,507 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Target 10.0.0.6 is reachable (ping: 0.059s)
+2025-07-12 20:11:21,540 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Service 10.0.0.6:80 is active (SYN-ACK: 0.033s)
+2025-07-12 20:11:21,540 - attack_logger - DEBUG - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Starting SYN packet generation with 0.01s interval
+2025-07-12 20:11:21,545 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] SYN flood process started (PID: 128866)
+2025-07-12 20:11:22,598 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Attack progress: 1.1s elapsed, ~114 packets sent, Rate: 99.2 pps
+2025-07-12 20:11:22,598 - attack_logger - DEBUG - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Process stats - CPU: 0.0%, Memory: 60.3MB
+2025-07-12 20:11:23,619 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Attack progress: 2.2s elapsed, ~217 packets sent, Rate: 100.0 pps
+2025-07-12 20:11:23,620 - attack_logger - DEBUG - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Process stats - CPU: 0.0%, Memory: 60.3MB
+2025-07-12 20:11:24,660 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Attack progress: 3.2s elapsed, ~321 packets sent, Rate: 100.0 pps
+2025-07-12 20:11:24,660 - attack_logger - DEBUG - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Process stats - CPU: 0.0%, Memory: 60.3MB
+2025-07-12 20:11:25,683 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Attack progress: 4.2s elapsed, ~423 packets sent, Rate: 99.9 pps
+2025-07-12 20:11:25,683 - attack_logger - DEBUG - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Process stats - CPU: 0.0%, Memory: 60.3MB
+2025-07-12 20:11:26,496 - attack_logger - DEBUG - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Sent SIGINT to SYN flood process 128866
+2025-07-12 20:11:26,998 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] SYN Flood from h1 to 10.0.0.6 finished.
+2025-07-12 20:11:26,998 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Attack completed. Total packets sent = 504, Average rate = 99.84 packets/sec.
+2025-07-12 20:11:26,998 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] --- Attack Summary ---
+2025-07-12 20:11:26,998 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Total packets sent: 504
+2025-07-12 20:11:26,998 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Actual duration: 5.05s
+2025-07-12 20:11:26,998 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Average rate: 99.84 packets/sec
+2025-07-12 20:11:26,998 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Target port: 80
+2025-07-12 20:11:26,998 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] Attack method: TCP SYN Flood
+2025-07-12 20:11:26,998 - attack_logger - INFO - [syn_flood] [Run ID: 210b882a-4971-4194-9dc2-32983f796069] --------------------
+2025-07-12 20:11:27,070 - attack_logger - INFO - Attack: SYN Flood completed.
+2025-07-12 20:11:27,071 - attack_logger - INFO - Attack: UDP Flood (5s) | h2 -> h4
+2025-07-12 20:11:34,087 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Starting UDP Flood from h2 to 10.0.0.4 for 5 seconds.
+2025-07-12 20:11:34,087 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Attack Phase: Traditional UDP Flood - Attacker: h2, Target: 10.0.0.4:53, Duration: 5s
+2025-07-12 20:11:34,087 - attack_logger - DEBUG - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Starting UDP packet generation with 0.01s interval
+2025-07-12 20:11:34,092 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] UDP flood process started (PID: 128871)
+2025-07-12 20:11:35,110 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Attack progress: 1.0s elapsed, ~102 packets sent, Rate: 99.8 pps
+2025-07-12 20:11:35,110 - attack_logger - DEBUG - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Process stats - CPU: 0.0%, Memory: 60.5MB
+2025-07-12 20:11:36,129 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Attack progress: 2.0s elapsed, ~204 packets sent, Rate: 99.9 pps
+2025-07-12 20:11:36,129 - attack_logger - DEBUG - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Process stats - CPU: 0.0%, Memory: 60.5MB
+2025-07-12 20:11:37,147 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Attack progress: 3.1s elapsed, ~306 packets sent, Rate: 100.0 pps
+2025-07-12 20:11:37,147 - attack_logger - DEBUG - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Process stats - CPU: 0.0%, Memory: 60.5MB
+2025-07-12 20:11:38,163 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Attack progress: 4.1s elapsed, ~407 packets sent, Rate: 99.9 pps
+2025-07-12 20:11:38,163 - attack_logger - DEBUG - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Process stats - CPU: 0.0%, Memory: 60.5MB
+2025-07-12 20:11:39,181 - attack_logger - DEBUG - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Sent SIGINT to UDP flood process 128871
+2025-07-12 20:11:39,683 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] UDP Flood from h2 to 10.0.0.4 finished.
+2025-07-12 20:11:39,683 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Attack completed. Total packets sent = 509, Average rate = 99.93 packets/sec.
+2025-07-12 20:11:39,683 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] --- Attack Summary ---
+2025-07-12 20:11:39,683 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Total packets sent: 509
+2025-07-12 20:11:39,683 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Actual duration: 5.09s
+2025-07-12 20:11:39,683 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Average rate: 99.93 packets/sec
+2025-07-12 20:11:39,683 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Target port: 53 (DNS)
+2025-07-12 20:11:39,683 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] Attack method: UDP Flood
+2025-07-12 20:11:39,683 - attack_logger - INFO - [udp_flood] [Run ID: 1b31579e-5f82-4315-b251-961b90096869] --------------------
+2025-07-12 20:11:39,751 - attack_logger - INFO - Attack: UDP Flood completed.
+2025-07-12 20:11:39,751 - attack_logger - INFO - Attack: ICMP Flood (5s) | h2 -> h4
+2025-07-12 20:11:43,762 - attack_logger - INFO - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] Starting ICMP Flood from h2 to 10.0.0.4 for 5 seconds.
+2025-07-12 20:11:43,762 - attack_logger - INFO - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] Attack Phase: Traditional ICMP Flood - Attacker: h2, Target: 10.0.0.4, Duration: 5s
+2025-07-12 20:11:47,836 - attack_logger - WARNING - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] Target 10.0.0.4 ICMP timeout after 4.074s
+2025-07-12 20:11:50,900 - attack_logger - DEBUG - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] ICMP type 8 no response from 10.0.0.4 (time: 3.064s)
+2025-07-12 20:11:53,959 - attack_logger - DEBUG - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] ICMP type 13 no response from 10.0.0.4 (time: 3.058s)
+2025-07-12 20:11:57,024 - attack_logger - DEBUG - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] ICMP type 15 no response from 10.0.0.4 (time: 3.065s)
+2025-07-12 20:11:57,024 - attack_logger - DEBUG - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] Starting ICMP packet generation with 0.01s interval
+2025-07-12 20:11:57,030 - attack_logger - INFO - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] ICMP flood process started (PID: 128876)
+2025-07-12 20:11:57,030 - attack_logger - DEBUG - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] Sent SIGINT to ICMP flood process 128876
+2025-07-12 20:11:57,530 - attack_logger - INFO - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] ICMP Flood from h2 to 10.0.0.4 finished.
+2025-07-12 20:11:57,531 - attack_logger - INFO - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] Attack completed. Total packets sent = 1326, Average rate = 99.94 packets/sec.
+2025-07-12 20:11:57,531 - attack_logger - INFO - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] --- Attack Summary ---
+2025-07-12 20:11:57,531 - attack_logger - INFO - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] Total packets sent: 1326
+2025-07-12 20:11:57,531 - attack_logger - INFO - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] Actual duration: 13.27s
+2025-07-12 20:11:57,531 - attack_logger - INFO - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] Average rate: 99.94 packets/sec
+2025-07-12 20:11:57,531 - attack_logger - INFO - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] ICMP type: Echo Request (8)
+2025-07-12 20:11:57,531 - attack_logger - INFO - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] Attack method: ICMP Flood
+2025-07-12 20:11:57,531 - attack_logger - INFO - [icmp_flood] [Run ID: 759977b5-44d6-49c0-8cb3-d42875dc8f20] --------------------
+2025-07-12 20:11:57,615 - attack_logger - INFO - Attack: ICMP Flood completed.
+2025-07-12 20:11:57,615 - attack_logger - INFO - Attack: Adversarial TCP State Exhaustion (10s) | h2 -> h6
+2025-07-12 20:12:01,638 - attack_logger - INFO - [ad_syn] Starting advanced adversarial attack against 10.0.0.6 for 10 seconds.
+2025-07-12 20:12:01,639 - attack_logger - INFO - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] Attack Phase: TCP State Exhaustion - Target: 10.0.0.6:80, Duration: 10s
+2025-07-12 20:12:01,678 - attack_logger - INFO - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] Target 10.0.0.6 is reachable (ping: 0.039s)
+2025-07-12 20:12:01,684 - attack_logger - INFO - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] Service 10.0.0.6:80 is active (SYN-ACK: 0.006s)
+2025-07-12 20:12:01,684 - attack_logger - DEBUG - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] Starting burst of 1 packets
+2025-07-12 20:12:16,137 - attack_logger - DEBUG - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] Attempting to send SYN packet from 10.149.251.213:55627 to 10.0.0.6:80
+2025-07-12 20:12:17,168 - attack_logger - DEBUG - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] SYN packet sent in 1.031s. Reply: None
+2025-07-12 20:12:17,169 - attack_logger - DEBUG - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] No TCP reply or invalid reply for 10.149.251.213:55627.
+2025-07-12 20:12:17,169 - attack_logger - DEBUG - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] Burst completed in 15.484s
+2025-07-12 20:12:17,169 - attack_logger - INFO - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] Emission rate: 0.13 packets/sec, Total sent = 2
+2025-07-12 20:12:17,264 - attack_logger - DEBUG - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] Burst sleep: planned=0.095s, actual=0.095s
+2025-07-12 20:12:17,264 - attack_logger - INFO - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] Attack finished. Total packets sent = 2, Average rate = 0.13 packets/sec.
+2025-07-12 20:12:17,264 - attack_logger - INFO - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] --- Attack Summary ---
+2025-07-12 20:12:17,264 - attack_logger - INFO - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] Total packets sent: 1
+2025-07-12 20:12:17,264 - attack_logger - INFO - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] Average rate: 0.13 packets/sec
+2025-07-12 20:12:17,264 - attack_logger - WARNING - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] Warning: Low packet count (2) for expected duration (10s) and rate (2 pps). Expected ~20 packets.
+2025-07-12 20:12:17,264 - attack_logger - INFO - [ad_syn] [Run ID: 09b42590-14e4-466c-9ac1-809ec8402074] --------------------
+2025-07-12 20:12:17,338 - attack_logger - INFO - Attack: Adversarial Application Layer (10s) | h2 -> h6
+2025-07-12 20:12:21,352 - attack_logger - INFO - [ad_udp] Starting advanced adversarial attack against 10.0.0.6 for 10 seconds.
+2025-07-12 20:12:21,352 - attack_logger - INFO - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] Attack Phase: Distributed Application Layer - Target: 10.0.0.6:80, Duration: 10s
+2025-07-12 20:12:21,355 - attack_logger - INFO - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] HTTP service 10.0.0.6:80 is active (status: 200, time: 0.003s)
+2025-07-12 20:12:21,355 - attack_logger - DEBUG - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] Starting burst of 1 HTTP requests
+2025-07-12 20:12:21,929 - attack_logger - DEBUG - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] App Layer: GET request to 10.0.0.6:80/api/products?page=1&size=100&sort=price from 172.18.83.80 - Status: 404, Time: 2.48ms
+2025-07-12 20:12:21,929 - attack_logger - DEBUG - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] Burst completed in 0.574s
+2025-07-12 20:12:22,041 - attack_logger - DEBUG - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] Burst sleep: planned=0.111s, actual=0.113s
+2025-07-12 20:12:22,041 - attack_logger - DEBUG - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] Starting burst of 1 HTTP requests
+2025-07-12 20:12:35,842 - attack_logger - DEBUG - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] App Layer: OPTIONS request to 10.0.0.6:80/api/users/verify?token=nynfv5hv892xydiw6pln6b2wrk2tqi3lejf7bsifzg9lh9wpgabrzej293v8g14h from 10.123.235.122 - Status: 200, Time: 3.10ms
+2025-07-12 20:12:35,843 - attack_logger - DEBUG - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] Burst completed in 13.801s
+2025-07-12 20:12:35,843 - attack_logger - INFO - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] Emission rate: 0.14 requests/sec, Total sent = 2, Successful = 2, Failed = 0
+2025-07-12 20:12:35,947 - attack_logger - DEBUG - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] Burst sleep: planned=0.103s, actual=0.104s
+2025-07-12 20:12:35,947 - attack_logger - INFO - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] Attack finished. Total requests sent = 2, Successful = 2, Failed = 0, Average rate = 0.14 requests/sec.
+2025-07-12 20:12:35,948 - attack_logger - INFO - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] --- Attack Summary ---
+2025-07-12 20:12:35,948 - attack_logger - INFO - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] Total requests sent: 2
+2025-07-12 20:12:35,948 - attack_logger - INFO - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] Average rate: 0.14 requests/sec
+2025-07-12 20:12:35,948 - attack_logger - WARNING - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] Warning: Low request count (2) for expected duration (10s) and rate (6 rps). Expected ~60 requests.
+2025-07-12 20:12:35,948 - attack_logger - INFO - [ad_udp] [Run ID: ae64d252-53b0-4981-8d73-38cde9a558ac] --------------------
+2025-07-12 20:12:35,987 - attack_logger - INFO - Attack: Adversarial Slow Read (10s) | h2 -> h6
+2025-07-12 20:12:43,019 - attack_logger - INFO - [ad_slow] Starting advanced adversarial attack against 10.0.0.6 for 10 seconds.
+2025-07-12 20:12:43,019 - attack_logger - WARNING - [ad_slow] [Run ID: d11bf173-5aa4-4079-bbb5-68cb5e253c2c] Unknown attack variant: ad_slow. No specific attack executed.
+2025-07-12 20:12:43,133 - attack_logger - INFO - Attack: Adversarial Slow Read completed.
+2025-07-12 20:25:14,963 - attack_logger - INFO - Attack: SYN Flood (20s) | h1 -> h6
+2025-07-12 20:25:18,978 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Starting SYN Flood from h1 to 10.0.0.6 for 20 seconds.
+2025-07-12 20:25:18,978 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Attack Phase: Traditional SYN Flood - Attacker: h1, Target: 10.0.0.6:80, Duration: 20s
+2025-07-12 20:25:19,026 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Target 10.0.0.6 is reachable (ping: 0.047s)
+2025-07-12 20:25:19,063 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Service 10.0.0.6:80 is active (SYN-ACK: 0.037s)
+2025-07-12 20:25:19,063 - attack_logger - DEBUG - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Starting SYN packet generation with 0.01s interval
+2025-07-12 20:25:19,068 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] SYN flood process started (PID: 129416)
+2025-07-12 20:25:25,072 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Attack progress: 6.1s elapsed, ~609 packets sent, Rate: 99.9 pps
+2025-07-12 20:25:25,072 - attack_logger - DEBUG - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Process stats - CPU: 0.0%, Memory: 60.5MB
+2025-07-12 20:25:31,114 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Attack progress: 12.1s elapsed, ~1213 packets sent, Rate: 100.0 pps
+2025-07-12 20:25:31,114 - attack_logger - DEBUG - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Process stats - CPU: 0.0%, Memory: 60.8MB
+2025-07-12 20:25:37,145 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Attack progress: 18.2s elapsed, ~1816 packets sent, Rate: 100.0 pps
+2025-07-12 20:25:37,145 - attack_logger - DEBUG - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Process stats - CPU: 0.0%, Memory: 60.8MB
+2025-07-12 20:25:39,057 - attack_logger - DEBUG - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Sent SIGINT to SYN flood process 129416
+2025-07-12 20:25:39,560 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] SYN Flood from h1 to 10.0.0.6 finished.
+2025-07-12 20:25:39,560 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Attack completed. Total packets sent = 2007, Average rate = 99.95 packets/sec.
+2025-07-12 20:25:39,560 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] --- Attack Summary ---
+2025-07-12 20:25:39,560 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Total packets sent: 2007
+2025-07-12 20:25:39,560 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Actual duration: 20.08s
+2025-07-12 20:25:39,560 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Average rate: 99.95 packets/sec
+2025-07-12 20:25:39,560 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Target port: 80
+2025-07-12 20:25:39,560 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] Attack method: TCP SYN Flood
+2025-07-12 20:25:39,560 - attack_logger - INFO - [syn_flood] [Run ID: 41de8295-7152-42e7-b99c-01d3129b0d04] --------------------
+2025-07-12 20:25:39,631 - attack_logger - INFO - Attack: SYN Flood completed.
+2025-07-12 20:25:39,631 - attack_logger - INFO - Attack: UDP Flood (20s) | h2 -> h4
+2025-07-12 20:25:46,647 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Starting UDP Flood from h2 to 10.0.0.4 for 20 seconds.
+2025-07-12 20:25:46,648 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Attack Phase: Traditional UDP Flood - Attacker: h2, Target: 10.0.0.4:53, Duration: 20s
+2025-07-12 20:25:46,648 - attack_logger - DEBUG - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Starting UDP packet generation with 0.01s interval
+2025-07-12 20:25:46,653 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] UDP flood process started (PID: 129421)
+2025-07-12 20:25:52,727 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Attack progress: 6.1s elapsed, ~607 packets sent, Rate: 99.9 pps
+2025-07-12 20:25:52,727 - attack_logger - DEBUG - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Process stats - CPU: 0.0%, Memory: 60.9MB
+2025-07-12 20:25:58,790 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Attack progress: 12.1s elapsed, ~1214 packets sent, Rate: 100.0 pps
+2025-07-12 20:25:58,791 - attack_logger - DEBUG - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Process stats - CPU: 0.0%, Memory: 60.9MB
+2025-07-12 20:26:04,839 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Attack progress: 18.2s elapsed, ~1819 packets sent, Rate: 100.0 pps
+2025-07-12 20:26:04,839 - attack_logger - DEBUG - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Process stats - CPU: 0.0%, Memory: 60.9MB
+2025-07-12 20:26:06,657 - attack_logger - DEBUG - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Sent SIGINT to UDP flood process 129421
+2025-07-12 20:26:07,159 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] UDP Flood from h2 to 10.0.0.4 finished.
+2025-07-12 20:26:07,159 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Attack completed. Total packets sent = 2000, Average rate = 99.95 packets/sec.
+2025-07-12 20:26:07,159 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] --- Attack Summary ---
+2025-07-12 20:26:07,159 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Total packets sent: 2000
+2025-07-12 20:26:07,159 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Actual duration: 20.01s
+2025-07-12 20:26:07,159 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Average rate: 99.95 packets/sec
+2025-07-12 20:26:07,159 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Target port: 53 (DNS)
+2025-07-12 20:26:07,159 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] Attack method: UDP Flood
+2025-07-12 20:26:07,159 - attack_logger - INFO - [udp_flood] [Run ID: e3b99c8f-8a1a-4ce7-abff-c792717dd670] --------------------
+2025-07-12 20:26:07,230 - attack_logger - INFO - Attack: UDP Flood completed.
+2025-07-12 20:26:07,230 - attack_logger - INFO - Attack: ICMP Flood (20s) | h2 -> h4
+2025-07-12 20:26:11,244 - attack_logger - INFO - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] Starting ICMP Flood from h2 to 10.0.0.4 for 20 seconds.
+2025-07-12 20:26:11,244 - attack_logger - INFO - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] Attack Phase: Traditional ICMP Flood - Attacker: h2, Target: 10.0.0.4, Duration: 20s
+2025-07-12 20:26:15,290 - attack_logger - WARNING - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] Target 10.0.0.4 ICMP timeout after 4.046s
+2025-07-12 20:26:15,290 - attack_logger - DEBUG - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] Starting ICMP packet generation with 0.01s interval
+2025-07-12 20:26:15,296 - attack_logger - INFO - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] ICMP flood process started (PID: 129426)
+2025-07-12 20:26:21,380 - attack_logger - INFO - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] Attack progress: 10.1s elapsed, ~1013 packets sent, Rate: 99.9 pps
+2025-07-12 20:26:21,380 - attack_logger - DEBUG - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] Process stats - CPU: 0.0%, Memory: 60.6MB
+2025-07-12 20:26:27,449 - attack_logger - INFO - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] Attack progress: 16.2s elapsed, ~1620 packets sent, Rate: 100.0 pps
+2025-07-12 20:26:27,449 - attack_logger - DEBUG - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] Process stats - CPU: 0.0%, Memory: 60.6MB
+2025-07-12 20:26:31,296 - attack_logger - DEBUG - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] Sent SIGINT to ICMP flood process 129426
+2025-07-12 20:26:31,798 - attack_logger - INFO - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] ICMP Flood from h2 to 10.0.0.4 finished.
+2025-07-12 20:26:31,798 - attack_logger - INFO - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] Attack completed. Total packets sent = 2005, Average rate = 99.99 packets/sec.
+2025-07-12 20:26:31,798 - attack_logger - INFO - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] --- Attack Summary ---
+2025-07-12 20:26:31,798 - attack_logger - INFO - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] Total packets sent: 2005
+2025-07-12 20:26:31,798 - attack_logger - INFO - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] Actual duration: 20.05s
+2025-07-12 20:26:31,798 - attack_logger - INFO - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] Average rate: 99.99 packets/sec
+2025-07-12 20:26:31,798 - attack_logger - INFO - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] ICMP type: Echo Request (8)
+2025-07-12 20:26:31,798 - attack_logger - INFO - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] Attack method: ICMP Flood
+2025-07-12 20:26:31,798 - attack_logger - INFO - [icmp_flood] [Run ID: 2547579b-6ed6-47d7-9a70-483f21e24179] --------------------
+2025-07-12 20:26:31,865 - attack_logger - INFO - Attack: ICMP Flood completed.
+2025-07-12 20:26:31,865 - attack_logger - INFO - Attack: Adversarial TCP State Exhaustion (40s) | h2 -> h6
+2025-07-12 20:26:35,879 - attack_logger - INFO - [ad_syn] Starting advanced adversarial attack against 10.0.0.6 for 40 seconds.
+2025-07-12 20:26:35,879 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Attack Phase: TCP State Exhaustion - Target: 10.0.0.6:80, Duration: 40s
+2025-07-12 20:26:35,886 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Target 10.0.0.6 is reachable (ping: 0.007s)
+2025-07-12 20:26:35,910 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Service 10.0.0.6:80 is active (SYN-ACK: 0.023s)
+2025-07-12 20:26:35,910 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Starting burst of 1 packets
+2025-07-12 20:26:36,998 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Attempting to send SYN packet from 172.30.64.31:54498 to 10.0.0.6:80
+2025-07-12 20:26:38,007 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] SYN packet sent in 1.009s. Reply: None
+2025-07-12 20:26:38,007 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] No TCP reply or invalid reply for 172.30.64.31:54498.
+2025-07-12 20:26:38,007 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst completed in 2.097s
+2025-07-12 20:26:38,007 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Emission rate: 0.95 packets/sec, Total sent = 2
+2025-07-12 20:26:38,090 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst sleep: planned=0.080s, actual=0.082s
+2025-07-12 20:26:38,090 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Starting burst of 1 packets
+2025-07-12 20:26:52,843 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Attempting to send SYN packet from 10.102.124.234:63420 to 10.0.0.6:80
+2025-07-12 20:26:53,852 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] SYN packet sent in 1.008s. Reply: None
+2025-07-12 20:26:53,852 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] No TCP reply or invalid reply for 10.102.124.234:63420.
+2025-07-12 20:26:53,852 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst completed in 15.762s
+2025-07-12 20:26:53,852 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Emission rate: 0.22 packets/sec, Total sent = 4
+2025-07-12 20:26:53,944 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst sleep: planned=0.091s, actual=0.092s
+2025-07-12 20:26:53,944 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Starting burst of 1 packets
+2025-07-12 20:26:53,977 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Attempting to send SYN packet from 192.168.17.81:29721 to 10.0.0.6:80
+2025-07-12 20:26:54,999 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] SYN packet sent in 1.022s. Reply: None
+2025-07-12 20:26:54,999 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] No TCP reply or invalid reply for 192.168.17.81:29721.
+2025-07-12 20:26:54,999 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst completed in 1.055s
+2025-07-12 20:26:54,999 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Emission rate: 0.31 packets/sec, Total sent = 6
+2025-07-12 20:26:55,094 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst sleep: planned=0.092s, actual=0.095s
+2025-07-12 20:26:55,094 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Starting burst of 1 packets
+2025-07-12 20:26:55,663 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Attempting to send SYN packet from 172.16.40.62:56481 to 10.0.0.6:80
+2025-07-12 20:26:56,672 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] SYN packet sent in 1.010s. Reply: None
+2025-07-12 20:26:56,672 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] No TCP reply or invalid reply for 172.16.40.62:56481.
+2025-07-12 20:26:56,672 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst completed in 1.579s
+2025-07-12 20:26:56,673 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Emission rate: 0.39 packets/sec, Total sent = 8
+2025-07-12 20:26:56,769 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst sleep: planned=0.095s, actual=0.097s
+2025-07-12 20:26:56,769 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Starting burst of 1 packets
+2025-07-12 20:26:57,342 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Attempting to send SYN packet from 172.16.23.17:50623 to 10.0.0.6:80
+2025-07-12 20:26:58,377 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] SYN packet sent in 1.034s. Reply: None
+2025-07-12 20:26:58,377 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] No TCP reply or invalid reply for 172.16.23.17:50623.
+2025-07-12 20:26:58,377 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst completed in 1.607s
+2025-07-12 20:26:58,377 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Emission rate: 0.45 packets/sec, Total sent = 10
+2025-07-12 20:26:58,492 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst sleep: planned=0.114s, actual=0.115s
+2025-07-12 20:26:58,492 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Starting burst of 1 packets
+2025-07-12 20:26:59,060 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Attempting to send SYN packet from 172.19.218.255:3982 to 10.0.0.6:80
+2025-07-12 20:27:00,095 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] SYN packet sent in 1.035s. Reply: None
+2025-07-12 20:27:00,095 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] No TCP reply or invalid reply for 172.19.218.255:3982.
+2025-07-12 20:27:00,096 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst completed in 1.604s
+2025-07-12 20:27:00,096 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Emission rate: 0.50 packets/sec, Total sent = 12
+2025-07-12 20:27:00,216 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst sleep: planned=0.119s, actual=0.120s
+2025-07-12 20:27:00,216 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Starting burst of 1 packets
+2025-07-12 20:27:00,249 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Attempting to send SYN packet from 192.168.25.103:19488 to 10.0.0.6:80
+2025-07-12 20:27:01,257 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] SYN packet sent in 1.008s. Reply: None
+2025-07-12 20:27:01,257 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] No TCP reply or invalid reply for 192.168.25.103:19488.
+2025-07-12 20:27:01,257 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst completed in 1.042s
+2025-07-12 20:27:01,257 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Emission rate: 0.55 packets/sec, Total sent = 14
+2025-07-12 20:27:01,370 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst sleep: planned=0.112s, actual=0.113s
+2025-07-12 20:27:01,370 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Starting burst of 1 packets
+2025-07-12 20:27:01,404 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Attempting to send SYN packet from 192.168.236.201:43558 to 10.0.0.6:80
+2025-07-12 20:27:02,429 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] SYN packet sent in 1.025s. Reply: None
+2025-07-12 20:27:02,429 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] No TCP reply or invalid reply for 192.168.236.201:43558.
+2025-07-12 20:27:02,429 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst completed in 1.059s
+2025-07-12 20:27:02,429 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Emission rate: 0.60 packets/sec, Total sent = 16
+2025-07-12 20:27:02,550 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst sleep: planned=0.119s, actual=0.121s
+2025-07-12 20:27:02,550 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Starting burst of 1 packets
+2025-07-12 20:27:17,069 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Attempting to send SYN packet from 10.176.57.206:9280 to 10.0.0.6:80
+2025-07-12 20:27:18,078 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] SYN packet sent in 1.009s. Reply: None
+2025-07-12 20:27:18,078 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] No TCP reply or invalid reply for 10.176.57.206:9280.
+2025-07-12 20:27:18,078 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst completed in 15.528s
+2025-07-12 20:27:18,078 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Emission rate: 0.43 packets/sec, Total sent = 18
+2025-07-12 20:27:18,184 - attack_logger - DEBUG - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Burst sleep: planned=0.104s, actual=0.106s
+2025-07-12 20:27:18,184 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Attack finished. Total packets sent = 18, Average rate = 0.43 packets/sec.
+2025-07-12 20:27:18,184 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] --- Attack Summary ---
+2025-07-12 20:27:18,184 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Total packets sent: 9
+2025-07-12 20:27:18,184 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Average rate: 0.43 packets/sec
+2025-07-12 20:27:18,184 - attack_logger - WARNING - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] Warning: Low packet count (18) for expected duration (40s) and rate (2 pps). Expected ~80 packets.
+2025-07-12 20:27:18,184 - attack_logger - INFO - [ad_syn] [Run ID: d7bfb459-dfb6-461a-931f-b7c55627f1af] --------------------
+2025-07-12 20:27:18,224 - attack_logger - INFO - Attack: Adversarial Application Layer (40s) | h2 -> h6
+2025-07-12 20:27:22,237 - attack_logger - INFO - [ad_udp] Starting advanced adversarial attack against 10.0.0.6 for 40 seconds.
+2025-07-12 20:27:22,237 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Attack Phase: Distributed Application Layer - Target: 10.0.0.6:80, Duration: 40s
+2025-07-12 20:27:22,240 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] HTTP service 10.0.0.6:80 is active (status: 200, time: 0.003s)
+2025-07-12 20:27:22,240 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:22,815 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: GET request to 10.0.0.6:80/search?q=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa from 172.16.144.178 - Status: 404, Time: 2.62ms
+2025-07-12 20:27:22,815 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.575s
+2025-07-12 20:27:22,929 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.113s, actual=0.114s
+2025-07-12 20:27:22,929 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:23,497 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: POST request to 10.0.0.6:80/download?file=large_report.pdf from 172.23.14.214 - Status: 404, Time: 2.58ms
+2025-07-12 20:27:23,497 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.568s
+2025-07-12 20:27:23,497 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Emission rate: 1.59 requests/sec, Total sent = 2, Successful = 2, Failed = 0
+2025-07-12 20:27:23,607 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.108s, actual=0.110s
+2025-07-12 20:27:23,607 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:24,173 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: HEAD request to 10.0.0.6:80/api/products?page=1&size=100&sort=price from 172.28.33.166 - Status: 404, Time: 2.54ms
+2025-07-12 20:27:24,173 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.566s
+2025-07-12 20:27:24,289 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.113s, actual=0.116s
+2025-07-12 20:27:24,289 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:24,325 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: POST request to 10.0.0.6:80/api/products?page=1&size=100&sort=price from 192.168.21.2 - Status: 404, Time: 2.30ms
+2025-07-12 20:27:24,325 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.036s
+2025-07-12 20:27:24,415 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.089s, actual=0.090s
+2025-07-12 20:27:24,415 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:24,450 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: POST request to 10.0.0.6:80/download?file=large_report.pdf from 192.168.20.23 - Status: 404, Time: 2.15ms
+2025-07-12 20:27:24,450 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.036s
+2025-07-12 20:27:24,564 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.113s, actual=0.113s
+2025-07-12 20:27:24,564 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:24,600 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: HEAD request to 10.0.0.6:80/api/users/verify?token=zp31zapoi0nceet92ejanlw6bcqfxbzx2u7sysuuufzeuoluw7araoi3dzfyoxro from 192.168.122.143 - Status: 404, Time: 2.19ms
+2025-07-12 20:27:24,600 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.036s
+2025-07-12 20:27:24,600 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Emission rate: 2.54 requests/sec, Total sent = 6, Successful = 6, Failed = 0
+2025-07-12 20:27:24,700 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.100s, actual=0.100s
+2025-07-12 20:27:24,700 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:24,736 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: GET request to 10.0.0.6:80/api/users/verify?token=zp31zapoi0nceet92ejanlw6bcqfxbzx2u7sysuuufzeuoluw7araoi3dzfyoxro from 192.168.8.100 - Status: 404, Time: 2.12ms
+2025-07-12 20:27:24,736 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.036s
+2025-07-12 20:27:24,831 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.093s, actual=0.095s
+2025-07-12 20:27:24,831 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:24,867 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: GET request to 10.0.0.6:80/search?q=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa from 192.168.130.86 - Status: 404, Time: 2.16ms
+2025-07-12 20:27:24,867 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.036s
+2025-07-12 20:27:24,955 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.086s, actual=0.088s
+2025-07-12 20:27:24,955 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:25,794 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: HEAD request to 10.0.0.6:80/api/products?page=1&size=100&sort=price from 172.16.0.210 - Status: 404, Time: 2.48ms
+2025-07-12 20:27:25,794 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.839s
+2025-07-12 20:27:25,794 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Emission rate: 2.53 requests/sec, Total sent = 9, Successful = 9, Failed = 0
+2025-07-12 20:27:25,896 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.100s, actual=0.101s
+2025-07-12 20:27:25,896 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:25,932 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: GET request to 10.0.0.6:80/images/highres_4839.jpg from 192.168.18.9 - Status: 404, Time: 2.19ms
+2025-07-12 20:27:25,932 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.036s
+2025-07-12 20:27:26,020 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.086s, actual=0.088s
+2025-07-12 20:27:26,020 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:40,054 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: GET request to 10.0.0.6:80/search?q=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa from 10.214.4.235 - Status: 404, Time: 2.57ms
+2025-07-12 20:27:40,054 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 14.034s
+2025-07-12 20:27:40,054 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Emission rate: 0.62 requests/sec, Total sent = 11, Successful = 11, Failed = 0
+2025-07-12 20:27:40,162 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.107s, actual=0.107s
+2025-07-12 20:27:40,162 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:40,198 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: POST request to 10.0.0.6:80/images/highres_4839.jpg from 192.168.80.161 - Status: 404, Time: 2.23ms
+2025-07-12 20:27:40,198 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.036s
+2025-07-12 20:27:40,300 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.099s, actual=0.102s
+2025-07-12 20:27:40,300 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:40,336 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: OPTIONS request to 10.0.0.6:80/api/users/verify?token=zp31zapoi0nceet92ejanlw6bcqfxbzx2u7sysuuufzeuoluw7araoi3dzfyoxro from 192.168.111.176 - Status: 200, Time: 2.20ms
+2025-07-12 20:27:40,336 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.036s
+2025-07-12 20:27:40,429 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.092s, actual=0.093s
+2025-07-12 20:27:40,429 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:41,194 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: GET request to 10.0.0.6:80/api/users/verify?token=zp31zapoi0nceet92ejanlw6bcqfxbzx2u7sysuuufzeuoluw7araoi3dzfyoxro from 172.17.226.141 - Status: 404, Time: 3.04ms
+2025-07-12 20:27:41,194 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.765s
+2025-07-12 20:27:41,194 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Emission rate: 0.74 requests/sec, Total sent = 14, Successful = 14, Failed = 0
+2025-07-12 20:27:41,302 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.107s, actual=0.108s
+2025-07-12 20:27:41,302 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:41,338 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: GET request to 10.0.0.6:80/api/users/verify?token=zp31zapoi0nceet92ejanlw6bcqfxbzx2u7sysuuufzeuoluw7araoi3dzfyoxro from 192.168.121.173 - Status: 404, Time: 2.32ms
+2025-07-12 20:27:41,338 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.036s
+2025-07-12 20:27:41,430 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.091s, actual=0.092s
+2025-07-12 20:27:41,430 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:41,466 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: GET request to 10.0.0.6:80/download?file=large_report.pdf from 192.168.253.78 - Status: 404, Time: 2.15ms
+2025-07-12 20:27:41,466 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.036s
+2025-07-12 20:27:41,556 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.089s, actual=0.090s
+2025-07-12 20:27:41,556 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:41,591 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: GET request to 10.0.0.6:80/download?file=large_report.pdf from 192.168.181.88 - Status: 404, Time: 2.13ms
+2025-07-12 20:27:41,591 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.036s
+2025-07-12 20:27:41,696 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.103s, actual=0.105s
+2025-07-12 20:27:41,696 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:42,724 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: OPTIONS request to 10.0.0.6:80/download?file=large_report.pdf from 172.24.129.3 - Status: 200, Time: 2.53ms
+2025-07-12 20:27:42,725 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 1.029s
+2025-07-12 20:27:42,725 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Emission rate: 0.88 requests/sec, Total sent = 18, Successful = 18, Failed = 0
+2025-07-12 20:27:42,838 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.112s, actual=0.113s
+2025-07-12 20:27:42,838 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:42,920 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: POST request to 10.0.0.6:80/download?file=large_report.pdf from 192.168.52.183 - Status: 404, Time: 2.51ms
+2025-07-12 20:27:42,920 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 0.082s
+2025-07-12 20:27:43,015 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.095s, actual=0.095s
+2025-07-12 20:27:43,015 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:27:57,344 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: HEAD request to 10.0.0.6:80/download?file=large_report.pdf from 10.25.233.154 - Status: 404, Time: 3.40ms
+2025-07-12 20:27:57,344 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 14.329s
+2025-07-12 20:27:57,345 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Emission rate: 0.57 requests/sec, Total sent = 20, Successful = 20, Failed = 0
+2025-07-12 20:27:57,463 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.118s, actual=0.119s
+2025-07-12 20:27:57,463 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Starting burst of 1 HTTP requests
+2025-07-12 20:28:10,560 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] App Layer: OPTIONS request to 10.0.0.6:80/search?q=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa from 10.42.196.238 - Status: 200, Time: 2.43ms
+2025-07-12 20:28:10,561 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst completed in 13.097s
+2025-07-12 20:28:10,561 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Emission rate: 0.43 requests/sec, Total sent = 21, Successful = 21, Failed = 0
+2025-07-12 20:28:10,661 - attack_logger - DEBUG - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Burst sleep: planned=0.098s, actual=0.100s
+2025-07-12 20:28:10,661 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Attack finished. Total requests sent = 21, Successful = 21, Failed = 0, Average rate = 0.43 requests/sec.
+2025-07-12 20:28:10,661 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] --- Attack Summary ---
+2025-07-12 20:28:10,661 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Total requests sent: 21
+2025-07-12 20:28:10,661 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Average rate: 0.43 requests/sec
+2025-07-12 20:28:10,662 - attack_logger - WARNING - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] Warning: Low request count (21) for expected duration (40s) and rate (6 rps). Expected ~240 requests.
+2025-07-12 20:28:10,662 - attack_logger - INFO - [ad_udp] [Run ID: fb1853a9-cf89-4b99-938a-d081ff01d89c] --------------------
+2025-07-12 20:28:10,735 - attack_logger - INFO - Attack: Adversarial Slow Read (40s) | h2 -> h6
+2025-07-12 20:28:17,774 - attack_logger - INFO - [ad_slow] Starting advanced adversarial attack against 10.0.0.6 for 40 seconds.
+2025-07-12 20:28:17,774 - attack_logger - WARNING - [ad_slow] [Run ID: 45dde895-32cf-44fc-a981-7c343031041c] Unknown attack variant: ad_slow. No specific attack executed.
+2025-07-12 20:28:17,886 - attack_logger - INFO - Attack: Adversarial Slow Read completed.
+2025-07-12 20:30:52,230 - attack_logger - INFO - Attack: SYN Flood (20s) | h1 -> h6
+2025-07-12 20:30:56,245 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Starting SYN Flood from h1 to 10.0.0.6 for 20 seconds.
+2025-07-12 20:30:56,245 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Attack Phase: Traditional SYN Flood - Attacker: h1, Target: 10.0.0.6:80, Duration: 20s
+2025-07-12 20:30:56,293 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Target 10.0.0.6 is reachable (ping: 0.048s)
+2025-07-12 20:30:56,318 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Service 10.0.0.6:80 is active (SYN-ACK: 0.025s)
+2025-07-12 20:30:56,318 - attack_logger - DEBUG - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Starting SYN packet generation with 0.01s interval
+2025-07-12 20:30:56,323 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] SYN flood process started (PID: 129940)
+2025-07-12 20:31:02,327 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Attack progress: 6.1s elapsed, ~608 packets sent, Rate: 100.0 pps
+2025-07-12 20:31:02,327 - attack_logger - DEBUG - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Process stats - CPU: 0.0%, Memory: 60.8MB
+2025-07-12 20:31:08,406 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Attack progress: 12.2s elapsed, ~1216 packets sent, Rate: 100.0 pps
+2025-07-12 20:31:08,406 - attack_logger - DEBUG - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Process stats - CPU: 0.0%, Memory: 60.8MB
+2025-07-12 20:31:14,500 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Attack progress: 18.3s elapsed, ~1825 packets sent, Rate: 100.0 pps
+2025-07-12 20:31:14,500 - attack_logger - DEBUG - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Process stats - CPU: 0.0%, Memory: 60.8MB
+2025-07-12 20:31:16,330 - attack_logger - DEBUG - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Sent SIGINT to SYN flood process 129940
+2025-07-12 20:31:16,831 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] SYN Flood from h1 to 10.0.0.6 finished.
+2025-07-12 20:31:16,831 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Attack completed. Total packets sent = 2008, Average rate = 99.97 packets/sec.
+2025-07-12 20:31:16,831 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] --- Attack Summary ---
+2025-07-12 20:31:16,831 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Total packets sent: 2008
+2025-07-12 20:31:16,831 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Actual duration: 20.09s
+2025-07-12 20:31:16,831 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Average rate: 99.97 packets/sec
+2025-07-12 20:31:16,831 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Target port: 80
+2025-07-12 20:31:16,831 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] Attack method: TCP SYN Flood
+2025-07-12 20:31:16,831 - attack_logger - INFO - [syn_flood] [Run ID: ab6da632-246e-4ea0-908b-766051c50e1e] --------------------
+2025-07-12 20:31:16,900 - attack_logger - INFO - Attack: SYN Flood completed.
+2025-07-12 20:31:16,900 - attack_logger - INFO - Attack: UDP Flood (20s) | h2 -> h4
+2025-07-12 20:31:23,915 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Starting UDP Flood from h2 to 10.0.0.4 for 20 seconds.
+2025-07-12 20:31:23,915 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Attack Phase: Traditional UDP Flood - Attacker: h2, Target: 10.0.0.4:53, Duration: 20s
+2025-07-12 20:31:23,915 - attack_logger - DEBUG - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Starting UDP packet generation with 0.01s interval
+2025-07-12 20:31:23,921 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] UDP flood process started (PID: 129946)
+2025-07-12 20:31:30,014 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Attack progress: 6.1s elapsed, ~609 packets sent, Rate: 99.9 pps
+2025-07-12 20:31:30,014 - attack_logger - DEBUG - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Process stats - CPU: 0.0%, Memory: 60.6MB
+2025-07-12 20:31:36,071 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Attack progress: 12.2s elapsed, ~1215 packets sent, Rate: 100.0 pps
+2025-07-12 20:31:36,071 - attack_logger - DEBUG - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Process stats - CPU: 0.0%, Memory: 60.6MB
+2025-07-12 20:31:42,123 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Attack progress: 18.2s elapsed, ~1820 packets sent, Rate: 100.0 pps
+2025-07-12 20:31:42,123 - attack_logger - DEBUG - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Process stats - CPU: 0.0%, Memory: 60.6MB
+2025-07-12 20:31:43,948 - attack_logger - DEBUG - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Sent SIGINT to UDP flood process 129946
+2025-07-12 20:31:44,449 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] UDP Flood from h2 to 10.0.0.4 finished.
+2025-07-12 20:31:44,449 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Attack completed. Total packets sent = 2003, Average rate = 99.99 packets/sec.
+2025-07-12 20:31:44,449 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] --- Attack Summary ---
+2025-07-12 20:31:44,449 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Total packets sent: 2003
+2025-07-12 20:31:44,449 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Actual duration: 20.03s
+2025-07-12 20:31:44,449 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Average rate: 99.99 packets/sec
+2025-07-12 20:31:44,449 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Target port: 53 (DNS)
+2025-07-12 20:31:44,449 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] Attack method: UDP Flood
+2025-07-12 20:31:44,449 - attack_logger - INFO - [udp_flood] [Run ID: eda62220-966d-4a71-b0c9-8bbbc76f65f9] --------------------
+2025-07-12 20:31:44,483 - attack_logger - INFO - Attack: UDP Flood completed.
+2025-07-12 20:31:44,483 - attack_logger - INFO - Attack: ICMP Flood (20s) | h2 -> h4
+2025-07-12 20:31:48,495 - attack_logger - INFO - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] Starting ICMP Flood from h2 to 10.0.0.4 for 20 seconds.
+2025-07-12 20:31:48,495 - attack_logger - INFO - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] Attack Phase: Traditional ICMP Flood - Attacker: h2, Target: 10.0.0.4, Duration: 20s
+2025-07-12 20:31:52,554 - attack_logger - WARNING - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] Target 10.0.0.4 ICMP timeout after 4.058s
+2025-07-12 20:31:52,554 - attack_logger - DEBUG - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] Starting ICMP packet generation with 0.01s interval
+2025-07-12 20:31:52,559 - attack_logger - INFO - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] ICMP flood process started (PID: 129951)
+2025-07-12 20:31:58,621 - attack_logger - INFO - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] Attack progress: 10.1s elapsed, ~1012 packets sent, Rate: 100.0 pps
+2025-07-12 20:31:58,621 - attack_logger - DEBUG - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] Process stats - CPU: 0.0%, Memory: 60.4MB
+2025-07-12 20:32:04,701 - attack_logger - INFO - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] Attack progress: 16.2s elapsed, ~1620 packets sent, Rate: 100.0 pps
+2025-07-12 20:32:04,701 - attack_logger - DEBUG - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] Process stats - CPU: 0.0%, Memory: 60.4MB
+2025-07-12 20:32:08,544 - attack_logger - DEBUG - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] Sent SIGINT to ICMP flood process 129951
+2025-07-12 20:32:09,047 - attack_logger - INFO - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] ICMP Flood from h2 to 10.0.0.4 finished.
+2025-07-12 20:32:09,047 - attack_logger - INFO - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] Attack completed. Total packets sent = 2004, Average rate = 99.96 packets/sec.
+2025-07-12 20:32:09,047 - attack_logger - INFO - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] --- Attack Summary ---
+2025-07-12 20:32:09,047 - attack_logger - INFO - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] Total packets sent: 2004
+2025-07-12 20:32:09,047 - attack_logger - INFO - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] Actual duration: 20.05s
+2025-07-12 20:32:09,047 - attack_logger - INFO - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] Average rate: 99.96 packets/sec
+2025-07-12 20:32:09,047 - attack_logger - INFO - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] ICMP type: Echo Request (8)
+2025-07-12 20:32:09,047 - attack_logger - INFO - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] Attack method: ICMP Flood
+2025-07-12 20:32:09,047 - attack_logger - INFO - [icmp_flood] [Run ID: 20c9220a-c40e-46e3-85ca-da458324f569] --------------------
+2025-07-12 20:32:09,082 - attack_logger - INFO - Attack: ICMP Flood completed.
+2025-07-12 20:32:09,082 - attack_logger - INFO - Attack: Adversarial TCP State Exhaustion (40s) | h2 -> h6
+2025-07-12 20:32:13,095 - attack_logger - INFO - [ad_syn] Starting advanced adversarial attack against 10.0.0.6 for 40 seconds.
+2025-07-12 20:32:13,095 - attack_logger - INFO - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Attack Phase: TCP State Exhaustion - Target: 10.0.0.6:80, Duration: 40s
+2025-07-12 20:32:13,103 - attack_logger - INFO - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Target 10.0.0.6 is reachable (ping: 0.008s)
+2025-07-12 20:32:13,109 - attack_logger - INFO - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Service 10.0.0.6:80 is active (SYN-ACK: 0.006s)
+2025-07-12 20:32:13,109 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Starting burst of 1 packets
+2025-07-12 20:32:27,445 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Attempting to send SYN packet from 10.158.136.144:62096 to 10.0.0.6:80
+2025-07-12 20:32:28,475 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] SYN packet sent in 1.030s. Reply: None
+2025-07-12 20:32:28,475 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] No TCP reply or invalid reply for 10.158.136.144:62096.
+2025-07-12 20:32:28,475 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Burst completed in 15.367s
+2025-07-12 20:32:28,475 - attack_logger - INFO - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Emission rate: 0.13 packets/sec, Total sent = 2
+2025-07-12 20:32:28,560 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Burst sleep: planned=0.085s, actual=0.085s
+2025-07-12 20:32:28,561 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Starting burst of 1 packets
+2025-07-12 20:32:29,126 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Attempting to send SYN packet from 172.28.226.36:48939 to 10.0.0.6:80
+2025-07-12 20:32:30,157 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] SYN packet sent in 1.031s. Reply: None
+2025-07-12 20:32:30,157 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] No TCP reply or invalid reply for 172.28.226.36:48939.
+2025-07-12 20:32:30,157 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Burst completed in 1.597s
+2025-07-12 20:32:30,157 - attack_logger - INFO - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Emission rate: 0.23 packets/sec, Total sent = 4
+2025-07-12 20:32:30,261 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Burst sleep: planned=0.101s, actual=0.104s
+2025-07-12 20:32:30,261 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Starting burst of 1 packets
+2025-07-12 20:32:30,294 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Attempting to send SYN packet from 192.168.95.221:42135 to 10.0.0.6:80
+2025-07-12 20:32:31,322 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] SYN packet sent in 1.028s. Reply: None
+2025-07-12 20:32:31,322 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] No TCP reply or invalid reply for 192.168.95.221:42135.
+2025-07-12 20:32:31,322 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Burst completed in 1.061s
+2025-07-12 20:32:31,322 - attack_logger - INFO - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Emission rate: 0.33 packets/sec, Total sent = 6
+2025-07-12 20:32:31,430 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Burst sleep: planned=0.106s, actual=0.107s
+2025-07-12 20:32:31,430 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Starting burst of 1 packets
+2025-07-12 20:32:45,438 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Attempting to send SYN packet from 10.147.55.220:21717 to 10.0.0.6:80
+2025-07-12 20:32:46,450 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] SYN packet sent in 1.012s. Reply: None
+2025-07-12 20:32:46,450 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] No TCP reply or invalid reply for 10.147.55.220:21717.
+2025-07-12 20:32:46,450 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Burst completed in 15.020s
+2025-07-12 20:32:46,450 - attack_logger - INFO - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Emission rate: 0.24 packets/sec, Total sent = 8
+2025-07-12 20:32:46,545 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Burst sleep: planned=0.093s, actual=0.095s
+2025-07-12 20:32:46,545 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Starting burst of 1 packets
+2025-07-12 20:32:46,579 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Attempting to send SYN packet from 192.168.147.225:49165 to 10.0.0.6:80
+2025-07-12 20:32:47,621 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] SYN packet sent in 1.042s. Reply: None
+2025-07-12 20:32:47,621 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] No TCP reply or invalid reply for 192.168.147.225:49165.
+2025-07-12 20:32:47,621 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Burst completed in 1.076s
+2025-07-12 20:32:47,621 - attack_logger - INFO - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Emission rate: 0.29 packets/sec, Total sent = 10
+2025-07-12 20:32:47,726 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Burst sleep: planned=0.105s, actual=0.105s
+2025-07-12 20:32:47,726 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Starting burst of 1 packets
+2025-07-12 20:33:00,935 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Attempting to send SYN packet from 10.81.214.237:54690 to 10.0.0.6:80
+2025-07-12 20:33:02,004 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] SYN packet sent in 1.068s. Reply: None
+2025-07-12 20:33:02,004 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] No TCP reply or invalid reply for 10.81.214.237:54690.
+2025-07-12 20:33:02,004 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Burst completed in 14.278s
+2025-07-12 20:33:02,004 - attack_logger - INFO - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Emission rate: 0.25 packets/sec, Total sent = 12
+2025-07-12 20:33:02,124 - attack_logger - DEBUG - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Burst sleep: planned=0.119s, actual=0.120s
+2025-07-12 20:33:02,124 - attack_logger - INFO - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Attack finished. Total packets sent = 12, Average rate = 0.24 packets/sec.
+2025-07-12 20:33:02,124 - attack_logger - INFO - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] --- Attack Summary ---
+2025-07-12 20:33:02,124 - attack_logger - INFO - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Total packets sent: 6
+2025-07-12 20:33:02,124 - attack_logger - INFO - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Average rate: 0.24 packets/sec
+2025-07-12 20:33:02,124 - attack_logger - WARNING - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] Warning: Low packet count (12) for expected duration (40s) and rate (2 pps). Expected ~80 packets.
+2025-07-12 20:33:02,124 - attack_logger - INFO - [ad_syn] [Run ID: cd0132d1-50ec-4939-9c12-ea942a7ed3b3] --------------------
+2025-07-12 20:33:02,163 - attack_logger - INFO - Attack: Adversarial Application Layer (40s) | h2 -> h6
+2025-07-12 20:33:06,177 - attack_logger - INFO - [ad_udp] Starting advanced adversarial attack against 10.0.0.6 for 40 seconds.
+2025-07-12 20:33:06,177 - attack_logger - INFO - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Attack Phase: Distributed Application Layer - Target: 10.0.0.6:80, Duration: 40s
+2025-07-12 20:33:06,180 - attack_logger - INFO - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] HTTP service 10.0.0.6:80 is active (status: 200, time: 0.003s)
+2025-07-12 20:33:06,180 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Starting burst of 1 HTTP requests
+2025-07-12 20:33:20,133 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] App Layer: HEAD request to 10.0.0.6:80/search?q=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa from 10.237.102.27 - Status: 404, Time: 2.43ms
+2025-07-12 20:33:20,133 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Burst completed in 13.953s
+2025-07-12 20:33:20,133 - attack_logger - INFO - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Emission rate: 0.07 requests/sec, Total sent = 1, Successful = 1, Failed = 0
+2025-07-12 20:33:20,248 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Burst sleep: planned=0.113s, actual=0.115s
+2025-07-12 20:33:20,248 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Starting burst of 1 HTTP requests
+2025-07-12 20:33:33,498 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] App Layer: GET request to 10.0.0.6:80/images/highres_8351.jpg from 10.246.103.200 - Status: 404, Time: 2.59ms
+2025-07-12 20:33:33,498 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Burst completed in 13.249s
+2025-07-12 20:33:33,498 - attack_logger - INFO - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Emission rate: 0.07 requests/sec, Total sent = 2, Successful = 2, Failed = 0
+2025-07-12 20:33:33,592 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Burst sleep: planned=0.092s, actual=0.094s
+2025-07-12 20:33:33,592 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Starting burst of 1 HTTP requests
+2025-07-12 20:33:33,629 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] App Layer: GET request to 10.0.0.6:80/download?file=large_report.pdf from 192.168.88.34 - Status: 404, Time: 2.63ms
+2025-07-12 20:33:33,630 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Burst completed in 0.038s
+2025-07-12 20:33:33,736 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Burst sleep: planned=0.104s, actual=0.106s
+2025-07-12 20:33:33,736 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Starting burst of 1 HTTP requests
+2025-07-12 20:33:46,447 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] App Layer: HEAD request to 10.0.0.6:80/download?file=large_report.pdf from 10.242.228.87 - Status: 404, Time: 2.50ms
+2025-07-12 20:33:46,447 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Burst completed in 12.711s
+2025-07-12 20:33:46,447 - attack_logger - INFO - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Emission rate: 0.10 requests/sec, Total sent = 4, Successful = 4, Failed = 0
+2025-07-12 20:33:46,542 - attack_logger - DEBUG - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Burst sleep: planned=0.094s, actual=0.095s
+2025-07-12 20:33:46,542 - attack_logger - INFO - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Attack finished. Total requests sent = 4, Successful = 4, Failed = 0, Average rate = 0.10 requests/sec.
+2025-07-12 20:33:46,543 - attack_logger - INFO - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] --- Attack Summary ---
+2025-07-12 20:33:46,543 - attack_logger - INFO - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Total requests sent: 4
+2025-07-12 20:33:46,543 - attack_logger - INFO - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Average rate: 0.10 requests/sec
+2025-07-12 20:33:46,543 - attack_logger - WARNING - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] Warning: Low request count (4) for expected duration (40s) and rate (6 rps). Expected ~240 requests.
+2025-07-12 20:33:46,543 - attack_logger - INFO - [ad_udp] [Run ID: 765040f0-cbf1-4d50-af4b-d646cc7b6b07] --------------------
+2025-07-12 20:33:46,617 - attack_logger - INFO - Attack: Adversarial Slow Read (40s) | h2 -> h6
+2025-07-12 20:33:53,653 - attack_logger - INFO - [slow_read] Starting advanced adversarial attack against 10.0.0.6 for 40 seconds.
+2025-07-12 20:33:53,653 - attack_logger - INFO - [slow_read] [Run ID: 3e0db479-8859-4c82-a2a8-492e2b7a0f91] Attack Phase: Adversarial Slow Read - Attacker: h2, Target: 10.0.0.6, Duration: 40s
+2025-07-12 20:33:53,653 - attack_logger - INFO - [slow_read] [Run ID: 3e0db479-8859-4c82-a2a8-492e2b7a0f91] Executing slowhttptest command: slowhttptest -c 100 -H -i 10 -r 20 -l 40 -u http://10.0.0.6:80/ -t SR
+2025-07-12 20:34:33,706 - attack_logger - INFO - [slow_read] [Run ID: 3e0db479-8859-4c82-a2a8-492e2b7a0f91] Sent SIGINT to slowhttptest process 129964
+2025-07-12 20:34:34,714 - attack_logger - INFO - [slow_read] [Run ID: 3e0db479-8859-4c82-a2a8-492e2b7a0f91] slowhttptest (Slow Read) from h2 to 10.0.0.6 finished.
+2025-07-12 20:34:34,714 - attack_logger - INFO - [slow_read] [Run ID: 3e0db479-8859-4c82-a2a8-492e2b7a0f91] --- slowhttptest Summary ---
+2025-07-12 20:34:34,714 - attack_logger - INFO - [slow_read] [Run ID: 3e0db479-8859-4c82-a2a8-492e2b7a0f91] Total Connections Attempted: 0
+2025-07-12 20:34:34,715 - attack_logger - INFO - [slow_read] [Run ID: 3e0db479-8859-4c82-a2a8-492e2b7a0f91] Successful Connections: 0
+2025-07-12 20:34:34,715 - attack_logger - INFO - [slow_read] [Run ID: 3e0db479-8859-4c82-a2a8-492e2b7a0f91] slowhttptest stdout: Sat Jul 12 20:33:53 2025:[H[2JSat Jul 12 20:33:53 2025:
+	[1;36mslowhttptest version 1.6
+ - https://code.google.com/p/slowhttptest/ -
+[0;34mtest type:[1;34m                        SLOW HEADERS
+[0;34mnumber of connections:[1;34m            100
+[0;34mURL:[1;34m                              http://10.0.0.6:80/
+[0;34mverb:[1;34m                             SR
+[0;34mContent-Length header value:[1;34m      4096
+[0;34mfollow up data max size:[1;34m          68
+[0;34minterval between follow up data:[1;34m  10 seconds
+[0;34mconnections per seconds:[1;34m          20
+[0;34mprobe connection timeout:[1;34m         5 seconds
+[0;34mtest duration:[1;34m                    40 seconds
+[0;34musing proxy:[1;34m                      no proxy 
+
+[0mSat Jul 12 20:33:53 2025:[1;32m
+slow HTTP test status on [0;32m0[1;32mth second:
+
+[1;32minitializing:[1;32m        0
+[1;32mpending:     [1;32m        1
+[1;32mconnected:   [1;32m        0
+[1;32merror:       [1;32m        0
+[1;32mclosed:      [1;32m        0
+[1;32mservice available:[1;32m   [1;32mYES[0m
+[0mSat Jul 12 20:33:58 2025:[H[2JSat Jul 12 20:33:58 2025:
+	[1;36mslowhttptest version 1.6
+ - https://code.google.com/p/slowhttptest/ -
+[0;34mtest type:[1;34m                        SLOW HEADERS
+[0;34mnumber of connections:[1;34m            100
+[0;34mURL:[1;34m                              http://10.0.0.6:80/
+[0;34mverb:[1;34m                             SR
+[0;34mContent-Length header value:[1;34m      4096
+[0;34mfollow up data max size:[1;34m          68
+[0;34minterval between follow up data:[1;34m  10 seconds
+[0;34mconnections per seconds:[1;34m          20
+[0;34mprobe connection timeout:[1;34m         5 seconds
+[0;34mtest duration:[1;34m                    40 seconds
+[0;34musing proxy:[1;34m                      no proxy 
+
+[0mSat Jul 12 20:33:58 2025:[1;32m
+slow HTTP test status on [0;32m5[1;32mth second:
+
+[1;32minitializing:[1;32m        0
+[1;32mpending:     [1;32m        90
+[1;32mconnected:   [1;32m        7
+[1;32merror:       [1;32m        0
+[1;32mclosed:      [1;32m        0
+[1;32mservice available:[1;32m   [1;32mYES[0m
+[0mSat Jul 12 20:34:03 2025:[H[2JSat Jul 12 20:34:03 2025:
+	[1;36mslowhttptest version 1.6
+ - https://code.google.com/p/slowhttptest/ -
+[0;34mtest type:[1;34m                        SLOW HEADERS
+[0;34mnumber of connections:[1;34m            100
+[0;34mURL:[1;34m                              http://10.0.0.6:80/
+[0;34mverb:[1;34m                             SR
+[0;34mContent-Length header value:[1;34m      4096
+[0;34mfollow up data max size:[1;34m          68
+[0;34minterval between follow up data:[1;34m  10 seconds
+[0;34mconnections per seconds:[1;34m          20
+[0;34mprobe connection timeout:[1;34m         5 seconds
+[0;34mtest duration:[1;34m                    40 seconds
+[0;34musing proxy:[1;34m                      no proxy 
+
+[0mSat Jul 12 20:34:03 2025:[1;32m
+slow HTTP test status on [0;32m10[1;32mth second:
+
+[1;32minitializing:[1;32m        0
+[1;32mpending:     [1;32m        93
+[1;32mconnected:   [1;32m        7
+[1;32merror:       [1;32m        0
+[1;32mclosed:      [1;32m        0
+[1;32mservice available:[1;32m   [1;31mNO[0m
+[0mSat Jul 12 20:34:08 2025:[H[2JSat Jul 12 20:34:08 2025:
+	[1;36mslowhttptest version 1.6
+ - https://code.google.com/p/slowhttptest/ -
+[0;34mtest type:[1;34m                        SLOW HEADERS
+[0;34mnumber of connections:[1;34m            100
+[0;34mURL:[1;34m                              http://10.0.0.6:80/
+[0;34mverb:[1;34m                             SR
+[0;34mContent-Length header value:[1;34m      4096
+[0;34mfollow up data max size:[1;34m          68
+[0;34minterval between follow up data:[1;34m  10 seconds
+[0;34mconnections per seconds:[1;34m          20
+[0;34mprobe connection timeout:[1;34m         5 seconds
+[0;34mtest duration:[1;34m                    40 seconds
+[0;34musing proxy:[1;34m                      no proxy 
+
+[0mSat Jul 12 20:34:08 2025:[1;32m
+slow HTTP test status on [0;32m15[1;32mth second:
+
+[1;32minitializing:[1;32m        0
+[1;32mpending:     [1;32m        93
+[1;32mconnected:   [1;32m        7
+[1;32merror:       [1;32m        0
+[1;32mclosed:      [1;32m        0
+[1;32mservice available:[1;32m   [1;31mNO[0m
+[0mSat Jul 12 20:34:14 2025:[H[2JSat Jul 12 20:34:14 2025:
+	[1;36mslowhttptest version 1.6
+ - https://code.google.com/p/slowhttptest/ -
+[0;34mtest type:[1;34m                        SLOW HEADERS
+[0;34mnumber of connections:[1;34m            100
+[0;34mURL:[1;34m                              http://10.0.0.6:80/
+[0;34mverb:[1;34m                             SR
+[0;34mContent-Length header value:[1;34m      4096
+[0;34mfollow up data max size:[1;34m          68
+[0;34minterval between follow up data:[1;34m  10 seconds
+[0;34mconnections per seconds:[1;34m          20
+[0;34mprobe connection timeout:[1;34m         5 seconds
+[0;34mtest duration:[1;34m                    40 seconds
+[0;34musing proxy:[1;34m                      no proxy 
+
+[0mSat Jul 12 20:34:14 2025:[1;32m
+slow HTTP test status on [0;32m20[1;32mth second:
+
+[1;32minitializing:[1;32m        0
+[1;32mpending:     [1;32m        93
+[1;32mconnected:   [1;32m        7
+[1;32merror:       [1;32m        0
+[1;32mclosed:      [1;32m        0
+[1;32mservice available:[1;32m   [1;31mNO[0m
+[0mSat Jul 12 20:34:19 2025:[H[2JSat Jul 12 20:34:19 2025:
+	[1;36mslowhttptest version 1.6
+ - https://code.google.com/p/slowhttptest/ -
+[0;34mtest type:[1;34m                        SLOW HEADERS
+[0;34mnumber of connections:[1;34m            100
+[0;34mURL:[1;34m                              http://10.0.0.6:80/
+[0;34mverb:[1;34m                             SR
+[0;34mContent-Length header value:[1;34m      4096
+[0;34mfollow up data max size:[1;34m          68
+[0;34minterval between follow up data:[1;34m  10 seconds
+[0;34mconnections per seconds:[1;34m          20
+[0;34mprobe connection timeout:[1;34m         5 seconds
+[0;34mtest duration:[1;34m                    40 seconds
+[0;34musing proxy:[1;34m                      no proxy 
+
+[0mSat Jul 12 20:34:19 2025:[1;32m
+slow HTTP test status on [0;32m25[1;32mth second:
+
+[1;32minitializing:[1;32m        0
+[1;32mpending:     [1;32m        93
+[1;32mconnected:   [1;32m        7
+[1;32merror:       [1;32m        0
+[1;32mclosed:      [1;32m        0
+[1;32mservice available:[1;32m   [1;31mNO[0m
+[0mSat Jul 12 20:34:24 2025:[H[2JSat Jul 12 20:34:24 2025:
+	[1;36mslowhttptest version 1.6
+ - https://code.google.com/p/slowhttptest/ -
+[0;34mtest type:[1;34m                        SLOW HEADERS
+[0;34mnumber of connections:[1;34m            100
+[0;34mURL:[1;34m                              http://10.0.0.6:80/
+[0;34mverb:[1;34m                             SR
+[0;34mContent-Length header value:[1;34m      4096
+[0;34mfollow up data max size:[1;34m          68
+[0;34minterval between follow up data:[1;34m  10 seconds
+[0;34mconnections per seconds:[1;34m          20
+[0;34mprobe connection timeout:[1;34m         5 seconds
+[0;34mtest duration:[1;34m                    40 seconds
+[0;34musing proxy:[1;34m                      no proxy 
+
+[0mSat Jul 12 20:34:24 2025:[1;32m
+slow HTTP test status on [0;32m30[1;32mth second:
+
+[1;32minitializing:[1;32m        0
+[1;32mpending:     [1;32m        93
+[1;32mconnected:   [1;32m        7
+[1;32merror:       [1;32m        0
+[1;32mclosed:      [1;32m        0
+[1;32mservice available:[1;32m   [1;31mNO[0m
+[0mSat Jul 12 20:34:29 2025:[H[2JSat Jul 12 20:34:29 2025:
+	[1;36mslowhttptest version 1.6
+ - https://code.google.com/p/slowhttptest/ -
+[0;34mtest type:[1;34m                        SLOW HEADERS
+[0;34mnumber of connections:[1;34m            100
+[0;34mURL:[1;34m                              http://10.0.0.6:80/
+[0;34mverb:[1;34m                             SR
+[0;34mContent-Length header value:[1;34m      4096
+[0;34mfollow up data max size:[1;34m          68
+[0;34minterval between follow up data:[1;34m  10 seconds
+[0;34mconnections per seconds:[1;34m          20
+[0;34mprobe connection timeout:[1;34m         5 seconds
+[0;34mtest duration:[1;34m                    40 seconds
+[0;34musing proxy:[1;34m                      no proxy 
+
+[0mSat Jul 12 20:34:29 2025:[1;32m
+slow HTTP test status on [0;32m35[1;32mth second:
+
+[1;32minitializing:[1;32m        0
+[1;32mpending:     [1;32m        93
+[1;32mconnected:   [1;32m        7
+[1;32merror:       [1;32m        0
+[1;32mclosed:      [1;32m        0
+[1;32mservice available:[1;32m   [1;31mNO[0m
+[0mSat Jul 12 20:34:33 2025:[0;36m
+Test ended on 39th second
+Exit status:[1;36m Cancelled by user
+[0m
+2025-07-12 20:34:34,715 - attack_logger - INFO - [slow_read] [Run ID: 3e0db479-8859-4c82-a2a8-492e2b7a0f91] --------------------------
+2025-07-12 20:34:34,902 - attack_logger - INFO - Attack: Adversarial Slow Read completed.

@@ -38,19 +38,20 @@ def run_attack(attacker_host, victim_ip, duration):
     except Exception as e:
         attack_logger.warning(f"[icmp_flood] [Run ID: {run_id}] Unable to ping target {victim_ip}: {e}")
     
-    # Test multiple ICMP packet types for service analysis
-    icmp_types = [8, 13, 15]  # Echo Request, Timestamp Request, Information Request
-    for icmp_type in icmp_types:
-        try:
-            test_start = time.time()
-            test_reply = sr1(IP(dst=victim_ip)/ICMP(type=icmp_type), timeout=1, verbose=0)
-            test_time = time.time() - test_start
-            if test_reply:
-                attack_logger.debug(f"[icmp_flood] [Run ID: {run_id}] ICMP type {icmp_type} response from {victim_ip} (time: {test_time:.3f}s)")
-            else:
-                attack_logger.debug(f"[icmp_flood] [Run ID: {run_id}] ICMP type {icmp_type} no response from {victim_ip} (time: {test_time:.3f}s)")
-        except Exception as e:
-            attack_logger.debug(f"[icmp_flood] [Run ID: {run_id}] Error testing ICMP type {icmp_type}: {e}")
+    # Test multiple ICMP packet types for service analysis - COMMENTED OUT to avoid delays in dataset generation
+    # Uncomment if you need detailed ICMP type testing for debugging
+    # icmp_types = [8, 13, 15]  # Echo Request, Timestamp Request, Information Request
+    # for icmp_type in icmp_types:
+    #     try:
+    #         test_start = time.time()
+    #         test_reply = sr1(IP(dst=victim_ip)/ICMP(type=icmp_type), timeout=1, verbose=0)
+    #         test_time = time.time() - test_start
+    #         if test_reply:
+    #             attack_logger.debug(f"[icmp_flood] [Run ID: {run_id}] ICMP type {icmp_type} response from {victim_ip} (time: {test_time:.3f}s)")
+    #         else:
+    #             attack_logger.debug(f"[icmp_flood] [Run ID: {run_id}] ICMP type {icmp_type} no response from {victim_ip} (time: {test_time:.3f}s)")
+    #     except Exception as e:
+    #         attack_logger.debug(f"[icmp_flood] [Run ID: {run_id}] Error testing ICMP type {icmp_type}: {e}")
     
     # Start the attack with enhanced monitoring
     attack_logger.debug(f"[icmp_flood] [Run ID: {run_id}] Starting ICMP packet generation with 0.01s interval")

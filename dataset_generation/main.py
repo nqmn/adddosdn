@@ -294,9 +294,9 @@ def run_mininet_pingall_test(net):
     else:
         logger.error(f"Mininet pingall test failed. Packet loss: {result}%")
 
-def start_capture(net, outfile):
+def start_capture(net, outfile, host=None):
     """Start improved tcpdump on a host with better timestamp handling."""
-    return improve_capture_reliability(net, outfile)
+    return improve_capture_reliability(net, outfile, host=host)
 
 
 
@@ -324,6 +324,25 @@ def parse_flow_match_actions(match_str, actions_str):
         out_port = int(actions_match.group(1))
 
     return in_port, eth_src, eth_dst, out_port
+
+def update_flow_timeline(flow_label_timeline, label, start_time=None):
+    """
+    Update the flow label timeline with current phase information.
+    This creates a real-time timeline that matches actual execution.
+    """
+    if start_time is None:
+        start_time = time.time()
+    
+    # End previous phase if exists
+    if flow_label_timeline and 'end_time' not in flow_label_timeline[-1]:
+        flow_label_timeline[-1]['end_time'] = start_time
+    
+    # Start new phase
+    flow_label_timeline.append({
+        'start_time': start_time,
+        'label': label
+    })
+    logger.info(f"Timeline updated: {label} phase started at {start_time}")
 
 def collect_flow_stats(duration, output_file, flow_label_timeline, controller_ip='127.0.0.1', controller_port=8080):
     """
@@ -389,6 +408,11 @@ def collect_flow_stats(duration, output_file, flow_label_timeline, controller_ip
             logger.error(f"Error collecting flow stats: {e}")
             time.sleep(5) # Wait longer on error before retrying
     
+    # Close the final timeline entry
+    if flow_label_timeline and 'end_time' not in flow_label_timeline[-1]:
+        flow_label_timeline[-1]['end_time'] = time.time()
+        logger.info("Flow timeline collection completed.")
+    
     if flow_data:
         df = pd.DataFrame(flow_data)
         # Define the desired order of columns
@@ -429,7 +453,11 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
     flow_collector_thread = None # Thread for collecting flow stats
 
     try:
-        # Start flow collection in a separate thread
+        # --- Phase 1: Initialization ---
+        logger.info(f"Phase 1: Initialization ({scenario_durations['initialization']}s)...")
+        time.sleep(scenario_durations['initialization'])
+
+        # Start flow collection in a separate thread - SYNCHRONIZED with packet collection
         flow_collector_thread = threading.Thread(
             target=collect_flow_stats,
             args=(total_scenario_duration, OUTPUT_FLOW_CSV_FILE, flow_label_timeline)
@@ -438,12 +466,9 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         flow_collector_thread.start()
         logger.info("Flow statistics collection started in background.")
 
-        # --- Phase 1: Initialization ---
-        logger.info(f"Phase 1: Initialization ({scenario_durations['initialization']}s)...")
-        time.sleep(scenario_durations['initialization'])
-
         # --- Phase 2: Normal Traffic ---
         logger.info(f"Phase 2: Normal Traffic ({scenario_durations['normal_traffic']}s)...")
+        update_flow_timeline(flow_label_timeline, 'normal')  # Update timeline dynamically
         capture_procs['normal'] = start_capture(net, PCAP_FILE_NORMAL)
         time.sleep(2) # Give capture a moment to start
         run_benign_traffic(net, scenario_durations['normal_traffic'], OUTPUT_DIR, HOST_IPS)
@@ -454,6 +479,7 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         h1, h2, h4, h6 = net.get('h1', 'h2', 'h4', 'h6')
 
         attack_logger.info(f"Attack: SYN Flood ({scenario_durations['syn_flood']}s) | h1 -> h6")
+        update_flow_timeline(flow_label_timeline, 'syn_flood')  # Update timeline dynamically
         capture_procs['syn_flood'] = start_capture(net, PCAP_FILE_SYN_FLOOD)
         time.sleep(2)
         attack_proc_syn = run_syn_flood(h1, HOST_IPS['h6'], duration=scenario_durations['syn_flood'])
@@ -462,14 +488,16 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         attack_logger.info("Attack: SYN Flood completed.")
 
         attack_logger.info(f"Attack: UDP Flood ({scenario_durations['udp_flood']}s) | h2 -> h4")
+        update_flow_timeline(flow_label_timeline, 'udp_flood')  # Update timeline dynamically
         capture_procs['udp_flood'] = start_capture(net, PCAP_FILE_UDP_FLOOD)
-        time.sleep(2)
+        time.sleep(5)
         attack_proc_udp = run_udp_flood(h2, HOST_IPS['h4'], duration=scenario_durations['udp_flood'])
         attack_proc_udp.wait() # Wait for the process to terminate
         stop_capture(capture_procs['udp_flood'])
         attack_logger.info("Attack: UDP Flood completed.")
 
         attack_logger.info(f"Attack: ICMP Flood ({scenario_durations['icmp_flood']}s) | h2 -> h4")
+        update_flow_timeline(flow_label_timeline, 'icmp_flood')  # Update timeline dynamically
         capture_procs['icmp_flood'] = start_capture(net, PCAP_FILE_ICMP_FLOOD)
         time.sleep(2)
         attack_proc_icmp = run_icmp_flood(h2, HOST_IPS['h4'], duration=scenario_durations['icmp_flood'])
@@ -481,18 +509,21 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         logger.info("Phase 3.2: Adversarial DDoS Attacks...")
 
         attack_logger.info(f"Attack: Adversarial TCP State Exhaustion ({scenario_durations['ad_syn']}s) | h2 -> h6")
+        update_flow_timeline(flow_label_timeline, 'ad_syn')  # Update timeline dynamically
         capture_procs['ad_syn'] = start_capture(net, PCAP_FILE_AD_SYN)
         time.sleep(2)
         run_adv_ddos(h2, HOST_IPS['h6'], duration=scenario_durations['ad_syn'], attack_variant="ad_syn")
         stop_capture(capture_procs['ad_syn'])
 
         attack_logger.info(f"Attack: Adversarial Application Layer ({scenario_durations['ad_udp']}s) | h2 -> h6")
+        update_flow_timeline(flow_label_timeline, 'ad_udp')  # Update timeline dynamically
         capture_procs['ad_udp'] = start_capture(net, PCAP_FILE_AD_UDP)
         time.sleep(2)
         run_adv_ddos(h2, HOST_IPS['h6'], duration=scenario_durations['ad_udp'], attack_variant="ad_udp")
         stop_capture(capture_procs['ad_udp'])
 
         attack_logger.info(f"Attack: Adversarial Slow Read ({scenario_durations['ad_slow']}s) | h2 -> h6")
+        update_flow_timeline(flow_label_timeline, 'ad_slow')  # Update timeline dynamically
         # Start capture on h6 specifically for slow read attack
         h6 = net.get('h6')
         capture_procs['h6_slow_read'] = start_capture(net, PCAP_FILE_H6_SLOW_READ, host=h6)
@@ -506,7 +537,7 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         http_server_proc = h6.popen(http_server_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         time.sleep(1) # Give server a moment to start
 
-        attack_proc_ad_slow = run_adv_ddos(h2, HOST_IPS['h6'], duration=scenario_durations['ad_slow'], attack_variant="ad_slow", output_dir=OUTPUT_DIR)
+        attack_proc_ad_slow = run_adv_ddos(h2, HOST_IPS['h6'], duration=scenario_durations['ad_slow'], attack_variant="slow_read", output_dir=OUTPUT_DIR)
         stop_capture(capture_procs['ad_slow'])
         stop_capture(capture_procs['h6_slow_read']) # Stop h6 specific capture
         attack_logger.info("Attack: Adversarial Slow Read completed.")
@@ -534,6 +565,7 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
 
         # --- Phase 4: Cooldown ---
         logger.info(f"Phase 4: Cooldown ({scenario_durations['cooldown']}s)...")
+        update_flow_timeline(flow_label_timeline, 'normal')  # Update timeline dynamically
         time.sleep(scenario_durations['cooldown'])
 
     except Exception as e:
@@ -695,31 +727,14 @@ def main():
         # Get scenario start time after Mininet setup
         scenario_start_time = time.time()
 
-        # Define the label timeline for flow data based on scenario phases
-        # Total duration for flow collection will be the sum of all phases
-        total_scenario_duration = initialization_duration + normal_traffic_duration + \
-                                  syn_flood_duration + udp_flood_duration + icmp_flood_duration + \
-                                  ad_syn_duration + ad_udp_duration + ad_slow_duration + cooldown_duration
-
-        current_time_offset = 0
+        # Initialize dynamic timeline tracking - will be updated in real-time
         flow_label_timeline = []
-        phases = [
-            (initialization_duration, 'normal'),
-            (normal_traffic_duration, 'normal'),
-            (syn_flood_duration, 'syn_flood'),
-            (udp_flood_duration, 'udp_flood'),
-            (icmp_flood_duration, 'icmp_flood'),
-            (ad_syn_duration, 'ad_syn'),
-            (ad_udp_duration, 'ad_udp'),
-            (ad_slow_duration, 'ad_slow'),
-            (cooldown_duration, 'normal')
-        ]
-
-        for duration, label in phases:
-            start_time = scenario_start_time + current_time_offset
-            current_time_offset += duration
-            end_time = scenario_start_time + current_time_offset
-            flow_label_timeline.append({'start_time': start_time, 'end_time': end_time, 'label': label})
+        
+        # Calculate generous duration for flow collection accounting for execution delays
+        config_duration = normal_traffic_duration + syn_flood_duration + udp_flood_duration + icmp_flood_duration + \
+                         ad_syn_duration + ad_udp_duration + ad_slow_duration + cooldown_duration
+        # Add significant buffer for actual execution delays (startups, network delays, etc.)
+        total_scenario_duration = config_duration + 60  # Config duration + 60s buffer
 
         # 3. Run Scenario
         run_traffic_scenario(mininet_network, flow_label_timeline, scenario_durations, total_scenario_duration)

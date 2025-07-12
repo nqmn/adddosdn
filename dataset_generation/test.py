@@ -323,6 +323,25 @@ def parse_flow_match_actions(match_str, actions_str):
 
     return in_port, eth_src, eth_dst, out_port
 
+def update_flow_timeline(flow_label_timeline, label, start_time=None):
+    """
+    Update the flow label timeline with current phase information.
+    This creates a real-time timeline that matches actual execution.
+    """
+    if start_time is None:
+        start_time = time.time()
+    
+    # End previous phase if exists
+    if flow_label_timeline and 'end_time' not in flow_label_timeline[-1]:
+        flow_label_timeline[-1]['end_time'] = start_time
+    
+    # Start new phase
+    flow_label_timeline.append({
+        'start_time': start_time,
+        'label': label
+    })
+    logger.info(f"Timeline updated: {label} phase started at {start_time}")
+
 def collect_flow_stats(duration, output_file, flow_label_timeline, controller_ip='127.0.0.1', controller_port=8080):
     """
     Collects flow statistics from the Ryu controller's REST API periodically
@@ -387,6 +406,11 @@ def collect_flow_stats(duration, output_file, flow_label_timeline, controller_ip
             logger.error(f"Error collecting flow stats: {e}")
             time.sleep(5) # Wait longer on error before retrying
     
+    # Close the final timeline entry
+    if flow_label_timeline and 'end_time' not in flow_label_timeline[-1]:
+        flow_label_timeline[-1]['end_time'] = time.time()
+        logger.info("Flow timeline collection completed.")
+    
     if flow_data:
         df = pd.DataFrame(flow_data)
         # Define the desired order of columns
@@ -449,21 +473,37 @@ def run_traffic_scenario(net, flow_label_timeline):
     flow_collector_thread = None # Thread for collecting flow stats
 
     try:
-        # Start flow collection in a separate thread
+        # --- Phase 1: Initialization (5s) ---
+        logger.info("Phase 1: Initialization (5s)...")
+        time.sleep(5)
+
+        # Calculate total scenario duration dynamically based on actual phase durations
+        phase_durations = {
+            'normal_traffic': 5,
+            'syn_flood': 5, 
+            'udp_flood': 5,
+            'icmp_flood': 5,
+            'ad_syn': 5,
+            'ad_udp': 5, 
+            'ad_slow': 5,
+            'cooldown': 5
+        }
+        config_duration = sum(phase_durations.values())
+        total_duration = config_duration + 75  # Config duration + 75s buffer for execution delays
+        logger.info(f"Calculated flow collection duration: {config_duration}s (config) + 75s (buffer) = {total_duration}s")
+        
+        # Start flow collection in a separate thread - SYNCHRONIZED with packet collection
         flow_collector_thread = threading.Thread(
             target=collect_flow_stats,
-            args=(50, OUTPUT_FLOW_CSV_FILE, flow_label_timeline)
+            args=(total_duration, OUTPUT_FLOW_CSV_FILE, flow_label_timeline)
         )
         flow_collector_thread.daemon = True # Allow main thread to exit even if this thread is running
         flow_collector_thread.start()
         logger.info("Flow statistics collection started in background.")
 
-        # --- Phase 1: Initialization (5s) ---
-        logger.info("Phase 1: Initialization (5s)...")
-        time.sleep(5)
-
         # --- Phase 2: Normal Traffic (5s) ---
         logger.info("Phase 2: Normal Traffic (5s)...")
+        update_flow_timeline(flow_label_timeline, 'normal')  # Update timeline dynamically
         capture_procs['normal'] = start_capture(net, PCAP_FILE_NORMAL)
         time.sleep(2) # Give capture a moment to start
         run_benign_traffic(net, 5, OUTPUT_DIR, HOST_IPS)
@@ -476,6 +516,7 @@ def run_traffic_scenario(net, flow_label_timeline):
 
         ConsoleOutput.print_status("ATTACK", "Starting SYN Flood", "h1 -> h6 (5s)")
         logger.info("Attack: SYN Flood (5s) | h1 -> h6")
+        update_flow_timeline(flow_label_timeline, 'syn_flood')  # Update timeline dynamically
         capture_procs['syn_flood'] = start_capture(net, PCAP_FILE_SYN_FLOOD)
         time.sleep(2)
         attack_proc_syn = run_syn_flood(h1, HOST_IPS['h6'], duration=5)
@@ -484,14 +525,16 @@ def run_traffic_scenario(net, flow_label_timeline):
         attack_logger.info("Attack: SYN Flood completed.")
 
         logger.info("Attack: UDP Flood (5s) | h2 -> h4")
+        update_flow_timeline(flow_label_timeline, 'udp_flood')  # Update timeline dynamically
         capture_procs['udp_flood'] = start_capture(net, PCAP_FILE_UDP_FLOOD)
-        time.sleep(2)
+        time.sleep(5)
         attack_proc_udp = run_udp_flood(h2, HOST_IPS['h4'], duration=5)
         attack_proc_udp.wait() # Wait for the process to terminate
         stop_capture(capture_procs['udp_flood'])
         attack_logger.info("Attack: UDP Flood completed.")
 
         logger.info("Attack: ICMP Flood (5s) | h2 -> h4")
+        update_flow_timeline(flow_label_timeline, 'icmp_flood')  # Update timeline dynamically
         capture_procs['icmp_flood'] = start_capture(net, PCAP_FILE_ICMP_FLOOD)
         time.sleep(2)
         attack_proc_icmp = run_icmp_flood(h2, HOST_IPS['h4'], duration=5)
@@ -503,6 +546,7 @@ def run_traffic_scenario(net, flow_label_timeline):
         logger.info("Phase 3.2: Adversarial DDoS Attacks (20s total)...")
 
         logger.info("Attack: Adversarial TCP State Exhaustion (5s) | h2 -> h6")
+        update_flow_timeline(flow_label_timeline, 'ad_syn')  # Update timeline dynamically
         capture_procs['ad_syn'] = start_capture(net, PCAP_FILE_AD_SYN)
         time.sleep(2)
         run_adv_ddos(h2, HOST_IPS['h6'], duration=5, attack_variant="ad_syn")
@@ -511,6 +555,7 @@ def run_traffic_scenario(net, flow_label_timeline):
         validate_attack_success(PCAP_FILE_AD_SYN, "Adversarial TCP SYN", min_packets=5)
 
         logger.info("Attack: Adversarial Application Layer (5s) | h2 -> h6")
+        update_flow_timeline(flow_label_timeline, 'ad_udp')  # Update timeline dynamically
         capture_procs['ad_udp'] = start_capture(net, PCAP_FILE_AD_UDP)
         time.sleep(2)
         run_adv_ddos(h2, HOST_IPS['h6'], duration=5, attack_variant="ad_udp")
@@ -518,6 +563,7 @@ def run_traffic_scenario(net, flow_label_timeline):
         validate_attack_success(PCAP_FILE_AD_UDP, "Adversarial HTTP", min_packets=5)
 
         logger.info("Attack: Adversarial Slow Read (5s) | h2 -> h6")
+        update_flow_timeline(flow_label_timeline, 'ad_slow')  # Update timeline dynamically
         capture_procs['ad_slow'] = start_capture(net, PCAP_FILE_AD_SLOW)
         time.sleep(2)
         
@@ -542,6 +588,7 @@ def run_traffic_scenario(net, flow_label_timeline):
 
         # --- Phase 4: Cooldown (5s) ---
         logger.info("Phase 4: Cooldown (5s)...")
+        update_flow_timeline(flow_label_timeline, 'normal')  # Update timeline dynamically
         time.sleep(5)
 
     except Exception as e:
@@ -681,23 +728,9 @@ def main():
         # Get scenario start time after Mininet setup
         scenario_start_time = time.time()
 
-        # Define the label timeline for flow data based on scenario phases
-        flow_label_timeline = [
-            # Phase 1: Initialization (5s)
-            {'start_time': scenario_start_time, 'end_time': scenario_start_time + 5, 'label': 'normal'},
-            # Phase 2: Normal Traffic (5s)
-            {'start_time': scenario_start_time + 5, 'end_time': scenario_start_time + 10, 'label': 'normal'},
-            # Phase 3.1: Traditional DDoS Attacks (15s total)
-            {'start_time': scenario_start_time + 10, 'end_time': scenario_start_time + 15, 'label': 'syn_flood'},
-            {'start_time': scenario_start_time + 15, 'end_time': scenario_start_time + 20, 'label': 'udp_flood'},
-            {'start_time': scenario_start_time + 20, 'end_time': scenario_start_time + 25, 'label': 'icmp_flood'},
-            # Phase 3.2: Adversarial DDoS Attacks (20s total)
-            {'start_time': scenario_start_time + 25, 'end_time': scenario_start_time + 30, 'label': 'ad_syn'},
-            {'start_time': scenario_start_time + 30, 'end_time': scenario_start_time + 35, 'label': 'ad_udp'},
-            {'start_time': scenario_start_time + 35, 'end_time': scenario_start_time + 40, 'label': 'ad_slow'},
-            # Phase 4: Cooldown (5s)
-            {'start_time': scenario_start_time + 40, 'end_time': scenario_start_time + 50, 'label': 'normal'},
-        ]
+        # Initialize dynamic timeline tracking - will be updated in real-time
+        flow_label_timeline = []
+        current_phase_label = 'normal'  # Start with normal during initialization
 
         # 3. Run Scenario
         run_traffic_scenario(mininet_network, flow_label_timeline)
