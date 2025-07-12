@@ -25,6 +25,9 @@ import pandas as pd # New: For data manipulation and CSV writing
 from datetime import datetime # New: For timestamping flow data
 import json # New: For reading config.json
 
+# Import standardized logging
+from src.utils.logger import get_main_logger, ConsoleOutput, initialize_logging, print_dataset_summary
+
 # Suppress Scapy warnings
 
 
@@ -384,7 +387,7 @@ def collect_flow_stats(duration, output_file, flow_label_timeline, controller_ip
             time.sleep(1) # Collect every second
         except requests.exceptions.RequestException as e:
             logger.error(f"Error collecting flow stats: {e}")
-            time.sleep(scenario_durations.get("flow_collection_retry_delay", 5)) # Wait longer on error before retrying
+            time.sleep(5) # Wait longer on error before retrying
     
     if flow_data:
         df = pd.DataFrame(flow_data)
@@ -399,7 +402,7 @@ def collect_flow_stats(duration, output_file, flow_label_timeline, controller_ip
         # Reindex the DataFrame to ensure the columns are in the desired order
         df = df.reindex(columns=ordered_columns)
         df.to_csv(output_file, index=False)
-                logger.info(f"Flow statistics saved to {output_file.relative_to(BASE_DIR)}")
+        logger.info(f"Flow statistics saved to {output_file.relative_to(BASE_DIR)}")
     else:
         logger.warning("No flow data collected.")
 
@@ -443,7 +446,7 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         logger.info(f"Phase 2: Normal Traffic ({scenario_durations['normal_traffic']}s)...")
         capture_procs['normal'] = start_capture(net, PCAP_FILE_NORMAL)
         time.sleep(2) # Give capture a moment to start
-        run_benign_traffic(net, normal_traffic_duration, OUTPUT_DIR, HOST_IPS)
+        run_benign_traffic(net, scenario_durations['normal_traffic'], OUTPUT_DIR, HOST_IPS)
         stop_capture(capture_procs['normal'])
 
         # --- Phase 3.1: Traditional DDoS Attacks ---
@@ -617,8 +620,15 @@ def main():
     parser = argparse.ArgumentParser(description="AdDDoSDN PCAP Generation Framework")
     args = parser.parse_args()
 
+    # Initialize standardized logging
+    initialize_logging(OUTPUT_DIR, console_level=logging.INFO)
+    logger = get_main_logger(OUTPUT_DIR)
+    
     # Ensure output directory exists
     OUTPUT_DIR.mkdir(exist_ok=True)
+    
+    # Print standardized header
+    ConsoleOutput.print_header("AdDDoSDN Dataset Generation Framework")
 
     # Clean up any previous Mininet instances
     logger.info("Cleaning up any previous Mininet instances...")
@@ -743,12 +753,6 @@ def main():
                 logger.error(f"PCAP integrity check failed for {pcap_file.name}: {integrity_results['error']}")
                 logger.warning(f"Continuing with PCAP processing despite integrity issues for {pcap_file.name}...")
             else:
-                else:
-                else:
-                else:
-                else:
-                else:
-                else:
                 logger.info(f"PCAP integrity check passed for {pcap_file.name}: {integrity_results['total_packets']} packets")
                 if integrity_results['corruption_rate'] > 0:
                     logger.warning(f"Timestamp corruption detected in {pcap_file.name}: {integrity_results['corruption_rate']:.2f}%")
@@ -785,16 +789,6 @@ def main():
                 all_labeled_dfs.append(df)
                 temp_csv_file.unlink() # Delete temporary CSV
             else:
-                else:
-                else:
-                else:
-                else:
-                else:
-                else:
-                else:
-                else:
-                else:
-                else:
                 logger.warning(f"No CSV generated for {pcap_file.relative_to(BASE_DIR)}.")
 
         if all_labeled_dfs:
@@ -837,6 +831,10 @@ def main():
                 logger.error(f"Error reading or processing flow_features.csv: {e}")
         else:
             logger.warning("No flow-level dataset was generated.")
+            
+        # Generate and display dataset summary
+        logger.info("Generating dataset summary...")
+        print_dataset_summary(OUTPUT_DIR, logger)
 
     except Exception as e:
         logger.error(f"An unexpected error occurred: {e}", exc_info=True)
