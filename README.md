@@ -28,8 +28,8 @@ sudo apt update
 sudo apt install -y python3-pip python3-venv git tshark mininet ryu-manager slowhttptest
 
 # Clone this project
-git clone https://github.com/nqmn/AdDDoSSDN-novel_adversarial_ddos_sdn_dataset.git
-cd AdDDoSSDN-novel_adversarial_ddos_sdn_dataset
+git clone https://github.com/nqmn/AdDDoSSDN_dataset.git
+cd AdDDoSSDN_dataset
 
 # Create Python environment
 python3 -m venv venv
@@ -137,7 +137,6 @@ Edit `dataset_generation/config.json` to customize attack durations:
 │   ├── 📂 main_output/             ← main.py results
 │   └── 📂 files/                   ← Configuration files
 ├── 📂 examples/                    ← Usage examples and tutorials
-├── 📄 CLAUDE.md                    ← Technical documentation
 └── 📄 README.md                    ← This file
 ```
 
@@ -174,33 +173,7 @@ Edit `dataset_generation/config.json` to customize attack durations:
 | **Application Layer Mimicry** | HTTP-based attack | Legitimate-looking requests | User agent rotation, realistic patterns |
 | **Slow Read Attack** | Low-and-slow HTTP attack | Slow data consumption | Connection holding, slowhttptest |
 
-## 🎓 Educational Value
-
-### For Students:
-- Learn about network security in practice
-- Understand how DDoS attacks work
-- See how SDN technology enables monitoring
-- Practice with real security datasets
-
-### For Researchers:
-- Generate custom datasets for specific research needs
-- Test new detection algorithms
-- Study attack evolution and evasion techniques  
-- Benchmark security systems
-
-### For Security Professionals:
-- Test defense systems with realistic attacks
-- Understand attack patterns and signatures
-- Validate detection rules and systems
-- Train staff on attack recognition
-
 ## ⚠️ Important Notes
-
-### Performance Requirements
-- **Minimum**: 4GB RAM, 2 CPU cores, 10GB disk space
-- **Recommended**: 8GB RAM, 4 CPU cores, 50GB disk space  
-- **Test run**: ~5 minutes, ~100MB output
-- **Full run**: ~80 minutes, ~1-5GB output (depending on config)
 
 ### Network Simulation
 - Uses Mininet to create virtual networks
@@ -214,70 +187,6 @@ Edit `dataset_generation/config.json` to customize attack durations:
 - Automatically cleans up after completion
 - Safe shutdown with Ctrl+C
 
-## 🔧 Troubleshooting
-
-### Common Issues:
-
-**"Permission denied" or "Network error":**
-```bash
-# Make sure you're using sudo
-sudo python3 dataset_generation/test.py
-
-# Clean up any leftover processes
-sudo mn -c
-```
-
-**"Command not found" errors:**
-```bash
-# Install missing dependencies
-sudo apt install -y mininet ryu-manager tshark slowhttptest
-
-# Verify installations
-mn --version
-ryu-manager --version
-```
-
-**"No datasets generated":**
-```bash
-# Check if output directory exists and has permissions
-ls -la dataset_generation/test_output/
-ls -la dataset_generation/main_output/
-
-# Check logs for errors
-cat dataset_generation/test_output/test.log
-cat dataset_generation/test_output/attack.log
-```
-
-**Python import errors:**
-```bash
-# Ensure virtual environment is activated
-source venv/bin/activate
-
-# Reinstall dependencies
-pip install -r dataset_generation/requirements.txt
-```
-
-## 📞 Getting Help
-
-1. **Check the logs** in your output directory (test_output or main_output)
-2. **Review examples** in the `examples/` directory
-3. **Read technical docs** in `CLAUDE.md`
-4. **Report issues** on GitHub with logs and error messages
-
-## 🔒 Security and Ethics
-
-### ✅ Legitimate Uses:
-- Academic research and education
-- Security system testing and development
-- DDoS detection algorithm training
-- Network defense mechanism validation
-
-### ❌ Prohibited Uses:
-- Attacking real networks or systems
-- Malicious activities of any kind
-- Unauthorized network testing
-- Any illegal activities
-
 **This framework is for DEFENSIVE security research only!**
 
 ## 📖 Citation
@@ -285,17 +194,13 @@ pip install -r dataset_generation/requirements.txt
 If you use this framework in research, please cite:
 ```bibtex
 @misc{addosdn2024,
-  title={AdDDoSDN: Advanced Adversarial DDoS Attack Dataset for SDN Environments},
-  author={[Author Name]},
-  year={2024},
-  url={https://github.com/nqmn/AdDDoSSDN-novel_adversarial_ddos_sdn_dataset}
+  title={AdDDoSDN: A Novel Adversarial DDoS Attack Dataset for SDN Environments},
+  author={[Mohd Adil, Mokti]},
+  year={2025},
+  url={https://github.com/nqmn/AdDDoSSDN_dataset}
 }
 ```
 
 ## 📄 License
 
 MIT License - See [LICENSE](LICENSE) file for details.
-
----
-
-**🎯 Ready to start? Run `sudo python3 dataset_generation/test.py` and explore your first security dataset!**
