@@ -280,7 +280,7 @@ graph LR
 
     subgraph Data Collectors
         Ryu[Ryu Controller]
-        Tshark[Packet Capture [tshark]]
+        Tshark[Packet Capture tshark]
     end
 
     s1 -- OpenFlow Stats --> Ryu
