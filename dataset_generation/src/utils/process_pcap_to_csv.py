@@ -10,7 +10,7 @@ def _get_label_for_timestamp(timestamp, label_timeline):
     return "unknown" # Default label if no match
 
 def process_pcap_to_csv(pcap_file, output_csv_file, label_timeline=None):
-    print(f"Processing {pcap_file} to {output_csv_file}...")
+    print(f"Processing {os.path.basename(pcap_file)} to {os.path.basename(output_csv_file)}...")
     
     if not os.path.exists(pcap_file):
         print(f"Error: PCAP file not found at {pcap_file}")
@@ -83,7 +83,7 @@ def process_pcap_to_csv(pcap_file, output_csv_file, label_timeline=None):
             
             writer.writerow(row)
     
-    print(f"Successfully processed {len(packets)} packets to {output_csv_file}")
+    print(f"Successfully processed {len(packets)} packets to {os.path.basename(output_csv_file)}")
 
 if __name__ == "__main__":
     # This block is for standalone execution. When called from main.py, label_timeline is passed directly.

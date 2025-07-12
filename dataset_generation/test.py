@@ -152,7 +152,7 @@ def start_controller():
     with open(ryu_log_file, 'wb') as log_out:
         process = subprocess.Popen(ryu_cmd, stdout=log_out, stderr=log_out)
     
-    logger.info(f"Ryu controller started with PID: {process.pid}. See {ryu_log_file} for logs.")
+        logger.info(f"Ryu controller started with PID: {process.pid}. See {str(ryu_log_file.relative_to(BASE_DIR))} for logs.")
     return process
 
 def check_controller_health(port=6653, timeout=30):
@@ -395,7 +395,7 @@ def collect_flow_stats(duration, output_file, flow_label_timeline, controller_ip
         # Reindex the DataFrame to ensure the columns are in the desired order
         df = df.reindex(columns=ordered_columns)
         df.to_csv(output_file, index=False)
-        logger.info(f"Flow statistics saved to {output_file}")
+        logger.info(f"Flow statistics saved to {output_file.relative_to(BASE_DIR)}")
     else:
         logger.warning("No flow data collected.")
 
@@ -477,6 +477,7 @@ def run_traffic_scenario(net, flow_label_timeline):
         capture_procs['ad_syn'] = start_capture(net, PCAP_FILE_AD_SYN)
         time.sleep(2)
         run_adv_ddos(h2, HOST_IPS['h6'], duration=5, attack_variant="ad_syn")
+        time.sleep(5) # Wait for the attack to generate traffic
         stop_capture(capture_procs['ad_syn'])
 
         logger.info("Attack: Adversarial Application Layer (5s) | h2 -> h6")
@@ -678,26 +679,26 @@ def main():
         all_labeled_dfs = []
 
         for pcap_file, label_name in pcap_files_to_process:
-            logger.info(f"Processing {pcap_file} with label '{label_name}'...")
+            logger.info(f"Processing {pcap_file.name} with label '{label_name}'...")
             
             if not pcap_file.exists():
-                logger.warning(f"PCAP file not found: {pcap_file}. Skipping.")
+                logger.warning(f"PCAP file not found: {pcap_file.name}. Skipping.")
                 continue
 
             # Verify PCAP integrity before processing
             integrity_results = verify_pcap_integrity(pcap_file)
             if not integrity_results['valid']:
-                logger.error(f"PCAP integrity check failed for {pcap_file}: {integrity_results['error']}")
+                logger.error(f"PCAP integrity check failed for {pcap_file.relative_to(BASE_DIR)}: {integrity_results['error']}")
                 logger.warning("Continuing with PCAP processing despite integrity issues...")
             else:
-                logger.info(f"PCAP integrity check passed for {pcap_file}: {integrity_results['total_packets']} packets")
+                logger.info(f"PCAP integrity check passed for {pcap_file.relative_to(BASE_DIR)}: {integrity_results['total_packets']} packets")
                 if integrity_results['corruption_rate'] > 0:
-                    logger.warning(f"Timestamp corruption detected in {pcap_file}: {integrity_results['corruption_rate']:.2f}%")
+                    logger.warning(f"Timestamp corruption detected in {pcap_file.relative_to(BASE_DIR)}: {integrity_results['corruption_rate']:.2f}%")
 
             try:
                 corrected_packets, stats = validate_and_fix_pcap_timestamps(pcap_file)
                 pcap_start_time = stats['baseline_time']
-                logger.info(f"Using baseline timestamp for labeling {pcap_file}: {pcap_start_time}")
+                logger.info(f"Using baseline timestamp for labeling {pcap_file.relative_to(BASE_DIR)}: {pcap_start_time}")
             except Exception as e:
                 logger.error(f"Could not process PCAP timestamps for {pcap_file}: {e}. Skipping labeling for this file.")
                 continue
@@ -726,7 +727,7 @@ def main():
                 all_labeled_dfs.append(df)
                 temp_csv_file.unlink() # Delete temporary CSV
             else:
-                logger.warning(f"No CSV generated for {pcap_file}.")
+                logger.warning(f"No CSV generated for {pcap_file.relative_to(BASE_DIR)}.")
 
         if all_labeled_dfs:
             final_df = pd.concat(all_labeled_dfs, ignore_index=True)

@@ -109,6 +109,18 @@ The `AdvancedDDoSCoordinator` and `AdaptiveController` components work together 
 - **Execution:** The `AdvancedDDoSCoordinator` uses these recommendations to dynamically switch between or adjust the parameters of the TCP State Exhaustion, Distributed Application Layer, or Multi-Vector attacks, making the overall attack more resilient and harder to defend against.
 - **Session Maintenance:** The `SessionMaintainer` creates and maintains legitimate-looking HTTP sessions to further blend the attack traffic with normal user activity.
 
+### 4.6. Advanced Evasion Techniques
+
+**Description:**
+To enhance stealth and bypass heuristic detection rules, the advanced adversarial attacks incorporate several evasion techniques:
+
+- **Jittered Intervals and Randomization:** Packet and request sending intervals are randomized using `random.uniform()` to avoid predictable timing patterns that could indicate synthetic traffic. Source IP addresses, TCP sequence numbers, window sizes, and TTL values are also randomized.
+- **TCP Flag Rotation:** TCP packets are crafted with a random selection of common TCP flags (SYN, SYN-ACK, ACK, PSH-ACK, FIN-ACK) to mimic varied legitimate TCP communication.
+- **HTTP Header Rotation:** HTTP requests utilize a diverse set of User-Agent strings and randomly include Referer headers to simulate browsing behavior from different clients and sources.
+- **Mimicking Benign Traffic:** The `SessionMaintainer` component actively creates and maintains persistent, legitimate-looking HTTP sessions, including navigating through various common web paths and handling cookies, to blend malicious traffic with normal user activity.
+- **Payload and Timestamp Variability:** While explicit timestamp manipulation is handled by the OS/Scapy, the attacks introduce variability in payloads (e.g., varying query string lengths in HTTP requests) and manipulate TCP sequence numbers to ensure generated datasets do not appear overly synthetic.
+- **Logging Emission Rates (Partial Implementation):** The `attack_logger` logs when packets/requests are sent, providing a basis for understanding traffic flow. However, explicit real-time calculation and logging of the precise emission rates (packets/sec or requests/sec) for verification of consistency and stealth are not fully implemented. This would require additional logic to track and report rates.
+
 ## 5. Benign Traffic Generation
 
 **Description:**

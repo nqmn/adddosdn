@@ -33,7 +33,9 @@ from src.utils.enhanced_pcap_processing import (
     validate_and_fix_pcap_timestamps,
     enhanced_process_pcap_to_csv,
     improve_capture_reliability,
-    verify_pcap_integrity
+    verify_pcap_integrity,
+    analyze_pcap_for_tcp_issues,
+    analyze_inter_packet_arrival_time
 )
 from src.utils.process_pcap_to_csv import _get_label_for_timestamp # New: For labeling flow data
 
@@ -65,6 +67,7 @@ PCAP_FILE_ICMP_FLOOD = OUTPUT_DIR / "icmp_flood.pcap"
 PCAP_FILE_AD_SYN = OUTPUT_DIR / "ad_syn.pcap"
 PCAP_FILE_AD_UDP = OUTPUT_DIR / "ad_udp.pcap"
 PCAP_FILE_AD_SLOW = OUTPUT_DIR / "ad_slow.pcap"
+PCAP_FILE_H6_SLOW_READ = OUTPUT_DIR / "h6_slow_read.pcap" # New: PCAP for h6 during slow read attack
 OUTPUT_CSV_FILE = OUTPUT_DIR / "packet_features.csv"
 
 OUTPUT_FLOW_CSV_FILE = OUTPUT_DIR / "flow_features.csv" # New: Flow-level dataset output
@@ -95,12 +98,12 @@ attack_logger.propagate = False # Prevent messages from being passed to the root
 
 # File handler for attack.log
 attack_log_file_handler = logging.FileHandler(OUTPUT_DIR / 'attack.log')
-attack_log_file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+attack_log_file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
 attack_logger.addHandler(attack_log_file_handler)
 
 # Console handler for attack_logger
 attack_console_handler = logging.StreamHandler()
-attack_console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+attack_console_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
 attack_console_handler.setLevel(logging.WARNING)
 attack_logger.addHandler(attack_console_handler)
 
@@ -153,7 +156,7 @@ def start_controller():
     with open(ryu_log_file, 'wb') as log_out:
         process = subprocess.Popen(ryu_cmd, stdout=log_out, stderr=log_out)
     
-    logger.info(f"Ryu controller started with PID: {process.pid}. See {ryu_log_file} for logs.")
+        logger.info(f"Ryu controller started with PID: {process.pid}. See {ryu_log_file.relative_to(BASE_DIR)} for logs.")
     return process
 
 def check_controller_health(port=6653, timeout=30):
@@ -396,7 +399,7 @@ def collect_flow_stats(duration, output_file, flow_label_timeline, controller_ip
         # Reindex the DataFrame to ensure the columns are in the desired order
         df = df.reindex(columns=ordered_columns)
         df.to_csv(output_file, index=False)
-        logger.info(f"Flow statistics saved to {output_file}")
+                logger.info(f"Flow statistics saved to {output_file.relative_to(BASE_DIR)}")
     else:
         logger.warning("No flow data collected.")
 
@@ -447,7 +450,7 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         logger.info("Phase 3.1: Traditional DDoS Attacks...")
         h1, h2, h4, h6 = net.get('h1', 'h2', 'h4', 'h6')
 
-        logger.info(f"Attack: SYN Flood ({scenario_durations['syn_flood']}s) | h1 -> h6")
+        attack_logger.info(f"Attack: SYN Flood ({scenario_durations['syn_flood']}s) | h1 -> h6")
         capture_procs['syn_flood'] = start_capture(net, PCAP_FILE_SYN_FLOOD)
         time.sleep(2)
         attack_proc_syn = run_syn_flood(h1, HOST_IPS['h6'], duration=scenario_durations['syn_flood'])
@@ -455,7 +458,7 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         stop_capture(capture_procs['syn_flood'])
         attack_logger.info("Attack: SYN Flood completed.")
 
-        logger.info(f"Attack: UDP Flood ({scenario_durations['udp_flood']}s) | h2 -> h4")
+        attack_logger.info(f"Attack: UDP Flood ({scenario_durations['udp_flood']}s) | h2 -> h4")
         capture_procs['udp_flood'] = start_capture(net, PCAP_FILE_UDP_FLOOD)
         time.sleep(2)
         attack_proc_udp = run_udp_flood(h2, HOST_IPS['h4'], duration=scenario_durations['udp_flood'])
@@ -463,7 +466,7 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         stop_capture(capture_procs['udp_flood'])
         attack_logger.info("Attack: UDP Flood completed.")
 
-        logger.info(f"Attack: ICMP Flood ({scenario_durations['icmp_flood']}s) | h2 -> h4")
+        attack_logger.info(f"Attack: ICMP Flood ({scenario_durations['icmp_flood']}s) | h2 -> h4")
         capture_procs['icmp_flood'] = start_capture(net, PCAP_FILE_ICMP_FLOOD)
         time.sleep(2)
         attack_proc_icmp = run_icmp_flood(h2, HOST_IPS['h4'], duration=scenario_durations['icmp_flood'])
@@ -474,24 +477,26 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         # --- Phase 3.2: Adversarial DDoS Attacks ---
         logger.info("Phase 3.2: Adversarial DDoS Attacks...")
 
-        logger.info(f"Attack: Adversarial TCP State Exhaustion ({scenario_durations['ad_syn']}s) | h2 -> h6")
+        attack_logger.info(f"Attack: Adversarial TCP State Exhaustion ({scenario_durations['ad_syn']}s) | h2 -> h6")
         capture_procs['ad_syn'] = start_capture(net, PCAP_FILE_AD_SYN)
         time.sleep(2)
         run_adv_ddos(h2, HOST_IPS['h6'], duration=scenario_durations['ad_syn'], attack_variant="ad_syn")
         stop_capture(capture_procs['ad_syn'])
 
-        logger.info(f"Attack: Adversarial Application Layer ({scenario_durations['ad_udp']}s) | h2 -> h6")
+        attack_logger.info(f"Attack: Adversarial Application Layer ({scenario_durations['ad_udp']}s) | h2 -> h6")
         capture_procs['ad_udp'] = start_capture(net, PCAP_FILE_AD_UDP)
         time.sleep(2)
         run_adv_ddos(h2, HOST_IPS['h6'], duration=scenario_durations['ad_udp'], attack_variant="ad_udp")
         stop_capture(capture_procs['ad_udp'])
 
-        logger.info(f"Attack: Adversarial Slow Read ({scenario_durations['ad_slow']}s) | h2 -> h6")
+        attack_logger.info(f"Attack: Adversarial Slow Read ({scenario_durations['ad_slow']}s) | h2 -> h6")
+        # Start capture on h6 specifically for slow read attack
+        h6 = net.get('h6')
+        capture_procs['h6_slow_read'] = start_capture(net, PCAP_FILE_H6_SLOW_READ, host=h6)
         capture_procs['ad_slow'] = start_capture(net, PCAP_FILE_AD_SLOW)
         time.sleep(2)
         
         # Start a simple HTTP server on h6 for the slowhttptest attack
-        h6 = net.get('h6')
         h6_ip = HOST_IPS['h6']
         http_server_cmd = f"python3 -m http.server 80 --bind {h6_ip}"
         logger.info(f"Starting HTTP server on h6 ({h6_ip}:80)...")
@@ -500,7 +505,23 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
 
         attack_proc_ad_slow = run_adv_ddos(h2, HOST_IPS['h6'], duration=scenario_durations['ad_slow'], attack_variant="ad_slow", output_dir=OUTPUT_DIR)
         stop_capture(capture_procs['ad_slow'])
+        stop_capture(capture_procs['h6_slow_read']) # Stop h6 specific capture
         attack_logger.info("Attack: Adversarial Slow Read completed.")
+
+        # Analyze h6 PCAP for TCP issues
+        if PCAP_FILE_H6_SLOW_READ.exists():
+            logger.info(f"Analyzing {PCAP_FILE_H6_SLOW_READ.relative_to(BASE_DIR)} for TCP issues...")
+            tcp_analysis_results = analyze_pcap_for_tcp_issues(PCAP_FILE_H6_SLOW_READ)
+            logger.info(f"TCP Analysis on h6 PCAP: RST Count = {tcp_analysis_results.get('rst_count', 0)}, Retransmission Count = {tcp_analysis_results.get('retransmission_count', 0)}")
+
+            # Analyze inter-packet arrival times
+            ipt_analysis_results = analyze_inter_packet_arrival_time(PCAP_FILE_H6_SLOW_READ)
+            if ipt_analysis_results and not ipt_analysis_results.get('error'):
+                logger.info(f"Inter-Packet Arrival Time (h6 PCAP): Mean = {ipt_analysis_results['mean']:.4f}s, Median = {ipt_analysis_results['median']:.4f}s, Std Dev = {ipt_analysis_results['std_dev']:.4f}s")
+            else:
+                logger.warning(f"Inter-Packet Arrival Time analysis failed for h6 PCAP: {ipt_analysis_results.get('error', 'Unknown error')}")
+        else:
+            logger.warning(f"h6 slow read PCAP file not found: {PCAP_FILE_H6_SLOW_READ.relative_to(BASE_DIR)}. Skipping TCP issue and inter-packet arrival time analysis.")
         
         # Stop the HTTP server on h6
         logger.info("Stopping HTTP server on h6...")
@@ -704,33 +725,40 @@ def main():
             (PCAP_FILE_AD_SYN, 'ad_syn'),
             (PCAP_FILE_AD_UDP, 'ad_udp'),
             (PCAP_FILE_AD_SLOW, 'ad_slow'),
+            (PCAP_FILE_H6_SLOW_READ, 'h6_slow_read'),
         ]
 
         all_labeled_dfs = []
 
         for pcap_file, label_name in pcap_files_to_process:
-            logger.info(f"Processing {pcap_file} with label '{label_name}'...")
+            logger.info(f"Processing {pcap_file.name} with label '{label_name}'...")
             
             if not pcap_file.exists():
-                logger.warning(f"PCAP file not found: {pcap_file}. Skipping.")
+                logger.warning(f"PCAP file not found: {pcap_file.relative_to(BASE_DIR)}. Skipping.")
                 continue
 
             # Verify PCAP integrity before processing
             integrity_results = verify_pcap_integrity(pcap_file)
             if not integrity_results['valid']:
-                logger.error(f"PCAP integrity check failed for {pcap_file}: {integrity_results['error']}")
-                logger.warning("Continuing with PCAP processing despite integrity issues...")
+                logger.error(f"PCAP integrity check failed for {pcap_file.name}: {integrity_results['error']}")
+                logger.warning(f"Continuing with PCAP processing despite integrity issues for {pcap_file.name}...")
             else:
-                logger.info(f"PCAP integrity check passed for {pcap_file}: {integrity_results['total_packets']} packets")
+                else:
+                else:
+                else:
+                else:
+                else:
+                else:
+                logger.info(f"PCAP integrity check passed for {pcap_file.name}: {integrity_results['total_packets']} packets")
                 if integrity_results['corruption_rate'] > 0:
-                    logger.warning(f"Timestamp corruption detected in {pcap_file}: {integrity_results['corruption_rate']:.2f}%")
+                    logger.warning(f"Timestamp corruption detected in {pcap_file.name}: {integrity_results['corruption_rate']:.2f}%")
 
             try:
                 corrected_packets, stats = validate_and_fix_pcap_timestamps(pcap_file)
                 pcap_start_time = stats['baseline_time']
-                logger.info(f"Using baseline timestamp for labeling {pcap_file}: {pcap_start_time}")
+                logger.info(f"Using baseline timestamp for labeling {pcap_file.name}: {pcap_start_time}")
             except Exception as e:
-                logger.error(f"Could not process PCAP timestamps for {pcap_file}: {e}. Skipping labeling for this file.")
+                logger.error(f"Could not process PCAP timestamps for {pcap_file.relative_to(BASE_DIR)}: {e}. Skipping labeling for this file.")
                 continue
 
             # Create a simple label timeline for the current PCAP file
@@ -757,16 +785,37 @@ def main():
                 all_labeled_dfs.append(df)
                 temp_csv_file.unlink() # Delete temporary CSV
             else:
-                logger.warning(f"No CSV generated for {pcap_file}.")
+                else:
+                else:
+                else:
+                else:
+                else:
+                else:
+                else:
+                else:
+                else:
+                else:
+                logger.warning(f"No CSV generated for {pcap_file.relative_to(BASE_DIR)}.")
 
         if all_labeled_dfs:
             final_df = pd.concat(all_labeled_dfs, ignore_index=True)
             final_df.to_csv(OUTPUT_CSV_FILE, index=False)
-            logger.info(f"Combined labeled CSV generated at: {OUTPUT_CSV_FILE}")
+            logger.info(f"Combined labeled CSV generated at: {OUTPUT_CSV_FILE.relative_to(BASE_DIR)}")
             # 5. Verify labels in CSV (can be adapted for combined CSV if needed, or individual verification)
             # For now, we'll just check if the file exists
             if OUTPUT_CSV_FILE.exists():
                 logger.info("Final combined CSV created successfully.")
+                try:
+                    packet_df = pd.read_csv(OUTPUT_CSV_FILE)
+                    if 'Label_multi' in packet_df.columns:
+                        packet_counts = packet_df['Label_multi'].value_counts()
+                        logger.info("\n--- Packet Feature Counts by Class ---")
+                        for label, count in packet_counts.items():
+                            logger.info(f"  {label}: {count} packets")
+                    else:
+                        logger.warning("Label_multi column not found in packet_features.csv.")
+                except Exception as e:
+                    logger.error(f"Error reading or processing packet_features.csv: {e}")
             else:
                 logger.error("Failed to create final combined CSV.")
         else:
@@ -774,7 +823,18 @@ def main():
 
         # Check if flow data was collected
         if OUTPUT_FLOW_CSV_FILE.exists():
-            logger.info(f"Flow-level dataset generated at: {OUTPUT_FLOW_CSV_FILE}")
+            logger.info(f"Flow-level dataset generated at: {OUTPUT_FLOW_CSV_FILE.relative_to(BASE_DIR)}")
+            try:
+                flow_df = pd.read_csv(OUTPUT_FLOW_CSV_FILE)
+                if 'Label_multi' in flow_df.columns:
+                    flow_counts = flow_df['Label_multi'].value_counts()
+                    logger.info("\n--- Flow Feature Counts by Class ---")
+                    for label, count in flow_counts.items():
+                        logger.info(f"  {label}: {count} flows")
+                else:
+                    logger.warning("Label_multi column not found in flow_features.csv.")
+            except Exception as e:
+                logger.error(f"Error reading or processing flow_features.csv: {e}")
         else:
             logger.warning("No flow-level dataset was generated.")
 
