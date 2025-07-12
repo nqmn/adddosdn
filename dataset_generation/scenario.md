@@ -108,3 +108,27 @@ The `AdvancedDDoSCoordinator` and `AdaptiveController` components work together 
 - **Adaptation:** Based on the monitoring results, the `AdaptiveController` recommends optimal attack parameters (e.g., packet rate, connection count, preferred technique, IP rotation speed).
 - **Execution:** The `AdvancedDDoSCoordinator` uses these recommendations to dynamically switch between or adjust the parameters of the TCP State Exhaustion, Distributed Application Layer, or Multi-Vector attacks, making the overall attack more resilient and harder to defend against.
 - **Session Maintenance:** The `SessionMaintainer` creates and maintains legitimate-looking HTTP sessions to further blend the attack traffic with normal user activity.
+
+## 5. Benign Traffic Generation
+
+**Description:**
+Benign traffic simulates normal network activity to provide a realistic background for the DDoS attack scenarios. This helps in evaluating the effectiveness of detection mechanisms in a mixed traffic environment.
+
+**How it happens in the scenario:**
+- **Source:** `src/gen_benign_traffic.py`
+- Various types of benign traffic are generated between `h3` and `h5` in the Mininet network.
+- **Protocols Covered:**
+    - **ICMP:** Standard ping requests and replies.
+    - **TCP:** Full TCP handshake (SYN, SYN-ACK, ACK) followed by data transfer and a final ACK. This includes random payload lengths.
+    - **UDP:** Datagrams with random payload lengths.
+    - **Telnet (Port 23):** TCP handshake followed by simulated Telnet command data.
+    - **SSH (Port 22):** TCP handshake followed by simulated encrypted SSH data.
+    - **FTP (Port 21):** TCP handshake followed by simulated FTP file transfer data.
+    - **HTTP (Port 80):** TCP handshake followed by simulated HTTP GET requests with headers and random payload.
+    - **HTTPS (Port 443):** TCP handshake followed by simulated encrypted HTTPS application data.
+    - **DNS (Port 53):** UDP-based DNS queries.
+- **Traffic Generation:**
+    - ICMP traffic uses Mininet's `ping` command.
+    - All other traffic types are crafted and sent using the `scapy` library within the Mininet host's namespace.
+    - Random source ports and random payload lengths are used to simulate varied legitimate traffic.
+- The benign traffic runs for a specified `duration`, continuously generating sessions across different protocols.

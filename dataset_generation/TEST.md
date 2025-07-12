@@ -40,7 +40,7 @@ The `test.py` script automates the following steps:
     *   **Phase 1: Initialization (5 seconds):** A brief pause before traffic generation begins.
     *   **Phase 2: Normal Traffic (5 seconds):**
         *   Captures benign traffic to `test_output/normal.pcap`.
-        *   Generates various types of legitimate traffic (ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP) between `h3` and `h5`.
+        *   Generates various types of legitimate traffic (ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP, HTTPS, DNS) between `h3` and `h5`.
     *   **Phase 3.1: Traditional DDoS Attacks (15 seconds total):**
         | Attack Type | Source | Destination | Affected Plane | Relevance |
         |---|---|---|---|---|
@@ -58,11 +58,12 @@ The `test.py` script automates the following steps:
 3.  **Data Collection and Dataset Creation:**
     *   **Concurrent Flow Statistics Collection:** Simultaneously with traffic generation, the script continuously queries the Ryu controller's REST API (`/flows` endpoint) to collect real-time flow statistics. This data is saved to `test_output/flow_features.csv`.
     *   **PCAP Processing:** For each generated PCAP file:
-        *   It performs an integrity check to ensure the PCAP is valid.
-        *   It validates and fixes any timestamp inconsistencies within the PCAP.
-        *   It extracts network features and applies appropriate labels (e.g., 'normal', 'syn_flood') based on the traffic type. This process generates temporary CSV files.
+        *   It performs an integrity check to ensure the PCAP is valid using `verify_pcap_integrity`.
+        *   It validates and fixes any timestamp inconsistencies within the PCAP using `validate_and_fix_pcap_timestamps`.
+        *   It extracts network features and applies appropriate labels (e.g., 'normal', 'syn_flood') based on the traffic type using `enhanced_process_pcap_to_csv`. This process generates temporary CSV files.
     *   **Packet-Level Dataset Consolidation:** All temporary labeled packet-level CSV files are concatenated into a single, comprehensive dataset.
     *   **Final Packet-Level CSV:** The combined packet-level dataset is saved as `test_output/packet_features.csv`.
+    *   **Label Verification:** The `verify_labels_in_csv` function is used to ensure the correctness and consistency of labels in the generated CSV files.
 
 4.  **Cleanup:**
     *   Gracefully terminates the Ryu controller process.
