@@ -22,6 +22,18 @@ from datetime import datetime
 from collections import defaultdict
 from webob import Response
 
+# Import standardized logging (with fallback for Ryu environment)
+try:
+    from ..utils.logger import get_controller_logger
+except ImportError:
+    try:
+        from utils.logger import get_controller_logger
+    except ImportError:
+        # Fallback - use Ryu's built-in logger
+        def get_controller_logger(log_dir=None):
+            import logging
+            return logging.getLogger('ryu.app.FlowMonitorController')
+
 class FlowMonitorController(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
     _CONTEXTS = {'wsgi': WSGIApplication}
@@ -44,10 +56,17 @@ class FlowMonitorController(app_manager.RyuApp):
         else:
             self.logger.warning("WSGI context not provided to FlowMonitorController. REST API will not be available.")
 
+        # Initialize standardized logging (falls back to Ryu logger)
+        try:
+            self.std_logger = get_controller_logger()
+        except:
+            self.std_logger = self.logger
+            
         self.stats_thread = threading.Thread(target=self._collect_stats_periodically)
         self.stats_thread.daemon = True
         self.stats_thread.start()
         self.log_activity('info', 'Ryu Flow Monitor Controller started')
+        self.std_logger.info('Ryu Flow Monitor Controller started')
 
         
 

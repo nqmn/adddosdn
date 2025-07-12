@@ -1,0 +1,1159 @@
+2025-07-12 15:25:28,294 - mininet - DEBUG - *** errRun: ['grep', '-c', 'processor', '/proc/cpuinfo'] 
+
+2025-07-12 15:25:28,299 - mininet - DEBUG - 4
+  0
+2025-07-12 15:25:28,300 - mininet - DEBUG - *** Setting resource limits
+
+2025-07-12 15:25:28,300 - mininet - DEBUG - *** errRun: ['which', 'mnexec'] 
+
+2025-07-12 15:25:28,304 - mininet - DEBUG - /usr/bin/mnexec
+  0
+2025-07-12 15:25:28,305 - mininet - DEBUG - *** errRun: ['which', 'ifconfig'] 
+
+2025-07-12 15:25:28,308 - mininet - DEBUG - /sbin/ifconfig
+  0
+2025-07-12 15:25:28,312 - mininet - DEBUG - _popen ['mnexec', '-cd', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:c0'] 123043
+2025-07-12 15:25:28,315 - mininet - DEBUG - *** c0 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-12 15:25:28,315 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-12 15:25:28,316 - mininet - DEBUG - 
+2025-07-12 15:25:28,316 - mininet - DEBUG - *** c0 : ('echo A | telnet -e A 127.0.0.1 6653',)
+
+2025-07-12 15:25:28,318 - mininet - DEBUG - Telnet escape character is 'A'.
+Trying 127.0.0.1...
+
+2025-07-12 15:25:28,318 - mininet - DEBUG - Connected to 127.0.0.1.
+Escape character is 'A'.
+
+
+2025-07-12 15:25:28,318 - mininet - DEBUG - telnet> Connection closed.
+
+2025-07-12 15:25:28,318 - mininet - DEBUG - 
+2025-07-12 15:25:28,318 - mininet - INFO - *** Creating network
+
+2025-07-12 15:25:28,318 - mininet - INFO - *** Adding hosts:
+
+2025-07-12 15:25:28,318 - mininet - DEBUG - *** errRun: ['which', 'mnexec'] 
+
+2025-07-12 15:25:28,322 - mininet - DEBUG - /usr/bin/mnexec
+  0
+2025-07-12 15:25:28,322 - mininet - DEBUG - *** errRun: ['which', 'ifconfig'] 
+
+2025-07-12 15:25:28,325 - mininet - DEBUG - /sbin/ifconfig
+  0
+2025-07-12 15:25:28,328 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h1'] 123049
+2025-07-12 15:25:28,332 - mininet - DEBUG - *** h1 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-12 15:25:28,333 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-12 15:25:28,333 - mininet - DEBUG - 
+2025-07-12 15:25:28,333 - mininet - INFO - h1 
+2025-07-12 15:25:28,336 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h2'] 123051
+2025-07-12 15:25:28,341 - mininet - DEBUG - *** h2 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-12 15:25:28,341 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-12 15:25:28,342 - mininet - DEBUG - 
+2025-07-12 15:25:28,342 - mininet - INFO - h2 
+2025-07-12 15:25:28,345 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h3'] 123053
+2025-07-12 15:25:28,349 - mininet - DEBUG - *** h3 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-12 15:25:28,349 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-12 15:25:28,350 - mininet - DEBUG - 
+2025-07-12 15:25:28,350 - mininet - INFO - h3 
+2025-07-12 15:25:28,352 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h4'] 123055
+2025-07-12 15:25:28,357 - mininet - DEBUG - *** h4 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-12 15:25:28,357 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-12 15:25:28,357 - mininet - DEBUG - 
+2025-07-12 15:25:28,358 - mininet - INFO - h4 
+2025-07-12 15:25:28,360 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h5'] 123057
+2025-07-12 15:25:28,364 - mininet - DEBUG - *** h5 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-12 15:25:28,364 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-12 15:25:28,365 - mininet - DEBUG - 
+2025-07-12 15:25:28,365 - mininet - INFO - h5 
+2025-07-12 15:25:28,368 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h6'] 123059
+2025-07-12 15:25:28,372 - mininet - DEBUG - *** h6 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-12 15:25:28,373 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-12 15:25:28,373 - mininet - DEBUG - 
+2025-07-12 15:25:28,373 - mininet - INFO - h6 
+2025-07-12 15:25:28,373 - mininet - INFO - 
+*** Adding switches:
+
+2025-07-12 15:25:28,374 - mininet - DEBUG - *** errRun: ['which', 'ovs-vsctl'] 
+
+2025-07-12 15:25:28,377 - mininet - DEBUG - /usr/bin/ovs-vsctl
+  0
+2025-07-12 15:25:28,377 - mininet - DEBUG - *** errRun: ['ovs-vsctl', '-t', '1', 'show'] 
+
+2025-07-12 15:25:28,383 - mininet - DEBUG - df6e9c01-0abd-46aa-981e-d48f78358bac
+    ovs_version: "2.9.8"
+  0
+2025-07-12 15:25:28,383 - mininet - DEBUG - *** errRun: ['ovs-vsctl', '--version'] 
+
+2025-07-12 15:25:28,387 - mininet - DEBUG - ovs-vsctl (Open vSwitch) 2.9.8
+DB Schema 7.15.1
+  0
+2025-07-12 15:25:28,390 - mininet - DEBUG - _popen ['mnexec', '-cd', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:s1'] 123064
+2025-07-12 15:25:28,393 - mininet - DEBUG - *** s1 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-12 15:25:28,394 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-12 15:25:28,394 - mininet - DEBUG - 
+2025-07-12 15:25:28,395 - mininet - DEBUG - 
+
+2025-07-12 15:25:28,395 - mininet - DEBUG - added intf lo (0) to node s1
+
+2025-07-12 15:25:28,395 - mininet - DEBUG - *** s1 : ('ifconfig', 'lo', 'up')
+
+2025-07-12 15:25:28,396 - mininet - DEBUG - 
+2025-07-12 15:25:28,396 - mininet - INFO - s1 
+2025-07-12 15:25:28,396 - mininet - INFO - 
+*** Adding links:
+
+2025-07-12 15:25:28,396 - mininet - DEBUG - *** h1 : ('ip link add name h1-eth0 address da:a8:bf:6f:d2:ce type veth peer name s1-eth1 address 8a:2e:15:80:82:4d netns 123064',)
+
+2025-07-12 15:25:28,398 - mininet - DEBUG - 
+2025-07-12 15:25:28,398 - mininet - DEBUG - 
+
+2025-07-12 15:25:28,398 - mininet - DEBUG - added intf h1-eth0 (0) to node h1
+
+2025-07-12 15:25:28,398 - mininet - DEBUG - moving h1-eth0 into namespace for h1 
+
+2025-07-12 15:25:28,398 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'up')
+
+2025-07-12 15:25:28,402 - mininet - DEBUG - 
+2025-07-12 15:25:28,402 - mininet - DEBUG - 
+
+2025-07-12 15:25:28,402 - mininet - DEBUG - added intf s1-eth1 (1) to node s1
+
+2025-07-12 15:25:28,402 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth1', 'up')
+
+2025-07-12 15:25:28,404 - mininet - DEBUG - 
+2025-07-12 15:25:28,404 - mininet - INFO - (h1, s1) 
+2025-07-12 15:25:28,404 - mininet - DEBUG - *** h2 : ('ip link add name h2-eth0 address be:93:b8:c9:a0:49 type veth peer name s1-eth2 address d2:83:d1:84:48:2b netns 123064',)
+
+2025-07-12 15:25:28,407 - mininet - DEBUG - 
+2025-07-12 15:25:28,407 - mininet - DEBUG - 
+
+2025-07-12 15:25:28,407 - mininet - DEBUG - added intf h2-eth0 (0) to node h2
+
+2025-07-12 15:25:28,407 - mininet - DEBUG - moving h2-eth0 into namespace for h2 
+
+2025-07-12 15:25:28,407 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'up')
+
+2025-07-12 15:25:28,409 - mininet - DEBUG - 
+2025-07-12 15:25:28,410 - mininet - DEBUG - 
+
+2025-07-12 15:25:28,410 - mininet - DEBUG - added intf s1-eth2 (2) to node s1
+
+2025-07-12 15:25:28,410 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth2', 'up')
+
+2025-07-12 15:25:28,413 - mininet - DEBUG - 
+2025-07-12 15:25:28,413 - mininet - INFO - (h2, s1) 
+2025-07-12 15:25:28,413 - mininet - DEBUG - *** h3 : ('ip link add name h3-eth0 address ba:5a:92:d5:51:cc type veth peer name s1-eth3 address b6:73:dd:53:54:61 netns 123064',)
+
+2025-07-12 15:25:28,416 - mininet - DEBUG - 
+2025-07-12 15:25:28,416 - mininet - DEBUG - 
+
+2025-07-12 15:25:28,416 - mininet - DEBUG - added intf h3-eth0 (0) to node h3
+
+2025-07-12 15:25:28,416 - mininet - DEBUG - moving h3-eth0 into namespace for h3 
+
+2025-07-12 15:25:28,416 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'up')
+
+2025-07-12 15:25:28,420 - mininet - DEBUG - 
+2025-07-12 15:25:28,420 - mininet - DEBUG - 
+
+2025-07-12 15:25:28,420 - mininet - DEBUG - added intf s1-eth3 (3) to node s1
+
+2025-07-12 15:25:28,420 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth3', 'up')
+
+2025-07-12 15:25:28,422 - mininet - DEBUG - 
+2025-07-12 15:25:28,422 - mininet - INFO - (h3, s1) 
+2025-07-12 15:25:28,422 - mininet - DEBUG - *** h4 : ('ip link add name h4-eth0 address a6:57:b3:78:21:44 type veth peer name s1-eth4 address 0e:0c:53:20:b4:75 netns 123064',)
+
+2025-07-12 15:25:28,424 - mininet - DEBUG - 
+2025-07-12 15:25:28,424 - mininet - DEBUG - 
+
+2025-07-12 15:25:28,424 - mininet - DEBUG - added intf h4-eth0 (0) to node h4
+
+2025-07-12 15:25:28,424 - mininet - DEBUG - moving h4-eth0 into namespace for h4 
+
+2025-07-12 15:25:28,424 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'up')
+
+2025-07-12 15:25:28,426 - mininet - DEBUG - 
+2025-07-12 15:25:28,426 - mininet - DEBUG - 
+
+2025-07-12 15:25:28,426 - mininet - DEBUG - added intf s1-eth4 (4) to node s1
+
+2025-07-12 15:25:28,426 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth4', 'up')
+
+2025-07-12 15:25:28,428 - mininet - DEBUG - 
+2025-07-12 15:25:28,428 - mininet - INFO - (h4, s1) 
+2025-07-12 15:25:28,428 - mininet - DEBUG - *** h5 : ('ip link add name h5-eth0 address 56:39:7b:4c:5a:32 type veth peer name s1-eth5 address 92:37:bc:d1:d5:0f netns 123064',)
+
+2025-07-12 15:25:28,431 - mininet - DEBUG - 
+2025-07-12 15:25:28,431 - mininet - DEBUG - 
+
+2025-07-12 15:25:28,431 - mininet - DEBUG - added intf h5-eth0 (0) to node h5
+
+2025-07-12 15:25:28,431 - mininet - DEBUG - moving h5-eth0 into namespace for h5 
+
+2025-07-12 15:25:28,431 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'up')
+
+2025-07-12 15:25:28,434 - mininet - DEBUG - 
+2025-07-12 15:25:28,434 - mininet - DEBUG - 
+
+2025-07-12 15:25:28,434 - mininet - DEBUG - added intf s1-eth5 (5) to node s1
+
+2025-07-12 15:25:28,435 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth5', 'up')
+
+2025-07-12 15:25:28,437 - mininet - DEBUG - 
+2025-07-12 15:25:28,437 - mininet - INFO - (h5, s1) 
+2025-07-12 15:25:28,437 - mininet - DEBUG - *** h6 : ('ip link add name h6-eth0 address 62:a7:87:54:2f:72 type veth peer name s1-eth6 address 62:e1:1e:2b:95:83 netns 123064',)
+
+2025-07-12 15:25:28,441 - mininet - DEBUG - 
+2025-07-12 15:25:28,441 - mininet - DEBUG - 
+
+2025-07-12 15:25:28,441 - mininet - DEBUG - added intf h6-eth0 (0) to node h6
+
+2025-07-12 15:25:28,441 - mininet - DEBUG - moving h6-eth0 into namespace for h6 
+
+2025-07-12 15:25:28,441 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'up')
+
+2025-07-12 15:25:28,446 - mininet - DEBUG - 
+2025-07-12 15:25:28,446 - mininet - DEBUG - 
+
+2025-07-12 15:25:28,446 - mininet - DEBUG - added intf s1-eth6 (6) to node s1
+
+2025-07-12 15:25:28,446 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth6', 'up')
+
+2025-07-12 15:25:28,449 - mininet - DEBUG - 
+2025-07-12 15:25:28,449 - mininet - INFO - (h6, s1) 
+2025-07-12 15:25:28,449 - mininet - INFO - 
+
+2025-07-12 15:25:28,449 - mininet - INFO - *** Configuring hosts
+
+2025-07-12 15:25:28,449 - mininet - INFO - h1 
+2025-07-12 15:25:28,450 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'down')
+
+2025-07-12 15:25:28,452 - mininet - DEBUG - 
+2025-07-12 15:25:28,452 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'hw', 'ether', '00:00:00:00:00:01')
+
+2025-07-12 15:25:28,453 - mininet - DEBUG - 
+2025-07-12 15:25:28,453 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'up')
+
+2025-07-12 15:25:28,455 - mininet - DEBUG - 
+2025-07-12 15:25:28,455 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', '10.0.0.1/24', 'up')
+
+2025-07-12 15:25:28,456 - mininet - DEBUG - 
+2025-07-12 15:25:28,456 - mininet - DEBUG - *** h1 : ('ifconfig lo up',)
+
+2025-07-12 15:25:28,458 - mininet - DEBUG - 
+2025-07-12 15:25:28,458 - mininet - INFO - h2 
+2025-07-12 15:25:28,458 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'down')
+
+2025-07-12 15:25:28,460 - mininet - DEBUG - 
+2025-07-12 15:25:28,460 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'hw', 'ether', '00:00:00:00:00:02')
+
+2025-07-12 15:25:28,463 - mininet - DEBUG - 
+2025-07-12 15:25:28,463 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'up')
+
+2025-07-12 15:25:28,464 - mininet - DEBUG - 
+2025-07-12 15:25:28,464 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', '10.0.0.2/24', 'up')
+
+2025-07-12 15:25:28,466 - mininet - DEBUG - 
+2025-07-12 15:25:28,466 - mininet - DEBUG - *** h2 : ('ifconfig lo up',)
+
+2025-07-12 15:25:28,467 - mininet - DEBUG - 
+2025-07-12 15:25:28,467 - mininet - INFO - h3 
+2025-07-12 15:25:28,467 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'down')
+
+2025-07-12 15:25:28,469 - mininet - DEBUG - 
+2025-07-12 15:25:28,469 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'hw', 'ether', '00:00:00:00:00:03')
+
+2025-07-12 15:25:28,470 - mininet - DEBUG - 
+2025-07-12 15:25:28,470 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'up')
+
+2025-07-12 15:25:28,473 - mininet - DEBUG - 
+2025-07-12 15:25:28,473 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', '10.0.0.3/24', 'up')
+
+2025-07-12 15:25:28,474 - mininet - DEBUG - 
+2025-07-12 15:25:28,474 - mininet - DEBUG - *** h3 : ('ifconfig lo up',)
+
+2025-07-12 15:25:28,475 - mininet - DEBUG - 
+2025-07-12 15:25:28,475 - mininet - INFO - h4 
+2025-07-12 15:25:28,475 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'down')
+
+2025-07-12 15:25:28,476 - mininet - DEBUG - 
+2025-07-12 15:25:28,477 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'hw', 'ether', '00:00:00:00:00:04')
+
+2025-07-12 15:25:28,478 - mininet - DEBUG - 
+2025-07-12 15:25:28,478 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'up')
+
+2025-07-12 15:25:28,480 - mininet - DEBUG - 
+2025-07-12 15:25:28,480 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', '10.0.0.4/24', 'up')
+
+2025-07-12 15:25:28,482 - mininet - DEBUG - 
+2025-07-12 15:25:28,482 - mininet - DEBUG - *** h4 : ('ifconfig lo up',)
+
+2025-07-12 15:25:28,483 - mininet - DEBUG - 
+2025-07-12 15:25:28,483 - mininet - INFO - h5 
+2025-07-12 15:25:28,483 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'down')
+
+2025-07-12 15:25:28,484 - mininet - DEBUG - 
+2025-07-12 15:25:28,484 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'hw', 'ether', '00:00:00:00:00:05')
+
+2025-07-12 15:25:28,485 - mininet - DEBUG - 
+2025-07-12 15:25:28,485 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'up')
+
+2025-07-12 15:25:28,487 - mininet - DEBUG - 
+2025-07-12 15:25:28,487 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', '10.0.0.5/24', 'up')
+
+2025-07-12 15:25:28,488 - mininet - DEBUG - 
+2025-07-12 15:25:28,488 - mininet - DEBUG - *** h5 : ('ifconfig lo up',)
+
+2025-07-12 15:25:28,489 - mininet - DEBUG - 
+2025-07-12 15:25:28,489 - mininet - INFO - h6 
+2025-07-12 15:25:28,489 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'down')
+
+2025-07-12 15:25:28,491 - mininet - DEBUG - 
+2025-07-12 15:25:28,491 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'hw', 'ether', '00:00:00:00:00:06')
+
+2025-07-12 15:25:28,492 - mininet - DEBUG - 
+2025-07-12 15:25:28,492 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'up')
+
+2025-07-12 15:25:28,493 - mininet - DEBUG - 
+2025-07-12 15:25:28,493 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', '10.0.0.6/24', 'up')
+
+2025-07-12 15:25:28,494 - mininet - DEBUG - 
+2025-07-12 15:25:28,494 - mininet - DEBUG - *** h6 : ('ifconfig lo up',)
+
+2025-07-12 15:25:28,495 - mininet - DEBUG - 
+2025-07-12 15:25:28,495 - mininet - INFO - 
+
+2025-07-12 15:25:28,495 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-12 15:25:28,496 - mininet - DEBUG - 
+2025-07-12 15:25:28,496 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-12 15:25:28,497 - mininet - DEBUG - 
+2025-07-12 15:25:28,497 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-12 15:25:28,498 - mininet - DEBUG - 
+2025-07-12 15:25:28,498 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-12 15:25:28,499 - mininet - DEBUG - 
+2025-07-12 15:25:28,499 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-12 15:25:28,500 - mininet - DEBUG - 
+2025-07-12 15:25:28,500 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-12 15:25:28,501 - mininet - DEBUG - 
+2025-07-12 15:25:28,501 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-12 15:25:28,502 - mininet - DEBUG - 
+2025-07-12 15:25:28,502 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-12 15:25:28,503 - mininet - DEBUG - 
+2025-07-12 15:25:28,503 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-12 15:25:28,504 - mininet - DEBUG - 
+2025-07-12 15:25:28,504 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-12 15:25:28,505 - mininet - DEBUG - 
+2025-07-12 15:25:28,505 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-12 15:25:28,506 - mininet - DEBUG - 
+2025-07-12 15:25:28,506 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-12 15:25:28,507 - mininet - DEBUG - 
+2025-07-12 15:25:28,507 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-12 15:25:28,508 - mininet - DEBUG - 
+2025-07-12 15:25:28,508 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-12 15:25:28,509 - mininet - DEBUG - 
+2025-07-12 15:25:28,509 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-12 15:25:28,510 - mininet - DEBUG - 
+2025-07-12 15:25:28,510 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-12 15:25:28,511 - mininet - DEBUG - 
+2025-07-12 15:25:28,511 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-12 15:25:28,512 - mininet - DEBUG - 
+2025-07-12 15:25:28,512 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-12 15:25:28,513 - mininet - DEBUG - 
+2025-07-12 15:25:28,513 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-12 15:25:28,514 - mininet - DEBUG - 
+2025-07-12 15:25:28,514 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-12 15:25:28,515 - mininet - DEBUG - 
+2025-07-12 15:25:28,515 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-12 15:25:28,516 - mininet - DEBUG - 
+2025-07-12 15:25:28,516 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-12 15:25:28,517 - mininet - DEBUG - 
+2025-07-12 15:25:28,517 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-12 15:25:28,518 - mininet - DEBUG - 
+2025-07-12 15:25:28,518 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-12 15:25:28,519 - mininet - DEBUG - 
+2025-07-12 15:25:28,519 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-12 15:25:28,520 - mininet - DEBUG - 
+2025-07-12 15:25:28,520 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-12 15:25:28,520 - mininet - DEBUG - 
+2025-07-12 15:25:28,520 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-12 15:25:28,521 - mininet - DEBUG - 
+2025-07-12 15:25:28,521 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-12 15:25:28,522 - mininet - DEBUG - 
+2025-07-12 15:25:28,522 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-12 15:25:28,523 - mininet - DEBUG - 
+2025-07-12 15:25:28,523 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-12 15:25:28,524 - mininet - DEBUG - 
+2025-07-12 15:25:28,524 - mininet - INFO - *** Starting controller
+
+2025-07-12 15:25:28,524 - mininet - INFO - c0 
+2025-07-12 15:25:28,524 - mininet - INFO - 
+
+2025-07-12 15:25:28,524 - mininet - INFO - *** Starting 1 switches
+
+2025-07-12 15:25:28,524 - mininet - INFO - s1 
+2025-07-12 15:25:28,525 - mininet - INFO - ...
+2025-07-12 15:25:28,525 - mininet - DEBUG - *** errRun: ovs-vsctl -- --id=@s1c0 create Controller target=\"tcp:127.0.0.1:6653\" max_backoff=1000 -- --if-exists del-br s1 -- add-br s1 -- set bridge s1 controller=[@s1c0] other_config:datapath-id=0000000000000001 fail_mode=secure other-config:disable-in-band=true protocols=OpenFlow13 other-config:dp-desc=s1 -- add-port s1 s1-eth1 -- set Interface s1-eth1 ofport_request=1 -- add-port s1 s1-eth2 -- set Interface s1-eth2 ofport_request=2 -- add-port s1 s1-eth3 -- set Interface s1-eth3 ofport_request=3 -- add-port s1 s1-eth4 -- set Interface s1-eth4 ofport_request=4 -- add-port s1 s1-eth5 -- set Interface s1-eth5 ofport_request=5 -- add-port s1 s1-eth6 -- set Interface s1-eth6 ofport_request=6 
+
+2025-07-12 15:25:28,549 - mininet - DEBUG - 7c39d8ae-25ca-4a71-88e1-8757624dd519
+  0
+2025-07-12 15:25:28,549 - mininet - INFO - 
+
+2025-07-12 15:25:33,558 - mininet - Level 25 - *** Ping: testing ping reachability
+
+2025-07-12 15:25:33,558 - mininet - Level 25 - h1 -> 
+2025-07-12 15:25:33,558 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-12 15:25:33,560 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-12 15:25:33,563 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=2.75 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.759/2.759/2.759/0.000 ms
+
+2025-07-12 15:25:33,563 - mininet - DEBUG - 
+2025-07-12 15:25:33,563 - mininet - Level 25 - h2 
+2025-07-12 15:25:33,564 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-12 15:25:33,565 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+
+2025-07-12 15:25:33,567 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=2.30 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.306/2.306/2.306/0.000 ms
+2025-07-12 15:25:33,567 - mininet - DEBUG - 
+
+2025-07-12 15:25:33,567 - mininet - DEBUG - 
+2025-07-12 15:25:33,567 - mininet - Level 25 - h3 
+2025-07-12 15:25:33,567 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-12 15:25:33,568 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-12 15:25:33,571 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.19 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.190/2.190/2.190/0.000 ms
+
+2025-07-12 15:25:33,571 - mininet - DEBUG - 
+2025-07-12 15:25:33,571 - mininet - Level 25 - h4 
+2025-07-12 15:25:33,571 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-12 15:25:33,572 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-12 15:25:33,574 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.22 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.220/2.220/2.220/0.000 ms
+
+2025-07-12 15:25:33,574 - mininet - DEBUG - 
+2025-07-12 15:25:33,575 - mininet - Level 25 - h5 
+2025-07-12 15:25:33,575 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-12 15:25:33,576 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-12 15:25:33,578 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.32 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.324/2.324/2.324/0.000 ms
+
+2025-07-12 15:25:33,578 - mininet - DEBUG - 
+2025-07-12 15:25:33,578 - mininet - Level 25 - h6 
+2025-07-12 15:25:33,579 - mininet - Level 25 - 
+
+2025-07-12 15:25:33,579 - mininet - Level 25 - h2 -> 
+2025-07-12 15:25:33,579 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-12 15:25:33,580 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-12 15:25:33,580 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.468 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.468/0.468/0.468/0.000 ms
+
+2025-07-12 15:25:33,580 - mininet - DEBUG - 
+2025-07-12 15:25:33,581 - mininet - Level 25 - h1 
+2025-07-12 15:25:33,581 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-12 15:25:33,582 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+
+2025-07-12 15:25:33,584 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=2.28 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.287/2.287/2.287/0.000 ms
+
+2025-07-12 15:25:33,585 - mininet - DEBUG - 
+2025-07-12 15:25:33,585 - mininet - Level 25 - h3 
+2025-07-12 15:25:33,585 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-12 15:25:33,586 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-12 15:25:33,588 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.12 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.125/2.125/2.125/0.000 ms
+
+2025-07-12 15:25:33,588 - mininet - DEBUG - 
+2025-07-12 15:25:33,588 - mininet - Level 25 - h4 
+2025-07-12 15:25:33,588 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-12 15:25:33,589 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-12 15:25:33,591 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.08 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.085/2.085/2.085/0.000 ms
+
+2025-07-12 15:25:33,592 - mininet - DEBUG - 
+2025-07-12 15:25:33,592 - mininet - Level 25 - h5 
+2025-07-12 15:25:33,592 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-12 15:25:33,593 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-12 15:25:33,595 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.24 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.246/2.246/2.246/0.000 ms
+
+2025-07-12 15:25:33,596 - mininet - Level 25 - h6 
+2025-07-12 15:25:33,596 - mininet - Level 25 - 
+
+2025-07-12 15:25:33,596 - mininet - Level 25 - h3 -> 
+2025-07-12 15:25:33,596 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-12 15:25:33,597 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-12 15:25:33,597 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.114 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.114/0.114/0.114/0.000 ms
+
+2025-07-12 15:25:33,598 - mininet - DEBUG - 
+2025-07-12 15:25:33,598 - mininet - Level 25 - h1 
+2025-07-12 15:25:33,598 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-12 15:25:33,599 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.024 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.024/0.024/0.024/0.000 ms
+
+2025-07-12 15:25:33,599 - mininet - DEBUG - 
+2025-07-12 15:25:33,599 - mininet - Level 25 - h2 
+2025-07-12 15:25:33,599 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-12 15:25:33,600 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-12 15:25:33,602 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.18 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.184/2.184/2.184/0.000 ms
+
+2025-07-12 15:25:33,603 - mininet - DEBUG - 
+2025-07-12 15:25:33,603 - mininet - Level 25 - h4 
+2025-07-12 15:25:33,603 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-12 15:25:33,604 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-12 15:25:33,606 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.07 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.073/2.073/2.073/0.000 ms
+
+2025-07-12 15:25:33,606 - mininet - DEBUG - 
+2025-07-12 15:25:33,606 - mininet - Level 25 - h5 
+2025-07-12 15:25:33,606 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-12 15:25:33,607 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-12 15:25:33,610 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.14 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.141/2.141/2.141/0.000 ms
+
+2025-07-12 15:25:33,610 - mininet - DEBUG - 
+2025-07-12 15:25:33,610 - mininet - Level 25 - h6 
+2025-07-12 15:25:33,610 - mininet - Level 25 - 
+
+2025-07-12 15:25:33,610 - mininet - Level 25 - h4 -> 
+2025-07-12 15:25:33,611 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-12 15:25:33,612 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-12 15:25:33,612 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.490 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.490/0.490/0.490/0.000 ms
+
+2025-07-12 15:25:33,612 - mininet - DEBUG - 
+2025-07-12 15:25:33,612 - mininet - Level 25 - h1 
+2025-07-12 15:25:33,612 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-12 15:25:33,613 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-12 15:25:33,613 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.023 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.023/0.023/0.023/0.000 ms
+
+2025-07-12 15:25:33,614 - mininet - DEBUG - 
+2025-07-12 15:25:33,614 - mininet - Level 25 - h2 
+2025-07-12 15:25:33,614 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-12 15:25:33,615 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.022 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.022/0.022/0.022/0.000 ms
+
+2025-07-12 15:25:33,615 - mininet - DEBUG - 
+2025-07-12 15:25:33,615 - mininet - Level 25 - h3 
+2025-07-12 15:25:33,615 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-12 15:25:33,616 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-12 15:25:33,618 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.22 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.223/2.223/2.223/0.000 ms
+
+2025-07-12 15:25:33,619 - mininet - DEBUG - 
+2025-07-12 15:25:33,619 - mininet - Level 25 - h5 
+2025-07-12 15:25:33,619 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-12 15:25:33,620 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-12 15:25:33,622 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.05 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.059/2.059/2.059/0.000 ms
+
+2025-07-12 15:25:33,622 - mininet - DEBUG - 
+2025-07-12 15:25:33,622 - mininet - Level 25 - h6 
+2025-07-12 15:25:33,622 - mininet - Level 25 - 
+
+2025-07-12 15:25:33,622 - mininet - Level 25 - h5 -> 
+2025-07-12 15:25:33,622 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-12 15:25:33,623 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-12 15:25:33,624 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.505 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.505/0.505/0.505/0.000 ms
+
+2025-07-12 15:25:33,624 - mininet - DEBUG - 
+2025-07-12 15:25:33,624 - mininet - Level 25 - h1 
+2025-07-12 15:25:33,624 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-12 15:25:33,625 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-12 15:25:33,625 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.022 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.022/0.022/0.022/0.000 ms
+
+2025-07-12 15:25:33,625 - mininet - DEBUG - 
+2025-07-12 15:25:33,625 - mininet - Level 25 - h2 
+2025-07-12 15:25:33,625 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-12 15:25:33,626 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+
+2025-07-12 15:25:33,626 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.024 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.024/0.024/0.024/0.000 ms
+
+2025-07-12 15:25:33,627 - mininet - DEBUG - 
+2025-07-12 15:25:33,627 - mininet - Level 25 - h3 
+2025-07-12 15:25:33,627 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-12 15:25:33,627 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-12 15:25:33,628 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=0.022 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+
+2025-07-12 15:25:33,628 - mininet - DEBUG - rtt min/avg/max/mdev = 0.022/0.022/0.022/0.000 ms
+
+2025-07-12 15:25:33,628 - mininet - DEBUG - 
+2025-07-12 15:25:33,628 - mininet - Level 25 - h4 
+2025-07-12 15:25:33,628 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-12 15:25:33,629 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-12 15:25:33,631 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.17 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.170/2.170/2.170/0.000 ms
+
+2025-07-12 15:25:33,631 - mininet - DEBUG - 
+2025-07-12 15:25:33,631 - mininet - Level 25 - h6 
+2025-07-12 15:25:33,631 - mininet - Level 25 - 
+
+2025-07-12 15:25:33,631 - mininet - Level 25 - h6 -> 
+2025-07-12 15:25:33,631 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-12 15:25:33,632 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-12 15:25:33,633 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.138 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.138/0.138/0.138/0.000 ms
+
+2025-07-12 15:25:33,633 - mininet - DEBUG - 
+2025-07-12 15:25:33,633 - mininet - Level 25 - h1 
+2025-07-12 15:25:33,633 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-12 15:25:33,634 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-12 15:25:33,634 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.022 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.022/0.022/0.022/0.000 ms
+
+2025-07-12 15:25:33,634 - mininet - DEBUG - 
+2025-07-12 15:25:33,634 - mininet - Level 25 - h2 
+2025-07-12 15:25:33,634 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-12 15:25:33,635 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+
+2025-07-12 15:25:33,635 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.021 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.021/0.021/0.021/0.000 ms
+
+2025-07-12 15:25:33,635 - mininet - DEBUG - 
+2025-07-12 15:25:33,635 - mininet - Level 25 - h3 
+2025-07-12 15:25:33,635 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-12 15:25:33,636 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-12 15:25:33,636 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=0.022 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.022/0.022/0.022/0.000 ms
+
+2025-07-12 15:25:33,636 - mininet - DEBUG - 
+2025-07-12 15:25:33,636 - mininet - Level 25 - h4 
+2025-07-12 15:25:33,637 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-12 15:25:33,637 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-12 15:25:33,638 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=0.021 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.021/0.021/0.021/0.000 ms
+
+2025-07-12 15:25:33,638 - mininet - DEBUG - 
+2025-07-12 15:25:33,638 - mininet - Level 25 - h5 
+2025-07-12 15:25:33,638 - mininet - Level 25 - 
+
+2025-07-12 15:25:33,638 - mininet - Level 25 - *** Results: 0% dropped (30/30 received)
+
+2025-07-12 15:25:38,651 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/test_output/normal.pcap
+2025-07-12 15:25:38,651 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Capturing on switch s1 interface any
+2025-07-12 15:25:38,652 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/test_output/normal.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-12 15:25:38,657 - mininet - DEBUG - _popen ['mnexec', '-da', '123064', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/test_output/normal.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 123241
+2025-07-12 15:25:40,660 - src.utils.enhanced_pcap_processing - [32mINFO[0m - tcpdump started successfully with PID: 123241
+2025-07-12 15:25:42,669 - BENIGN - [32mINFO[0m - Starting benign traffic for 5 seconds...
+2025-07-12 15:25:42,669 - mininet - DEBUG - *** h3 : ('ping -c 1 10.0.0.5 > /dev/null',)
+
+2025-07-12 15:25:42,670 - mininet - DEBUG - 
+2025-07-12 15:25:42,670 - mininet - DEBUG - *** h5 : ('ping -c 1 10.0.0.3 > /dev/null',)
+
+2025-07-12 15:25:42,672 - mininet - DEBUG - 
+2025-07-12 15:25:42,672 - BENIGN - DEBUG - Generated ICMP traffic 0 [len=84B]
+2025-07-12 15:25:42,672 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=8042, dport=12345, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:42,727 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:43,273 - mininet - DEBUG - 
+2025-07-12 15:25:43,273 - BENIGN - DEBUG - Generated TCP SYN from h3:8042 -> h5:12345 [len=54B]
+2025-07-12 15:25:43,374 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=12345, dport=8042, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:43,429 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:43,996 - mininet - DEBUG - 
+2025-07-12 15:25:43,996 - BENIGN - DEBUG - Generated TCP SYN-ACK from h5:12345 <- h3:8042 [len=54B]
+2025-07-12 15:25:44,097 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=8042, dport=12345, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:44,152 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:44,738 - mininet - DEBUG - 
+2025-07-12 15:25:44,739 - BENIGN - DEBUG - Generated TCP ACK from h3:8042 -> h5:12345 [len=54B]
+2025-07-12 15:25:44,840 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;tcp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=8042, dport=12345, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'a4b43fb5a9abaf3113fb343955a27f1795af9629d1796c7c56969295504e733f82ae9420b1bfa91763967ea6b07798a42dbd15fe078bbb1d8db793723bc406758afdaaa6da113d0cb850a871418864afec736fc4731172045494229f05bba5160940dc9f6e6be37752f0db7e6524107f16cde8c7c7f6c348eb8d48335dab81afffb8324178383ca20567d4e767e1fd531cafb829c921c944b0d25879d1bf50e29c2bbb400dd1770a5acdc6b71b4ec77046805d7d49c41ea1b9ce7701e084db490898c2a0554dd55744aadd7f8e39dcf19003bd79694b2911088487da1858df72e650e604d00eec0f446fb07296d31b4c98bb098f3f52a082937d475f7c8d9c0d1940ee2b647ef3390f61ae5fdb75ca9d32df5359d80ccbc5c8233ee903d87f2a8b055523363b3bc47ebdc6e7c420a9981510b16ad6ec08b95d389f18322ba6dd72c8aade5c35c068a6ff43406a616203eb86dc4710bbc2f19f510a412fee6f8dfa20b5f30fbdc0d3322b222a1cbae14419d3f83ecfa6e974bc\')); sendp(tcp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:44,895 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:45,451 - mininet - DEBUG - 
+2025-07-12 15:25:45,451 - BENIGN - DEBUG - Generated TCP data traffic from h3:8042 -> h5:12345 [content='TCP data'] [Session 1] [len=431B]
+2025-07-12 15:25:45,451 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=12345, dport=8042, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:45,506 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:46,074 - mininet - DEBUG - 
+2025-07-12 15:25:46,074 - BENIGN - DEBUG - Generated TCP ACK reply from h5:12345 <- h3:8042 [len=54B]
+2025-07-12 15:25:46,074 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;udp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=60429, dport=12346)/Raw(load=bytes.fromhex(\'6543b407fae6f983a9e09cb61d88e545cf4560e5dfc9864075e015104c8d58b380585fa6f1d11e863eb7a76aa25206f218ab81fc736f276f5f16184930c4f042b3a07f6239f06599d5c506895777658a8b959425ee764b6f20d6a379b34a9b796bf29db040fad2d70c571878477efe92b76d8b52bedf03121bf86232f7a21c95575797086223930261482747d0af52f5b7ec411b2514994bda49e3a0a2fe4ae30bb4b2b9331c6b07d7acffbdb96713509c5d24a5b93d66d826bf1890f17b6f5e95ad81b6f0a82c701dc1e59ac670528d068b05daaf42fbf73f58bdd7a4b8a15142cfbabbd71855d2a70621aac08f4c0aef21a5d7da2a122a61f446ad447637a715f37a0ed4b23d8564a574f2f3523dbc6e442f99864d45a724502aa601ac9c1fd1\')); sendp(udp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:46,129 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:46,704 - mininet - DEBUG - 
+2025-07-12 15:25:46,704 - BENIGN - DEBUG - Generated UDP traffic from h3:60429 -> h5:12346 [content='6543b407fae6f983a9e09cb61d88e545cf4560e5...'] [Session 2] [len=331B]
+2025-07-12 15:25:46,704 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=45091, dport=23, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:46,759 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:47,337 - mininet - DEBUG - 
+2025-07-12 15:25:47,337 - BENIGN - DEBUG - Generated Telnet SYN from h3:45091 -> h5:23 [len=54B]
+2025-07-12 15:25:47,442 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=23, dport=45091, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:47,498 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:48,072 - mininet - DEBUG - 
+2025-07-12 15:25:48,072 - BENIGN - DEBUG - Generated Telnet SYN-ACK from h5:23 <- h3:45091 [len=54B]
+2025-07-12 15:25:48,173 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=45091, dport=23, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:48,227 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:48,779 - mininet - DEBUG - 
+2025-07-12 15:25:48,780 - BENIGN - DEBUG - Generated Telnet ACK from h3:45091 -> h5:23 [len=54B]
+2025-07-12 15:25:48,881 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;telnet_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=45091, dport=23, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'7c9a09049c3449fbe112aeaf93243f10a638955361403e233fa6a5f1dddc73f78c618554275f468dbeed4d3b229d189e57cbc3d49365d58b4ec2d0b6cca7271486ff0b32e565513f0c254766e5dd42d16ca0e70bf547706cafc8da4a7c93b66e2fb013e80814a6440c5fc7b113f4e3cc093dc5f9c5933397f47181f60318cddfb7f7edee1e404117883cfe053b5b6d7bf5f89868ff657b308bd8fc2f37b4adb88c62ebe2c2f4d6ff579d7f1c642e635634e616f4be08383da706f33bff5341ec670185b1fefaa30cbdc88498f8e57001987e5436c1a7e515b7353f54a59a2fef941ee43c3bb7431a6bd7e8490e8cac4f58014f72a43988208c49498533defa5a6d78c08d15e0b5edf4b474441f8317e087b67ac8338f\')); sendp(telnet_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:48,936 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:49,476 - mininet - DEBUG - 
+2025-07-12 15:25:49,476 - BENIGN - DEBUG - Generated Telnet data traffic from h3:45091 -> h5:23 [content='Telnet command'] [Session 3] [len=332B]
+2025-07-12 15:25:49,476 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=23, dport=45091, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:49,532 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:50,086 - mininet - DEBUG - 
+2025-07-12 15:25:50,086 - BENIGN - DEBUG - Generated Telnet ACK reply from h5:23 <- h3:45091 [len=54B]
+2025-07-12 15:25:50,086 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=55580, dport=22, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:50,141 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:50,693 - mininet - DEBUG - 
+2025-07-12 15:25:50,693 - BENIGN - DEBUG - Generated SSH SYN from h3:55580 -> h5:22 [len=54B]
+2025-07-12 15:25:50,795 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=22, dport=55580, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:50,850 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:51,400 - mininet - DEBUG - 
+2025-07-12 15:25:51,400 - BENIGN - DEBUG - Generated SSH SYN-ACK from h5:22 <- h3:55580 [len=54B]
+2025-07-12 15:25:51,501 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=55580, dport=22, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:51,556 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:52,110 - mininet - DEBUG - 
+2025-07-12 15:25:52,110 - BENIGN - DEBUG - Generated SSH ACK from h3:55580 -> h5:22 [len=54B]
+2025-07-12 15:25:52,211 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ssh_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=55580, dport=22, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'2fbe9307ede349f513f1b55e482b37ce123d3b737a84c78ece0c2d331647cbd0cdd9d91f682c3ac00d41bb1b5f687f376d8981cc9d55c8dcb71a44f6ef9e7f142c85e77a5cacde3c9884bd9945d1c5866e5309afd48fd9dd4651d1a7b5ff76a29d219d6edaab164617c683a2332b2e5218e05ffc41ad857d5a0680e861057da4b8c9ce72c801dab80a26eef3822d0cc7ba8e96f8b09b2ff1e9d49d63a408e1c00bf7427a0d42d612cf4c2467d5549bee7460fa4ff051877e9d5d82bbbdc0d4d5522adc199554f0e40e804a34902a78021eb9c682e3742dd10e977f1dce125b43a72a85df1af303f85463eb704029912d5a\')); sendp(ssh_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:52,266 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:52,800 - mininet - DEBUG - 
+2025-07-12 15:25:52,800 - BENIGN - DEBUG - Generated SSH data traffic from h3:55580 -> h5:22 [content='SSH encrypted data'] [Session 4] [len=295B]
+2025-07-12 15:25:52,800 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=22, dport=55580, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:52,855 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:53,410 - mininet - DEBUG - 
+2025-07-12 15:25:53,410 - BENIGN - DEBUG - Generated SSH ACK reply from h5:22 <- h3:55580 [len=54B]
+2025-07-12 15:25:53,410 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=22645, dport=21, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:53,465 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:54,017 - mininet - DEBUG - 
+2025-07-12 15:25:54,017 - BENIGN - DEBUG - Generated FTP SYN from h3:22645 -> h5:21 [len=54B]
+2025-07-12 15:25:54,120 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=21, dport=22645, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:54,175 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:54,725 - mininet - DEBUG - 
+2025-07-12 15:25:54,725 - BENIGN - DEBUG - Generated FTP SYN-ACK from h5:21 <- h3:22645 [len=54B]
+2025-07-12 15:25:54,826 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=22645, dport=21, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:54,881 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:55,437 - mininet - DEBUG - 
+2025-07-12 15:25:55,437 - BENIGN - DEBUG - Generated FTP ACK from h3:22645 -> h5:21 [len=54B]
+2025-07-12 15:25:55,540 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ftp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=22645, dport=21, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'116b93139fc0bd4e27ef29927b54e10aa19a2100053d4fe69d253997e8effd255fe96b6ebe16f5cc81f942f5fbf0f2ab3bf299fb2ea35be3d3c8516995509bf8312822b2ef94e09e6d845e4da0a26e2e2fe95f88389fd6f415d75711e87674c91f296c0b014f8b5adfaa4a6bac272b9dd507ff09239914876db5e554fd\')); sendp(ftp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:55,595 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:56,142 - mininet - DEBUG - 
+2025-07-12 15:25:56,142 - BENIGN - DEBUG - Generated FTP data traffic from h3:22645 -> h5:21 [content='FTP file transfer'] [Session 5] [len=179B]
+2025-07-12 15:25:56,142 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=21, dport=22645, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:56,197 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:56,744 - mininet - DEBUG - 
+2025-07-12 15:25:56,744 - BENIGN - DEBUG - Generated FTP ACK reply from h5:21 <- h3:22645 [len=54B]
+2025-07-12 15:25:56,744 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=3039, dport=80, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:56,799 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:57,336 - mininet - DEBUG - 
+2025-07-12 15:25:57,337 - BENIGN - DEBUG - Generated HTTP SYN from h3:3039 -> h5:80 [len=54B]
+2025-07-12 15:25:57,437 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=80, dport=3039, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:57,493 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:58,042 - mininet - DEBUG - 
+2025-07-12 15:25:58,042 - BENIGN - DEBUG - Generated HTTP SYN-ACK from h5:80 <- h3:3039 [len=54B]
+2025-07-12 15:25:58,146 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=3039, dport=80, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:58,201 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:25:58,736 - mininet - DEBUG - 
+2025-07-12 15:25:58,736 - BENIGN - DEBUG - Generated HTTP ACK from h3:3039 -> h5:80 [len=54B]
+2025-07-12 15:25:58,836 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;http_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=3039, dport=80, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'474554202f696e6465782e68746d6c20485454502f312e310d0a486f73743a2031302e302e302e350d0a557365722d4167656e743a20536361707942656e69676e547261666669630d0a436f6e74656e742d4c656e6774683a203432390d0a0d0a278dafc7dc19f92c6298c5872795289411e0d33500e17cd663a998be3df727bc2f15366696e16f5d26e1650be8eb5255bf887a4c819bd52498d364823734034460255e3598794e39bb229388d12773c90f7f1a6045f6269c24c1aab32c86c2e327b26ef39daa33041b9c87bb50af771924a903e2405421f9fe5954f2626bf17351bda2f68579f6b6ff83491acbc954a338162b39c3ef3f0bce950cf743563f3476d2ed6be92f7c2e932e94d62b531b028e474382dfa0515d11570b7bb2d6852f3e03b5df4dc58201d68d7bf08e74f690b02bea7f38d5870f273868be66c28d5b26ef6a9af64addf75d8a688ac38acd07e744e3cfca31bc78968bebd26d5268828b10ff29dbc7521f45f3c4f2f06178a08a127a29ef899826398378c456319854b4e75d2852efe801eb34bfae58a636a6ca5fae355aff0dab6c4a4ec44db2f108dc01a6b63c30d1763accd618e622b3f49bef467f50fe09667e36007714d976afa56514996ce2ca7b60bdd9a8c1633365fe969f221a12190ae2a4ab4737d0bf8fa106add428157a98aa718f60352faf48c354ca57d7ffaf91fd75a0f8ee2a4c05597433e52f786c62d9b3fb9cda\')); sendp(http_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:58,891 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+
+2025-07-12 15:25:58,892 - mininet - DEBUG -   import cryptography
+
+2025-07-12 15:25:59,426 - mininet - DEBUG - 
+2025-07-12 15:25:59,427 - BENIGN - DEBUG - Generated HTTP data traffic from h3:3039 -> h5:80 [content='GET /index.html HTTP/1.1'] [Session 6] [len=580B]
+2025-07-12 15:25:59,427 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=80, dport=80, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-12 15:25:59,482 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:26:00,025 - mininet - DEBUG - 
+2025-07-12 15:26:00,025 - BENIGN - DEBUG - Generated HTTP ACK reply from h5:80 <- h3:3039 [len=54B]
+2025-07-12 15:26:00,025 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=44158, dport=443, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:26:00,081 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:26:00,634 - mininet - DEBUG - 
+2025-07-12 15:26:00,634 - BENIGN - DEBUG - Generated HTTPS SYN from h3:44158 -> h5:443 [len=54B]
+2025-07-12 15:26:00,735 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=443, dport=443, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-12 15:26:00,790 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:26:01,347 - mininet - DEBUG - 
+2025-07-12 15:26:01,347 - BENIGN - DEBUG - Generated HTTPS SYN-ACK from h5:443 <- h3:44158 [len=54B]
+2025-07-12 15:26:01,451 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=44158, dport=443, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:26:01,506 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:26:02,040 - mininet - DEBUG - 
+2025-07-12 15:26:02,040 - BENIGN - DEBUG - Generated HTTPS ACK from h3:44158 -> h5:443 [len=54B]
+2025-07-12 15:26:02,142 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;https_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=44158, dport=443, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'1fd4bb8a53f8a57b117a9bc889d5571b678587887ced51eebb325242f5d48cd2af77b66a4b0b68a27b03cc7d7db994c660ee1e400c7337a3efb6d9016a35075069141b31e8c5d05de60a6283a32faf3c77ab83e3eb21fd00f9a3fea95672a197d514916762071764fc8a75caa906fb62089b5a8ed453db2309dd3cde09f3fe9b5207d918d3fba452cef08fdf2ca1ed84edc1496c5423e3fc44950f6b23d37569a6b298e9aaddd0601769aebd062a34918087085e1d6d8eb9c92d02b64a74faefac49c4565534cc80131d4072c1812b21245d003dfe53b6d4914cb87085192a87d20b0b7a26f915004fadda0734d923612809db9a95f4752cc5acfcbdfc498f231bfc6018a2b572278fefe27099f3d73638dbdace4d790490d2d14d19d43a062f7e6a22ca4c5507f1e79444209f6932beca313d04989239712d6e9b915d672d47c0299b2c9ff41ba2fa8d747a45a5c63e2f83b7911e0ee1beb8299c4f8484742c1fcb5fb4c799f7d9194392806b5e9f83981abe\')); sendp(https_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:26:02,198 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:26:02,740 - mininet - DEBUG - 
+2025-07-12 15:26:02,741 - BENIGN - DEBUG - Generated HTTPS data traffic from h3:44158 -> h5:443 [content='Encrypted Application Data'] [Session 7] [len=425B]
+2025-07-12 15:26:02,741 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=443, dport=443, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-12 15:26:02,796 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+
+2025-07-12 15:26:02,796 - mininet - DEBUG -   import cryptography
+
+2025-07-12 15:26:03,344 - mininet - DEBUG - 
+2025-07-12 15:26:03,344 - BENIGN - DEBUG - Generated HTTPS ACK reply from h5:443 <- h3:44158 [len=54B]
+2025-07-12 15:26:03,344 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;dns_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=43008, dport=53)/DNS(rd=1, qd=DNSQR(qname=\'example.com\')); sendp(dns_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-12 15:26:03,399 - mininet - DEBUG - /usr/local/lib/python3.6/dist-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  import cryptography
+
+2025-07-12 15:26:03,950 - mininet - DEBUG - 
+2025-07-12 15:26:03,950 - BENIGN - DEBUG - Generated DNS query from h3:43008 -> h5:53 [qname='example.com'] [Session 8] [len=71B]
+2025-07-12 15:26:04,954 - BENIGN - [32mINFO[0m - Benign traffic finished.
+2025-07-12 15:26:04,955 - BENIGN - [32mINFO[0m - Summary: 8 protocol sessions [ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP, HTTPS, DNS], 34 packets sent.
+2025-07-12 15:26:05,030 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/test_output/syn_flood.pcap
+2025-07-12 15:26:05,031 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Capturing on switch s1 interface any
+2025-07-12 15:26:05,031 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/test_output/syn_flood.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-12 15:26:05,036 - mininet - DEBUG - _popen ['mnexec', '-da', '123064', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/test_output/syn_flood.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 123373
+2025-07-12 15:26:07,040 - src.utils.enhanced_pcap_processing - [32mINFO[0m - tcpdump started successfully with PID: 123373
+2025-07-12 15:26:09,131 - mininet - DEBUG - _popen ['mnexec', '-da', '123049', 'python3', '-c', "from scapy.all import *; sendp(Ether()/IP(dst='10.0.0.6')/TCP(dport=80, flags='S'), loop=1, inter=0.01, verbose=0, iface='h1-eth0')"] 123374
+2025-07-12 15:26:14,707 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/test_output/udp_flood.pcap
+2025-07-12 15:26:14,708 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Capturing on switch s1 interface any
+2025-07-12 15:26:14,708 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/test_output/udp_flood.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-12 15:26:14,713 - mininet - DEBUG - _popen ['mnexec', '-da', '123064', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/test_output/udp_flood.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 123378
+2025-07-12 15:26:16,717 - src.utils.enhanced_pcap_processing - [32mINFO[0m - tcpdump started successfully with PID: 123378
+2025-07-12 15:26:26,945 - mininet - DEBUG - _popen ['mnexec', '-da', '123051', 'python3', '-c', "from scapy.all import *; sendp(Ether()/IP(dst='10.0.0.4')/UDP(dport=53), loop=1, inter=0.01, verbose=0, iface='h2-eth0')"] 123379
+2025-07-12 15:26:27,524 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/test_output/icmp_flood.pcap
+2025-07-12 15:26:27,524 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Capturing on switch s1 interface any
+2025-07-12 15:26:27,524 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/test_output/icmp_flood.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-12 15:26:27,529 - mininet - DEBUG - _popen ['mnexec', '-da', '123064', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/test_output/icmp_flood.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 123380
+2025-07-12 15:26:29,536 - src.utils.enhanced_pcap_processing - [32mINFO[0m - tcpdump started successfully with PID: 123380
+2025-07-12 15:26:44,949 - mininet - DEBUG - _popen ['mnexec', '-da', '123051', 'python3', '-c', "from scapy.all import *; sendp(Ether()/IP(dst='10.0.0.4')/ICMP(), loop=1, inter=0.01, verbose=0, iface='h2-eth0')"] 123381
+2025-07-12 15:26:45,538 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/test_output/ad_syn.pcap
+2025-07-12 15:26:45,538 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Capturing on switch s1 interface any
+2025-07-12 15:26:45,539 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/test_output/ad_syn.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-12 15:26:45,544 - mininet - DEBUG - _popen ['mnexec', '-da', '123064', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/test_output/ad_syn.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 123382
+2025-07-12 15:26:47,549 - src.utils.enhanced_pcap_processing - [32mINFO[0m - tcpdump started successfully with PID: 123382
+2025-07-12 15:27:00,277 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/test_output/ad_udp.pcap
+2025-07-12 15:27:00,277 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Capturing on switch s1 interface any
+2025-07-12 15:27:00,278 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/test_output/ad_udp.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-12 15:27:00,283 - mininet - DEBUG - _popen ['mnexec', '-da', '123064', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/test_output/ad_udp.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 123383
+2025-07-12 15:27:02,289 - src.utils.enhanced_pcap_processing - [32mINFO[0m - tcpdump started successfully with PID: 123383
+2025-07-12 15:27:19,640 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/test_output/ad_slow.pcap
+2025-07-12 15:27:19,640 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Capturing on switch s1 interface any
+2025-07-12 15:27:19,640 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/test_output/ad_slow.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-12 15:27:19,646 - mininet - DEBUG - _popen ['mnexec', '-da', '123064', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/test_output/ad_slow.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 123385
+2025-07-12 15:27:21,648 - src.utils.enhanced_pcap_processing - [32mINFO[0m - tcpdump started successfully with PID: 123385
+2025-07-12 15:27:23,658 - mininet - DEBUG - _popen ['mnexec', '-da', '123059', '/bin/bash', '-c', 'python3 -m http.server 80 --bind 10.0.0.6'] 123386
+2025-07-12 15:27:24,666 - mininet - DEBUG - _popen ['mnexec', '-da', '123051', '/bin/bash', '-c', 'slowhttptest -c 100 -H -i 10 -r 20 -l 5 -u http://10.0.0.6:80/ -t SR'] 123387
+2025-07-12 15:27:35,868 - MAIN - [32mINFO[0m - PCAP generation complete.
+2025-07-12 15:27:35,868 - MAIN - [32mINFO[0m - Processing normal.pcap with label 'normal'...
+2025-07-12 15:27:35,868 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/test_output/normal.pcap
+2025-07-12 15:27:35,898 - src.utils.enhanced_pcap_processing - [32mINFO[0m - PCAP integrity check passed. Found 136 packets.
+2025-07-12 15:27:35,898 - MAIN - [32mINFO[0m - PCAP integrity check passed for test_output/normal.pcap: 136 packets
+2025-07-12 15:27:35,899 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Skipping timestamp validation as tcpdump is used.
+2025-07-12 15:27:35,928 - MAIN - [32mINFO[0m - Using baseline timestamp for labeling test_output/normal.pcap: 1752305142.670606
+2025-07-12 15:27:35,929 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Passing PCAP to processing function.
+2025-07-12 15:27:35,977 - MAIN - [32mINFO[0m - Processing syn_flood.pcap with label 'syn_flood'...
+2025-07-12 15:27:35,977 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/test_output/syn_flood.pcap
+2025-07-12 15:27:36,239 - src.utils.enhanced_pcap_processing - [32mINFO[0m - PCAP integrity check passed. Found 1464 packets.
+2025-07-12 15:27:36,239 - MAIN - [32mINFO[0m - PCAP integrity check passed for test_output/syn_flood.pcap: 1464 packets
+2025-07-12 15:27:36,239 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Skipping timestamp validation as tcpdump is used.
+2025-07-12 15:27:36,502 - MAIN - [32mINFO[0m - Using baseline timestamp for labeling test_output/syn_flood.pcap: 1752305169.084684
+2025-07-12 15:27:36,502 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Passing PCAP to processing function.
+2025-07-12 15:27:36,913 - MAIN - [32mINFO[0m - Processing udp_flood.pcap with label 'udp_flood'...
+2025-07-12 15:27:36,914 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/test_output/udp_flood.pcap
+2025-07-12 15:27:36,914 - src.utils.enhanced_pcap_processing - [32mINFO[0m - PCAP integrity check passed. Found 1 packets.
+2025-07-12 15:27:36,915 - MAIN - [32mINFO[0m - PCAP integrity check passed for test_output/udp_flood.pcap: 1 packets
+2025-07-12 15:27:36,915 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Skipping timestamp validation as tcpdump is used.
+2025-07-12 15:27:36,915 - MAIN - [32mINFO[0m - Using baseline timestamp for labeling test_output/udp_flood.pcap: 1752305184.934077
+2025-07-12 15:27:36,916 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Passing PCAP to processing function.
+2025-07-12 15:27:36,919 - MAIN - [32mINFO[0m - Processing icmp_flood.pcap with label 'icmp_flood'...
+2025-07-12 15:27:36,919 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/test_output/icmp_flood.pcap
+2025-07-12 15:27:36,920 - src.utils.enhanced_pcap_processing - [32mINFO[0m - PCAP integrity check passed. Found 3 packets.
+2025-07-12 15:27:36,921 - MAIN - [32mINFO[0m - PCAP integrity check passed for test_output/icmp_flood.pcap: 3 packets
+2025-07-12 15:27:36,921 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Skipping timestamp validation as tcpdump is used.
+2025-07-12 15:27:36,922 - MAIN - [32mINFO[0m - Using baseline timestamp for labeling test_output/icmp_flood.pcap: 1752305197.735331
+2025-07-12 15:27:36,922 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Passing PCAP to processing function.
+2025-07-12 15:27:36,926 - MAIN - [32mINFO[0m - Processing ad_syn.pcap with label 'ad_syn'...
+2025-07-12 15:27:36,926 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/test_output/ad_syn.pcap
+2025-07-12 15:27:36,927 - src.utils.enhanced_pcap_processing - [32mINFO[0m - PCAP integrity check passed. Found 7 packets.
+2025-07-12 15:27:36,928 - MAIN - [32mINFO[0m - PCAP integrity check passed for test_output/ad_syn.pcap: 7 packets
+2025-07-12 15:27:36,928 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Skipping timestamp validation as tcpdump is used.
+2025-07-12 15:27:36,929 - MAIN - [32mINFO[0m - Using baseline timestamp for labeling test_output/ad_syn.pcap: 1752305209.596706
+2025-07-12 15:27:36,930 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Passing PCAP to processing function.
+2025-07-12 15:27:36,935 - MAIN - [32mINFO[0m - Processing ad_udp.pcap with label 'ad_udp'...
+2025-07-12 15:27:36,935 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/test_output/ad_udp.pcap
+2025-07-12 15:27:36,941 - src.utils.enhanced_pcap_processing - [32mINFO[0m - PCAP integrity check passed. Found 28 packets.
+2025-07-12 15:27:36,941 - MAIN - [32mINFO[0m - PCAP integrity check passed for test_output/ad_udp.pcap: 28 packets
+2025-07-12 15:27:36,941 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Skipping timestamp validation as tcpdump is used.
+2025-07-12 15:27:36,947 - MAIN - [32mINFO[0m - Using baseline timestamp for labeling test_output/ad_udp.pcap: 1752305224.299509
+2025-07-12 15:27:36,948 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Passing PCAP to processing function.
+2025-07-12 15:27:36,959 - MAIN - [32mINFO[0m - Processing ad_slow.pcap with label 'ad_slow'...
+2025-07-12 15:27:36,959 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/test_output/ad_slow.pcap
+2025-07-12 15:27:37,061 - src.utils.enhanced_pcap_processing - [32mINFO[0m - PCAP integrity check passed. Found 512 packets.
+2025-07-12 15:27:37,062 - MAIN - [32mINFO[0m - PCAP integrity check passed for test_output/ad_slow.pcap: 512 packets
+2025-07-12 15:27:37,062 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Skipping timestamp validation as tcpdump is used.
+2025-07-12 15:27:37,164 - MAIN - [32mINFO[0m - Using baseline timestamp for labeling test_output/ad_slow.pcap: 1752305244.669419
+2025-07-12 15:27:37,164 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Passing PCAP to processing function.
+2025-07-12 15:27:37,343 - MAIN - [32mINFO[0m - Combined labeled CSV generated at: /home/user/Desktop/dataset_generation/test_output/packet_features.csv
+2025-07-12 15:27:37,343 - MAIN - [32mINFO[0m - Final combined CSV created successfully.
+2025-07-12 15:27:37,343 - MAIN - [32mINFO[0m - Flow-level dataset generated at: /home/user/Desktop/dataset_generation/test_output/flow_features.csv
+2025-07-12 15:27:37,343 - MAIN - [32mINFO[0m - Generating dataset summary...
+2025-07-12 15:27:37,402 - MAIN - [32mINFO[0m - Dataset generation summary displayed above

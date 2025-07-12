@@ -1,0 +1,115 @@
+/home/user/.local/lib/python3.6/site-packages/OpenSSL/_util.py:6: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography will remove support for Python 3.6.
+  from cryptography.hazmat.bindings.openssl.binding import Binding
+loading app /home/user/Desktop/dataset_generation/src/controller/ryu_controller_app.py
+loading app ryu.topology.switches
+loading app ryu.controller.ofp_handler
+creating context wsgi
+instantiating app /home/user/Desktop/dataset_generation/src/controller/ryu_controller_app.py of FlowMonitorController
+[INFO] Ryu Flow Monitor Controller started
+Ryu Flow Monitor Controller started
+instantiating app ryu.topology.switches of Switches
+instantiating app ryu.controller.ofp_handler of OFPHandler
+(123035) wsgi starting up on http://0.0.0.0:8080
+(123035) accepted ('127.0.0.1', 52408)
+127.0.0.1 - - [12/Jul/2025 15:25:28] "GET /hello HTTP/1.1" 200 173 0.001051
+[INFO] Switch 0x1 connected
+(123035) accepted ('127.0.0.1', 52422)
+127.0.0.1 - - [12/Jul/2025 15:25:33] "GET /flows HTTP/1.1" 200 389 0.000312
+(123035) accepted ('127.0.0.1', 52436)
+127.0.0.1 - - [12/Jul/2025 15:25:34] "GET /flows HTTP/1.1" 200 389 0.000290
+(123035) accepted ('127.0.0.1', 52444)
+127.0.0.1 - - [12/Jul/2025 15:25:35] "GET /flows HTTP/1.1" 200 9990 0.000422
+(123035) accepted ('127.0.0.1', 41540)
+127.0.0.1 - - [12/Jul/2025 15:25:36] "GET /flows HTTP/1.1" 200 9990 0.000432
+(123035) accepted ('127.0.0.1', 41542)
+127.0.0.1 - - [12/Jul/2025 15:25:37] "GET /flows HTTP/1.1" 200 9990 0.000401
+(123035) accepted ('127.0.0.1', 41554)
+127.0.0.1 - - [12/Jul/2025 15:25:38] "GET /flows HTTP/1.1" 200 9990 0.000453
+(123035) accepted ('127.0.0.1', 41570)
+127.0.0.1 - - [12/Jul/2025 15:25:39] "GET /flows HTTP/1.1" 200 9991 0.000416
+(123035) accepted ('127.0.0.1', 41578)
+127.0.0.1 - - [12/Jul/2025 15:25:40] "GET /flows HTTP/1.1" 200 9991 0.000413
+(123035) accepted ('127.0.0.1', 41586)
+127.0.0.1 - - [12/Jul/2025 15:25:41] "GET /flows HTTP/1.1" 200 9991 0.000419
+(123035) accepted ('127.0.0.1', 41600)
+127.0.0.1 - - [12/Jul/2025 15:25:42] "GET /flows HTTP/1.1" 200 9991 0.000394
+(123035) accepted ('127.0.0.1', 41610)
+127.0.0.1 - - [12/Jul/2025 15:25:43] "GET /flows HTTP/1.1" 200 9994 0.000463
+(123035) accepted ('127.0.0.1', 41620)
+127.0.0.1 - - [12/Jul/2025 15:25:44] "GET /flows HTTP/1.1" 200 9994 0.000463
+(123035) accepted ('127.0.0.1', 56668)
+127.0.0.1 - - [12/Jul/2025 15:25:45] "GET /flows HTTP/1.1" 200 10023 0.000411
+(123035) accepted ('127.0.0.1', 56684)
+127.0.0.1 - - [12/Jul/2025 15:25:46] "GET /flows HTTP/1.1" 200 10023 0.000446
+(123035) accepted ('127.0.0.1', 56700)
+127.0.0.1 - - [12/Jul/2025 15:25:47] "GET /flows HTTP/1.1" 200 10027 0.000449
+(123035) accepted ('127.0.0.1', 56704)
+127.0.0.1 - - [12/Jul/2025 15:25:48] "GET /flows HTTP/1.1" 200 10027 0.000454
+(123035) accepted ('127.0.0.1', 56712)
+127.0.0.1 - - [12/Jul/2025 15:25:49] "GET /flows HTTP/1.1" 200 10027 0.000441
+(123035) accepted ('127.0.0.1', 56724)
+127.0.0.1 - - [12/Jul/2025 15:25:50] "GET /flows HTTP/1.1" 200 10027 0.000475
+(123035) accepted ('127.0.0.1', 56740)
+127.0.0.1 - - [12/Jul/2025 15:25:51] "GET /flows HTTP/1.1" 200 10027 0.000438
+(123035) accepted ('127.0.0.1', 56754)
+127.0.0.1 - - [12/Jul/2025 15:25:52] "GET /flows HTTP/1.1" 200 10027 0.000427
+(123035) accepted ('127.0.0.1', 56762)
+127.0.0.1 - - [12/Jul/2025 15:25:53] "GET /flows HTTP/1.1" 200 10027 0.000456
+(123035) accepted ('127.0.0.1', 56774)
+127.0.0.1 - - [12/Jul/2025 15:25:54] "GET /flows HTTP/1.1" 200 10027 0.000457
+(123035) accepted ('127.0.0.1', 37860)
+127.0.0.1 - - [12/Jul/2025 15:25:55] "GET /flows HTTP/1.1" 200 10027 0.001325
+(123035) accepted ('127.0.0.1', 37872)
+127.0.0.1 - - [12/Jul/2025 15:25:56] "GET /flows HTTP/1.1" 200 10027 0.001206
+(123035) accepted ('127.0.0.1', 37874)
+127.0.0.1 - - [12/Jul/2025 15:25:57] "GET /flows HTTP/1.1" 200 10027 0.001343
+(123035) accepted ('127.0.0.1', 37888)
+127.0.0.1 - - [12/Jul/2025 15:25:58] "GET /flows HTTP/1.1" 200 10027 0.000451
+(123035) accepted ('127.0.0.1', 37892)
+127.0.0.1 - - [12/Jul/2025 15:25:59] "GET /flows HTTP/1.1" 200 10028 0.000443
+(123035) accepted ('127.0.0.1', 37902)
+127.0.0.1 - - [12/Jul/2025 15:26:00] "GET /flows HTTP/1.1" 200 10028 0.001364
+(123035) accepted ('127.0.0.1', 37908)
+127.0.0.1 - - [12/Jul/2025 15:26:01] "GET /flows HTTP/1.1" 200 10028 0.000416
+(123035) accepted ('127.0.0.1', 37918)
+127.0.0.1 - - [12/Jul/2025 15:26:02] "GET /flows HTTP/1.1" 200 10028 0.000446
+(123035) accepted ('127.0.0.1', 37922)
+127.0.0.1 - - [12/Jul/2025 15:26:03] "GET /flows HTTP/1.1" 200 10028 0.000470
+(123035) accepted ('127.0.0.1', 37926)
+127.0.0.1 - - [12/Jul/2025 15:26:04] "GET /flows HTTP/1.1" 200 10028 0.000461
+(123035) accepted ('127.0.0.1', 33386)
+127.0.0.1 - - [12/Jul/2025 15:26:05] "GET /flows HTTP/1.1" 200 10028 0.000436
+(123035) accepted ('127.0.0.1', 33392)
+127.0.0.1 - - [12/Jul/2025 15:26:06] "GET /flows HTTP/1.1" 200 10028 0.000437
+(123035) accepted ('127.0.0.1', 33408)
+127.0.0.1 - - [12/Jul/2025 15:26:07] "GET /flows HTTP/1.1" 200 10028 0.000414
+(123035) accepted ('127.0.0.1', 33416)
+127.0.0.1 - - [12/Jul/2025 15:26:08] "GET /flows HTTP/1.1" 200 10028 0.000418
+(123035) accepted ('127.0.0.1', 33432)
+127.0.0.1 - - [12/Jul/2025 15:26:09] "GET /flows HTTP/1.1" 200 10028 0.000459
+(123035) accepted ('127.0.0.1', 33436)
+127.0.0.1 - - [12/Jul/2025 15:26:10] "GET /flows HTTP/1.1" 200 10028 0.000436
+(123035) accepted ('127.0.0.1', 33440)
+127.0.0.1 - - [12/Jul/2025 15:26:11] "GET /flows HTTP/1.1" 200 10036 0.000423
+(123035) accepted ('127.0.0.1', 33452)
+127.0.0.1 - - [12/Jul/2025 15:26:12] "GET /flows HTTP/1.1" 200 10036 0.000431
+(123035) accepted ('127.0.0.1', 33468)
+127.0.0.1 - - [12/Jul/2025 15:26:13] "GET /flows HTTP/1.1" 200 10038 0.000490
+(123035) accepted ('127.0.0.1', 33482)
+127.0.0.1 - - [12/Jul/2025 15:26:14] "GET /flows HTTP/1.1" 200 10038 0.000480
+(123035) accepted ('127.0.0.1', 45236)
+127.0.0.1 - - [12/Jul/2025 15:26:15] "GET /flows HTTP/1.1" 200 10038 0.000422
+(123035) accepted ('127.0.0.1', 45248)
+127.0.0.1 - - [12/Jul/2025 15:26:16] "GET /flows HTTP/1.1" 200 10038 0.000432
+(123035) accepted ('127.0.0.1', 45254)
+127.0.0.1 - - [12/Jul/2025 15:26:17] "GET /flows HTTP/1.1" 200 10038 0.000462
+(123035) accepted ('127.0.0.1', 45264)
+127.0.0.1 - - [12/Jul/2025 15:26:18] "GET /flows HTTP/1.1" 200 10038 0.000484
+(123035) accepted ('127.0.0.1', 45278)
+127.0.0.1 - - [12/Jul/2025 15:26:19] "GET /flows HTTP/1.1" 200 10038 0.000429
+(123035) accepted ('127.0.0.1', 45280)
+127.0.0.1 - - [12/Jul/2025 15:26:20] "GET /flows HTTP/1.1" 200 10038 0.000498
+(123035) accepted ('127.0.0.1', 45284)
+127.0.0.1 - - [12/Jul/2025 15:26:21] "GET /flows HTTP/1.1" 200 10038 0.000436
+(123035) accepted ('127.0.0.1', 45288)
+127.0.0.1 - - [12/Jul/2025 15:26:22] "GET /flows HTTP/1.1" 200 10038 0.000442

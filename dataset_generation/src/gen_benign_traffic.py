@@ -6,10 +6,11 @@ from scapy.all import Ether, IP, TCP, UDP, Raw, RandShort, sendp
 import random
 import os
 
-# Configure a dedicated logger for benign traffic details
-benign_logger = logging.getLogger('benign_logger')
-benign_logger.setLevel(logging.DEBUG)
-benign_logger.propagate = False # Prevent messages from being passed to the root logger
+# Import standardized logging
+try:
+    from .utils.logger import get_benign_logger
+except ImportError:
+    from utils.logger import get_benign_logger
 
 
 
@@ -18,20 +19,9 @@ def run_benign_traffic(net, duration, output_dir, host_ips):
     Generates various types of benign traffic (ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP, HTTPS, DNS)
     between h3 and h5 in the Mininet network.
     """
-    # Ensure output directory exists before setting up file handlers
-    Path(output_dir).mkdir(exist_ok=True)
-
-    # File handler for benign.log
-    benign_log_file_handler = logging.FileHandler(Path(output_dir) / 'benign.log')
-    benign_log_file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
-    benign_logger.addHandler(benign_log_file_handler)
-
-    # Console handler for benign_logger
-    benign_console_handler = logging.StreamHandler()
-    benign_console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
-    benign_console_handler.setLevel(logging.INFO) # Set to INFO for console output
-    benign_logger.addHandler(benign_console_handler)
-
+    # Get standardized logger
+    benign_logger = get_benign_logger(Path(output_dir))
+    
     benign_logger.info(f"Starting benign traffic for {duration} seconds...")
     h3 = net.get('h3')
     h5 = net.get('h5')

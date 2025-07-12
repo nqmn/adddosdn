@@ -24,6 +24,9 @@ import requests # New: For making HTTP requests to the Ryu controller
 import pandas as pd # New: For data manipulation and CSV writing
 from datetime import datetime # New: For timestamping flow data
 
+# Import standardized logging
+from src.utils.logger import get_main_logger, ConsoleOutput, initialize_logging, print_dataset_summary
+
 # Suppress Scapy warnings
 
 
@@ -70,6 +73,8 @@ OUTPUT_FLOW_CSV_FILE = OUTPUT_DIR / "flow_features.csv" # New: Flow-level datase
 RYU_CONTROLLER_APP = SRC_DIR / "controller" / "ryu_controller_app.py" # Assuming this is the app
 
 # Configure logging
+# Main logger will be initialized in main()
+# Temporarily create a basic logger that will be replaced later
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 logger.propagate = False # Prevent messages from being passed to the root logger
@@ -410,6 +415,28 @@ def stop_capture(process):
         process.kill()
     logger.info("Packet capture stopped.")
 
+def validate_attack_success(pcap_file, attack_name, min_packets=10):
+    """Validate that an attack generated sufficient traffic."""
+    try:
+        if not pcap_file.exists():
+            logger.warning(f"Attack validation failed: {attack_name} PCAP file {pcap_file.name} does not exist")
+            return False
+            
+        # Quick packet count check using scapy
+        packets = rdpcap(str(pcap_file))
+        packet_count = len(packets)
+        
+        if packet_count < min_packets:
+            logger.warning(f"Attack validation failed: {attack_name} generated only {packet_count} packets (minimum: {min_packets})")
+            return False
+        else:
+            logger.info(f"Attack validation passed: {attack_name} generated {packet_count} packets")
+            return True
+            
+    except Exception as e:
+        logger.error(f"Attack validation error for {attack_name}: {e}")
+        return False
+
 def run_traffic_scenario(net, flow_label_timeline):
     """Orchestrate the traffic generation phases."""
     if not net:
@@ -443,9 +470,11 @@ def run_traffic_scenario(net, flow_label_timeline):
         stop_capture(capture_procs['normal'])
 
         # --- Phase 3.1: Traditional DDoS Attacks ---
+        ConsoleOutput.print_section("Phase 3.1: Traditional DDoS Attacks (15s total)")
         logger.info("Phase 3.1: Traditional DDoS Attacks (15s total)...")
         h1, h2, h4, h6 = net.get('h1', 'h2', 'h4', 'h6')
 
+        ConsoleOutput.print_status("ATTACK", "Starting SYN Flood", "h1 -> h6 (5s)")
         logger.info("Attack: SYN Flood (5s) | h1 -> h6")
         capture_procs['syn_flood'] = start_capture(net, PCAP_FILE_SYN_FLOOD)
         time.sleep(2)
@@ -479,12 +508,14 @@ def run_traffic_scenario(net, flow_label_timeline):
         run_adv_ddos(h2, HOST_IPS['h6'], duration=5, attack_variant="ad_syn")
         time.sleep(5) # Wait for the attack to generate traffic
         stop_capture(capture_procs['ad_syn'])
+        validate_attack_success(PCAP_FILE_AD_SYN, "Adversarial TCP SYN", min_packets=5)
 
         logger.info("Attack: Adversarial Application Layer (5s) | h2 -> h6")
         capture_procs['ad_udp'] = start_capture(net, PCAP_FILE_AD_UDP)
         time.sleep(2)
         run_adv_ddos(h2, HOST_IPS['h6'], duration=5, attack_variant="ad_udp")
         stop_capture(capture_procs['ad_udp'])
+        validate_attack_success(PCAP_FILE_AD_UDP, "Adversarial HTTP", min_packets=5)
 
         logger.info("Attack: Adversarial Slow Read (5s) | h2 -> h6")
         capture_procs['ad_slow'] = start_capture(net, PCAP_FILE_AD_SLOW)
@@ -498,8 +529,9 @@ def run_traffic_scenario(net, flow_label_timeline):
         http_server_proc = h6.popen(http_server_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         time.sleep(1) # Give server a moment to start
 
-        attack_proc_ad_slow = run_adv_ddos(h2, HOST_IPS['h6'], duration=5, attack_variant="ad_slow", output_dir=OUTPUT_DIR)
+        attack_proc_ad_slow = run_adv_ddos(h2, HOST_IPS['h6'], duration=5, attack_variant="slow_read", output_dir=OUTPUT_DIR)
         stop_capture(capture_procs['ad_slow'])
+        validate_attack_success(PCAP_FILE_AD_SLOW, "Adversarial Slow Read", min_packets=5)
         attack_logger.info("Attack: Adversarial Slow Read completed.")
         
         # Stop the HTTP server on h6
@@ -596,9 +628,16 @@ def main():
     parser = argparse.ArgumentParser(description="AdDDoSDN PCAP Generation Framework")
     args = parser.parse_args()
 
+    # Initialize standardized logging
+    initialize_logging(OUTPUT_DIR, console_level=logging.INFO)
+    logger = get_main_logger(OUTPUT_DIR)
+    
     # Ensure output directory exists
     OUTPUT_DIR.mkdir(exist_ok=True)
-
+    
+    # Print standardized header
+    ConsoleOutput.print_header("AdDDoSDN Dataset Generation Framework")
+    
     # Clean up any previous Mininet instances
     logger.info("Cleaning up any previous Mininet instances...")
     subprocess.run(["mn", "-c"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -747,6 +786,10 @@ def main():
             logger.info(f"Flow-level dataset generated at: {OUTPUT_FLOW_CSV_FILE}")
         else:
             logger.warning("No flow-level dataset was generated.")
+            
+        # Generate and display dataset summary
+        logger.info("Generating dataset summary...")
+        print_dataset_summary(OUTPUT_DIR, logger)
 
     except Exception as e:
         logger.error(f"An unexpected error occurred: {e}", exc_info=True)
