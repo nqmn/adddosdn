@@ -16,11 +16,17 @@ You can typically install these using your system's package manager (e.g., `sudo
 
 ## How to Run
 
-The script requires root privileges to run Mininet. It also uses `config.json` for scenario durations.
+The script requires root privileges to run Mininet. It uses configurable durations from `config.json` for production dataset generation.
 
 ```bash
 sudo python3 main.py
 ```
+
+### Key Differences from test.py
+- **Production Ready**: Uses realistic attack durations from config.json (default: 20 minutes normal traffic, 10 minutes per attack)
+- **Same Functionality**: Identical feature extraction, logging, and output format as test.py
+- **Configurable**: Attack durations can be customized via config.json without code changes
+- **Output Directory**: Results saved to `main_output/` instead of `test_output/`
 
 ## Script Logic and Flow
 
@@ -37,23 +43,23 @@ The `main.py` script automates the following steps:
 2.  **Traffic Generation Scenario:**
     The script orchestrates a multi-phase traffic generation process, capturing network traffic for each phase into separate PCAP files.
 
-    *   **Phase 1: Initialization:** A brief pause before traffic generation begins. Duration is configurable via `config.json`.
+    *   **Phase 1: Initialization:** A brief pause before traffic generation begins. Duration: configurable via `config.json` (default: 5s).
     *   **Phase 2: Normal Traffic:**
         *   Captures benign traffic to `main_output/normal.pcap`.
-        *   Generates various types of legitimate traffic (ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP, HTTPS, DNS) between `h3` and `h5`. Duration is configurable via `config.json`.
-    *   **Phase 3.1: Traditional DDoS Attacks:** Durations for each attack type are configurable via `config.json`.
+        *   Generates various types of legitimate traffic (ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP, HTTPS, DNS) between `h3` and `h5`. Duration: configurable via `config.json` (default: 1200s/20min).
+    *   **Phase 3.1: Traditional DDoS Attacks:** Each attack duration is configurable via `config.json` (default: 600s/10min each).
         | Attack Type | Source | Destination | Affected Plane | Relevance |
         |---|---|---|---|---|
         | SYN Flood | `h1` | `h6` | Control/Data | Exploits TCP handshake to exhaust server resources. |
         | UDP Flood | `h2` | `h4` | Data | Overwhelms target with UDP traffic, often used in reflection/amplification attacks. |
         | ICMP Flood | `h2` | `h4` | Data | Consumes bandwidth and resources with ICMP echo requests. |
-    *   **Phase 3.2: Adversarial DDoS Attacks:** Durations for each attack type are configurable via `config.json`.
+    *   **Phase 3.2: Adversarial DDoS Attacks:** Each attack duration is configurable via `config.json` (default: 600s/10min each).
         | Attack Type | Source | Destination | Affected Plane | Relevance |
         |---|---|---|---|---|
         | Adversarial TCP State Exhaustion | `h2` | `h6` | Control/Data | Advanced SYN flood variant designed to evade detection. |
         | Adversarial Application Layer | `h2` | `h6` | Application | Targets application layer vulnerabilities, harder to detect than volumetric attacks. |
         | Adversarial Slow Read | `h2` | `h6` | Application | Keeps connections open by reading data slowly, exhausting server resources. |
-    *   **Phase 4: Cooldown:** A final pause after all traffic generation. Duration is configurable via `config.json`. For flow data collection, this phase is extended to cover the entire scenario duration, ensuring all lingering flow entries are labeled as normal.
+    *   **Phase 4: Cooldown:** A final pause after all traffic generation. Duration: configurable via `config.json` (default: 10s). This ensures all lingering flow entries are properly collected and labeled.
 
 3.  **Data Collection and Dataset Creation:**
     *   **Concurrent Flow Statistics Collection:** Simultaneously with traffic generation, the script continuously queries the Ryu controller's REST API (`/flows` endpoint) to collect real-time flow statistics. This data is saved to `main_output/flow_features.csv`.
@@ -68,6 +74,29 @@ The `main.py` script automates the following steps:
 4.  **Cleanup:**
     *   Gracefully terminates the Ryu controller process.
     *   Performs a final Mininet cleanup to release all network resources.
+
+## Configuration Format
+
+The `config.json` file controls all attack durations:
+
+```json
+{
+  "scenario_durations": {
+    "initialization": 5,
+    "normal_traffic": 1200,
+    "syn_flood": 600,
+    "udp_flood": 600,
+    "icmp_flood": 600,
+    "ad_syn": 600,
+    "ad_udp": 600,
+    "ad_slow": 600,
+    "cooldown": 10
+  },
+  "flow_collection_retry_delay": 5
+}
+```
+
+**Total Default Duration**: ~80 minutes (5s + 20min + 6×10min + 10s)
 
 ## Expected Outputs
 

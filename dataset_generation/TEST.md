@@ -6,10 +6,16 @@ This document outlines the usage, logic, and expected outputs of the `test.py` s
 
 The `test.py` script provides a streamlined dataset generation environment with:
 
-- **Fixed Short Durations**: Quick execution for testing and validation (5-10 seconds per phase)
-- **Enhanced Logging**: Comprehensive attack monitoring with unique run IDs and real-time metrics
-- **Full Feature Coverage**: Same feature extraction as the main dataset generation
-- **Rapid Prototyping**: Ideal for development, debugging, and proof-of-concept validation
+- **Fixed Short Durations**: Quick execution for testing and validation (5 seconds per phase)
+- **Same Functionality**: Identical feature extraction, logging, and output format as main.py
+- **Rapid Testing**: Total execution time ~50 seconds vs ~80 minutes for main.py
+- **Development Focus**: Ideal for development, debugging, and proof-of-concept validation
+
+### Key Differences from main.py
+- **Fixed Durations**: Hardcoded 5-second durations (vs configurable durations in main.py)
+- **Quick Execution**: ~50 seconds total (vs ~80 minutes for main.py default config)
+- **Same Features**: Identical 84 packet-level and 26 flow-level features
+- **Output Directory**: Results saved to `test_output/` instead of `main_output/`
 
 ## 🛠️ Prerequisites
 
@@ -99,20 +105,22 @@ The script orchestrates a comprehensive multi-phase traffic generation process w
 
 #### **Phase 2: Normal Traffic Generation (5 seconds)**
 - **PCAP Output**: `test_output/normal.pcap`
-- **Traffic Types**: Multi-protocol benign traffic simulation
+- **Traffic Types**: Same multi-protocol benign traffic as main.py
   - **ICMP**: Echo requests between h3 ↔ h5
   - **TCP**: HTTP, HTTPS, SSH, Telnet, FTP connections
   - **UDP**: DNS queries, general UDP communication
-- **Behavioral Patterns**: Realistic user traffic simulation
-- **Enhanced Logging**: Baseline traffic characterization
+- **Duration**: Fixed 5 seconds (vs 1200s/20min in main.py default)
+- **Features**: Identical feature extraction as main.py
 
 #### **Phase 3.1: Traditional DDoS Attacks (15 seconds total - 5 seconds each)**
 
-| Attack Type | Source | Target | Port | Enhanced Features |
-|-------------|--------|--------|------|-------------------|
-| **SYN Flood** | h1 | h6 (10.0.0.6) | 80 | Run ID tracking, target reconnaissance, real-time rate monitoring |
-| **UDP Flood** | h2 | h4 (10.0.0.4) | 53 | DNS service testing, packet rate analysis, process monitoring |
-| **ICMP Flood** | h2 | h4 (10.0.0.4) | N/A | Multi-type ICMP testing, response analysis, bandwidth measurement |
+| Attack Type | Source | Target | Port | Duration | main.py Equivalent |
+|-------------|--------|--------|------|----------|--------------------|
+| **SYN Flood** | h1 | h6 (10.0.0.6) | 80 | 5s | 600s (10min) |
+| **UDP Flood** | h2 | h4 (10.0.0.4) | 53 | 5s | 600s (10min) |
+| **ICMP Flood** | h2 | h4 (10.0.0.4) | N/A | 5s | 600s (10min) |
+
+**Same Attack Implementation**: Uses identical attack scripts and logging as main.py
 
 **Enhanced Traditional Attack Logging Example:**
 ```
@@ -129,21 +137,24 @@ The script orchestrates a comprehensive multi-phase traffic generation process w
 
 #### **Phase 3.2: Advanced Adversarial Attacks (15 seconds total - 5 seconds each)**
 
-| Attack Type | Source | Target | Method | Advanced Features |
-|-------------|--------|--------|--------|-------------------|
-| **TCP State Exhaustion (ad_syn)** | h2 | h6 (10.0.0.6) | Advanced SYN | IP rotation, adaptive timing, evasion techniques |
-| **Application Layer Mimicry (ad_udp)** | h2 | h6 (10.0.0.6) | HTTP-based | Legitimate request patterns, varied user agents |
-| **Slow Read Attack (slow_read)** | h2 | h6 (10.0.0.6) | slowhttptest | Connection exhaustion, slow data consumption |
+| Attack Type | Source | Target | Method | Duration | main.py Equivalent |
+|-------------|--------|--------|--------|----------|--------------------|
+| **TCP State Exhaustion (ad_syn)** | h2 | h6 (10.0.0.6) | Advanced SYN | 5s | 600s (10min) |
+| **Application Layer Mimicry (ad_udp)** | h2 | h6 (10.0.0.6) | HTTP-based | 5s | 600s (10min) |
+| **Slow Read Attack (ad_slow)** | h2 | h6 (10.0.0.6) | slowhttptest | 5s | 600s (10min) |
+
+**Same Attack Implementation**: Uses identical adversarial attack scripts as main.py
 
 **Advanced Attack Configuration:**
 - **TCP State Exhaustion**: Sophisticated SYN attacks with source IP spoofing
 - **Application Layer**: HTTP requests mimicking legitimate traffic patterns
 - **Slow Read**: `slowhttptest -c 100 -H -i 10 -r 20 -l 5 -u http://10.0.0.6:80/ -t SR`
 
-#### **Phase 4: Cooldown and Data Collection (5 seconds + extended flow collection)**
+#### **Phase 4: Cooldown and Data Collection (5 seconds)**
 - **Network Stabilization**: Allows lingering flows to complete
 - **Flow Table Cleanup**: Captures final flow statistics
-- **Data Integrity**: Ensures complete dataset collection
+- **Duration**: Fixed 5 seconds (vs 10s in main.py default)
+- **Same Processing**: Identical data collection and CSV generation as main.py
 
 ### 3. Enhanced Data Collection and Processing
 
@@ -409,11 +420,16 @@ grep -i error test_output/*.log
 ## 📈 Performance Analysis
 
 ### **Expected Execution Time**
-- **Total Duration**: ~50-60 seconds
+- **Total Duration**: ~50-60 seconds (vs ~80 minutes for main.py)
 - **Initialization**: ~10 seconds
-- **Traffic Generation**: ~30 seconds
+- **Traffic Generation**: ~30 seconds (8 phases × 5s each)
 - **Data Processing**: ~10-20 seconds
 - **Cleanup**: ~5 seconds
+
+### **Comparison with main.py**
+- **test.py**: 50 seconds total, 5s per attack phase
+- **main.py**: ~80 minutes total, 10min per attack phase (default config)
+- **Same Output**: Both generate identical feature sets and file formats
 
 ### **Resource Requirements**
 - **CPU**: Moderate usage during packet generation and processing

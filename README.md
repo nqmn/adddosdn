@@ -37,8 +37,8 @@ A comprehensive Python-based framework for generating, capturing, processing, an
 ```
 .
 ├── dataset_generation/          # Main dataset generation module
-│   ├── main_output/            # Output directory for main.py
-│   ├── test_output/            # Output directory for test.py
+│   ├── main_output/            # Output directory for main.py (production)
+│   ├── test_output/            # Output directory for test.py (testing)
 │   ├── src/                    # Source code
 │   │   ├── attacks/            # Attack implementations
 │   │   │   ├── gen_syn_flood.py          # Enhanced SYN flood attack
@@ -63,8 +63,8 @@ A comprehensive Python-based framework for generating, capturing, processing, an
 │   │   ├── packet_feature_names.txt  # Packet-level feature definitions
 │   │   └── flow_feature_names.txt    # Flow-level feature definitions
 │   ├── config.json             # Traffic scenario configuration
-│   ├── main.py                 # Primary dataset generation script
-│   ├── test.py                 # Quick testing script
+│   ├── main.py                 # Production dataset generation (uses config.json)
+│   ├── test.py                 # Testing script (fixed 5s durations)
 │   ├── gen_benign_traffic.py   # Benign traffic generation
 │   ├── calculate_percentages.py # Dataset statistics analysis
 │   └── requirements.txt        # Python dependencies
@@ -139,35 +139,42 @@ sudo apt install -y ryu-manager
    nano dataset_generation/config.json
    ```
 
-2. **Generate full dataset**
+2. **Generate full dataset (production)**
    ```bash
    # Requires sudo for Mininet
    sudo python3 dataset_generation/main.py
    ```
+   - Uses configurable durations from `config.json`
    - Outputs saved to `dataset_generation/main_output/`
    - Includes: `packet_features.csv`, `flow_features.csv`, `*.pcap` files, `attack.log`
 
-3. **Quick test run**
+3. **Quick test run (development)**
    ```bash
-   # Shorter test with fixed durations
+   # Same functionality but with fixed short durations (5s each)
    sudo python3 dataset_generation/test.py
    ```
+   - Uses hardcoded short durations for quick testing
    - Outputs saved to `dataset_generation/test_output/`
+   - Same features and format as main.py
 
 ### Advanced Usage
 
 **Custom Attack Configuration:**
 ```bash
-# Modify config.json for custom durations
+# Modify config.json for custom durations (affects main.py only)
 {
-  "normal_duration": 30,
-  "syn_flood_duration": 15,
-  "udp_flood_duration": 15,
-  "icmp_flood_duration": 15,
-  "ad_syn_duration": 10,
-  "ad_udp_duration": 10,
-  "slow_read_duration": 10,
-  "flow_collection_interval": 5
+  "scenario_durations": {
+    "initialization": 5,
+    "normal_traffic": 1200,
+    "syn_flood": 600,
+    "udp_flood": 600,
+    "icmp_flood": 600,
+    "ad_syn": 600,
+    "ad_udp": 600,
+    "ad_slow": 600,
+    "cooldown": 10
+  },
+  "flow_collection_retry_delay": 5
 }
 ```
 
@@ -185,31 +192,51 @@ tshark -r dataset_generation/main_output/syn_flood.pcap -q -z io,stat,1
 
 ### Traffic Generation Timeline
 
+#### test.py (Fixed Durations - Development)
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                        Traffic Generation Scenario Timeline                      │
+│                        test.py Traffic Generation Timeline                       │
 └─────────────────────────────────────────────────────────────────────────────────┘
 
-Time: 0s    5s         15s        25s        35s        45s        55s        65s
-      │     │          │          │          │          │          │          │
-      ▼     ▼          ▼          ▼          ▼          ▼          ▼          ▼
-┌─────┬─────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
-│Init │Normal│SYN Flood │UDP Flood │ICMP Flood│ ad_syn   │ ad_udp   │ slow_read│
-│ 5s  │ 10s  │   10s    │   10s    │   10s    │   10s    │   10s    │   10s    │
-└─────┴─────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┘
-      │     │          │          │          │          │          │          │
-      └─────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┘
-                                    PCAP Captures
-                     ┌────────────────────────────────────────────────────────┐
-                     │           Continuous Flow Collection                    │
-                     └────────────────────────────────────────────────────────┘
+Time: 0s    5s    10s    15s    20s    25s    30s    35s    40s    45s
+      │     │     │      │      │      │      │      │      │      │
+      ▼     ▼     ▼      ▼      ▼      ▼      ▼      ▼      ▼      ▼
+┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
+│Init │Normal│SYN │UDP │ICMP │ad_syn│ad_udp│slow │Cool │     │
+│ 5s  │ 5s  │ 5s │ 5s │ 5s  │ 5s  │ 5s  │ 5s  │ 5s  │     │
+└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
+```
 
-Legend:
-├─ Init: Network initialization and stabilization
-├─ Normal: Benign multi-protocol traffic (HTTP, DNS, SMTP, FTP)
-├─ Traditional DDoS: SYN/UDP/ICMP flood attacks with enhanced logging
-├─ Adversarial: Advanced evasion techniques with sophisticated monitoring
-└─ Flow Collection: Continuous SDN controller statistics via REST API
+#### main.py (Configurable Durations - Production)
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        main.py Traffic Generation Timeline                       │
+│                           (Default config.json values)                          │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+Time: 0s    5s     20m    30m    40m    50m    60m    70m    80m    90m
+      │     │      │      │      │      │      │      │      │      │
+      ▼     ▼      ▼      ▼      ▼      ▼      ▼      ▼      ▼      ▼
+┌─────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬─────┐
+│Init │Normal│ SYN  │ UDP  │ ICMP │ad_syn│ad_udp│slow  │Cool │
+│ 5s  │1200s │ 600s │ 600s │ 600s │ 600s │ 600s │ 600s │ 10s │
+└─────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴─────┘
+```
+
+**Both scripts provide identical functionality and output format:**
+
+**Timeline Legend:**
+- **Init**: Network initialization and stabilization  
+- **Normal**: Benign multi-protocol traffic (HTTP, DNS, SMTP, FTP)
+- **SYN/UDP/ICMP**: Traditional DDoS flood attacks with enhanced logging
+- **ad_syn/ad_udp/slow**: Advanced adversarial attacks with evasion techniques
+- **Cool**: Cooldown period for flow collection completion
+- **Flow Collection**: Continuous SDN controller statistics via REST API
+
+**Key Differences:**
+- **test.py**: Fixed 5-second durations per phase (50 seconds total)
+- **main.py**: Configurable durations via config.json (default: ~80 minutes total)
+- **Output**: Both generate identical file formats and feature sets
 ```
 
 ### Feature Extraction Pipeline
