@@ -1,0 +1,5 @@
+# Ignore the .claude folder and everything inside it
+.claude/
+
+# Ignore the CLAUDE.md file
+CLAUDE.md
