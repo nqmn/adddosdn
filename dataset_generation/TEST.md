@@ -1,164 +1,446 @@
 # Dataset Generation Test Framework
 
-This document outlines the usage, logic, and expected outputs of the `test.py` script, which orchestrates the generation of a DDoS attack dataset within an SDN environment.
+This document outlines the usage, logic, and expected outputs of the `test.py` script, which orchestrates the generation of a comprehensive DDoS attack dataset within a Software-Defined Networking (SDN) environment. The test framework provides a quick validation environment with enhanced logging and monitoring capabilities.
 
-## Prerequisites
+## 🎯 Overview
+
+The `test.py` script provides a streamlined dataset generation environment with:
+
+- **Fixed Short Durations**: Quick execution for testing and validation (5-10 seconds per phase)
+- **Enhanced Logging**: Comprehensive attack monitoring with unique run IDs and real-time metrics
+- **Full Feature Coverage**: Same feature extraction as the main dataset generation
+- **Rapid Prototyping**: Ideal for development, debugging, and proof-of-concept validation
+
+## 🛠️ Prerequisites
 
 To run this script, ensure you have the following installed on an Ubuntu system:
 
-*   **Python 3**
-*   **Mininet:** A network emulator for rapid prototyping of SDN.
-*   **Ryu:** An SDN controller framework.
-*   **TShark:** A network protocol analyzer (part of Wireshark).
-*   **Slowhttptest:** A tool for testing web servers for slow HTTP attacks.
+### Core Dependencies
+- **Python 3.7+**: Main scripting environment
+- **Mininet**: Network emulator for rapid SDN prototyping
+- **Ryu**: SDN controller framework with REST API support
+- **TShark**: Network protocol analyzer (part of Wireshark)
+- **Slowhttptest**: Tool for slow HTTP attack testing
 
-You can typically install these using your system's package manager (e.g., `sudo apt-get install mininet ryu-manager tshark slowhttptest`).
+### Installation Commands
+```bash
+# System dependencies
+sudo apt update
+sudo apt install -y python3-pip python3-venv git default-jre tshark slowhttptest mininet ryu-manager
 
-## How to Run
+# Python dependencies
+pip install -r requirements.txt
+```
 
-The script requires root privileges to run Mininet.
+### Permission Requirements
+- **Root access**: Required for Mininet network emulation
+- **Network privileges**: Needed for packet capture and network interface manipulation
 
+## 🚀 How to Run
+
+### Basic Execution
 ```bash
 sudo python3 test.py
 ```
 
-## Script Logic and Flow
+### Environment Verification
+```bash
+# Verify Mininet installation
+sudo mn --test pingall
 
-The `test.py` script automates the following steps:
+# Check Ryu installation
+ryu-manager --version
 
-1.  **Environment Setup:**
-    *   **Cleanup:** Clears any previous Mininet instances to ensure a clean slate.
-    *   **Tool Verification:** Checks for the presence of all necessary command-line tools (`ryu-manager`, `mn`, `tshark`, `slowhttptest`).
-    *   **Ryu Controller Initialization:** Starts the Ryu SDN controller in the background, logging its output to `test_output/ryu.log`.
-    *   **Controller Health Check:** Verifies that the Ryu controller is running and listening on its designated port (6653). It also tests a `/hello` endpoint to confirm API responsiveness.
-    *   **Mininet Network Creation:** Builds a custom Mininet topology consisting of one OpenFlow switch (`s1`) and six hosts (`h1` to `h6`). The switch is connected to the remote Ryu controller. Mininet logs are saved to `test_output/mininet.log`.
-    *   **Connectivity Test:** Runs `pingAll` within Mininet to confirm basic network connectivity between all hosts.
+# Test TShark permissions
+sudo tshark -i any -c 1
 
-2.  **Traffic Generation Scenario:**
-    The script orchestrates a multi-phase traffic generation process, capturing network traffic for each phase into separate PCAP files. Unlike `main.py`, `test.py` uses fixed, shorter durations for each phase, making it suitable for quick validation.
+# Verify slowhttptest
+slowhttptest --help
+```
 
-    *   **Phase 1: Initialization (5 seconds):** A brief pause before traffic generation begins.
-    *   **Phase 2: Normal Traffic (5 seconds):**
-        *   Captures benign traffic to `test_output/normal.pcap`.
-        *   Generates various types of legitimate traffic (ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP, HTTPS, DNS) between `h3` and `h5`.
-    *   **Phase 3.1: Traditional DDoS Attacks (15 seconds total):**
-        | Attack Type | Source | Destination | Affected Plane | Relevance |
-        |---|---|---|---|---|
-        | SYN Flood | `h1` | `h6` | Control/Data | Exploits TCP handshake to exhaust server resources. |
-        | UDP Flood | `h2` | `h4` | Data | Overwhelms target with UDP traffic, often used in reflection/amplification attacks. |
-        | ICMP Flood | `h2` | `h4` | Data | Consumes bandwidth and resources with ICMP echo requests. |
-    *   **Phase 3.2: Adversarial DDoS Attacks (20 seconds total):**
-        | Attack Type | Source | Destination | Affected Plane | Relevance |
-        |---|---|---|---|---|
-        | Adversarial TCP State Exhaustion | `h2` | `h6` | Control/Data | Advanced SYN flood variant designed to evade detection. |
-        | Adversarial Application Layer | `h2` | `h6` | Application | Targets application layer vulnerabilities, harder to detect than volumetric attacks. |
-        | Adversarial Slow Read | `h2` | `h6` | Application | Keeps connections open by reading data slowly, exhausting server resources. |
-    *   **Phase 4: Cooldown (5 seconds):** A final pause after all traffic generation. For flow data collection, this phase is extended to cover the entire 50-second duration of flow statistics collection, ensuring all lingering flow entries are labeled as normal.
+## 📊 Script Logic and Flow
 
-3.  **Data Collection and Dataset Creation:**
-    *   **Concurrent Flow Statistics Collection:** Simultaneously with traffic generation, the script continuously queries the Ryu controller's REST API (`/flows` endpoint) to collect real-time flow statistics. This data is saved to `test_output/flow_features.csv`.
-    *   **PCAP Processing:** For each generated PCAP file:
-        *   It performs an integrity check to ensure the PCAP is valid using `verify_pcap_integrity`.
-        *   It validates and fixes any timestamp inconsistencies within the PCAP using `validate_and_fix_pcap_timestamps`.
-        *   It extracts network features and applies appropriate labels (e.g., 'normal', 'syn_flood') based on the traffic type using `enhanced_process_pcap_to_csv`. This process generates temporary CSV files.
-    *   **Packet-Level Dataset Consolidation:** All temporary labeled packet-level CSV files are concatenated into a single, comprehensive dataset.
-    *   **Final Packet-Level CSV:** The combined packet-level dataset is saved as `test_output/packet_features.csv`.
-    *   **Label Verification:** The `verify_labels_in_csv` function is used to ensure the correctness and consistency of labels in the generated CSV files.
+### 1. Environment Setup and Initialization
 
-4.  **Cleanup:**
-    *   Gracefully terminates the Ryu controller process.
-    *   Performs a final Mininet cleanup to release all network resources.
+#### **Cleanup and Preparation**
+- **Previous Session Cleanup**: Clears any existing Mininet instances (`sudo mn -c`)
+- **Tool Verification**: Validates presence of all required command-line tools
+- **Output Directory**: Creates `test_output/` directory for all generated files
+- **Logging Setup**: Initializes comprehensive logging system with multiple log files
 
-## Expected Outputs
+#### **SDN Controller Initialization**
+- **Ryu Controller Startup**: Launches Ryu SDN controller with custom flow monitoring
+  ```bash
+  ryu-manager src/controller/flow_monitor.py --observe-links
+  ```
+- **Controller Health Check**: Verifies controller is running on port 6653
+- **REST API Validation**: Tests `/hello` endpoint for API responsiveness
+- **Flow Table Initialization**: Prepares flow monitoring and statistics collection
 
-Upon successful execution, the `test_output/` directory will contain:
+#### **Network Topology Creation**
+- **Mininet Network**: Creates custom topology with 1 OpenFlow switch + 6 hosts
+  ```
+  Topology: h1--h2--h3--[s1]--h4--h5--h6
+  Controller: Remote Ryu controller (127.0.0.1:6653)
+  Switch: OpenVSwitch with OpenFlow 1.3
+  Network: 10.0.0.0/8 address space
+  ```
+- **Connectivity Verification**: Executes `pingAll` to confirm basic network connectivity
+- **Interface Setup**: Configures network interfaces and routing
 
-*   **Log Files:**
-    *   `test.log`: Main script execution logs.
-    *   `ryu.log`: Logs from the Ryu SDN controller.
-    *   `mininet.log`: Logs from the Mininet network simulation.
-    *   `attack.log`: A dedicated log for details about the executed attacks.
-*   **PCAP Files (Raw Traffic Captures):**
-    *   `normal.pcap`
-    *   `syn_flood.pcap`
-    *   `udp_flood.pcap`
-    *   `icmp_flood.pcap`
-    *   `ad_syn.pcap`
-    *   `ad_udp.pcap`
-    *   `ad_slow.pcap`
-*   **Labeled Dataset:**
-    *   `packet_features.csv`: The final CSV file containing extracted packet-level network features and corresponding binary and multi-class labels for all traffic types.
-    *   `flow_features.csv`: The CSV file containing flow-level statistics collected from the Ryu controller.
-*   **Feature Names:**
-    *   `packet_feature_names.txt`: A text file listing the column headers for `packet_features.csv`.
-    *   `flow_feature_names.txt`: A text file listing the column headers for `flow_features.csv`.
+### 2. Enhanced Traffic Generation Scenario
 
-    ### Packet-Level Features
-    | Feature Name | Description | Relevance |
-    |---|---|---|
-    | `timestamp` | Timestamp of the packet capture. | Essential for temporal analysis and correlating events. |
-    | `packet_length` | Length of the captured packet in bytes. | Indicates packet size, useful for identifying anomalies (e.g., unusually large or small packets). |
-    | `eth_type` | Ethernet type of the packet (e.g., IP, ARP). | Identifies the network layer protocol, crucial for protocol-specific analysis. |
-    | `ip_src` | Source IP address of the packet. | Identifies the sender, vital for tracing attack sources. |
-    | `ip_dst` | Destination IP address of the packet. | Identifies the receiver, vital for tracing attack targets. |
-    | `ip_proto` | IP protocol number (e.g., TCP, UDP, ICMP). | Specifies the transport layer protocol, fundamental for classifying traffic types. |
-    | `ip_ttl` | IP Time-To-Live value. | Can indicate network topology or unusual routing paths, sometimes manipulated in attacks. |
-    | `ip_id` | IP identification field. | Used for reassembling fragmented IP packets, can be used in some attack patterns. |
-    | `ip_flags` | IP flags (e.g., Don't Fragment). | Indicates fragmentation status, relevant for certain attack types. |
-    | `ip_len` | Total length of the IP packet. | Similar to `packet_length` but specific to the IP layer, useful for anomaly detection. |
-    | `src_port` | Source port number (TCP/UDP). | Identifies the application sending the traffic, crucial for application-layer attack detection. |
-    | `dst_port` | Destination port number (TCP/UDP). | Identifies the application receiving the traffic, crucial for application-layer attack detection. |
-    | `tcp_flags` | TCP flags (e.g., SYN, ACK, FIN). | Essential for analyzing TCP connection states and identifying SYN floods or other TCP-based attacks. |
-    | `Label_multi` | Multi-class label indicating the type of traffic (e.g., 'normal', 'syn_flood', 'udp_flood'). | Primary label for multi-class classification tasks. |
-    | `Label_binary` | Binary label indicating whether the traffic is normal (0) or attack (1). | Primary label for binary classification tasks. |
+The script orchestrates a comprehensive multi-phase traffic generation process with enhanced monitoring:
 
-    ### Flow-Level Features
-    | Feature Name | Description | Relevance |
-    |---|---|---|
-    | `timestamp` | Timestamp when the flow statistics were collected. | Essential for temporal analysis of flow dynamics. |
-    | `switch_id` | Datapath ID of the OpenFlow switch. | Identifies the switch where the flow was observed, crucial for network-wide analysis. |
-    | `table_id` | ID of the flow table where the flow entry resides. | Indicates the processing stage of the flow within the switch. |
-    | `cookie` | Opaque value used by the controller to identify the flow. | Can be used for internal tracking by the controller. |
-    | `priority` | Priority of the flow entry. | Determines the order of matching, higher priority flows are matched first. |
-    | `in_port` | Ingress port of the flow. | Identifies the port through which traffic entered the switch for this flow. |
-    | `eth_src` | Ethernet source address of the flow. | Identifies the source MAC address of the traffic in the flow. |
-    | `eth_dst` | Ethernet destination address of the flow. | Identifies the destination MAC address of the traffic in the flow. |
-    | `out_port` | Egress port of the flow. | Identifies the port through which traffic exited the switch for this flow. |
-    | `packet_count` | Number of packets matched by the flow entry. | Direct measure of traffic volume for the flow, key for anomaly detection. |
-    | `byte_count` | Number of bytes matched by the flow entry. | Direct measure of traffic volume in bytes, key for anomaly detection. |
-    | `duration_sec` | Time in seconds since the flow entry was added. | Indicates the longevity of the flow, useful for identifying short-lived attack flows. |
-    | `duration_nsec` | Time in nanoseconds since the flow entry was added (fractional part). | Provides higher precision for flow duration. |
-    | `avg_pkt_size` (calculated) | Average packet size for the flow (`byte_count / packet_count`). | Helps characterize the nature of traffic within a flow (e.g., small packets in SYN floods). |
-    | `pkt_rate` (calculated) | Rate of packets per second for the flow (`packet_count / total_duration`). | Indicates the intensity of traffic, crucial for detecting high-rate attacks. |
-    | `byte_rate` (calculated) | Rate of bytes per second for the flow (`byte_count / total_duration`). | Indicates the bandwidth consumption, crucial for detecting high-bandwidth attacks. |
-    | `Label_multi` | Multi-class label indicating the type of traffic (e.g., 'normal', 'syn_flood', 'udp_flood'). | Primary label for multi-class classification tasks. |
-    | `Label_binary` | Binary label indicating whether the traffic is normal (0) or attack (1). | Primary label for binary classification tasks. |
+#### **Phase 1: Initialization (5 seconds)**
+- **Purpose**: System stabilization and baseline establishment
+- **Activities**: Network settling, controller synchronization
+- **Monitoring**: Initial flow table state capture
 
-## Labeling Process
+#### **Phase 2: Normal Traffic Generation (5 seconds)**
+- **PCAP Output**: `test_output/normal.pcap`
+- **Traffic Types**: Multi-protocol benign traffic simulation
+  - **ICMP**: Echo requests between h3 ↔ h5
+  - **TCP**: HTTP, HTTPS, SSH, Telnet, FTP connections
+  - **UDP**: DNS queries, general UDP communication
+- **Behavioral Patterns**: Realistic user traffic simulation
+- **Enhanced Logging**: Baseline traffic characterization
 
-The dataset generation employs a time-based labeling mechanism to assign appropriate attack or normal labels to both packet-level and flow-level data. This ensures that each data point is correctly categorized based on the traffic scenario phase it belongs to.
+#### **Phase 3.1: Traditional DDoS Attacks (15 seconds total - 5 seconds each)**
 
-### Packet-Level Labeling
+| Attack Type | Source | Target | Port | Enhanced Features |
+|-------------|--------|--------|------|-------------------|
+| **SYN Flood** | h1 | h6 (10.0.0.6) | 80 | Run ID tracking, target reconnaissance, real-time rate monitoring |
+| **UDP Flood** | h2 | h4 (10.0.0.4) | 53 | DNS service testing, packet rate analysis, process monitoring |
+| **ICMP Flood** | h2 | h4 (10.0.0.4) | N/A | Multi-type ICMP testing, response analysis, bandwidth measurement |
 
-For packet-level data, labeling occurs during the processing of individual PCAP files:
-1.  **Individual PCAP Files:** Each PCAP file (`normal.pcap`, `syn_flood.pcap`, etc.) is generated during a specific, isolated traffic phase.
-2.  **Timestamp Baseline:** Before feature extraction, `validate_and_fix_pcap_timestamps` is used to establish a reliable baseline timestamp for the packets within that specific PCAP file.
-3.  **Phase-Specific Timeline:** A `label_timeline` is created for each PCAP. This timeline is simple, typically covering the entire duration of the PCAP with a single label corresponding to the traffic type captured (e.g., 'normal' for `normal.pcap`, 'syn_flood' for `syn_flood.pcap`).
-4.  **Feature Extraction and Label Assignment:** The `enhanced_process_pcap_to_csv` function extracts features from the packets. For each packet, its timestamp is compared against the phase-specific `label_timeline` using the `_get_label_for_timestamp` helper function.
-    *   `Label_multi`: Assigned the specific attack type (e.g., 'syn_flood', 'ad_slow') or 'normal'.
-    *   `Label_binary`: Assigned `1` for any attack type and `0` for 'normal' traffic.
-5.  **Consolidation:** After individual processing, all temporary CSVs are concatenated into the final `packet_features.csv`.
+**Enhanced Traditional Attack Logging Example:**
+```
+[syn_flood] [Run ID: a1b2c3d4-e5f6-7890-abcd-ef1234567890] Starting SYN Flood from h1 to 10.0.0.6 for 5 seconds.
+[syn_flood] [Run ID: a1b2c3d4-e5f6-7890-abcd-ef1234567890] Attack Phase: Traditional SYN Flood - Attacker: h1, Target: 10.0.0.6:80, Duration: 5s
+[syn_flood] [Run ID: a1b2c3d4-e5f6-7890-abcd-ef1234567890] Target 10.0.0.6 is reachable (ping: 0.123s)
+[syn_flood] [Run ID: a1b2c3d4-e5f6-7890-abcd-ef1234567890] Service 10.0.0.6:80 is active (SYN-ACK: 0.045s)
+[syn_flood] [Run ID: a1b2c3d4-e5f6-7890-abcd-ef1234567890] Attack progress: 2.5s elapsed, ~250 packets sent, Rate: 100.0 pps
+[syn_flood] [Run ID: a1b2c3d4-e5f6-7890-abcd-ef1234567890] --- Attack Summary ---
+[syn_flood] [Run ID: a1b2c3d4-e5f6-7890-abcd-ef1234567890] Total packets sent: 500
+[syn_flood] [Run ID: a1b2c3d4-e5f6-7890-abcd-ef1234567890] Average rate: 100.00 packets/sec
+[syn_flood] [Run ID: a1b2c3d4-e5f6-7890-abcd-ef1234567890] Attack method: TCP SYN Flood
+```
 
-### Flow-Level Labeling
+#### **Phase 3.2: Advanced Adversarial Attacks (15 seconds total - 5 seconds each)**
 
-Flow-level data is labeled concurrently with the entire traffic generation scenario:
-1.  **Continuous Collection:** The `collect_flow_stats` function runs in a separate thread, continuously polling the Ryu controller's `/flows` API endpoint.
-2.  **Real-time Timestamping:** Each time flow statistics are collected, the current system timestamp (`datetime.now().timestamp()`) is recorded for the flow entries.
-3.  **Overall Scenario Timeline:** A single, comprehensive `flow_label_timeline` is defined in the `main` function. This timeline spans the entire duration of the traffic generation scenario, with precise start and end times for each phase (Initialization, Normal, Traditional Attacks, Adversarial Attacks, Cooldown).
-4.  **Robust Time Matching:** To account for potential delays in flow reporting by the controller and the persistence of flow entries in the flow table (which can linger for several seconds after a phase's nominal end), a small epsilon (e.g., 0.1 seconds) is added to the `end_time` of each phase in the `flow_label_timeline`. This ensures that flow records collected slightly after a phase's nominal end are still correctly associated with that phase's label.
-5.  **Label Assignment:** For each collected flow entry, its `timestamp` is compared against this overall `flow_label_timeline` using the `_get_label_for_timestamp` helper function.
-    *   `Label_multi`: Assigned the specific attack type or 'normal' based on the current timestamp's position within the `flow_label_timeline`.
-    *   `Label_binary`: Assigned `1` for any attack type and `0` for 'normal' traffic.
-6.  **Direct Output:** All collected and labeled flow entries are directly written to `flow_features.csv`.
+| Attack Type | Source | Target | Method | Advanced Features |
+|-------------|--------|--------|--------|-------------------|
+| **TCP State Exhaustion (ad_syn)** | h2 | h6 (10.0.0.6) | Advanced SYN | IP rotation, adaptive timing, evasion techniques |
+| **Application Layer Mimicry (ad_udp)** | h2 | h6 (10.0.0.6) | HTTP-based | Legitimate request patterns, varied user agents |
+| **Slow Read Attack (slow_read)** | h2 | h6 (10.0.0.6) | slowhttptest | Connection exhaustion, slow data consumption |
 
-This dual-layer labeling approach ensures that both granular packet-level events and aggregated flow-level behaviors are accurately categorized according to the experimental design, providing a rich dataset for analysis.
+**Advanced Attack Configuration:**
+- **TCP State Exhaustion**: Sophisticated SYN attacks with source IP spoofing
+- **Application Layer**: HTTP requests mimicking legitimate traffic patterns
+- **Slow Read**: `slowhttptest -c 100 -H -i 10 -r 20 -l 5 -u http://10.0.0.6:80/ -t SR`
+
+#### **Phase 4: Cooldown and Data Collection (5 seconds + extended flow collection)**
+- **Network Stabilization**: Allows lingering flows to complete
+- **Flow Table Cleanup**: Captures final flow statistics
+- **Data Integrity**: Ensures complete dataset collection
+
+### 3. Enhanced Data Collection and Processing
+
+#### **Real-time Flow Statistics Collection**
+- **Concurrent Collection**: Separate thread continuously polls Ryu REST API
+- **Endpoint**: `GET /flows/{switch_id}` every 1 second
+- **Data Capture**: Real-time flow table statistics and metrics
+- **Enhanced Features**: Flow duration, packet rates, byte counts, pattern analysis
+
+#### **Advanced PCAP Processing Pipeline**
+For each generated PCAP file:
+
+1. **Integrity Verification**: `verify_pcap_integrity()` ensures valid packet capture
+2. **Timestamp Validation**: `validate_and_fix_pcap_timestamps()` corrects timing issues
+3. **Feature Extraction**: `enhanced_process_pcap_to_csv()` computes 84 packet-level features
+4. **Label Assignment**: Time-based labeling with attack type classification
+5. **Quality Assurance**: `verify_labels_in_csv()` validates label consistency
+
+#### **Dataset Consolidation**
+- **Packet-Level**: All temporary CSVs merged into `packet_features.csv`
+- **Flow-Level**: Real-time collection saved to `flow_features.csv`
+- **Feature Names**: Descriptive headers saved to corresponding `.txt` files
+
+### 4. Enhanced Monitoring and Logging
+
+#### **Multi-Level Logging System**
+- **Main Script**: `test.log` - Overall execution flow and system events
+- **Attack Logging**: `attack.log` - Comprehensive attack execution details
+- **Controller**: `ryu.log` - SDN controller operations and flow management
+- **Network**: `mininet.log` - Network emulation and connectivity logs
+
+#### **Run ID Tracking**
+- **Unique Identifiers**: Each attack execution gets a UUID for correlation
+- **Cross-Reference**: Links attack logs with captured data and performance metrics
+- **Debugging**: Enables precise tracking of individual attack instances
+
+#### **Real-time Monitoring Features**
+- **Target Reconnaissance**: Pre-attack connectivity and service testing
+- **Progress Tracking**: Real-time packet rates, timing, and performance metrics
+- **Resource Monitoring**: CPU, memory usage of attack processes
+- **Network Analysis**: Response times, connectivity status, service availability
+
+### 5. Graceful Cleanup and Termination
+
+#### **Process Management**
+- **Controller Shutdown**: Graceful termination of Ryu controller
+- **Network Cleanup**: Complete Mininet network teardown (`sudo mn -c`)
+- **Resource Release**: Proper cleanup of network interfaces and processes
+- **Data Integrity**: Ensures all data collection is complete before cleanup
+
+## 📂 Expected Output Structure
+
+Upon successful execution, the `test_output/` directory contains:
+
+### **Log Files**
+```
+test_output/
+├── test.log                    # Main script execution logs
+├── attack.log                  # Enhanced attack execution details with run IDs
+├── ryu.log                     # SDN controller operations and flow management
+└── mininet.log                 # Network emulation and connectivity logs
+```
+
+### **Raw Traffic Captures (PCAP Files)**
+```
+test_output/
+├── normal.pcap                 # Baseline benign traffic capture
+├── syn_flood.pcap             # SYN flood attack traffic
+├── udp_flood.pcap             # UDP flood attack traffic
+├── icmp_flood.pcap            # ICMP flood attack traffic
+├── ad_syn.pcap                # Advanced TCP state exhaustion
+├── ad_udp.pcap                # Application layer mimicry attack
+└── ad_slow.pcap               # Slow read attack traffic
+```
+
+### **Processed Datasets**
+```
+test_output/
+├── packet_features.csv        # 84-feature packet-level dataset
+├── flow_features.csv          # 26-feature flow-level dataset
+├── packet_feature_names.txt   # Packet-level feature descriptions
+└── flow_feature_names.txt     # Flow-level feature descriptions
+```
+
+## 📊 Enhanced Feature Engineering
+
+### **Packet-Level Features (84 features)**
+
+#### **Network Layer Features**
+| Feature Category | Features | Description |
+|------------------|----------|-------------|
+| **Addressing** | `ip_src`, `ip_dst` | Source/destination IP addresses |
+| **Protocol** | `ip_proto`, `eth_type` | IP protocol numbers and Ethernet types |
+| **Size Metrics** | `packet_length`, `ip_len` | Packet and IP layer sizes |
+| **Header Fields** | `ip_ttl`, `ip_id`, `ip_flags` | IP header analysis fields |
+
+#### **Transport Layer Features**
+| Feature Category | Features | Description |
+|------------------|----------|-------------|
+| **Port Analysis** | `src_port`, `dst_port` | Application service identification |
+| **TCP State** | `tcp_flags`, `tcp_seq`, `tcp_ack` | Connection state and sequence analysis |
+| **UDP Metrics** | `udp_len`, `udp_checksum` | UDP-specific characteristics |
+
+#### **Temporal and Statistical Features**
+| Feature Category | Features | Description |
+|------------------|----------|-------------|
+| **Timing** | `timestamp`, `inter_arrival_time` | Temporal pattern analysis |
+| **Flow Stats** | `flow_duration`, `packet_count`, `byte_count` | Flow aggregation metrics |
+| **Rate Features** | `packet_rate`, `byte_rate` | Traffic intensity indicators |
+
+### **Flow-Level Features (26 features)**
+
+#### **OpenFlow Statistics**
+| Feature Category | Features | Description |
+|------------------|----------|-------------|
+| **Flow Identity** | `switch_id`, `table_id`, `cookie` | Flow table identification |
+| **Matching** | `priority`, `in_port`, `out_port` | Flow matching criteria |
+| **Addressing** | `eth_src`, `eth_dst` | MAC address flow patterns |
+
+#### **Traffic Metrics**
+| Feature Category | Features | Description |
+|------------------|----------|-------------|
+| **Volume** | `packet_count`, `byte_count` | Direct traffic measurements |
+| **Duration** | `duration_sec`, `duration_nsec` | Flow lifetime analysis |
+| **Calculated** | `avg_pkt_size`, `pkt_rate`, `byte_rate` | Derived performance metrics |
+
+## 🏷️ Enhanced Labeling System
+
+### **Multi-Level Classification**
+
+#### **Binary Classification**
+- **Label_binary**: `0` (Normal) / `1` (Attack)
+- **Purpose**: Basic anomaly detection and binary classification tasks
+- **Coverage**: All traffic types with simple attack/normal distinction
+
+#### **Multi-Class Classification**
+- **Labels**: `normal`, `syn_flood`, `udp_flood`, `icmp_flood`, `ad_syn`, `ad_udp`, `ad_slow`
+- **Purpose**: Detailed attack type identification and classification
+- **Granularity**: Specific attack method recognition and analysis
+
+### **Time-Based Labeling Process**
+
+#### **Packet-Level Labeling**
+1. **Phase Isolation**: Each PCAP corresponds to a specific traffic phase
+2. **Timestamp Baseline**: Reliable timestamp establishment using `validate_and_fix_pcap_timestamps`
+3. **Label Timeline**: Phase-specific timelines for accurate label assignment
+4. **Precision Matching**: Exact timestamp-to-label mapping for each packet
+
+#### **Flow-Level Labeling**
+1. **Continuous Collection**: Real-time flow statistics during entire scenario
+2. **Comprehensive Timeline**: Single timeline spanning all traffic phases
+3. **Robust Matching**: Epsilon-based time matching for controller delays
+4. **Flow Persistence**: Accounts for lingering flow entries in switch tables
+
+### **Label Verification and Quality Assurance**
+- **Consistency Checks**: `verify_labels_in_csv()` validates label integrity
+- **Distribution Analysis**: Ensures balanced representation across attack types
+- **Temporal Validation**: Verifies correct time-based label assignment
+- **Cross-Reference**: Correlates packet and flow labels for consistency
+
+## 🔍 Enhanced Attack Analysis
+
+### **Traditional DDoS Attack Characteristics**
+
+#### **SYN Flood Analysis**
+- **Attack Vector**: TCP connection exhaustion
+- **Packet Rate**: ~100 packets/second (0.01s interval)
+- **Target**: Port 80 (HTTP service)
+- **Detection Features**: High SYN-to-ACK ratio, incomplete connections
+
+#### **UDP Flood Analysis**
+- **Attack Vector**: UDP service overwhelm
+- **Packet Rate**: ~100 packets/second
+- **Target**: Port 53 (DNS service)
+- **Detection Features**: High UDP packet volume, service response degradation
+
+#### **ICMP Flood Analysis**
+- **Attack Vector**: Network layer bandwidth consumption
+- **Packet Rate**: ~100 packets/second
+- **Target**: Network layer (no specific port)
+- **Detection Features**: High ICMP echo request volume
+
+### **Advanced Adversarial Attack Characteristics**
+
+#### **TCP State Exhaustion (ad_syn)**
+- **Sophistication**: IP rotation, adaptive timing
+- **Evasion**: Source address spoofing, burst patterns
+- **Detection Challenge**: Low-rate, distributed appearance
+
+#### **Application Layer Mimicry (ad_udp)**
+- **Sophistication**: Legitimate HTTP request patterns
+- **Evasion**: Varied user agents, realistic payloads
+- **Detection Challenge**: Application-layer analysis required
+
+#### **Slow Read Attack (ad_slow)**
+- **Sophistication**: Connection resource exhaustion
+- **Evasion**: Slow data consumption, long-lived connections
+- **Detection Challenge**: Requires connection state monitoring
+
+## 🛠️ Troubleshooting and Debugging
+
+### **Common Issues and Solutions**
+
+#### **Permission Errors**
+```bash
+# Ensure proper sudo access
+sudo python3 test.py
+
+# Check Mininet permissions
+sudo mn --test pingall
+```
+
+#### **Network Connectivity Issues**
+```bash
+# Clean previous sessions
+sudo mn -c
+
+# Verify controller connectivity
+telnet 127.0.0.1 6653
+```
+
+#### **PCAP Capture Problems**
+```bash
+# Check tcpdump permissions
+sudo tcpdump -i any -c 1
+
+# Verify network interfaces
+ip link show
+```
+
+#### **Controller Issues**
+```bash
+# Check Ryu installation
+ryu-manager --version
+
+# Test REST API
+curl http://127.0.0.1:8080/hello
+```
+
+### **Debug Mode Execution**
+```bash
+# Enable debug logging
+export PYTHONPATH=$PYTHONPATH:src
+sudo python3 test.py --debug
+
+# Monitor network traffic during execution
+sudo tcpdump -i any host 10.0.0.4 &
+sudo python3 test.py
+```
+
+### **Log Analysis**
+```bash
+# Monitor attack execution in real-time
+tail -f test_output/attack.log
+
+# Analyze network controller logs
+grep "flow" test_output/ryu.log
+
+# Check for errors
+grep -i error test_output/*.log
+```
+
+## 📈 Performance Analysis
+
+### **Expected Execution Time**
+- **Total Duration**: ~50-60 seconds
+- **Initialization**: ~10 seconds
+- **Traffic Generation**: ~30 seconds
+- **Data Processing**: ~10-20 seconds
+- **Cleanup**: ~5 seconds
+
+### **Resource Requirements**
+- **CPU**: Moderate usage during packet generation and processing
+- **Memory**: ~500MB-1GB for Mininet and data processing
+- **Disk**: ~50-100MB for PCAP files and CSV datasets
+- **Network**: Local loopback interfaces only
+
+### **Output Size Expectations**
+- **PCAP Files**: 1KB - 5MB per file (depending on attack intensity)
+- **CSV Datasets**: 10K - 100K rows per dataset
+- **Log Files**: 1-10MB total logging output
+
+## 🔒 Security and Safety
+
+### **Defensive Research Focus**
+- **Purpose**: Security research and detection algorithm development
+- **Scope**: Controlled, isolated network environment
+- **Applications**: DDoS detection, SDN security analysis, ML model training
+
+### **Ethical Usage**
+- **Environment**: Local network emulation only
+- **Impact**: No external network effects
+- **Compliance**: Designed for academic and defensive security research
+
+### **Safety Measures**
+- **Isolation**: All attacks contained within Mininet environment
+- **Cleanup**: Automatic resource cleanup and network teardown
+- **Monitoring**: Comprehensive logging for audit and analysis
+
+This enhanced test framework provides a comprehensive, quick-turnaround environment for developing and validating DDoS detection systems in SDN environments, with detailed logging and monitoring capabilities that support both traditional and advanced adversarial attack analysis.
