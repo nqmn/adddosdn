@@ -142,36 +142,649 @@ Edit `dataset_generation/config.json` to customize attack durations:
 
 ## 🎯 Generated Dataset Features
 
-### Packet-Level Features (84 features)
-- **Network Layer** (12 features): IP addresses, protocols, packet sizes
-- **Transport Layer** (15 features): Ports, TCP flags, connection states  
-- **Timing** (20 features): Timestamps, arrival patterns, flow duration
-- **Statistics** (25 features): Packet counts, distributions, patterns
-- **Protocol-Specific** (10 features): HTTP methods, DNS queries, TCP options
-- **Labels** (2 features): Binary and multi-class attack labels
+### Packet-Level Features (15 features)
+| Feature Name | Description | Relevance |
+|---|---|---|
+| `timestamp` | Timestamp of the packet capture. | Essential for temporal analysis and correlating events. |
+| `packet_length` | Length of the captured packet in bytes. | Indicates packet size, useful for identifying anomalies (e.g., unusually large or small packets). |
+| `eth_type` | Ethernet type of the packet (e.g., IP, ARP). | Identifies the network layer protocol, crucial for protocol-specific analysis. |
+| `ip_src` | Source IP address of the packet. | Identifies the sender, vital for tracing attack sources. |
+| `ip_dst` | Destination IP address of the packet. | Identifies the receiver, vital for tracing attack targets. |
+| `ip_proto` | IP protocol number (e.g., TCP, UDP, ICMP). | Specifies the transport layer protocol, fundamental for classifying traffic types. |
+| `ip_ttl` | IP Time-To-Live value. | Can indicate network topology or unusual routing paths, sometimes manipulated in attacks. |
+| `ip_id` | IP identification field. | Used for reassembling fragmented IP packets, can be used in some attack patterns. |
+| `ip_flags` | IP flags (e.g., Don't Fragment). | Indicates fragmentation status, relevant for certain attack types. |
+| `ip_len` | Total length of the IP packet. | Similar to `packet_length` but specific to the IP layer, useful for anomaly detection. |
+| `src_port` | Source port number (TCP/UDP). | Identifies the application sending the traffic, crucial for application-layer attack detection. |
+| `dst_port` | Destination port number (TCP/UDP). | Identifies the application receiving the traffic, crucial for application-layer attack detection. |
+| `tcp_flags` | TCP flags (e.g., SYN, ACK, FIN). | Essential for analyzing TCP connection states and identifying SYN floods or other TCP-based attacks. |
+| `Label_multi` | Multi-class label indicating the type of traffic (e.g., 'normal', 'syn_flood', 'udp_flood'). | Primary label for multi-class classification tasks. |
+| `Label_binary` | Binary label indicating whether the traffic is normal (0) or attack (1). | Primary label for binary classification tasks. |
 
-### Flow-Level Features (26 features)  
-- **SDN Context** (6 features): Switch info, flow rules, OpenFlow data
-- **Traffic Metrics** (8 features): Packet/byte counts, rates, duration
-- **Network Behavior** (4 features): MAC addresses, communication patterns
-- **Advanced Analytics** (6 features): Statistical analysis, anomaly detection
-- **Labels** (2 features): Binary and multi-class attack labels
+### Flow-Level Features (18 features)  
+| Feature Name | Description | Relevance |
+|---|---|---|
+| `timestamp` | Timestamp when the flow statistics were collected. | Essential for temporal analysis of flow dynamics. |
+| `switch_id` | Datapath ID of the OpenFlow switch. | Identifies the switch where the flow was observed, crucial for network-wide analysis. |
+| `table_id` | ID of the flow table where the flow entry resides. | Indicates the processing stage of the flow within the switch. |
+| `cookie` | Opaque value used by the controller to identify the flow. | Can be used for internal tracking by the controller. |
+| `priority` | Priority of the flow entry. | Determines the order of matching, higher priority flows are matched first. |
+| `in_port` | Ingress port of the flow. | Identifies the port through which traffic entered the switch for this flow. |
+| `eth_src` | Ethernet source address of the flow. | Identifies the source MAC address of the traffic in the flow. |
+| `eth_dst` | Ethernet destination address of the flow. | Identifies the destination MAC address of the traffic in the flow. |
+| `out_port` | Egress port of the flow. | Identifies the port through which traffic exited the switch for this flow. |
+| `packet_count` | Number of packets matched by the flow entry. | Direct measure of traffic volume for the flow, key for anomaly detection. |
+| `byte_count` | Number of bytes matched by the flow entry. | Direct measure of traffic volume in bytes, key for anomaly detection. |
+| `duration_sec` | Time in seconds since the flow entry was added. | Indicates the longevity of the flow, useful for identifying short-lived attack flows. |
+| `duration_nsec` | Time in nanoseconds since the flow entry was added (fractional part). | Provides higher precision for flow duration. |
+| `avg_pkt_size` (calculated) | Average packet size for the flow (`byte_count / packet_count`). | Helps characterize the nature of traffic within a flow (e.g., small packets in SYN floods). |
+| `pkt_rate` (calculated) | Rate of packets per second for the flow (`packet_count / total_duration`). | Indicates the intensity of traffic, crucial for detecting high-rate attacks. |
+| `byte_rate` (calculated) | Rate of bytes per second for the flow (`byte_count / total_duration`). | Indicates the bandwidth consumption, crucial for detecting high-bandwidth attacks. |
+| `Label_multi` | Multi-class label indicating the type of traffic (e.g., 'normal', 'syn_flood', 'udp_flood'). | Primary label for multi-class classification tasks. |
+| `Label_binary` | Binary label indicating whether the traffic is normal (0) or attack (1). | Primary label for binary classification tasks. |
 
-## 🔍 Attack Types Generated
 
-### Traditional DDoS Attacks
-| Attack Type | Description | Target Port | Rate |
-|-------------|-------------|-------------|------|
-| **SYN Flood** | TCP connection exhaustion | 80 (HTTP) | ~100 packets/sec |
-| **UDP Flood** | UDP packet flooding | 53 (DNS) | ~100 packets/sec |  
-| **ICMP Flood** | ICMP echo request flooding | N/A | ~100 packets/sec |
+## Network Architecture
 
-### Advanced Adversarial Attacks
-| Attack Type | Description | Technique | Evasion Method |
-|-------------|-------------|-----------|----------------|
-| **TCP State Exhaustion** | Advanced SYN-based attack | Half-open connections | IP rotation, timing variation |
-| **Application Layer Mimicry** | HTTP-based attack | Legitimate-looking requests | User agent rotation, realistic patterns |
-| **Slow Read Attack** | Low-and-slow HTTP attack | Slow data consumption | Connection holding, slowhttptest |
+```mermaid
+graph TD
+    subgraph SDN Network
+        s1[OpenFlow Switch s1]
+        
+        s1 --- h1[Attacker 1<br/>h1:10.0.0.1]
+        s1 --- h2[Attacker 2<br/>h2:10.0.0.2]
+        s1 --- h3[Normal Host<br/>h3:10.0.0.3]
+        s1 --- h4[Victim 1<br/>h4:10.0.0.4]
+        s1 --- h5[Normal Host<br/>h5:10.0.0.5]
+        s1 --- h6[Web Server<br/>h6:10.0.0.6]
+    end
+    
+    style h1 fill:#ff9999,stroke:#333,stroke-width:2px
+    style h2 fill:#ff9999,stroke:#333,stroke-width:2px
+    style h4 fill:#99ccff,stroke:#333,stroke-width:2px
+    style h6 fill:#99ccff,stroke:#333,stroke-width:2px
+```
+
+## Network Topology
+
+The Mininet topology consists of the following components:
+
+| Component | Type | IP Address | Role |
+|-----------|------|------------|------|
+| s1 | OpenFlow Switch | N/A | Central network switch |
+| h1 | Host | 10.0.0.1 | Primary Attacker |
+| h2 | Host | 10.0.0.2 | Secondary Attacker |
+| h3 | Host | 10.0.0.3 | Normal Traffic Generator |
+| h4 | Host | 10.0.0.4 | Primary Victim |
+| h5 | Host | 10.0.0.5 | Normal Traffic Generator |
+| h6 | Host | 10.0.0.6 | Web Server Victim |
+
+## Host Roles and Traffic Patterns
+
+### Attackers
+
+| Host | IP | Attack Type | Target | Impact | Description |
+|------|----|-------------|--------|--------|-------------|
+| h1 | 10.0.0.1 | SYN Flood | h6 (Web Server) | Controller & Application | Overwhelms controller flow tables and exhausts server resources |
+| h2 | 10.0.0.2 | Multiple Attacks | h4 & h6 | Various | Launches various attacks including UDP, ICMP, and advanced adversarial attacks. |
+
+#### Detailed Attack Vectors from h2:
+
+| Attack Type | Target | Protocol | Port | Evasion Technique |
+|-------------|--------|----------|------|-------------------|
+| UDP Flood | h4 | UDP | 53 | High Rate |
+| ICMP Flood | h4 | ICMP | N/A | High Rate |
+| Adversarial SYN | h6 | TCP | 80 | TCP State Exhaustion |
+| Adversarial UDP | h6 | UDP | 53 | Application Layer Mimicry |
+| Adversarial Slow Read | h6 | TCP | 80 | Slow HTTP Request |
+
+### Victims
+
+| Host | IP | Role | Attack Types | Impact |
+|------|----|------|--------------|--------|
+| h4 | 10.0.0.4 | General Victim | UDP Flood, ICMP Flood | Network Saturation |
+| h6 | 10.0.0.6 | Web Server | SYN Flood, Adversarial Attacks | Service Disruption |
+
+### Normal Traffic Generators
+
+| Host | IP | Traffic Type | Destination | Protocols | Purpose |
+|------|----|--------------|-------------|-----------|---------|
+| h3 | 10.0.0.3 | Benign | h5 | ICMP, TCP, UDP, etc. | Simulate normal web and network traffic |
+| h5 | 10.0.0.5 | Benign | h3 | ICMP, TCP, UDP, etc. | Simulate normal web and network traffic |
+
+## Traffic Generation Phases
+
+The dataset generation process follows a structured timeline with distinct phases. The duration of each phase is configurable in `dataset_generation/config.json`.
+
+| Phase | Default Duration | Label | Description |
+|-------|------------------|-------|-------------|
+| Initialization | 5s | normal | Network stabilization and controller initialization. |
+| Normal Traffic | 5s | normal | Benign traffic (ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP) between h3 and h5. |
+| SYN Flood | 5s | syn_flood | Traditional SYN flood attack from h1 to h6. |
+| UDP Flood | 5s | udp_flood | Traditional UDP flood attack from h2 to h4. |
+| ICMP Flood | 5s | icmp_flood | Traditional ICMP flood attack from h2 to h4. |
+| Adversarial SYN | 5s | ad_syn | Adversarial TCP State Exhaustion attack from h2 to h6. |
+| Adversarial UDP | 5s | ad_udp | Adversarial Application Layer attack from h2 to h6. |
+| Adversarial Slow Read | 5s | ad_slow | Adversarial Slow Read attack from h2 to h6. |
+| Cooldown | 10s | normal | Allow network to stabilize and ensure final flow stats are captured. |
+
+## Data Collection Architecture
+
+```mermaid
+graph LR
+    subgraph Mininet Network
+        s1[Switch s1]
+        h1[h1..h6]
+        h1 -- Traffic --> s1
+    end
+
+    subgraph Data Collectors
+        Ryu[Ryu Controller]
+        Tshark[Packet Capture (tshark)]
+    end
+
+    s1 -- OpenFlow Stats --> Ryu
+    s1 -- Mirrored Traffic --> Tshark
+
+    Ryu -->|Flow Stats API| main_py[main.py]
+    Tshark -->|PCAP files| main_py
+
+    main_py -->|flow_features.csv| Dataset_Storage[Output Directory]
+    main_py -->|packet_features.csv| Dataset_Storage
+```
+
+## 📊 Dataset Generation Flow
+
+### Dataset Outputs
+
+The generated datasets in `dataset_generation/main_output/` include:
+
+1.  **`packet_features.csv`**
+    -   The primary packet-level dataset with extracted features and labels.
+    -   Each packet is associated with a label indicating the traffic phase (e.g., `normal`, `syn_flood`, `ad_slow`).
+
+2.  **`flow_features.csv`**
+    -   A flow-based dataset containing statistics collected from the Ryu controller.
+    -   Features include packet/byte counts, duration, and derived rates, labeled based on the active traffic phase.
+
+
+### Traffic Generation Timeline
+
+#### test.py (Fixed Durations - Development)
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        test.py Traffic Generation Timeline                       │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+Time: 0s    5s    10s    15s    20s    25s    30s    35s    40s    45s
+      │     │     │      │      │      │      │      │      │      │
+      ▼     ▼     ▼      ▼      ▼      ▼      ▼      ▼      ▼      ▼
+┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
+│Init │Normal│SYN │UDP │ICMP │ad_syn│ad_udp│slow │Cool │     │
+│ 5s  │ 5s  │ 5s │ 5s │ 5s  │ 5s  │ 5s  │ 5s  │ 5s  │     │
+└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
+```
+
+#### main.py (Configurable Durations - Production)
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        main.py Traffic Generation Timeline                       │
+│                           (Default config.json values)                          │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+Time: 0s    5s     20m    30m    40m    50m    60m    70m    80m    90m
+      │     │      │      │      │      │      │      │      │      │
+      ▼     ▼      ▼      ▼      ▼      ▼      ▼      ▼      ▼      ▼
+┌─────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬─────┐
+│Init │Normal│ SYN  │ UDP  │ ICMP │ad_syn│ad_udp│slow  │Cool │
+│ 5s  │1200s │ 600s │ 600s │ 600s │ 600s │ 600s │ 600s │ 10s │
+└─────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴─────┘
+```
+
+**Both scripts provide identical functionality and output format:**
+
+**Timeline Legend:**
+- **Init**: Network initialization and stabilization  
+- **Normal**: Benign multi-protocol traffic (HTTP, DNS, SMTP, FTP)
+- **SYN/UDP/ICMP**: Traditional DDoS flood attacks with enhanced logging
+- **ad_syn/ad_udp/slow**: Advanced adversarial attacks with evasion techniques
+- **Cool**: Cooldown period for flow collection completion
+- **Flow Collection**: Continuous SDN controller statistics via REST API
+
+**Key Differences:**
+- **test.py**: Fixed 5-second durations per phase (50 seconds total)
+- **main.py**: Configurable durations via config.json (default: ~80 minutes total)
+- **Output**: Both generate identical file formats and feature sets
+```
+
+### Feature Extraction Pipeline
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                           Feature Extraction Workflow                           │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+                    ┌─────────────────────────────────────┐
+                    │          Raw Data Sources           │
+                    └─────────────────┬───────────────────┘
+                                      │
+                    ┌─────────────────┼───────────────────┐
+                    │                 │                   │
+           ┌────────▼──────────┐     │      ┌────────────▼─────────┐
+           │ PCAP Files        │     │      │ Flow Statistics     │
+           │                   │     │      │ (REST API)          │
+           │ • normal.pcap     │     │      │                     │
+           │ • syn_flood.pcap  │     │      │ • Real-time polling │
+           │ • udp_flood.pcap  │     │      │ • Switch flow tables│
+           │ • icmp_flood.pcap │     │      │ • OpenFlow metrics  │
+           │ • ad_syn.pcap     │     │      │ • Performance data  │
+           │ • ad_udp.pcap     │     │      │                     │
+           │ • ad_slow.pcap    │     │      │                     │
+           └────────┬──────────┘     │      └────────────┬─────────┘
+                    │                │                   │
+                    ▼                │                   ▼
+           ┌────────────────────┐    │      ┌─────────────────────────┐
+           │ Packet Processing  │    │      │ Flow Processing         │
+           │                    │    │      │                         │
+           │ 1. Integrity Check │    │      │ 1. Real-time Collection │
+           │ 2. Timestamp Fix   │    │      │ 2. Time Synchronization │
+           │ 3. Protocol Parse  │    │      │ 3. Metric Calculation   │
+           │ 4. Feature Extract │    │      │ 4. Label Assignment     │
+           │ 5. Label Assign    │    │      │ 5. Quality Validation   │
+           └────────┬───────────┘    │      └─────────────┬───────────┘
+                    │                │                    │
+                    ▼                │                    ▼
+        ┌─────────────────────────┐  │     ┌──────────────────────────┐
+        │ 84 Packet-Level         │  │     │ 26 Flow-Level            │
+        │ Features                │  │     │ Features                 │
+        │                         │  │     │                          │
+        │ • Network Layer (12)    │  │     │ • Flow Identity (6)      │
+        │ • Transport Layer (15)  │  │     │ • Traffic Metrics (8)    │
+        │ • Temporal (20)         │  │     │ • Rate Features (6)      │
+        │ • Statistical (25)      │  │     │ • Behavioral (4)         │
+        │ • Protocol Specific (10)│  │     │ • Labels (2)             │
+        │ • Labels (2)            │  │     │                          │
+        └─────────┬───────────────┘  │     └──────────────┬───────────┘
+                  │                  │                    │
+                  └──────────────────┼────────────────────┘
+                                     │
+                                     ▼
+                   ┌─────────────────────────────────────┐
+                   │        Dataset Consolidation        │
+                   │                                     │
+                   │ ┌─────────────────────────────────┐ │
+                   │ │ Quality Assurance               │ │
+                   │ │ • Label consistency checks      │ │
+                   │ │ • Feature completeness          │ │
+                   │ │ • Statistical validation        │ │
+                   │ │ • Temporal correlation          │ │
+                   │ └─────────────────────────────────┘ │
+                   │                                     │
+                   │ ┌─────────────────────────────────┐ │
+                   │ │ Final Dataset Export            │ │
+                   │ │ • packet_features.csv           │ │
+                   │ │ • flow_features.csv             │ │
+                   │ │ • Feature name files            │ │
+                   │ │ • Statistical summaries         │ │
+                   │ └─────────────────────────────────┘ │
+                   └─────────────────────────────────────┘
+```
+
+### Enhanced Logging Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Enhanced Logging System Architecture                      │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+                              ┌─────────────────────┐
+                              │   Centralized       │
+                              │   Logging Manager   │
+                              │                     │
+                              │ • Run ID Generation │
+                              │ • Format Standards  │
+                              │ • Multi-destination │
+                              │ • Level Control     │
+                              └──────────┬──────────┘
+                                         │
+                ┌────────────────────────┼────────────────────────┐
+                │                        │                        │
+                ▼                        ▼                        ▼
+    ┌─────────────────────┐  ┌─────────────────────┐  ┌─────────────────────┐
+    │ Attack Execution    │  │ System Operations   │  │ Network Monitoring  │
+    │ Logging             │  │ Logging             │  │ Logging             │
+    │                     │  │                     │  │                     │
+    │ Files:              │  │ Files:              │  │ Files:              │
+    │ • attack.log        │  │ • main.log/test.log │  │ • ryu.log           │
+    │                     │  │ • mininet.log       │  │ • flow_stats.log    │
+    │ Content:            │  │                     │  │                     │
+    │ • Run ID tracking   │  │ Content:            │  │ Content:            │
+    │ • Pre-attack recon  │  │ • System startup    │  │ • Controller events │
+    │ • Real-time metrics │  │ • Process mgmt      │  │ • Flow installations│
+    │ • Progress updates  │  │ • Error handling    │  │ • Network topology  │
+    │ • Performance stats │  │ • Resource usage    │  │ • Performance data  │
+    │ • Attack summaries  │  │ • Cleanup ops       │  │ • REST API calls    │
+    └─────────────────────┘  └─────────────────────┘  └─────────────────────┘
+                │                        │                        │
+                └────────────────────────┼────────────────────────┘
+                                         │
+                                         ▼
+                          ┌─────────────────────────────┐
+                          │   Log Analysis & Debugging  │
+                          │                             │
+                          │ • Cross-reference capability│
+                          │ • Correlation by Run ID     │
+                          │ • Performance profiling     │
+                          │ • Error traceability        │
+                          │ • Attack pattern analysis   │
+                          └─────────────────────────────┘
+
+### Multi-Level Classification System
+
+#### **Binary Classification**
+```
+┌─────────────────────────────────────────────────────────┐
+│                Binary Classification                     │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  Normal Traffic (Label = 0)    │  Attack Traffic (Label = 1)  │
+│  ├─ Benign HTTP/HTTPS         │  ├─ Traditional DDoS          │
+│  ├─ DNS Queries               │  │  ├─ SYN Flood              │
+│  ├─ SMTP/FTP Traffic          │  │  ├─ UDP Flood              │
+│  ├─ SSH/Telnet Sessions       │  │  └─ ICMP Flood             │
+│  └─ Standard Network Ops      │  └─ Adversarial Attacks       │
+│                                │     ├─ TCP State Exhaustion   │
+│                                │     ├─ App Layer Mimicry      │
+│                                │     └─ Slow Read Attacks      │
+└─────────────────────────────────────────────────────────┘
+```
+
+#### **Multi-Class Classification**
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Multi-Class Attack Classification                         │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  normal        syn_flood       udp_flood       icmp_flood                      │
+│  │             │               │               │                               │
+│  ├─Multi-proto ├─TCP port 80   ├─UDP port 53   ├─ICMP echo                    │
+│  │ benign      │ connection    │ DNS service   │ requests                      │
+│  │ traffic     │ exhaustion    │ overwhelming  │ bandwidth                     │
+│  │ patterns    │ ~100 pps      │ ~100 pps      │ consumption                   │
+│  │             │               │               │ ~100 pps                      │
+│                                                                                 │
+│  ad_syn         ad_udp          ad_slow                                        │
+│  │              │               │                                               │
+│  ├─Advanced     ├─HTTP app      ├─Slow read                                    │
+│  │ TCP state    │ layer         │ connection                                   │
+│  │ exhaustion   │ mimicry       │ exhaustion                                   │
+│  │ IP rotation  │ legitimate    │ slowhttptest                                 │
+│  │ adaptive     │ patterns      │ 100 conns                                    │
+│  │ timing       │ varied UA     │ slow consume                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+## 🏗️ System Architecture
+
+### Overall System Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                           AdDDoSDN Dataset Framework                             │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│  ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────────────────┐ │
+│  │   Control Plane │    │    Data Plane    │    │    Management Plane        │ │
+│  │                 │    │                  │    │                             │ │
+│  │ ┌─────────────┐ │    │ ┌──────────────┐ │    │ ┌─────────────────────────┐ │ │
+│  │ │ Ryu         │ │    │ │ Mininet      │ │    │ │ Dataset Generation      │ │ │
+│  │ │ Controller  │◄┼────┼─┤ Network      │ │    │ │ Framework               │ │ │
+│  │ │             │ │    │ │ Emulation    │ │    │ │                         │ │ │
+│  │ │ - Flow Mon  │ │    │ │              │ │    │ │ - Traffic Orchestration │ │ │
+│  │ │ - REST API  │ │    │ │ ┌──────────┐ │ │    │ │ - Attack Coordination   │ │ │
+│  │ │ - Stats     │ │    │ │ │ OVS      │ │ │    │ │ - Data Collection       │ │ │
+│  │ └─────────────┘ │    │ │ │ Switch   │ │ │    │ │ - Feature Extraction    │ │ │
+│  └─────────────────┘    │ │ │ (OpenFlow│ │ │    │ │ - Enhanced Logging      │ │ │
+│                         │ │ │  1.3)    │ │ │    │ └─────────────────────────┘ │ │
+│                         │ │ └────┬─────┘ │ │    └─────────────────────────────┘ │
+│                         │ │      │       │ │                                    │
+│                         │ │ ┌────▼─────┐ │ │                                    │
+│                         │ │ │ Hosts    │ │ │                                    │
+│                         │ │ │ h1...h6  │ │ │                                    │
+│                         │ │ └──────────┘ │ │                                    │
+│                         │ └──────────────┘ │                                    │
+│                         └──────────────────┘                                    │
+│                                                                                 │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                              Attack Generation Layer                             │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│ ┌─────────────────┐  ┌─────────────────┐  ┌──────────────────────────────────┐ │
+│ │ Traditional     │  │ Adversarial     │  │ Benign Traffic                   │ │
+│ │ DDoS Attacks    │  │ Attacks         │  │ Generation                       │ │
+│ │                 │  │                 │  │                                  │ │
+│ │ • SYN Flood     │  │ • TCP State     │  │ • HTTP/HTTPS                     │ │
+│ │ • UDP Flood     │  │   Exhaustion    │  │ • DNS Queries                    │ │
+│ │ • ICMP Flood    │  │ • App Layer     │  │ • SMTP/FTP                       │ │
+│ │                 │  │   Mimicry       │  │ • SSH/Telnet                     │ │
+│ │ Enhanced with:  │  │ • Slow Read     │  │                                  │ │
+│ │ • Run ID Track  │  │                 │  │ Multi-protocol                   │ │
+│ │ • Real-time Mon │  │ Advanced with:  │  │ Realistic Patterns               │ │
+│ │ • Target Recon  │  │ • IP Rotation   │  │                                  │ │
+│ │ • Process Stats │  │ • Adaptive Rate │  │                                  │ │
+│ └─────────────────┘  │ • Evasion Tech  │  │                                  │ │
+│                      └─────────────────┘  └──────────────────────────────────┘ │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Network Topology Architecture
+
+```
+                    ┌─────────────────────────────────────┐
+                    │         Ryu Controller              │
+                    │                                     │
+                    │  ┌─────────────┐ ┌─────────────────┐│
+                    │  │ Flow        │ │ REST API        ││
+                    │  │ Monitor     │ │ (Port 8080)     ││
+                    │  │ App         │ │                 ││
+                    │  └─────────────┘ └─────────────────┘│
+                    │         │ OpenFlow (Port 6653)      │
+                    └─────────┼─────────────────────────────┘
+                              │
+                              ▼
+               ┌──────────────────────────────────────────┐
+               │           OpenVSwitch (s1)               │
+               │          OpenFlow 1.3 Enabled           │
+               └─┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┬──┘
+                 │  │  │  │  │  │  │  │  │  │  │  │  │
+        ┌────────▼┐ │  │  │  │  │  │  │  │  │  │  │  │
+        │   h1    │ │  │  │  │  │  │  │  │  │  │  │  │
+        │10.0.0.1 │ │  │  │  │  │  │  │  │  │  │  │  │
+        │         │ │  │  │  │  │  │  │  │  │  │  │  │
+        │ Attack  │ │  │  │  │  │  │  │  │  │  │  │  │
+        │ Source  │ │  │  │  │  │  │  │  │  │  │  │  │
+        └─────────┘ │  │  │  │  │  │  │  │  │  │  │  │
+                    │  │  │  │  │  │  │  │  │  │  │  │
+           ┌────────▼┐ │  │  │  │  │  │  │  │  │  │  │
+           │   h2    │ │  │  │  │  │  │  │  │  │  │  │
+           │10.0.0.2 │ │  │  │  │  │  │  │  │  │  │  │
+           │         │ │  │  │  │  │  │  │  │  │  │  │
+           │ Attack  │ │  │  │  │  │  │  │  │  │  │  │
+           │ Source  │ │  │  │  │  │  │  │  │  │  │  │
+           └─────────┘ │  │  │  │  │  │  │  │  │  │  │
+                       │  │  │  │  │  │  │  │  │  │  │
+              ┌────────▼┐ │  │  │  │  │  │  │  │  │  │
+              │   h3    │ │  │  │  │  │  │  │  │  │  │
+              │10.0.0.3 │ │  │  │  │  │  │  │  │  │  │
+              │         │ │  │  │  │  │  │  │  │  │  │
+              │ Benign  │ │  │  │  │  │  │  │  │  │  │
+              │ Traffic │ │  │  │  │  │  │  │  │  │  │
+              └─────────┘ │  │  │  │  │  │  │  │  │  │
+                          │  │  │  │  │  │  │  │  │  │
+                 ┌────────▼┐ │  │  │  │  │  │  │  │  │
+                 │   h4    │ │  │  │  │  │  │  │  │  │
+                 │10.0.0.4 │ │  │  │  │  │  │  │  │  │
+                 │         │ │  │  │  │  │  │  │  │  │
+                 │ Attack  │ │  │  │  │  │  │  │  │  │
+                 │ Target  │ │  │  │  │  │  │  │  │  │
+                 └─────────┘ │  │  │  │  │  │  │  │  │
+                             │  │  │  │  │  │  │  │  │
+                    ┌────────▼┐ │  │  │  │  │  │  │  │
+                    │   h5    │ │  │  │  │  │  │  │  │
+                    │10.0.0.5 │ │  │  │  │  │  │  │  │
+                    │         │ │  │  │  │  │  │  │  │
+                    │ Benign  │ │  │  │  │  │  │  │  │
+                    │ Traffic │ │  │  │  │  │  │  │  │
+                    └─────────┘ │  │  │  │  │  │  │  │
+                                │  │  │  │  │  │  │  │
+                       ┌────────▼┐ │  │  │  │  │  │  │
+                       │   h6    │ │  │  │  │  │  │  │
+                       │10.0.0.6 │ │  │  │  │  │  │  │
+                       │         │ │  │  │  │  │  │  │
+                       │ Attack  │ │  │  │  │  │  │  │
+                       │ Target  │ │  │  │  │  │  │  │
+                       └─────────┘ │  │  │  │  │  │  │
+                                   └──▼──▼──▼──▼──▼──┘
+                                   Additional ports for
+                                   traffic monitoring
+```
+
+### Data Collection and Processing Pipeline
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        Dataset Generation Pipeline                               │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   Network   │    │   Traffic   │    │    Data     │    │   Dataset   │
+│   Setup     │───▶│ Generation  │───▶│ Collection  │───▶│  Processing │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+       │                   │                   │                   │
+       ▼                   ▼                   ▼                   ▼
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│ 1. Cleanup  │    │ 1. Normal   │    │ 1. PCAP     │    │ 1. Feature  │
+│ 2. Controller│    │    Traffic  │    │    Capture  │    │   Extraction│
+│ 3. Mininet  │    │ 2. SYN      │    │ 2. Flow     │    │ 2. Label    │
+│ 4. Topology │    │    Flood    │    │    Stats    │    │   Assignment│
+│ 5. Connectivity│  │ 3. UDP      │    │ 3. Enhanced │    │ 3. Quality  │
+│              │    │    Flood    │    │    Logging  │    │   Validation│
+│              │    │ 4. ICMP     │    │ 4. Real-time│    │ 4. CSV      │
+│              │    │    Flood    │    │    Monitor  │    │   Export    │
+│              │    │ 5. Advanced │    │             │    │             │
+│              │    │    Attacks  │    │             │    │             │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+
+       ┌─────────────────────────────────────────────────────────────┐
+       │                    Concurrent Processes                      │
+       └─────────────────────────────────────────────────────────────┘
+                              │
+         ┌────────────────────┼────────────────────┐
+         │                    │                    │
+         ▼                    ▼                    ▼
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   PCAP      │    │    Flow     │    │  Enhanced   │
+│  Capture    │    │ Statistics  │    │  Logging    │
+│  (tcpdump)  │    │ Collection  │    │  System     │
+│             │    │ (REST API)  │    │             │
+│ • Per-phase │    │ • Real-time │    │ • Run IDs   │
+│   isolation │    │   polling   │    │ • Progress  │
+│ • Timestamp │    │ • Flow      │    │   tracking  │
+│   sync      │    │   persistence│   │ • Target    │
+│ • Quality   │    │ • Performance│   │   recon     │
+│   checks    │    │   metrics   │    │ • Stats     │
+└─────────────┘    └─────────────┘    └─────────────┘
+```
+
+### Attack Execution Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                            Attack Execution Workflow                            │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+                               ┌─────────────────┐
+                               │  Attack Start   │
+                               └─────────┬───────┘
+                                        │
+                               ┌─────────▼───────┐
+                               │ Generate Run ID │
+                               │ (UUID)          │
+                               └─────────┬───────┘
+                                        │
+                               ┌─────────▼───────┐
+                               │ Pre-Attack      │
+                               │ Reconnaissance  │
+                               │                 │
+                               │ • ICMP Ping     │
+                               │ • Service Test  │
+                               │ • Connectivity  │
+                               └─────────┬───────┘
+                                        │
+                               ┌─────────▼───────┐
+                               │ Attack Phase    │
+                               │ Identification  │
+                               │                 │
+                               │ • Log attack    │
+                               │   type & target │
+                               │ • Record params │
+                               └─────────┬───────┘
+                                        │
+                        ┌───────────────┼───────────────┐
+                        │               │               │
+               ┌────────▼─────────┐    │    ┌─────────▼────────┐
+               │ Traditional      │    │    │ Adversarial      │
+               │ DDoS Attacks     │    │    │ Attacks          │
+               │                  │    │    │                  │
+               │ • SYN Flood      │    │    │ • TCP State      │
+               │ • UDP Flood      │    │    │   Exhaustion     │
+               │ • ICMP Flood     │    │    │ • App Layer      │
+               │                  │    │    │   Mimicry        │
+               │ Enhanced with:   │    │    │ • Slow Read      │
+               │ • Real-time      │    │    │                  │
+               │   monitoring     │    │    │ Advanced with:   │
+               │ • Process stats  │    │    │ • IP Rotation    │
+               │ • Progress track │    │    │ • Adaptive Rate  │
+               └────────┬─────────┘    │    │ • Evasion Tech   │
+                        │              │    └─────────┬────────┘
+                        │              │              │
+                        └──────────────┼──────────────┘
+                                       │
+                               ┌───────▼───────┐
+                               │ Real-time     │
+                               │ Monitoring    │
+                               │               │
+                               │ • Packet rate │
+                               │ • CPU/Memory  │
+                               │ • Network     │
+                               │   response    │
+                               │ • Progress    │
+                               │   updates     │
+                               └───────┬───────┘
+                                       │
+                               ┌───────▼───────┐
+                               │ Attack        │
+                               │ Termination   │
+                               │               │
+                               │ • Graceful    │
+                               │   shutdown    │
+                               │ • Process     │
+                               │   cleanup     │
+                               └───────┬───────┘
+                                       │
+                               ┌───────▼───────┐
+                               │ Comprehensive │
+                               │ Summary       │
+                               │               │
+                               │ • Total stats │
+                               │ • Performance │
+                               │ • Duration    │
+                               │ • Success     │
+                               │   metrics     │
+                               └───────────────┘
+```
+
 
 ## ⚠️ Important Notes
 
