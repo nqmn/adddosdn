@@ -482,12 +482,12 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         stop_capture(capture_procs['normal'])
         phase_timings['normal_traffic'] = time.time() - phase_start
 
-        # --- Phase 3.1: Traditional DDoS Attacks ---
-        logger.info("Phase 3.1: Traditional DDoS Attacks...")
+        # --- Phase 3.1: Enhanced Traditional DDoS Attacks ---
+        logger.info("Phase 3.1: Enhanced Traditional DDoS Attacks...")
         h1, h2, h4, h6 = net.get('h1', 'h2', 'h4', 'h6')
 
         phase_start = time.time()
-        attack_logger.info(f"Attack: SYN Flood ({scenario_durations['syn_flood']}s) | h1 -> h6")
+        attack_logger.info(f"Attack: Enhanced SYN Flood ({scenario_durations['syn_flood']}s) | h1 -> h6")
         update_flow_timeline(flow_label_timeline, 'syn_flood')  # Update timeline dynamically
         capture_procs['syn_flood'] = start_capture(net, PCAP_FILE_SYN_FLOOD)
         time.sleep(2)
@@ -495,10 +495,10 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         attack_proc_syn.wait() # Wait for the process to terminate
         stop_capture(capture_procs['syn_flood'])
         phase_timings['syn_flood'] = time.time() - phase_start
-        attack_logger.info("Attack: SYN Flood completed.")
+        attack_logger.info("Attack: Enhanced SYN Flood completed.")
 
         phase_start = time.time()
-        attack_logger.info(f"Attack: UDP Flood ({scenario_durations['udp_flood']}s) | h2 -> h4")
+        attack_logger.info(f"Attack: Enhanced UDP Flood ({scenario_durations['udp_flood']}s) | h2 -> h4")
         update_flow_timeline(flow_label_timeline, 'udp_flood')  # Update timeline dynamically
         capture_procs['udp_flood'] = start_capture(net, PCAP_FILE_UDP_FLOOD)
         time.sleep(5)
@@ -506,10 +506,10 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         attack_proc_udp.wait() # Wait for the process to terminate
         stop_capture(capture_procs['udp_flood'])
         phase_timings['udp_flood'] = time.time() - phase_start
-        attack_logger.info("Attack: UDP Flood completed.")
+        attack_logger.info("Attack: Enhanced UDP Flood completed.")
 
         phase_start = time.time()
-        attack_logger.info(f"Attack: ICMP Flood ({scenario_durations['icmp_flood']}s) | h2 -> h4")
+        attack_logger.info(f"Attack: Enhanced ICMP Flood ({scenario_durations['icmp_flood']}s) | h2 -> h4")
         update_flow_timeline(flow_label_timeline, 'icmp_flood')  # Update timeline dynamically
         capture_procs['icmp_flood'] = start_capture(net, PCAP_FILE_ICMP_FLOOD)
         time.sleep(2)
@@ -517,7 +517,7 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         attack_proc_icmp.wait() # Wait for the process to terminate
         stop_capture(capture_procs['icmp_flood'])
         phase_timings['icmp_flood'] = time.time() - phase_start
-        attack_logger.info("Attack: ICMP Flood completed.")
+        attack_logger.info("Attack: Enhanced ICMP Flood completed.")
 
         # --- Phase 3.2: Adversarial DDoS Attacks ---
         logger.info("Phase 3.2: Adversarial DDoS Attacks...")
@@ -613,11 +613,12 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         if 'normal_traffic' in phase_timings:
             logger.info(f"  Normal Traffic: {phase_timings['normal_traffic']:.2f}s (configured: {scenario_durations.get('normal_traffic', 'N/A')}s)")
         
-        # Traditional attacks
-        logger.info("  Traditional Attacks:")
+        # Enhanced Traditional attacks
+        logger.info("  Enhanced Traditional Attacks:")
         for attack in ['syn_flood', 'udp_flood', 'icmp_flood']:
             if attack in phase_timings:
-                logger.info(f"    {attack.replace('_', ' ').title()}: {phase_timings[attack]:.2f}s (configured: {scenario_durations.get(attack, 'N/A')}s)")
+                enhanced_name = f"Enhanced {attack.replace('_', ' ').title()}"
+                logger.info(f"    {enhanced_name}: {phase_timings[attack]:.2f}s (configured: {scenario_durations.get(attack, 'N/A')}s)")
         
         # Adversarial attacks
         logger.info("  Adversarial Attacks:")

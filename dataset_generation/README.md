@@ -65,11 +65,13 @@ src/
 │   ├── gen_syn_flood.py       # Enhanced SYN flood with comprehensive logging
 │   ├── gen_udp_flood.py       # Enhanced UDP flood with monitoring
 │   ├── gen_icmp_flood.py      # Enhanced ICMP flood with statistics
+│   ├── enhanced_timing.py     # Human-like timing patterns for traditional attacks
+│   ├── protocol_compliance.py # Protocol compliance for realistic behavior
 │   ├── gen_advanced_adversarial_ddos_attacks_refactored.py  # Main adversarial attacks
 │   ├── ddos_coordinator.py    # Advanced attack coordination and orchestration
 │   ├── ip_rotation.py         # IP rotation and evasion techniques
 │   ├── packet_crafting.py     # Advanced packet crafting utilities
-│   ├── advanced_techniques.py # Sophisticated evasion methods
+│   ├── advanced_techniques.py # Sophisticated evasion methods (with burst/jitter)
 │   ├── session_management.py  # Session maintenance and handling
 │   └── adaptive_control.py    # Adaptive attack rate control
 ├── controller/                # SDN controller applications

@@ -38,44 +38,84 @@ This document details the various DDoS attack scenarios implemented in the syste
 }
 ```
 
-## 1. ICMP Flood Attack
+## Enhanced Attack Implementation
+
+### Enhanced Traditional Attack Implementation
+
+All traditional attacks (SYN flood, UDP flood, ICMP flood) now include sophisticated enhancements that improve realism while maintaining clear distinction from adversarial techniques:
+
+**Enhanced Timing Features:**
+- **Human-like patterns**: Realistic typing intervals (80-150ms), mouse clicks (200-400ms), think times (1-3s)
+- **Circadian rhythm modeling**: Activity varies by hour/day based on human behavior studies
+- **Session patterns**: Realistic work sessions with natural breaks and intensity changes
+- **Network delay simulation**: Realistic latency, congestion modeling, and packet loss simulation
+
+**Protocol Compliance Features:**
+- **TCP compliance**: RFC-compliant sequence numbers, realistic window sizes, proper options (MSS, window scaling, timestamps)
+- **UDP compliance**: Service-aware payloads for DNS, DHCP, NTP, SNMP protocols
+- **Connection management**: Proper SYN→ACK→FIN sequences and state tracking
+- **Protocol validation**: Compliance scoring and enhancement suggestions
+
+### Attack Type Differentiation
+
+**Enhanced Traditional Attacks** (realistic but detectable):
+- Enhanced SYN flood with human timing and RFC-compliant TCP options
+- Enhanced UDP flood with realistic DNS service patterns and ephemeral ports
+- Enhanced ICMP flood with protocol compliance and enhanced monitoring
+
+**Adversarial Attacks** (focused on ML evasion):
+- TCP state exhaustion with burst patterns and jitter
+- Application layer mimicry with IP rotation
+- Slow read attacks with adaptive control
+
+## 1. Enhanced ICMP Flood Attack
 
 **Description:**
-The ICMP Flood attack is a denial-of-service attack in which an attacker overwhelms a target system with a large volume of ICMP (Internet Control Message Protocol) echo request packets, also known as "ping" requests. The goal is to consume the target's network bandwidth and processing resources, making it unresponsive to legitimate traffic.
+The Enhanced ICMP Flood attack is a denial-of-service attack that overwhelms a target system with ICMP echo request packets while incorporating human-like behavioral patterns and protocol compliance to create more realistic attack traffic.
 
-**How it happens in the scenario:**
-- **Source:** `gen_icmp_flood.py`
-- An `attacker_host` continuously sends ICMP echo request packets to a `victim_ip`.
-- The `scapy` library is used to craft and send these packets.
-- Each packet consists of an Ethernet frame, an IP header (with the victim's IP as destination), and an ICMP echo request.
-- The packets are sent in a loop with a small inter-packet delay (0.01 seconds) to maximize the flood.
-- The attack runs for a specified `duration`, after which the process is gracefully stopped.
+**Enhanced Implementation:**
+- **Source:** `gen_icmp_flood.py` with `enhanced_timing.py` and `protocol_compliance.py`
+- **Human-like timing**: Uses realistic typing intervals (80-150ms) instead of fixed delays
+- **Protocol compliance**: Proper ICMP ID/sequence number variations and realistic packet structure
+- **Session patterns**: Realistic work sessions with active/break phases based on circadian rhythms
+- **Network simulation**: Realistic latency variations, congestion modeling, and packet loss simulation
+- **Enhanced monitoring**: Tracks attack phases, timing factors, and system impact
+- **Reduced packet rate**: ~25 pps (instead of 100 pps) for more realistic human-driven attack patterns
+- The attack adapts timing based on session intensity, circadian factors, and workday patterns
 
-## 2. SYN Flood Attack
-
-**Description:**
-The SYN Flood attack exploits the TCP three-way handshake mechanism. An attacker sends a large number of TCP SYN (synchronize) requests to a target server but never completes the handshake by sending the final ACK (acknowledgment) packet. This leaves the server with many half-open connections, exhausting its connection table and preventing it from accepting new legitimate connections.
-
-**How it happens in the scenario:**
-- **Source:** `gen_syn_flood.py`
-- An `attacker_host` sends a continuous stream of TCP SYN packets to a `victim_ip` on port 80 (HTTP).
-- The `scapy` library is used to craft these packets.
-- Each packet includes an Ethernet frame, an IP header, and a TCP header with the SYN flag set.
-- Similar to the ICMP flood, packets are sent in a loop with a small inter-packet delay (0.01 seconds).
-- The attack runs for a specified `duration`, after which the process is gracefully stopped.
-
-## 3. UDP Flood Attack
+## 2. Enhanced SYN Flood Attack
 
 **Description:**
-The UDP Flood attack is a denial-of-service attack where the attacker overwhelms a target system with a large volume of UDP (User Datagram Protocol) packets. The attacker often spoofs the source IP address to make it harder to trace the origin. When these packets arrive at the victim, the victim's system attempts to process them, often by sending an ICMP "Destination Unreachable" packet back to the spoofed source, consuming resources and bandwidth.
+The Enhanced SYN Flood attack exploits the TCP three-way handshake mechanism while incorporating realistic timing patterns and protocol compliance to create more sophisticated attack traffic that mimics human-driven behavior.
 
-**How it happens in the scenario:**
-- **Source:** `gen_udp_flood.py`
-- An `attacker_host` sends a flood of UDP packets to a `victim_ip`, typically targeting a common UDP port like 53 (DNS).
-- The `scapy` library is used to craft the packets.
-- Each packet contains an Ethernet frame, an IP header, and a UDP header.
-- The packets are sent in a continuous loop with a small inter-packet delay (0.01 seconds).
-- The attack runs for a specified `duration`, after which the process is gracefully stopped.
+**Enhanced Implementation:**
+- **Source:** `gen_syn_flood.py` with `enhanced_timing.py` and `protocol_compliance.py`
+- **Human-like timing**: Realistic typing intervals with natural variation and think times
+- **Protocol compliance**: RFC-compliant TCP sequence numbers, realistic window sizes (8192-65535)
+- **TCP options**: Proper MSS, window scaling, timestamps, and selective ACK options
+- **Ephemeral ports**: Realistic source port ranges (32768-65535) instead of fixed ports
+- **Session patterns**: Work session modeling with active/break phases and intensity variations
+- **Circadian adaptation**: Attack rate varies based on time of day and workday patterns
+- **Network simulation**: Congestion modeling with 5% chance of network delays
+- **Reduced packet rate**: ~25 pps for more realistic human-driven attack patterns
+- Targets port 80 (HTTP) with properly crafted SYN packets that include realistic TCP options
+
+## 3. Enhanced UDP Flood Attack
+
+**Description:**
+The Enhanced UDP Flood attack overwhelms a target system with UDP packets while incorporating realistic service patterns and human-like timing to create more sophisticated attack traffic that resembles legitimate DNS usage.
+
+**Enhanced Implementation:**
+- **Source:** `gen_udp_flood.py` with `enhanced_timing.py` and `protocol_compliance.py`
+- **Human-like timing**: Realistic typing intervals and natural variation patterns
+- **Service-aware payloads**: Realistic DNS query patterns with varied domain names (example.com, google.com, localhost)
+- **Protocol compliance**: Proper DNS packet structure with realistic query headers and transaction IDs
+- **Ephemeral ports**: Dynamic source port allocation (32768-65535) for each packet
+- **Session patterns**: Natural work session modeling with intensity variations
+- **Timing adaptation**: Rate adjusts based on circadian rhythms and workday patterns
+- **Network simulation**: Congestion modeling and realistic network delay variations
+- **Reduced packet rate**: ~25 pps for more realistic human-driven attack patterns
+- Targets port 53 (DNS) with properly formatted DNS queries containing realistic domain lookups
 
 ## 4. Advanced Adversarial DDoS Attacks
 
