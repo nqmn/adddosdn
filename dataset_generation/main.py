@@ -448,14 +448,20 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         return
 
     logger.info("Starting traffic generation scenario...")
+    
+    # Track timing for each phase
+    phase_timings = {}
+    scenario_start_time = time.time()
 
     capture_procs = {} # Dictionary to hold all capture processes
     flow_collector_thread = None # Thread for collecting flow stats
 
     try:
         # --- Phase 1: Initialization ---
+        phase_start = time.time()
         logger.info(f"Phase 1: Initialization ({scenario_durations['initialization']}s)...")
         time.sleep(scenario_durations['initialization'])
+        phase_timings['initialization'] = time.time() - phase_start
 
         # Start flow collection in a separate thread - SYNCHRONIZED with packet collection
         flow_collector_thread = threading.Thread(
@@ -467,17 +473,20 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         logger.info("Flow statistics collection started in background.")
 
         # --- Phase 2: Normal Traffic ---
+        phase_start = time.time()
         logger.info(f"Phase 2: Normal Traffic ({scenario_durations['normal_traffic']}s)...")
         update_flow_timeline(flow_label_timeline, 'normal')  # Update timeline dynamically
         capture_procs['normal'] = start_capture(net, PCAP_FILE_NORMAL)
         time.sleep(2) # Give capture a moment to start
         run_benign_traffic(net, scenario_durations['normal_traffic'], OUTPUT_DIR, HOST_IPS)
         stop_capture(capture_procs['normal'])
+        phase_timings['normal_traffic'] = time.time() - phase_start
 
         # --- Phase 3.1: Traditional DDoS Attacks ---
         logger.info("Phase 3.1: Traditional DDoS Attacks...")
         h1, h2, h4, h6 = net.get('h1', 'h2', 'h4', 'h6')
 
+        phase_start = time.time()
         attack_logger.info(f"Attack: SYN Flood ({scenario_durations['syn_flood']}s) | h1 -> h6")
         update_flow_timeline(flow_label_timeline, 'syn_flood')  # Update timeline dynamically
         capture_procs['syn_flood'] = start_capture(net, PCAP_FILE_SYN_FLOOD)
@@ -485,8 +494,10 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         attack_proc_syn = run_syn_flood(h1, HOST_IPS['h6'], duration=scenario_durations['syn_flood'])
         attack_proc_syn.wait() # Wait for the process to terminate
         stop_capture(capture_procs['syn_flood'])
+        phase_timings['syn_flood'] = time.time() - phase_start
         attack_logger.info("Attack: SYN Flood completed.")
 
+        phase_start = time.time()
         attack_logger.info(f"Attack: UDP Flood ({scenario_durations['udp_flood']}s) | h2 -> h4")
         update_flow_timeline(flow_label_timeline, 'udp_flood')  # Update timeline dynamically
         capture_procs['udp_flood'] = start_capture(net, PCAP_FILE_UDP_FLOOD)
@@ -494,8 +505,10 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         attack_proc_udp = run_udp_flood(h2, HOST_IPS['h4'], duration=scenario_durations['udp_flood'])
         attack_proc_udp.wait() # Wait for the process to terminate
         stop_capture(capture_procs['udp_flood'])
+        phase_timings['udp_flood'] = time.time() - phase_start
         attack_logger.info("Attack: UDP Flood completed.")
 
+        phase_start = time.time()
         attack_logger.info(f"Attack: ICMP Flood ({scenario_durations['icmp_flood']}s) | h2 -> h4")
         update_flow_timeline(flow_label_timeline, 'icmp_flood')  # Update timeline dynamically
         capture_procs['icmp_flood'] = start_capture(net, PCAP_FILE_ICMP_FLOOD)
@@ -503,25 +516,31 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         attack_proc_icmp = run_icmp_flood(h2, HOST_IPS['h4'], duration=scenario_durations['icmp_flood'])
         attack_proc_icmp.wait() # Wait for the process to terminate
         stop_capture(capture_procs['icmp_flood'])
+        phase_timings['icmp_flood'] = time.time() - phase_start
         attack_logger.info("Attack: ICMP Flood completed.")
 
         # --- Phase 3.2: Adversarial DDoS Attacks ---
         logger.info("Phase 3.2: Adversarial DDoS Attacks...")
 
+        phase_start = time.time()
         attack_logger.info(f"Attack: Adversarial TCP State Exhaustion ({scenario_durations['ad_syn']}s) | h2 -> h6")
         update_flow_timeline(flow_label_timeline, 'ad_syn')  # Update timeline dynamically
         capture_procs['ad_syn'] = start_capture(net, PCAP_FILE_AD_SYN)
         time.sleep(2)
         run_adv_ddos(h2, HOST_IPS['h6'], duration=scenario_durations['ad_syn'], attack_variant="ad_syn")
         stop_capture(capture_procs['ad_syn'])
+        phase_timings['ad_syn'] = time.time() - phase_start
 
+        phase_start = time.time()
         attack_logger.info(f"Attack: Adversarial Application Layer ({scenario_durations['ad_udp']}s) | h2 -> h6")
         update_flow_timeline(flow_label_timeline, 'ad_udp')  # Update timeline dynamically
         capture_procs['ad_udp'] = start_capture(net, PCAP_FILE_AD_UDP)
         time.sleep(2)
         run_adv_ddos(h2, HOST_IPS['h6'], duration=scenario_durations['ad_udp'], attack_variant="ad_udp")
         stop_capture(capture_procs['ad_udp'])
+        phase_timings['ad_udp'] = time.time() - phase_start
 
+        phase_start = time.time()
         attack_logger.info(f"Attack: Adversarial Slow Read ({scenario_durations['ad_slow']}s) | h2 -> h6")
         update_flow_timeline(flow_label_timeline, 'ad_slow')  # Update timeline dynamically
         # Start capture on h6 specifically for slow read attack
@@ -540,6 +559,7 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         attack_proc_ad_slow = run_adv_ddos(h2, HOST_IPS['h6'], duration=scenario_durations['ad_slow'], attack_variant="slow_read", output_dir=OUTPUT_DIR)
         stop_capture(capture_procs['ad_slow'])
         stop_capture(capture_procs['h6_slow_read']) # Stop h6 specific capture
+        phase_timings['ad_slow'] = time.time() - phase_start
         attack_logger.info("Attack: Adversarial Slow Read completed.")
 
         # Analyze h6 PCAP for TCP issues
@@ -564,9 +584,11 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         logger.info("HTTP server on h6 stopped.")
 
         # --- Phase 4: Cooldown ---
+        phase_start = time.time()
         logger.info(f"Phase 4: Cooldown ({scenario_durations['cooldown']}s)...")
         update_flow_timeline(flow_label_timeline, 'normal')  # Update timeline dynamically
         time.sleep(scenario_durations['cooldown'])
+        phase_timings['cooldown'] = time.time() - phase_start
 
     except Exception as e:
         logger.error(f"An error occurred during traffic scenario: {e}", exc_info=True)
@@ -576,6 +598,40 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
             if proc and proc.poll() is None: # Check if process is still running
                 logger.warning(f"Capture process for {proc_name} was still running. Stopping it.")
                 stop_capture(proc)
+        # Calculate total scenario time
+        total_scenario_time = time.time() - scenario_start_time
+        
+        # Print comprehensive timing summary
+        logger.info("=" * 60)
+        logger.info("COMPREHENSIVE TIMING SUMMARY")
+        logger.info("=" * 60)
+        logger.info(f"Total Scenario Runtime: {total_scenario_time:.2f} seconds ({total_scenario_time/60:.2f} minutes)")
+        logger.info("")
+        logger.info("Phase-by-Phase Breakdown:")
+        
+        # Benign traffic
+        if 'normal_traffic' in phase_timings:
+            logger.info(f"  Normal Traffic: {phase_timings['normal_traffic']:.2f}s (configured: {scenario_durations.get('normal_traffic', 'N/A')}s)")
+        
+        # Traditional attacks
+        logger.info("  Traditional Attacks:")
+        for attack in ['syn_flood', 'udp_flood', 'icmp_flood']:
+            if attack in phase_timings:
+                logger.info(f"    {attack.replace('_', ' ').title()}: {phase_timings[attack]:.2f}s (configured: {scenario_durations.get(attack, 'N/A')}s)")
+        
+        # Adversarial attacks
+        logger.info("  Adversarial Attacks:")
+        for attack in ['ad_syn', 'ad_udp', 'ad_slow']:
+            if attack in phase_timings:
+                attack_name = {'ad_syn': 'TCP State Exhaustion', 'ad_udp': 'Application Layer', 'ad_slow': 'Slow Read'}[attack]
+                logger.info(f"    {attack_name}: {phase_timings[attack]:.2f}s (configured: {scenario_durations.get(attack, 'N/A')}s)")
+        
+        # Other phases
+        for phase in ['initialization', 'cooldown']:
+            if phase in phase_timings:
+                logger.info(f"  {phase.title()}: {phase_timings[phase]:.2f}s (configured: {scenario_durations.get(phase, 'N/A')}s)")
+        
+        logger.info("=" * 60)
         logger.info("Traffic generation scenario finished.")
 
 
@@ -651,6 +707,9 @@ def main():
     """Main entry point for the pcap generation framework."""
     parser = argparse.ArgumentParser(description="AdDDoSDN PCAP Generation Framework")
     args = parser.parse_args()
+    
+    # Track overall execution time
+    main_start_time = time.time()
 
     # Initialize standardized logging
     initialize_logging(OUTPUT_DIR, console_level=logging.INFO)
@@ -850,6 +909,15 @@ def main():
         # Generate and display dataset summary
         logger.info("Generating dataset summary...")
         print_dataset_summary(OUTPUT_DIR, logger)
+        
+        # Final overall timing summary
+        total_execution_time = time.time() - main_start_time
+        logger.info("=" * 60)
+        logger.info("FINAL EXECUTION SUMMARY")
+        logger.info("=" * 60)
+        logger.info(f"Total Execution Time: {total_execution_time:.2f} seconds ({total_execution_time/60:.2f} minutes | {total_execution_time/3600:.2f} hours)")
+        logger.info(f"Dataset Generation Complete: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        logger.info("=" * 60)
 
     except Exception as e:
         logger.error(f"An unexpected error occurred: {e}", exc_info=True)

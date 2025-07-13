@@ -58,21 +58,21 @@ def run_benign_traffic(net, duration, output_dir, host_ips):
         h3.cmd(f'python3 -c "{scapy_base_cmd}{syn_scapy_cmd}"')
         benign_logger.debug(f"Generated TCP SYN from h3:{sport_tcp} -> h5:{dport_tcp} [len=54B]")
         packet_count += 1
-        time.sleep(0.1) # Small delay for SYN-ACK
+        time.sleep(0.01) # Small delay for SYN-ACK
 
         # SYN-ACK from h5 to h3 (simulated)
         synack_scapy_cmd = f"synack_packet = Ether()/IP(src='{h5_ip}', dst='{h3_ip}')/TCP(sport={dport_tcp}, dport={sport_tcp}, flags='SA', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface='{h5_intf}', verbose=0)"
         h5.cmd(f'python3 -c "{scapy_base_cmd}{synack_scapy_cmd}"')
         benign_logger.debug(f"Generated TCP SYN-ACK from h5:{dport_tcp} <- h3:{sport_tcp} [len=54B]")
         packet_count += 1
-        time.sleep(0.1) # Small delay for ACK
+        time.sleep(0.01) # Small delay for ACK
 
         # ACK from h3 to h5
         ack_scapy_cmd = f"ack_packet = Ether()/IP(src='{h3_ip}', dst='{h5_ip}')/TCP(sport={sport_tcp}, dport={dport_tcp}, flags='A', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface='{h3_intf}', verbose=0)"
         h3.cmd(f'python3 -c "{scapy_base_cmd}{ack_scapy_cmd}"')
         benign_logger.debug(f"Generated TCP ACK from h3:{sport_tcp} -> h5:{dport_tcp} [len=54B]")
         packet_count += 1
-        time.sleep(0.1) # Small delay before data
+        time.sleep(0.01) # Small delay before data
 
         # PSH, ACK with random payload
         random_payload_tcp = generate_random_payload()
@@ -114,21 +114,21 @@ def run_benign_traffic(net, duration, output_dir, host_ips):
         h3.cmd(f'python3 -c "{scapy_base_cmd}{syn_scapy_cmd}"')
         benign_logger.debug(f"Generated Telnet SYN from h3:{sport_telnet} -> h5:{dport_telnet} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # SYN-ACK from h5 to h3 (simulated)
         synack_scapy_cmd = f"synack_packet = Ether()/IP(src='{h5_ip}', dst='{h3_ip}')/TCP(sport={dport_telnet}, dport={sport_telnet}, flags='SA', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface='{h5_intf}', verbose=0)"
         h5.cmd(f'python3 -c "{scapy_base_cmd}{synack_scapy_cmd}"')
         benign_logger.debug(f"Generated Telnet SYN-ACK from h5:{dport_telnet} <- h3:{sport_telnet} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # ACK from h3 to h5
         ack_scapy_cmd = f"ack_packet = Ether()/IP(src='{h3_ip}', dst='{h5_ip}')/TCP(sport={sport_telnet}, dport={dport_telnet}, flags='A', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface='{h3_intf}', verbose=0)"
         h3.cmd(f'python3 -c "{scapy_base_cmd}{ack_scapy_cmd}"')
         benign_logger.debug(f"Generated Telnet ACK from h3:{sport_telnet} -> h5:{dport_telnet} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # PSH, ACK with random payload
         random_payload_telnet = generate_random_payload()
@@ -156,21 +156,21 @@ def run_benign_traffic(net, duration, output_dir, host_ips):
         h3.cmd(f'python3 -c "{scapy_base_cmd}{syn_scapy_cmd}"')
         benign_logger.debug(f"Generated SSH SYN from h3:{sport_ssh} -> h5:{dport_ssh} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # SYN-ACK from h5 to h3 (simulated)
         synack_scapy_cmd = f"synack_packet = Ether()/IP(src='{h5_ip}', dst='{h3_ip}')/TCP(sport={dport_ssh}, dport={sport_ssh}, flags='SA', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface='{h5_intf}', verbose=0)"
         h5.cmd(f'python3 -c "{scapy_base_cmd}{synack_scapy_cmd}"')
         benign_logger.debug(f"Generated SSH SYN-ACK from h5:{dport_ssh} <- h3:{sport_ssh} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # ACK from h3 to h5
         ack_scapy_cmd = f"ack_packet = Ether()/IP(src='{h3_ip}', dst='{h5_ip}')/TCP(sport={sport_ssh}, dport={dport_ssh}, flags='A', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface='{h3_intf}', verbose=0)"
         h3.cmd(f'python3 -c "{scapy_base_cmd}{ack_scapy_cmd}"')
         benign_logger.debug(f"Generated SSH ACK from h3:{sport_ssh} -> h5:{dport_ssh} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # PSH, ACK with random payload
         random_payload_ssh = generate_random_payload()
@@ -198,21 +198,21 @@ def run_benign_traffic(net, duration, output_dir, host_ips):
         h3.cmd(f'python3 -c "{scapy_base_cmd}{syn_scapy_cmd}"')
         benign_logger.debug(f"Generated FTP SYN from h3:{sport_ftp} -> h5:{dport_ftp} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # SYN-ACK from h5 to h3 (simulated)
         synack_scapy_cmd = f"synack_packet = Ether()/IP(src='{h5_ip}', dst='{h3_ip}')/TCP(sport={dport_ftp}, dport={sport_ftp}, flags='SA', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface='{h5_intf}', verbose=0)"
         h5.cmd(f'python3 -c "{scapy_base_cmd}{synack_scapy_cmd}"')
         benign_logger.debug(f"Generated FTP SYN-ACK from h5:{dport_ftp} <- h3:{sport_ftp} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # ACK from h3 to h5
         ack_scapy_cmd = f"ack_packet = Ether()/IP(src='{h3_ip}', dst='{h5_ip}')/TCP(sport={sport_ftp}, dport={dport_ftp}, flags='A', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface='{h3_intf}', verbose=0)"
         h3.cmd(f'python3 -c "{scapy_base_cmd}{ack_scapy_cmd}"')
         benign_logger.debug(f"Generated FTP ACK from h3:{sport_ftp} -> h5:{dport_ftp} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # PSH, ACK with random payload
         random_payload_ftp = generate_random_payload()
@@ -240,21 +240,21 @@ def run_benign_traffic(net, duration, output_dir, host_ips):
         h3.cmd(f'python3 -c "{scapy_base_cmd}{syn_scapy_cmd}"')
         benign_logger.debug(f"Generated HTTP SYN from h3:{sport_http} -> h5:{dport_http} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # SYN-ACK from h5 to h3 (simulated)
         synack_scapy_cmd = f"synack_packet = Ether()/IP(src='{h5_ip}', dst='{h3_ip}')/TCP(sport={dport_http}, dport={sport_http}, flags='SA', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface='{h5_intf}', verbose=0)"
         h5.cmd(f'python3 -c "{scapy_base_cmd}{synack_scapy_cmd}"')
         benign_logger.debug(f"Generated HTTP SYN-ACK from h5:{dport_http} <- h3:{sport_http} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # ACK from h3 to h5
         ack_scapy_cmd = f"ack_packet = Ether()/IP(src='{h3_ip}', dst='{h5_ip}')/TCP(sport={sport_http}, dport={dport_http}, flags='A', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface='{h3_intf}', verbose=0)"
         h3.cmd(f'python3 -c "{scapy_base_cmd}{ack_scapy_cmd}"')
         benign_logger.debug(f"Generated HTTP ACK from h3:{sport_http} -> h5:{dport_http} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # PSH, ACK with random payload
         http_payload = generate_random_payload(min_len=100, max_len=500)
@@ -283,21 +283,21 @@ def run_benign_traffic(net, duration, output_dir, host_ips):
         h3.cmd(f'python3 -c "{scapy_base_cmd}{syn_scapy_cmd_https}"')
         benign_logger.debug(f"Generated HTTPS SYN from h3:{sport_https} -> h5:{dport_https} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # SYN-ACK from h5 to h3 (simulated)
         synack_scapy_cmd_https = f"synack_packet = Ether()/IP(src='{h5_ip}', dst='{h3_ip}')/TCP(sport={dport_https}, dport={dport_https}, flags='SA', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface='{h5_intf}', verbose=0)"
         h5.cmd(f'python3 -c "{scapy_base_cmd}{synack_scapy_cmd_https}"')
         benign_logger.debug(f"Generated HTTPS SYN-ACK from h5:{dport_https} <- h3:{sport_https} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # ACK from h3 to h5
         ack_scapy_cmd_https = f"ack_packet = Ether()/IP(src='{h3_ip}', dst='{h5_ip}')/TCP(sport={sport_https}, dport={dport_https}, flags='A', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface='{h3_intf}', verbose=0)"
         h3.cmd(f'python3 -c "{scapy_base_cmd}{ack_scapy_cmd_https}"')
         benign_logger.debug(f"Generated HTTPS ACK from h3:{sport_https} -> h5:{dport_https} [len=54B]")
         packet_count += 1
-        time.sleep(0.1)
+        time.sleep(0.01)
 
         # PSH, ACK with random payload (simulating encrypted data)
         https_payload = generate_random_payload(min_len=150, max_len=800)
@@ -328,8 +328,8 @@ def run_benign_traffic(net, duration, output_dir, host_ips):
         packet_count += 1
         session_count += 1
         
-    traffic_count += 1
-    time.sleep(1) # Send traffic every second
+        traffic_count += 1
+        time.sleep(0.1) # Send traffic every 100ms
     
     benign_logger.info("Benign traffic finished.")
     benign_logger.info(f"Summary: {session_count} protocol sessions [ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP, HTTPS, DNS], {packet_count} packets sent.")

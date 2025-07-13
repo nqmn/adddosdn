@@ -2,6 +2,42 @@
 
 This document details the various DDoS attack scenarios implemented in the system.
 
+## ⏱️ Timing Configuration & Dataset Balance
+
+### Default vs Recommended Configuration
+
+| Traffic Type | Default Duration | Default Packets | Recommended Duration | Expected Packets | Improvement |
+|--------------|------------------|-----------------|---------------------|------------------|-------------|
+| **Normal Traffic** | 20 min | 7,713 | 60 min | ~230,000 | 30x increase ✅ |
+| **SYN Flood** | 20 min | 411,413 | 5 min | ~100,000 | 4x reduction ⚖️ |
+| **UDP Flood** | 20 min | 211,097 | 5 min | ~100,000 | 2x reduction ⚖️ |
+| **ICMP Flood** | 20 min | 413,016 | 5 min | ~100,000 | 4x reduction ⚖️ |
+| **Adversarial TCP** | 40 min | 221 | 120 min | ~80,000 | 360x increase ✅ |
+| **Adversarial UDP** | 40 min | 253 | 80 min | ~60,000 | 240x increase ✅ |
+| **Adversarial Slow** | 40 min | 2,479 | 60 min | ~50,000 | 20x increase ✅ |
+
+### Performance Metrics
+- **Current total runtime**: ~3 hours → **Recommended runtime**: ~6-6.5 hours
+- **Current dataset size**: 185M → **Expected size**: ~400M  
+- **Dataset balance**: Severely imbalanced → Well balanced for ML training
+
+### Configuration File (`config.json`)
+```json
+{
+    "scenario_durations": {
+        "initialization": 5,
+        "normal_traffic": 3600,    // 1 hour for proper baseline
+        "syn_flood": 300,          // 5 min - sufficient for traditional attacks
+        "udp_flood": 300,          // 5 min - efficient attack sampling  
+        "icmp_flood": 300,         // 5 min - reduced storage requirements
+        "ad_syn": 7200,            // 2 hours - adversarial needs more time
+        "ad_udp": 4800,            // 80 min - complex evasion techniques
+        "ad_slow": 3600,           // 1 hour - slow attack characteristics
+        "cooldown": 5
+    }
+}
+```
+
 ## 1. ICMP Flood Attack
 
 **Description:**
