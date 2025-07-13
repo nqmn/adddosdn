@@ -6,14 +6,14 @@ This document outlines the usage, logic, and expected outputs of the `test.py` s
 
 The `test.py` script provides a streamlined dataset generation environment with:
 
-- **Balanced Class Durations**: Optimized timing for ~500 packets per attack class
+- **Balanced Class Durations**: Optimized timing with 5s minimum duration for practical testing
 - **Same Functionality**: Identical feature extraction, logging, and output format as main.py
-- **Moderate Testing**: Total execution time ~7.5 minutes (balanced vs ~80 minutes for main.py)
+- **Quick Testing**: Total execution time ~15 minutes (balanced vs ~80 minutes for main.py)
 - **Development Focus**: Ideal for balanced dataset testing, ML model validation, and development
 
 ### Key Differences from main.py
-- **Optimized Durations**: Balanced timing targeting 500 packets per class (vs configurable durations in main.py)
-- **Moderate Execution**: ~7.5 minutes total (vs ~80 minutes for main.py default config)
+- **Optimized Durations**: Balanced timing with 5s minimum enforced (vs configurable durations in main.py)
+- **Quick Execution**: ~15 minutes total (vs ~80 minutes for main.py default config)
 - **Same Features**: Identical 84 packet-level and 26 flow-level features
 - **Output Directory**: Results saved to `test_output/` instead of `main_output/`
 
@@ -35,7 +35,7 @@ sudo apt update
 sudo apt install -y python3-pip python3-venv git default-jre tshark slowhttptest mininet ryu-manager
 
 # Python dependencies
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ### Permission Requirements
@@ -103,22 +103,22 @@ The script orchestrates a comprehensive multi-phase traffic generation process w
 - **Activities**: Network settling, controller synchronization
 - **Monitoring**: Initial flow table state capture
 
-#### **Phase 2: Normal Traffic Generation (25 seconds)**
+#### **Phase 2: Normal Traffic Generation (50 seconds)**
 - **PCAP Output**: `test_output/normal.pcap`
 - **Traffic Types**: Same multi-protocol benign traffic as main.py
   - **ICMP**: Echo requests between h3 ↔ h5
   - **TCP**: HTTP, HTTPS, SSH, Telnet, FTP connections
   - **UDP**: DNS queries, general UDP communication
-- **Duration**: 25 seconds → ~500 packets (22 pps observed rate)
+- **Duration**: 50 seconds → ~300 packets (6.3 pps observed rate)
 - **Features**: Identical feature extraction as main.py
 
 #### **Phase 3.1: Traditional DDoS Attacks (15 seconds total)**
 
 | Attack Type | Source | Target | Port | Duration | Expected Packets | main.py Equivalent |
 |-------------|--------|--------|------|----------|------------------|--------------------|
-| **SYN Flood** | h1 | h6 (10.0.0.6) | 80 | 5s | ~500 (100+ pps) | 600s (10min) |
-| **UDP Flood** | h2 | h4 (10.0.0.4) | 53 | 5s | ~500 (100+ pps) | 600s (10min) |
-| **ICMP Flood** | h2 | h4 (10.0.0.4) | N/A | 5s | ~500 (100+ pps) | 600s (10min) |
+| **SYN Flood** | h1 | h6 (10.0.0.6) | 80 | 5s | ~1,188 (237.6 pps) | 600s (10min) |
+| **UDP Flood** | h2 | h4 (10.0.0.4) | 53 | 5s | ~380 (76.1 pps) | 600s (10min) |
+| **ICMP Flood** | h2 | h4 (10.0.0.4) | N/A | 5s | ~440 (87.9 pps) | 600s (10min) |
 
 **Same Attack Implementation**: Uses identical attack scripts and logging as main.py
 
@@ -135,13 +135,13 @@ The script orchestrates a comprehensive multi-phase traffic generation process w
 [syn_flood] [Run ID: a1b2c3d4-e5f6-7890-abcd-ef1234567890] Attack method: TCP SYN Flood
 ```
 
-#### **Phase 3.2: Advanced Adversarial Attacks (400 seconds total)**
+#### **Phase 3.2: Advanced Adversarial Attacks (830 seconds total)**
 
 | Attack Type | Source | Target | Method | Duration | Expected Packets | main.py Equivalent |
 |-------------|--------|--------|--------|----------|------------------|--------------------|
-| **TCP State Exhaustion (ad_syn)** | h2 | h6 (10.0.0.6) | Advanced SYN | 150s | ~500 (3-4 pps) | 600s (10min) |
-| **Application Layer Mimicry (ad_udp)** | h2 | h6 (10.0.0.6) | HTTP-based | 150s | ~500 (3-4 pps) | 600s (10min) |
-| **Slow Read Attack (ad_slow)** | h2 | h6 (10.0.0.6) | slowhttptest | 100s | ~500 (5 pps) | 600s (10min) |
+| **TCP State Exhaustion (ad_syn)** | h2 | h6 (10.0.0.6) | Advanced SYN | 625s | ~100 (0.16 pps) | 600s (10min) |
+| **Application Layer Mimicry (ad_udp)** | h2 | h6 (10.0.0.6) | HTTP-based | 200s | ~100 (0.50 pps) | 600s (10min) |
+| **Slow Read Attack (ad_slow)** | h2 | h6 (10.0.0.6) | slowhttptest | 5s | ~244 (48.8 pps) | 600s (10min) |
 
 **Same Attack Implementation**: Uses identical adversarial attack scripts as main.py
 
@@ -420,15 +420,15 @@ grep -i error test_output/*.log
 ## 📈 Performance Analysis
 
 ### **Expected Execution Time**
-- **Total Duration**: ~7.5 minutes (vs ~80 minutes for main.py)
+- **Total Duration**: ~15 minutes (vs ~80 minutes for main.py)
 - **Initialization**: ~10 seconds
-- **Traffic Generation**: ~445 seconds (balanced phase durations)
-  - Normal: 25s, Traditional attacks: 15s, Adversarial attacks: 400s, Cooldown: 5s
+- **Traffic Generation**: ~900 seconds (optimized phase durations with 5s minimum)
+  - Normal: 50s, Traditional attacks: 15s, Adversarial attacks: 830s, Cooldown: 5s
 - **Data Processing**: ~10-20 seconds
 - **Cleanup**: ~5 seconds
 
 ### **Comparison with main.py**
-- **test.py**: 7.5 minutes total, balanced durations targeting 500 packets per class
+- **test.py**: 15 minutes total, optimized durations with 5s minimum enforced
 - **main.py**: ~80 minutes total, 10min per attack phase (default config)
 - **Same Output**: Both generate identical feature sets and file formats
 
@@ -439,11 +439,13 @@ grep -i error test_output/*.log
 - **Network**: Local loopback interfaces only
 
 ### **Output Size Expectations**
-- **PCAP Files**: Optimized for ~500 packets per attack type
-  - Traditional attacks: ~50KB per file (high packet rate, short duration)
-  - Adversarial attacks: ~100KB per file (low packet rate, longer duration)
-  - Normal traffic: ~75KB (moderate packet rate, 25s duration)
-- **CSV Datasets**: ~3,500 total rows (7 classes × 500 packets each)
+- **PCAP Files**: Optimized with 5s minimum duration enforced
+  - SYN flood: ~500KB per file (very high packet rate, 5s duration ~1,188 packets)
+  - UDP/ICMP floods: ~50-100KB per file (moderate-high packet rate, 5s duration ~380-440 packets)
+  - Adversarial SYN/UDP: ~10-20KB per file (very low packet rate, long duration ~100 packets)
+  - Adversarial Slow: ~80KB per file (moderate packet rate, 5s duration ~244 packets)
+  - Normal traffic: ~60KB (low packet rate, 50s duration ~300 packets)
+- **CSV Datasets**: ~2,500 total rows with variable class sizes due to rate differences
 - **Log Files**: 1-10MB total logging output
 
 ## 🔒 Security and Safety

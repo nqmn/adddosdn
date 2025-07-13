@@ -1,81 +1,83 @@
-2025-07-13 09:56:10,569 - __main__ - INFO - Verifying required tools...
-2025-07-13 09:56:11,170 - __main__ - INFO - TShark version: Running as user "root" and group "root". This could be dangerous.
-2025-07-13 09:56:11,171 - __main__ - INFO - All required tools are available.
-2025-07-13 09:56:11,171 - __main__ - INFO - Starting Ryu SDN controller...
-2025-07-13 09:56:11,176 - __main__ - INFO - Ryu controller started with PID: 10365. See test_output/ryu.log for logs.
-2025-07-13 09:56:11,177 - __main__ - INFO - Checking for controller on port 6653 (timeout: 30s)...
-2025-07-13 09:56:12,197 - __main__ - INFO - Controller is up and listening.
-2025-07-13 09:56:12,206 - __main__ - INFO - Setting up Mininet topology...
-2025-07-13 09:56:12,484 - __main__ - INFO - Mininet version: 
-2025-07-13 09:56:12,492 - __main__ - INFO - Connecting to remote controller at 127.0.0.1:6653
-2025-07-13 09:56:12,786 - __main__ - INFO - Mininet network started successfully.
-2025-07-13 09:56:12,786 - __main__ - INFO - Running Mininet pingall test...
-2025-07-13 09:56:17,875 - __main__ - INFO - Mininet pingall test completed successfully. Packet loss: 0.0%
-2025-07-13 09:56:17,875 - __main__ - INFO - Starting traffic generation scenario...
-2025-07-13 09:56:17,875 - __main__ - INFO - Phase 1: Initialization (5s)...
-2025-07-13 09:56:22,883 - __main__ - INFO - Calculated flow collection duration: 40s (config) + 75s (buffer) = 115s
-2025-07-13 09:56:22,883 - __main__ - INFO - Starting flow statistics collection for 115 seconds...
-2025-07-13 09:56:22,883 - __main__ - INFO - Flow statistics collection started in background.
-2025-07-13 09:56:22,885 - __main__ - INFO - Phase 2: Normal Traffic (5s)...
-2025-07-13 09:56:22,886 - __main__ - INFO - Timeline updated: normal phase started at 1752371782.8859942
-2025-07-13 09:56:46,840 - __main__ - INFO - Stopping packet capture (PID: 10573)...
-2025-07-13 09:56:46,911 - __main__ - INFO - Packet capture stopped.
-2025-07-13 09:56:46,911 - __main__ - INFO - Phase 3.1: Traditional DDoS Attacks (15s total)...
-2025-07-13 09:56:46,911 - __main__ - INFO - Attack: SYN Flood (5s) | h1 -> h6
-2025-07-13 09:56:46,911 - __main__ - INFO - Timeline updated: syn_flood phase started at 1752371806.9119465
-2025-07-13 09:56:59,655 - __main__ - INFO - Stopping packet capture (PID: 10704)...
-2025-07-13 09:56:59,745 - __main__ - INFO - Packet capture stopped.
-2025-07-13 09:56:59,746 - __main__ - INFO - Attack: UDP Flood (5s) | h2 -> h4
-2025-07-13 09:56:59,746 - __main__ - INFO - Timeline updated: udp_flood phase started at 1752371819.7462006
-2025-07-13 09:57:12,305 - __main__ - INFO - Stopping packet capture (PID: 10707)...
-2025-07-13 09:57:12,344 - __main__ - INFO - Packet capture stopped.
-2025-07-13 09:57:12,344 - __main__ - INFO - Attack: ICMP Flood (5s) | h2 -> h4
-2025-07-13 09:57:12,344 - __main__ - INFO - Timeline updated: icmp_flood phase started at 1752371832.344373
-2025-07-13 09:57:21,955 - __main__ - INFO - Stopping packet capture (PID: 10712)...
-2025-07-13 09:57:22,027 - __main__ - INFO - Packet capture stopped.
-2025-07-13 09:57:22,027 - __main__ - INFO - Phase 3.2: Adversarial DDoS Attacks (20s total)...
-2025-07-13 09:57:22,027 - __main__ - INFO - Attack: Adversarial TCP State Exhaustion (5s) | h2 -> h6
-2025-07-13 09:57:22,027 - __main__ - INFO - Timeline updated: ad_syn phase started at 1752371842.0277133
-2025-07-13 09:58:00,340 - __main__ - INFO - Stopping packet capture (PID: 10717)...
-2025-07-13 09:58:00,379 - __main__ - INFO - Packet capture stopped.
-2025-07-13 09:58:00,381 - __main__ - WARNING - Attack validation failed: Adversarial TCP SYN generated only 2 packets (minimum: 5)
-2025-07-13 09:58:00,381 - __main__ - INFO - Attack: Adversarial Application Layer (5s) | h2 -> h6
-2025-07-13 09:58:00,381 - __main__ - INFO - Timeline updated: ad_udp phase started at 1752371880.3813841
-2025-07-13 09:58:18,180 - __main__ - INFO - Flow timeline collection completed.
-2025-07-13 09:58:18,514 - __main__ - INFO - Flow statistics saved to test_output/flow_features.csv
-2025-07-13 09:58:26,549 - __main__ - INFO - Stopping packet capture (PID: 10729)...
-2025-07-13 09:58:26,622 - __main__ - INFO - Packet capture stopped.
-2025-07-13 09:58:26,623 - __main__ - WARNING - Attack validation failed: Adversarial HTTP generated only 2 packets (minimum: 5)
-2025-07-13 09:58:26,624 - __main__ - INFO - Attack: Adversarial Slow Read (5s) | h2 -> h6
-2025-07-13 09:58:26,624 - __main__ - INFO - Timeline updated: ad_slow phase started at 1752371906.6241064
-2025-07-13 09:58:30,638 - __main__ - INFO - Starting HTTP server on h6 (10.0.0.6:80)...
-2025-07-13 09:58:37,676 - __main__ - INFO - Stopping packet capture (PID: 10731)...
-2025-07-13 09:58:37,776 - __main__ - INFO - Packet capture stopped.
-2025-07-13 09:58:37,883 - __main__ - INFO - Attack validation passed: Adversarial Slow Read generated 527 packets
-2025-07-13 09:58:37,883 - __main__ - INFO - Stopping HTTP server on h6...
-2025-07-13 09:58:37,896 - __main__ - INFO - HTTP server on h6 stopped.
-2025-07-13 09:58:37,896 - __main__ - INFO - Phase 4: Cooldown (5s)...
-2025-07-13 09:58:37,897 - __main__ - INFO - Timeline updated: normal phase started at 1752371917.8970444
-2025-07-13 09:58:42,911 - __main__ - INFO - ============================================================
-2025-07-13 09:58:42,911 - __main__ - INFO - COMPREHENSIVE TIMING SUMMARY
-2025-07-13 09:58:42,911 - __main__ - INFO - ============================================================
-2025-07-13 09:58:42,911 - __main__ - INFO - Total Scenario Runtime: 145.04 seconds (2.42 minutes)
-2025-07-13 09:58:42,911 - __main__ - INFO - 
-2025-07-13 09:58:42,912 - __main__ - INFO - Phase-by-Phase Breakdown:
-2025-07-13 09:58:42,912 - __main__ - INFO -   Normal Traffic: 24.03s (configured: 5s)
-2025-07-13 09:58:42,912 - __main__ - INFO -   Traditional Attacks:
-2025-07-13 09:58:42,912 - __main__ - INFO -     Syn Flood: 12.83s (configured: 5s)
-2025-07-13 09:58:42,912 - __main__ - INFO -     Udp Flood: 12.60s (configured: 5s)
-2025-07-13 09:58:42,912 - __main__ - INFO -     Icmp Flood: 9.68s (configured: 5s)
-2025-07-13 09:58:42,912 - __main__ - INFO -   Adversarial Attacks:
-2025-07-13 09:58:42,912 - __main__ - INFO -     TCP State Exhaustion: 38.35s (configured: 5s)
-2025-07-13 09:58:42,912 - __main__ - INFO -     Application Layer: 26.24s (configured: 5s)
-2025-07-13 09:58:42,912 - __main__ - INFO -     Slow Read: 11.15s (configured: 5s)
-2025-07-13 09:58:42,912 - __main__ - INFO -   Initialization: 5.01s (configured: 5s)
-2025-07-13 09:58:42,912 - __main__ - INFO -   Cooldown: 5.01s (configured: 5s)
-2025-07-13 09:58:42,912 - __main__ - INFO - ============================================================
-2025-07-13 09:58:42,912 - __main__ - INFO - Traffic generation scenario finished.
-2025-07-13 09:58:43,962 - __main__ - INFO - Cleaning up resources...
-2025-07-13 09:58:43,962 - __main__ - INFO - Terminating Ryu controller (PID: 10365)...
-2025-07-13 09:58:43,965 - __main__ - INFO - Cleaning up Mininet environment...
-2025-07-13 09:58:45,570 - __main__ - INFO - Cleanup complete.
+2025-07-13 13:44:21,956 - __main__ - INFO - Verifying required tools...
+2025-07-13 13:44:22,190 - __main__ - INFO - TShark version: Running as user "root" and group "root". This could be dangerous.
+2025-07-13 13:44:22,190 - __main__ - INFO - All required tools are available.
+2025-07-13 13:44:22,190 - __main__ - INFO - Starting Ryu SDN controller...
+2025-07-13 13:44:22,195 - __main__ - INFO - Ryu controller started with PID: 24336. See test_output/ryu.log for logs.
+2025-07-13 13:44:22,195 - __main__ - INFO - Checking for controller on port 6653 (timeout: 30s)...
+2025-07-13 13:44:23,210 - __main__ - INFO - Controller is up and listening.
+2025-07-13 13:44:23,217 - __main__ - INFO - Setting up Mininet topology...
+2025-07-13 13:44:23,458 - __main__ - INFO - Mininet version: 
+2025-07-13 13:44:23,464 - __main__ - INFO - Connecting to remote controller at 127.0.0.1:6653
+2025-07-13 13:44:25,722 - __main__ - INFO - Mininet network started successfully.
+2025-07-13 13:44:25,722 - __main__ - INFO - Running Mininet pingall test...
+2025-07-13 13:44:30,813 - __main__ - INFO - Mininet pingall test completed successfully. Packet loss: 0.0%
+2025-07-13 13:44:30,813 - __main__ - INFO - Starting traffic generation scenario...
+2025-07-13 13:44:30,813 - __main__ - INFO - Phase 1: Initialization (5s)...
+2025-07-13 13:44:35,821 - __main__ - INFO - Calculated flow collection duration: 943s (config) + 75s (buffer) = 1018s
+2025-07-13 13:44:35,821 - __main__ - INFO - Starting flow statistics collection for 1018 seconds...
+2025-07-13 13:44:35,821 - __main__ - INFO - Flow statistics collection started in background.
+2025-07-13 13:44:35,823 - __main__ - INFO - Phase 2: Normal Traffic (25s)...
+2025-07-13 13:44:35,823 - __main__ - INFO - Timeline updated: normal phase started at 1752385475.8236992
+2025-07-13 13:45:40,422 - __main__ - INFO - Stopping packet capture (PID: 24602)...
+2025-07-13 13:45:40,495 - __main__ - INFO - Packet capture stopped.
+2025-07-13 13:45:40,496 - __main__ - INFO - Phase 3.1: Traditional DDoS Attacks (38s total)...
+2025-07-13 13:45:40,496 - __main__ - INFO - Attack: SYN Flood (27s) | h1 -> h6
+2025-07-13 13:45:40,496 - __main__ - INFO - Timeline updated: syn_flood phase started at 1752385540.4963744
+2025-07-13 13:46:12,078 - __main__ - INFO - Stopping packet capture (PID: 24997)...
+2025-07-13 13:46:12,146 - __main__ - INFO - Packet capture stopped.
+2025-07-13 13:46:12,146 - __main__ - INFO - Attack: UDP Flood (6s) | h2 -> h4
+2025-07-13 13:46:12,146 - __main__ - INFO - Timeline updated: udp_flood phase started at 1752385572.1464503
+2025-07-13 13:46:22,697 - __main__ - INFO - Stopping packet capture (PID: 25003)...
+2025-07-13 13:46:22,769 - __main__ - INFO - Packet capture stopped.
+2025-07-13 13:46:22,769 - __main__ - INFO - Attack: ICMP Flood (5s) | h2 -> h4
+2025-07-13 13:46:22,769 - __main__ - INFO - Timeline updated: icmp_flood phase started at 1752385582.7698758
+2025-07-13 13:46:32,343 - __main__ - INFO - Stopping packet capture (PID: 25008)...
+2025-07-13 13:46:32,412 - __main__ - INFO - Packet capture stopped.
+2025-07-13 13:46:32,412 - __main__ - INFO - Phase 3.2: Adversarial DDoS Attacks (849s total)...
+2025-07-13 13:46:32,412 - __main__ - INFO - Attack: Adversarial TCP State Exhaustion (667s) | h2 -> h6
+2025-07-13 13:46:32,412 - __main__ - INFO - Timeline updated: ad_syn phase started at 1752385592.4124994
+2025-07-13 13:57:52,785 - __main__ - INFO - Stopping packet capture (PID: 25013)...
+2025-07-13 13:57:52,870 - __main__ - INFO - Packet capture stopped.
+2025-07-13 13:57:52,890 - __main__ - INFO - Attack validation passed: Adversarial TCP SYN generated 106 packets
+2025-07-13 13:57:52,890 - __main__ - INFO - Attack: Adversarial Application Layer (172s) | h2 -> h6
+2025-07-13 13:57:52,890 - __main__ - INFO - Timeline updated: ad_udp phase started at 1752386272.8905623
+2025-07-13 14:00:52,673 - __main__ - INFO - Stopping packet capture (PID: 25047)...
+2025-07-13 14:00:52,713 - __main__ - INFO - Packet capture stopped.
+2025-07-13 14:00:52,732 - __main__ - INFO - Attack validation passed: Adversarial HTTP generated 90 packets
+2025-07-13 14:00:52,732 - __main__ - INFO - Attack: Adversarial Slow Read (10s) | h2 -> h6
+2025-07-13 14:00:52,732 - __main__ - INFO - Timeline updated: ad_slow phase started at 1752386452.7326605
+2025-07-13 14:00:56,755 - __main__ - INFO - Starting HTTP server on h6 (10.0.0.6:80)...
+2025-07-13 14:01:08,806 - __main__ - INFO - Stopping packet capture (PID: 25052)...
+2025-07-13 14:01:08,892 - __main__ - INFO - Packet capture stopped.
+2025-07-13 14:01:09,050 - __main__ - INFO - Attack validation passed: Adversarial Slow Read generated 789 packets
+2025-07-13 14:01:09,050 - __main__ - INFO - Stopping HTTP server on h6...
+2025-07-13 14:01:09,051 - __main__ - INFO - HTTP server on h6 stopped.
+2025-07-13 14:01:09,051 - __main__ - INFO - Phase 4: Cooldown (5s)...
+2025-07-13 14:01:09,051 - __main__ - INFO - Timeline updated: normal phase started at 1752386469.0516086
+2025-07-13 14:01:14,064 - __main__ - INFO - ============================================================
+2025-07-13 14:01:14,064 - __main__ - INFO - COMPREHENSIVE TIMING SUMMARY
+2025-07-13 14:01:14,064 - __main__ - INFO - ============================================================
+2025-07-13 14:01:14,064 - __main__ - INFO - Total Scenario Runtime: 1003.25 seconds (16.72 minutes)
+2025-07-13 14:01:14,064 - __main__ - INFO - 
+2025-07-13 14:01:14,064 - __main__ - INFO - Phase-by-Phase Breakdown:
+2025-07-13 14:01:14,064 - __main__ - INFO -   Normal Traffic: 64.67s (configured: 51s)
+2025-07-13 14:01:14,064 - __main__ - INFO -   Traditional Attacks:
+2025-07-13 14:01:14,064 - __main__ - INFO -     Syn Flood: 31.65s (configured: 27s)
+2025-07-13 14:01:14,064 - __main__ - INFO -     Udp Flood: 10.62s (configured: 6s)
+2025-07-13 14:01:14,065 - __main__ - INFO -     Icmp Flood: 9.64s (configured: 5s)
+2025-07-13 14:01:14,065 - __main__ - INFO -   Adversarial Attacks:
+2025-07-13 14:01:14,065 - __main__ - INFO -     TCP State Exhaustion: 680.46s (configured: 667s)
+2025-07-13 14:01:14,065 - __main__ - INFO -     Application Layer: 179.82s (configured: 172s)
+2025-07-13 14:01:14,065 - __main__ - INFO -     Slow Read: 16.16s (configured: 10s)
+2025-07-13 14:01:14,065 - __main__ - INFO -   Initialization: 5.01s (configured: 5s)
+2025-07-13 14:01:14,065 - __main__ - INFO -   Cooldown: 5.01s (configured: 5s)
+2025-07-13 14:01:14,065 - __main__ - INFO - ============================================================
+2025-07-13 14:01:14,065 - __main__ - INFO - Traffic generation scenario finished.
+2025-07-13 14:01:14,065 - __main__ - INFO - Signaling flow collection thread to stop...
+2025-07-13 14:01:14,747 - __main__ - INFO - Flow timeline collection completed.
+2025-07-13 14:01:15,090 - __main__ - INFO - Flow statistics saved to test_output/flow_features.csv
+2025-07-13 14:01:15,122 - __main__ - INFO - Flow collection thread stopped successfully
+2025-07-13 14:01:22,672 - __main__ - INFO - Cleaning up resources...
+2025-07-13 14:01:22,672 - __main__ - INFO - Terminating Ryu controller (PID: 24336)...
+2025-07-13 14:01:22,675 - __main__ - INFO - Cleaning up Mininet environment...
+2025-07-13 14:01:24,276 - __main__ - INFO - Cleanup complete.

@@ -342,19 +342,19 @@ def update_flow_timeline(flow_label_timeline, label, start_time=None):
     })
     logger.info(f"Timeline updated: {label} phase started at {start_time}")
 
-def collect_flow_stats(duration, output_file, flow_label_timeline, controller_ip='127.0.0.1', controller_port=8080):
+def collect_flow_stats(duration, output_file, flow_label_timeline, stop_event, controller_ip='127.0.0.1', controller_port=8080):
     """
     Collects flow statistics from the Ryu controller's REST API periodically
-    and saves them to a CSV file.
+    and saves them to a CSV file. Stops when stop_event is set.
     """
     logger.info(f"Starting flow statistics collection for {duration} seconds...")
     flow_data = []
     start_time = time.time()
     api_url = f"http://{controller_ip}:{controller_port}/flows"
 
-    while time.time() - start_time < duration:
+    while time.time() - start_time < duration and not stop_event.is_set():
         try:
-            response = requests.get(api_url)
+            response = requests.get(api_url, timeout=5)
             response.raise_for_status() # Raise an exception for HTTP errors
             flows = response.json()
             
@@ -403,8 +403,12 @@ def collect_flow_stats(duration, output_file, flow_label_timeline, controller_ip
                 flow_data.append(flow_entry)
             time.sleep(1) # Collect every second
         except requests.exceptions.RequestException as e:
-            logger.error(f"Error collecting flow stats: {e}")
-            time.sleep(5) # Wait longer on error before retrying
+            if not stop_event.is_set():  # Only log error if we're not stopping
+                logger.error(f"Error collecting flow stats: {e}")
+            break  # Exit on connection error (controller likely stopped)
+        except Exception as e:
+            logger.error(f"Unexpected error during flow collection: {e}")
+            time.sleep(1)
     
     # Close the final timeline entry
     if flow_label_timeline and 'end_time' not in flow_label_timeline[-1]:
@@ -484,25 +488,28 @@ def run_traffic_scenario(net, flow_label_timeline):
         phase_timings['initialization'] = time.time() - phase_start
 
         # Calculate total scenario duration dynamically based on actual phase durations
-        # Optimized for ~500 packets per class based on observed packet generation rates
+        # Optimized for balanced packet counts with 5s minimum duration
         phase_durations = {
-            'normal_traffic': 25,    # 25s → ~500 packets (22 pps observed rate)
-            'syn_flood': 5,          # 5s → ~500 packets (100+ pps high volume flood)
-            'udp_flood': 5,          # 5s → ~500 packets (100+ pps high volume flood)
-            'icmp_flood': 5,         # 5s → ~500 packets (100+ pps high volume flood)
-            'ad_syn': 150,           # 150s → ~500 packets (3-4 pps low-rate adversarial)
-            'ad_udp': 150,           # 150s → ~500 packets (3-4 pps low-rate adversarial)
-            'ad_slow': 100,          # 100s → ~500 packets (5 pps slow attack rate)
+            'normal_traffic': 50,    # 50s → ~300 packets (6.3 pps observed rate)
+            'syn_flood': 5,          # 5s minimum → ~1,188 packets (237.6 pps observed rate)
+            'udp_flood': 5,          # 5s minimum → ~380 packets (76.1 pps observed rate)
+            'icmp_flood': 5,         # 5s minimum → ~440 packets (87.9 pps observed rate)
+            'ad_syn': 625,           # 625s → ~100 packets (0.16 pps observed rate)
+            'ad_udp': 200,           # 200s → ~100 packets (0.50 pps observed rate)
+            'ad_slow': 5,            # 5s minimum → ~244 packets (48.8 pps observed rate)
             'cooldown': 5
         }
         config_duration = sum(phase_durations.values())
         total_duration = config_duration + 75  # Config duration + 75s buffer for execution delays
         logger.info(f"Calculated flow collection duration: {config_duration}s (config) + 75s (buffer) = {total_duration}s")
         
+        # Create stop event for flow collection synchronization
+        flow_stop_event = threading.Event()
+        
         # Start flow collection in a separate thread - SYNCHRONIZED with packet collection
         flow_collector_thread = threading.Thread(
             target=collect_flow_stats,
-            args=(total_duration, OUTPUT_FLOW_CSV_FILE, flow_label_timeline)
+            args=(total_duration, OUTPUT_FLOW_CSV_FILE, flow_label_timeline, flow_stop_event)
         )
         flow_collector_thread.daemon = True # Allow main thread to exit even if this thread is running
         flow_collector_thread.start()
@@ -627,16 +634,16 @@ def run_traffic_scenario(net, flow_label_timeline):
         # Calculate total scenario time
         total_scenario_time = time.time() - scenario_start_time
         
-        # Phase durations for reference (optimized for ~500 packets per class)
+        # Phase durations for reference (optimized for balanced packet counts with 5s minimum)
         reference_phase_durations = {
             'initialization': 5,
-            'normal_traffic': 25,    # 25s → ~500 packets (22 pps observed rate)
-            'syn_flood': 5,          # 5s → ~500 packets (100+ pps high volume flood)
-            'udp_flood': 5,          # 5s → ~500 packets (100+ pps high volume flood)
-            'icmp_flood': 5,         # 5s → ~500 packets (100+ pps high volume flood)
-            'ad_syn': 150,           # 150s → ~500 packets (3-4 pps low-rate adversarial)
-            'ad_udp': 150,           # 150s → ~500 packets (3-4 pps low-rate adversarial)
-            'ad_slow': 100,          # 100s → ~500 packets (5 pps slow attack rate)
+            'normal_traffic': 50,    # 50s → ~300 packets (6.3 pps observed rate)
+            'syn_flood': 5,          # 5s minimum → ~1,188 packets (237.6 pps observed rate)
+            'udp_flood': 5,          # 5s minimum → ~380 packets (76.1 pps observed rate)
+            'icmp_flood': 5,         # 5s minimum → ~440 packets (87.9 pps observed rate)
+            'ad_syn': 625,           # 625s → ~100 packets (0.16 pps observed rate)
+            'ad_udp': 200,           # 200s → ~100 packets (0.50 pps observed rate)
+            'ad_slow': 5,            # 5s minimum → ~244 packets (48.8 pps observed rate)
             'cooldown': 5
         }
         
@@ -672,6 +679,18 @@ def run_traffic_scenario(net, flow_label_timeline):
         
         logger.info("=" * 60)
         logger.info("Traffic generation scenario finished.")
+        
+        # Signal flow collection thread to stop gracefully
+        flow_stop_event.set()
+        logger.info("Signaling flow collection thread to stop...")
+        
+        # Wait for flow collection thread to finish (with timeout)
+        if flow_collector_thread.is_alive():
+            flow_collector_thread.join(timeout=10)
+            if flow_collector_thread.is_alive():
+                logger.warning("Flow collection thread did not stop within timeout")
+            else:
+                logger.info("Flow collection thread stopped successfully")
 
 
 def cleanup(controller_proc, mininet_running):

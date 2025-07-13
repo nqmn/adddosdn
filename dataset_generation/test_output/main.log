@@ -1,37 +1,37 @@
-2025-07-13 09:56:09 - [MAIN] - INFO - Cleaning up any previous Mininet instances...
-2025-07-13 09:56:10 - [MAIN] - INFO - Mininet cleanup complete.
-2025-07-13 09:56:12 - [MAIN] - INFO - Testing /hello endpoint...
-2025-07-13 09:56:12 - [MAIN] - INFO - Test /hello endpoint: PASSED
-2025-07-13 09:58:42 - [MAIN] - INFO - PCAP generation complete.
-2025-07-13 09:58:42 - [MAIN] - INFO - Processing normal.pcap with label 'normal'...
-2025-07-13 09:58:42 - [MAIN] - INFO - PCAP integrity check passed for test_output/normal.pcap: 132 packets
-2025-07-13 09:58:42 - [MAIN] - INFO - Using baseline timestamp for labeling test_output/normal.pcap: 1752371786.902778
-2025-07-13 09:58:43 - [MAIN] - INFO - Processing syn_flood.pcap with label 'syn_flood'...
-2025-07-13 09:58:43 - [MAIN] - INFO - PCAP integrity check passed for test_output/syn_flood.pcap: 1 packets
-2025-07-13 09:58:43 - [MAIN] - INFO - Using baseline timestamp for labeling test_output/syn_flood.pcap: 1752371817.087663
-2025-07-13 09:58:43 - [MAIN] - INFO - Processing udp_flood.pcap with label 'udp_flood'...
-2025-07-13 09:58:43 - [MAIN] - INFO - PCAP integrity check passed for test_output/udp_flood.pcap: 576 packets
-2025-07-13 09:58:43 - [MAIN] - INFO - Using baseline timestamp for labeling test_output/udp_flood.pcap: 1752371827.371632
-2025-07-13 09:58:43 - [MAIN] - INFO - Processing icmp_flood.pcap with label 'icmp_flood'...
-2025-07-13 09:58:43 - [MAIN] - INFO - PCAP integrity check passed for test_output/icmp_flood.pcap: 168 packets
-2025-07-13 09:58:43 - [MAIN] - INFO - Using baseline timestamp for labeling test_output/icmp_flood.pcap: 1752371840.952303
-2025-07-13 09:58:43 - [MAIN] - INFO - Processing ad_syn.pcap with label 'ad_syn'...
-2025-07-13 09:58:43 - [MAIN] - INFO - PCAP integrity check passed for test_output/ad_syn.pcap: 2 packets
-2025-07-13 09:58:43 - [MAIN] - INFO - Using baseline timestamp for labeling test_output/ad_syn.pcap: 1752371852.115412
-2025-07-13 09:58:43 - [MAIN] - INFO - Processing ad_udp.pcap with label 'ad_udp'...
-2025-07-13 09:58:43 - [MAIN] - INFO - PCAP integrity check passed for test_output/ad_udp.pcap: 2 packets
-2025-07-13 09:58:43 - [MAIN] - INFO - Using baseline timestamp for labeling test_output/ad_udp.pcap: 1752371887.473774
-2025-07-13 09:58:43 - [MAIN] - INFO - Processing ad_slow.pcap with label 'ad_slow'...
-2025-07-13 09:58:43 - [MAIN] - INFO - PCAP integrity check passed for test_output/ad_slow.pcap: 527 packets
-2025-07-13 09:58:43 - [MAIN] - INFO - Using baseline timestamp for labeling test_output/ad_slow.pcap: 1752371907.505345
-2025-07-13 09:58:43 - [MAIN] - INFO - Combined labeled CSV generated at: /home/user/Desktop/dataset_generation/test_output/packet_features.csv
-2025-07-13 09:58:43 - [MAIN] - INFO - Final combined CSV created successfully.
-2025-07-13 09:58:43 - [MAIN] - INFO - Flow-level dataset generated at: /home/user/Desktop/dataset_generation/test_output/flow_features.csv
-2025-07-13 09:58:43 - [MAIN] - INFO - Generating dataset summary...
-2025-07-13 09:58:43 - [MAIN] - INFO - Dataset generation summary displayed above
-2025-07-13 09:58:43 - [MAIN] - INFO - ============================================================
-2025-07-13 09:58:43 - [MAIN] - INFO - FINAL EXECUTION SUMMARY
-2025-07-13 09:58:43 - [MAIN] - INFO - ============================================================
-2025-07-13 09:58:43 - [MAIN] - INFO - Total Execution Time: 154.82 seconds (2.58 minutes | 0.04 hours)
-2025-07-13 09:58:43 - [MAIN] - INFO - Dataset Generation Complete: 2025-07-13 09:58:43
-2025-07-13 09:58:43 - [MAIN] - INFO - ============================================================
+2025-07-13 13:44:20 - [MAIN] - INFO - Cleaning up any previous Mininet instances...
+2025-07-13 13:44:21 - [MAIN] - INFO - Mininet cleanup complete.
+2025-07-13 13:44:23 - [MAIN] - INFO - Testing /hello endpoint...
+2025-07-13 13:44:23 - [MAIN] - INFO - Test /hello endpoint: PASSED
+2025-07-13 14:01:15 - [MAIN] - INFO - PCAP generation complete.
+2025-07-13 14:01:15 - [MAIN] - INFO - Processing normal.pcap with label 'normal'...
+2025-07-13 14:01:15 - [MAIN] - INFO - PCAP integrity check passed for test_output/normal.pcap: 408 packets
+2025-07-13 14:01:15 - [MAIN] - INFO - Using baseline timestamp for labeling test_output/normal.pcap: 1752385479.844065
+2025-07-13 14:01:15 - [MAIN] - INFO - Processing syn_flood.pcap with label 'syn_flood'...
+2025-07-13 14:01:16 - [MAIN] - INFO - PCAP integrity check passed for test_output/syn_flood.pcap: 7521 packets
+2025-07-13 14:01:18 - [MAIN] - INFO - Using baseline timestamp for labeling test_output/syn_flood.pcap: 1752385546.635037
+2025-07-13 14:01:20 - [MAIN] - INFO - Processing udp_flood.pcap with label 'udp_flood'...
+2025-07-13 14:01:20 - [MAIN] - INFO - PCAP integrity check passed for test_output/udp_flood.pcap: 808 packets
+2025-07-13 14:01:20 - [MAIN] - INFO - Using baseline timestamp for labeling test_output/udp_flood.pcap: 1752385576.679748
+2025-07-13 14:01:20 - [MAIN] - INFO - Processing icmp_flood.pcap with label 'icmp_flood'...
+2025-07-13 14:01:21 - [MAIN] - INFO - PCAP integrity check passed for test_output/icmp_flood.pcap: 848 packets
+2025-07-13 14:01:21 - [MAIN] - INFO - Using baseline timestamp for labeling test_output/icmp_flood.pcap: 1752385589.338928
+2025-07-13 14:01:21 - [MAIN] - INFO - Processing ad_syn.pcap with label 'ad_syn'...
+2025-07-13 14:01:21 - [MAIN] - INFO - PCAP integrity check passed for test_output/ad_syn.pcap: 106 packets
+2025-07-13 14:01:21 - [MAIN] - INFO - Using baseline timestamp for labeling test_output/ad_syn.pcap: 1752385598.466748
+2025-07-13 14:01:21 - [MAIN] - INFO - Processing ad_udp.pcap with label 'ad_udp'...
+2025-07-13 14:01:21 - [MAIN] - INFO - PCAP integrity check passed for test_output/ad_udp.pcap: 90 packets
+2025-07-13 14:01:21 - [MAIN] - INFO - Using baseline timestamp for labeling test_output/ad_udp.pcap: 1752386276.919060
+2025-07-13 14:01:21 - [MAIN] - INFO - Processing ad_slow.pcap with label 'ad_slow'...
+2025-07-13 14:01:22 - [MAIN] - INFO - PCAP integrity check passed for test_output/ad_slow.pcap: 789 packets
+2025-07-13 14:01:22 - [MAIN] - INFO - Using baseline timestamp for labeling test_output/ad_slow.pcap: 1752386455.796731
+2025-07-13 14:01:22 - [MAIN] - INFO - Combined labeled CSV generated at: /home/user/Desktop/dataset_generation/test_output/packet_features.csv
+2025-07-13 14:01:22 - [MAIN] - INFO - Final combined CSV created successfully.
+2025-07-13 14:01:22 - [MAIN] - INFO - Flow-level dataset generated at: /home/user/Desktop/dataset_generation/test_output/flow_features.csv
+2025-07-13 14:01:22 - [MAIN] - INFO - Generating dataset summary...
+2025-07-13 14:01:22 - [MAIN] - INFO - Dataset generation summary displayed above
+2025-07-13 14:01:22 - [MAIN] - INFO - ============================================================
+2025-07-13 14:01:22 - [MAIN] - INFO - FINAL EXECUTION SUMMARY
+2025-07-13 14:01:22 - [MAIN] - INFO - ============================================================
+2025-07-13 14:01:22 - [MAIN] - INFO - Total Execution Time: 1022.07 seconds (17.03 minutes | 0.28 hours)
+2025-07-13 14:01:22 - [MAIN] - INFO - Dataset Generation Complete: 2025-07-13 14:01:22
+2025-07-13 14:01:22 - [MAIN] - INFO - ============================================================
