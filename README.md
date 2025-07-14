@@ -28,8 +28,8 @@ sudo apt update
 sudo apt install -y python3-pip python3-venv git tshark mininet ryu-manager slowhttptest
 
 # Clone this project
-git clone https://github.com/nqmn/AdDDoSSDN_dataset.git
-cd AdDDoSSDN_dataset
+git clone https://github.com/nqmn/AdDDoSDN_dataset.git
+cd AdDDoSDN_dataset
 
 # Create Python environment
 python3 -m venv venv
