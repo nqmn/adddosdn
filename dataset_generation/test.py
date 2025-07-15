@@ -23,6 +23,8 @@ from src.gen_benign_traffic import run_benign_traffic
 import requests # New: For making HTTP requests to the Ryu controller
 import pandas as pd # New: For data manipulation and CSV writing
 from datetime import datetime # New: For timestamping flow data
+from multiprocessing import cpu_count
+from concurrent.futures import ProcessPoolExecutor
 
 # Import standardized logging
 from src.utils.logger import get_main_logger, ConsoleOutput, initialize_logging, print_dataset_summary
@@ -500,8 +502,8 @@ def run_traffic_scenario(net, flow_label_timeline):
             'cooldown': 5
         }
         config_duration = sum(phase_durations.values())
-        total_duration = config_duration + 75  # Config duration + 75s buffer for execution delays
-        logger.info(f"Calculated flow collection duration: {config_duration}s (config) + 75s (buffer) = {total_duration}s")
+        total_duration = config_duration + 120  # Config duration + 120s buffer for execution delays
+        logger.info(f"Calculated flow collection duration: {config_duration}s (config) + 120s (buffer) = {total_duration}s")
         
         # Create stop event for flow collection synchronization
         flow_stop_event = threading.Event()
@@ -511,7 +513,7 @@ def run_traffic_scenario(net, flow_label_timeline):
             target=collect_flow_stats,
             args=(total_duration, OUTPUT_FLOW_CSV_FILE, flow_label_timeline, flow_stop_event)
         )
-        flow_collector_thread.daemon = True # Allow main thread to exit even if this thread is running
+        flow_collector_thread.daemon = False # Don't allow main thread to exit before this thread finishes
         flow_collector_thread.start()
         logger.info("Flow statistics collection started in background.")
 
@@ -708,6 +710,106 @@ def cleanup(controller_proc, mininet_running):
     
     logger.info("Cleanup complete.")
 
+def process_single_pcap(pcap_file_path, label_name, output_dir):
+    """
+    Process a single PCAP file and return the resulting DataFrame.
+    This function is designed to be used with multiprocessing.
+    """
+    import pandas as pd
+    from pathlib import Path
+    import logging
+    
+    # Set up logging for this worker process
+    worker_logger = logging.getLogger(f'worker_{label_name}')
+    worker_logger.setLevel(logging.INFO)
+    
+    pcap_file = Path(pcap_file_path)
+    output_dir = Path(output_dir)
+    
+    try:
+        worker_logger.info(f"Processing {pcap_file.name} with label '{label_name}'...")
+        
+        if not pcap_file.exists():
+            worker_logger.warning(f"PCAP file not found: {pcap_file.name}. Skipping.")
+            return None
+
+        # Verify PCAP integrity before processing
+        integrity_results = verify_pcap_integrity(pcap_file)
+        if not integrity_results['valid']:
+            worker_logger.error(f"PCAP integrity check failed for {pcap_file.name}: {integrity_results['error']}")
+            worker_logger.warning("Continuing with PCAP processing despite integrity issues...")
+        else:
+            worker_logger.info(f"PCAP integrity check passed for {pcap_file.name}: {integrity_results['total_packets']} packets")
+            if integrity_results['corruption_rate'] > 0:
+                worker_logger.warning(f"Timestamp corruption detected in {pcap_file.name}: {integrity_results['corruption_rate']:.2f}%")
+
+        try:
+            corrected_packets, stats = validate_and_fix_pcap_timestamps(pcap_file)
+            pcap_start_time = stats['baseline_time']
+            worker_logger.info(f"Using baseline timestamp for labeling {pcap_file.name}: {pcap_start_time}")
+        except Exception as e:
+            worker_logger.error(f"Could not process PCAP timestamps for {pcap_file}: {e}. Skipping labeling for this file.")
+            return None
+
+        # Create a simple label timeline for the current PCAP file
+        label_timeline = [{
+            'start_time': pcap_start_time,
+            'end_time': pcap_start_time + 3600, # 1 hour, should be enough
+            'label': label_name
+        }]
+        
+        temp_csv_file = output_dir / f"temp_{label_name}.csv"
+        enhanced_process_pcap_to_csv(
+            str(pcap_file), 
+            str(temp_csv_file), 
+            label_timeline,
+            validate_timestamps=True
+        )
+        
+        if temp_csv_file.exists():
+            df = pd.read_csv(temp_csv_file)
+            temp_csv_file.unlink() # Delete temporary CSV
+            worker_logger.info(f"Successfully processed {pcap_file.name}: {len(df)} records")
+            return df
+        else:
+            worker_logger.warning(f"No CSV generated for {pcap_file.name}.")
+            return None
+            
+    except Exception as e:
+        worker_logger.error(f"Error processing {pcap_file.name}: {e}")
+        return None
+
+def process_pcaps_parallel(pcap_files_to_process, output_dir, max_workers=6):
+    """
+    Process multiple PCAP files in parallel using multiprocessing.
+    """
+    logger.info(f"Starting parallel PCAP processing with {max_workers} workers...")
+    
+    all_labeled_dfs = []
+    
+    with ProcessPoolExecutor(max_workers=max_workers) as executor:
+        # Submit all tasks
+        future_to_pcap = {}
+        for pcap_file, label_name in pcap_files_to_process:
+            future = executor.submit(process_single_pcap, str(pcap_file), label_name, str(output_dir))
+            future_to_pcap[future] = (pcap_file, label_name)
+        
+        # Collect results as they complete
+        for future in future_to_pcap:
+            pcap_file, label_name = future_to_pcap[future]
+            try:
+                df = future.result()
+                if df is not None:
+                    all_labeled_dfs.append(df)
+                    logger.info(f"✓ Completed processing {pcap_file.name} ({len(df)} records)")
+                else:
+                    logger.warning(f"✗ Failed to process {pcap_file.name}")
+            except Exception as e:
+                logger.error(f"✗ Error processing {pcap_file.name}: {e}")
+    
+    logger.info(f"Parallel PCAP processing completed. Processed {len(all_labeled_dfs)} files successfully.")
+    return all_labeled_dfs
+
 def verify_labels_in_csv(csv_file_path, label_timeline):
     """
     Verifies the presence and validity of labels in the generated CSV file.
@@ -764,6 +866,8 @@ def verify_labels_in_csv(csv_file_path, label_timeline):
 def main():
     """Main entry point for the pcap generation framework."""
     parser = argparse.ArgumentParser(description="AdDDoSDN PCAP Generation Framework")
+    parser.add_argument('--cores', type=int, default=min(4, cpu_count()), 
+                       help=f'Number of CPU cores to use for PCAP processing (default: {min(4, cpu_count())}, max: {cpu_count()})')
     args = parser.parse_args()
     
     # Track overall execution time
@@ -842,58 +946,19 @@ def main():
             (PCAP_FILE_AD_SLOW, 'ad_slow'),
         ]
 
-        all_labeled_dfs = []
-
-        for pcap_file, label_name in pcap_files_to_process:
-            logger.info(f"Processing {pcap_file.name} with label '{label_name}'...")
-            
-            if not pcap_file.exists():
-                logger.warning(f"PCAP file not found: {pcap_file.name}. Skipping.")
-                continue
-
-            # Verify PCAP integrity before processing
-            integrity_results = verify_pcap_integrity(pcap_file)
-            if not integrity_results['valid']:
-                logger.error(f"PCAP integrity check failed for {pcap_file.relative_to(BASE_DIR)}: {integrity_results['error']}")
-                logger.warning("Continuing with PCAP processing despite integrity issues...")
-            else:
-                logger.info(f"PCAP integrity check passed for {pcap_file.relative_to(BASE_DIR)}: {integrity_results['total_packets']} packets")
-                if integrity_results['corruption_rate'] > 0:
-                    logger.warning(f"Timestamp corruption detected in {pcap_file.relative_to(BASE_DIR)}: {integrity_results['corruption_rate']:.2f}%")
-
-            try:
-                corrected_packets, stats = validate_and_fix_pcap_timestamps(pcap_file)
-                pcap_start_time = stats['baseline_time']
-                logger.info(f"Using baseline timestamp for labeling {pcap_file.relative_to(BASE_DIR)}: {pcap_start_time}")
-            except Exception as e:
-                logger.error(f"Could not process PCAP timestamps for {pcap_file}: {e}. Skipping labeling for this file.")
-                continue
-
-            # Create a simple label timeline for the current PCAP file
-            # Assuming each PCAP contains only one type of traffic for its entire duration
-            # The duration here is arbitrary, as the actual duration will be determined by the packets in the PCAP
-            # We set end_time far in the future to ensure all packets are covered
-            label_timeline = [{
-                'start_time': pcap_start_time,
-                'end_time': pcap_start_time + 3600, # 1 hour, should be enough
-                'label': label_name
-            }]
-            
-            temp_csv_file = OUTPUT_DIR / f"temp_{label_name}.csv"
-            enhanced_process_pcap_to_csv(
-                str(pcap_file), 
-                str(temp_csv_file), 
-                label_timeline,
-                validate_timestamps=True
-            )
-            
-            if temp_csv_file.exists():
-                import pandas as pd
-                df = pd.read_csv(temp_csv_file)
-                all_labeled_dfs.append(df)
-                temp_csv_file.unlink() # Delete temporary CSV
-            else:
-                logger.warning(f"No CSV generated for {pcap_file.relative_to(BASE_DIR)}.")
+        # Validate cores argument
+        max_workers = min(max(1, args.cores), cpu_count())
+        if args.cores > cpu_count():
+            logger.warning(f"Requested {args.cores} cores, but only {cpu_count()} available. Using {max_workers} cores.")
+        
+        logger.info(f"Processing {len(pcap_files_to_process)} PCAP files using {max_workers} CPU cores...")
+        
+        # Process PCAPs in parallel with timing
+        pcap_start_time = time.time()
+        all_labeled_dfs = process_pcaps_parallel(pcap_files_to_process, OUTPUT_DIR, max_workers)
+        pcap_processing_time = time.time() - pcap_start_time
+        
+        logger.info(f"Parallel PCAP processing completed in {pcap_processing_time:.2f} seconds ({pcap_processing_time/60:.2f} minutes)")
 
         if all_labeled_dfs:
             final_df = pd.concat(all_labeled_dfs, ignore_index=True)

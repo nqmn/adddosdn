@@ -1,0 +1,14 @@
+{
+    "scenario_durations": {
+        "initialization": 5,
+        "normal_traffic": 36,
+        "syn_flood": 30,
+        "udp_flood": 30,
+        "icmp_flood": 30,
+        "ad_syn": 72,
+        "ad_udp": 48,
+        "ad_slow": 72,
+        "cooldown": 5
+    },
+    "flow_collection_retry_delay": 5
+}

@@ -1,0 +1,126 @@
+2025-07-14 19:46:05 - [MAIN] - INFO - Cleaning up any previous Mininet instances...
+2025-07-14 19:46:06 - [MAIN] - INFO - Mininet cleanup complete.
+2025-07-14 19:46:06,544 - __main__ - INFO - Verifying required tools...
+2025-07-14 19:46:06,796 - __main__ - INFO - TShark version: Running as user "root" and group "root". This could be dangerous.
+2025-07-14 19:46:06,796 - __main__ - INFO - All required tools are available.
+2025-07-14 19:46:06,796 - __main__ - INFO - Starting Ryu SDN controller...
+2025-07-14 19:46:06,802 - __main__ - INFO - Ryu controller started with PID: 99115. See main_output/ryu.log for logs.
+2025-07-14 19:46:06,803 - __main__ - INFO - Checking for controller on port 6653 (timeout: 30s)...
+2025-07-14 19:46:07,823 - __main__ - INFO - Controller is up and listening.
+2025-07-14 19:46:07 - [MAIN] - INFO - Testing /hello endpoint...
+2025-07-14 19:46:07 - [MAIN] - INFO - Test /hello endpoint: PASSED
+2025-07-14 19:46:07,830 - __main__ - INFO - Setting up Mininet topology...
+2025-07-14 19:46:08,073 - __main__ - INFO - Mininet version: 
+2025-07-14 19:46:08,081 - __main__ - INFO - Connecting to remote controller at 127.0.0.1:6653
+2025-07-14 19:46:10,352 - __main__ - INFO - Mininet network started successfully.
+2025-07-14 19:46:10,352 - __main__ - INFO - Running Mininet pingall test...
+2025-07-14 19:46:15,446 - __main__ - INFO - Mininet pingall test completed successfully. Packet loss: 0.0%
+2025-07-14 19:46:15,446 - __main__ - INFO - Starting traffic generation scenario...
+2025-07-14 19:46:15,446 - __main__ - INFO - Phase 1: Initialization (5s)...
+2025-07-14 19:46:20,454 - __main__ - INFO - Starting flow statistics collection for 23825 seconds...
+2025-07-14 19:46:20,454 - __main__ - INFO - Flow statistics collection started in background.
+2025-07-14 19:46:20,456 - __main__ - INFO - Phase 2: Normal Traffic (3600s)...
+2025-07-14 19:46:20,456 - __main__ - INFO - Timeline updated: normal phase started at 1752493580.4568303
+2025-07-14 20:46:31,672 - __main__ - INFO - Stopping packet capture (PID: 99378)...
+2025-07-14 20:46:31,717 - __main__ - INFO - Packet capture stopped.
+2025-07-14 20:46:31,717 - __main__ - INFO - Phase 3.1: Enhanced Traditional DDoS Attacks...
+2025-07-14 20:46:31,717 - __main__ - INFO - Timeline updated: syn_flood phase started at 1752497191.7178643
+2025-07-14 20:51:36,248 - __main__ - INFO - Stopping packet capture (PID: 122591)...
+2025-07-14 20:51:36,309 - __main__ - INFO - Packet capture stopped.
+2025-07-14 20:51:36,310 - __main__ - INFO - Timeline updated: udp_flood phase started at 1752497496.3101406
+2025-07-14 20:56:43,938 - __main__ - INFO - Stopping packet capture (PID: 122605)...
+2025-07-14 20:56:44,022 - __main__ - INFO - Packet capture stopped.
+2025-07-14 20:56:44,022 - __main__ - INFO - Timeline updated: icmp_flood phase started at 1752497804.0225387
+2025-07-14 21:01:48,621 - __main__ - INFO - Stopping packet capture (PID: 122632)...
+2025-07-14 21:01:48,760 - __main__ - INFO - Packet capture stopped.
+2025-07-14 21:01:48,760 - __main__ - INFO - Phase 3.2: Adversarial DDoS Attacks...
+2025-07-14 21:01:48,760 - __main__ - INFO - Timeline updated: ad_syn phase started at 1752498108.7605634
+2025-07-14 23:01:57,638 - __main__ - INFO - Stopping packet capture (PID: 122645)...
+2025-07-14 23:01:57,711 - __main__ - INFO - Packet capture stopped.
+2025-07-14 23:01:57,712 - __main__ - INFO - Timeline updated: ad_udp phase started at 1752505317.7121012
+2025-07-15 00:22:14,184 - __main__ - INFO - Stopping packet capture (PID: 122983)...
+2025-07-15 00:22:14,257 - __main__ - INFO - Packet capture stopped.
+2025-07-15 00:22:14,257 - __main__ - INFO - Timeline updated: ad_slow phase started at 1752510134.2572064
+2025-07-15 00:22:20,415 - __main__ - INFO - Starting HTTP server on h6 (10.0.0.6:80)...
+2025-07-15 02:22:23,685 - __main__ - INFO - Stopping packet capture (PID: 123287)...
+2025-07-15 02:22:23,779 - __main__ - INFO - Packet capture stopped.
+2025-07-15 02:22:23,779 - __main__ - INFO - Stopping packet capture (PID: 123286)...
+2025-07-15 02:22:23,873 - __main__ - INFO - Packet capture stopped.
+2025-07-15 02:22:23,874 - __main__ - INFO - Analyzing main_output/h6_slow_read.pcap for TCP issues...
+2025-07-15 02:22:24,192 - __main__ - INFO - TCP Analysis on h6 PCAP: RST Count = 8, Retransmission Count = 879
+2025-07-15 02:22:24,476 - __main__ - INFO - Inter-Packet Arrival Time (h6 PCAP): Mean = 5.5181s, Median = 0.0000s, Std Dev = 190.5967s
+2025-07-15 02:22:24,476 - __main__ - INFO - Stopping HTTP server on h6...
+2025-07-15 02:22:24,484 - __main__ - INFO - HTTP server on h6 stopped.
+2025-07-15 02:22:24,485 - __main__ - INFO - Phase 4: Cooldown (5s)...
+2025-07-15 02:22:24,485 - __main__ - INFO - Timeline updated: normal phase started at 1752517344.4851074
+2025-07-15 02:22:29,494 - __main__ - INFO - ============================================================
+2025-07-15 02:22:29,494 - __main__ - INFO - COMPREHENSIVE TIMING SUMMARY
+2025-07-15 02:22:29,494 - __main__ - INFO - ============================================================
+2025-07-15 02:22:29,494 - __main__ - INFO - Total Scenario Runtime: 23774.05 seconds (396.23 minutes)
+2025-07-15 02:22:29,494 - __main__ - INFO - 
+2025-07-15 02:22:29,495 - __main__ - INFO - Phase-by-Phase Breakdown:
+2025-07-15 02:22:29,495 - __main__ - INFO -   Normal Traffic: 3611.26s (configured: 3600s)
+2025-07-15 02:22:29,495 - __main__ - INFO -   Enhanced Traditional Attacks:
+2025-07-15 02:22:29,495 - __main__ - INFO -     Enhanced Syn Flood: 304.59s (configured: 300s)
+2025-07-15 02:22:29,495 - __main__ - INFO -     Enhanced Udp Flood: 307.71s (configured: 300s)
+2025-07-15 02:22:29,495 - __main__ - INFO -     Enhanced Icmp Flood: 304.74s (configured: 300s)
+2025-07-15 02:22:29,495 - __main__ - INFO -   Adversarial Attacks:
+2025-07-15 02:22:29,495 - __main__ - INFO -     TCP State Exhaustion: 7208.95s (configured: 7200s)
+2025-07-15 02:22:29,495 - __main__ - INFO -     Application Layer: 4816.55s (configured: 4800s)
+2025-07-15 02:22:29,495 - __main__ - INFO -     Slow Read: 7209.62s (configured: 7200s)
+2025-07-15 02:22:29,495 - __main__ - INFO -   Initialization: 5.01s (configured: 5s)
+2025-07-15 02:22:29,495 - __main__ - INFO -   Cooldown: 5.01s (configured: 5s)
+2025-07-15 02:22:29,495 - __main__ - INFO - ============================================================
+2025-07-15 02:22:29,495 - __main__ - INFO - Traffic generation scenario finished.
+2025-07-15 02:22:29 - [MAIN] - INFO - PCAP generation complete.
+2025-07-15 02:22:29 - [MAIN] - INFO - Processing normal.pcap with label 'normal'...
+2025-07-15 02:22:34 - [MAIN] - INFO - PCAP integrity check passed for normal.pcap: 23972 packets
+2025-07-15 02:22:39 - [MAIN] - INFO - Using baseline timestamp for labeling normal.pcap: 1752493584.477904
+2025-07-15 02:22:47 - [MAIN] - INFO - Processing syn_flood.pcap with label 'syn_flood'...
+2025-07-15 02:22:48 - [MAIN] - INFO - PCAP integrity check passed for syn_flood.pcap: 5601 packets
+2025-07-15 02:22:49 - [MAIN] - INFO - Using baseline timestamp for labeling syn_flood.pcap: 1752497197.865062
+2025-07-15 02:22:50 - [MAIN] - INFO - Processing udp_flood.pcap with label 'udp_flood'...
+2025-07-15 02:22:52 - [MAIN] - INFO - PCAP integrity check passed for udp_flood.pcap: 3402 packets
+2025-07-15 02:22:53 - [MAIN] - INFO - Using baseline timestamp for labeling udp_flood.pcap: 1752497503.908714
+2025-07-15 02:22:55 - [MAIN] - INFO - Processing icmp_flood.pcap with label 'icmp_flood'...
+2025-07-15 02:22:56 - [MAIN] - INFO - PCAP integrity check passed for icmp_flood.pcap: 5732 packets
+2025-07-15 02:22:57 - [MAIN] - INFO - Using baseline timestamp for labeling icmp_flood.pcap: 1752497810.687324
+2025-07-15 02:22:59 - [MAIN] - INFO - Processing ad_syn.pcap with label 'ad_syn'...
+2025-07-15 02:22:59 - [MAIN] - INFO - PCAP integrity check passed for ad_syn.pcap: 1138 packets
+2025-07-15 02:22:59 - [MAIN] - INFO - Using baseline timestamp for labeling ad_syn.pcap: 1752498115.093933
+2025-07-15 02:23:00 - [MAIN] - INFO - Processing ad_udp.pcap with label 'ad_udp'...
+2025-07-15 02:23:00 - [MAIN] - INFO - PCAP integrity check passed for ad_udp.pcap: 1861 packets
+2025-07-15 02:23:00 - [MAIN] - INFO - Using baseline timestamp for labeling ad_udp.pcap: 1752505321.786513
+2025-07-15 02:23:01 - [MAIN] - INFO - Processing ad_slow.pcap with label 'ad_slow'...
+2025-07-15 02:23:02 - [MAIN] - INFO - PCAP integrity check passed for ad_slow.pcap: 2613 packets
+2025-07-15 02:23:02 - [MAIN] - INFO - Using baseline timestamp for labeling ad_slow.pcap: 1752510141.566959
+2025-07-15 02:23:03 - [MAIN] - INFO - Processing h6_slow_read.pcap with label 'h6_slow_read'...
+2025-07-15 02:23:03 - [MAIN] - INFO - PCAP integrity check passed for h6_slow_read.pcap: 1306 packets
+2025-07-15 02:23:03 - [MAIN] - INFO - Using baseline timestamp for labeling h6_slow_read.pcap: 1752510141.567150
+2025-07-15 02:23:04 - [MAIN] - INFO - Combined labeled CSV generated at: main_output/packet_features.csv
+2025-07-15 02:23:04 - [MAIN] - INFO - Final combined CSV created successfully.
+2025-07-15 02:23:04 - [MAIN] - INFO - 
+--- Packet Feature Counts by Class ---
+2025-07-15 02:23:04 - [MAIN] - INFO -   normal: 23928 packets
+2025-07-15 02:23:04 - [MAIN] - INFO -   icmp_flood: 5732 packets
+2025-07-15 02:23:04 - [MAIN] - INFO -   syn_flood: 5601 packets
+2025-07-15 02:23:04 - [MAIN] - INFO -   udp_flood: 3402 packets
+2025-07-15 02:23:04 - [MAIN] - INFO -   ad_slow: 2567 packets
+2025-07-15 02:23:04 - [MAIN] - INFO -   ad_udp: 1373 packets
+2025-07-15 02:23:04 - [MAIN] - INFO -   h6_slow_read: 1283 packets
+2025-07-15 02:23:04 - [MAIN] - INFO -   unknown: 1186 packets
+2025-07-15 02:23:04 - [MAIN] - INFO -   ad_syn: 553 packets
+2025-07-15 02:23:04 - [MAIN] - WARNING - No flow-level dataset was generated.
+2025-07-15 02:23:04 - [MAIN] - INFO - Generating dataset summary...
+2025-07-15 02:23:05 - [MAIN] - INFO - Dataset generation summary displayed above
+2025-07-15 02:23:05 - [MAIN] - INFO - ============================================================
+2025-07-15 02:23:05 - [MAIN] - INFO - FINAL EXECUTION SUMMARY
+2025-07-15 02:23:05 - [MAIN] - INFO - ============================================================
+2025-07-15 02:23:05 - [MAIN] - INFO - Total Execution Time: 23820.38 seconds (397.01 minutes | 6.62 hours)
+2025-07-15 02:23:05 - [MAIN] - INFO - Dataset Generation Complete: 2025-07-15 02:23:05
+2025-07-15 02:23:05 - [MAIN] - INFO - ============================================================
+2025-07-15 02:23:05,559 - __main__ - INFO - Cleaning up resources...
+2025-07-15 02:23:05,560 - __main__ - INFO - Terminating Ryu controller (PID: 99115)...
+2025-07-15 02:23:05,563 - __main__ - INFO - Cleaning up Mininet environment...
+2025-07-15 02:23:06,525 - __main__ - ERROR - Error collecting flow stats: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /flows (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fd8286127f0>: Failed to establish a new connection: [Errno 111] Connection refused',))
+2025-07-15 02:23:07,258 - __main__ - INFO - Cleanup complete.

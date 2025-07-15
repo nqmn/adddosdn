@@ -59,6 +59,14 @@ sudo python3 dataset_generation/main.py
 ```
 This creates a comprehensive dataset in `dataset_generation/main_output/`
 
+**Testing and Validation:**
+```bash
+# Run the unified test runner to validate your datasets
+cd test/
+python3 test_runner.py
+```
+This provides a menu-driven interface to run various validation scripts including timeline analysis, statistics calculation, and dataset validation.
+
 ### Step 3: Configure for Your Needs
 
 Edit `dataset_generation/config.json` to customize attack durations:
@@ -136,6 +144,12 @@ Edit `dataset_generation/config.json` to customize attack durations:
 │   ├── 📂 test_output/             ← test.py results
 │   ├── 📂 main_output/             ← main.py results
 │   └── 📂 files/                   ← Configuration files
+├── 📂 test/                        ← Testing and validation tools
+│   ├── 🐍 test_runner.py           ← Unified test runner interface
+│   ├── 🐍 analyze_timeline.py      ← Timeline analysis
+│   ├── 🐍 calculate_percentages.py ← Statistics calculation
+│   ├── 🐍 validate_cicflow_dataset.py ← Dataset validation
+│   └── 🐍 [other test scripts]     ← Additional testing utilities
 ├── 📂 examples/                    ← Usage examples and tutorials
 └── 📄 README.md                    ← This file
 ```
@@ -801,6 +815,49 @@ Time: 0s    5s     20m    30m    40m    50m    60m    70m    80m    90m
 - Safe shutdown with Ctrl+C
 
 **This framework is for DEFENSIVE security research only!**
+
+## 🧪 Testing and Validation
+
+The framework includes a comprehensive test suite located in the `test/` directory to validate dataset quality and generation processes.
+
+### Unified Test Runner
+```bash
+cd test/
+python3 test_runner.py
+```
+
+The test runner provides an interactive menu with the following validation tools:
+
+1. **Timeline Analysis** - Analyze synchronization between packet and flow features
+2. **Statistics Calculation** - Calculate attack type distributions and percentages
+3. **File Ownership Management** - Change file ownership (requires sudo)
+4. **PCAP Timestamp Validation** - Validate timestamps in captured packets
+5. **CICFlow Feature Extraction** - Extract network flow features using CICFlowMeter
+6. **PCAP Processing** - Process PCAP files to labeled CSV features
+7. **Dataset Validation** - Comprehensive validation of generated datasets
+
+### Key Validation Features
+- **Timeline Synchronization**: Ensures packet and flow data alignment
+- **Protocol Correctness**: Validates TCP/UDP/ICMP protocol encoding
+- **Attack Classification**: Verifies multi-class and binary label consistency
+- **Enhanced Attack Detection**: Confirms realistic timing patterns in traditional attacks
+- **Statistical Analysis**: Provides comprehensive dataset statistics and distributions
+
+### Usage Examples
+```bash
+# Validate a test dataset
+cd test/
+python3 test_runner.py
+# Select option 1 (Timeline Analysis)
+# Select option 2 (Calculate Statistics)
+
+# Extract and validate CICFlow features
+python3 test_runner.py
+# Select option 5 (Extract CICFlow Features)
+# Select option 7 (Validate CICFlow Dataset)
+```
+
+For detailed information about each test script and validation criteria, see `test/README.md`.
 
 ## 📖 Citation
 

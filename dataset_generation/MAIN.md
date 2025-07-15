@@ -26,11 +26,26 @@ pip3 install -r requirements.txt
 
 ## How to Run
 
-The script requires root privileges to run Mininet. It uses configurable durations from `config.json` for production dataset generation.
+The script requires root privileges to run Mininet. It supports configurable durations via JSON configuration files.
 
+### Usage
 ```bash
+# Use default config.json
 sudo python3 main.py
+
+# Use custom configuration file
+sudo python3 main.py test_config.json
+
+# Use absolute path to config file
+sudo python3 main.py /path/to/custom_config.json
+
+# Show help
+python3 main.py --help
 ```
+
+### Configuration Files
+- **Default**: `config.json` - Production durations (6+ hours total)
+- **Custom**: Any JSON file with the same structure for different scenarios
 
 ### Key Features
 - **Production Ready**: Uses realistic attack durations from config.json

@@ -7,7 +7,7 @@
         "icmp_flood": 300,
         "ad_syn": 7200,
         "ad_udp": 4800,
-        "ad_slow": 3600,
+        "ad_slow": 7200,
         "cooldown": 5
     },
     "flow_collection_retry_delay": 5

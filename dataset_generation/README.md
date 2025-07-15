@@ -98,7 +98,14 @@ files/
 
 **Full Dataset Generation:**
 ```bash
+# Use default config.json
 sudo python3 main.py
+
+# Use custom configuration file
+sudo python3 main.py test_config.json
+
+# Use absolute path to config file
+sudo python3 main.py /path/to/custom_config.json
 ```
 
 - **Duration**: Configurable via `config.json`
@@ -458,7 +465,7 @@ sudo apt install -y mininet ryu-manager tshark slowhttptest openvswitch-switch
 **Permission Errors:**
 ```bash
 # Ensure sudo access for Mininet
-sudo python3 main.py
+sudo python3 main.py [config_file]
 
 # Check Mininet installation
 sudo mn --test pingall
