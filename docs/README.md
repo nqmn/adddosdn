@@ -66,10 +66,10 @@ See what's been done recently, understand the technical architecture, then dive 
 - **Host Roles:** What each virtual computer does
 
 ### 📊 Dataset Analysis
-- **Feature Lists:** Complete descriptions of all 84 packet features and 26 flow features
-- **Data Formats:** What the output files contain
-- **Statistics:** Expected data distributions and characteristics
-- **Quality Metrics:** How to validate your generated datasets
+- **Three Synchronized Formats:** Complete descriptions of packet-level (15 features), SDN flow (18 features), and CICFlow aggregated (78 features) data
+- **Data Formats:** What the output files contain and their relationships
+- **Statistics:** Expected data distributions and characteristics across all formats
+- **Quality Metrics:** How to validate your generated datasets and timeline integrity
 
 ### 📈 Development Progress
 - **Recent Updates:** Latest improvements and bug fixes

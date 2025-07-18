@@ -12,10 +12,10 @@ This guide walks you through setting up the AdDDoSDN framework from scratch. Whe
 - The AdDDoSDN framework itself
 
 **What you'll be able to do:**
-- Generate cybersecurity datasets safely
+- Generate cybersecurity datasets safely with three synchronized formats
 - Study DDoS attacks in a controlled environment
-- Create training data for machine learning models
-- Learn about SDN security
+- Create training data for machine learning models with timeline integrity
+- Learn about SDN security with packet-level and flow-level analysis
 
 ## 📋 Prerequisites
 
