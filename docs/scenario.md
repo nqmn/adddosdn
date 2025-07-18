@@ -99,64 +99,104 @@ flowchart TD
 
 ## 🔴 Attack Details
 
+### Enhanced Traditional DDoS Attacks
+
+The framework implements **Enhanced Traditional Attacks** that incorporate sophisticated behavioral modeling while remaining detectable for defensive research purposes. These attacks combine traditional DDoS patterns with advanced features to create more realistic traffic.
+
+#### Enhancement Features Overview
+
+```mermaid
+flowchart LR
+    subgraph "Enhanced Traditional Attacks"
+        A[Human-Like Timing<br/>80-150ms intervals] --> B[Protocol Compliance<br/>RFC-compliant headers]
+        B --> C[Session Patterns<br/>Active/break phases]
+        C --> D[Network Delay<br/>Congestion modeling]
+        D --> E[Service-Aware<br/>Realistic payloads]
+    end
+    
+    subgraph "Key Differentiators"
+        F[Still Detectable<br/>Rate-based rules work] --> G[Realistic Behavior<br/>Human-like patterns]
+        G --> H[Protocol Correct<br/>No anomalies]
+        H --> I[Timing Variance<br/>Circadian rhythms]
+    end
+    
+    style A fill:#e8f5e8
+    style B fill:#e8f5e8
+    style C fill:#e8f5e8
+    style D fill:#e8f5e8
+    style E fill:#e8f5e8
+    style F fill:#fff3e0
+    style G fill:#fff3e0
+    style H fill:#fff3e0
+    style I fill:#fff3e0
+```
+
 ### Traditional DDoS Attacks
 
-#### 1. SYN Flood Attack
+#### 1. Enhanced SYN Flood Attack
 ```mermaid
 sequenceDiagram
     participant h1 as h1 (Attacker)
     participant s1 as Switch s1
     participant h6 as h6 (Web Server)
     
-    Note over h1,h6: SYN Flood Attack (5 minutes)
+    Note over h1,h6: Enhanced SYN Flood Attack (5 minutes)<br/>~25 pps with human-like timing
     
-    loop Every 0.01 seconds
-        h1->>s1: TCP SYN to 10.0.0.6:80
-        s1->>h6: Forward SYN packet
+    Note over h1: Human-Like Timing Pattern<br/>80-150ms intervals + think time
+    
+    loop Enhanced SYN Generation
+        h1->>s1: RFC-Compliant TCP SYN<br/>• Realistic sequence numbers<br/>• TCP options (MSS, WScale, Timestamp)<br/>• Proper window size
+        s1->>h6: Forward enhanced SYN packet
         h6->>s1: TCP SYN+ACK response
         s1->>h1: Forward SYN+ACK
-        Note over h1: Never sends ACK<br/>(Half-open connection)
+        Note over h1: Never sends ACK<br/>(Half-open connection)<br/>+ Circadian rhythm factor
     end
     
-    Note over h6: Connection table exhausted<br/>Service degradation
+    Note over h6: Connection table exhausted<br/>Service degradation<br/>Realistic but detectable
 ```
 
-#### 2. UDP Flood Attack
+#### 2. Enhanced UDP Flood Attack
 ```mermaid
 sequenceDiagram
     participant h2 as h2 (Attacker)
     participant s1 as Switch s1
     participant h4 as h4 (Victim)
     
-    Note over h2,h4: UDP Flood Attack (5 minutes)
+    Note over h2,h4: Enhanced UDP Flood Attack (5 minutes)<br/>~25 pps with service-aware payloads
     
-    loop Every 0.01 seconds
-        h2->>s1: UDP packet to 10.0.0.4:53
-        s1->>h4: Forward UDP packet
+    Note over h2: Service-Aware Generation<br/>DNS queries, DHCP, NTP, SNMP
+    
+    loop Enhanced UDP Generation
+        h2->>s1: Service-Aware UDP packet<br/>• Realistic DNS queries<br/>• Ephemeral source ports (32768-65535)<br/>• Proper payload structure
+        s1->>h4: Forward enhanced UDP packet
         h4->>s1: ICMP Port Unreachable
         s1->>h2: Forward ICMP response
+        Note over h2: Human-like intervals<br/>+ Network delay simulation
     end
     
-    Note over h4: Bandwidth exhausted<br/>Service disruption
+    Note over h4: Bandwidth exhausted<br/>Service disruption<br/>Realistic but detectable
 ```
 
-#### 3. ICMP Flood Attack
+#### 3. Enhanced ICMP Flood Attack
 ```mermaid
 sequenceDiagram
     participant h2 as h2 (Attacker)
     participant s1 as Switch s1
     participant h4 as h4 (Victim)
     
-    Note over h2,h4: ICMP Flood Attack (5 minutes)
+    Note over h2,h4: Enhanced ICMP Flood Attack (5 minutes)<br/>~25 pps with protocol compliance
     
-    loop Every 0.01 seconds
-        h2->>s1: ICMP Echo Request
-        s1->>h4: Forward ICMP packet
+    Note over h2: Protocol-Compliant Generation<br/>Session patterns + timing awareness
+    
+    loop Enhanced ICMP Generation
+        h2->>s1: Protocol-Compliant ICMP<br/>• Proper ICMP headers<br/>• Variable payload sizes<br/>• Session pattern awareness
+        s1->>h4: Forward enhanced ICMP packet
         h4->>s1: ICMP Echo Reply
         s1->>h2: Forward ICMP reply
+        Note over h2: Active/break phases<br/>+ Circadian rhythm modeling
     end
     
-    Note over h4: Network layer saturated<br/>Bandwidth consumed
+    Note over h4: Network layer saturated<br/>Bandwidth consumed<br/>Realistic but detectable
 ```
 
 ### Advanced Adversarial Attacks
@@ -246,6 +286,127 @@ flowchart LR
     style F fill:#e8f5e8
 ```
 
+## 🔧 Enhanced Traditional Attack Features
+
+### Human-Like Timing Patterns
+
+The enhanced traditional attacks implement sophisticated timing patterns that simulate realistic human behavior:
+
+```mermaid
+flowchart TD
+    A[Human-Like Timing System] --> B[Typing Patterns<br/>80-150ms intervals]
+    A --> C[Mouse Click Patterns<br/>200-400ms intervals]
+    A --> D[Think Time<br/>1-3 seconds between actions]
+    A --> E[Circadian Rhythms<br/>Activity varies by hour]
+    
+    B --> F[Natural Variation<br/>±30% randomness]
+    C --> G[Click Sequences<br/>±25% variation]
+    D --> H[Mental Processing<br/>±50% variation]
+    E --> I[Peak Activity<br/>9 AM - 5 PM]
+    
+    F --> J[Session Patterns<br/>Active 80% / Break 20%]
+    G --> J
+    H --> J
+    I --> J
+    
+    style A fill:#e8f5e8
+    style J fill:#fff3e0
+```
+
+#### Timing Pattern Examples:
+- **Typing Intervals**: 80-150ms with natural variation simulating keystroke timing
+- **Mouse Clicks**: 200-400ms representing user interaction patterns
+- **Think Time**: 1-3 seconds between actions for realistic decision-making
+- **Circadian Factors**: Activity peaks at 2-4 PM, lowest at 2-5 AM
+- **Session Phases**: Active phases (30-180s) alternating with breaks (5-30s)
+
+### Protocol Compliance Features
+
+Enhanced attacks ensure proper protocol behavior to avoid detection through protocol anomalies:
+
+```mermaid
+flowchart LR
+    subgraph "TCP Compliance"
+        A[RFC-Compliant Headers] --> B[Realistic Sequence Numbers]
+        B --> C[Proper TCP Options]
+        C --> D[Window Size Management]
+        D --> E[Connection State Tracking]
+    end
+    
+    subgraph "UDP Compliance"
+        F[Service-Aware Payloads] --> G[DNS Queries]
+        G --> H[DHCP Requests]
+        H --> I[NTP Packets]
+        I --> J[SNMP Messages]
+    end
+    
+    subgraph "Validation"
+        K[Protocol Validator] --> L[Compliance Scoring]
+        L --> M[Enhancement Suggestions]
+        M --> N[Automated Correction]
+    end
+    
+    style A fill:#e3f2fd
+    style F fill:#f3e5f5
+    style K fill:#fff3e0
+```
+
+#### Protocol Features:
+- **TCP Options**: MSS (1460, 1440, 536), Window Scale (0-4), Timestamps, SACK
+- **Sequence Numbers**: Hash-based ISN generation following RFC 793
+- **Window Sizes**: Dynamic adjustment (1024-65535) simulating congestion control
+- **UDP Payloads**: Service-specific patterns for DNS, DHCP, NTP, SNMP
+- **Port Management**: Ephemeral source ports (32768-65535)
+
+### Network Delay Simulation
+
+Realistic network behavior modeling includes:
+
+```mermaid
+flowchart TD
+    A[Network Delay Simulator] --> B[Base Latency<br/>20ms default]
+    A --> C[Congestion Modeling<br/>Adaptive factors]
+    A --> D[Packet Loss Simulation<br/>5% random loss]
+    A --> E[Retransmission Delays<br/>2x-5x base latency]
+    
+    B --> F[Variation ±40%<br/>12-28ms range]
+    C --> G[Congestion Factor<br/>0.5x-3.0x multiplier]
+    D --> H[Loss Recovery<br/>Realistic timeouts]
+    E --> I[Adaptive Behavior<br/>Dynamic adjustment]
+    
+    style A fill:#e8f5e8
+    style F fill:#fff3e0
+    style G fill:#fff3e0
+    style H fill:#fff3e0
+    style I fill:#fff3e0
+```
+
+### Enhanced vs Adversarial Differentiation
+
+```mermaid
+flowchart LR
+    subgraph "Enhanced Traditional"
+        A[Human-like Timing<br/>~25 pps] --> B[Protocol Compliant<br/>No anomalies]
+        B --> C[Still Detectable<br/>Rate-based rules work]
+        C --> D[Realistic Behavior<br/>Behavioral modeling]
+    end
+    
+    subgraph "Adversarial"
+        E[Evasion Focused<br/>~0.3 pps] --> F[ML Evasion<br/>Burst + jitter]
+        F --> G[IP Rotation<br/>Source diversity]
+        G --> H[Stealth Techniques<br/>Avoid detection]
+    end
+    
+    style A fill:#e8f5e8
+    style E fill:#fff3e0
+```
+
+#### Key Distinctions:
+- **Enhanced Traditional**: Focus on realism while maintaining detectability
+- **Adversarial**: Focus on ML evasion and stealth techniques
+- **Rate Difference**: Enhanced (~25 pps) vs Adversarial (~0.3 pps)
+- **Detection**: Enhanced remain detectable by rate-based rules, Adversarial attempt evasion
+
 ## 📊 Data Collection Architecture
 
 ### Three-Layer Data Collection
@@ -307,30 +468,34 @@ sequenceDiagram
 
 ## 🔍 Attack Detection Characteristics
 
-### Traditional vs Adversarial Attack Patterns
+### Enhanced Traditional vs Adversarial Attack Patterns
 
 ```mermaid
 flowchart LR
-    subgraph "Traditional Attacks"
-        A[High Packet Rate<br/>~100 pps] --> B[Obvious Patterns<br/>Predictable timing]
-        B --> C[Easy Detection<br/>Rate-based rules]
+    subgraph "Enhanced Traditional Attacks"
+        A[Moderate Packet Rate<br/>~25 pps] --> B[Human-Like Patterns<br/>Realistic timing]
+        B --> C[Still Detectable<br/>Rate-based rules work]
         C --> D[Short Duration<br/>5 minutes each]
+        D --> E[Protocol Compliant<br/>No anomalies]
     end
     
     subgraph "Adversarial Attacks"
-        E[Low Packet Rate<br/>~0.3 pps] --> F[Evasive Patterns<br/>Burst + jitter]
-        F --> G[ML Evasion<br/>Mimicry techniques]
-        G --> H[Long Duration<br/>1-2 hours each]
+        F[Low Packet Rate<br/>~0.3 pps] --> G[Evasive Patterns<br/>Burst + jitter]
+        G --> H[ML Evasion<br/>Mimicry techniques]
+        H --> I[Long Duration<br/>1-2 hours each]
+        I --> J[IP Rotation<br/>Source diversity]
     end
     
-    style A fill:#ffebee
-    style B fill:#ffebee
-    style C fill:#ffebee
-    style D fill:#ffebee
-    style E fill:#fff3e0
+    style A fill:#e8f5e8
+    style B fill:#e8f5e8
+    style C fill:#e8f5e8
+    style D fill:#e8f5e8
+    style E fill:#e8f5e8
     style F fill:#fff3e0
     style G fill:#fff3e0
     style H fill:#fff3e0
+    style I fill:#fff3e0
+    style J fill:#fff3e0
 ```
 
 ## 📈 Dataset Statistics
