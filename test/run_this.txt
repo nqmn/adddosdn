@@ -1,0 +1,1 @@
+python3 cicflow_analyzer.py complete --pcap-dir main_output/1607-2/ --output-dir cicflow_output/1607-2/

@@ -29,6 +29,7 @@ from concurrent.futures import ProcessPoolExecutor
 
 # Import standardized logging
 from src.utils.logger import get_main_logger, ConsoleOutput, initialize_logging, print_dataset_summary
+from src.utils.timeline_analysis import analyze_dataset_timeline, print_detailed_timeline_report
 
 # Suppress Scapy warnings
 
@@ -573,12 +574,12 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         capture_procs['ad_slow'] = start_capture(net, PCAP_FILE_AD_SLOW)
         time.sleep(2)
         
-        # Start a simple HTTP server on h6 for the slowhttptest attack
-        h6_ip = HOST_IPS['h6']
-        http_server_cmd = f"python3 -m http.server 80 --bind {h6_ip}"
-        logger.info(f"Starting HTTP server on h6 ({h6_ip}:80)...")
-        http_server_proc = h6.popen(http_server_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        time.sleep(1) # Give server a moment to start
+        # No HTTP server needed - slowhttptest generates adversarial patterns regardless
+        # The h6_slow_read.pcap will capture all traffic on h6 during the attack
+        logger.info("Proceeding with adversarial slow attack (no HTTP server required)")
+        logger.info("Attack traffic will be captured via h6_slow_read.pcap and ad_slow.pcap")
+        
+        http_server_proc = None  # Keep variable for cleanup compatibility
 
         attack_proc_ad_slow = run_adv_ddos(h2, HOST_IPS['h6'], duration=scenario_durations['ad_slow'], attack_variant="slow_read", output_dir=OUTPUT_DIR)
         stop_capture(capture_procs['ad_slow'])
@@ -601,11 +602,8 @@ def run_traffic_scenario(net, flow_label_timeline, scenario_durations, total_sce
         else:
             logger.warning(f"h6 slow read PCAP file not found: {PCAP_FILE_H6_SLOW_READ.relative_to(BASE_DIR)}. Skipping TCP issue and inter-packet arrival time analysis.")
         
-        # Stop the HTTP server on h6
-        logger.info("Stopping HTTP server on h6...")
-        http_server_proc.terminate()
-        http_server_proc.wait(timeout=5)
-        logger.info("HTTP server on h6 stopped.")
+        # No HTTP server cleanup needed (none was started)
+        logger.info("No HTTP server cleanup required.")
 
         # --- Phase 4: Cooldown ---
         phase_start = time.time()
@@ -1022,6 +1020,23 @@ def main():
         logger.info("Generating dataset summary...")
         print_dataset_summary(OUTPUT_DIR, logger)
         
+        # Run timeline analysis
+        if OUTPUT_CSV_FILE.exists() and OUTPUT_FLOW_CSV_FILE.exists():
+            logger.info("Running timeline analysis...")
+            timeline_results = analyze_dataset_timeline(OUTPUT_CSV_FILE, OUTPUT_FLOW_CSV_FILE, logger)
+            
+            # Print detailed timeline report if requested or if there are issues
+            if timeline_results['score'] < 70:
+                print_detailed_timeline_report(timeline_results, logger)
+            
+            # Store results for final summary
+            timeline_score = timeline_results['score']
+            timeline_status = timeline_results['status']
+        else:
+            logger.warning("Skipping timeline analysis - missing CSV files")
+            timeline_score = 0
+            timeline_status = "FILES_MISSING"
+        
         # Final overall timing summary
         total_execution_time = time.time() - main_start_time
         logger.info("=" * 60)
@@ -1029,6 +1044,19 @@ def main():
         logger.info("=" * 60)
         logger.info(f"Total Execution Time: {total_execution_time:.2f} seconds ({total_execution_time/60:.2f} minutes | {total_execution_time/3600:.2f} hours)")
         logger.info(f"Dataset Generation Complete: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        
+        # Add timeline analysis results to summary
+        if 'timeline_score' in locals():
+            logger.info(f"Timeline Alignment Score: {timeline_score:.1f}%")
+            if timeline_score >= 90:
+                logger.info("✅ Timeline Quality: EXCELLENT")
+            elif timeline_score >= 70:
+                logger.info("✅ Timeline Quality: GOOD")
+            elif timeline_score >= 50:
+                logger.info("⚠️  Timeline Quality: FAIR - Consider adjustments")
+            else:
+                logger.info("❌ Timeline Quality: POOR - Requires attention")
+        
         logger.info("=" * 60)
 
     except Exception as e:
