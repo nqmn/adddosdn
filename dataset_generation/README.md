@@ -55,7 +55,7 @@ The framework generates **three synchronized data formats** from the same PCAP s
 
 - **Packet-Level Dataset**: Individual packet features (15 features) - `packet_features.csv`
 - **SDN Flow Dataset**: OpenFlow controller statistics (18 features) - `flow_features.csv`
-- **CICFlow Dataset**: Bidirectional flow aggregations (78 features) - `cicflow_features_all.csv`
+- **CICFlow Dataset**: Bidirectional flow aggregations (85 features) - `cicflow_features_all.csv`
 - **PCAP Files**: Raw packet captures for each traffic scenario (`*.pcap`)
 - **Attack Logs**: Comprehensive attack execution logs with metrics (`attack.log`)
 
@@ -273,7 +273,7 @@ python3 calculate_percentages.py [main_output|test_output]
 - Connection patterns
 - Service fingerprinting
 
-### Format 3: CICFlow Aggregated Features (78 features)
+### Format 3: CICFlow Aggregated Features (85 features)
 **Granularity**: Bidirectional network flows  
 **Source**: CICFlowMeter processing of PCAP files
 

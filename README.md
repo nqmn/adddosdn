@@ -49,7 +49,7 @@ sudo python3 dataset_generation/test.py
 This creates a small dataset in `dataset_generation/test_output/` with:
 - 📊 `packet_features.csv` - Individual packet data (15 features)
 - 📈 `flow_features.csv` - SDN flow statistics (18 features)  
-- 🔄 `cicflow_features_all.csv` - Aggregated flow data (78 features)
+- 🔄 `cicflow_features_all.csv` - Aggregated flow data (85 features)
 - 📦 `*.pcap` files - Raw network packet captures
 - 📝 `attack.log` - Detailed attack information
 
@@ -97,7 +97,7 @@ Edit `dataset_generation/config.json` to customize attack durations:
 #### 📊 Dataset Outputs:
 - **Packet Features (15 columns)** - Individual packet characteristics
 - **SDN Flow Features (18 columns)** - OpenFlow switch statistics  
-- **CICFlow Features (78 columns)** - Aggregated bidirectional flow statistics
+- **CICFlow Features (85 columns)** - Aggregated bidirectional flow statistics
 - **Binary Labels** - Normal (0) vs Attack (1)
 - **Multi-class Labels** - Specific attack types (normal, syn_flood, udp_flood, etc.)
 
@@ -158,12 +158,24 @@ Edit `dataset_generation/config.json` to customize attack durations:
 
 ## 🎯 Three Synchronized Data Formats
 
-The framework generates three synchronized data formats from the same network traffic:
+The framework generates three synchronized data formats from the same network traffic, each designed for different analysis approaches:
 
-### Format 1: Packet-Level Features (15 features)
+## 🔄 Multi-Granularity Analysis Design
+
+### **Real-Time Analysis Formats** (Network Operations)
+
+#### **Format 1: Packet-Level Features (15 features)**
 **Granularity**: Individual network packets  
 **Source**: Direct PCAP extraction using tshark  
-**Use case**: Packet-level ML models, protocol analysis
+**Analysis Type**: **Real-time packet inspection**  
+**Use case**: Packet-level ML models, protocol analysis, immediate threat detection
+
+**Why packet-level for real-time:**
+- **Instant detection**: Each packet analyzed immediately as it arrives
+- **Low latency**: Minimal processing delay for live traffic monitoring
+- **Protocol-specific**: Detect attacks based on packet headers and flags
+- **Network hardware compatible**: Can be implemented in switches/routers
+- **Fine-grained**: Catches attacks that may be invisible at flow level
 | Feature Name | Description | Relevance |
 |---|---|---|
 | `timestamp` | Timestamp of the packet capture. | Essential for temporal analysis and correlating events. |
@@ -182,9 +194,18 @@ The framework generates three synchronized data formats from the same network tr
 | `Label_multi` | Multi-class label indicating the type of traffic (e.g., 'normal', 'syn_flood', 'udp_flood'). | Primary label for multi-class classification tasks. |
 | `Label_binary` | Binary label indicating whether the traffic is normal (0) or attack (1). | Primary label for binary classification tasks. |
 
-### Format 2: SDN Flow Features (18 features)  
+#### **Format 2: SDN Flow Features (18 features)**
 **Granularity**: OpenFlow switch flow entries  
 **Source**: Ryu controller flow monitoring  
+**Analysis Type**: **Real-time flow monitoring**  
+**Use case**: SDN-specific detection, controller-based analysis, network-wide visibility
+
+**Why SDN flow for real-time:**
+- **Controller integration**: Direct access to OpenFlow statistics
+- **Network-wide view**: Centralized monitoring of all switches
+- **Programmable actions**: Immediate response through flow rule updates
+- **Scalable**: Aggregated flow statistics reduce processing overhead
+- **SDN-native**: Leverages controller's natural traffic monitoring capabilities
 **Use case**: SDN-specific ML models, controller-based analysis
 
 | Feature Name | Description | Relevance |
@@ -208,10 +229,21 @@ The framework generates three synchronized data formats from the same network tr
 | `Label_multi` | Multi-class label indicating the type of traffic (e.g., 'normal', 'syn_flood', 'udp_flood'). | Primary label for multi-class classification tasks. |
 | `Label_binary` | Binary label indicating whether the traffic is normal (0) or attack (1). | Primary label for binary classification tasks. |
 
-### Format 3: CICFlow Aggregated Features (78 features)
+### **Offline Analysis Format** (Security Analytics)
+
+#### **Format 3: CICFlow Aggregated Features (85 features)**
 **Granularity**: Bidirectional network flows  
 **Source**: CICFlowMeter processing of PCAP files  
-**Use case**: Flow-based ML models, network behavior analysis
+**Analysis Type**: **Offline behavioral analysis**  
+**Use case**: Flow-based ML models, network behavior analysis, forensic investigation
+
+**Why CICFlow for offline analysis:**
+- **Comprehensive features**: 85 statistical features capture complex behavioral patterns
+- **Bidirectional flows**: Analyzes complete conversation patterns between hosts
+- **Statistical aggregation**: Computes advanced statistics over entire flow lifetimes
+- **Behavioral profiling**: Identifies attack patterns through temporal and statistical analysis
+- **Research-grade**: Standardized features widely used in network security research
+- **Post-processing**: Requires complete flow data, suitable for batch analysis
 
 **Key Features Include**:
 - **Flow Duration & Timing**: Duration, inter-arrival times, idle times
@@ -219,6 +251,23 @@ The framework generates three synchronized data formats from the same network tr
 - **Statistical Measures**: Min, max, mean, std of packet sizes and intervals
 - **Protocol Flags**: TCP flags, flow control indicators
 - **Behavioral Patterns**: Active/idle periods, subflow analysis
+
+## 🎯 Analysis Use Cases Summary
+
+### **Real-Time Detection Systems**
+- **Packet-Level**: Immediate threat detection, protocol anomaly detection, hardware-based filtering
+- **SDN Flow-Level**: Controller-based monitoring, network-wide visibility, automated response actions
+
+### **Offline Security Analytics**
+- **CICFlow-Level**: Behavioral analysis, forensic investigation, advanced ML research, pattern discovery
+
+### **Deployment Scenarios**
+| Scenario | Primary Format | Analysis Type | Response Time | Use Case |
+|----------|---------------|---------------|---------------|----------|
+| **Network Firewall** | Packet-Level | Real-time | Microseconds | Block malicious packets |
+| **SDN Controller** | SDN Flow-Level | Real-time | Milliseconds | Update flow rules |
+| **Security Operations Center** | CICFlow-Level | Offline | Minutes/Hours | Investigate incidents |
+| **ML Model Training** | All Three | Offline | Hours/Days | Develop detection algorithms |
 
 ### Data Format Relationship
 All three formats are synchronized and extracted from the same PCAP source:

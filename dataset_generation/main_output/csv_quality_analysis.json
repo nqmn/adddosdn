@@ -1,0 +1,5942 @@
+{
+  "summary": {
+    "total_files": 12,
+    "successful_files": 12,
+    "success_rate": 100.0,
+    "total_rows": 2912850,
+    "total_size_mb": 377.63,
+    "total_missing_values": 8583906,
+    "total_infinity_values": 0,
+    "total_duplicate_rows": 1971,
+    "csv_type_statistics": {
+      "packet_features.csv": {
+        "count": 4,
+        "total_rows": 178473,
+        "total_size_mb": 14.0,
+        "avg_columns": 15.0
+      },
+      "flow_features.csv": {
+        "count": 4,
+        "total_rows": 2700131,
+        "total_size_mb": 349.92999999999995,
+        "avg_columns": 18.0
+      },
+      "cicflow_features_all.csv": {
+        "count": 4,
+        "total_rows": 34246,
+        "total_size_mb": 13.7,
+        "avg_columns": 85.0
+      }
+    }
+  },
+  "detailed_results": {
+    "1607-1": {
+      "packet_features.csv": {
+        "file_path": "/mnt/c/Users/Intel/Desktop/InSDN_ddos_dataset/adversarial-ddos-attacks-sdn-dataset/dataset_generation/main_output/1607-1/packet_features.csv",
+        "dataset": "1607-1",
+        "csv_type": "packet_features.csv",
+        "file_size_mb": 3.5,
+        "rows": 44597,
+        "columns": 15,
+        "column_names": [
+          "timestamp",
+          "packet_length",
+          "eth_type",
+          "ip_src",
+          "ip_dst",
+          "ip_proto",
+          "ip_ttl",
+          "ip_id",
+          "ip_flags",
+          "ip_len",
+          "src_port",
+          "dst_port",
+          "tcp_flags",
+          "Label_multi",
+          "Label_binary"
+        ],
+        "memory_usage_mb": 16.25,
+        "data_types": {
+          "timestamp": "float64",
+          "packet_length": "int64",
+          "eth_type": "object",
+          "ip_src": "object",
+          "ip_dst": "object",
+          "ip_proto": "int64",
+          "ip_ttl": "int64",
+          "ip_id": "int64",
+          "ip_flags": "object",
+          "ip_len": "int64",
+          "src_port": "float64",
+          "dst_port": "float64",
+          "tcp_flags": "object",
+          "Label_multi": "object",
+          "Label_binary": "int64"
+        },
+        "missing_values": {
+          "total_missing": 55560,
+          "missing_percentage": 8.31,
+          "columns_with_missing": {
+            "ip_flags": {
+              "count": 27092,
+              "percentage": 60.75
+            },
+            "src_port": {
+              "count": 8316,
+              "percentage": 18.65
+            },
+            "dst_port": {
+              "count": 8316,
+              "percentage": 18.65
+            },
+            "tcp_flags": {
+              "count": 11836,
+              "percentage": 26.54
+            }
+          }
+        },
+        "infinity_values": {
+          "total_infinity": 0,
+          "columns_with_infinity": {}
+        },
+        "duplicate_rows": {
+          "count": 148,
+          "percentage": 0.33
+        },
+        "numeric_stats": {
+          "timestamp": {
+            "min": 1752609523.720025,
+            "max": 1752633298.5544631,
+            "mean": 1752613902.2443972,
+            "std": 4932.640989417728,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 44449
+          },
+          "packet_length": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 101.95152140278493,
+            "std": 183.26297227145741,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 821
+          },
+          "ip_proto": {
+            "min": 1.0,
+            "max": 17.0,
+            "mean": 5.9358701257932145,
+            "std": 3.7693995134127185,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 3
+          },
+          "ip_ttl": {
+            "min": 64.0,
+            "max": 128.0,
+            "mean": 65.92156423077786,
+            "std": 10.922013391715836,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 2
+          },
+          "ip_id": {
+            "min": 0.0,
+            "max": 65525.0,
+            "mean": 7293.562862972845,
+            "std": 15764.164701303369,
+            "zeros": 13430,
+            "negatives": 0,
+            "unique_values": 7107
+          },
+          "ip_len": {
+            "min": 28.0,
+            "max": 1500.0,
+            "mean": 85.77137475614951,
+            "std": 183.30510097739136,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 820
+          },
+          "src_port": {
+            "min": 20.0,
+            "max": 65535.0,
+            "mean": 23192.400485102396,
+            "std": 23142.701988554894,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6262
+          },
+          "dst_port": {
+            "min": 21.0,
+            "max": 65526.0,
+            "mean": 15106.290234558033,
+            "std": 21079.30894834153,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 3617
+          },
+          "Label_binary": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.45915644550081847,
+            "std": 0.4983345989723739,
+            "zeros": 24120,
+            "negatives": 0,
+            "unique_values": 2
+          }
+        },
+        "categorical_stats": {
+          "eth_type": {
+            "unique_values": 1,
+            "most_common": {
+              "0x800": 44597
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "ip_src": {
+            "unique_values": 1204,
+            "most_common": {
+              "10.0.0.3": 12060,
+              "10.0.0.5": 12060,
+              "10.0.0.2": 5620,
+              "10.0.0.6": 4115,
+              "10.0.0.4": 3404
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "ip_dst": {
+            "unique_values": 7,
+            "most_common": {
+              "10.0.0.5": 12060,
+              "10.0.0.3": 12060,
+              "10.0.0.6": 7338,
+              "10.0.0.4": 5620,
+              "10.0.0.2": 3404
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "ip_flags": {
+            "unique_values": 1,
+            "most_common": {
+              "DF": 17505
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "tcp_flags": {
+            "unique_values": 6,
+            "most_common": {
+              "S": 9474,
+              "R": 8518,
+              "RA": 6251,
+              "A": 4270,
+              "SA": 2136
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Label_multi": {
+            "unique_values": 8,
+            "most_common": {
+              "normal": 24120,
+              "icmp_flood": 5588,
+              "syn_flood": 5553,
+              "udp_flood": 3436,
+              "ad_slow": 2386
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          }
+        },
+        "timestamp_analysis": {
+          "min_timestamp": "1752609523.720025",
+          "max_timestamp": "1752633298.5544631",
+          "timestamp_format": "string"
+        }
+      },
+      "flow_features.csv": {
+        "file_path": "/mnt/c/Users/Intel/Desktop/InSDN_ddos_dataset/adversarial-ddos-attacks-sdn-dataset/dataset_generation/main_output/1607-1/flow_features.csv",
+        "dataset": "1607-1",
+        "csv_type": "flow_features.csv",
+        "file_size_mb": 87.46,
+        "rows": 674777,
+        "columns": 18,
+        "column_names": [
+          "timestamp",
+          "switch_id",
+          "table_id",
+          "cookie",
+          "priority",
+          "in_port",
+          "eth_src",
+          "eth_dst",
+          "out_port",
+          "packet_count",
+          "byte_count",
+          "duration_sec",
+          "duration_nsec",
+          "avg_pkt_size",
+          "pkt_rate",
+          "byte_rate",
+          "Label_multi",
+          "Label_binary"
+        ],
+        "memory_usage_mb": 224.75,
+        "data_types": {
+          "timestamp": "float64",
+          "switch_id": "object",
+          "table_id": "float64",
+          "cookie": "float64",
+          "priority": "int64",
+          "in_port": "float64",
+          "eth_src": "object",
+          "eth_dst": "object",
+          "out_port": "int64",
+          "packet_count": "int64",
+          "byte_count": "int64",
+          "duration_sec": "int64",
+          "duration_nsec": "float64",
+          "avg_pkt_size": "float64",
+          "pkt_rate": "float64",
+          "byte_rate": "float64",
+          "Label_multi": "object",
+          "Label_binary": "int64"
+        },
+        "missing_values": {
+          "total_missing": 2089632,
+          "missing_percentage": 17.2,
+          "columns_with_missing": {
+            "table_id": {
+              "count": 674777,
+              "percentage": 100.0
+            },
+            "cookie": {
+              "count": 674777,
+              "percentage": 100.0
+            },
+            "in_port": {
+              "count": 21767,
+              "percentage": 3.23
+            },
+            "eth_src": {
+              "count": 21767,
+              "percentage": 3.23
+            },
+            "eth_dst": {
+              "count": 21767,
+              "percentage": 3.23
+            },
+            "duration_nsec": {
+              "count": 674777,
+              "percentage": 100.0
+            }
+          }
+        },
+        "infinity_values": {
+          "total_infinity": 0,
+          "columns_with_infinity": {}
+        },
+        "duplicate_rows": {
+          "count": 0,
+          "percentage": 0.0
+        },
+        "numeric_stats": {
+          "timestamp": {
+            "min": 1752609519.708114,
+            "max": 1752633305.59263,
+            "mean": 1752621276.566834,
+            "std": 6956.687034124094,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 21767
+          },
+          "table_id": {
+            "min": NaN,
+            "max": NaN,
+            "mean": NaN,
+            "std": NaN,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 0
+          },
+          "cookie": {
+            "min": NaN,
+            "max": NaN,
+            "mean": NaN,
+            "std": NaN,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 0
+          },
+          "priority": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.967741935483871,
+            "std": 0.1766848268903589,
+            "zeros": 21767,
+            "negatives": 0,
+            "unique_values": 2
+          },
+          "in_port": {
+            "min": 1.0,
+            "max": 6.0,
+            "mean": 3.5,
+            "std": 1.7078264353176176,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6
+          },
+          "out_port": {
+            "min": 1.0,
+            "max": 4294967293.0,
+            "mean": 138547335.41935483,
+            "std": 758855552.0450613,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 7
+          },
+          "packet_count": {
+            "min": 1.0,
+            "max": 9593.0,
+            "mean": 890.9311639252671,
+            "std": 2263.719701068845,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 4807
+          },
+          "byte_count": {
+            "min": 98.0,
+            "max": 1270450.0,
+            "mean": 73370.30960154244,
+            "std": 231564.3499391636,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6315
+          },
+          "duration_sec": {
+            "min": 4.0,
+            "max": 23794.0,
+            "mean": 11760.581556573505,
+            "std": 6956.684996402744,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 23736
+          },
+          "duration_nsec": {
+            "min": NaN,
+            "max": NaN,
+            "mean": NaN,
+            "std": NaN,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 0
+          },
+          "avg_pkt_size": {
+            "min": 42.79297883324729,
+            "max": 238.0,
+            "mean": 92.75559565845813,
+            "std": 19.786474378897438,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6338
+          },
+          "pkt_rate": {
+            "min": 4.203623523477237e-05,
+            "max": 7.333333333333333,
+            "mean": 0.11176503679933181,
+            "std": 0.36194252180296954,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 88202
+          },
+          "byte_rate": {
+            "min": 0.0041195510530076,
+            "max": 670.6666666666666,
+            "mean": 9.440151085864033,
+            "std": 37.18529991273838,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 88346
+          },
+          "Label_binary": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.834657968484403,
+            "std": 0.3714892308643655,
+            "zeros": 111569,
+            "negatives": 0,
+            "unique_values": 2
+          }
+        },
+        "categorical_stats": {
+          "switch_id": {
+            "unique_values": 1,
+            "most_common": {
+              "0x1": 674777
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "eth_src": {
+            "unique_values": 6,
+            "most_common": {
+              "00:00:00:00:00:01": 108835,
+              "00:00:00:00:00:02": 108835,
+              "00:00:00:00:00:03": 108835,
+              "00:00:00:00:00:04": 108835,
+              "00:00:00:00:00:05": 108835
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "eth_dst": {
+            "unique_values": 6,
+            "most_common": {
+              "00:00:00:00:00:02": 108835,
+              "00:00:00:00:00:01": 108835,
+              "00:00:00:00:00:03": 108835,
+              "00:00:00:00:00:04": 108835,
+              "00:00:00:00:00:05": 108835
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Label_multi": {
+            "unique_values": 7,
+            "most_common": {
+              "ad_slow": 205034,
+              "ad_syn": 197501,
+              "ad_udp": 132463,
+              "normal": 111569,
+              "udp_flood": 9486
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          }
+        },
+        "timestamp_analysis": {
+          "min_timestamp": "1752609519.708114",
+          "max_timestamp": "1752633305.59263",
+          "timestamp_format": "string"
+        }
+      },
+      "cicflow_features_all.csv": {
+        "file_path": "/mnt/c/Users/Intel/Desktop/InSDN_ddos_dataset/adversarial-ddos-attacks-sdn-dataset/dataset_generation/main_output/1607-1/cicflow_features_all.csv",
+        "dataset": "1607-1",
+        "csv_type": "cicflow_features_all.csv",
+        "file_size_mb": 3.42,
+        "rows": 8564,
+        "columns": 85,
+        "column_names": [
+          "src_ip",
+          "dst_ip",
+          "src_port",
+          "dst_port",
+          "protocol",
+          "timestamp",
+          "flow_duration",
+          "flow_byts_s",
+          "flow_pkts_s",
+          "fwd_pkts_s",
+          "bwd_pkts_s",
+          "tot_fwd_pkts",
+          "tot_bwd_pkts",
+          "totlen_fwd_pkts",
+          "totlen_bwd_pkts",
+          "fwd_pkt_len_max",
+          "fwd_pkt_len_min",
+          "fwd_pkt_len_mean",
+          "fwd_pkt_len_std",
+          "bwd_pkt_len_max",
+          "bwd_pkt_len_min",
+          "bwd_pkt_len_mean",
+          "bwd_pkt_len_std",
+          "pkt_len_max",
+          "pkt_len_min",
+          "pkt_len_mean",
+          "pkt_len_std",
+          "pkt_len_var",
+          "fwd_header_len",
+          "bwd_header_len",
+          "fwd_seg_size_min",
+          "fwd_act_data_pkts",
+          "flow_iat_mean",
+          "flow_iat_max",
+          "flow_iat_min",
+          "flow_iat_std",
+          "fwd_iat_tot",
+          "fwd_iat_max",
+          "fwd_iat_min",
+          "fwd_iat_mean",
+          "fwd_iat_std",
+          "bwd_iat_tot",
+          "bwd_iat_max",
+          "bwd_iat_min",
+          "bwd_iat_mean",
+          "bwd_iat_std",
+          "fwd_psh_flags",
+          "bwd_psh_flags",
+          "fwd_urg_flags",
+          "bwd_urg_flags",
+          "fin_flag_cnt",
+          "syn_flag_cnt",
+          "rst_flag_cnt",
+          "psh_flag_cnt",
+          "ack_flag_cnt",
+          "urg_flag_cnt",
+          "ece_flag_cnt",
+          "down_up_ratio",
+          "pkt_size_avg",
+          "init_fwd_win_byts",
+          "init_bwd_win_byts",
+          "active_max",
+          "active_min",
+          "active_mean",
+          "active_std",
+          "idle_max",
+          "idle_min",
+          "idle_mean",
+          "idle_std",
+          "fwd_byts_b_avg",
+          "fwd_pkts_b_avg",
+          "bwd_byts_b_avg",
+          "bwd_pkts_b_avg",
+          "fwd_blk_rate_avg",
+          "bwd_blk_rate_avg",
+          "fwd_seg_size_avg",
+          "bwd_seg_size_avg",
+          "cwr_flag_count",
+          "subflow_fwd_pkts",
+          "subflow_bwd_pkts",
+          "subflow_fwd_byts",
+          "subflow_bwd_byts",
+          "Label_multi",
+          "Label_binary",
+          "Attack_Type"
+        ],
+        "memory_usage_mb": 7.16,
+        "data_types": {
+          "src_ip": "object",
+          "dst_ip": "object",
+          "src_port": "int64",
+          "dst_port": "int64",
+          "protocol": "int64",
+          "timestamp": "float64",
+          "flow_duration": "float64",
+          "flow_byts_s": "float64",
+          "flow_pkts_s": "float64",
+          "fwd_pkts_s": "float64",
+          "bwd_pkts_s": "float64",
+          "tot_fwd_pkts": "int64",
+          "tot_bwd_pkts": "int64",
+          "totlen_fwd_pkts": "int64",
+          "totlen_bwd_pkts": "int64",
+          "fwd_pkt_len_max": "int64",
+          "fwd_pkt_len_min": "int64",
+          "fwd_pkt_len_mean": "float64",
+          "fwd_pkt_len_std": "float64",
+          "bwd_pkt_len_max": "int64",
+          "bwd_pkt_len_min": "int64",
+          "bwd_pkt_len_mean": "float64",
+          "bwd_pkt_len_std": "float64",
+          "pkt_len_max": "int64",
+          "pkt_len_min": "int64",
+          "pkt_len_mean": "float64",
+          "pkt_len_std": "float64",
+          "pkt_len_var": "float64",
+          "fwd_header_len": "int64",
+          "bwd_header_len": "int64",
+          "fwd_seg_size_min": "int64",
+          "fwd_act_data_pkts": "int64",
+          "flow_iat_mean": "float64",
+          "flow_iat_max": "float64",
+          "flow_iat_min": "float64",
+          "flow_iat_std": "float64",
+          "fwd_iat_tot": "float64",
+          "fwd_iat_max": "float64",
+          "fwd_iat_min": "float64",
+          "fwd_iat_mean": "float64",
+          "fwd_iat_std": "float64",
+          "bwd_iat_tot": "float64",
+          "bwd_iat_max": "float64",
+          "bwd_iat_min": "float64",
+          "bwd_iat_mean": "float64",
+          "bwd_iat_std": "float64",
+          "fwd_psh_flags": "int64",
+          "bwd_psh_flags": "int64",
+          "fwd_urg_flags": "int64",
+          "bwd_urg_flags": "int64",
+          "fin_flag_cnt": "int64",
+          "syn_flag_cnt": "int64",
+          "rst_flag_cnt": "int64",
+          "psh_flag_cnt": "int64",
+          "ack_flag_cnt": "int64",
+          "urg_flag_cnt": "int64",
+          "ece_flag_cnt": "int64",
+          "down_up_ratio": "float64",
+          "pkt_size_avg": "float64",
+          "init_fwd_win_byts": "int64",
+          "init_bwd_win_byts": "int64",
+          "active_max": "int64",
+          "active_min": "int64",
+          "active_mean": "int64",
+          "active_std": "int64",
+          "idle_max": "int64",
+          "idle_min": "int64",
+          "idle_mean": "int64",
+          "idle_std": "int64",
+          "fwd_byts_b_avg": "float64",
+          "fwd_pkts_b_avg": "float64",
+          "bwd_byts_b_avg": "int64",
+          "bwd_pkts_b_avg": "int64",
+          "fwd_blk_rate_avg": "float64",
+          "bwd_blk_rate_avg": "int64",
+          "fwd_seg_size_avg": "float64",
+          "bwd_seg_size_avg": "float64",
+          "cwr_flag_count": "int64",
+          "subflow_fwd_pkts": "int64",
+          "subflow_bwd_pkts": "int64",
+          "subflow_fwd_byts": "int64",
+          "subflow_bwd_byts": "int64",
+          "Label_multi": "object",
+          "Label_binary": "int64",
+          "Attack_Type": "object"
+        },
+        "missing_values": {
+          "total_missing": 0,
+          "missing_percentage": 0.0,
+          "columns_with_missing": {}
+        },
+        "infinity_values": {
+          "total_infinity": 0,
+          "columns_with_infinity": {}
+        },
+        "duplicate_rows": {
+          "count": 321,
+          "percentage": 3.75
+        },
+        "numeric_stats": {
+          "src_port": {
+            "min": -1.0,
+            "max": 65535.0,
+            "mean": 33446.245446053246,
+            "std": 22451.178203924483,
+            "zeros": 0,
+            "negatives": 1794,
+            "unique_values": 6259
+          },
+          "dst_port": {
+            "min": -1.0,
+            "max": 55096.0,
+            "mean": 573.2062120504437,
+            "std": 2539.86366207158,
+            "zeros": 0,
+            "negatives": 1794,
+            "unique_values": 11
+          },
+          "protocol": {
+            "min": 1.0,
+            "max": 17.0,
+            "mean": 7.18752919196637,
+            "std": 5.330519437845734,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 3
+          },
+          "timestamp": {
+            "min": 1752609523.0,
+            "max": 1752633295.0,
+            "mean": 1752615721.75,
+            "std": 5337.996222361559,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 4738
+          },
+          "flow_duration": {
+            "min": 0.0,
+            "max": 238.271375,
+            "mean": 5.442963009925268,
+            "std": 15.91985219999994,
+            "zeros": 1209,
+            "negatives": 0,
+            "unique_values": 2522
+          },
+          "flow_byts_s": {
+            "min": 0.0,
+            "max": 754500000.0,
+            "mean": 24459958.79903839,
+            "std": 55428085.83344388,
+            "zeros": 1209,
+            "negatives": 0,
+            "unique_values": 2791
+          },
+          "flow_pkts_s": {
+            "min": 0.0,
+            "max": 1000000.0,
+            "mean": 277509.0614396987,
+            "std": 296847.16622847645,
+            "zeros": 1209,
+            "negatives": 0,
+            "unique_values": 2573
+          },
+          "fwd_pkts_s": {
+            "min": 0.0,
+            "max": 1000000.0,
+            "mean": 224356.59509696809,
+            "std": 286557.2512227116,
+            "zeros": 1209,
+            "negatives": 0,
+            "unique_values": 2571
+          },
+          "bwd_pkts_s": {
+            "min": 0.0,
+            "max": 250000.0,
+            "mean": 53152.46634273062,
+            "std": 73204.27075768518,
+            "zeros": 2991,
+            "negatives": 0,
+            "unique_values": 2438
+          },
+          "tot_fwd_pkts": {
+            "min": 2.0,
+            "max": 185.0,
+            "mean": 4.073797290985521,
+            "std": 4.283421597895804,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 26
+          },
+          "tot_bwd_pkts": {
+            "min": 0.0,
+            "max": 26.0,
+            "mean": 2.1336992059785147,
+            "std": 3.1492129595018805,
+            "zeros": 2991,
+            "negatives": 0,
+            "unique_values": 12
+          },
+          "totlen_fwd_pkts": {
+            "min": 112.0,
+            "max": 18499.0,
+            "mean": 491.40670247547877,
+            "std": 855.0879525344604,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 935
+          },
+          "totlen_bwd_pkts": {
+            "min": 0.0,
+            "max": 1456.0,
+            "mean": 120.1669780476413,
+            "std": 177.20548024356808,
+            "zeros": 2991,
+            "negatives": 0,
+            "unique_values": 15
+          },
+          "fwd_pkt_len_max": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 165.34750116767864,
+            "std": 278.5623725962115,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 801
+          },
+          "fwd_pkt_len_min": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 80.2260625875759,
+            "std": 118.89827778588578,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 169
+          },
+          "fwd_pkt_len_mean": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 97.62733494468885,
+            "std": 126.65974397375177,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1065
+          },
+          "fwd_pkt_len_std": {
+            "min": 0.0,
+            "max": 562.3427383472653,
+            "mean": 33.92084614623258,
+            "std": 102.14427059789028,
+            "zeros": 7440,
+            "negatives": 0,
+            "unique_values": 920
+          },
+          "bwd_pkt_len_max": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.25712283979449,
+            "std": 29.215836187620287,
+            "zeros": 2991,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "bwd_pkt_len_min": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.25712283979449,
+            "std": 29.215836187620287,
+            "zeros": 2991,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "bwd_pkt_len_mean": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.25712283979449,
+            "std": 29.215836187620287,
+            "zeros": 2991,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "bwd_pkt_len_std": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8564,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "pkt_len_max": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 165.34750116767864,
+            "std": 278.5623725962115,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 801
+          },
+          "pkt_len_min": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 74.86431574030827,
+            "std": 119.36290958606992,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 169
+          },
+          "pkt_len_mean": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 88.07378577099618,
+            "std": 121.1602290832925,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1089
+          },
+          "pkt_len_std": {
+            "min": 0.0,
+            "max": 427.9864579204175,
+            "mean": 28.75791665221824,
+            "std": 78.01745381730572,
+            "zeros": 4743,
+            "negatives": 0,
+            "unique_values": 929
+          },
+          "pkt_len_var": {
+            "min": 0.0,
+            "max": 183172.40816326527,
+            "mean": 6913.030136647169,
+            "std": 25241.64378359835,
+            "zeros": 4743,
+            "negatives": 0,
+            "unique_values": 929
+          },
+          "fwd_header_len": {
+            "min": 40.0,
+            "max": 3700.0,
+            "mean": 81.47594581971042,
+            "std": 85.66843195791606,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 26
+          },
+          "bwd_header_len": {
+            "min": 0.0,
+            "max": 520.0,
+            "mean": 42.67398411957029,
+            "std": 62.98425919003761,
+            "zeros": 2991,
+            "negatives": 0,
+            "unique_values": 12
+          },
+          "fwd_seg_size_min": {
+            "min": 20.0,
+            "max": 20.0,
+            "mean": 20.0,
+            "std": 0.0,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_act_data_pkts": {
+            "min": 0.0,
+            "max": 185.0,
+            "mean": 1.1436244745446054,
+            "std": 3.633915492598409,
+            "zeros": 5364,
+            "negatives": 0,
+            "unique_values": 24
+          },
+          "flow_iat_mean": {
+            "min": 0.0,
+            "max": 79.42379166666667,
+            "mean": 1.1740989009415417,
+            "std": 3.3001312411590433,
+            "zeros": 1209,
+            "negatives": 0,
+            "unique_values": 2597
+          },
+          "flow_iat_max": {
+            "min": 0.0,
+            "max": 238.271372,
+            "mean": 3.9753804083372257,
+            "std": 11.641858300235034,
+            "zeros": 1209,
+            "negatives": 0,
+            "unique_values": 2586
+          },
+          "flow_iat_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8564,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "flow_iat_std": {
+            "min": 0.0,
+            "max": 112.32220122877486,
+            "mean": 1.6897573558396,
+            "std": 4.979700588369082,
+            "zeros": 1209,
+            "negatives": 0,
+            "unique_values": 2729
+          },
+          "fwd_iat_tot": {
+            "min": 0.0,
+            "max": 238.271375,
+            "mean": 2.487267254203643,
+            "std": 14.454025220220617,
+            "zeros": 1221,
+            "negatives": 0,
+            "unique_values": 2588
+          },
+          "fwd_iat_max": {
+            "min": 0.0,
+            "max": 238.271372,
+            "mean": 1.2618463555581503,
+            "std": 9.784965355790042,
+            "zeros": 1221,
+            "negatives": 0,
+            "unique_values": 2493
+          },
+          "fwd_iat_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8564,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_iat_mean": {
+            "min": 0.0,
+            "max": 79.42379166666667,
+            "mean": 0.4327889527165612,
+            "std": 3.1209565313624,
+            "zeros": 1221,
+            "negatives": 0,
+            "unique_values": 2590
+          },
+          "fwd_iat_std": {
+            "min": 0.0,
+            "max": 112.32220122877486,
+            "mean": 0.5616309312474072,
+            "std": 4.519217531034758,
+            "zeros": 1221,
+            "negatives": 0,
+            "unique_values": 2594
+          },
+          "bwd_iat_tot": {
+            "min": 0.0,
+            "max": 119.981472,
+            "mean": 1.1966861212050441,
+            "std": 9.22861796374184,
+            "zeros": 7404,
+            "negatives": 0,
+            "unique_values": 1161
+          },
+          "bwd_iat_max": {
+            "min": 0.0,
+            "max": 105.374837,
+            "mean": 0.423163683208781,
+            "std": 3.848931981317988,
+            "zeros": 7404,
+            "negatives": 0,
+            "unique_values": 1152
+          },
+          "bwd_iat_min": {
+            "min": 0.0,
+            "max": 2e-06,
+            "mean": 1.902148528724895e-07,
+            "std": 5.14094240924748e-07,
+            "zeros": 7407,
+            "negatives": 0,
+            "unique_values": 3
+          },
+          "bwd_iat_mean": {
+            "min": 0.0,
+            "max": 35.124946333333334,
+            "mean": 0.14870387215089093,
+            "std": 1.3059258927259232,
+            "zeros": 7404,
+            "negatives": 0,
+            "unique_values": 1160
+          },
+          "bwd_iat_std": {
+            "min": 0.0,
+            "max": 49.67417406801356,
+            "mean": 0.1944982817073887,
+            "std": 1.794825705194381,
+            "zeros": 7404,
+            "negatives": 0,
+            "unique_values": 1161
+          },
+          "fwd_psh_flags": {
+            "min": -1.0,
+            "max": 2.0,
+            "mean": 0.03713218122372723,
+            "std": 0.8375035032718524,
+            "zeros": 5714,
+            "negatives": 1794,
+            "unique_values": 3
+          },
+          "bwd_psh_flags": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.20948155067725363,
+            "std": 0.40696236866152496,
+            "zeros": 6770,
+            "negatives": 1794,
+            "unique_values": 2
+          },
+          "fwd_urg_flags": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.20948155067725363,
+            "std": 0.40696236866152496,
+            "zeros": 6770,
+            "negatives": 1794,
+            "unique_values": 2
+          },
+          "bwd_urg_flags": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.20948155067725363,
+            "std": 0.40696236866152496,
+            "zeros": 6770,
+            "negatives": 1794,
+            "unique_values": 2
+          },
+          "fin_flag_cnt": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.20948155067725363,
+            "std": 0.40696236866152496,
+            "zeros": 6770,
+            "negatives": 1794,
+            "unique_values": 2
+          },
+          "syn_flag_cnt": {
+            "min": -1.0,
+            "max": 15.0,
+            "mean": 1.7294488556749184,
+            "std": 2.142918044618921,
+            "zeros": 1772,
+            "negatives": 1794,
+            "unique_values": 13
+          },
+          "rst_flag_cnt": {
+            "min": -1.0,
+            "max": 26.0,
+            "mean": 1.515296590378328,
+            "std": 3.4001840314460368,
+            "zeros": 2943,
+            "negatives": 1794,
+            "unique_values": 13
+          },
+          "psh_flag_cnt": {
+            "min": -1.0,
+            "max": 2.0,
+            "mean": 0.03713218122372723,
+            "std": 0.8375035032718524,
+            "zeros": 5714,
+            "negatives": 1794,
+            "unique_values": 3
+          },
+          "ack_flag_cnt": {
+            "min": -1.0,
+            "max": 28.0,
+            "mean": 1.522302662307333,
+            "std": 3.43513558823753,
+            "zeros": 2943,
+            "negatives": 1794,
+            "unique_values": 17
+          },
+          "urg_flag_cnt": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.20948155067725363,
+            "std": 0.40696236866152496,
+            "zeros": 6770,
+            "negatives": 1794,
+            "unique_values": 2
+          },
+          "ece_flag_cnt": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.20948155067725363,
+            "std": 0.40696236866152496,
+            "zeros": 6770,
+            "negatives": 1794,
+            "unique_values": 2
+          },
+          "down_up_ratio": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.4065409294160589,
+            "std": 0.34247530885796,
+            "zeros": 2991,
+            "negatives": 0,
+            "unique_values": 15
+          },
+          "pkt_size_avg": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 88.07378577099618,
+            "std": 121.1602290832925,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1089
+          },
+          "init_fwd_win_byts": {
+            "min": -1.0,
+            "max": 65535.0,
+            "mean": 18357.130429705747,
+            "std": 21101.535031511987,
+            "zeros": 1740,
+            "negatives": 1794,
+            "unique_values": 1194
+          },
+          "init_bwd_win_byts": {
+            "min": -1.0,
+            "max": 64240.0,
+            "mean": 10880.192199906585,
+            "std": 23085.16229815343,
+            "zeros": 4543,
+            "negatives": 1794,
+            "unique_values": 4
+          },
+          "active_max": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8564,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "active_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8564,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "active_mean": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8564,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "active_std": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8564,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_max": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8564,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8564,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_mean": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8564,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_std": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8564,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_byts_b_avg": {
+            "min": 0.0,
+            "max": 313.53333333333336,
+            "mean": 0.17171257825157868,
+            "std": 7.115258227711784,
+            "zeros": 8559,
+            "negatives": 0,
+            "unique_values": 6
+          },
+          "fwd_pkts_b_avg": {
+            "min": 0.0,
+            "max": 5.6,
+            "mean": 0.003069754470968857,
+            "std": 0.12720339986235757,
+            "zeros": 8559,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "bwd_byts_b_avg": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8564,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "bwd_pkts_b_avg": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8564,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_blk_rate_avg": {
+            "min": 0.0,
+            "max": 241.1460438454792,
+            "mean": 0.12930031635262743,
+            "std": 5.360306018307086,
+            "zeros": 8559,
+            "negatives": 0,
+            "unique_values": 6
+          },
+          "bwd_blk_rate_avg": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8564,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_seg_size_avg": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 97.62733494468885,
+            "std": 126.65974397375177,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1065
+          },
+          "bwd_seg_size_avg": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.25712283979449,
+            "std": 29.215836187620287,
+            "zeros": 2991,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "cwr_flag_count": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.20948155067725363,
+            "std": 0.40696236866152496,
+            "zeros": 6770,
+            "negatives": 1794,
+            "unique_values": 2
+          },
+          "subflow_fwd_pkts": {
+            "min": 2.0,
+            "max": 185.0,
+            "mean": 4.073797290985521,
+            "std": 4.283421597895804,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 26
+          },
+          "subflow_bwd_pkts": {
+            "min": 0.0,
+            "max": 26.0,
+            "mean": 2.1336992059785147,
+            "std": 3.1492129595018805,
+            "zeros": 2991,
+            "negatives": 0,
+            "unique_values": 12
+          },
+          "subflow_fwd_byts": {
+            "min": 112.0,
+            "max": 18499.0,
+            "mean": 491.40670247547877,
+            "std": 855.0879525344604,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 935
+          },
+          "subflow_bwd_byts": {
+            "min": 0.0,
+            "max": 1456.0,
+            "mean": 120.1669780476413,
+            "std": 177.20548024356808,
+            "zeros": 2991,
+            "negatives": 0,
+            "unique_values": 15
+          },
+          "Label_binary": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.7814105558150397,
+            "std": 0.41331349639493004,
+            "zeros": 1872,
+            "negatives": 0,
+            "unique_values": 2
+          }
+        },
+        "categorical_stats": {
+          "src_ip": {
+            "unique_values": 1204,
+            "most_common": {
+              "10.0.0.2": 2785,
+              "10.0.0.3": 1593,
+              "10.0.0.1": 1360,
+              "192.168.159.139": 1343,
+              "10.0.0.5": 279
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "dst_ip": {
+            "unique_values": 6,
+            "most_common": {
+              "10.0.0.6": 3900,
+              "10.0.0.4": 2785,
+              "10.0.0.5": 1593,
+              "10.0.0.3": 279,
+              "10.0.0.2": 5
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Label_multi": {
+            "unique_values": 7,
+            "most_common": {
+              "normal": 1872,
+              "udp_flood": 1398,
+              "icmp_flood": 1392,
+              "syn_flood": 1361,
+              "ad_syn": 1198
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Attack_Type": {
+            "unique_values": 7,
+            "most_common": {
+              "normal": 1872,
+              "udp_flood": 1398,
+              "icmp_flood": 1392,
+              "syn_flood": 1361,
+              "ad_syn": 1198
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          }
+        },
+        "timestamp_analysis": {
+          "min_timestamp": "1752609523.0",
+          "max_timestamp": "1752633295.0",
+          "timestamp_format": "string"
+        }
+      }
+    },
+    "1607-2": {
+      "packet_features.csv": {
+        "file_path": "/mnt/c/Users/Intel/Desktop/InSDN_ddos_dataset/adversarial-ddos-attacks-sdn-dataset/dataset_generation/main_output/1607-2/packet_features.csv",
+        "dataset": "1607-2",
+        "csv_type": "packet_features.csv",
+        "file_size_mb": 3.51,
+        "rows": 44720,
+        "columns": 15,
+        "column_names": [
+          "timestamp",
+          "packet_length",
+          "eth_type",
+          "ip_src",
+          "ip_dst",
+          "ip_proto",
+          "ip_ttl",
+          "ip_id",
+          "ip_flags",
+          "ip_len",
+          "src_port",
+          "dst_port",
+          "tcp_flags",
+          "Label_multi",
+          "Label_binary"
+        ],
+        "memory_usage_mb": 16.29,
+        "data_types": {
+          "timestamp": "float64",
+          "packet_length": "int64",
+          "eth_type": "object",
+          "ip_src": "object",
+          "ip_dst": "object",
+          "ip_proto": "int64",
+          "ip_ttl": "int64",
+          "ip_id": "int64",
+          "ip_flags": "object",
+          "ip_len": "int64",
+          "src_port": "float64",
+          "dst_port": "float64",
+          "tcp_flags": "object",
+          "Label_multi": "object",
+          "Label_binary": "int64"
+        },
+        "missing_values": {
+          "total_missing": 55762,
+          "missing_percentage": 8.31,
+          "columns_with_missing": {
+            "ip_flags": {
+              "count": 27116,
+              "percentage": 60.64
+            },
+            "src_port": {
+              "count": 8378,
+              "percentage": 18.73
+            },
+            "dst_port": {
+              "count": 8378,
+              "percentage": 18.73
+            },
+            "tcp_flags": {
+              "count": 11890,
+              "percentage": 26.59
+            }
+          }
+        },
+        "infinity_values": {
+          "total_infinity": 0,
+          "columns_with_infinity": {}
+        },
+        "duplicate_rows": {
+          "count": 371,
+          "percentage": 0.83
+        },
+        "numeric_stats": {
+          "timestamp": {
+            "min": 1752643515.0528429,
+            "max": 1752667270.459489,
+            "mean": 1752647939.7725592,
+            "std": 5012.2777845461,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 44349
+          },
+          "packet_length": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 100.59347048300536,
+            "std": 178.68251836390542,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 828
+          },
+          "ip_proto": {
+            "min": 1.0,
+            "max": 17.0,
+            "mean": 5.927146690518784,
+            "std": 3.76578022969177,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 3
+          },
+          "ip_ttl": {
+            "min": 64.0,
+            "max": 128.0,
+            "mean": 65.98497316636852,
+            "std": 11.095085257908014,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 2
+          },
+          "ip_id": {
+            "min": 0.0,
+            "max": 65506.0,
+            "mean": 8109.57135509839,
+            "std": 17031.5545974891,
+            "zeros": 13402,
+            "negatives": 0,
+            "unique_values": 7274
+          },
+          "ip_len": {
+            "min": 28.0,
+            "max": 1500.0,
+            "mean": 84.40737924865832,
+            "std": 178.7257352617162,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 827
+          },
+          "src_port": {
+            "min": 20.0,
+            "max": 65531.0,
+            "mean": 23137.430548676464,
+            "std": 23111.054650286263,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6225
+          },
+          "dst_port": {
+            "min": 21.0,
+            "max": 65520.0,
+            "mean": 15047.38743052116,
+            "std": 21088.078663209308,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 3635
+          },
+          "Label_binary": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.46073345259391774,
+            "std": 0.498461326725367,
+            "zeros": 24116,
+            "negatives": 0,
+            "unique_values": 2
+          }
+        },
+        "categorical_stats": {
+          "eth_type": {
+            "unique_values": 1,
+            "most_common": {
+              "0x800": 44720
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "ip_src": {
+            "unique_values": 1156,
+            "most_common": {
+              "10.0.0.3": 12058,
+              "10.0.0.5": 12058,
+              "10.0.0.2": 5628,
+              "10.0.0.6": 4145,
+              "192.168.159.139": 3494
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "ip_dst": {
+            "unique_values": 7,
+            "most_common": {
+              "10.0.0.5": 12058,
+              "10.0.0.3": 12058,
+              "10.0.0.6": 7401,
+              "10.0.0.4": 5628,
+              "10.0.0.2": 3430
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "ip_flags": {
+            "unique_values": 1,
+            "most_common": {
+              "DF": 17604
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "tcp_flags": {
+            "unique_values": 6,
+            "most_common": {
+              "S": 9537,
+              "R": 8506,
+              "RA": 6281,
+              "A": 4272,
+              "SA": 2136
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Label_multi": {
+            "unique_values": 8,
+            "most_common": {
+              "normal": 24116,
+              "icmp_flood": 5640,
+              "syn_flood": 5517,
+              "udp_flood": 3418,
+              "ad_slow": 2498
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          }
+        },
+        "timestamp_analysis": {
+          "min_timestamp": "1752643515.0528429",
+          "max_timestamp": "1752667270.459489",
+          "timestamp_format": "string"
+        }
+      },
+      "flow_features.csv": {
+        "file_path": "/mnt/c/Users/Intel/Desktop/InSDN_ddos_dataset/adversarial-ddos-attacks-sdn-dataset/dataset_generation/main_output/1607-2/flow_features.csv",
+        "dataset": "1607-2",
+        "csv_type": "flow_features.csv",
+        "file_size_mb": 87.5,
+        "rows": 675459,
+        "columns": 18,
+        "column_names": [
+          "timestamp",
+          "switch_id",
+          "table_id",
+          "cookie",
+          "priority",
+          "in_port",
+          "eth_src",
+          "eth_dst",
+          "out_port",
+          "packet_count",
+          "byte_count",
+          "duration_sec",
+          "duration_nsec",
+          "avg_pkt_size",
+          "pkt_rate",
+          "byte_rate",
+          "Label_multi",
+          "Label_binary"
+        ],
+        "memory_usage_mb": 224.98,
+        "data_types": {
+          "timestamp": "float64",
+          "switch_id": "object",
+          "table_id": "float64",
+          "cookie": "float64",
+          "priority": "int64",
+          "in_port": "float64",
+          "eth_src": "object",
+          "eth_dst": "object",
+          "out_port": "int64",
+          "packet_count": "int64",
+          "byte_count": "int64",
+          "duration_sec": "int64",
+          "duration_nsec": "float64",
+          "avg_pkt_size": "float64",
+          "pkt_rate": "float64",
+          "byte_rate": "float64",
+          "Label_multi": "object",
+          "Label_binary": "int64"
+        },
+        "missing_values": {
+          "total_missing": 2091744,
+          "missing_percentage": 17.2,
+          "columns_with_missing": {
+            "table_id": {
+              "count": 675459,
+              "percentage": 100.0
+            },
+            "cookie": {
+              "count": 675459,
+              "percentage": 100.0
+            },
+            "in_port": {
+              "count": 21789,
+              "percentage": 3.23
+            },
+            "eth_src": {
+              "count": 21789,
+              "percentage": 3.23
+            },
+            "eth_dst": {
+              "count": 21789,
+              "percentage": 3.23
+            },
+            "duration_nsec": {
+              "count": 675459,
+              "percentage": 100.0
+            }
+          }
+        },
+        "infinity_values": {
+          "total_infinity": 0,
+          "columns_with_infinity": {}
+        },
+        "duplicate_rows": {
+          "count": 0,
+          "percentage": 0.0
+        },
+        "numeric_stats": {
+          "timestamp": {
+            "min": 1752643511.041449,
+            "max": 1752667277.48812,
+            "mean": 1752655261.4959724,
+            "std": 6950.319067953775,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 21789
+          },
+          "table_id": {
+            "min": NaN,
+            "max": NaN,
+            "mean": NaN,
+            "std": NaN,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 0
+          },
+          "cookie": {
+            "min": NaN,
+            "max": NaN,
+            "mean": NaN,
+            "std": NaN,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 0
+          },
+          "priority": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.967741935483871,
+            "std": 0.17668482675817,
+            "zeros": 21789,
+            "negatives": 0,
+            "unique_values": 2
+          },
+          "in_port": {
+            "min": 1.0,
+            "max": 6.0,
+            "mean": 3.5,
+            "std": 1.7078264339972953,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6
+          },
+          "out_port": {
+            "min": 1.0,
+            "max": 4294967293.0,
+            "mean": 138547335.41935483,
+            "std": 758855551.4773142,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 7
+          },
+          "packet_count": {
+            "min": 1.0,
+            "max": 9591.0,
+            "mean": 891.0997203383181,
+            "std": 2263.7809600513606,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 4786
+          },
+          "byte_count": {
+            "min": 98.0,
+            "max": 1241679.0,
+            "mean": 72505.1916237699,
+            "std": 227311.70473829794,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6306
+          },
+          "duration_sec": {
+            "min": 4.0,
+            "max": 23775.0,
+            "mean": 11754.165788004897,
+            "std": 6950.314240954446,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 23688
+          },
+          "duration_nsec": {
+            "min": NaN,
+            "max": NaN,
+            "mean": NaN,
+            "std": NaN,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 0
+          },
+          "avg_pkt_size": {
+            "min": 42.78527185134205,
+            "max": 163.99078341013825,
+            "mean": 92.62634644835435,
+            "std": 19.42326686018638,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6318
+          },
+          "pkt_rate": {
+            "min": 4.206983592763988e-05,
+            "max": 7.222222222222222,
+            "mean": 0.11184119961736615,
+            "std": 0.36209310882967155,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 88139
+          },
+          "byte_rate": {
+            "min": 0.0041228439209087,
+            "max": 661.1111111111111,
+            "mean": 9.31464416316082,
+            "std": 36.409167329691755,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 88278
+          },
+          "Label_binary": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.8353756482628849,
+            "std": 0.3708414461088994,
+            "zeros": 111197,
+            "negatives": 0,
+            "unique_values": 2
+          }
+        },
+        "categorical_stats": {
+          "switch_id": {
+            "unique_values": 1,
+            "most_common": {
+              "0x1": 675459
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "eth_src": {
+            "unique_values": 6,
+            "most_common": {
+              "00:00:00:00:00:01": 108945,
+              "00:00:00:00:00:02": 108945,
+              "00:00:00:00:00:03": 108945,
+              "00:00:00:00:00:04": 108945,
+              "00:00:00:00:00:05": 108945
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "eth_dst": {
+            "unique_values": 6,
+            "most_common": {
+              "00:00:00:00:00:02": 108945,
+              "00:00:00:00:00:01": 108945,
+              "00:00:00:00:00:03": 108945,
+              "00:00:00:00:00:04": 108945,
+              "00:00:00:00:00:05": 108945
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Label_multi": {
+            "unique_values": 7,
+            "most_common": {
+              "ad_slow": 205127,
+              "ad_syn": 197718,
+              "ad_udp": 133207,
+              "normal": 111197,
+              "udp_flood": 9486
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          }
+        },
+        "timestamp_analysis": {
+          "min_timestamp": "1752643511.041449",
+          "max_timestamp": "1752667277.48812",
+          "timestamp_format": "string"
+        }
+      },
+      "cicflow_features_all.csv": {
+        "file_path": "/mnt/c/Users/Intel/Desktop/InSDN_ddos_dataset/adversarial-ddos-attacks-sdn-dataset/dataset_generation/main_output/1607-2/cicflow_features_all.csv",
+        "dataset": "1607-2",
+        "csv_type": "cicflow_features_all.csv",
+        "file_size_mb": 3.43,
+        "rows": 8572,
+        "columns": 85,
+        "column_names": [
+          "src_ip",
+          "dst_ip",
+          "src_port",
+          "dst_port",
+          "protocol",
+          "timestamp",
+          "flow_duration",
+          "flow_byts_s",
+          "flow_pkts_s",
+          "fwd_pkts_s",
+          "bwd_pkts_s",
+          "tot_fwd_pkts",
+          "tot_bwd_pkts",
+          "totlen_fwd_pkts",
+          "totlen_bwd_pkts",
+          "fwd_pkt_len_max",
+          "fwd_pkt_len_min",
+          "fwd_pkt_len_mean",
+          "fwd_pkt_len_std",
+          "bwd_pkt_len_max",
+          "bwd_pkt_len_min",
+          "bwd_pkt_len_mean",
+          "bwd_pkt_len_std",
+          "pkt_len_max",
+          "pkt_len_min",
+          "pkt_len_mean",
+          "pkt_len_std",
+          "pkt_len_var",
+          "fwd_header_len",
+          "bwd_header_len",
+          "fwd_seg_size_min",
+          "fwd_act_data_pkts",
+          "flow_iat_mean",
+          "flow_iat_max",
+          "flow_iat_min",
+          "flow_iat_std",
+          "fwd_iat_tot",
+          "fwd_iat_max",
+          "fwd_iat_min",
+          "fwd_iat_mean",
+          "fwd_iat_std",
+          "bwd_iat_tot",
+          "bwd_iat_max",
+          "bwd_iat_min",
+          "bwd_iat_mean",
+          "bwd_iat_std",
+          "fwd_psh_flags",
+          "bwd_psh_flags",
+          "fwd_urg_flags",
+          "bwd_urg_flags",
+          "fin_flag_cnt",
+          "syn_flag_cnt",
+          "rst_flag_cnt",
+          "psh_flag_cnt",
+          "ack_flag_cnt",
+          "urg_flag_cnt",
+          "ece_flag_cnt",
+          "down_up_ratio",
+          "pkt_size_avg",
+          "init_fwd_win_byts",
+          "init_bwd_win_byts",
+          "active_max",
+          "active_min",
+          "active_mean",
+          "active_std",
+          "idle_max",
+          "idle_min",
+          "idle_mean",
+          "idle_std",
+          "fwd_byts_b_avg",
+          "fwd_pkts_b_avg",
+          "bwd_byts_b_avg",
+          "bwd_pkts_b_avg",
+          "fwd_blk_rate_avg",
+          "bwd_blk_rate_avg",
+          "fwd_seg_size_avg",
+          "bwd_seg_size_avg",
+          "cwr_flag_count",
+          "subflow_fwd_pkts",
+          "subflow_bwd_pkts",
+          "subflow_fwd_byts",
+          "subflow_bwd_byts",
+          "Label_multi",
+          "Label_binary",
+          "Attack_Type"
+        ],
+        "memory_usage_mb": 7.17,
+        "data_types": {
+          "src_ip": "object",
+          "dst_ip": "object",
+          "src_port": "int64",
+          "dst_port": "int64",
+          "protocol": "int64",
+          "timestamp": "float64",
+          "flow_duration": "float64",
+          "flow_byts_s": "float64",
+          "flow_pkts_s": "float64",
+          "fwd_pkts_s": "float64",
+          "bwd_pkts_s": "float64",
+          "tot_fwd_pkts": "int64",
+          "tot_bwd_pkts": "int64",
+          "totlen_fwd_pkts": "int64",
+          "totlen_bwd_pkts": "int64",
+          "fwd_pkt_len_max": "int64",
+          "fwd_pkt_len_min": "int64",
+          "fwd_pkt_len_mean": "float64",
+          "fwd_pkt_len_std": "float64",
+          "bwd_pkt_len_max": "int64",
+          "bwd_pkt_len_min": "int64",
+          "bwd_pkt_len_mean": "float64",
+          "bwd_pkt_len_std": "float64",
+          "pkt_len_max": "int64",
+          "pkt_len_min": "int64",
+          "pkt_len_mean": "float64",
+          "pkt_len_std": "float64",
+          "pkt_len_var": "float64",
+          "fwd_header_len": "int64",
+          "bwd_header_len": "int64",
+          "fwd_seg_size_min": "int64",
+          "fwd_act_data_pkts": "int64",
+          "flow_iat_mean": "float64",
+          "flow_iat_max": "float64",
+          "flow_iat_min": "float64",
+          "flow_iat_std": "float64",
+          "fwd_iat_tot": "float64",
+          "fwd_iat_max": "float64",
+          "fwd_iat_min": "float64",
+          "fwd_iat_mean": "float64",
+          "fwd_iat_std": "float64",
+          "bwd_iat_tot": "float64",
+          "bwd_iat_max": "float64",
+          "bwd_iat_min": "float64",
+          "bwd_iat_mean": "float64",
+          "bwd_iat_std": "float64",
+          "fwd_psh_flags": "int64",
+          "bwd_psh_flags": "int64",
+          "fwd_urg_flags": "int64",
+          "bwd_urg_flags": "int64",
+          "fin_flag_cnt": "int64",
+          "syn_flag_cnt": "int64",
+          "rst_flag_cnt": "int64",
+          "psh_flag_cnt": "int64",
+          "ack_flag_cnt": "int64",
+          "urg_flag_cnt": "int64",
+          "ece_flag_cnt": "int64",
+          "down_up_ratio": "float64",
+          "pkt_size_avg": "float64",
+          "init_fwd_win_byts": "int64",
+          "init_bwd_win_byts": "int64",
+          "active_max": "int64",
+          "active_min": "int64",
+          "active_mean": "int64",
+          "active_std": "int64",
+          "idle_max": "int64",
+          "idle_min": "int64",
+          "idle_mean": "int64",
+          "idle_std": "int64",
+          "fwd_byts_b_avg": "float64",
+          "fwd_pkts_b_avg": "float64",
+          "bwd_byts_b_avg": "int64",
+          "bwd_pkts_b_avg": "int64",
+          "fwd_blk_rate_avg": "float64",
+          "bwd_blk_rate_avg": "int64",
+          "fwd_seg_size_avg": "float64",
+          "bwd_seg_size_avg": "float64",
+          "cwr_flag_count": "int64",
+          "subflow_fwd_pkts": "int64",
+          "subflow_bwd_pkts": "int64",
+          "subflow_fwd_byts": "int64",
+          "subflow_bwd_byts": "int64",
+          "Label_multi": "object",
+          "Label_binary": "int64",
+          "Attack_Type": "object"
+        },
+        "missing_values": {
+          "total_missing": 0,
+          "missing_percentage": 0.0,
+          "columns_with_missing": {}
+        },
+        "infinity_values": {
+          "total_infinity": 0,
+          "columns_with_infinity": {}
+        },
+        "duplicate_rows": {
+          "count": 281,
+          "percentage": 3.28
+        },
+        "numeric_stats": {
+          "src_port": {
+            "min": -1.0,
+            "max": 65531.0,
+            "mean": 33276.97841810546,
+            "std": 22310.30517822145,
+            "zeros": 0,
+            "negatives": 1811,
+            "unique_values": 6222
+          },
+          "dst_port": {
+            "min": -1.0,
+            "max": 51780.0,
+            "mean": 574.3036630891274,
+            "std": 2503.685874129127,
+            "zeros": 0,
+            "negatives": 1811,
+            "unique_values": 10
+          },
+          "protocol": {
+            "min": 1.0,
+            "max": 17.0,
+            "mean": 7.171371908539431,
+            "std": 5.330838014431216,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 3
+          },
+          "timestamp": {
+            "min": 1752643515.0,
+            "max": 1752667267.0,
+            "mean": 1752649740.5332477,
+            "std": 5412.517645733309,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 4754
+          },
+          "flow_duration": {
+            "min": 0.0,
+            "max": 239.557169,
+            "mean": 5.685670407722818,
+            "std": 16.59570721800995,
+            "zeros": 1168,
+            "negatives": 0,
+            "unique_values": 2576
+          },
+          "flow_byts_s": {
+            "min": 0.0,
+            "max": 750000000.0,
+            "mean": 23404626.540875748,
+            "std": 54646988.79324847,
+            "zeros": 1168,
+            "negatives": 0,
+            "unique_values": 2848
+          },
+          "flow_pkts_s": {
+            "min": 0.0,
+            "max": 1500000.0,
+            "mean": 262587.276865113,
+            "std": 274326.5425520099,
+            "zeros": 1168,
+            "negatives": 0,
+            "unique_values": 2627
+          },
+          "fwd_pkts_s": {
+            "min": 0.0,
+            "max": 1500000.0,
+            "mean": 210523.53668462395,
+            "std": 262304.9945032054,
+            "zeros": 1168,
+            "negatives": 0,
+            "unique_values": 2624
+          },
+          "bwd_pkts_s": {
+            "min": 0.0,
+            "max": 250000.0,
+            "mean": 52063.74018048906,
+            "std": 71236.65075188919,
+            "zeros": 2939,
+            "negatives": 0,
+            "unique_values": 2481
+          },
+          "tot_fwd_pkts": {
+            "min": 2.0,
+            "max": 189.0,
+            "mean": 4.080027998133458,
+            "std": 4.237537759382897,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 27
+          },
+          "tot_bwd_pkts": {
+            "min": 0.0,
+            "max": 24.0,
+            "mean": 2.136957536164256,
+            "std": 3.1436871432400464,
+            "zeros": 2939,
+            "negatives": 0,
+            "unique_values": 11
+          },
+          "totlen_fwd_pkts": {
+            "min": 112.0,
+            "max": 18894.0,
+            "mean": 485.33644423705084,
+            "std": 841.532040095001,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 933
+          },
+          "totlen_bwd_pkts": {
+            "min": 0.0,
+            "max": 1344.0,
+            "mean": 120.34671021931871,
+            "std": 176.89465180318044,
+            "zeros": 2939,
+            "negatives": 0,
+            "unique_values": 14
+          },
+          "fwd_pkt_len_max": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 161.9986000933271,
+            "std": 271.8157910962029,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 811
+          },
+          "fwd_pkt_len_min": {
+            "min": 44.0,
+            "max": 1506.0,
+            "mean": 80.37109192720486,
+            "std": 119.35632727919104,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 177
+          },
+          "fwd_pkt_len_mean": {
+            "min": 44.0,
+            "max": 1506.0,
+            "mean": 97.0199967962923,
+            "std": 126.53518017129254,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1040
+          },
+          "fwd_pkt_len_std": {
+            "min": 0.0,
+            "max": 563.1141275631051,
+            "mean": 32.47554943545809,
+            "std": 98.91540666223835,
+            "zeros": 7455,
+            "negatives": 0,
+            "unique_values": 887
+          },
+          "bwd_pkt_len_max": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.627624825011665,
+            "std": 29.1140030811682,
+            "zeros": 2939,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "bwd_pkt_len_min": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.627624825011665,
+            "std": 29.1140030811682,
+            "zeros": 2939,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "bwd_pkt_len_mean": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.627624825011665,
+            "std": 29.1140030811682,
+            "zeros": 2939,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "bwd_pkt_len_std": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8572,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "pkt_len_max": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 161.9986000933271,
+            "std": 271.8157910962029,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 811
+          },
+          "pkt_len_min": {
+            "min": 44.0,
+            "max": 1506.0,
+            "mean": 74.9413205786281,
+            "std": 119.82881631904591,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 177
+          },
+          "pkt_len_mean": {
+            "min": 44.0,
+            "max": 1506.0,
+            "mean": 87.81120490555169,
+            "std": 121.48858530271708,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1059
+          },
+          "pkt_len_std": {
+            "min": 0.0,
+            "max": 428.57354496831937,
+            "mean": 27.6620191915187,
+            "std": 75.51137994142202,
+            "zeros": 4712,
+            "negatives": 0,
+            "unique_values": 895
+          },
+          "pkt_len_var": {
+            "min": 0.0,
+            "max": 183675.28344671204,
+            "mean": 6466.4906210970175,
+            "std": 24128.49855372469,
+            "zeros": 4712,
+            "negatives": 0,
+            "unique_values": 894
+          },
+          "fwd_header_len": {
+            "min": 40.0,
+            "max": 3780.0,
+            "mean": 81.60055996266915,
+            "std": 84.75075518765796,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 27
+          },
+          "bwd_header_len": {
+            "min": 0.0,
+            "max": 480.0,
+            "mean": 42.739150723285114,
+            "std": 62.87374286480093,
+            "zeros": 2939,
+            "negatives": 0,
+            "unique_values": 11
+          },
+          "fwd_seg_size_min": {
+            "min": 20.0,
+            "max": 20.0,
+            "mean": 20.0,
+            "std": 0.0,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_act_data_pkts": {
+            "min": 0.0,
+            "max": 189.0,
+            "mean": 1.1406906206252916,
+            "std": 3.5845102778540463,
+            "zeros": 5382,
+            "negatives": 0,
+            "unique_values": 24
+          },
+          "flow_iat_mean": {
+            "min": 0.0,
+            "max": 79.85238966666667,
+            "mean": 1.249576456014155,
+            "std": 3.6454383115723332,
+            "zeros": 1168,
+            "negatives": 0,
+            "unique_values": 2647
+          },
+          "flow_iat_max": {
+            "min": 0.0,
+            "max": 239.557166,
+            "mean": 4.217074689920673,
+            "std": 12.70537433314014,
+            "zeros": 1168,
+            "negatives": 0,
+            "unique_values": 2642
+          },
+          "flow_iat_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8572,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "flow_iat_std": {
+            "min": 0.0,
+            "max": 112.92833033318084,
+            "mean": 1.7973722277699538,
+            "std": 5.487034805277993,
+            "zeros": 1168,
+            "negatives": 0,
+            "unique_values": 2786
+          },
+          "fwd_iat_tot": {
+            "min": 0.0,
+            "max": 239.557169,
+            "mean": 2.6236463159122727,
+            "std": 15.179344740054276,
+            "zeros": 1179,
+            "negatives": 0,
+            "unique_values": 2633
+          },
+          "fwd_iat_max": {
+            "min": 0.0,
+            "max": 239.557166,
+            "mean": 1.4045140543630423,
+            "std": 10.955192450888488,
+            "zeros": 1179,
+            "negatives": 0,
+            "unique_values": 2546
+          },
+          "fwd_iat_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8572,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_iat_mean": {
+            "min": 0.0,
+            "max": 79.85238966666667,
+            "mean": 0.4805834378770441,
+            "std": 3.4976107693064926,
+            "zeros": 1179,
+            "negatives": 0,
+            "unique_values": 2634
+          },
+          "fwd_iat_std": {
+            "min": 0.0,
+            "max": 112.92833033318084,
+            "mean": 0.6266299643161296,
+            "std": 5.063920046540539,
+            "zeros": 1179,
+            "negatives": 0,
+            "unique_values": 2640
+          },
+          "bwd_iat_tot": {
+            "min": 0.0,
+            "max": 116.279104,
+            "mean": 1.1865909032897806,
+            "std": 9.262946683774452,
+            "zeros": 7421,
+            "negatives": 0,
+            "unique_values": 1151
+          },
+          "bwd_iat_max": {
+            "min": 0.0,
+            "max": 116.279102,
+            "mean": 0.42278221465235655,
+            "std": 4.173664118630741,
+            "zeros": 7421,
+            "negatives": 0,
+            "unique_values": 1148
+          },
+          "bwd_iat_min": {
+            "min": 0.0,
+            "max": 2e-06,
+            "mean": 1.915538964069062e-07,
+            "std": 5.193118614912025e-07,
+            "zeros": 7422,
+            "negatives": 0,
+            "unique_values": 3
+          },
+          "bwd_iat_mean": {
+            "min": 0.0,
+            "max": 38.75970133333333,
+            "mean": 0.14646400313000196,
+            "std": 1.396244752500723,
+            "zeros": 7421,
+            "negatives": 0,
+            "unique_values": 1151
+          },
+          "bwd_iat_std": {
+            "min": 0.0,
+            "max": 54.81449388491697,
+            "mean": 0.1926958196584847,
+            "std": 1.9351499734475637,
+            "zeros": 7421,
+            "negatives": 0,
+            "unique_values": 1152
+          },
+          "fwd_psh_flags": {
+            "min": -1.0,
+            "max": 2.0,
+            "mean": 0.033481101259916005,
+            "std": 0.8364990103535868,
+            "zeros": 5712,
+            "negatives": 1811,
+            "unique_values": 3
+          },
+          "bwd_psh_flags": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.2112692487167522,
+            "std": 0.40823277052850065,
+            "zeros": 6761,
+            "negatives": 1811,
+            "unique_values": 2
+          },
+          "fwd_urg_flags": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.2112692487167522,
+            "std": 0.40823277052850065,
+            "zeros": 6761,
+            "negatives": 1811,
+            "unique_values": 2
+          },
+          "bwd_urg_flags": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.2112692487167522,
+            "std": 0.40823277052850065,
+            "zeros": 6761,
+            "negatives": 1811,
+            "unique_values": 2
+          },
+          "fin_flag_cnt": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.2112692487167522,
+            "std": 0.40823277052850065,
+            "zeros": 6761,
+            "negatives": 1811,
+            "unique_values": 2
+          },
+          "syn_flag_cnt": {
+            "min": -1.0,
+            "max": 13.0,
+            "mean": 1.7330844610359308,
+            "std": 2.150267237947938,
+            "zeros": 1767,
+            "negatives": 1811,
+            "unique_values": 9
+          },
+          "rst_flag_cnt": {
+            "min": -1.0,
+            "max": 24.0,
+            "mean": 1.5138824078394775,
+            "std": 3.3974354633494084,
+            "zeros": 2890,
+            "negatives": 1811,
+            "unique_values": 12
+          },
+          "psh_flag_cnt": {
+            "min": -1.0,
+            "max": 2.0,
+            "mean": 0.033481101259916005,
+            "std": 0.8364990103535868,
+            "zeros": 5712,
+            "negatives": 1811,
+            "unique_values": 3
+          },
+          "ack_flag_cnt": {
+            "min": -1.0,
+            "max": 25.0,
+            "mean": 1.5208819412039198,
+            "std": 3.432181460180484,
+            "zeros": 2890,
+            "negatives": 1811,
+            "unique_values": 14
+          },
+          "urg_flag_cnt": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.2112692487167522,
+            "std": 0.40823277052850065,
+            "zeros": 6761,
+            "negatives": 1811,
+            "unique_values": 2
+          },
+          "ece_flag_cnt": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.2112692487167522,
+            "std": 0.40823277052850065,
+            "zeros": 6761,
+            "negatives": 1811,
+            "unique_values": 2
+          },
+          "down_up_ratio": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.40843192830046493,
+            "std": 0.34099868461975663,
+            "zeros": 2939,
+            "negatives": 0,
+            "unique_values": 15
+          },
+          "pkt_size_avg": {
+            "min": 44.0,
+            "max": 1506.0,
+            "mean": 87.81120490555169,
+            "std": 121.48858530271708,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1059
+          },
+          "init_fwd_win_byts": {
+            "min": -1.0,
+            "max": 65535.0,
+            "mean": 18301.262482501166,
+            "std": 21036.187849600043,
+            "zeros": 1736,
+            "negatives": 1811,
+            "unique_values": 1143
+          },
+          "init_bwd_win_byts": {
+            "min": -1.0,
+            "max": 64240.0,
+            "mean": 11236.294563695754,
+            "std": 23409.93196441143,
+            "zeros": 4486,
+            "negatives": 1811,
+            "unique_values": 4
+          },
+          "active_max": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8572,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "active_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8572,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "active_mean": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8572,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "active_std": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8572,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_max": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8572,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8572,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_mean": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8572,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_std": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8572,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_byts_b_avg": {
+            "min": 0.0,
+            "max": 346.0,
+            "mean": 0.2114833340612542,
+            "std": 8.025564548823684,
+            "zeros": 8566,
+            "negatives": 0,
+            "unique_values": 7
+          },
+          "fwd_pkts_b_avg": {
+            "min": 0.0,
+            "max": 6.2,
+            "mean": 0.003777411007848519,
+            "std": 0.14337637782099644,
+            "zeros": 8566,
+            "negatives": 0,
+            "unique_values": 7
+          },
+          "bwd_byts_b_avg": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8572,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "bwd_pkts_b_avg": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8572,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_blk_rate_avg": {
+            "min": 0.0,
+            "max": 249.9760508666208,
+            "mean": 0.15631798125002766,
+            "std": 5.927592295525065,
+            "zeros": 8566,
+            "negatives": 0,
+            "unique_values": 7
+          },
+          "bwd_blk_rate_avg": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8572,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_seg_size_avg": {
+            "min": 44.0,
+            "max": 1506.0,
+            "mean": 97.0199967962923,
+            "std": 126.53518017129254,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1040
+          },
+          "bwd_seg_size_avg": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.627624825011665,
+            "std": 29.1140030811682,
+            "zeros": 2939,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "cwr_flag_count": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.2112692487167522,
+            "std": 0.40823277052850065,
+            "zeros": 6761,
+            "negatives": 1811,
+            "unique_values": 2
+          },
+          "subflow_fwd_pkts": {
+            "min": 2.0,
+            "max": 189.0,
+            "mean": 4.080027998133458,
+            "std": 4.237537759382897,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 27
+          },
+          "subflow_bwd_pkts": {
+            "min": 0.0,
+            "max": 24.0,
+            "mean": 2.136957536164256,
+            "std": 3.1436871432400464,
+            "zeros": 2939,
+            "negatives": 0,
+            "unique_values": 11
+          },
+          "subflow_fwd_byts": {
+            "min": 112.0,
+            "max": 18894.0,
+            "mean": 485.33644423705084,
+            "std": 841.532040095001,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 933
+          },
+          "subflow_bwd_byts": {
+            "min": 0.0,
+            "max": 1344.0,
+            "mean": 120.34671021931871,
+            "std": 176.89465180318044,
+            "zeros": 2939,
+            "negatives": 0,
+            "unique_values": 14
+          },
+          "Label_binary": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.7810312645823612,
+            "std": 0.4135714954211488,
+            "zeros": 1877,
+            "negatives": 0,
+            "unique_values": 2
+          }
+        },
+        "categorical_stats": {
+          "src_ip": {
+            "unique_values": 1156,
+            "most_common": {
+              "10.0.0.2": 2791,
+              "10.0.0.3": 1597,
+              "192.168.159.139": 1391,
+              "10.0.0.1": 1357,
+              "10.0.0.5": 280
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "dst_ip": {
+            "unique_values": 6,
+            "most_common": {
+              "10.0.0.6": 3897,
+              "10.0.0.4": 2791,
+              "10.0.0.5": 1597,
+              "10.0.0.3": 280,
+              "10.0.0.2": 6
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Label_multi": {
+            "unique_values": 7,
+            "most_common": {
+              "normal": 1877,
+              "icmp_flood": 1407,
+              "udp_flood": 1390,
+              "syn_flood": 1358,
+              "ad_syn": 1150
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Attack_Type": {
+            "unique_values": 7,
+            "most_common": {
+              "normal": 1877,
+              "icmp_flood": 1407,
+              "udp_flood": 1390,
+              "syn_flood": 1358,
+              "ad_syn": 1150
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          }
+        },
+        "timestamp_analysis": {
+          "min_timestamp": "1752643515.0",
+          "max_timestamp": "1752667267.0",
+          "timestamp_format": "string"
+        }
+      }
+    },
+    "1707-1": {
+      "packet_features.csv": {
+        "file_path": "/mnt/c/Users/Intel/Desktop/InSDN_ddos_dataset/adversarial-ddos-attacks-sdn-dataset/dataset_generation/main_output/1707-1/packet_features.csv",
+        "dataset": "1707-1",
+        "csv_type": "packet_features.csv",
+        "file_size_mb": 3.51,
+        "rows": 44752,
+        "columns": 15,
+        "column_names": [
+          "timestamp",
+          "packet_length",
+          "eth_type",
+          "ip_src",
+          "ip_dst",
+          "ip_proto",
+          "ip_ttl",
+          "ip_id",
+          "ip_flags",
+          "ip_len",
+          "src_port",
+          "dst_port",
+          "tcp_flags",
+          "Label_multi",
+          "Label_binary"
+        ],
+        "memory_usage_mb": 16.3,
+        "data_types": {
+          "timestamp": "float64",
+          "packet_length": "int64",
+          "eth_type": "object",
+          "ip_src": "object",
+          "ip_dst": "object",
+          "ip_proto": "int64",
+          "ip_ttl": "int64",
+          "ip_id": "int64",
+          "ip_flags": "object",
+          "ip_len": "int64",
+          "src_port": "float64",
+          "dst_port": "float64",
+          "tcp_flags": "object",
+          "Label_multi": "object",
+          "Label_binary": "int64"
+        },
+        "missing_values": {
+          "total_missing": 55691,
+          "missing_percentage": 8.3,
+          "columns_with_missing": {
+            "ip_flags": {
+              "count": 27181,
+              "percentage": 60.74
+            },
+            "src_port": {
+              "count": 8336,
+              "percentage": 18.63
+            },
+            "dst_port": {
+              "count": 8336,
+              "percentage": 18.63
+            },
+            "tcp_flags": {
+              "count": 11838,
+              "percentage": 26.45
+            }
+          }
+        },
+        "infinity_values": {
+          "total_infinity": 0,
+          "columns_with_infinity": {}
+        },
+        "duplicate_rows": {
+          "count": 140,
+          "percentage": 0.31
+        },
+        "numeric_stats": {
+          "timestamp": {
+            "min": 1752681124.511533,
+            "max": 1752704891.515314,
+            "mean": 1752685538.4309988,
+            "std": 4979.065648138087,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 44612
+          },
+          "packet_length": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 99.69427064712191,
+            "std": 176.58166844159413,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 827
+          },
+          "ip_proto": {
+            "min": 1.0,
+            "max": 17.0,
+            "mean": 5.929433321415803,
+            "std": 3.75776300282375,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 3
+          },
+          "ip_ttl": {
+            "min": 64.0,
+            "max": 128.0,
+            "mean": 65.95924204504827,
+            "std": 11.025224609792222,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 2
+          },
+          "ip_id": {
+            "min": 0.0,
+            "max": 65517.0,
+            "mean": 7048.869905255631,
+            "std": 15434.758351654595,
+            "zeros": 13428,
+            "negatives": 0,
+            "unique_values": 7180
+          },
+          "ip_len": {
+            "min": 28.0,
+            "max": 1500.0,
+            "mean": 83.51059170539864,
+            "std": 176.62389868333034,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 826
+          },
+          "src_port": {
+            "min": 20.0,
+            "max": 65519.0,
+            "mean": 23359.336418057996,
+            "std": 22983.89408084075,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6337
+          },
+          "dst_port": {
+            "min": 21.0,
+            "max": 65519.0,
+            "mean": 15249.751922231986,
+            "std": 21047.494883787633,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 3636
+          },
+          "Label_binary": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.46183410797282803,
+            "std": 0.49854680683294855,
+            "zeros": 24084,
+            "negatives": 0,
+            "unique_values": 2
+          }
+        },
+        "categorical_stats": {
+          "eth_type": {
+            "unique_values": 1,
+            "most_common": {
+              "0x800": 44752
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "ip_src": {
+            "unique_values": 1262,
+            "most_common": {
+              "10.0.0.3": 12042,
+              "10.0.0.5": 12042,
+              "10.0.0.2": 5600,
+              "10.0.0.6": 4170,
+              "192.168.159.139": 3433
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "ip_dst": {
+            "unique_values": 7,
+            "most_common": {
+              "10.0.0.5": 12042,
+              "10.0.0.3": 12042,
+              "10.0.0.6": 7488,
+              "10.0.0.4": 5600,
+              "10.0.0.2": 3410
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "ip_flags": {
+            "unique_values": 1,
+            "most_common": {
+              "DF": 17571
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "tcp_flags": {
+            "unique_values": 6,
+            "most_common": {
+              "S": 9624,
+              "R": 8492,
+              "RA": 6306,
+              "A": 4270,
+              "SA": 2136
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Label_multi": {
+            "unique_values": 8,
+            "most_common": {
+              "normal": 24084,
+              "syn_flood": 5601,
+              "icmp_flood": 5600,
+              "udp_flood": 3410,
+              "ad_slow": 2397
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          }
+        },
+        "timestamp_analysis": {
+          "min_timestamp": "1752681124.511533",
+          "max_timestamp": "1752704891.515314",
+          "timestamp_format": "string"
+        }
+      },
+      "flow_features.csv": {
+        "file_path": "/mnt/c/Users/Intel/Desktop/InSDN_ddos_dataset/adversarial-ddos-attacks-sdn-dataset/dataset_generation/main_output/1707-1/flow_features.csv",
+        "dataset": "1707-1",
+        "csv_type": "flow_features.csv",
+        "file_size_mb": 87.64,
+        "rows": 676110,
+        "columns": 18,
+        "column_names": [
+          "timestamp",
+          "switch_id",
+          "table_id",
+          "cookie",
+          "priority",
+          "in_port",
+          "eth_src",
+          "eth_dst",
+          "out_port",
+          "packet_count",
+          "byte_count",
+          "duration_sec",
+          "duration_nsec",
+          "avg_pkt_size",
+          "pkt_rate",
+          "byte_rate",
+          "Label_multi",
+          "Label_binary"
+        ],
+        "memory_usage_mb": 225.19,
+        "data_types": {
+          "timestamp": "float64",
+          "switch_id": "object",
+          "table_id": "float64",
+          "cookie": "float64",
+          "priority": "int64",
+          "in_port": "float64",
+          "eth_src": "object",
+          "eth_dst": "object",
+          "out_port": "int64",
+          "packet_count": "int64",
+          "byte_count": "int64",
+          "duration_sec": "int64",
+          "duration_nsec": "float64",
+          "avg_pkt_size": "float64",
+          "pkt_rate": "float64",
+          "byte_rate": "float64",
+          "Label_multi": "object",
+          "Label_binary": "int64"
+        },
+        "missing_values": {
+          "total_missing": 2093760,
+          "missing_percentage": 17.2,
+          "columns_with_missing": {
+            "table_id": {
+              "count": 676110,
+              "percentage": 100.0
+            },
+            "cookie": {
+              "count": 676110,
+              "percentage": 100.0
+            },
+            "in_port": {
+              "count": 21810,
+              "percentage": 3.23
+            },
+            "eth_src": {
+              "count": 21810,
+              "percentage": 3.23
+            },
+            "eth_dst": {
+              "count": 21810,
+              "percentage": 3.23
+            },
+            "duration_nsec": {
+              "count": 676110,
+              "percentage": 100.0
+            }
+          }
+        },
+        "infinity_values": {
+          "total_infinity": 0,
+          "columns_with_infinity": {}
+        },
+        "duplicate_rows": {
+          "count": 0,
+          "percentage": 0.0
+        },
+        "numeric_stats": {
+          "timestamp": {
+            "min": 1752681120.499458,
+            "max": 1752704898.520414,
+            "mean": 1752692877.1159952,
+            "std": 6950.902898386538,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 21810
+          },
+          "table_id": {
+            "min": NaN,
+            "max": NaN,
+            "mean": NaN,
+            "std": NaN,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 0
+          },
+          "cookie": {
+            "min": NaN,
+            "max": NaN,
+            "mean": NaN,
+            "std": NaN,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 0
+          },
+          "priority": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.967741935483871,
+            "std": 0.17668482663223845,
+            "zeros": 21810,
+            "negatives": 0,
+            "unique_values": 2
+          },
+          "in_port": {
+            "min": 1.0,
+            "max": 6.0,
+            "mean": 3.5,
+            "std": 1.7078264327394725,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6
+          },
+          "out_port": {
+            "min": 1.0,
+            "max": 4294967293.0,
+            "mean": 138547335.41935483,
+            "std": 758855550.9364424,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 7
+          },
+          "packet_count": {
+            "min": 1.0,
+            "max": 9584.0,
+            "mean": 891.2939625208916,
+            "std": 2262.3897690463104,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 4779
+          },
+          "byte_count": {
+            "min": 98.0,
+            "max": 1223562.0,
+            "mean": 71910.62465131414,
+            "std": 224372.45050463668,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6314
+          },
+          "duration_sec": {
+            "min": 4.0,
+            "max": 23786.0,
+            "mean": 11760.335884693319,
+            "std": 6950.896259592681,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 23747
+          },
+          "duration_nsec": {
+            "min": NaN,
+            "max": NaN,
+            "mean": NaN,
+            "std": NaN,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 0
+          },
+          "avg_pkt_size": {
+            "min": 42.79766001376463,
+            "max": 210.5833333333333,
+            "mean": 92.53917018156103,
+            "std": 19.15573901331124,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6325
+          },
+          "pkt_rate": {
+            "min": 4.205037635086834e-05,
+            "max": 7.333333333333333,
+            "mean": 0.11178180001834308,
+            "std": 0.3617864385450315,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 88228
+          },
+          "byte_rate": {
+            "min": 0.004120936882385,
+            "max": 670.6666666666666,
+            "mean": 9.195227833846396,
+            "std": 35.55268216134996,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 88379
+          },
+          "Label_binary": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.8353966070609812,
+            "std": 0.37082249035763704,
+            "zeros": 111290,
+            "negatives": 0,
+            "unique_values": 2
+          }
+        },
+        "categorical_stats": {
+          "switch_id": {
+            "unique_values": 1,
+            "most_common": {
+              "0x1": 676110
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "eth_src": {
+            "unique_values": 6,
+            "most_common": {
+              "00:00:00:00:00:01": 109050,
+              "00:00:00:00:00:02": 109050,
+              "00:00:00:00:00:03": 109050,
+              "00:00:00:00:00:04": 109050,
+              "00:00:00:00:00:05": 109050
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "eth_dst": {
+            "unique_values": 6,
+            "most_common": {
+              "00:00:00:00:00:02": 109050,
+              "00:00:00:00:00:01": 109050,
+              "00:00:00:00:00:03": 109050,
+              "00:00:00:00:00:04": 109050,
+              "00:00:00:00:00:05": 109050
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Label_multi": {
+            "unique_values": 7,
+            "most_common": {
+              "ad_slow": 204631,
+              "ad_syn": 197966,
+              "ad_udp": 134013,
+              "normal": 111290,
+              "udp_flood": 9455
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          }
+        },
+        "timestamp_analysis": {
+          "min_timestamp": "1752681120.499458",
+          "max_timestamp": "1752704898.520414",
+          "timestamp_format": "string"
+        }
+      },
+      "cicflow_features_all.csv": {
+        "file_path": "/mnt/c/Users/Intel/Desktop/InSDN_ddos_dataset/adversarial-ddos-attacks-sdn-dataset/dataset_generation/main_output/1707-1/cicflow_features_all.csv",
+        "dataset": "1707-1",
+        "csv_type": "cicflow_features_all.csv",
+        "file_size_mb": 3.46,
+        "rows": 8664,
+        "columns": 85,
+        "column_names": [
+          "src_ip",
+          "dst_ip",
+          "src_port",
+          "dst_port",
+          "protocol",
+          "timestamp",
+          "flow_duration",
+          "flow_byts_s",
+          "flow_pkts_s",
+          "fwd_pkts_s",
+          "bwd_pkts_s",
+          "tot_fwd_pkts",
+          "tot_bwd_pkts",
+          "totlen_fwd_pkts",
+          "totlen_bwd_pkts",
+          "fwd_pkt_len_max",
+          "fwd_pkt_len_min",
+          "fwd_pkt_len_mean",
+          "fwd_pkt_len_std",
+          "bwd_pkt_len_max",
+          "bwd_pkt_len_min",
+          "bwd_pkt_len_mean",
+          "bwd_pkt_len_std",
+          "pkt_len_max",
+          "pkt_len_min",
+          "pkt_len_mean",
+          "pkt_len_std",
+          "pkt_len_var",
+          "fwd_header_len",
+          "bwd_header_len",
+          "fwd_seg_size_min",
+          "fwd_act_data_pkts",
+          "flow_iat_mean",
+          "flow_iat_max",
+          "flow_iat_min",
+          "flow_iat_std",
+          "fwd_iat_tot",
+          "fwd_iat_max",
+          "fwd_iat_min",
+          "fwd_iat_mean",
+          "fwd_iat_std",
+          "bwd_iat_tot",
+          "bwd_iat_max",
+          "bwd_iat_min",
+          "bwd_iat_mean",
+          "bwd_iat_std",
+          "fwd_psh_flags",
+          "bwd_psh_flags",
+          "fwd_urg_flags",
+          "bwd_urg_flags",
+          "fin_flag_cnt",
+          "syn_flag_cnt",
+          "rst_flag_cnt",
+          "psh_flag_cnt",
+          "ack_flag_cnt",
+          "urg_flag_cnt",
+          "ece_flag_cnt",
+          "down_up_ratio",
+          "pkt_size_avg",
+          "init_fwd_win_byts",
+          "init_bwd_win_byts",
+          "active_max",
+          "active_min",
+          "active_mean",
+          "active_std",
+          "idle_max",
+          "idle_min",
+          "idle_mean",
+          "idle_std",
+          "fwd_byts_b_avg",
+          "fwd_pkts_b_avg",
+          "bwd_byts_b_avg",
+          "bwd_pkts_b_avg",
+          "fwd_blk_rate_avg",
+          "bwd_blk_rate_avg",
+          "fwd_seg_size_avg",
+          "bwd_seg_size_avg",
+          "cwr_flag_count",
+          "subflow_fwd_pkts",
+          "subflow_bwd_pkts",
+          "subflow_fwd_byts",
+          "subflow_bwd_byts",
+          "Label_multi",
+          "Label_binary",
+          "Attack_Type"
+        ],
+        "memory_usage_mb": 7.25,
+        "data_types": {
+          "src_ip": "object",
+          "dst_ip": "object",
+          "src_port": "int64",
+          "dst_port": "int64",
+          "protocol": "int64",
+          "timestamp": "float64",
+          "flow_duration": "float64",
+          "flow_byts_s": "float64",
+          "flow_pkts_s": "float64",
+          "fwd_pkts_s": "float64",
+          "bwd_pkts_s": "float64",
+          "tot_fwd_pkts": "int64",
+          "tot_bwd_pkts": "int64",
+          "totlen_fwd_pkts": "int64",
+          "totlen_bwd_pkts": "int64",
+          "fwd_pkt_len_max": "int64",
+          "fwd_pkt_len_min": "int64",
+          "fwd_pkt_len_mean": "float64",
+          "fwd_pkt_len_std": "float64",
+          "bwd_pkt_len_max": "int64",
+          "bwd_pkt_len_min": "int64",
+          "bwd_pkt_len_mean": "float64",
+          "bwd_pkt_len_std": "float64",
+          "pkt_len_max": "int64",
+          "pkt_len_min": "int64",
+          "pkt_len_mean": "float64",
+          "pkt_len_std": "float64",
+          "pkt_len_var": "float64",
+          "fwd_header_len": "int64",
+          "bwd_header_len": "int64",
+          "fwd_seg_size_min": "int64",
+          "fwd_act_data_pkts": "int64",
+          "flow_iat_mean": "float64",
+          "flow_iat_max": "float64",
+          "flow_iat_min": "float64",
+          "flow_iat_std": "float64",
+          "fwd_iat_tot": "float64",
+          "fwd_iat_max": "float64",
+          "fwd_iat_min": "float64",
+          "fwd_iat_mean": "float64",
+          "fwd_iat_std": "float64",
+          "bwd_iat_tot": "float64",
+          "bwd_iat_max": "float64",
+          "bwd_iat_min": "float64",
+          "bwd_iat_mean": "float64",
+          "bwd_iat_std": "float64",
+          "fwd_psh_flags": "int64",
+          "bwd_psh_flags": "int64",
+          "fwd_urg_flags": "int64",
+          "bwd_urg_flags": "int64",
+          "fin_flag_cnt": "int64",
+          "syn_flag_cnt": "int64",
+          "rst_flag_cnt": "int64",
+          "psh_flag_cnt": "int64",
+          "ack_flag_cnt": "int64",
+          "urg_flag_cnt": "int64",
+          "ece_flag_cnt": "int64",
+          "down_up_ratio": "float64",
+          "pkt_size_avg": "float64",
+          "init_fwd_win_byts": "int64",
+          "init_bwd_win_byts": "int64",
+          "active_max": "int64",
+          "active_min": "int64",
+          "active_mean": "int64",
+          "active_std": "int64",
+          "idle_max": "int64",
+          "idle_min": "int64",
+          "idle_mean": "int64",
+          "idle_std": "int64",
+          "fwd_byts_b_avg": "float64",
+          "fwd_pkts_b_avg": "float64",
+          "bwd_byts_b_avg": "int64",
+          "bwd_pkts_b_avg": "int64",
+          "fwd_blk_rate_avg": "float64",
+          "bwd_blk_rate_avg": "int64",
+          "fwd_seg_size_avg": "float64",
+          "bwd_seg_size_avg": "float64",
+          "cwr_flag_count": "int64",
+          "subflow_fwd_pkts": "int64",
+          "subflow_bwd_pkts": "int64",
+          "subflow_fwd_byts": "int64",
+          "subflow_bwd_byts": "int64",
+          "Label_multi": "object",
+          "Label_binary": "int64",
+          "Attack_Type": "object"
+        },
+        "missing_values": {
+          "total_missing": 0,
+          "missing_percentage": 0.0,
+          "columns_with_missing": {}
+        },
+        "infinity_values": {
+          "total_infinity": 0,
+          "columns_with_infinity": {}
+        },
+        "duplicate_rows": {
+          "count": 334,
+          "percentage": 3.86
+        },
+        "numeric_stats": {
+          "src_port": {
+            "min": -1.0,
+            "max": 65519.0,
+            "mean": 33501.67324561404,
+            "std": 22148.130630338917,
+            "zeros": 0,
+            "negatives": 1794,
+            "unique_values": 6334
+          },
+          "dst_port": {
+            "min": -1.0,
+            "max": 56154.0,
+            "mean": 574.7338411819021,
+            "std": 2567.86720360004,
+            "zeros": 0,
+            "negatives": 1794,
+            "unique_values": 11
+          },
+          "protocol": {
+            "min": 1.0,
+            "max": 17.0,
+            "mean": 7.163665743305632,
+            "std": 5.292875929818201,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 3
+          },
+          "timestamp": {
+            "min": 1752681124.0,
+            "max": 1752704888.0,
+            "mean": 1752687362.5545938,
+            "std": 5365.057239896788,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 4844
+          },
+          "flow_duration": {
+            "min": 0.0,
+            "max": 225.187104,
+            "mean": 5.382712097414589,
+            "std": 15.572116020032631,
+            "zeros": 1267,
+            "negatives": 0,
+            "unique_values": 2525
+          },
+          "flow_byts_s": {
+            "min": 0.0,
+            "max": 850199999.9999999,
+            "mean": 23288767.788401928,
+            "std": 55721362.714492895,
+            "zeros": 1267,
+            "negatives": 0,
+            "unique_values": 2797
+          },
+          "flow_pkts_s": {
+            "min": 0.0,
+            "max": 1000000.0,
+            "mean": 260929.7037063607,
+            "std": 275930.9245248354,
+            "zeros": 1267,
+            "negatives": 0,
+            "unique_values": 2583
+          },
+          "fwd_pkts_s": {
+            "min": 0.0,
+            "max": 1000000.0,
+            "mean": 209862.59436188094,
+            "std": 264562.0676529192,
+            "zeros": 1267,
+            "negatives": 0,
+            "unique_values": 2582
+          },
+          "bwd_pkts_s": {
+            "min": 0.0,
+            "max": 250000.0,
+            "mean": 51067.10934447982,
+            "std": 70346.99500689049,
+            "zeros": 3040,
+            "negatives": 0,
+            "unique_values": 2445
+          },
+          "tot_fwd_pkts": {
+            "min": 2.0,
+            "max": 185.0,
+            "mean": 4.052169898430286,
+            "std": 4.285904070898187,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 24
+          },
+          "tot_bwd_pkts": {
+            "min": 0.0,
+            "max": 24.0,
+            "mean": 2.113111726685134,
+            "std": 3.1279083293622145,
+            "zeros": 3040,
+            "negatives": 0,
+            "unique_values": 10
+          },
+          "totlen_fwd_pkts": {
+            "min": 112.0,
+            "max": 18510.0,
+            "mean": 476.2171052631579,
+            "std": 836.4940678776403,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 909
+          },
+          "totlen_bwd_pkts": {
+            "min": 0.0,
+            "max": 1344.0,
+            "mean": 119.01939058171745,
+            "std": 176.0009565020701,
+            "zeros": 3040,
+            "negatives": 0,
+            "unique_values": 14
+          },
+          "fwd_pkt_len_max": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 158.71479686057248,
+            "std": 267.56096360317974,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 805
+          },
+          "fwd_pkt_len_min": {
+            "min": 44.0,
+            "max": 1515.0,
+            "mean": 79.81832871652816,
+            "std": 118.0382091585397,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 171
+          },
+          "fwd_pkt_len_mean": {
+            "min": 44.0,
+            "max": 1515.0,
+            "mean": 95.95452990798248,
+            "std": 125.1287520364489,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1045
+          },
+          "fwd_pkt_len_std": {
+            "min": 0.0,
+            "max": 563.1141275631051,
+            "mean": 31.44282534764831,
+            "std": 97.32121641064585,
+            "zeros": 7555,
+            "negatives": 0,
+            "unique_values": 896
+          },
+          "bwd_pkt_len_max": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.175438596491226,
+            "std": 29.23119980528091,
+            "zeros": 3040,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "bwd_pkt_len_min": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.175438596491226,
+            "std": 29.23119980528091,
+            "zeros": 3040,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "bwd_pkt_len_mean": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.175438596491226,
+            "std": 29.23119980528091,
+            "zeros": 3040,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "bwd_pkt_len_std": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8664,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "pkt_len_max": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 158.71479686057248,
+            "std": 267.56096360317974,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 805
+          },
+          "pkt_len_min": {
+            "min": 44.0,
+            "max": 1515.0,
+            "mean": 74.42313019390582,
+            "std": 118.48959643445863,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 171
+          },
+          "pkt_len_mean": {
+            "min": 44.0,
+            "max": 1515.0,
+            "mean": 86.96110830045586,
+            "std": 120.11549076819834,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1060
+          },
+          "pkt_len_std": {
+            "min": 0.0,
+            "max": 428.57354496831937,
+            "mean": 26.85586337289874,
+            "std": 74.31760907337541,
+            "zeros": 4808,
+            "negatives": 0,
+            "unique_values": 905
+          },
+          "pkt_len_var": {
+            "min": 0.0,
+            "max": 183675.28344671204,
+            "mean": 6243.706938160819,
+            "std": 23767.779310660757,
+            "zeros": 4808,
+            "negatives": 0,
+            "unique_values": 905
+          },
+          "fwd_header_len": {
+            "min": 40.0,
+            "max": 3700.0,
+            "mean": 81.04339796860573,
+            "std": 85.71808141796373,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 24
+          },
+          "bwd_header_len": {
+            "min": 0.0,
+            "max": 480.0,
+            "mean": 42.262234533702674,
+            "std": 62.558166587244294,
+            "zeros": 3040,
+            "negatives": 0,
+            "unique_values": 10
+          },
+          "fwd_seg_size_min": {
+            "min": 20.0,
+            "max": 20.0,
+            "mean": 20.0,
+            "std": 0.0,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_act_data_pkts": {
+            "min": 0.0,
+            "max": 185.0,
+            "mean": 1.1252308402585411,
+            "std": 3.6489610623601805,
+            "zeros": 5486,
+            "negatives": 0,
+            "unique_values": 21
+          },
+          "flow_iat_mean": {
+            "min": 0.0,
+            "max": 70.928319,
+            "mean": 1.16662174973771,
+            "std": 3.1649401311791823,
+            "zeros": 1267,
+            "negatives": 0,
+            "unique_values": 2606
+          },
+          "flow_iat_max": {
+            "min": 0.0,
+            "max": 225.18709,
+            "mean": 3.9242809851108036,
+            "std": 11.253414038979356,
+            "zeros": 1267,
+            "negatives": 0,
+            "unique_values": 2608
+          },
+          "flow_iat_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8664,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "flow_iat_std": {
+            "min": 0.0,
+            "max": 100.30778644348464,
+            "mean": 1.6714242402809967,
+            "std": 4.799601817618838,
+            "zeros": 1267,
+            "negatives": 0,
+            "unique_values": 2748
+          },
+          "fwd_iat_tot": {
+            "min": 0.0,
+            "max": 225.187104,
+            "mean": 2.3917123725761775,
+            "std": 14.013418868980434,
+            "zeros": 1275,
+            "negatives": 0,
+            "unique_values": 2610
+          },
+          "fwd_iat_max": {
+            "min": 0.0,
+            "max": 225.1871,
+            "mean": 1.1816857803554939,
+            "std": 9.205125181085503,
+            "zeros": 1275,
+            "negatives": 0,
+            "unique_values": 2529
+          },
+          "fwd_iat_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8664,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_iat_mean": {
+            "min": 0.0,
+            "max": 75.06236799999999,
+            "mean": 0.40794302802017457,
+            "std": 2.9127089258685936,
+            "zeros": 1275,
+            "negatives": 0,
+            "unique_values": 2615
+          },
+          "fwd_iat_std": {
+            "min": 0.0,
+            "max": 106.15421602101308,
+            "mean": 0.5242043825960238,
+            "std": 4.236924120124299,
+            "zeros": 1275,
+            "negatives": 0,
+            "unique_values": 2619
+          },
+          "bwd_iat_tot": {
+            "min": 0.0,
+            "max": 114.005882,
+            "mean": 1.1465415977608495,
+            "std": 9.041383934449684,
+            "zeros": 7510,
+            "negatives": 0,
+            "unique_values": 1153
+          },
+          "bwd_iat_max": {
+            "min": 0.0,
+            "max": 114.005879,
+            "mean": 0.3922553825023084,
+            "std": 3.7698229427831547,
+            "zeros": 7510,
+            "negatives": 0,
+            "unique_values": 1151
+          },
+          "bwd_iat_min": {
+            "min": 0.0,
+            "max": 3e-06,
+            "mean": 2.261080332409972e-07,
+            "std": 6.016689976177259e-07,
+            "zeros": 7514,
+            "negatives": 0,
+            "unique_values": 4
+          },
+          "bwd_iat_mean": {
+            "min": 0.0,
+            "max": 38.00196066666666,
+            "mean": 0.13829910445546453,
+            "std": 1.2834380073856928,
+            "zeros": 7510,
+            "negatives": 0,
+            "unique_values": 1154
+          },
+          "bwd_iat_std": {
+            "min": 0.0,
+            "max": 53.742886050248565,
+            "mean": 0.18020298542719726,
+            "std": 1.763298312013337,
+            "zeros": 7510,
+            "negatives": 0,
+            "unique_values": 1155
+          },
+          "fwd_psh_flags": {
+            "min": -1.0,
+            "max": 2.0,
+            "mean": 0.033702677746999074,
+            "std": 0.8291803040917824,
+            "zeros": 5827,
+            "negatives": 1794,
+            "unique_values": 3
+          },
+          "bwd_psh_flags": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.20706371191135733,
+            "std": 0.4052249794210471,
+            "zeros": 6870,
+            "negatives": 1794,
+            "unique_values": 2
+          },
+          "fwd_urg_flags": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.20706371191135733,
+            "std": 0.4052249794210471,
+            "zeros": 6870,
+            "negatives": 1794,
+            "unique_values": 2
+          },
+          "bwd_urg_flags": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.20706371191135733,
+            "std": 0.4052249794210471,
+            "zeros": 6870,
+            "negatives": 1794,
+            "unique_values": 2
+          },
+          "fin_flag_cnt": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.20706371191135733,
+            "std": 0.4052249794210471,
+            "zeros": 6870,
+            "negatives": 1794,
+            "unique_values": 2
+          },
+          "syn_flag_cnt": {
+            "min": -1.0,
+            "max": 13.0,
+            "mean": 1.739612188365651,
+            "std": 2.131717271759416,
+            "zeros": 1764,
+            "negatives": 1794,
+            "unique_values": 9
+          },
+          "rst_flag_cnt": {
+            "min": -1.0,
+            "max": 24.0,
+            "mean": 1.5011542012927055,
+            "std": 3.3744014729240184,
+            "zeros": 2993,
+            "negatives": 1794,
+            "unique_values": 11
+          },
+          "psh_flag_cnt": {
+            "min": -1.0,
+            "max": 2.0,
+            "mean": 0.033702677746999074,
+            "std": 0.8291803040917824,
+            "zeros": 5827,
+            "negatives": 1794,
+            "unique_values": 3
+          },
+          "ack_flag_cnt": {
+            "min": -1.0,
+            "max": 25.0,
+            "mean": 1.5080794090489382,
+            "std": 3.4089369687965845,
+            "zeros": 2993,
+            "negatives": 1794,
+            "unique_values": 13
+          },
+          "urg_flag_cnt": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.20706371191135733,
+            "std": 0.4052249794210471,
+            "zeros": 6870,
+            "negatives": 1794,
+            "unique_values": 2
+          },
+          "ece_flag_cnt": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.20706371191135733,
+            "std": 0.4052249794210471,
+            "zeros": 6870,
+            "negatives": 1794,
+            "unique_values": 2
+          },
+          "down_up_ratio": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.40442839657521096,
+            "std": 0.34195134665440724,
+            "zeros": 3040,
+            "negatives": 0,
+            "unique_values": 16
+          },
+          "pkt_size_avg": {
+            "min": 44.0,
+            "max": 1515.0,
+            "mean": 86.96110830045586,
+            "std": 120.11549076819834,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1060
+          },
+          "init_fwd_win_byts": {
+            "min": -1.0,
+            "max": 65535.0,
+            "mean": 18382.318328716527,
+            "std": 20879.24737115485,
+            "zeros": 1732,
+            "negatives": 1794,
+            "unique_values": 1254
+          },
+          "init_bwd_win_byts": {
+            "min": -1.0,
+            "max": 64240.0,
+            "mean": 10969.63596491228,
+            "std": 23179.01249798196,
+            "zeros": 4614,
+            "negatives": 1794,
+            "unique_values": 4
+          },
+          "active_max": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8664,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "active_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8664,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "active_mean": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8664,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "active_std": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8664,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_max": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8664,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8664,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_mean": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8664,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_std": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8664,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_byts_b_avg": {
+            "min": 0.0,
+            "max": 385.55555555555554,
+            "mean": 0.1891926420115387,
+            "std": 7.518684853465365,
+            "zeros": 8658,
+            "negatives": 0,
+            "unique_values": 7
+          },
+          "fwd_pkts_b_avg": {
+            "min": 0.0,
+            "max": 6.888888888888889,
+            "mean": 0.0036107198740716186,
+            "std": 0.13937048232719476,
+            "zeros": 8658,
+            "negatives": 0,
+            "unique_values": 7
+          },
+          "bwd_byts_b_avg": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8664,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "bwd_pkts_b_avg": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8664,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_blk_rate_avg": {
+            "min": 0.0,
+            "max": 241.5502604372326,
+            "mean": 0.1465090751964442,
+            "std": 5.633592685592738,
+            "zeros": 8658,
+            "negatives": 0,
+            "unique_values": 7
+          },
+          "bwd_blk_rate_avg": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8664,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_seg_size_avg": {
+            "min": 44.0,
+            "max": 1515.0,
+            "mean": 95.95452990798248,
+            "std": 125.1287520364489,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1045
+          },
+          "bwd_seg_size_avg": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.175438596491226,
+            "std": 29.23119980528091,
+            "zeros": 3040,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "cwr_flag_count": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.20706371191135733,
+            "std": 0.4052249794210471,
+            "zeros": 6870,
+            "negatives": 1794,
+            "unique_values": 2
+          },
+          "subflow_fwd_pkts": {
+            "min": 2.0,
+            "max": 185.0,
+            "mean": 4.052169898430286,
+            "std": 4.285904070898187,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 24
+          },
+          "subflow_bwd_pkts": {
+            "min": 0.0,
+            "max": 24.0,
+            "mean": 2.113111726685134,
+            "std": 3.1279083293622145,
+            "zeros": 3040,
+            "negatives": 0,
+            "unique_values": 10
+          },
+          "subflow_fwd_byts": {
+            "min": 112.0,
+            "max": 18510.0,
+            "mean": 476.2171052631579,
+            "std": 836.4940678776403,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 909
+          },
+          "subflow_bwd_byts": {
+            "min": 0.0,
+            "max": 1344.0,
+            "mean": 119.01939058171745,
+            "std": 176.0009565020701,
+            "zeros": 3040,
+            "negatives": 0,
+            "unique_values": 14
+          },
+          "Label_binary": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.7835872576177285,
+            "std": 0.4118225859781623,
+            "zeros": 1875,
+            "negatives": 0,
+            "unique_values": 2
+          }
+        },
+        "categorical_stats": {
+          "src_ip": {
+            "unique_values": 1262,
+            "most_common": {
+              "10.0.0.2": 2774,
+              "10.0.0.3": 1597,
+              "10.0.0.1": 1381,
+              "192.168.159.139": 1372,
+              "10.0.0.5": 278
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "dst_ip": {
+            "unique_values": 6,
+            "most_common": {
+              "10.0.0.6": 4008,
+              "10.0.0.4": 2774,
+              "10.0.0.5": 1597,
+              "10.0.0.3": 278,
+              "10.0.0.2": 5
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Label_multi": {
+            "unique_values": 7,
+            "most_common": {
+              "normal": 1875,
+              "icmp_flood": 1393,
+              "udp_flood": 1386,
+              "syn_flood": 1382,
+              "ad_syn": 1256
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Attack_Type": {
+            "unique_values": 7,
+            "most_common": {
+              "normal": 1875,
+              "icmp_flood": 1393,
+              "udp_flood": 1386,
+              "syn_flood": 1382,
+              "ad_syn": 1256
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          }
+        },
+        "timestamp_analysis": {
+          "min_timestamp": "1752681124.0",
+          "max_timestamp": "1752704888.0",
+          "timestamp_format": "string"
+        }
+      }
+    },
+    "1707-2": {
+      "packet_features.csv": {
+        "file_path": "/mnt/c/Users/Intel/Desktop/InSDN_ddos_dataset/adversarial-ddos-attacks-sdn-dataset/dataset_generation/main_output/1707-2/packet_features.csv",
+        "dataset": "1707-2",
+        "csv_type": "packet_features.csv",
+        "file_size_mb": 3.48,
+        "rows": 44404,
+        "columns": 15,
+        "column_names": [
+          "timestamp",
+          "packet_length",
+          "eth_type",
+          "ip_src",
+          "ip_dst",
+          "ip_proto",
+          "ip_ttl",
+          "ip_id",
+          "ip_flags",
+          "ip_len",
+          "src_port",
+          "dst_port",
+          "tcp_flags",
+          "Label_multi",
+          "Label_binary"
+        ],
+        "memory_usage_mb": 16.18,
+        "data_types": {
+          "timestamp": "float64",
+          "packet_length": "int64",
+          "eth_type": "object",
+          "ip_src": "object",
+          "ip_dst": "object",
+          "ip_proto": "int64",
+          "ip_ttl": "int64",
+          "ip_id": "int64",
+          "ip_flags": "object",
+          "ip_len": "int64",
+          "src_port": "float64",
+          "dst_port": "float64",
+          "tcp_flags": "object",
+          "Label_multi": "object",
+          "Label_binary": "int64"
+        },
+        "missing_values": {
+          "total_missing": 55197,
+          "missing_percentage": 8.29,
+          "columns_with_missing": {
+            "ip_flags": {
+              "count": 26897,
+              "percentage": 60.57
+            },
+            "src_port": {
+              "count": 8260,
+              "percentage": 18.6
+            },
+            "dst_port": {
+              "count": 8260,
+              "percentage": 18.6
+            },
+            "tcp_flags": {
+              "count": 11780,
+              "percentage": 26.53
+            }
+          }
+        },
+        "infinity_values": {
+          "total_infinity": 0,
+          "columns_with_infinity": {}
+        },
+        "duplicate_rows": {
+          "count": 81,
+          "percentage": 0.18
+        },
+        "numeric_stats": {
+          "timestamp": {
+            "min": 1752713358.989399,
+            "max": 1752737129.59408,
+            "mean": 1752717773.5368056,
+            "std": 5006.619700066935,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 44323
+          },
+          "packet_length": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 101.49900909827943,
+            "std": 181.23558519531855,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 815
+          },
+          "ip_proto": {
+            "min": 1.0,
+            "max": 17.0,
+            "mean": 5.94189712638501,
+            "std": 3.773507032858042,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 3
+          },
+          "ip_ttl": {
+            "min": 64.0,
+            "max": 128.0,
+            "mean": 65.95153589766687,
+            "std": 11.004205203212043,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 2
+          },
+          "ip_id": {
+            "min": 0.0,
+            "max": 65532.0,
+            "mean": 7213.285109449599,
+            "std": 15604.258208021589,
+            "zeros": 13378,
+            "negatives": 0,
+            "unique_values": 7193
+          },
+          "ip_len": {
+            "min": 28.0,
+            "max": 1500.0,
+            "mean": 85.31605260787316,
+            "std": 181.27839131176606,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 814
+          },
+          "src_port": {
+            "min": 20.0,
+            "max": 65520.0,
+            "mean": 23166.884849490925,
+            "std": 23069.758932279765,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6194
+          },
+          "dst_port": {
+            "min": 21.0,
+            "max": 65517.0,
+            "mean": 15195.24540725985,
+            "std": 21162.8659453477,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 3619
+          },
+          "Label_binary": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.45770651292676334,
+            "std": 0.4982136599062702,
+            "zeros": 24080,
+            "negatives": 0,
+            "unique_values": 2
+          }
+        },
+        "categorical_stats": {
+          "eth_type": {
+            "unique_values": 1,
+            "most_common": {
+              "0x800": 44404
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "ip_src": {
+            "unique_values": 1102,
+            "most_common": {
+              "10.0.0.3": 12040,
+              "10.0.0.5": 12040,
+              "10.0.0.2": 5580,
+              "10.0.0.6": 4106,
+              "192.168.159.139": 3419
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "ip_dst": {
+            "unique_values": 7,
+            "most_common": {
+              "10.0.0.5": 12040,
+              "10.0.0.3": 12040,
+              "10.0.0.6": 7266,
+              "10.0.0.4": 5580,
+              "10.0.0.2": 3372
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "ip_flags": {
+            "unique_values": 1,
+            "most_common": {
+              "DF": 17507
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "tcp_flags": {
+            "unique_values": 6,
+            "most_common": {
+              "S": 9402,
+              "R": 8490,
+              "RA": 6242,
+              "A": 4270,
+              "SA": 2136
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Label_multi": {
+            "unique_values": 8,
+            "most_common": {
+              "normal": 24080,
+              "icmp_flood": 5524,
+              "syn_flood": 5505,
+              "udp_flood": 3428,
+              "ad_slow": 2474
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          }
+        },
+        "timestamp_analysis": {
+          "min_timestamp": "1752713358.989399",
+          "max_timestamp": "1752737129.59408",
+          "timestamp_format": "string"
+        }
+      },
+      "flow_features.csv": {
+        "file_path": "/mnt/c/Users/Intel/Desktop/InSDN_ddos_dataset/adversarial-ddos-attacks-sdn-dataset/dataset_generation/main_output/1707-2/flow_features.csv",
+        "dataset": "1707-2",
+        "csv_type": "flow_features.csv",
+        "file_size_mb": 87.33,
+        "rows": 673785,
+        "columns": 18,
+        "column_names": [
+          "timestamp",
+          "switch_id",
+          "table_id",
+          "cookie",
+          "priority",
+          "in_port",
+          "eth_src",
+          "eth_dst",
+          "out_port",
+          "packet_count",
+          "byte_count",
+          "duration_sec",
+          "duration_nsec",
+          "avg_pkt_size",
+          "pkt_rate",
+          "byte_rate",
+          "Label_multi",
+          "Label_binary"
+        ],
+        "memory_usage_mb": 224.42,
+        "data_types": {
+          "timestamp": "float64",
+          "switch_id": "object",
+          "table_id": "float64",
+          "cookie": "float64",
+          "priority": "int64",
+          "in_port": "float64",
+          "eth_src": "object",
+          "eth_dst": "object",
+          "out_port": "int64",
+          "packet_count": "int64",
+          "byte_count": "int64",
+          "duration_sec": "int64",
+          "duration_nsec": "float64",
+          "avg_pkt_size": "float64",
+          "pkt_rate": "float64",
+          "byte_rate": "float64",
+          "Label_multi": "object",
+          "Label_binary": "int64"
+        },
+        "missing_values": {
+          "total_missing": 2086560,
+          "missing_percentage": 17.2,
+          "columns_with_missing": {
+            "table_id": {
+              "count": 673785,
+              "percentage": 100.0
+            },
+            "cookie": {
+              "count": 673785,
+              "percentage": 100.0
+            },
+            "in_port": {
+              "count": 21735,
+              "percentage": 3.23
+            },
+            "eth_src": {
+              "count": 21735,
+              "percentage": 3.23
+            },
+            "eth_dst": {
+              "count": 21735,
+              "percentage": 3.23
+            },
+            "duration_nsec": {
+              "count": 673785,
+              "percentage": 100.0
+            }
+          }
+        },
+        "infinity_values": {
+          "total_infinity": 0,
+          "columns_with_infinity": {}
+        },
+        "duplicate_rows": {
+          "count": 0,
+          "percentage": 0.0
+        },
+        "numeric_stats": {
+          "timestamp": {
+            "min": 1752713354.971905,
+            "max": 1752737136.802764,
+            "mean": 1752725116.9650867,
+            "std": 6963.617749535912,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 21735
+          },
+          "table_id": {
+            "min": NaN,
+            "max": NaN,
+            "mean": NaN,
+            "std": NaN,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 0
+          },
+          "cookie": {
+            "min": NaN,
+            "max": NaN,
+            "mean": NaN,
+            "std": NaN,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 0
+          },
+          "priority": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.967741935483871,
+            "std": 0.17668482708311134,
+            "zeros": 21735,
+            "negatives": 0,
+            "unique_values": 2
+          },
+          "in_port": {
+            "min": 1.0,
+            "max": 6.0,
+            "mean": 3.5,
+            "std": 1.7078264372428578,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6
+          },
+          "out_port": {
+            "min": 1.0,
+            "max": 4294967293.0,
+            "mean": 138547335.41935483,
+            "std": 758855552.8729268,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 7
+          },
+          "packet_count": {
+            "min": 1.0,
+            "max": 9583.0,
+            "mean": 888.1554219817895,
+            "std": 2260.11546036509,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 4833
+          },
+          "byte_count": {
+            "min": 98.0,
+            "max": 1252756.0,
+            "mean": 72715.14437394717,
+            "std": 228829.18730715927,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6340
+          },
+          "duration_sec": {
+            "min": 4.0,
+            "max": 23790.0,
+            "mean": 11765.708046335256,
+            "std": 6963.612965179377,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 23746
+          },
+          "duration_nsec": {
+            "min": NaN,
+            "max": NaN,
+            "mean": NaN,
+            "std": NaN,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 0
+          },
+          "avg_pkt_size": {
+            "min": 42.7661331956634,
+            "max": 195.84848484848484,
+            "mean": 92.69894354363866,
+            "std": 19.541864157707597,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 6352
+          },
+          "pkt_rate": {
+            "min": 4.204330460374185e-05,
+            "max": 7.0,
+            "mean": 0.11128996670817658,
+            "std": 0.36026605415224716,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 88135
+          },
+          "byte_rate": {
+            "min": 0.0041202438511667,
+            "max": 639.3333333333334,
+            "mean": 9.334227546765593,
+            "std": 36.53591333579667,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 88250
+          },
+          "Label_binary": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.8341384863123994,
+            "std": 0.3719565529734749,
+            "zeros": 111755,
+            "negatives": 0,
+            "unique_values": 2
+          }
+        },
+        "categorical_stats": {
+          "switch_id": {
+            "unique_values": 1,
+            "most_common": {
+              "0x1": 673785
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "eth_src": {
+            "unique_values": 6,
+            "most_common": {
+              "00:00:00:00:00:01": 108675,
+              "00:00:00:00:00:02": 108675,
+              "00:00:00:00:00:03": 108675,
+              "00:00:00:00:00:04": 108675,
+              "00:00:00:00:00:05": 108675
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "eth_dst": {
+            "unique_values": 6,
+            "most_common": {
+              "00:00:00:00:00:02": 108675,
+              "00:00:00:00:00:01": 108675,
+              "00:00:00:00:00:03": 108675,
+              "00:00:00:00:00:04": 108675,
+              "00:00:00:00:00:05": 108675
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Label_multi": {
+            "unique_values": 7,
+            "most_common": {
+              "ad_slow": 204848,
+              "ad_syn": 196416,
+              "ad_udp": 132556,
+              "normal": 111755,
+              "udp_flood": 9486
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          }
+        },
+        "timestamp_analysis": {
+          "min_timestamp": "1752713354.971905",
+          "max_timestamp": "1752737136.802764",
+          "timestamp_format": "string"
+        }
+      },
+      "cicflow_features_all.csv": {
+        "file_path": "/mnt/c/Users/Intel/Desktop/InSDN_ddos_dataset/adversarial-ddos-attacks-sdn-dataset/dataset_generation/main_output/1707-2/cicflow_features_all.csv",
+        "dataset": "1707-2",
+        "csv_type": "cicflow_features_all.csv",
+        "file_size_mb": 3.39,
+        "rows": 8446,
+        "columns": 85,
+        "column_names": [
+          "src_ip",
+          "dst_ip",
+          "src_port",
+          "dst_port",
+          "protocol",
+          "timestamp",
+          "flow_duration",
+          "flow_byts_s",
+          "flow_pkts_s",
+          "fwd_pkts_s",
+          "bwd_pkts_s",
+          "tot_fwd_pkts",
+          "tot_bwd_pkts",
+          "totlen_fwd_pkts",
+          "totlen_bwd_pkts",
+          "fwd_pkt_len_max",
+          "fwd_pkt_len_min",
+          "fwd_pkt_len_mean",
+          "fwd_pkt_len_std",
+          "bwd_pkt_len_max",
+          "bwd_pkt_len_min",
+          "bwd_pkt_len_mean",
+          "bwd_pkt_len_std",
+          "pkt_len_max",
+          "pkt_len_min",
+          "pkt_len_mean",
+          "pkt_len_std",
+          "pkt_len_var",
+          "fwd_header_len",
+          "bwd_header_len",
+          "fwd_seg_size_min",
+          "fwd_act_data_pkts",
+          "flow_iat_mean",
+          "flow_iat_max",
+          "flow_iat_min",
+          "flow_iat_std",
+          "fwd_iat_tot",
+          "fwd_iat_max",
+          "fwd_iat_min",
+          "fwd_iat_mean",
+          "fwd_iat_std",
+          "bwd_iat_tot",
+          "bwd_iat_max",
+          "bwd_iat_min",
+          "bwd_iat_mean",
+          "bwd_iat_std",
+          "fwd_psh_flags",
+          "bwd_psh_flags",
+          "fwd_urg_flags",
+          "bwd_urg_flags",
+          "fin_flag_cnt",
+          "syn_flag_cnt",
+          "rst_flag_cnt",
+          "psh_flag_cnt",
+          "ack_flag_cnt",
+          "urg_flag_cnt",
+          "ece_flag_cnt",
+          "down_up_ratio",
+          "pkt_size_avg",
+          "init_fwd_win_byts",
+          "init_bwd_win_byts",
+          "active_max",
+          "active_min",
+          "active_mean",
+          "active_std",
+          "idle_max",
+          "idle_min",
+          "idle_mean",
+          "idle_std",
+          "fwd_byts_b_avg",
+          "fwd_pkts_b_avg",
+          "bwd_byts_b_avg",
+          "bwd_pkts_b_avg",
+          "fwd_blk_rate_avg",
+          "bwd_blk_rate_avg",
+          "fwd_seg_size_avg",
+          "bwd_seg_size_avg",
+          "cwr_flag_count",
+          "subflow_fwd_pkts",
+          "subflow_bwd_pkts",
+          "subflow_fwd_byts",
+          "subflow_bwd_byts",
+          "Label_multi",
+          "Label_binary",
+          "Attack_Type"
+        ],
+        "memory_usage_mb": 7.07,
+        "data_types": {
+          "src_ip": "object",
+          "dst_ip": "object",
+          "src_port": "int64",
+          "dst_port": "int64",
+          "protocol": "int64",
+          "timestamp": "float64",
+          "flow_duration": "float64",
+          "flow_byts_s": "float64",
+          "flow_pkts_s": "float64",
+          "fwd_pkts_s": "float64",
+          "bwd_pkts_s": "float64",
+          "tot_fwd_pkts": "int64",
+          "tot_bwd_pkts": "int64",
+          "totlen_fwd_pkts": "int64",
+          "totlen_bwd_pkts": "int64",
+          "fwd_pkt_len_max": "int64",
+          "fwd_pkt_len_min": "int64",
+          "fwd_pkt_len_mean": "float64",
+          "fwd_pkt_len_std": "float64",
+          "bwd_pkt_len_max": "int64",
+          "bwd_pkt_len_min": "int64",
+          "bwd_pkt_len_mean": "float64",
+          "bwd_pkt_len_std": "float64",
+          "pkt_len_max": "int64",
+          "pkt_len_min": "int64",
+          "pkt_len_mean": "float64",
+          "pkt_len_std": "float64",
+          "pkt_len_var": "float64",
+          "fwd_header_len": "int64",
+          "bwd_header_len": "int64",
+          "fwd_seg_size_min": "int64",
+          "fwd_act_data_pkts": "int64",
+          "flow_iat_mean": "float64",
+          "flow_iat_max": "float64",
+          "flow_iat_min": "float64",
+          "flow_iat_std": "float64",
+          "fwd_iat_tot": "float64",
+          "fwd_iat_max": "float64",
+          "fwd_iat_min": "float64",
+          "fwd_iat_mean": "float64",
+          "fwd_iat_std": "float64",
+          "bwd_iat_tot": "float64",
+          "bwd_iat_max": "float64",
+          "bwd_iat_min": "float64",
+          "bwd_iat_mean": "float64",
+          "bwd_iat_std": "float64",
+          "fwd_psh_flags": "int64",
+          "bwd_psh_flags": "int64",
+          "fwd_urg_flags": "int64",
+          "bwd_urg_flags": "int64",
+          "fin_flag_cnt": "int64",
+          "syn_flag_cnt": "int64",
+          "rst_flag_cnt": "int64",
+          "psh_flag_cnt": "int64",
+          "ack_flag_cnt": "int64",
+          "urg_flag_cnt": "int64",
+          "ece_flag_cnt": "int64",
+          "down_up_ratio": "float64",
+          "pkt_size_avg": "float64",
+          "init_fwd_win_byts": "int64",
+          "init_bwd_win_byts": "int64",
+          "active_max": "int64",
+          "active_min": "int64",
+          "active_mean": "int64",
+          "active_std": "int64",
+          "idle_max": "int64",
+          "idle_min": "int64",
+          "idle_mean": "int64",
+          "idle_std": "int64",
+          "fwd_byts_b_avg": "float64",
+          "fwd_pkts_b_avg": "float64",
+          "bwd_byts_b_avg": "int64",
+          "bwd_pkts_b_avg": "int64",
+          "fwd_blk_rate_avg": "float64",
+          "bwd_blk_rate_avg": "int64",
+          "fwd_seg_size_avg": "float64",
+          "bwd_seg_size_avg": "float64",
+          "cwr_flag_count": "int64",
+          "subflow_fwd_pkts": "int64",
+          "subflow_bwd_pkts": "int64",
+          "subflow_fwd_byts": "int64",
+          "subflow_bwd_byts": "int64",
+          "Label_multi": "object",
+          "Label_binary": "int64",
+          "Attack_Type": "object"
+        },
+        "missing_values": {
+          "total_missing": 0,
+          "missing_percentage": 0.0,
+          "columns_with_missing": {}
+        },
+        "infinity_values": {
+          "total_infinity": 0,
+          "columns_with_infinity": {}
+        },
+        "duplicate_rows": {
+          "count": 295,
+          "percentage": 3.49
+        },
+        "numeric_stats": {
+          "src_port": {
+            "min": -1.0,
+            "max": 65520.0,
+            "mean": 33264.00272318257,
+            "std": 22189.223331139543,
+            "zeros": 0,
+            "negatives": 1771,
+            "unique_values": 6191
+          },
+          "dst_port": {
+            "min": -1.0,
+            "max": 57682.0,
+            "mean": 585.6534454179493,
+            "std": 2563.703016993388,
+            "zeros": 0,
+            "negatives": 1771,
+            "unique_values": 11
+          },
+          "protocol": {
+            "min": 1.0,
+            "max": 17.0,
+            "mean": 7.209921856500118,
+            "std": 5.350086275521823,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 3
+          },
+          "timestamp": {
+            "min": 1752713358.0,
+            "max": 1752737126.0,
+            "mean": 1752719568.7945774,
+            "std": 5428.787733715264,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 4658
+          },
+          "flow_duration": {
+            "min": 0.0,
+            "max": 235.205983,
+            "mean": 5.664294826189912,
+            "std": 16.387265882087092,
+            "zeros": 1112,
+            "negatives": 0,
+            "unique_values": 2533
+          },
+          "flow_byts_s": {
+            "min": 0.0,
+            "max": 746500000.0,
+            "mean": 23464551.69905862,
+            "std": 56649738.545501396,
+            "zeros": 1112,
+            "negatives": 0,
+            "unique_values": 2789
+          },
+          "flow_pkts_s": {
+            "min": 0.0,
+            "max": 1000000.0,
+            "mean": 257035.58689820438,
+            "std": 264167.48241058923,
+            "zeros": 1112,
+            "negatives": 0,
+            "unique_values": 2575
+          },
+          "fwd_pkts_s": {
+            "min": 0.0,
+            "max": 1000000.0,
+            "mean": 205892.63194356387,
+            "std": 252073.9734682281,
+            "zeros": 1112,
+            "negatives": 0,
+            "unique_values": 2573
+          },
+          "bwd_pkts_s": {
+            "min": 0.0,
+            "max": 222222.22222222225,
+            "mean": 51142.9549546405,
+            "std": 69842.89803056025,
+            "zeros": 2881,
+            "negatives": 0,
+            "unique_values": 2439
+          },
+          "tot_fwd_pkts": {
+            "min": 2.0,
+            "max": 189.0,
+            "mean": 4.10206014681506,
+            "std": 4.316902275015751,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 26
+          },
+          "tot_bwd_pkts": {
+            "min": 0.0,
+            "max": 24.0,
+            "mean": 2.1553398058252426,
+            "std": 3.153769708109472,
+            "zeros": 2881,
+            "negatives": 0,
+            "unique_values": 10
+          },
+          "totlen_fwd_pkts": {
+            "min": 112.0,
+            "max": 18897.0,
+            "mean": 493.638763911911,
+            "std": 862.0042368263254,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 926
+          },
+          "totlen_bwd_pkts": {
+            "min": 0.0,
+            "max": 1344.0,
+            "mean": 121.44447075538717,
+            "std": 177.44128406412014,
+            "zeros": 2881,
+            "negatives": 0,
+            "unique_values": 13
+          },
+          "fwd_pkt_len_max": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 164.7346672981293,
+            "std": 276.18025887537783,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 798
+          },
+          "fwd_pkt_len_min": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 81.07861709685058,
+            "std": 121.52824853594349,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 174
+          },
+          "fwd_pkt_len_mean": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 98.16938654234437,
+            "std": 128.75237509917525,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1037
+          },
+          "fwd_pkt_len_std": {
+            "min": 0.0,
+            "max": 563.1141275631051,
+            "mean": 33.342115166699564,
+            "std": 100.6952221921095,
+            "zeros": 7329,
+            "negatives": 0,
+            "unique_values": 889
+          },
+          "bwd_pkt_len_max": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.76509590338622,
+            "std": 29.12119984945122,
+            "zeros": 2881,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "bwd_pkt_len_min": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.76509590338622,
+            "std": 29.12119984945122,
+            "zeros": 2881,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "bwd_pkt_len_mean": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.76509590338622,
+            "std": 29.12119984945122,
+            "zeros": 2881,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "bwd_pkt_len_std": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8446,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "pkt_len_max": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 164.7346672981293,
+            "std": 276.18025887537783,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 798
+          },
+          "pkt_len_min": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 75.62183282026994,
+            "std": 122.0265062267611,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 174
+          },
+          "pkt_len_mean": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 88.71836247892391,
+            "std": 123.60519872767635,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1057
+          },
+          "pkt_len_std": {
+            "min": 0.0,
+            "max": 428.57354496831937,
+            "mean": 28.345073295002344,
+            "std": 76.88435220934517,
+            "zeros": 4619,
+            "negatives": 0,
+            "unique_values": 896
+          },
+          "pkt_len_var": {
+            "min": 0.0,
+            "max": 183675.28344671204,
+            "mean": 6713.946912720967,
+            "std": 24806.478182347728,
+            "zeros": 4619,
+            "negatives": 0,
+            "unique_values": 896
+          },
+          "fwd_header_len": {
+            "min": 40.0,
+            "max": 3780.0,
+            "mean": 82.0412029363012,
+            "std": 86.33804550031502,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 26
+          },
+          "bwd_header_len": {
+            "min": 0.0,
+            "max": 480.0,
+            "mean": 43.10679611650485,
+            "std": 63.07539416218943,
+            "zeros": 2881,
+            "negatives": 0,
+            "unique_values": 10
+          },
+          "fwd_seg_size_min": {
+            "min": 20.0,
+            "max": 20.0,
+            "mean": 20.0,
+            "std": 0.0,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_act_data_pkts": {
+            "min": 0.0,
+            "max": 189.0,
+            "mean": 1.1562869997632015,
+            "std": 3.6777168304129257,
+            "zeros": 5268,
+            "negatives": 0,
+            "unique_values": 24
+          },
+          "flow_iat_mean": {
+            "min": 0.0,
+            "max": 78.03641633333332,
+            "mean": 1.2334721626470222,
+            "std": 3.4800428124789615,
+            "zeros": 1112,
+            "negatives": 0,
+            "unique_values": 2605
+          },
+          "flow_iat_max": {
+            "min": 0.0,
+            "max": 235.20597,
+            "mean": 4.160865355316126,
+            "std": 12.167877570508251,
+            "zeros": 1112,
+            "negatives": 0,
+            "unique_values": 2607
+          },
+          "flow_iat_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8446,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "flow_iat_std": {
+            "min": 0.0,
+            "max": 110.3601555091662,
+            "mean": 1.7753072924401545,
+            "std": 5.25747646057407,
+            "zeros": 1112,
+            "negatives": 0,
+            "unique_values": 2744
+          },
+          "fwd_iat_tot": {
+            "min": 0.0,
+            "max": 235.205983,
+            "mean": 2.634884744376036,
+            "std": 14.964918556617885,
+            "zeros": 1124,
+            "negatives": 0,
+            "unique_values": 2607
+          },
+          "fwd_iat_max": {
+            "min": 0.0,
+            "max": 235.205979,
+            "mean": 1.3795912848685767,
+            "std": 10.345413195195242,
+            "zeros": 1124,
+            "negatives": 0,
+            "unique_values": 2517
+          },
+          "fwd_iat_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8446,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_iat_mean": {
+            "min": 0.0,
+            "max": 78.40199433333333,
+            "mean": 0.47131195530318254,
+            "std": 3.276610134703351,
+            "zeros": 1124,
+            "negatives": 0,
+            "unique_values": 2607
+          },
+          "fwd_iat_std": {
+            "min": 0.0,
+            "max": 110.87716087487144,
+            "mean": 0.6152837004513148,
+            "std": 4.770273182425328,
+            "zeros": 1124,
+            "negatives": 0,
+            "unique_values": 2615
+          },
+          "bwd_iat_tot": {
+            "min": 0.0,
+            "max": 118.969219,
+            "mean": 1.1675431159128582,
+            "std": 9.07147066815949,
+            "zeros": 7290,
+            "negatives": 0,
+            "unique_values": 1155
+          },
+          "bwd_iat_max": {
+            "min": 0.0,
+            "max": 118.969217,
+            "mean": 0.39053272720814586,
+            "std": 3.522125532113417,
+            "zeros": 7290,
+            "negatives": 0,
+            "unique_values": 1152
+          },
+          "bwd_iat_min": {
+            "min": 0.0,
+            "max": 3e-06,
+            "mean": 2.466256215960218e-07,
+            "std": 6.372378626321522e-07,
+            "zeros": 7291,
+            "negatives": 0,
+            "unique_values": 4
+          },
+          "bwd_iat_mean": {
+            "min": 0.0,
+            "max": 39.65640633333333,
+            "mean": 0.13792852767557334,
+            "std": 1.2037997982319426,
+            "zeros": 7290,
+            "negatives": 0,
+            "unique_values": 1155
+          },
+          "bwd_iat_std": {
+            "min": 0.0,
+            "max": 56.08262625736474,
+            "mean": 0.1792196436219829,
+            "std": 1.6451295030777844,
+            "zeros": 7290,
+            "negatives": 0,
+            "unique_values": 1157
+          },
+          "fwd_psh_flags": {
+            "min": -1.0,
+            "max": 2.0,
+            "mean": 0.03705896282263794,
+            "std": 0.8377844802588097,
+            "zeros": 5633,
+            "negatives": 1771,
+            "unique_values": 3
+          },
+          "bwd_psh_flags": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.2096850580156287,
+            "std": 0.40710791883597713,
+            "zeros": 6675,
+            "negatives": 1771,
+            "unique_values": 2
+          },
+          "fwd_urg_flags": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.2096850580156287,
+            "std": 0.40710791883597713,
+            "zeros": 6675,
+            "negatives": 1771,
+            "unique_values": 2
+          },
+          "bwd_urg_flags": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.2096850580156287,
+            "std": 0.40710791883597713,
+            "zeros": 6675,
+            "negatives": 1771,
+            "unique_values": 2
+          },
+          "fin_flag_cnt": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.2096850580156287,
+            "std": 0.40710791883597713,
+            "zeros": 6675,
+            "negatives": 1771,
+            "unique_values": 2
+          },
+          "syn_flag_cnt": {
+            "min": -1.0,
+            "max": 13.0,
+            "mean": 1.7376272791854133,
+            "std": 2.1535101408314037,
+            "zeros": 1766,
+            "negatives": 1771,
+            "unique_values": 8
+          },
+          "rst_flag_cnt": {
+            "min": -1.0,
+            "max": 24.0,
+            "mean": 1.5348093772199858,
+            "std": 3.4080541604875845,
+            "zeros": 2835,
+            "negatives": 1771,
+            "unique_values": 11
+          },
+          "psh_flag_cnt": {
+            "min": -1.0,
+            "max": 2.0,
+            "mean": 0.03705896282263794,
+            "std": 0.8377844802588097,
+            "zeros": 5633,
+            "negatives": 1771,
+            "unique_values": 3
+          },
+          "ack_flag_cnt": {
+            "min": -1.0,
+            "max": 25.0,
+            "mean": 1.5419133317546767,
+            "std": 3.442854342683257,
+            "zeros": 2835,
+            "negatives": 1771,
+            "unique_values": 14
+          },
+          "urg_flag_cnt": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.2096850580156287,
+            "std": 0.40710791883597713,
+            "zeros": 6675,
+            "negatives": 1771,
+            "unique_values": 2
+          },
+          "ece_flag_cnt": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.2096850580156287,
+            "std": 0.40710791883597713,
+            "zeros": 6675,
+            "negatives": 1771,
+            "unique_values": 2
+          },
+          "down_up_ratio": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.41065658839279484,
+            "std": 0.3414291668748107,
+            "zeros": 2881,
+            "negatives": 0,
+            "unique_values": 13
+          },
+          "pkt_size_avg": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 88.71836247892391,
+            "std": 123.60519872767635,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1057
+          },
+          "init_fwd_win_byts": {
+            "min": -1.0,
+            "max": 65535.0,
+            "mean": 18136.531139000712,
+            "std": 21020.16086097141,
+            "zeros": 1734,
+            "negatives": 1771,
+            "unique_values": 1092
+          },
+          "init_bwd_win_byts": {
+            "min": -1.0,
+            "max": 64240.0,
+            "mean": 11146.292801326072,
+            "std": 23312.941669344513,
+            "zeros": 4433,
+            "negatives": 1771,
+            "unique_values": 4
+          },
+          "active_max": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8446,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "active_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8446,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "active_mean": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8446,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "active_std": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8446,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_max": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8446,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_min": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8446,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_mean": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8446,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "idle_std": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8446,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_byts_b_avg": {
+            "min": 0.0,
+            "max": 344.72727272727275,
+            "mean": 0.21590109758029483,
+            "std": 8.134715677906938,
+            "zeros": 8440,
+            "negatives": 0,
+            "unique_values": 7
+          },
+          "fwd_pkts_b_avg": {
+            "min": 0.0,
+            "max": 6.181818181818182,
+            "mean": 0.003860251512986535,
+            "std": 0.14548384270837178,
+            "zeros": 8440,
+            "negatives": 0,
+            "unique_values": 7
+          },
+          "bwd_byts_b_avg": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8446,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "bwd_pkts_b_avg": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8446,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_blk_rate_avg": {
+            "min": 0.0,
+            "max": 253.34310858169653,
+            "mean": 0.16755361117073733,
+            "std": 6.303019099625156,
+            "zeros": 8440,
+            "negatives": 0,
+            "unique_values": 7
+          },
+          "bwd_blk_rate_avg": {
+            "min": 0.0,
+            "max": 0.0,
+            "mean": 0.0,
+            "std": 0.0,
+            "zeros": 8446,
+            "negatives": 0,
+            "unique_values": 1
+          },
+          "fwd_seg_size_avg": {
+            "min": 44.0,
+            "max": 1516.0,
+            "mean": 98.16938654234437,
+            "std": 128.75237509917525,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 1037
+          },
+          "bwd_seg_size_avg": {
+            "min": 0.0,
+            "max": 100.0,
+            "mean": 37.76509590338622,
+            "std": 29.12119984945122,
+            "zeros": 2881,
+            "negatives": 0,
+            "unique_values": 5
+          },
+          "cwr_flag_count": {
+            "min": -1.0,
+            "max": 0.0,
+            "mean": -0.2096850580156287,
+            "std": 0.40710791883597713,
+            "zeros": 6675,
+            "negatives": 1771,
+            "unique_values": 2
+          },
+          "subflow_fwd_pkts": {
+            "min": 2.0,
+            "max": 189.0,
+            "mean": 4.10206014681506,
+            "std": 4.316902275015751,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 26
+          },
+          "subflow_bwd_pkts": {
+            "min": 0.0,
+            "max": 24.0,
+            "mean": 2.1553398058252426,
+            "std": 3.153769708109472,
+            "zeros": 2881,
+            "negatives": 0,
+            "unique_values": 10
+          },
+          "subflow_fwd_byts": {
+            "min": 112.0,
+            "max": 18897.0,
+            "mean": 493.638763911911,
+            "std": 862.0042368263254,
+            "zeros": 0,
+            "negatives": 0,
+            "unique_values": 926
+          },
+          "subflow_bwd_byts": {
+            "min": 0.0,
+            "max": 1344.0,
+            "mean": 121.44447075538717,
+            "std": 177.44128406412014,
+            "zeros": 2881,
+            "negatives": 0,
+            "unique_values": 13
+          },
+          "Label_binary": {
+            "min": 0.0,
+            "max": 1.0,
+            "mean": 0.7782382192753966,
+            "std": 0.41545629073215223,
+            "zeros": 1873,
+            "negatives": 0,
+            "unique_values": 2
+          }
+        },
+        "categorical_stats": {
+          "src_ip": {
+            "unique_values": 1102,
+            "most_common": {
+              "10.0.0.2": 2754,
+              "10.0.0.3": 1597,
+              "192.168.159.139": 1358,
+              "10.0.0.1": 1358,
+              "10.0.0.5": 276
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "dst_ip": {
+            "unique_values": 6,
+            "most_common": {
+              "10.0.0.6": 3811,
+              "10.0.0.4": 2754,
+              "10.0.0.5": 1597,
+              "10.0.0.3": 276,
+              "10.0.0.2": 6
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Label_multi": {
+            "unique_values": 7,
+            "most_common": {
+              "normal": 1873,
+              "udp_flood": 1389,
+              "icmp_flood": 1371,
+              "syn_flood": 1359,
+              "ad_syn": 1096
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          },
+          "Attack_Type": {
+            "unique_values": 7,
+            "most_common": {
+              "normal": 1873,
+              "udp_flood": 1389,
+              "icmp_flood": 1371,
+              "syn_flood": 1359,
+              "ad_syn": 1096
+            },
+            "empty_strings": 0,
+            "whitespace_only": 0
+          }
+        },
+        "timestamp_analysis": {
+          "min_timestamp": "1752713358.0",
+          "max_timestamp": "1752737126.0",
+          "timestamp_format": "string"
+        }
+      }
+    }
+  }
+}
