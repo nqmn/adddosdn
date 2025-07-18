@@ -176,6 +176,7 @@ The framework generates three synchronized data formats from the same network tr
 - **Protocol-specific**: Detect attacks based on packet headers and flags
 - **Network hardware compatible**: Can be implemented in switches/routers
 - **Fine-grained**: Catches attacks that may be invisible at flow level
+
 | Feature Name | Description | Relevance |
 |---|---|---|
 | `timestamp` | Timestamp of the packet capture. | Essential for temporal analysis and correlating events. |
