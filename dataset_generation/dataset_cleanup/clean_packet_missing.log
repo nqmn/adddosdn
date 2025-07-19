@@ -1,0 +1,53 @@
+2025-07-19 12:18:26,742 - INFO - ============================================================
+2025-07-19 12:18:26,742 - INFO - PACKET DATASET MISSING VALUES CLEANING (-1 ENCODING)
+2025-07-19 12:18:26,742 - INFO - ============================================================
+2025-07-19 12:18:26,743 - INFO - 🔍 Loading PACKET dataset...
+2025-07-19 12:18:27,600 - INFO -   Original: 266,986 rows × 16 columns
+2025-07-19 12:18:27,600 - INFO -   Original memory: 111.3 MB
+2025-07-19 12:18:29,688 - INFO -   📁 Backup created: packet_dataset.csv.backup_missing
+2025-07-19 12:18:29,688 - INFO - 
+📊 Pre-cleaning missing value analysis:
+2025-07-19 12:18:29,699 - INFO -   tcp_flags: 70,262 missing (26.32%)
+2025-07-19 12:18:29,706 - INFO -   ip_flags: 161,845 missing (60.62%)
+2025-07-19 12:18:29,707 - INFO -   src_port: 49,246 missing (18.45%)
+2025-07-19 12:18:29,708 - INFO -   dst_port: 49,246 missing (18.45%)
+2025-07-19 12:18:29,708 - INFO -   Total missing values: 330,599
+2025-07-19 12:18:29,708 - INFO - 
+🔧 Applying -1 encoding...
+2025-07-19 12:18:29,745 - INFO -   tcp_flags: 70,262 → 0 missing (filled with '-1')
+2025-07-19 12:18:29,784 - INFO -   ip_flags: 161,845 → 0 missing (filled with '-1')
+2025-07-19 12:18:29,787 - INFO -   src_port: 49,246 → 0 missing (filled with -1)
+2025-07-19 12:18:29,790 - INFO -   dst_port: 49,246 → 0 missing (filled with -1)
+2025-07-19 12:18:29,791 - INFO - 
+✅ Verification:
+2025-07-19 12:18:29,862 - INFO -   Total missing values remaining: 0
+2025-07-19 12:18:29,863 - INFO -   ✅ All missing values successfully encoded as -1
+2025-07-19 12:18:29,863 - INFO - 
+📋 Post-encoding value analysis:
+2025-07-19 12:18:29,889 - INFO -   tcp_flags: 70,262 '-1' values, 7 unique values total
+2025-07-19 12:18:29,916 - INFO -   ip_flags: 161,845 '-1' values, 2 unique values total
+2025-07-19 12:18:29,955 - INFO -   src_port: 49,246 -1 values, valid range: 20 - 65535
+2025-07-19 12:18:29,980 - INFO -   dst_port: 49,246 -1 values, valid range: 21 - 65534
+2025-07-19 12:18:30,335 - INFO - 
+💾 Memory usage:
+2025-07-19 12:18:30,336 - INFO -   Original: 111.3 MB
+2025-07-19 12:18:30,336 - INFO -   Final: 115.5 MB
+2025-07-19 12:18:30,336 - INFO -   Change: +4.2 MB
+2025-07-19 12:18:30,336 - INFO - 
+💾 Saving cleaned dataset...
+2025-07-19 12:18:32,178 - INFO -   ✅ Cleaned dataset saved: packet_dataset.csv
+2025-07-19 12:18:32,178 - INFO - 
+🔬 Protocol-specific validation:
+2025-07-19 12:18:32,188 - INFO -   ICMP packets (49,246): 49,246 have tcp_flags='-1', 49,246 have ports=-1
+2025-07-19 12:18:32,223 - INFO -   TCP packets (196,724): 196,724 have valid tcp_flags, 196,724 have valid ports
+2025-07-19 12:18:32,229 - INFO -   UDP packets (21,016): 21,016 have tcp_flags='-1', 21,016 have valid ports
+2025-07-19 12:18:32,230 - INFO - 
+📊 CLEANING SUMMARY:
+2025-07-19 12:18:32,230 - INFO -   Total missing values encoded: 330,599
+2025-07-19 12:18:32,230 - INFO -   Records processed: 266,986
+2025-07-19 12:18:32,230 - INFO -   Data preservation: 100% (no records lost)
+2025-07-19 12:18:32,231 - INFO -   Missing value encoding: -1 for optimal ML compatibility
+2025-07-19 12:18:32,231 - INFO -   Protocol compliance: Preserved (missing values indicate protocol-appropriate behavior)
+2025-07-19 12:18:32,246 - INFO - 
+🎉 PACKET dataset cleaning completed successfully!
+2025-07-19 12:18:32,246 - INFO -    All missing values encoded as -1 for optimal ML training

@@ -1,0 +1,78 @@
+2025-07-19 10:54:39,387 - INFO - ============================================================
+2025-07-19 10:54:39,388 - INFO - DATASET COMBINATION STARTED
+2025-07-19 10:54:39,388 - INFO - ============================================================
+2025-07-19 10:54:39,395 - INFO - Found 6 dataset directories:
+2025-07-19 10:54:39,396 - INFO -   - 1607-1
+2025-07-19 10:54:39,396 - INFO -   - 1607-2
+2025-07-19 10:54:39,396 - INFO -   - 1707-1
+2025-07-19 10:54:39,396 - INFO -   - 1707-2
+2025-07-19 10:54:39,396 - INFO -   - 1807-1
+2025-07-19 10:54:39,396 - INFO -   - 1907-1
+2025-07-19 10:54:39,397 - INFO - 
+==================================================
+2025-07-19 10:54:39,399 - INFO - Combining packet_features.csv files into packet_dataset.csv
+2025-07-19 10:54:39,483 - INFO -   1607-1: 44,597 records loaded
+2025-07-19 10:54:39,558 - INFO -   1607-2: 44,720 records loaded
+2025-07-19 10:54:39,629 - INFO -   1707-1: 44,752 records loaded
+2025-07-19 10:54:39,705 - INFO -   1707-2: 44,404 records loaded
+2025-07-19 10:54:39,778 - INFO -   1807-1: 44,831 records loaded
+2025-07-19 10:54:39,857 - INFO -   1907-1: 44,547 records loaded
+2025-07-19 10:54:41,683 - INFO -   Combined dataset saved: packet_dataset.csv
+2025-07-19 10:54:41,683 - INFO -   Total records: 267,851
+2025-07-19 10:54:41,683 - INFO -   Final shape: (267851, 16)
+2025-07-19 10:54:41,697 - INFO -   Dataset distribution:
+2025-07-19 10:54:41,698 - INFO -     1607-1: 44,597 records
+2025-07-19 10:54:41,698 - INFO -     1607-2: 44,720 records
+2025-07-19 10:54:41,698 - INFO -     1707-1: 44,752 records
+2025-07-19 10:54:41,698 - INFO -     1707-2: 44,404 records
+2025-07-19 10:54:41,698 - INFO -     1807-1: 44,831 records
+2025-07-19 10:54:41,699 - INFO -     1907-1: 44,547 records
+2025-07-19 10:54:41,706 - INFO - 
+==================================================
+2025-07-19 10:54:41,706 - INFO - Combining flow_features.csv files into flow_dataset.csv
+2025-07-19 10:54:43,240 - INFO -   1607-1: 674,777 records loaded
+2025-07-19 10:54:44,694 - INFO -   1607-2: 675,459 records loaded
+2025-07-19 10:54:46,166 - INFO -   1707-1: 676,110 records loaded
+2025-07-19 10:54:47,521 - INFO -   1707-2: 673,785 records loaded
+2025-07-19 10:54:48,959 - INFO -   1807-1: 677,660 records loaded
+2025-07-19 10:54:50,319 - INFO -   1907-1: 675,893 records loaded
+2025-07-19 10:55:39,952 - INFO -   Combined dataset saved: flow_dataset.csv
+2025-07-19 10:55:39,952 - INFO -   Total records: 4,053,684
+2025-07-19 10:55:39,953 - INFO -   Final shape: (4053684, 19)
+2025-07-19 10:55:40,128 - INFO -   Dataset distribution:
+2025-07-19 10:55:40,129 - INFO -     1607-1: 674,777 records
+2025-07-19 10:55:40,129 - INFO -     1607-2: 675,459 records
+2025-07-19 10:55:40,129 - INFO -     1707-1: 676,110 records
+2025-07-19 10:55:40,129 - INFO -     1707-2: 673,785 records
+2025-07-19 10:55:40,130 - INFO -     1807-1: 677,660 records
+2025-07-19 10:55:40,130 - INFO -     1907-1: 675,893 records
+2025-07-19 10:55:40,212 - INFO - 
+==================================================
+2025-07-19 10:55:40,212 - INFO - Combining cicflow_features_all.csv files into cicflow_dataset.csv
+2025-07-19 10:55:40,280 - INFO -   1607-1: 8,564 records loaded
+2025-07-19 10:55:40,351 - INFO -   1607-2: 8,572 records loaded
+2025-07-19 10:55:40,419 - INFO -   1707-1: 8,664 records loaded
+2025-07-19 10:55:40,486 - INFO -   1707-2: 8,446 records loaded
+2025-07-19 10:55:40,555 - INFO -   1807-1: 8,634 records loaded
+2025-07-19 10:55:40,625 - INFO -   1907-1: 8,547 records loaded
+2025-07-19 10:55:44,072 - INFO -   Combined dataset saved: cicflow_dataset.csv
+2025-07-19 10:55:44,073 - INFO -   Total records: 51,427
+2025-07-19 10:55:44,073 - INFO -   Final shape: (51427, 86)
+2025-07-19 10:55:44,076 - INFO -   Dataset distribution:
+2025-07-19 10:55:44,077 - INFO -     1607-1: 8,564 records
+2025-07-19 10:55:44,077 - INFO -     1607-2: 8,572 records
+2025-07-19 10:55:44,077 - INFO -     1707-1: 8,664 records
+2025-07-19 10:55:44,078 - INFO -     1707-2: 8,446 records
+2025-07-19 10:55:44,078 - INFO -     1807-1: 8,634 records
+2025-07-19 10:55:44,078 - INFO -     1907-1: 8,547 records
+2025-07-19 10:55:44,080 - INFO - 
+============================================================
+2025-07-19 10:55:44,080 - INFO - DATASET COMBINATION SUMMARY
+2025-07-19 10:55:44,080 - INFO - ============================================================
+2025-07-19 10:55:44,081 - INFO - ✅ packet_dataset.csv: 267,851 records, shape (267851, 16)
+2025-07-19 10:55:44,081 - INFO - ✅ flow_dataset.csv: 4,053,684 records, shape (4053684, 19)
+2025-07-19 10:55:44,081 - INFO - ✅ cicflow_dataset.csv: 51,427 records, shape (51427, 86)
+2025-07-19 10:55:44,082 - INFO - 
+Total files created: 3/3
+2025-07-19 10:55:44,082 - INFO - Total records combined: 4,372,962
+2025-07-19 10:55:44,082 - INFO - 🎉 All datasets combined successfully!

@@ -1,0 +1,87 @@
+2025-07-19 10:44:12,781 - INFO - Logging to file: fix_timeline_integrity.log
+2025-07-19 10:44:12,781 - INFO - ============================================================
+2025-07-19 10:44:12,781 - INFO - TIMELINE INTEGRITY FIX STARTED
+2025-07-19 10:44:12,782 - INFO - ============================================================
+2025-07-19 10:44:12,783 - INFO - Found 1 dataset directories to process:
+2025-07-19 10:44:12,783 - INFO -   - 1907-1
+2025-07-19 10:44:12,783 - INFO - 
+============================================================
+2025-07-19 10:44:12,783 - INFO - PROCESSING DATASET: 1907-1
+2025-07-19 10:44:12,783 - INFO - ============================================================
+2025-07-19 10:44:12,784 - INFO - Processing dataset: 1907-1
+2025-07-19 10:44:12,786 - INFO - Backup already exists: packet_features.csv.backup_raw
+2025-07-19 10:44:12,788 - INFO - Backup already exists: flow_features.csv.backup_raw
+2025-07-19 10:44:12,841 - INFO - Created backup: cicflow_features_all.csv.backup_raw
+2025-07-19 10:44:12,841 - INFO - Created 1 backup files
+2025-07-19 10:44:12,883 - INFO - Found 7 timeline windows:
+2025-07-19 10:44:12,883 - INFO -   normal: 23:25:00 - 00:25:00 (3600s)
+2025-07-19 10:44:12,884 - INFO -   syn_flood: 00:25:00 - 00:30:00 (300s)
+2025-07-19 10:44:12,884 - INFO -   udp_flood: 00:30:07 - 00:35:07 (300s)
+2025-07-19 10:44:12,884 - INFO -   icmp_flood: 00:35:12 - 00:40:12 (300s)
+2025-07-19 10:44:12,884 - INFO -   ad_syn: 00:40:16 - 02:40:16 (7200s)
+2025-07-19 10:44:12,884 - INFO -   ad_udp: 02:40:29 - 04:00:29 (4800s)
+2025-07-19 10:44:12,885 - INFO -   ad_slow: 04:00:43 - 06:00:43 (7200s)
+2025-07-19 10:44:12,886 - INFO - Processing: packet_features.csv
+2025-07-19 10:44:12,961 - INFO - Loaded 44547 records
+2025-07-19 10:44:12,962 - INFO - Data type: packet_level
+2025-07-19 10:44:12,962 - INFO - Filtering records to timeline boundaries...
+2025-07-19 10:44:12,985 - INFO - Deleted 0 records outside timeline
+2025-07-19 10:44:12,986 - INFO - Processing labels - fixing only 'unknown' labels...
+2025-07-19 10:44:14,536 - INFO - Label fixes applied: 0
+2025-07-19 10:44:14,537 - INFO -   Unknown labels fixed: 0
+2025-07-19 10:44:14,537 - INFO -   Existing labels preserved (no mismatched label changes)
+2025-07-19 10:44:14,877 - INFO - Saved processed file: 44547 -> 44547 records
+2025-07-19 10:44:14,879 - INFO - Final label distribution:
+2025-07-19 10:44:14,880 - INFO -   normal: 24116 records
+2025-07-19 10:44:14,880 - INFO -   syn_flood: 5597 records
+2025-07-19 10:44:14,880 - INFO -   icmp_flood: 5516 records
+2025-07-19 10:44:14,880 - INFO -   udp_flood: 3352 records
+2025-07-19 10:44:14,881 - INFO -   ad_slow: 2438 records
+2025-07-19 10:44:14,881 - INFO -   ad_udp: 1824 records
+2025-07-19 10:44:14,881 - INFO -   ad_syn: 1197 records
+2025-07-19 10:44:14,881 - INFO -   unknown: 507 records
+2025-07-19 10:44:14,887 - INFO - Processing: flow_features.csv
+2025-07-19 10:44:16,466 - INFO - Loaded 675893 records
+2025-07-19 10:44:16,466 - INFO - Data type: sdn_flow
+2025-07-19 10:44:16,467 - INFO - Filtering records to timeline boundaries...
+2025-07-19 10:44:16,985 - INFO - Deleted 0 records outside timeline
+2025-07-19 10:44:16,985 - INFO - Processing labels - fixing only 'unknown' labels...
+2025-07-19 10:44:44,972 - INFO - Label fixes applied: 0
+2025-07-19 10:44:44,973 - INFO -   Unknown labels fixed: 0
+2025-07-19 10:44:44,973 - INFO -   Existing labels preserved (no mismatched label changes)
+2025-07-19 10:44:53,581 - INFO - Saved processed file: 675893 -> 675893 records
+2025-07-19 10:44:53,617 - INFO - Final label distribution:
+2025-07-19 10:44:53,617 - INFO -   ad_slow: 204755 records
+2025-07-19 10:44:53,618 - INFO -   ad_syn: 198462 records
+2025-07-19 10:44:53,618 - INFO -   ad_udp: 133300 records
+2025-07-19 10:44:53,618 - INFO -   normal: 111197 records
+2025-07-19 10:44:53,618 - INFO -   udp_flood: 9455 records
+2025-07-19 10:44:53,618 - INFO -   syn_flood: 9362 records
+2025-07-19 10:44:53,619 - INFO -   icmp_flood: 9362 records
+2025-07-19 10:44:53,852 - INFO - Processing: cicflow_features_all.csv
+2025-07-19 10:44:53,941 - INFO - Loaded 8547 records
+2025-07-19 10:44:53,941 - INFO - Data type: network_flow
+2025-07-19 10:44:53,941 - INFO - Converting timestamp column from string to numeric...
+2025-07-19 10:44:54,010 - INFO - Filtering records to timeline boundaries...
+2025-07-19 10:44:54,019 - INFO - Deleted 0 records outside timeline
+2025-07-19 10:44:54,019 - INFO - Processing labels - fixing only 'unknown' labels...
+2025-07-19 10:44:54,423 - INFO - Label fixes applied: 0
+2025-07-19 10:44:54,423 - INFO -   Unknown labels fixed: 0
+2025-07-19 10:44:54,423 - INFO -   Existing labels preserved (no mismatched label changes)
+2025-07-19 10:44:54,849 - INFO - Saved processed file: 8547 -> 8547 records
+2025-07-19 10:44:54,850 - INFO - Final label distribution:
+2025-07-19 10:44:54,850 - INFO -   normal: 1878 records
+2025-07-19 10:44:54,851 - INFO -   syn_flood: 1385 records
+2025-07-19 10:44:54,851 - INFO -   icmp_flood: 1370 records
+2025-07-19 10:44:54,851 - INFO -   udp_flood: 1360 records
+2025-07-19 10:44:54,851 - INFO -   ad_syn: 1198 records
+2025-07-19 10:44:54,852 - INFO -   ad_slow: 697 records
+2025-07-19 10:44:54,852 - INFO -   ad_udp: 659 records
+2025-07-19 10:44:54,856 - INFO - Successfully processed 3/3 CSV files
+2025-07-19 10:44:54,861 - INFO - ✅ Dataset 1907-1 completed successfully
+2025-07-19 10:44:54,861 - INFO - 
+============================================================
+2025-07-19 10:44:54,861 - INFO - TIMELINE INTEGRITY PROCESSING SUMMARY
+2025-07-19 10:44:54,861 - INFO - ============================================================
+2025-07-19 10:44:54,862 - INFO - Total datasets processed: 1/1
+2025-07-19 10:44:54,862 - INFO - 🎉 All datasets processed successfully!

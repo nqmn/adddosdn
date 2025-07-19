@@ -1,0 +1,53 @@
+2025-07-19 11:16:03,435 - INFO - ============================================================
+2025-07-19 11:16:03,435 - INFO - DUPLICATE REMOVAL STARTED
+2025-07-19 11:16:03,435 - INFO - ============================================================
+2025-07-19 11:16:03,436 - INFO - 
+==================================================
+2025-07-19 11:16:03,437 - INFO - Processing packet_dataset.csv...
+2025-07-19 11:16:03,886 - INFO -   Original records: 267,851
+2025-07-19 11:16:04,005 - INFO -   Duplicates found: 865
+2025-07-19 11:16:05,767 - INFO -   📁 Backup created: packet_dataset.csv.backup_duplicates
+2025-07-19 11:16:07,695 - INFO -   ✅ Cleaned records: 266,986
+2025-07-19 11:16:07,695 - INFO -   🗑️  Removed duplicates: 865
+2025-07-19 11:16:07,696 - INFO -   💾 Updated file: packet_dataset.csv
+2025-07-19 11:16:08,244 - INFO -   ✅ Verification passed - no duplicates remain
+2025-07-19 11:16:08,260 - INFO - 
+==================================================
+2025-07-19 11:16:08,260 - INFO - Processing flow_dataset.csv...
+2025-07-19 11:16:18,810 - INFO -   Original records: 4,053,684
+2025-07-19 11:16:21,657 - INFO -   Duplicates found: 0
+2025-07-19 11:16:21,657 - INFO -   ✅ No duplicates found - skipping flow_dataset.csv
+2025-07-19 11:16:21,693 - INFO - 
+==================================================
+2025-07-19 11:16:21,693 - INFO - Processing cicflow_dataset.csv...
+2025-07-19 11:16:22,247 - INFO -   Original records: 51,427
+2025-07-19 11:16:22,322 - INFO -   Duplicates found: 1,776
+2025-07-19 11:16:24,735 - INFO -   📁 Backup created: cicflow_dataset.csv.backup_duplicates
+2025-07-19 11:16:27,014 - INFO -   ✅ Cleaned records: 49,651
+2025-07-19 11:16:27,014 - INFO -   🗑️  Removed duplicates: 1,776
+2025-07-19 11:16:27,014 - INFO -   💾 Updated file: cicflow_dataset.csv
+2025-07-19 11:16:27,463 - INFO -   ✅ Verification passed - no duplicates remain
+2025-07-19 11:16:27,468 - INFO - 
+============================================================
+2025-07-19 11:16:27,468 - INFO - DUPLICATE REMOVAL SUMMARY
+2025-07-19 11:16:27,468 - INFO - ============================================================
+2025-07-19 11:16:27,468 - INFO - ✅ packet_dataset.csv:
+2025-07-19 11:16:27,469 - INFO -    Original: 267,851
+2025-07-19 11:16:27,469 - INFO -    Cleaned:  266,986
+2025-07-19 11:16:27,469 - INFO -    Removed:  865
+2025-07-19 11:16:27,469 - INFO - ✅ flow_dataset.csv:
+2025-07-19 11:16:27,470 - INFO -    Original: 4,053,684
+2025-07-19 11:16:27,470 - INFO -    Cleaned:  4,053,684
+2025-07-19 11:16:27,470 - INFO -    Removed:  0
+2025-07-19 11:16:27,470 - INFO - ✅ cicflow_dataset.csv:
+2025-07-19 11:16:27,470 - INFO -    Original: 51,427
+2025-07-19 11:16:27,471 - INFO -    Cleaned:  49,651
+2025-07-19 11:16:27,471 - INFO -    Removed:  1,776
+2025-07-19 11:16:27,471 - INFO - 
+📊 TOTALS:
+2025-07-19 11:16:27,471 - INFO -    Files processed: 3/3
+2025-07-19 11:16:27,471 - INFO -    Original records: 4,372,962
+2025-07-19 11:16:27,472 - INFO -    Cleaned records:  4,370,321
+2025-07-19 11:16:27,472 - INFO -    Total removed:    2,641
+2025-07-19 11:16:27,472 - INFO -    Data reduction:   0.06%
+2025-07-19 11:16:27,472 - INFO - 🎉 All datasets cleaned successfully!

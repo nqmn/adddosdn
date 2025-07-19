@@ -4,4 +4,8 @@
 # Ignore the CLAUDE.md file
 CLAUDE.md
 
+claude*
+
 *.old
+
+venv/

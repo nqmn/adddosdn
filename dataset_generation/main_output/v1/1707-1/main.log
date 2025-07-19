@@ -1,0 +1,199 @@
+2025-07-16 23:51:45 - [MAIN] - INFO - Cleaning up any previous Mininet instances...
+2025-07-16 23:51:46 - [MAIN] - INFO - Mininet cleanup complete.
+2025-07-16 23:51:46,564 - __main__ - INFO - Verifying required tools...
+2025-07-16 23:51:46,814 - __main__ - INFO - TShark version: Running as user "root" and group "root". This could be dangerous.
+2025-07-16 23:51:46,814 - __main__ - INFO - All required tools are available.
+2025-07-16 23:51:46 - [MAIN] - INFO - Using configuration file: /home/user/Desktop/dataset_generation/config.json
+2025-07-16 23:51:46,815 - __main__ - INFO - Starting Ryu SDN controller...
+2025-07-16 23:51:46,821 - __main__ - INFO - Ryu controller started with PID: 113777. See main_output/ryu.log for logs.
+2025-07-16 23:51:46,821 - __main__ - INFO - Checking for controller on port 6653 (timeout: 30s)...
+2025-07-16 23:51:47,840 - __main__ - INFO - Controller is up and listening.
+2025-07-16 23:51:47 - [MAIN] - INFO - Testing /hello endpoint...
+2025-07-16 23:51:47 - [MAIN] - INFO - Test /hello endpoint: PASSED
+2025-07-16 23:51:47,847 - __main__ - INFO - Setting up Mininet topology...
+2025-07-16 23:51:48,102 - __main__ - INFO - Mininet version: 
+2025-07-16 23:51:48,110 - __main__ - INFO - Connecting to remote controller at 127.0.0.1:6653
+2025-07-16 23:51:50,391 - __main__ - INFO - Mininet network started successfully.
+2025-07-16 23:51:50,391 - __main__ - INFO - Running Mininet pingall test...
+2025-07-16 23:51:55,481 - __main__ - INFO - Mininet pingall test completed successfully. Packet loss: 0.0%
+2025-07-16 23:51:55,481 - __main__ - INFO - Starting traffic generation scenario...
+2025-07-16 23:51:55,482 - __main__ - INFO - Phase 1: Initialization (5s)...
+2025-07-16 23:52:00,490 - __main__ - INFO - Starting flow statistics collection for 23825 seconds...
+2025-07-16 23:52:00,490 - __main__ - INFO - Flow statistics collection started in background.
+2025-07-16 23:52:00,492 - __main__ - INFO - Phase 2: Normal Traffic (3600s)...
+2025-07-16 23:52:00,492 - __main__ - INFO - Timeline updated: normal phase started at 1752681120.4926665
+2025-07-17 00:52:06,893 - __main__ - INFO - Stopping packet capture (PID: 114043)...
+2025-07-17 00:52:06,979 - __main__ - INFO - Packet capture stopped.
+2025-07-17 00:52:06,980 - __main__ - INFO - Phase 3.1: Enhanced Traditional DDoS Attacks...
+2025-07-17 00:52:06,980 - __main__ - INFO - Timeline updated: syn_flood phase started at 1752684726.980153
+2025-07-17 00:57:11,544 - __main__ - INFO - Stopping packet capture (PID: 7614)...
+2025-07-17 00:57:11,630 - __main__ - INFO - Packet capture stopped.
+2025-07-17 00:57:11,630 - __main__ - INFO - Timeline updated: udp_flood phase started at 1752685031.6307085
+2025-07-17 01:02:19,163 - __main__ - INFO - Stopping packet capture (PID: 7630)...
+2025-07-17 01:02:19,220 - __main__ - INFO - Packet capture stopped.
+2025-07-17 01:02:19,220 - __main__ - INFO - Timeline updated: icmp_flood phase started at 1752685339.2206974
+2025-07-17 01:07:23,818 - __main__ - INFO - Stopping packet capture (PID: 7655)...
+2025-07-17 01:07:23,906 - __main__ - INFO - Packet capture stopped.
+2025-07-17 01:07:23,906 - __main__ - INFO - Phase 3.2: Adversarial DDoS Attacks...
+2025-07-17 01:07:23,906 - __main__ - INFO - Timeline updated: ad_syn phase started at 1752685643.9069738
+2025-07-17 03:07:37,952 - __main__ - INFO - Stopping packet capture (PID: 7672)...
+2025-07-17 03:07:38,023 - __main__ - INFO - Packet capture stopped.
+2025-07-17 03:07:38,024 - __main__ - INFO - Timeline updated: ad_udp phase started at 1752692858.024108
+2025-07-17 04:27:55,374 - __main__ - INFO - Stopping packet capture (PID: 8305)...
+2025-07-17 04:27:55,414 - __main__ - INFO - Packet capture stopped.
+2025-07-17 04:27:55,414 - __main__ - INFO - Timeline updated: ad_slow phase started at 1752697675.4144433
+2025-07-17 04:28:01,584 - __main__ - INFO - Proceeding with adversarial slow attack (no HTTP server required)
+2025-07-17 04:28:01,585 - __main__ - INFO - Attack traffic will be captured via h6_slow_read.pcap and ad_slow.pcap
+2025-07-17 06:28:13,593 - __main__ - INFO - Stopping packet capture (PID: 8723)...
+2025-07-17 06:28:13,667 - __main__ - INFO - Packet capture stopped.
+2025-07-17 06:28:13,667 - __main__ - INFO - Stopping packet capture (PID: 8722)...
+2025-07-17 06:28:13,739 - __main__ - INFO - Packet capture stopped.
+2025-07-17 06:28:13,739 - __main__ - INFO - Analyzing main_output/h6_slow_read.pcap for TCP issues...
+2025-07-17 06:28:13,740 - __main__ - INFO - TCP Analysis on h6 PCAP: RST Count = 0, Retransmission Count = 0
+2025-07-17 06:28:13,740 - __main__ - WARNING - Inter-Packet Arrival Time analysis failed for h6 PCAP: Not enough packets
+2025-07-17 06:28:13,740 - __main__ - INFO - No HTTP server cleanup required.
+2025-07-17 06:28:13,740 - __main__ - INFO - Phase 4: Cooldown (5s)...
+2025-07-17 06:28:13,740 - __main__ - INFO - Timeline updated: normal phase started at 1752704893.7409682
+2025-07-17 06:28:18,747 - __main__ - INFO - Signaling flow collection thread to stop...
+2025-07-17 06:28:18,747 - __main__ - INFO - Waiting for flow collection thread to finish...
+2025-07-17 06:28:19,522 - __main__ - INFO - Flow collection received stop signal, ending gracefully.
+2025-07-17 06:28:19,523 - __main__ - INFO - Flow timeline collection completed.
+2025-07-17 06:28:28,971 - __main__ - INFO - Flow statistics saved to main_output/flow_features.csv
+2025-07-17 06:28:29,547 - __main__ - INFO - Flow collection thread finished successfully
+2025-07-17 06:28:29,548 - __main__ - INFO - ============================================================
+2025-07-17 06:28:29,548 - __main__ - INFO - COMPREHENSIVE TIMING SUMMARY
+2025-07-17 06:28:29,548 - __main__ - INFO - ============================================================
+2025-07-17 06:28:29,548 - __main__ - INFO - Configuration File: /home/user/Desktop/dataset_generation/config.json
+2025-07-17 06:28:29,548 - __main__ - INFO - 
+2025-07-17 06:28:29,548 - __main__ - INFO - Total Scenario Runtime: 23794.07 seconds (396.57 minutes)
+2025-07-17 06:28:29,548 - __main__ - INFO - 
+2025-07-17 06:28:29,548 - __main__ - INFO - Phase-by-Phase Breakdown:
+2025-07-17 06:28:29,548 - __main__ - INFO -   Normal Traffic: 3606.49s (configured: 3600s)
+2025-07-17 06:28:29,548 - __main__ - INFO -   Enhanced Traditional Attacks:
+2025-07-17 06:28:29,548 - __main__ - INFO -     Enhanced Syn Flood: 304.65s (configured: 300s)
+2025-07-17 06:28:29,548 - __main__ - INFO -     Enhanced Udp Flood: 307.59s (configured: 300s)
+2025-07-17 06:28:29,548 - __main__ - INFO -     Enhanced Icmp Flood: 304.69s (configured: 300s)
+2025-07-17 06:28:29,548 - __main__ - INFO -   Adversarial Attacks:
+2025-07-17 06:28:29,548 - __main__ - INFO -     TCP State Exhaustion: 7214.12s (configured: 7200s)
+2025-07-17 06:28:29,548 - __main__ - INFO -     Application Layer: 4817.39s (configured: 4800s)
+2025-07-17 06:28:29,549 - __main__ - INFO -     Slow Read: 7218.33s (configured: 7200s)
+2025-07-17 06:28:29,549 - __main__ - INFO -   Initialization: 5.01s (configured: 5s)
+2025-07-17 06:28:29,549 - __main__ - INFO -   Cooldown: 5.01s (configured: 5s)
+2025-07-17 06:28:29,549 - __main__ - INFO - ============================================================
+2025-07-17 06:28:29,549 - __main__ - INFO - Traffic generation scenario finished.
+2025-07-17 06:28:29 - [MAIN] - INFO - PCAP generation complete.
+2025-07-17 06:28:29 - [MAIN] - INFO - Processing 8 PCAP files using 4 CPU cores...
+2025-07-17 06:28:29,550 - __main__ - INFO - Starting parallel PCAP processing with 4 workers...
+2025-07-17 06:28:48,217 - __main__ - INFO - ✓ Completed processing normal.pcap (24084 records)
+2025-07-17 06:28:48,217 - __main__ - INFO - ✓ Completed processing syn_flood.pcap (5601 records)
+2025-07-17 06:28:48,217 - __main__ - INFO - ✓ Completed processing udp_flood.pcap (3410 records)
+2025-07-17 06:28:48,217 - __main__ - INFO - ✓ Completed processing icmp_flood.pcap (5600 records)
+2025-07-17 06:28:48,217 - __main__ - INFO - ✓ Completed processing ad_syn.pcap (1256 records)
+2025-07-17 06:28:48,217 - __main__ - INFO - ✓ Completed processing ad_udp.pcap (2058 records)
+2025-07-17 06:28:48,217 - __main__ - INFO - ✓ Completed processing ad_slow.pcap (2743 records)
+2025-07-17 06:28:48,217 - __main__ - INFO - ✓ Completed processing h6_slow_read.pcap (0 records)
+2025-07-17 06:28:48,254 - __main__ - INFO - Parallel PCAP processing completed. Processed 8 files successfully.
+2025-07-17 06:28:48 - [MAIN] - INFO - Parallel PCAP processing completed in 18.70 seconds (0.31 minutes)
+2025-07-17 06:28:48 - [MAIN] - INFO - Combined labeled CSV generated at: main_output/packet_features.csv
+2025-07-17 06:28:48 - [MAIN] - INFO - Final combined CSV created successfully.
+2025-07-17 06:28:48 - [MAIN] - INFO - 
+--- Packet Feature Counts by Class ---
+2025-07-17 06:28:48 - [MAIN] - INFO -   normal: 24076 packets
+2025-07-17 06:28:48 - [MAIN] - INFO -   syn_flood: 5601 packets
+2025-07-17 06:28:48 - [MAIN] - INFO -   icmp_flood: 5600 packets
+2025-07-17 06:28:48 - [MAIN] - INFO -   udp_flood: 3410 packets
+2025-07-17 06:28:48 - [MAIN] - INFO -   unknown: 2520 packets
+2025-07-17 06:28:48 - [MAIN] - INFO -   ad_udp: 1543 packets
+2025-07-17 06:28:48 - [MAIN] - INFO -   ad_slow: 1374 packets
+2025-07-17 06:28:48 - [MAIN] - INFO -   ad_syn: 628 packets
+2025-07-17 06:28:48 - [MAIN] - INFO - Flow-level dataset generated at: main_output/flow_features.csv
+2025-07-17 06:28:49 - [MAIN] - INFO - 
+--- Flow Feature Counts by Class ---
+2025-07-17 06:28:49 - [MAIN] - INFO -   ad_slow: 204631 flows
+2025-07-17 06:28:49 - [MAIN] - INFO -   ad_syn: 197966 flows
+2025-07-17 06:28:49 - [MAIN] - INFO -   ad_udp: 134013 flows
+2025-07-17 06:28:49 - [MAIN] - INFO -   normal: 111290 flows
+2025-07-17 06:28:49 - [MAIN] - INFO -   udp_flood: 9455 flows
+2025-07-17 06:28:49 - [MAIN] - INFO -   icmp_flood: 9393 flows
+2025-07-17 06:28:49 - [MAIN] - INFO -   syn_flood: 9362 flows
+2025-07-17 06:28:49 - [MAIN] - INFO - Generating dataset summary...
+2025-07-17 06:28:50 - [MAIN] - INFO - Dataset generation summary displayed above
+2025-07-17 06:28:50 - [MAIN] - INFO - Running timeline analysis...
+2025-07-17 06:28:50 - [MAIN] - INFO - Starting timeline analysis...
+2025-07-17 06:28:51 - [MAIN] - INFO - Timeline Analysis Results:
+2025-07-17 06:28:51 - [MAIN] - INFO -   Total attack types: 8
+2025-07-17 06:28:51 - [MAIN] - INFO -   Good alignment: 3
+2025-07-17 06:28:51 - [MAIN] - INFO -   Overall score: 37.5%
+2025-07-17 06:28:51 - [MAIN] - INFO -   Status: ❌ POOR: Timeline alignment has major issues that need fixing.
+2025-07-17 06:28:51 - [MAIN] - WARNING - Missing in flow data: unknown
+2025-07-17 06:28:51 - [MAIN] - WARNING - Poor alignment: ad_slow, ad_syn, ad_udp, normal
+2025-07-17 06:28:51 - [MAIN] - INFO - 
+================================================================================
+2025-07-17 06:28:51 - [MAIN] - INFO - 📊 DETAILED TIMELINE ANALYSIS REPORT
+2025-07-17 06:28:51 - [MAIN] - INFO - ================================================================================
+2025-07-17 06:28:51 - [MAIN] - INFO - Attack Type     Packet Timeline           Flow Timeline             Overlap    Status              
+2025-07-17 06:28:51 - [MAIN] - INFO - ----------------------------------------------------------------------------------------------------
+2025-07-17 06:28:51 - [MAIN] - INFO - ad_slow         3597.8s (1374 entries)    7217.1s (204631 entries)  3597.8s    ⚠️  TIMING OFFSET   
+2025-07-17 06:28:51 - [MAIN] - INFO - ad_syn          3589.0s (628 entries)     7212.4s (197966 entries)  3589.0s    ⚠️  TIMING OFFSET   
+2025-07-17 06:28:51 - [MAIN] - INFO - ad_udp          3590.9s (1543 entries)    4817.3s (134013 entries)  3590.9s    ⚠️  TIMING OFFSET   
+2025-07-17 06:28:51 - [MAIN] - INFO - icmp_flood      296.0s (5600 entries)     304.4s (9393 entries)     296.0s     ✅ EXCELLENT MATCH   
+2025-07-17 06:28:51 - [MAIN] - INFO - normal          3599.6s (24076 entries)   23778.0s (111290 entries) 3599.6s    ⚠️  TIMING OFFSET   
+2025-07-17 06:28:51 - [MAIN] - INFO - syn_flood       297.9s (5601 entries)     303.3s (9362 entries)     297.7s     ✅ EXCELLENT MATCH   
+2025-07-17 06:28:51 - [MAIN] - INFO - udp_flood       299.3s (3410 entries)     306.4s (9455 entries)     299.0s     ✅ EXCELLENT MATCH   
+2025-07-17 06:28:51 - [MAIN] - INFO - unknown         20166.8s (2520 entries)   MISSING                   NONE       ❌ MISSING IN FLOW   
+2025-07-17 06:28:51 - [MAIN] - INFO - 
+================================================================================
+2025-07-17 06:28:51 - [MAIN] - INFO - 🕐 DETAILED TIMING INFORMATION
+2025-07-17 06:28:51 - [MAIN] - INFO - ================================================================================
+2025-07-17 06:28:51 - [MAIN] - INFO - 
+📍 AD_SLOW:
+2025-07-17 06:28:51 - [MAIN] - INFO -    Packet: 04:28:01.586 - 05:27:59.419 (3597.8s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Flow:   04:27:56.372 - 06:28:13.494 (7217.1s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Gap:    Start±5.2s, End±3614.1s
+2025-07-17 06:28:51 - [MAIN] - INFO - 
+📍 AD_SYN:
+2025-07-17 06:28:51 - [MAIN] - INFO -    Packet: 01:07:30.113 - 02:07:19.154 (3589.0s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Flow:   01:07:24.662 - 03:07:37.091 (7212.4s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Gap:    Start±5.5s, End±3617.9s
+2025-07-17 06:28:51 - [MAIN] - INFO - 
+📍 AD_UDP:
+2025-07-17 06:28:51 - [MAIN] - INFO -    Packet: 03:07:42.102 - 04:07:32.953 (3590.9s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Flow:   03:07:38.097 - 04:27:55.366 (4817.3s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Gap:    Start±4.0s, End±1222.4s
+2025-07-17 06:28:51 - [MAIN] - INFO - 
+📍 ICMP_FLOOD:
+2025-07-17 06:28:51 - [MAIN] - INFO -    Packet: 01:02:25.904 - 01:07:21.887 (296.0s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Flow:   01:02:19.260 - 01:07:23.654 (304.4s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Gap:    Start±6.6s, End±1.8s
+2025-07-17 06:28:51 - [MAIN] - INFO - 
+📍 NORMAL:
+2025-07-17 06:28:51 - [MAIN] - INFO -    Packet: 23:52:04.511 - 00:52:04.125 (3599.6s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Flow:   23:52:00.499 - 06:28:18.520 (23778.0s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Gap:    Start±4.0s, End±20174.4s
+2025-07-17 06:28:51 - [MAIN] - INFO - 
+📍 SYN_FLOOD:
+2025-07-17 06:28:51 - [MAIN] - INFO -    Packet: 00:52:13.145 - 00:57:11.037 (297.9s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Flow:   00:52:07.574 - 00:57:10.847 (303.3s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Gap:    Start±5.6s, End±0.2s
+2025-07-17 06:28:51 - [MAIN] - INFO - 
+📍 UDP_FLOOD:
+2025-07-17 06:28:51 - [MAIN] - INFO -    Packet: 00:57:19.221 - 01:02:18.519 (299.3s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Flow:   00:57:11.853 - 01:02:18.252 (306.4s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Gap:    Start±7.4s, End±0.3s
+2025-07-17 06:28:51 - [MAIN] - INFO - 
+📍 UNKNOWN:
+2025-07-17 06:28:51 - [MAIN] - INFO -    Packet: 00:52:04.761 - 06:28:11.515 (20166.8s)
+2025-07-17 06:28:51 - [MAIN] - INFO -    Flow:   MISSING
+2025-07-17 06:28:51 - [MAIN] - INFO - ================================================================================
+2025-07-17 06:28:51 - [MAIN] - INFO - ============================================================
+2025-07-17 06:28:51 - [MAIN] - INFO - FINAL EXECUTION SUMMARY
+2025-07-17 06:28:51 - [MAIN] - INFO - ============================================================
+2025-07-17 06:28:51 - [MAIN] - INFO - Total Execution Time: 23826.64 seconds (397.11 minutes | 6.62 hours)
+2025-07-17 06:28:51 - [MAIN] - INFO - Dataset Generation Complete: 2025-07-17 06:28:51
+2025-07-17 06:28:51 - [MAIN] - INFO - Timeline Alignment Score: 37.5%
+2025-07-17 06:28:51 - [MAIN] - INFO - ❌ Timeline Quality: POOR - Requires attention
+2025-07-17 06:28:51 - [MAIN] - INFO - ============================================================
+2025-07-17 06:28:51,829 - __main__ - INFO - Cleaning up resources...
+2025-07-17 06:28:51,829 - __main__ - INFO - Terminating Ryu controller (PID: 113777)...
+2025-07-17 06:28:51,833 - __main__ - INFO - Cleaning up Mininet environment...
+2025-07-17 06:28:53,462 - __main__ - INFO - Cleanup complete.
