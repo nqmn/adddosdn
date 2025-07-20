@@ -9,10 +9,17 @@ three consolidated datasets:
 - cicflow_dataset.csv (all cicflow_features_all.csv files)
 
 The script adds a 'dataset_id' column to track the source dataset.
+
+Usage:
+    python3 combine_datasets.py [--path PATH]
+    
+Arguments:
+    --path PATH    Path to the dataset directory (default: ../main_output/v2_main)
 """
 
 import pandas as pd
 import os
+import argparse
 import re
 from pathlib import Path
 import logging
@@ -32,12 +39,12 @@ def setup_logging():
 
 def find_dataset_directories(base_path):
     """Find all dataset directories matching the pattern."""
-    main_output_path = Path(base_path) / "main_output"
+    v2_main_path = Path(base_path) / "main_output" / "v2_main"
     datasets = []
     
-    if main_output_path.exists():
-        for item in main_output_path.iterdir():
-            if item.is_dir() and re.match(r'^\d{4}-\d+$', item.name):
+    if v2_main_path.exists():
+        for item in v2_main_path.iterdir():
+            if item.is_dir() and re.match(r'^\d{6}-\d+$', item.name):
                 datasets.append(item)
     
     return sorted(datasets)
@@ -80,7 +87,7 @@ def combine_csv_files(datasets, filename, output_name, logger):
         final_df = pd.concat(combined_data, ignore_index=True)
         
         # Save to output directory
-        output_path = Path("main_output") / output_name
+        output_path = Path("main_output") / "v2_main" / output_name
         final_df.to_csv(output_path, index=False)
         
         logger.info(f"  Combined dataset saved: {output_name}")
@@ -100,63 +107,83 @@ def combine_csv_files(datasets, filename, output_name, logger):
 
 def main():
     """Main function to combine all datasets."""
+    parser = argparse.ArgumentParser(description='Combine individual datasets into unified CSV files')
+    parser.add_argument('--path', default='../main_output/v2_main', 
+                       help='Path to dataset directory (default: ../main_output/v2_main)')
+    args = parser.parse_args()
+    
     logger = setup_logging()
     
     logger.info("=" * 60)
     logger.info("DATASET COMBINATION STARTED")
     logger.info("=" * 60)
     
-    # Find all dataset directories
-    datasets = find_dataset_directories(".")
-    
-    if not datasets:
-        logger.error("No dataset directories found!")
+    # Change to the specified directory
+    dataset_base_path = Path(args.path)
+    if not dataset_base_path.exists():
+        logger.error(f"Dataset path not found: {dataset_base_path}")
         return 1
     
-    logger.info(f"Found {len(datasets)} dataset directories:")
-    for dataset in datasets:
-        logger.info(f"  - {dataset.name}")
+    original_dir = Path.cwd()
+    os.chdir(dataset_base_path)
     
-    # Define the file combinations
-    file_combinations = [
-        ("packet_features.csv", "packet_dataset.csv"),
-        ("flow_features.csv", "flow_dataset.csv"),
-        ("cicflow_features_all.csv", "cicflow_dataset.csv")
-    ]
-    
-    # Combine each type of file
-    results = []
-    total_combined_records = 0
-    
-    for source_filename, output_filename in file_combinations:
-        logger.info(f"\n{'='*50}")
-        success, records, shape = combine_csv_files(datasets, source_filename, output_filename, logger)
-        results.append((output_filename, success, records, shape))
-        if success:
-            total_combined_records += records
-    
-    # Summary
-    logger.info(f"\n{'='*60}")
-    logger.info("DATASET COMBINATION SUMMARY")
-    logger.info(f"{'='*60}")
-    
-    successful_combinations = 0
-    for output_name, success, records, shape in results:
-        if success:
-            successful_combinations += 1
-            logger.info(f"✅ {output_name}: {records:,} records, shape {shape}")
+    try:
+        # Find all dataset directories
+        datasets = find_dataset_directories(".")
+        
+        if not datasets:
+            logger.error("No dataset directories found!")
+            return 1
+        
+        logger.info(f"Found {len(datasets)} dataset directories:")
+        for dataset in datasets:
+            logger.info(f"  - {dataset.name}")
+        
+        # Define the file combinations
+        file_combinations = [
+            ("packet_features.csv", "packet_dataset.csv"),
+            ("flow_features.csv", "flow_dataset.csv"),
+            ("cicflow_features_all.csv", "cicflow_dataset.csv")
+        ]
+        
+        # Combine each type of file
+        results = []
+        total_combined_records = 0
+        
+        for source_filename, output_filename in file_combinations:
+            logger.info(f"\n{'='*50}")
+            logger.info(f"Combining {source_filename} files into {output_filename}")
+            success, records, shape = combine_csv_files(datasets, source_filename, output_filename, logger)
+            results.append((output_filename, success, records, shape))
+            if success:
+                total_combined_records += records
+        
+        # Summary
+        logger.info(f"\n{'='*60}")
+        logger.info("DATASET COMBINATION SUMMARY")
+        logger.info(f"{'='*60}")
+        
+        successful_combinations = 0
+        for output_name, success, records, shape in results:
+            if success:
+                successful_combinations += 1
+                logger.info(f"✅ {output_name}: {records:,} records, shape {shape}")
+            else:
+                logger.error(f"❌ {output_name}: Failed to create")
+        
+        logger.info(f"\nTotal files created: {successful_combinations}/3")
+        logger.info(f"Total records combined: {total_combined_records:,}")
+        
+        if successful_combinations == 3:
+            logger.info("🎉 All datasets combined successfully!")
+            return 0
         else:
-            logger.error(f"❌ {output_name}: Failed to create")
+            logger.error(f"⚠️  {3 - successful_combinations} dataset(s) failed to combine")
+            return 1
     
-    logger.info(f"\nTotal files created: {successful_combinations}/3")
-    logger.info(f"Total records combined: {total_combined_records:,}")
-    
-    if successful_combinations == 3:
-        logger.info("🎉 All datasets combined successfully!")
-        return 0
-    else:
-        logger.error(f"⚠️  {3 - successful_combinations} dataset(s) failed to combine")
-        return 1
+    finally:
+        # Return to original directory
+        os.chdir(original_dir)
 
 if __name__ == "__main__":
     exit(main())

@@ -5,6 +5,12 @@ Analyzes combined CSV datasets for preprocessing issues, missing values,
 infinity values, data types, cross-dataset consistency, and other quality metrics.
 
 Updated to focus on combined datasets: packet_dataset.csv, flow_dataset.csv, cicflow_dataset.csv
+
+Usage:
+    python3 investigate_csv_quality.py [--path PATH]
+    
+Arguments:
+    --path PATH    Path to the dataset directory (default: ../main_output/v2_main)
 """
 
 import os
@@ -13,6 +19,7 @@ import numpy as np
 from pathlib import Path
 import json
 from datetime import datetime
+import argparse
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -853,7 +860,15 @@ class CombinedDatasetInvestigator:
         return report
 
 def main():
-    base_path = Path("main_output")
+    parser = argparse.ArgumentParser(description='Investigate quality of combined CSV datasets')
+    parser.add_argument('--path', default='../main_output/v2_main', 
+                       help='Path to dataset directory (default: ../main_output/v2_main)')
+    args = parser.parse_args()
+    
+    base_path = Path(args.path)
+    if not base_path.exists():
+        print(f"❌ Error: Dataset path not found: {base_path}")
+        return 1
     
     investigator = CombinedDatasetInvestigator(base_path)
     
@@ -870,6 +885,8 @@ def main():
     print("COMBINED DATASETS INVESTIGATION COMPLETE")
     print("="*60)
     print(report)
+    
+    return 0
 
 if __name__ == "__main__":
-    main()
+    exit(main())

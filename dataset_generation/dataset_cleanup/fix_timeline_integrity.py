@@ -73,13 +73,14 @@ def parse_complete_timeline(attack_log_file, logger):
         return timeline_windows
     
     attack_timings = {}
+    traditional_starts = {}  # Track traditional attack start times
     
     try:
         with open(attack_log_file, 'r') as f:
             for line in f:
-                # Parse attack start patterns
-                if 'Starting advanced adversarial attack' in line:
-                    match = re.search(r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}),\d+ - .* - \[([^\]]+)\] Starting advanced adversarial attack .* for (\d+) seconds', line)
+                # Parse adversarial attack start patterns
+                if 'Starting enhanced adversarial attack:' in line:
+                    match = re.search(r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}),\d+ .* Starting enhanced adversarial attack: (\w+) for (\d+)s', line)
                     if match:
                         timestamp_str = match.group(1)
                         attack_type = match.group(2)
@@ -88,8 +89,11 @@ def parse_complete_timeline(attack_log_file, logger):
                         start_time = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S').timestamp()
                         end_time = start_time + duration
                         
+                        # Normalize attack type names
                         if attack_type == 'slow_read':
                             attack_type = 'ad_slow'
+                        elif attack_type not in ['ad_syn', 'ad_udp']:
+                            attack_type = f'ad_{attack_type}'
                         
                         attack_timings[attack_type] = {
                             'start': start_time,
@@ -97,24 +101,67 @@ def parse_complete_timeline(attack_log_file, logger):
                             'duration': duration,
                             'type': 'attack'
                         }
+                        logger.debug(f"Found adversarial attack: {attack_type} ({duration}s)")
+                
+                # Parse traditional attack start patterns
+                elif 'Starting Enhanced' in line and ('SYN Flood' in line or 'UDP Flood' in line or 'ICMP Flood' in line):
+                    match = re.search(r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}),\d+ .* \[([^\]]+)\] .* Starting Enhanced ([A-Z]+) Flood .* for (\d+) seconds', line)
+                    if match:
+                        timestamp_str = match.group(1)
+                        attack_type_bracket = match.group(2)  # This is the attack type in brackets
+                        attack_name = match.group(3).lower()
+                        duration = int(match.group(4))
+                        
+                        start_time = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S').timestamp()
+                        
+                        # Use the attack type from brackets, or map from attack name
+                        if attack_type_bracket in ['syn_flood', 'udp_flood', 'icmp_flood']:
+                            attack_key = attack_type_bracket
+                        else:
+                            # Fallback: map from attack name
+                            type_mapping = {
+                                'syn': 'syn_flood',
+                                'udp': 'udp_flood', 
+                                'icmp': 'icmp_flood'
+                            }
+                            attack_key = type_mapping.get(attack_name, f'{attack_name}_flood')
+                        
+                        traditional_starts[attack_key] = {
+                            'start': start_time,
+                            'duration': duration
+                        }
+                        logger.debug(f"Found traditional attack start: {attack_key} ({duration}s)")
                 
                 # Parse traditional attack completion patterns
                 elif 'Attack completed' in line and 'packets/sec' in line:
-                    match = re.search(r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}),\d+ - .* - \[([^\]]+)\] .* Attack completed', line)
+                    match = re.search(r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}),\d+ .* \[([^\]]+)\] .* Attack completed', line)
                     if match:
                         timestamp_str = match.group(1)
                         attack_type = match.group(2)
                         
                         end_time = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S').timestamp()
-                        start_time = end_time - 300  # Traditional attacks are 300s
                         
                         if attack_type in ['syn_flood', 'udp_flood', 'icmp_flood']:
-                            attack_timings[attack_type] = {
-                                'start': start_time,
-                                'end': end_time,
-                                'duration': 300,
-                                'type': 'attack'
-                            }
+                            # Use actual start time and duration if available
+                            if attack_type in traditional_starts:
+                                start_info = traditional_starts[attack_type]
+                                attack_timings[attack_type] = {
+                                    'start': start_info['start'],
+                                    'end': end_time,
+                                    'duration': start_info['duration'],
+                                    'type': 'attack'
+                                }
+                                logger.debug(f"Completed traditional attack: {attack_type} (actual duration: {start_info['duration']}s)")
+                            else:
+                                # Fallback: assume 75s duration based on investigation
+                                start_time = end_time - 75
+                                attack_timings[attack_type] = {
+                                    'start': start_time,
+                                    'end': end_time,
+                                    'duration': 75,
+                                    'type': 'attack'
+                                }
+                                logger.warning(f"Using fallback timing for {attack_type}: 75s duration")
         
         # Infer normal traffic window (before first attack)
         if attack_timings:
@@ -351,17 +398,17 @@ def main():
     
     # Find datasets to process
     if args.dataset:
-        dataset_path = Path("main_output") / args.dataset
+        dataset_path = Path("main_output") / "v2_main" / args.dataset
         if not dataset_path.exists():
             logger.error(f"Dataset directory not found: {dataset_path}")
             return 1
         datasets = [dataset_path]
     elif args.all:
         datasets = []
-        main_output_path = Path("main_output")
-        if main_output_path.exists():
-            for item in main_output_path.iterdir():
-                if item.is_dir() and re.match(r'^\d{4}-\d+$', item.name):
+        v2_main_path = Path("main_output") / "v2_main"
+        if v2_main_path.exists():
+            for item in v2_main_path.iterdir():
+                if item.is_dir() and re.match(r'^\d{6}-\d+$', item.name):
                     datasets.append(item)
         datasets = sorted(datasets)
     else:

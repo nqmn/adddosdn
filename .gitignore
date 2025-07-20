@@ -9,3 +9,4 @@ claude*
 *.old
 
 venv/
+pcap_env/

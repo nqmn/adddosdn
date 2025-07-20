@@ -1,0 +1,169 @@
+2025-07-19 11:29:40 - [MAIN] - INFO - 🚀 TIER 1 ZERO-INSTALLATION ENHANCEMENTS ACTIVE
+2025-07-19 11:29:40 - [MAIN] - INFO - 📈 Target Sophistication Level: ~57.5%
+2025-07-19 11:29:40 - [MAIN] - INFO - 🔧 Built-in Dependencies Only (statistics, math, hashlib, collections, calendar, base64)
+2025-07-19 11:29:40 - [MAIN] - INFO - ⚡ CPU Affinity Optimization ENABLED
+2025-07-19 11:29:40,902 - __main__ - INFO - 🔧 CPU Core Allocation:
+2025-07-19 11:29:40,902 - __main__ - INFO -   System: Cores 0
+2025-07-19 11:29:40,902 - __main__ - INFO -   Ryu: Cores 1
+2025-07-19 11:29:40,902 - __main__ - INFO -   Mininet: Cores 2,3,4
+2025-07-19 11:29:40,902 - __main__ - INFO -   Attacks: Cores 5,6,7,8,9,10
+2025-07-19 11:29:40,902 - __main__ - INFO -   Background: Cores 11
+2025-07-19 11:29:40,902 - __main__ - INFO -   Pcap: Cores 0-15 (all cores, post-simulation)
+2025-07-19 11:29:40 - [MAIN] - INFO - Cleaning up any previous Mininet instances...
+2025-07-19 11:29:42 - [MAIN] - INFO - Mininet cleanup complete.
+2025-07-19 11:29:42,266 - __main__ - INFO - Verifying required tools...
+2025-07-19 11:29:42,487 - __main__ - INFO - TShark version: Running as user "root" and group "root". This could be dangerous.
+2025-07-19 11:29:42,494 - __main__ - INFO - ✅ taskset CPU affinity tool is available
+2025-07-19 11:29:42,495 - __main__ - INFO - All required tools are available.
+2025-07-19 11:29:42 - [MAIN] - INFO - Using configuration file: /home/user/Desktop/dataset_generation/config.json
+2025-07-19 11:29:42,495 - __main__ - INFO - Starting Ryu SDN controller with CPU affinity...
+2025-07-19 11:29:42,495 - __main__ - INFO - 🚀 Starting ryu on cores [1]: ryu-manager /home/user/Desktop/dataset_generation/src/controller/ryu_controller_app.py
+2025-07-19 11:29:42,500 - __main__ - INFO - ✅ Started ryu with PID 117457 on cores [1]
+2025-07-19 11:29:42,500 - __main__ - INFO - Ryu controller started with PID: 117457. See main_output/190725-4/ryu.log for logs.
+2025-07-19 11:29:42,500 - __main__ - INFO - Checking for controller on port 6653 (timeout: 30s)...
+2025-07-19 11:29:43,518 - __main__ - INFO - Controller is up and listening.
+2025-07-19 11:29:43 - [MAIN] - INFO - Testing /hello endpoint...
+2025-07-19 11:29:43 - [MAIN] - INFO - Test /hello endpoint: PASSED
+2025-07-19 11:29:43,526 - __main__ - INFO - Setting up Mininet topology...
+2025-07-19 11:29:43,770 - __main__ - INFO - Mininet version: 
+2025-07-19 11:29:43,779 - __main__ - INFO - Connecting to remote controller at 127.0.0.1:6653
+2025-07-19 11:29:46,083 - __main__ - INFO - Mininet network started successfully.
+2025-07-19 11:29:46,083 - __main__ - INFO - Running Mininet pingall test...
+2025-07-19 11:29:51,177 - __main__ - INFO - Mininet pingall test completed successfully. Packet loss: 0.0%
+2025-07-19 11:29:51,177 - __main__ - INFO - Starting enhanced traffic generation scenario with CPU affinity optimization...
+2025-07-19 11:29:51,177 - __main__ - INFO - ✅ Set current process affinity to cores [5, 6, 7, 8, 9, 10] for attacks
+2025-07-19 11:29:51,177 - __main__ - INFO - ✅ Set CPU affinity for attack generation processes
+2025-07-19 11:29:51,177 - __main__ - INFO - Phase 1: Initialization (5s)...
+2025-07-19 11:29:56,183 - __main__ - INFO - Starting flow statistics collection for 6050 seconds...
+2025-07-19 11:29:56,183 - __main__ - INFO - Flow statistics collection started in background.
+2025-07-19 11:29:56,185 - __main__ - INFO - Phase 2: Normal Traffic (900s)...
+2025-07-19 11:29:56,185 - __main__ - INFO - Timeline updated: normal phase started at 1752895796.1857963
+2025-07-19 11:45:01,626 - __main__ - INFO - Stopping packet capture (PID: 117722)...
+2025-07-19 11:45:01,708 - __main__ - INFO - Packet capture stopped.
+2025-07-19 11:45:01,708 - __main__ - INFO - Phase 3.1: Enhanced Traditional DDoS Attacks...
+2025-07-19 11:45:01,708 - __main__ - INFO - Timeline updated: syn_flood phase started at 1752896701.7089732
+2025-07-19 11:46:21,264 - __main__ - INFO - Stopping packet capture (PID: 123623)...
+2025-07-19 11:46:21,315 - __main__ - INFO - Packet capture stopped.
+2025-07-19 11:46:21,315 - __main__ - INFO - Timeline updated: udp_flood phase started at 1752896781.315928
+2025-07-19 11:47:43,909 - __main__ - INFO - Stopping packet capture (PID: 123632)...
+2025-07-19 11:47:44,009 - __main__ - INFO - Packet capture stopped.
+2025-07-19 11:47:44,009 - __main__ - INFO - Timeline updated: icmp_flood phase started at 1752896864.0096552
+2025-07-19 11:49:03,610 - __main__ - INFO - Stopping packet capture (PID: 123640)...
+2025-07-19 11:49:03,663 - __main__ - INFO - Packet capture stopped.
+2025-07-19 11:49:03,663 - __main__ - INFO - Phase 3.2: ENHANCED Adversarial DDoS Attacks...
+2025-07-19 11:49:03,663 - __main__ - INFO - Timeline updated: ad_syn phase started at 1752896943.6638339
+2025-07-19 12:19:10,296 - __main__ - INFO - Stopping packet capture (PID: 123647)...
+2025-07-19 12:19:10,395 - __main__ - INFO - Packet capture stopped.
+2025-07-19 12:19:10,395 - __main__ - INFO - Timeline updated: ad_udp phase started at 1752898750.3958278
+2025-07-19 12:39:18,178 - __main__ - INFO - Stopping packet capture (PID: 123752)...
+2025-07-19 12:39:18,227 - __main__ - INFO - Packet capture stopped.
+2025-07-19 12:39:18,227 - __main__ - INFO - Timeline updated: ad_slow phase started at 1752899958.2272823
+2025-07-19 12:39:24,267 - __main__ - INFO - Proceeding with ENHANCED adversarial slow attack
+2025-07-19 12:39:24,267 - __main__ - INFO - Attack traffic will be captured via h6_slow_read.pcap and ad_slow.pcap
+2025-07-19 13:09:26,603 - __main__ - INFO - Stopping packet capture (PID: 123812)...
+2025-07-19 13:09:26,706 - __main__ - INFO - Packet capture stopped.
+2025-07-19 13:09:26,706 - __main__ - INFO - Stopping packet capture (PID: 123811)...
+2025-07-19 13:09:26,802 - __main__ - INFO - Packet capture stopped.
+2025-07-19 13:09:26,802 - __main__ - INFO - Analyzing main_output/190725-4/h6_slow_read.pcap for TCP issues...
+2025-07-19 13:09:26,803 - __main__ - INFO - TCP Analysis on h6 PCAP: RST Count = 0, Retransmission Count = 0
+2025-07-19 13:09:26,803 - __main__ - WARNING - Inter-Packet Arrival Time analysis failed for h6 PCAP: Not enough packets
+2025-07-19 13:09:26,803 - __main__ - INFO - Phase 4: Cooldown (5s)...
+2025-07-19 13:09:26,803 - __main__ - INFO - Timeline updated: normal phase started at 1752901766.8039336
+2025-07-19 13:09:31,812 - __main__ - INFO - Signaling flow collection thread to stop...
+2025-07-19 13:09:31,812 - __main__ - INFO - Waiting for flow collection thread to finish...
+2025-07-19 13:09:32,559 - __main__ - INFO - Flow collection received stop signal, ending gracefully.
+2025-07-19 13:09:32,559 - __main__ - INFO - Flow timeline collection completed.
+2025-07-19 13:09:34,818 - __main__ - INFO - Flow statistics saved to main_output/190725-4/flow_features.csv
+2025-07-19 13:09:34,906 - __main__ - INFO - Flow collection thread finished successfully
+2025-07-19 13:09:34,906 - __main__ - INFO - ============================================================
+2025-07-19 13:09:34,906 - __main__ - INFO - ENHANCED COMPREHENSIVE TIMING SUMMARY
+2025-07-19 13:09:34,906 - __main__ - INFO - ============================================================
+2025-07-19 13:09:34,906 - __main__ - INFO - Configuration File: /home/user/Desktop/dataset_generation/config.json
+2025-07-19 13:09:34,906 - __main__ - INFO - 
+2025-07-19 13:09:34,907 - __main__ - INFO - Total Scenario Runtime: 5983.73 seconds (99.73 minutes)
+2025-07-19 13:09:34,907 - __main__ - INFO - 
+2025-07-19 13:09:34,907 - __main__ - INFO - Phase-by-Phase Breakdown:
+2025-07-19 13:09:34,907 - __main__ - INFO -   Enhanced Traditional Attacks:
+2025-07-19 13:09:34,907 - __main__ - INFO -     Enhanced Syn Flood: 79.61s (configured: 75s)
+2025-07-19 13:09:34,907 - __main__ - INFO -     Enhanced Udp Flood: 82.69s (configured: 75s)
+2025-07-19 13:09:34,907 - __main__ - INFO -     Enhanced Icmp Flood: 79.65s (configured: 75s)
+2025-07-19 13:09:34,907 - __main__ - INFO -   ENHANCED Adversarial Attacks:
+2025-07-19 13:09:34,907 - __main__ - INFO -     ENHANCED TCP State Exhaustion: 1806.73s (configured: 1800s)
+2025-07-19 13:09:34,907 - __main__ - INFO -     ENHANCED Application Layer: 1207.83s (configured: 1200s)
+2025-07-19 13:09:34,907 - __main__ - INFO -     ENHANCED Slow Read: 1808.58s (configured: 1800s)
+2025-07-19 13:09:34,907 - __main__ - INFO -   Initialization: 5.01s (configured: 5s)
+2025-07-19 13:09:34,907 - __main__ - INFO -   Normal_Traffic: 905.52s (configured: 900s)
+2025-07-19 13:09:34,907 - __main__ - INFO -   Cooldown: 5.01s (configured: 5s)
+2025-07-19 13:09:34,907 - __main__ - INFO - ============================================================
+2025-07-19 13:09:34,907 - __main__ - INFO - ENHANCED traffic generation scenario finished with ~57.5% sophistication level.
+2025-07-19 13:09:34 - [MAIN] - INFO - Enhanced PCAP generation complete.
+2025-07-19 13:09:34 - [MAIN] - INFO - Processing 8 PCAP files using 4 CPU cores...
+2025-07-19 13:09:34,908 - __main__ - INFO - Starting parallel PCAP processing with 4 workers...
+2025-07-19 13:09:34,908 - __main__ - INFO - ✅ Set current process affinity to cores [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] for pcap
+2025-07-19 13:09:34,908 - __main__ - INFO - ✅ Set CPU affinity for PCAP processing (all cores)
+2025-07-19 13:09:40,073 - __main__ - INFO - ✓ Completed processing normal.pcap (6092 records)
+2025-07-19 13:09:40,074 - __main__ - INFO - ✓ Completed processing syn_flood.pcap (1321 records)
+2025-07-19 13:09:40,074 - __main__ - INFO - ✓ Completed processing udp_flood.pcap (850 records)
+2025-07-19 13:09:40,074 - __main__ - INFO - ✓ Completed processing icmp_flood.pcap (676 records)
+2025-07-19 13:09:40,074 - __main__ - INFO - ✓ Completed processing ad_syn.pcap (1639 records)
+2025-07-19 13:09:40,074 - __main__ - INFO - ✓ Completed processing ad_udp.pcap (895 records)
+2025-07-19 13:09:40,074 - __main__ - INFO - ✓ Completed processing ad_slow.pcap (1356 records)
+2025-07-19 13:09:40,074 - __main__ - INFO - ✓ Completed processing h6_slow_read.pcap (0 records)
+2025-07-19 13:09:40,089 - __main__ - INFO - Parallel PCAP processing completed. Processed 8 files successfully.
+2025-07-19 13:09:40 - [MAIN] - INFO - Parallel PCAP processing completed in 5.18 seconds (0.09 minutes)
+2025-07-19 13:09:40 - [MAIN] - INFO - Enhanced combined labeled CSV generated at: main_output/190725-4/packet_features.csv
+2025-07-19 13:09:40 - [MAIN] - INFO - Enhanced final combined CSV created successfully.
+2025-07-19 13:09:40 - [MAIN] - INFO - 
+--- Enhanced Packet Feature Counts by Class ---
+2025-07-19 13:09:40 - [MAIN] - INFO -   normal: 6092 packets
+2025-07-19 13:09:40 - [MAIN] - INFO -   ad_syn: 1639 packets
+2025-07-19 13:09:40 - [MAIN] - INFO -   ad_slow: 1356 packets
+2025-07-19 13:09:40 - [MAIN] - INFO -   syn_flood: 1321 packets
+2025-07-19 13:09:40 - [MAIN] - INFO -   ad_udp: 895 packets
+2025-07-19 13:09:40 - [MAIN] - INFO -   udp_flood: 850 packets
+2025-07-19 13:09:40 - [MAIN] - INFO -   icmp_flood: 676 packets
+2025-07-19 13:09:40 - [MAIN] - INFO - Enhanced flow-level dataset generated at: main_output/190725-4/flow_features.csv
+2025-07-19 13:09:40 - [MAIN] - INFO - 
+--- Enhanced Flow Feature Counts by Class ---
+2025-07-19 13:09:40 - [MAIN] - INFO -   ad_slow: 55614 flows
+2025-07-19 13:09:40 - [MAIN] - INFO -   ad_syn: 55490 flows
+2025-07-19 13:09:40 - [MAIN] - INFO -   ad_udp: 37107 flows
+2025-07-19 13:09:40 - [MAIN] - INFO -   normal: 28055 flows
+2025-07-19 13:09:40 - [MAIN] - INFO -   udp_flood: 2542 flows
+2025-07-19 13:09:40 - [MAIN] - INFO -   icmp_flood: 2480 flows
+2025-07-19 13:09:40 - [MAIN] - INFO -   syn_flood: 2449 flows
+2025-07-19 13:09:40 - [MAIN] - INFO - Generating enhanced dataset summary...
+2025-07-19 13:09:40 - [MAIN] - INFO - Dataset generation summary displayed above
+2025-07-19 13:09:40 - [MAIN] - INFO - Running enhanced timeline analysis...
+2025-07-19 13:09:40 - [MAIN] - INFO - Starting timeline analysis...
+2025-07-19 13:09:41 - [MAIN] - INFO - Timeline Analysis Results:
+2025-07-19 13:09:41 - [MAIN] - INFO -   Total attack types: 7
+2025-07-19 13:09:41 - [MAIN] - INFO -   Good alignment: 6
+2025-07-19 13:09:41 - [MAIN] - INFO -   Overall score: 85.7%
+2025-07-19 13:09:41 - [MAIN] - INFO -   Status: 👍 GOOD: Timeline alignment is acceptable with minor issues.
+2025-07-19 13:09:41 - [MAIN] - WARNING - Poor alignment: normal
+2025-07-19 13:09:41 - [MAIN] - INFO - ================================================================================
+2025-07-19 13:09:41 - [MAIN] - INFO - ENHANCED FINAL EXECUTION SUMMARY
+2025-07-19 13:09:41 - [MAIN] - INFO - ================================================================================
+2025-07-19 13:09:41 - [MAIN] - INFO - 🚀 Enhanced Framework Version: v2.0
+2025-07-19 13:09:41 - [MAIN] - INFO - 📊 Sophistication Level Achieved: ~57.5%
+2025-07-19 13:09:41 - [MAIN] - INFO - 🔧 Enhancement Type: Tier 1 Zero-Installation
+2025-07-19 13:09:41 - [MAIN] - INFO - ⚡ CPU Affinity Optimization: ENABLED
+2025-07-19 13:09:41 - [MAIN] - INFO - 🖥️  Total Cores Utilized: 16
+2025-07-19 13:09:41 - [MAIN] - INFO - ⏱️  Total Execution Time: 6000.19 seconds (100.00 minutes | 1.67 hours)
+2025-07-19 13:09:41 - [MAIN] - INFO - 📅 Enhanced Dataset Generation Complete: 2025-07-19 13:09:41
+2025-07-19 13:09:41 - [MAIN] - INFO - 📈 Timeline Alignment Score: 85.7%
+2025-07-19 13:09:41 - [MAIN] - INFO - ✅ Timeline Quality: GOOD
+2025-07-19 13:09:41 - [MAIN] - INFO - ================================================================================
+2025-07-19 13:09:41 - [MAIN] - INFO - 🎉 ENHANCED ADVERSARIAL DDOS DATASET GENERATION COMPLETED
+2025-07-19 13:09:41 - [MAIN] - INFO - 📋 Enhancements Applied:
+2025-07-19 13:09:41 - [MAIN] - INFO -    • Statistical Feature Manipulation (Basic ML Evasion)
+2025-07-19 13:09:41 - [MAIN] - INFO -    • TCP State Machine Simulation (Advanced Protocol Exploitation)
+2025-07-19 13:09:41 - [MAIN] - INFO -    • Behavioral Pattern Generator (Enhanced Behavioral Mimicry)
+2025-07-19 13:09:41 - [MAIN] - INFO -    • Traffic Fingerprint Evasion (Traffic Camouflage Enhancement)
+2025-07-19 13:09:41 - [MAIN] - INFO -    • CPU Core Affinity Optimization (Performance Enhancement)
+2025-07-19 13:09:41 - [MAIN] - INFO - ================================================================================
+2025-07-19 13:09:41,089 - __main__ - INFO - Cleaning up resources...
+2025-07-19 13:09:41,089 - __main__ - INFO - Terminating Ryu controller (PID: 117457)...
+2025-07-19 13:09:41,093 - __main__ - INFO - Cleaning up Mininet environment...
+2025-07-19 13:09:42,715 - __main__ - INFO - Cleanup complete.
