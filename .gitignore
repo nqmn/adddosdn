@@ -10,3 +10,5 @@ claude*
 
 venv/
 pcap_env/
+
+__pycache__/
