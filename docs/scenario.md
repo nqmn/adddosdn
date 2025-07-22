@@ -1,10 +1,24 @@
-# 🎭 Attack Scenarios and Network Architecture
+# Attack Scenarios and Network Architecture
 
-This document provides a comprehensive overview of the network architecture, attack scenarios, and data generation process for the AdDDoSDN framework.
+This section presents a comprehensive overview of the experimental setup, network architecture, attack scenarios, and data generation methodology for the AdDDoSDN framework. The documentation provides detailed analysis of the SDN-based DDoS detection system and the synthetic dataset generation process.
 
-## 🏗️ Network Architecture
+## 1. Experimental Setup
 
-### SDN Network Topology
+### 1.1 Hardware and Software Configuration
+
+The experimental testbed is implemented using Mininet network emulator on a Linux Ubuntu environment. The framework employs Software-Defined Networking (SDN) principles to create a controlled environment for DDoS attack simulation and detection research.
+
+**System Specifications:**
+- Emulation Platform: Mininet v2.3.0
+- SDN Controller: Ryu Controller v4.34
+- Operating System: Linux Ubuntu 22.04 LTS
+- Network Protocol: OpenFlow v1.3
+- Packet Processing: Scapy v2.4.5
+- Traffic Analysis: tshark, tcpdump
+
+### 1.2 Network Topology Architecture
+
+The experimental network implements a centralized SDN architecture with one OpenFlow-enabled switch connecting multiple hosts under the control of a Ryu SDN controller.
 
 ```mermaid
 graph TD
@@ -15,30 +29,23 @@ graph TD
     subgraph "SDN Data Plane"
         s1[OpenFlow Switch s1<br/>OpenFlow 1.3]
         
-        s1 --- h1[🔴 Attacker 1<br/>h1: 10.0.0.1<br/>SYN Flood Source]
-        s1 --- h2[🔴 Attacker 2<br/>h2: 10.0.0.2<br/>Multi-Attack Source]
-        s1 --- h3[🟢 Normal Host<br/>h3: 10.0.0.3<br/>Benign Traffic]
-        s1 --- h4[🔵 Victim 1<br/>h4: 10.0.0.4<br/>UDP/ICMP Target]
-        s1 --- h5[🟢 Normal Host<br/>h5: 10.0.0.5<br/>Benign Traffic]
-        s1 --- h6[🔵 Web Server<br/>h6: 10.0.0.6<br/>HTTP Target]
+        s1 --- h1[Attacker 1<br/>h1: 10.0.0.1<br/>SYN Flood Source]
+        s1 --- h2[Attacker 2<br/>h2: 10.0.0.2<br/>Multi-Attack Source]
+        s1 --- h3[Normal Host<br/>h3: 10.0.0.3<br/>Benign Traffic]
+        s1 --- h4[Victim 1<br/>h4: 10.0.0.4<br/>UDP/ICMP Target]
+        s1 --- h5[Normal Host<br/>h5: 10.0.0.5<br/>Benign Traffic]
+        s1 --- h6[Web Server<br/>h6: 10.0.0.6<br/>HTTP Target]
     end
     
     ryu -.->|OpenFlow Control| s1
-    
-    style h1 fill:#ffcccc,stroke:#ff0000,stroke-width:2px
-    style h2 fill:#ffcccc,stroke:#ff0000,stroke-width:2px
-    style h3 fill:#ccffcc,stroke:#00ff00,stroke-width:2px
-    style h4 fill:#ccccff,stroke:#0000ff,stroke-width:2px
-    style h5 fill:#ccffcc,stroke:#00ff00,stroke-width:2px
-    style h6 fill:#ccccff,stroke:#0000ff,stroke-width:2px
-    style ryu fill:#ffffcc,stroke:#ffaa00,stroke-width:2px
-    style s1 fill:#f0f0f0,stroke:#333,stroke-width:2px
 ```
 
-### Host Roles and Responsibilities
+### 1.3 Host Configuration and Role Assignment
+
+The network topology consists of six hosts, each assigned specific roles to simulate realistic attack scenarios and normal network operations.
 
 | Host | IP Address | Role | Primary Function | Attack Types |
-|------|------------|------|------------------|--------------|
+|------|------------|------|------------------|--------------| 
 | **h1** | 10.0.0.1 | Primary Attacker | SYN Flood Generator | Traditional SYN Flood |
 | **h2** | 10.0.0.2 | Multi-Attack Source | Advanced Attack Platform | UDP Flood, ICMP Flood, Adversarial Attacks |
 | **h3** | 10.0.0.3 | Normal Traffic Generator | Benign Traffic Source | HTTP, DNS, SMTP, FTP |
@@ -46,559 +53,243 @@ graph TD
 | **h5** | 10.0.0.5 | Normal Traffic Generator | Benign Traffic Source | HTTP, DNS, SMTP, FTP |
 | **h6** | 10.0.0.6 | Web Server Victim | HTTP Service Target | SYN Flood, Adversarial Attacks |
 
-## ⏱️ Timing Configuration & Dataset Balance
+## 2. Dataset Configuration and Timing Optimization
 
-### Default vs Recommended Configuration
+### 2.1 Scenario Duration Configuration
+
+The framework implements a multi-phase attack sequence with optimized timing to ensure balanced dataset generation suitable for machine learning applications.
 
 | Traffic Type | Default Duration | Default Packets | Recommended Duration | Expected Packets | Improvement |
 |--------------|------------------|-----------------|---------------------|------------------|-------------|
-| **Normal Traffic** | 20 min | 7,713 | 60 min | ~230,000 | 30x increase ✅ |
-| **SYN Flood** | 20 min | 411,413 | 5 min | ~100,000 | 4x reduction ⚖️ |
-| **UDP Flood** | 20 min | 211,097 | 5 min | ~100,000 | 2x reduction ⚖️ |
-| **ICMP Flood** | 20 min | 413,016 | 5 min | ~100,000 | 4x reduction ⚖️ |
-| **Adversarial TCP** | 40 min | 221 | 120 min | ~80,000 | 360x increase ✅ |
-| **Adversarial UDP** | 40 min | 253 | 80 min | ~60,000 | 240x increase ✅ |
-| **Adversarial Slow** | 40 min | 2,479 | 60 min | ~50,000 | 20x increase ✅ |
+| **Normal Traffic** | 20 min | 7,713 | 60 min | ~230,000 | 30x increase |
+| **SYN Flood** | 20 min | 411,413 | 5 min | ~100,000 | 4x reduction |
+| **UDP Flood** | 20 min | 211,097 | 5 min | ~100,000 | 2x reduction |
+| **ICMP Flood** | 20 min | 413,016 | 5 min | ~100,000 | 4x reduction |
+| **Adversarial TCP** | 40 min | 221 | 120 min | ~80,000 | 360x increase |
+| **Adversarial UDP** | 40 min | 253 | 80 min | ~60,000 | 240x increase |
+| **Adversarial Slow** | 40 min | 2,479 | 60 min | ~50,000 | 20x increase |
 
-### Performance Metrics
-- **Current total runtime**: ~3 hours → **Recommended runtime**: ~6-6.5 hours
-- **Current dataset size**: 185M → **Expected size**: ~400M  
-- **Dataset balance**: Severely imbalanced → Well balanced for ML training
+### 2.2 Performance Metrics
 
-### Configuration File (`config.json`)
+- **Total runtime**: Approximately 6-6.5 hours for complete dataset generation
+- **Expected dataset size**: ~400MB for balanced representation
+- **Dataset balance**: Optimized for machine learning training with reduced class imbalance
+
+### 2.3 Configuration Implementation
+
 ```json
 {
     "scenario_durations": {
         "initialization": 5,
-        "normal_traffic": 3600,    // 1 hour for proper baseline
-        "syn_flood": 300,          // 5 min - sufficient for traditional attacks
-        "udp_flood": 300,          // 5 min - efficient attack sampling  
-        "icmp_flood": 300,         // 5 min - reduced storage requirements
-        "ad_syn": 7200,            // 2 hours - adversarial needs more time
-        "ad_udp": 4800,            // 80 min - complex evasion techniques
-        "ad_slow": 3600,           // 1 hour - slow attack characteristics
+        "normal_traffic": 3600,
+        "syn_flood": 300,
+        "udp_flood": 300,
+        "icmp_flood": 300,
+        "ad_syn": 7200,
+        "ad_udp": 4800,
+        "ad_slow": 3600,
         "cooldown": 5
     }
 }
 ```
 
-## 🎯 Attack Scenario Timeline
-
-### 7-Phase Attack Sequence
-
-```mermaid
-gantt
-    title Attack Scenario Timeline
-    dateFormat X
-    axisFormat %H:%M
-    
-    section Normal Traffic
-    Baseline Traffic         :normal, 0, 3600
-    
-    section Traditional Attacks
-    SYN Flood               :syn, 3600, 300
-    UDP Flood               :udp, 3900, 300
-    ICMP Flood              :icmp, 4200, 300
-    
-    section Adversarial Attacks
-    Advanced SYN            :adsyn, 4500, 7200
-    Advanced UDP            :adudp, 11700, 4800
-    Advanced Slow           :adslow, 16500, 7200
-    
-    section Data Collection
-    Continuous Monitoring   :monitor, 0, 23700
-```
-
-### Phase-by-Phase Breakdown
-
-```mermaid
-flowchart TD
-    A[Phase 1: Network Initialization<br/>5 seconds] --> B[Phase 2: Normal Traffic<br/>1 hour<br/>h3 ↔ h5]
-    B --> C[Phase 3: SYN Flood<br/>5 minutes<br/>h1 → h6:80]
-    C --> D[Phase 4: UDP Flood<br/>5 minutes<br/>h2 → h4:53]
-    D --> E[Phase 5: ICMP Flood<br/>5 minutes<br/>h2 → h4]
-    E --> F[Phase 6: Advanced SYN<br/>2 hours<br/>h2 → h6:80]
-    F --> G[Phase 7: Advanced UDP<br/>1.33 hours<br/>h2 → h6:80]
-    G --> H[Phase 8: Advanced Slow<br/>2 hours<br/>h2 → h6:80]
-    H --> I[Phase 9: Cooldown<br/>10 seconds]
-    
-    style A fill:#e1f5fe
-    style B fill:#f3e5f5
-    style C fill:#ffebee
-    style D fill:#ffebee
-    style E fill:#ffebee
-    style F fill:#fff3e0
-    style G fill:#fff3e0
-    style H fill:#fff3e0
-    style I fill:#e8f5e8
-```
-
-## 🔴 Attack Details
-
-### Enhanced Traditional DDoS Attacks
-
-The framework implements **Enhanced Traditional Attacks** that incorporate sophisticated behavioral modeling while remaining detectable for defensive research purposes. These attacks combine traditional DDoS patterns with advanced features to create more realistic traffic.
-
-#### Enhancement Features Overview
-
-```mermaid
-flowchart LR
-    subgraph "Enhanced Traditional Attacks"
-        A[Human-Like Timing<br/>80-150ms intervals] --> B[Protocol Compliance<br/>RFC-compliant headers]
-        B --> C[Session Patterns<br/>Active/break phases]
-        C --> D[Network Delay<br/>Congestion modeling]
-        D --> E[Service-Aware<br/>Realistic payloads]
-    end
-    
-    subgraph "Key Differentiators"
-        F[Still Detectable<br/>Rate-based rules work] --> G[Realistic Behavior<br/>Human-like patterns]
-        G --> H[Protocol Correct<br/>No anomalies]
-        H --> I[Timing Variance<br/>Circadian rhythms]
-    end
-    
-    style A fill:#e8f5e8
-    style B fill:#e8f5e8
-    style C fill:#e8f5e8
-    style D fill:#e8f5e8
-    style E fill:#e8f5e8
-    style F fill:#fff3e0
-    style G fill:#fff3e0
-    style H fill:#fff3e0
-    style I fill:#fff3e0
-```
-
-### Traditional DDoS Attacks
-
-#### 1. Enhanced SYN Flood Attack
-
-**Description:**
-The Enhanced SYN Flood attack exploits the TCP three-way handshake mechanism while incorporating realistic timing patterns and protocol compliance to create more sophisticated attack traffic that mimics human-driven behavior.
-
-**Enhanced Implementation:**
-- **Source:** `gen_syn_flood.py` with `enhanced_timing.py` and `protocol_compliance.py`
-- **Human-like timing**: Realistic typing intervals with natural variation and think times
-- **Protocol compliance**: RFC-compliant TCP sequence numbers, realistic window sizes (8192-65535)
-- **TCP options**: Proper MSS, window scaling, timestamps, and selective ACK options
-- **Ephemeral ports**: Realistic source port ranges (32768-65535) instead of fixed ports
-- **Session patterns**: Work session modeling with active/break phases and intensity variations
-- **Circadian adaptation**: Attack rate varies based on time of day and workday patterns
-- **Network simulation**: Congestion modeling with 5% chance of network delays
-- **Reduced packet rate**: ~25 pps for more realistic human-driven attack patterns
-- Targets port 80 (HTTP) with properly crafted SYN packets that include realistic TCP options
-
-```mermaid
-sequenceDiagram
-    participant h1 as h1 (Attacker)
-    participant s1 as Switch s1
-    participant h6 as h6 (Web Server)
-    
-    Note over h1,h6: Enhanced SYN Flood Attack (5 minutes)<br/>~25 pps with human-like timing
-    
-    Note over h1: Human-Like Timing Pattern<br/>80-150ms intervals + think time
-    
-    loop Enhanced SYN Generation
-        h1->>s1: RFC-Compliant TCP SYN<br/>• Realistic sequence numbers<br/>• TCP options (MSS, WScale, Timestamp)<br/>• Proper window size
-        s1->>h6: Forward enhanced SYN packet
-        h6->>s1: TCP SYN+ACK response
-        s1->>h1: Forward SYN+ACK
-        Note over h1: Never sends ACK<br/>(Half-open connection)<br/>+ Circadian rhythm factor
-    end
-    
-    Note over h6: Connection table exhausted<br/>Service degradation<br/>Realistic but detectable
-```
-
-#### 2. Enhanced UDP Flood Attack
-
-**Description:**
-The Enhanced UDP Flood attack overwhelms a target system with UDP packets while incorporating realistic service patterns and human-like timing to create more sophisticated attack traffic that resembles legitimate DNS usage.
-
-**Enhanced Implementation:**
-- **Source:** `gen_udp_flood.py` with `enhanced_timing.py` and `protocol_compliance.py`
-- **Human-like timing**: Realistic typing intervals and natural variation patterns
-- **Service-aware payloads**: Realistic DNS query patterns with varied domain names (example.com, google.com, localhost)
-- **Protocol compliance**: Proper DNS packet structure with realistic query headers and transaction IDs
-- **Ephemeral ports**: Dynamic source port allocation (32768-65535) for each packet
-- **Session patterns**: Natural work session modeling with intensity variations
-- **Timing adaptation**: Rate adjusts based on circadian rhythms and workday patterns
-- **Network simulation**: Congestion modeling and realistic network delay variations
-- **Reduced packet rate**: ~25 pps for more realistic human-driven attack patterns
-- Targets port 53 (DNS) with properly formatted DNS queries containing realistic domain lookups
-
-```mermaid
-sequenceDiagram
-    participant h2 as h2 (Attacker)
-    participant s1 as Switch s1
-    participant h4 as h4 (Victim)
-    
-    Note over h2,h4: Enhanced UDP Flood Attack (5 minutes)<br/>~25 pps with service-aware payloads
-    
-    Note over h2: Service-Aware Generation<br/>DNS queries, DHCP, NTP, SNMP
-    
-    loop Enhanced UDP Generation
-        h2->>s1: Service-Aware UDP packet<br/>• Realistic DNS queries<br/>• Ephemeral source ports (32768-65535)<br/>• Proper payload structure
-        s1->>h4: Forward enhanced UDP packet
-        h4->>s1: ICMP Port Unreachable
-        s1->>h2: Forward ICMP response
-        Note over h2: Human-like intervals<br/>+ Network delay simulation
-    end
-    
-    Note over h4: Bandwidth exhausted<br/>Service disruption<br/>Realistic but detectable
-```
-
-#### 3. Enhanced ICMP Flood Attack
-
-**Description:**
-The Enhanced ICMP Flood attack is a denial-of-service attack that overwhelms a target system with ICMP echo request packets while incorporating human-like behavioral patterns and protocol compliance to create more realistic attack traffic.
-
-**Enhanced Implementation:**
-- **Source:** `gen_icmp_flood.py` with `enhanced_timing.py` and `protocol_compliance.py`
-- **Human-like timing**: Uses realistic typing intervals (80-150ms) instead of fixed delays
-- **Protocol compliance**: Proper ICMP ID/sequence number variations and realistic packet structure
-- **Session patterns**: Realistic work sessions with active/break phases based on circadian rhythms
-- **Network simulation**: Realistic latency variations, congestion modeling, and packet loss simulation
-- **Enhanced monitoring**: Tracks attack phases, timing factors, and system impact
-- **Reduced packet rate**: ~25 pps (instead of 100 pps) for more realistic human-driven attack patterns
-- The attack adapts timing based on session intensity, circadian factors, and workday patterns
-
-```mermaid
-sequenceDiagram
-    participant h2 as h2 (Attacker)
-    participant s1 as Switch s1
-    participant h4 as h4 (Victim)
-    
-    Note over h2,h4: Enhanced ICMP Flood Attack (5 minutes)<br/>~25 pps with protocol compliance
-    
-    Note over h2: Protocol-Compliant Generation<br/>Session patterns + timing awareness
-    
-    loop Enhanced ICMP Generation
-        h2->>s1: Protocol-Compliant ICMP<br/>• Proper ICMP headers<br/>• Variable payload sizes<br/>• Session pattern awareness
-        s1->>h4: Forward enhanced ICMP packet
-        h4->>s1: ICMP Echo Reply
-        s1->>h2: Forward ICMP reply
-        Note over h2: Active/break phases<br/>+ Circadian rhythm modeling
-    end
-    
-    Note over h4: Network layer saturated<br/>Bandwidth consumed<br/>Realistic but detectable
-```
-
-### Advanced Adversarial Attacks
-
-**Description:**
-This category encompasses more sophisticated DDoS attacks designed to evade detection and mimic legitimate traffic patterns. They often involve IP address rotation, advanced packet crafting, and multi-vector approaches.
-
-**Source:** `gen_advanced_adversarial_ddos_attacks.py`
-
-#### 1. Advanced SYN Attack (TCP State Exhaustion)
-
-**Description:**
-This attack aims to exhaust the target's TCP connection state table by initiating many TCP handshakes but not completing them, similar to a SYN flood, but with more sophisticated manipulation of sequence numbers and window sizes to appear more legitimate and keep connections "half-open" for longer.
-
-**How it happens in the scenario:**
-- Uses an `IPRotator` to generate random source IP addresses, making it harder to block based on IP.
-- Crafts TCP SYN packets with randomized sequence numbers, window sizes, and TTL (Time To Live) values.
-- Sends SYN packets and attempts to receive SYN-ACK replies. If a SYN-ACK is received, an ACK packet is sent to establish a "half-open" connection, but no further data is exchanged, consuming server resources.
-- Includes jitter in packet sending to avoid detection based on timing patterns.
-
-```mermaid
-flowchart TD
-    A[Start Advanced SYN Attack] --> B[IP Rotation Pool<br/>Multiple Source IPs]
-    B --> C[Burst Pattern Generation<br/>Variable rate + jitter]
-    C --> D[TCP SYN to h6:80<br/>Realistic headers]
-    D --> E[Adaptive Rate Control<br/>Evade detection]
-    E --> F[Connection Tracking<br/>Maintain state]
-    F --> G{Duration Complete?}
-    G -->|No| C
-    G -->|Yes| H[Attack Complete]
-    
-    style A fill:#fff3e0
-    style H fill:#e8f5e8
-```
-
-#### 2. Advanced UDP Attack (Application Layer Mimicry)
-
-**Description:**
-This attack targets the application layer (e.g., HTTP) by sending legitimate-looking requests to resource-intensive endpoints on the victim server. The goal is to consume server processing power, database resources, or application-specific bandwidth rather than just network bandwidth.
-
-**How it happens in the scenario:**
-- Uses an `IPRotator` for source IP randomization.
-- Employs a `PacketCrafter` to generate HTTP requests with varied methods (GET, POST, HEAD, OPTIONS), paths (including resource-heavy ones like search queries, API calls, large file downloads), and realistic User-Agent strings.
-- Randomly adds common HTTP headers and sometimes cookies to appear more legitimate.
-- Sends these crafted HTTP requests to the target, mimicking distributed legitimate user traffic.
-- Variable timing between requests helps evade detection.
-
-```mermaid
-flowchart TD
-    A[Start Application Mimicry] --> B[Realistic HTTP Requests<br/>Varied User Agents]
-    B --> C[Legitimate-looking Payloads<br/>Valid HTTP headers]
-    C --> D[UDP to h6:80<br/>Mimicking HTTP]
-    D --> E[IP Rotation<br/>Evade source tracking]
-    E --> F[Timing Patterns<br/>Human-like intervals]
-    F --> G{Duration Complete?}
-    G -->|No| C
-    G -->|Yes| H[Attack Complete]
-    
-    style A fill:#fff3e0
-    style H fill:#e8f5e8
-```
-
-#### 3. Slow Read Attack (ad_slow variant)
-
-**Description:**
-A Slow Read attack is a type of low-bandwidth, application-layer DDoS attack that aims to exhaust the server's connection pool by reading responses very slowly. The attacker opens a connection and then reads the response data byte by byte, or in very small chunks, over a long period. This keeps the server's resources tied up, waiting for the client to finish reading, eventually leading to a denial of service for new connections.
-
-**How it happens in the scenario:**
-- **Tool Used:** `slowhttptest`
-- The `attacker_host` executes the `slowhttptest` command in "Slow Read" mode (`-t SR`).
-- It establishes a specified number of connections (`-c 100`) to the victim's HTTP server.
-- The tool is configured to read data very slowly (`-i 10` for interval, `-r 20` for connections per second).
-- The attack runs for a defined `duration` (`-l`).
-- This ties up server resources as the server waits for the slow client to receive the full response, eventually exhausting the server's connection capacity.
-
-```mermaid
-sequenceDiagram
-    participant h2 as h2 (Attacker)
-    participant s1 as Switch s1
-    participant h6 as h6 (Web Server)
-    
-    Note over h2,h6: Slow Read Attack (2 hours)
-    
-    h2->>s1: HTTP GET request
-    s1->>h6: Forward HTTP request
-    h6->>s1: HTTP response headers
-    s1->>h2: Forward response headers
-    
-    Note over h2: Slowly consume response<br/>Keep connection alive
-    
-    loop Every 10 seconds
-        h2->>s1: Read small chunks
-        s1->>h6: Forward read request
-        h6->>s1: Send data chunk
-        s1->>h2: Forward data chunk
-    end
-    
-    Note over h6: Connection resources exhausted<br/>100 concurrent connections
-```
-
-#### 4. Multi-Vector Attack
-
-**Description:**
-A multi-vector attack combines several different attack types simultaneously. This approach makes it more challenging for defense systems to mitigate, as they need to address multiple attack vectors at once.
-
-**How it happens in the scenario:**
-- Launches threads for different attack vectors concurrently, such as:
-    - TCP State Exhaustion
-    - Distributed Application Layer Attack
-    - Slow Read Attack
-- The `AdvancedDDoSCoordinator` manages the execution of these combined attacks.
-
-#### 5. Adaptive Attack Coordination
-
-**Description:**
-The `AdvancedDDoSCoordinator` and `AdaptiveController` components work together to make the advanced attacks more dynamic and evasive. They monitor the target's response and adapt the attack strategy accordingly.
-
-**How it happens in the scenario:**
-- **Monitoring:** The `AdaptiveController` continuously probes the target to measure response times and detect potential countermeasures (e.g., rate limiting, WAF blocking, Cloudflare, CAPTCHA, timeouts).
-- **Adaptation:** Based on the monitoring results, the `AdaptiveController` recommends optimal attack parameters (e.g., packet rate, connection count, preferred technique, IP rotation speed).
-- **Execution:** The `AdvancedDDoSCoordinator` uses these recommendations to dynamically switch between or adjust the parameters of the TCP State Exhaustion, Distributed Application Layer, or Multi-Vector attacks, making the overall attack more resilient and harder to defend against.
-- **Session Maintenance:** The `SessionMaintainer` creates and maintains legitimate-looking HTTP sessions to further blend the attack traffic with normal user activity.
-
-#### 6. Advanced Evasion Techniques
-
-**Description:**
-To enhance stealth and bypass heuristic detection rules, the advanced adversarial attacks incorporate several evasion techniques:
-
-- **Jittered Intervals and Randomization:** Packet and request sending intervals are randomized using `random.uniform()` to avoid predictable timing patterns that could indicate synthetic traffic. Source IP addresses, TCP sequence numbers, window sizes, and TTL values are also randomized.
-- **TCP Flag Rotation:** TCP packets are crafted with a random selection of common TCP flags (SYN, SYN-ACK, ACK, PSH-ACK, FIN-ACK) to mimic varied legitimate TCP communication.
-- **HTTP Header Rotation:** HTTP requests utilize a diverse set of User-Agent strings and randomly include Referer headers to simulate browsing behavior from different clients and sources.
-- **Mimicking Benign Traffic:** The `SessionMaintainer` component actively creates and maintains persistent, legitimate-looking HTTP sessions, including navigating through various common web paths and handling cookies, to blend malicious traffic with normal user activity.
-- **Payload and Timestamp Variability:** While explicit timestamp manipulation is handled by the OS/Scapy, the attacks introduce variability in payloads (e.g., varying query string lengths in HTTP requests) and manipulate TCP sequence numbers to ensure generated datasets do not appear overly synthetic.
-- **Logging Emission Rates (Partial Implementation):** The `attack_logger` logs when packets/requests are sent, providing a basis for understanding traffic flow. However, explicit real-time calculation and logging of the precise emission rates (packets/sec or requests/sec) for verification of consistency and stealth are not fully implemented. This would require additional logic to track and report rates.
-
-## 🔧 Enhanced Traditional Attack Features
-
-### Human-Like Timing Patterns
-
-The enhanced traditional attacks implement sophisticated timing patterns that simulate realistic human behavior:
-
-```mermaid
-flowchart TD
-    A[Human-Like Timing System] --> B[Typing Patterns<br/>80-150ms intervals]
-    A --> C[Mouse Click Patterns<br/>200-400ms intervals]
-    A --> D[Think Time<br/>1-3 seconds between actions]
-    A --> E[Circadian Rhythms<br/>Activity varies by hour]
-    
-    B --> F[Natural Variation<br/>±30% randomness]
-    C --> G[Click Sequences<br/>±25% variation]
-    D --> H[Mental Processing<br/>±50% variation]
-    E --> I[Peak Activity<br/>9 AM - 5 PM]
-    
-    F --> J[Session Patterns<br/>Active 80% / Break 20%]
-    G --> J
-    H --> J
-    I --> J
-    
-    style A fill:#e8f5e8
-    style J fill:#fff3e0
-```
-
-#### Timing Pattern Examples:
-- **Typing Intervals**: 80-150ms with natural variation simulating keystroke timing
-- **Mouse Clicks**: 200-400ms representing user interaction patterns
-- **Think Time**: 1-3 seconds between actions for realistic decision-making
-- **Circadian Factors**: Activity peaks at 2-4 PM, lowest at 2-5 AM
-- **Session Phases**: Active phases (30-180s) alternating with breaks (5-30s)
-
-### Protocol Compliance Features
-
-Enhanced attacks ensure proper protocol behavior to avoid detection through protocol anomalies:
-
-```mermaid
-flowchart LR
-    subgraph "TCP Compliance"
-        A[RFC-Compliant Headers] --> B[Realistic Sequence Numbers]
-        B --> C[Proper TCP Options]
-        C --> D[Window Size Management]
-        D --> E[Connection State Tracking]
-    end
-    
-    subgraph "UDP Compliance"
-        F[Service-Aware Payloads] --> G[DNS Queries]
-        G --> H[DHCP Requests]
-        H --> I[NTP Packets]
-        I --> J[SNMP Messages]
-    end
-    
-    subgraph "Validation"
-        K[Protocol Validator] --> L[Compliance Scoring]
-        L --> M[Enhancement Suggestions]
-        M --> N[Automated Correction]
-    end
-    
-    style A fill:#e3f2fd
-    style F fill:#f3e5f5
-    style K fill:#fff3e0
-```
-
-#### Protocol Features:
-- **TCP Options**: MSS (1460, 1440, 536), Window Scale (0-4), Timestamps, SACK
-- **Sequence Numbers**: Hash-based ISN generation following RFC 793
-- **Window Sizes**: Dynamic adjustment (1024-65535) simulating congestion control
-- **UDP Payloads**: Service-specific patterns for DNS, DHCP, NTP, SNMP
-- **Port Management**: Ephemeral source ports (32768-65535)
-
-### Network Delay Simulation
-
-Realistic network behavior modeling includes:
-
-```mermaid
-flowchart TD
-    A[Network Delay Simulator] --> B[Base Latency<br/>20ms default]
-    A --> C[Congestion Modeling<br/>Adaptive factors]
-    A --> D[Packet Loss Simulation<br/>5% random loss]
-    A --> E[Retransmission Delays<br/>2x-5x base latency]
-    
-    B --> F[Variation ±40%<br/>12-28ms range]
-    C --> G[Congestion Factor<br/>0.5x-3.0x multiplier]
-    D --> H[Loss Recovery<br/>Realistic timeouts]
-    E --> I[Adaptive Behavior<br/>Dynamic adjustment]
-    
-    style A fill:#e8f5e8
-    style F fill:#fff3e0
-    style G fill:#fff3e0
-    style H fill:#fff3e0
-    style I fill:#fff3e0
-```
-
-### Enhanced vs Adversarial Differentiation
-
-```mermaid
-flowchart LR
-    subgraph "Enhanced Traditional"
-        A[Human-like Timing<br/>~25 pps] --> B[Protocol Compliant<br/>No anomalies]
-        B --> C[Still Detectable<br/>Rate-based rules work]
-        C --> D[Realistic Behavior<br/>Behavioral modeling]
-    end
-    
-    subgraph "Adversarial"
-        E[Evasion Focused<br/>~0.3 pps] --> F[ML Evasion<br/>Burst + jitter]
-        F --> G[IP Rotation<br/>Source diversity]
-        G --> H[Stealth Techniques<br/>Avoid detection]
-    end
-    
-    style A fill:#e8f5e8
-    style E fill:#fff3e0
-```
-
-#### Key Distinctions:
-- **Enhanced Traditional**: Focus on realism while maintaining detectability
-- **Adversarial**: Focus on ML evasion and stealth techniques
-- **Rate Difference**: Enhanced (~25 pps) vs Adversarial (~0.3 pps)
-- **Detection**: Enhanced remain detectable by rate-based rules, Adversarial attempt evasion
-
-### Attack Type Differentiation
-
-**Enhanced Traditional Attacks** (realistic but detectable):
-- Enhanced SYN flood with human timing and RFC-compliant TCP options
-- Enhanced UDP flood with realistic DNS service patterns and ephemeral ports
-- Enhanced ICMP flood with protocol compliance and enhanced monitoring
-
-**Adversarial Attacks** (focused on ML evasion):
-- TCP state exhaustion with burst patterns and jitter
-- Application layer mimicry with IP rotation
-- Slow read attacks with adaptive control
-
-## 🟢 Normal Traffic Patterns
-
-### Multi-Protocol Benign Traffic
-
-**Description:**
-Benign traffic simulates normal network activity to provide a realistic background for the DDoS attack scenarios. This helps in evaluating the effectiveness of detection mechanisms in a mixed traffic environment.
-
-**How it happens in the scenario:**
-- **Source:** `src/gen_benign_traffic.py`
-- Various types of benign traffic are generated between `h3` and `h5` in the Mininet network.
-- **Protocols Covered:**
-    - **ICMP:** Standard ping requests and replies.
-    - **TCP:** Full TCP handshake (SYN, SYN-ACK, ACK) followed by data transfer and a final ACK. This includes random payload lengths.
-    - **UDP:** Datagrams with random payload lengths.
-    - **Telnet (Port 23):** TCP handshake followed by simulated Telnet command data.
-    - **SSH (Port 22):** TCP handshake followed by simulated encrypted SSH data.
-    - **FTP (Port 21):** TCP handshake followed by simulated FTP file transfer data.
-    - **HTTP (Port 80):** TCP handshake followed by simulated HTTP GET requests with headers and random payload.
-    - **HTTPS (Port 443):** TCP handshake followed by simulated encrypted HTTPS application data.
-    - **DNS (Port 53):** UDP-based DNS queries.
-- **Traffic Generation:**
-    - ICMP traffic uses Mininet's `ping` command.
-    - All other traffic types are crafted and sent using the `scapy` library within the Mininet host's namespace.
-    - Random source ports and random payload lengths are used to simulate varied legitimate traffic.
-- The benign traffic runs for a specified `duration`, continuously generating sessions across different protocols.
-
-```mermaid
-flowchart LR
-    subgraph "Normal Traffic Types"
-        A[HTTP/HTTPS<br/>Web Browsing] --> B[DNS Queries<br/>Name Resolution]
-        B --> C[SMTP Traffic<br/>Email Simulation]
-        C --> D[FTP Traffic<br/>File Transfer]
-        D --> E[SSH/Telnet<br/>Remote Access]
-        E --> F[ICMP Ping<br/>Connectivity Tests]
-    end
-    
-    subgraph "Traffic Sources"
-        h3[h3: 10.0.0.3] -.-> A
-        h5[h5: 10.0.0.5] -.-> A
-    end
-    
-    style A fill:#e8f5e8
-    style B fill:#e8f5e8
-    style C fill:#e8f5e8
-    style D fill:#e8f5e8
-    style E fill:#e8f5e8
-    style F fill:#e8f5e8
-```
-
-## 📊 Data Collection Architecture
-
-### Three-Layer Data Collection
+## 3. Attack Scenario Implementation
+
+### 3.1 Normal Traffic Generation
+
+Normal traffic simulation provides baseline network behavior essential for evaluating detection mechanism effectiveness in mixed traffic environments.
+
+**Implementation Parameters:**
+- **Source Code**: `src/gen_benign_traffic.py`
+- **Traffic Generators**: h3 (10.0.0.3) and h5 (10.0.0.5)
+- **Duration**: 3600 seconds (1 hour)
+- **Packet Rate**: ~64 packets per second
+- **Protocols**: ICMP, TCP, UDP, HTTP, HTTPS, DNS, SSH, FTP, Telnet
+- **Traffic Generation Tool**: Scapy library with Mininet integration
+
+**Protocol Distribution:**
+- **ICMP**: Standard ping requests using Mininet's ping command
+- **TCP**: Full handshake (SYN, SYN-ACK, ACK) with data transfer
+- **UDP**: Datagrams with randomized payload lengths
+- **HTTP/HTTPS**: Simulated web requests with realistic headers
+- **DNS**: UDP-based domain name resolution queries
+- **SSH/Telnet**: Encrypted and plaintext remote access simulation
+- **FTP**: File transfer protocol simulation
+
+### 3.2 Enhanced Traditional DDoS Attacks
+
+The framework implements Enhanced Traditional Attacks incorporating sophisticated behavioral modeling while maintaining detectability for defensive research purposes.
+
+#### 3.2.1 Enhanced SYN Flood Attack
+
+The Enhanced SYN Flood attack represents a sophisticated evolution of traditional TCP SYN flooding techniques, designed to exploit the fundamental TCP three-way handshake mechanism while incorporating advanced behavioral modeling and protocol compliance features. This attack type leverages the stateful nature of TCP connections to overwhelm target systems by exhausting server resources through half-open connection maintenance. The enhanced implementation integrates human-like timing patterns derived from behavioral analysis, ensuring that attack traffic exhibits realistic characteristics that closely mimic legitimate user interactions while maintaining sufficient volume to achieve denial-of-service objectives.
+
+The attack mechanism operates by initiating numerous TCP connection attempts from compromised nodes within the SDN network, specifically targeting the web server (h6: 10.0.0.6) on port 80. Unlike traditional SYN flood attacks that employ fixed timing intervals and basic packet structures, the enhanced variant incorporates sophisticated timing algorithms that simulate realistic human behavioral patterns, including typing intervals ranging from 80-150 milliseconds with natural variation, think time periods of 1-3 seconds between actions, and circadian rhythm adaptations that adjust attack intensity based on time-of-day factors. The implementation utilizes RFC-compliant TCP sequence number generation following hash-based Initial Sequence Number (ISN) protocols as specified in RFC 793, ensuring that generated packets maintain protocol integrity while avoiding detection through protocol anomaly analysis.
+
+Furthermore, the enhanced SYN flood incorporates realistic TCP option fields including Maximum Segment Size (MSS) values of 1460, 1440, or 536 bytes, Window Scaling options with scale factors ranging from 0-4, Timestamp options for Round-Trip Time measurement, and Selective Acknowledgment (SACK) capabilities. Source port allocation employs ephemeral port ranges (32768-65535) with dynamic randomization for each connection attempt, simulating legitimate client behavior patterns. The attack maintains a variable packet rate ranging from 20-30 packets per second with stochastic variation, significantly lower than traditional high-rate flooding attacks, while incorporating session pattern modeling that alternates between active phases (30-180 seconds) and break periods (5-30 seconds) to simulate realistic user behavior patterns. Network delay simulation includes congestion modeling with a 5% probability of introducing additional latency, further enhancing the realism of the attack traffic profile.
+
+| Parameter | Value | Description |
+|-----------|--------|-------------|
+| Source Host | h1 (10.0.0.1) | Primary attacker |
+| Destination Host | h6 (10.0.0.6) | Web server target |
+| Destination Port | 80 | HTTP service |
+| Source Port Range | 32768-65535 | Ephemeral port allocation |
+| Packet Rate | 20-30 pps | Randomized human-like timing (±20%) |
+| TCP Options | MSS, WScale, Timestamp | RFC-compliant headers |
+| Sequence Numbers | Hash-based ISN | RFC 793 compliance |
+| Window Size | 8192-65535 | Dynamic adjustment |
+| Duration | 300 seconds | 5-minute attack window |
+
+**Enhancement Features:**
+- Human-like timing intervals (80-150ms) with natural variation
+- Protocol-compliant TCP sequence number generation
+- Realistic TCP options including Maximum Segment Size, Window Scaling, and Timestamps
+- Ephemeral source port randomization for each connection attempt
+- Session pattern modeling with active and break phases
+- Circadian rhythm adaptation based on time-of-day factors
+- Network congestion modeling with 5% delay simulation
+
+#### 3.2.2 Enhanced UDP Flood Attack
+
+The Enhanced UDP Flood attack exploits the connectionless nature of the User Datagram Protocol (UDP) to overwhelm target systems while incorporating sophisticated service-aware payload generation and behavioral modeling techniques. This attack leverages UDP's stateless characteristics, which eliminate the overhead associated with connection establishment and teardown procedures, allowing attackers to generate high-volume traffic with minimal resource consumption. The enhanced implementation differentiates itself from traditional UDP flooding through the integration of realistic service patterns, specifically targeting Domain Name System (DNS) services with legitimate-appearing query structures that closely mimic genuine DNS resolution requests from distributed clients.
+
+The attack mechanism operates by generating UDP packets from the multi-attack source (h2: 10.0.0.2) targeting the primary victim (h4: 10.0.0.4) on port 53, which corresponds to standard DNS service operations. Unlike conventional UDP floods that utilize random or fixed payload content, the enhanced variant incorporates service-aware payload generation featuring realistic DNS query structures with varied domain names including example.com, google.com, and localhost, ensuring that individual packets appear legitimate when subjected to deep packet inspection. The implementation employs proper DNS packet formatting with RFC-compliant header structures, realistic transaction identifiers, and appropriate query flags, while maintaining dynamic source port allocation within the ephemeral range (32768-65535) to simulate distributed client behavior patterns.
+
+The enhanced UDP flood incorporates human-like timing patterns with intervals derived from behavioral analysis, maintaining a randomized packet rate of 20-30 packets per second with stochastic timing variation while integrating session intensity modeling based on realistic work patterns. The attack duration spans 300 seconds, providing sufficient time for comprehensive resource exhaustion while remaining within practical detection timeframes. Network simulation components include congestion modeling with adaptive delay factors and realistic latency variations, ensuring that the generated traffic maintains characteristics consistent with legitimate network conditions. The service-aware approach ensures that targeted systems must process each packet through the complete DNS resolution pipeline, consuming computational resources for query parsing, cache lookups, and response generation, thereby maximizing the attack's effectiveness against application-layer resources.
+
+| Parameter | Value | Description |
+|-----------|--------|-------------|
+| Source Host | h2 (10.0.0.2) | Multi-attack source |
+| Destination Host | h4 (10.0.0.4) | Primary victim |
+| Destination Port | 53 | DNS service |
+| Source Port Range | 32768-65535 | Dynamic ephemeral ports |
+| Packet Rate | 20-30 pps | Randomized timing patterns (±20%) |
+| Payload Type | DNS queries | Service-aware content |
+| Query Domains | example.com, google.com, localhost | Varied realistic queries |
+| Header Structure | RFC-compliant DNS | Proper transaction IDs |
+| Duration | 300 seconds | 5-minute attack window |
+
+**Enhancement Features:**
+- Service-aware payload generation with realistic DNS query structures
+- Dynamic source port allocation simulating legitimate client behavior
+- Proper DNS packet formatting with realistic query headers
+- Human-like timing intervals with natural variation patterns
+- Session intensity modeling based on work patterns
+- Network delay simulation with congestion factors
+
+#### 3.2.3 Enhanced ICMP Flood Attack
+
+The Enhanced ICMP Flood attack exploits the Internet Control Message Protocol (ICMP) to saturate network resources while incorporating sophisticated behavioral modeling and protocol compliance features designed to simulate realistic network diagnostic activities. ICMP, as defined in RFC 792, serves as a fundamental network layer protocol for error reporting and network diagnostics, with ICMP echo requests (ping) being commonly utilized for connectivity testing and network troubleshooting. The enhanced implementation leverages this legitimate network function to generate high-volume traffic that appears consistent with intensive network monitoring or diagnostic procedures, making detection through traffic analysis more challenging while maintaining the attack's effectiveness in consuming target resources.
+
+The attack mechanism operates by generating ICMP echo request packets from the multi-attack source (h2: 10.0.0.2) targeting the primary victim (h4: 10.0.0.4), utilizing protocol-compliant packet structures that include proper ICMP header formatting with variable identification and sequence number fields. According to RFC 1122, targeted hosts must implement ICMP echo server processes to handle incoming echo requests and generate corresponding echo replies, creating mandatory resource consumption on the victim system for each received packet. The enhanced implementation incorporates realistic behavioral patterns through session awareness modeling, alternating between active diagnostic phases and break periods that simulate legitimate network administration activities, thereby avoiding detection through consistent high-rate traffic patterns.
+
+The enhanced ICMP flood maintains a randomized packet rate of 20-30 packets per second with stochastic timing variation, significantly lower than traditional flooding attacks while incorporating human-like timing intervals based on behavioral analysis of actual network diagnostic procedures. The implementation includes variable payload sizes to simulate different diagnostic scenarios, protocol-compliant ICMP header structures with proper type and code field values, and enhanced monitoring capabilities that track attack phases and system impact in real-time. Session pattern awareness ensures that the attack traffic exhibits characteristics consistent with intensive but legitimate network troubleshooting activities, including circadian rhythm adaptations that adjust timing factors based on typical network administration schedules. Network latency simulation includes packet loss modeling and realistic delay variations, further enhancing the attack traffic's resemblance to legitimate network diagnostic activities conducted under varying network conditions.
+
+| Parameter | Value | Description |
+|-----------|--------|-------------|
+| Source Host | h2 (10.0.0.2) | Multi-attack source |
+| Destination Host | h4 (10.0.0.4) | Primary victim |
+| Protocol Type | ICMP Echo Request | Standard ping protocol |
+| Packet Rate | 20-30 pps | Randomized human-driven rate (±20%) |
+| ICMP ID/Sequence | Variable | Protocol-compliant variation |
+| Payload Size | Variable | Realistic packet structure |
+| Timing Pattern | Session-aware | Active/break phases |
+| Duration | 300 seconds | 5-minute attack window |
+
+**Enhancement Features:**
+- Protocol-compliant ICMP header structure with proper ID and sequence variations
+- Session pattern awareness with active and break phases
+- Realistic timing intervals based on human behavioral models
+- Enhanced monitoring of attack phases and system impact
+- Network latency simulation with packet loss modeling
+- Circadian rhythm adaptation for timing factor adjustment
+
+### 3.3 Advanced Adversarial Attacks
+
+Advanced Adversarial Attacks represent sophisticated DDoS techniques designed to evade detection mechanisms through stealth, mimicry, and adaptive control strategies.
+
+#### 3.3.1 Advanced SYN Attack (TCP State Exhaustion)
+
+The Advanced SYN Attack represents a sophisticated evolution of traditional SYN flooding techniques, employing advanced evasion mechanisms designed to bypass modern detection systems while maintaining effectiveness in exhausting target server resources. This attack leverages the fundamental vulnerability inherent in TCP's stateful connection establishment process, where servers must allocate memory and processing resources for each incoming SYN packet while maintaining half-open connections in anticipation of completing the three-way handshake. The advanced implementation incorporates multiple layers of obfuscation and stealth techniques, including IP address rotation, adaptive rate control, and burst pattern generation, making it significantly more challenging for traditional rate-based detection mechanisms to identify and mitigate the attack effectively.
+
+The attack mechanism operates through deployment of an IPRotator component that generates randomized source IP addresses from a distributed pool, effectively distributing the attack traffic across multiple apparent sources and evading IP-based blocking mechanisms commonly employed by network security devices. The system crafts TCP SYN packets with carefully randomized parameters including sequence numbers, window sizes, and Time-To-Live (TTL) values, ensuring that each packet exhibits unique characteristics while maintaining protocol compliance. Upon receiving SYN-ACK responses from the target server, the attack system selectively sends ACK packets to establish half-open connections, which are then maintained without further data exchange, effectively consuming server connection table entries and associated memory resources.
+
+The advanced SYN attack employs sophisticated timing control mechanisms that maintain an extremely low baseline packet rate of approximately 0.3 packets per second, punctuated by carefully orchestrated burst patterns that introduce controlled jitter to avoid detection through predictable timing analysis. This adaptive rate control system continuously monitors target response characteristics and adjusts attack parameters dynamically, including packet transmission rates, burst frequencies, and connection establishment patterns. The attack duration extends over 7200 seconds (2 hours), providing sufficient time for gradual resource exhaustion while maintaining stealth characteristics that allow the attack to operate beneath detection thresholds of many automated security systems. Connection state tracking ensures optimal resource exhaustion by monitoring successful connection establishments and maintaining awareness of server capacity limitations.
+
+| Parameter | Value | Description |
+|-----------|--------|-------------|
+| Source Host | h2 (10.0.0.2) | Advanced attack platform |
+| IP Rotation | Multiple spoofed IPs | Evade source-based blocking |
+| Destination Host | h6 (10.0.0.6) | Web server target |
+| Destination Port | 80 | HTTP service |
+| Packet Rate | ~0.3 pps | Stealth rate with bursts |
+| Burst Pattern | Variable intervals | Evade timing-based detection |
+| TCP Parameters | Fully randomized | Sequence, window (8192-65535), TTL (55-64), IP ID |
+| Connection State | Half-open maintenance | Resource exhaustion |
+| Duration | 7200 seconds | 2-hour sustained attack |
+
+**Evasion Techniques:**
+- IP address rotation using randomized source IP pool
+- Adaptive rate control based on target response monitoring
+- Comprehensive TCP parameter randomization including sequence numbers, window sizes (8192-65535), TTL (55-64), IP ID, and probabilistic options
+- Burst pattern generation with jitter to avoid predictable timing
+- Connection state tracking for resource exhaustion optimization
+
+#### 3.3.2 Advanced UDP Attack (Application Layer Mimicry)
+
+The Advanced UDP Attack employs sophisticated application layer mimicry techniques designed to target server-side processing resources while evading detection through realistic traffic patterns that closely resemble legitimate user interactions. This attack represents a hybrid approach that combines the efficiency of UDP packet generation with the resource consumption characteristics of HTTP application layer requests, creating a unique attack vector that bypasses many traditional network-based detection mechanisms. The attack leverages the stateless nature of UDP to generate high volumes of application-layer requests without the overhead associated with TCP connection establishment, while incorporating realistic HTTP request structures that force target servers to engage in computationally expensive processing operations.
+
+The attack mechanism operates by generating UDP packets containing properly formatted HTTP requests from the multi-attack source (h2: 10.0.0.2) targeting the web server (h6: 10.0.0.6) on port 80. The PacketCrafter component creates legitimate-appearing HTTP requests with varied methods including GET, POST, HEAD, and OPTIONS, incorporating realistic request paths that target resource-intensive server endpoints such as database queries, API calls, and large file download requests. The implementation employs diverse User-Agent strings representing different browsers, operating systems, and device types, creating the appearance of distributed legitimate traffic from multiple client sources. Request headers are dynamically varied to include common HTTP header fields such as Accept, Accept-Language, Accept-Encoding, and Referer, with some requests incorporating realistic cookie values to simulate authenticated user sessions.
+
+The advanced UDP attack incorporates sophisticated session maintenance capabilities through the SessionMaintainer component, which creates and manages persistent, legitimate-appearing HTTP sessions that include navigation through common web application paths and appropriate cookie handling procedures. This session awareness ensures that generated requests exhibit behavioral patterns consistent with real user interactions, including realistic timing intervals between requests, logical page navigation sequences, and appropriate parameter values for dynamic content requests. The attack duration spans 4800 seconds (80 minutes), providing extended exposure time while maintaining variable timing patterns that simulate distributed user behavior rather than automated attack patterns. IP rotation techniques ensure that requests appear to originate from multiple source addresses, further complicating detection efforts and attribution analysis while maximizing the attack's effectiveness in consuming application-layer processing resources.
+
+| Parameter | Value | Description |
+|-----------|--------|-------------|
+| Source Host | h2 (10.0.0.2) | Advanced attack platform |
+| Protocol Mimicry | HTTP over UDP | Application layer targeting |
+| HTTP Methods | GET, POST, HEAD, OPTIONS | Varied request types |
+| User Agent | Multiple realistic strings | Browser diversity simulation |
+| Request Paths | Resource-intensive endpoints | Database/API targeting |
+| Header Variation | Common HTTP headers | Legitimate appearance |
+| Session Maintenance | Cookie handling | Persistent connection simulation |
+| Duration | 4800 seconds | 80-minute sustained attack |
+
+**Mimicry Techniques:**
+- Realistic HTTP request generation with varied methods and paths
+- Dynamic user agent rotation simulating different browsers and devices
+- Cookie and session management for legitimate appearance
+- Resource-intensive endpoint targeting (search, API calls, file downloads)
+- Randomized header inclusion to avoid pattern detection
+
+#### 3.3.3 Slow Read Attack
+
+The Slow Read attack represents a sophisticated low-bandwidth application layer DDoS technique that exploits server-side resource allocation mechanisms through prolonged connection maintenance and extremely slow response consumption patterns. This attack leverages the fundamental design characteristics of HTTP servers, which must maintain allocated resources for active connections until clients complete response data retrieval or connection timeouts occur. Unlike traditional high-rate flooding attacks that overwhelm servers through volume-based resource exhaustion, the Slow Read attack achieves denial-of-service objectives through efficient resource lock-up strategies that require minimal bandwidth while maximizing server resource consumption per attack connection.
+
+The attack mechanism operates by establishing multiple simultaneous HTTP connections to the target web server (h6: 10.0.0.6) from the attack source (h2: 10.0.0.2), utilizing the specialized slowhttptest tool configured in Slow Read mode (-t SR). Each connection initiates legitimate HTTP GET requests to server resources, causing the server to prepare complete response data and allocate necessary buffer space and processing resources. However, instead of consuming response data at normal rates, the attack implements extremely slow data consumption patterns with 10-second intervals between read operations, effectively maintaining persistent connections while consuming server resources for extended periods. This technique exploits server-side timeout configurations that are typically set to accommodate legitimate slow connections, such as those experienced by users with limited bandwidth or high-latency network connections.
+
+The Slow Read attack maintains 100 concurrent connections to maximize resource exhaustion while remaining below detection thresholds commonly employed by rate-based monitoring systems. Connection establishment occurs at a controlled rate of 20 connections per second, ensuring that the attack appears consistent with normal traffic bursts rather than automated flooding patterns. Each connection implements realistic HTTP request structures with appropriate headers and request paths, maintaining legitimacy when subjected to deep packet inspection analysis. The attack duration extends over 3600 seconds (1 hour), providing sufficient time for comprehensive server resource exhaustion while maintaining stealth characteristics that allow operation beneath many automated detection thresholds. The cumulative effect of maintaining 100 simultaneously slow connections creates significant resource pressure on server-side connection pools, memory allocation systems, and thread management resources, ultimately leading to service degradation or denial for legitimate users attempting to access server resources.
+
+| Parameter | Value | Description |
+|-----------|--------|-------------|
+| Attack Tool | slowhttptest -t SR | Specialized slow read tool |
+| Connection Count | 100 concurrent | Resource exhaustion target |
+| Read Interval | 10 seconds | Extremely slow consumption |
+| Connection Rate | 20 connections/second | Establishment rate |
+| Target Service | HTTP server | Web application layer |
+| Resource Impact | Connection pool exhaustion | Service denial mechanism |
+| Duration | 3600 seconds | 1-hour sustained attack |
+
+**Attack Mechanism:**
+- Establishment of multiple simultaneous HTTP connections
+- Extremely slow response data consumption (10-second intervals)
+- Connection pool exhaustion through persistent resource holding
+- Server-side timeout exploitation for maximum resource impact
+
+## 4. Data Collection and Processing Architecture
+
+### 4.1 Multi-Layer Data Collection System
+
+The framework implements a comprehensive three-layer data collection architecture providing multiple perspectives on network traffic for enhanced analysis capabilities.
 
 ```mermaid
 flowchart TB
@@ -619,131 +310,153 @@ flowchart TB
         E --> J[flow_features.csv<br/>Switch statistics]
         F --> K[cicflow_features_all.csv<br/>Bidirectional flows]
     end
-    
-    style D fill:#e3f2fd
-    style E fill:#f3e5f5
-    style F fill:#fff3e0
-    style I fill:#e3f2fd
-    style J fill:#f3e5f5
-    style K fill:#fff3e0
 ```
 
-### Data Synchronization Process
+### 4.2 Feature Extraction Methodology
 
-```mermaid
-sequenceDiagram
-    participant AL as attack.log
-    participant PC as Packet Capture
-    participant FC as Flow Collector
-    participant CF as CICFlow
-    participant TI as Timeline Integrity
-    
-    Note over AL,TI: Data Generation Process
-    
-    AL->>PC: Attack phase boundaries
-    AL->>FC: Attack phase boundaries
-    AL->>CF: Attack phase boundaries
-    
-    PC->>TI: Raw packet data
-    FC->>TI: Flow statistics
-    CF->>TI: Aggregated flows
-    
-    TI->>TI: Validate timeline consistency
-    TI->>TI: Apply conservative labeling
-    TI->>TI: Preserve data integrity
-    
-    Note over TI: 98.9% labeling accuracy<br/>2,072 legitimate unknowns preserved
-```
+**Packet-Level Features (15 attributes):**
+- Basic packet information: timestamp, source/destination IP and ports
+- Protocol-specific fields: TCP flags, packet length, protocol type
+- Network layer attributes: TTL, fragmentation flags
 
-## 🔍 Attack Detection Characteristics
+**SDN Flow Features (18 attributes):**
+- Flow statistics: packet count, byte count, duration
+- Switch-level metrics: flow table entries, controller interactions
+- OpenFlow-specific data: match fields, action sets
 
-### Enhanced Traditional vs Adversarial Attack Patterns
+**CICFlow Features (78 attributes):**
+- Bidirectional flow analysis: forward/backward packet ratios
+- Statistical metrics: mean, standard deviation, minimum, maximum
+- Advanced flow characteristics: inter-arrival times, packet size variations
 
-```mermaid
-flowchart LR
-    subgraph "Enhanced Traditional Attacks"
-        A[Moderate Packet Rate<br/>~25 pps] --> B[Human-Like Patterns<br/>Realistic timing]
-        B --> C[Still Detectable<br/>Rate-based rules work]
-        C --> D[Short Duration<br/>5 minutes each]
-        D --> E[Protocol Compliant<br/>No anomalies]
-    end
-    
-    subgraph "Adversarial Attacks"
-        F[Low Packet Rate<br/>~0.3 pps] --> G[Evasive Patterns<br/>Burst + jitter]
-        G --> H[ML Evasion<br/>Mimicry techniques]
-        H --> I[Long Duration<br/>1-2 hours each]
-        I --> J[IP Rotation<br/>Source diversity]
-    end
-    
-    style A fill:#e8f5e8
-    style B fill:#e8f5e8
-    style C fill:#e8f5e8
-    style D fill:#e8f5e8
-    style E fill:#e8f5e8
-    style F fill:#fff3e0
-    style G fill:#fff3e0
-    style H fill:#fff3e0
-    style I fill:#fff3e0
-    style J fill:#fff3e0
-```
+### 4.3 Timeline Integrity and Data Validation
 
-## 📈 Dataset Statistics
+The framework implements conservative data preservation strategies ensuring high-accuracy labeling while maintaining data integrity.
 
-### Record Distribution Across Formats
+**Validation Process:**
+1. **Timeline Synchronization**: Attack phase boundaries aligned across all data collection layers
+2. **Conservative Labeling**: Unknown labels preserved when timeline gaps exist
+3. **Attack Pattern Validation**: Packet characteristics verified against expected attack signatures
+4. **Data Integrity Checks**: Cross-validation between packet capture and flow statistics
 
-```mermaid
-pie title Dataset Record Distribution
-    "SDN Flow Data" : 2700131
-    "Packet-Level Data" : 178473
-    "CICFlow Data" : 34246
-```
+**Quality Metrics:**
+- Labeling Accuracy: 98.9% correctly classified traffic
+- Unknown Preservation: 2,072 legitimate unknown samples maintained
+- Timeline Consistency: Synchronized across all collection layers
 
-### Attack Type Distribution
+### 4.4 Dataset Statistics and Distribution
 
-```mermaid
-xychart-beta
-    title "Attack Type Distribution (Packet-Level)"
-    x-axis ["normal", "syn_flood", "udp_flood", "icmp_flood", "ad_syn", "ad_udp", "ad_slow", "unknown"]
-    y-axis "Records" 0 --> 100000
-    bar [96533, 22201, 13692, 22346, 4696, 7330, 9755, 2072]
-```
+**Record Distribution:**
+- SDN Flow Data: 2,700,131 records
+- Packet-Level Data: 178,473 records  
+- CICFlow Data: 34,246 records
 
-## 🎯 Timeline Integrity Validation
+**Attack Type Distribution (Packet-Level):**
+- Normal Traffic: 96,533 samples (54.1%)
+- SYN Flood: 22,201 samples (12.4%)
+- UDP Flood: 13,692 samples (7.7%)
+- ICMP Flood: 22,346 samples (12.5%)
+- Advanced SYN: 4,696 samples (2.6%)
+- Advanced UDP: 7,330 samples (4.1%)
+- Advanced Slow: 9,755 samples (5.5%)
+- Unknown: 2,072 samples (1.2%)
 
-### Conservative Data Preservation
+## 5. SDN Controller Impact Assessment and Flow Analysis
 
-```mermaid
-flowchart TD
-    A[Raw Dataset] --> B{Existing Labels}
-    B -->|Correct| C[Preserve All Existing Labels]
-    B -->|Unknown| D[Validate Against Timeline]
-    
-    D --> E{Within Attack Window?}
-    E -->|Yes| F[Validate Packet Characteristics]
-    E -->|No| G[Keep as Unknown<br/>Timeline Gap]
-    
-    F --> H{Matches Attack Pattern?}
-    H -->|Yes| I[Reclassify to Attack Type]
-    H -->|No| J[Keep as Unknown<br/>Response Packet]
-    
-    C --> K[Final Dataset<br/>98.9% Labeled]
-    I --> K
-    G --> K
-    J --> K
-    
-    style C fill:#e8f5e8
-    style I fill:#e8f5e8
-    style G fill:#fff3e0
-    style J fill:#fff3e0
-    style K fill:#e3f2fd
-```
+### 5.1 OpenFlow Control Plane Impact
 
-This comprehensive scenario documentation provides visual diagrams for:
-- Network topology and architecture
-- Attack timeline and sequence
-- Individual attack patterns
-- Data collection processes
-- Timeline integrity validation
-- Dataset statistics and distributions
+The framework employs a basic Ryu L2 learning switch controller that demonstrates minimal control plane overhead during attack execution. The controller implements MAC-based flow matching with permanent flow entries, resulting in predictable OpenFlow message patterns that isolate attack complexity to the data plane while maintaining control plane stability.
 
-The diagrams use Mermaid syntax which renders properly in markdown viewers and provides clear visual understanding of the complex attack scenarios and data generation process.
+The SDN controller impact assessment reveals that despite generating thousands of unique network-layer flows, all attack types produce zero additional control plane messages during execution phases. This occurs because the simple star topology (h1-h6 connected to single switch s1) enables complete MAC address learning during initialization, eliminating packet_in events for subsequent attack traffic. The controller installs approximately 10-15 bidirectional MAC forwarding rules during setup, after which all attack traffic follows established L2 forwarding paths without requiring additional controller intervention.
+
+| Attack Type | Duration | Network Flows | Controller Overhead | OpenFlow Messages | Flow Table Entries |
+|-------------|----------|---------------|-------------------|------------------|-------------------|
+| **Enhanced SYN Flood** | 300s | ~2,500 TCP connections | Minimal | 0 additional | 0 additional |
+| **Enhanced UDP Flood** | 300s | ~3,500 UDP sessions | Minimal | 0 additional | 0 additional |
+| **Enhanced ICMP Flood** | 300s | ~400 IP rotations | Minimal | 0 additional | 0 additional |
+| **Advanced SYN** | 7200s | ~300 TCP connections | Minimal | 0 additional | 0 additional |
+| **Advanced UDP** | 4800s | ~7,200 HTTP sessions | Minimal | 0 additional | 0 additional |
+| **Slow Read** | 3600s | ~4,000 slow connections | Minimal | 0 additional | 0 additional |
+| **Normal Traffic** | 3600s | ~230,000 mixed flows | Minimal | 0 additional | 0 additional |
+
+### 5.2 Attack Sophistication vs Control Overhead Analysis
+
+The framework demonstrates a critical insight for SDN security research: attack sophistication occurs primarily in the data plane while the control plane remains largely unaffected. Advanced techniques including IP address rotation, ephemeral port randomization, TCP parameter variation, and application layer mimicry create complex attack patterns that bypass traditional rate-based detection mechanisms without increasing SDN controller burden. This design reflects realistic network conditions where sophisticated DDoS attacks exploit application and network layer vulnerabilities while operating beneath the visibility threshold of basic SDN controllers.
+
+The L2-only flow matching strategy employed by the controller provides excellent data plane performance but limited security visibility. Attack traffic exhibits complex patterns including source port randomization across 32,768-65,535 ephemeral ranges, IP rotation across RFC 1918 address spaces, and protocol parameter randomization, yet these sophisticated evasion techniques remain invisible to the controller's MAC-based forwarding logic. This architectural decision prioritizes network performance over security monitoring, creating realistic conditions for evaluating ML-based detection systems that must identify attack patterns without relying on SDN controller insights.
+
+**Key SDN Impact Characteristics:**
+- **Control plane isolation**: Attack complexity contained in data plane traffic patterns
+- **Scalable forwarding**: L2 switching maintains consistent performance under attack conditions  
+- **Security blind spot**: Controller lacks visibility into network and application layer attack patterns
+- **Realistic performance**: Framework reflects production SDN behavior prioritizing packet forwarding efficiency
+- **ML detection necessity**: Absence of controller-based security requires external detection mechanisms
+
+### 5.3 Real-Time Detection and Controller Efficiency Considerations
+
+For real-time DDoS detection systems and comprehensive SDN controller efficiency evaluation, researchers should consider implementing **MAC address randomization** to generate significant control plane overhead. The current L2 learning switch architecture provides minimal controller stress due to static MAC address assignments (h1-h6), making it unsuitable for evaluating SDN controller performance under realistic attack conditions.
+
+**Enhanced Controller Impact Configuration:**
+- **MAC randomization**: Implement random source MAC addresses per attack packet using `RandMAC()` functionality
+- **MAC pool strategy**: Generate 50-100 unique MAC addresses per attack type to simulate distributed botnet behavior
+- **Flow table stress**: Force controller to process thousands of `packet_in` events and install new flow entries
+- **Performance metrics**: Measure controller CPU utilization, memory consumption, and OpenFlow message latency under attack loads
+
+**Expected Impact with MAC Randomization:**
+- **Enhanced SYN Flood**: ~250,000 additional `packet_in` events requiring flow table updates
+- **Enhanced UDP/ICMP Floods**: ~40,000-350,000 additional controller messages depending on MAC diversity
+- **Control plane saturation**: Realistic evaluation of SDN controller scalability and resilience under DDoS conditions
+- **Detection algorithm stress**: Enable testing of controller-based security applications and real-time response mechanisms
+
+**Implementation Considerations:**
+- MAC randomization affects only SDN controller performance evaluation and `flow_features.csv` generation
+- Current `packet_features_30.csv` dataset remains unchanged (no MAC address features included)
+- Researchers conducting ML-based detection using packet-level features can disable MAC randomization to maintain dataset consistency
+- Enable MAC randomization selectively for SDN-specific performance studies and controller efficiency benchmarking
+
+## 6. Attack Detection Characteristics and Analysis
+
+### 6.1 Traditional vs Adversarial Attack Differentiation
+
+**Enhanced Traditional Attacks** maintain realistic behavioral patterns while remaining detectable through conventional rate-based detection mechanisms:
+
+- Variable packet rates (20-30 pps) with randomized human-like timing
+- Protocol compliance ensuring no anomalous header structures
+- Short duration attacks (5 minutes) with concentrated impact
+- Detectable through statistical analysis and rate limiting
+
+**Advanced Adversarial Attacks** focus on evasion and stealth techniques designed to bypass machine learning detection systems:
+
+- Low packet rates (~0.3 pps) with burst patterns and jitter
+- IP rotation and source diversity for attribution avoidance
+- Extended duration attacks (1-2 hours) for sustained impact
+- ML evasion techniques including mimicry and adaptive control
+
+### 6.2 Detection Complexity Analysis
+
+The framework provides graduated complexity levels for detection algorithm evaluation:
+
+1. **Level 1**: Enhanced traditional attacks with realistic timing but detectable patterns
+2. **Level 2**: Advanced adversarial attacks with basic evasion techniques
+3. **Level 3**: Multi-vector coordinated attacks with adaptive countermeasures
+
+This multi-level approach enables comprehensive evaluation of detection mechanisms across varying threat sophistication levels, supporting development of robust SDN security solutions.
+
+### 6.3 Data Leakage Mitigation and ML Robustness
+
+The framework incorporates comprehensive data leakage prevention mechanisms designed to eliminate predictable patterns that could compromise machine learning model evaluation integrity. Data leakage in network traffic datasets occurs when models achieve artificially high classification accuracy by exploiting systematic biases or predictable features rather than learning genuine attack characteristics. The implementation addresses this critical concern through systematic randomization of protocol parameters and behavioral patterns that previously created classification shortcuts.
+
+The enhanced implementation integrates multi-layered randomization strategies targeting packet-level, flow-level, and temporal characteristics that could enable trivial classification through memorization rather than pattern recognition. TCP protocol parameters undergo comprehensive randomization including window size variations spanning the full realistic range (8192-65535 bytes), dynamic TCP options selection with probabilistic inclusion of Maximum Segment Size, Window Scaling, and Timestamp fields, and sequence number randomization across extended ranges to prevent predictable initialization patterns. Attack timing characteristics incorporate stochastic rate variation with ±20% randomization applied to baseline packet rates, eliminating fixed-rate signatures that could enable rate-based classification shortcuts.
+
+Protocol field diversification encompasses Time-to-Live (TTL) value randomization spanning realistic operating system defaults (55-64), IP identification field randomization across the full 16-bit range (1-65535), and optional packet padding with 10% probability of 1-32 byte variable-length extensions to introduce size variation. These mitigation strategies collectively address the fundamental challenge of creating synthetic datasets that maintain sufficient complexity to evaluate detection mechanisms while avoiding the introduction of artificial patterns that could compromise experimental validity in adversarial machine learning contexts.
+
+**Leakage Prevention Strategies:**
+- TCP parameter randomization preventing window size and options-based classification shortcuts
+- Attack rate stochastic variation eliminating fixed packet-per-second signatures  
+- Protocol field diversification including TTL, IP ID, and optional padding variation
+- Temporal pattern randomization reducing timing-based attack fingerprinting
+- Enhanced feature space complexity supporting robust machine learning evaluation
+
+---
+
+*This documentation provides comprehensive technical specification for the AdDDoSDN framework's attack scenarios and experimental methodology. The detailed parameter tables and implementation specifications support reproducible research in SDN security and DDoS detection systems.*
