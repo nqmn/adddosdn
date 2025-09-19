@@ -1,0 +1,282 @@
+Data Leakage Analysis Report
+Target: Label_binary
+Timestamp: 2025-09-19 12:14:48.496133
+================================================================================
+
+Features shape: (1685938, 19)
+Feature columns: ['dataset_id', 'eth_type', 'ip_proto', 'ip_ttl', 'ip_flags', 'ip_len', 'ip_tos', 'ip_version', 'ip_frag_offset', 'tcp_flags', 'tcp_window', 'tcp_urgent', 'udp_len', 'udp_checksum', 'icmp_type', 'icmp_code', 'packet_length', 'transport_protocol', 'tcp_options_len']
+Target distribution:
+Label_binary
+0     559346
+1    1126592
+Name: count, dtype: int64
+
+
+================================================================================
+FEATURE DISTRIBUTION ANALYSIS FOR Label_binary
+================================================================================
+
+Feature: dataset_id
+                   mean        std  min  max
+Label_binary                                
+0             65.836302  20.584089    0   94
+1             65.679514  20.749146    0   94
+
+Feature: eth_type
+                  mean       std  min  max
+Label_binary                              
+0             3.739153  0.879029    0    4
+1             3.347819  1.370902    0    4
+
+Feature: ip_proto
+                  mean       std  min  max
+Label_binary                              
+0             5.918812  2.460933    1   17
+1             6.773661  4.881188    1   17
+
+Feature: ip_ttl
+                   mean        std  min  max
+Label_binary                                
+0             64.554557   6.681783    1  255
+1             66.537305  21.723032    1  255
+
+Feature: ip_flags
+                  mean       std  min  max
+Label_binary                              
+0             0.529295  0.499142    0    1
+1             0.551441  0.497347    0    1
+
+Feature: ip_len
+                    mean         std  min    max
+Label_binary                                    
+0             125.851927  284.425757   40  14640
+1             164.992701  366.821126   28  11720
+
+Feature: ip_tos
+                  mean        std  min  max
+Label_binary                               
+0             5.524881  32.084837    0  192
+1             3.255347  24.783272    0  192
+
+Feature: ip_version
+              mean  std  min  max
+Label_binary                     
+0              4.0  0.0    4    4
+1              4.0  0.0    4    4
+⚠️  WARNING: ip_version may have perfect class separation
+
+Feature: ip_frag_offset
+              mean  std  min  max
+Label_binary                     
+0              0.0  0.0    0    0
+1              0.0  0.0    0    0
+⚠️  WARNING: ip_frag_offset may have perfect class separation
+
+Feature: tcp_flags
+                  mean       std  min  max
+Label_binary                              
+0             5.013291  2.777531    0    9
+1             6.180963  3.028498    0    9
+
+Feature: tcp_window
+                     mean           std  min      max
+Label_binary                                         
+0             4821.065500   7572.347533  0.0  65535.0
+1             9149.328554  15144.355933  0.0  65535.0
+
+Feature: tcp_urgent
+              mean  std  min  max
+Label_binary                     
+0              0.0  0.0  0.0  0.0
+1              0.0  0.0  0.0  0.0
+⚠️  WARNING: tcp_urgent may have perfect class separation
+
+Feature: udp_len
+                    mean         std   min     max
+Label_binary                                      
+0             375.583825  444.039307  35.0  1479.0
+1              48.881284   19.834394  37.0  1457.0
+
+Feature: udp_checksum
+                      mean           std  min      max
+Label_binary                                          
+0             34124.818667  18738.562921  1.0  65535.0
+1             32897.558229  18898.020489  3.0  65535.0
+
+Feature: icmp_type
+                  mean       std  min  max
+Label_binary                              
+0             3.669326  3.306171  0.0  8.0
+1             2.800907  3.644757  0.0  8.0
+
+Feature: icmp_code
+                  mean       std  min  max
+Label_binary                              
+0             0.992022  1.411382  0.0  3.0
+1             0.255597  0.837534  0.0  3.0
+
+Feature: packet_length
+                    mean         std  min    max
+Label_binary                                    
+0             141.861578  284.422953   56  14656
+1             181.228068  366.738941   44  11736
+
+Feature: transport_protocol
+                  mean       std  min  max
+Label_binary                              
+0             0.945193  0.340713    0    2
+1             0.961826  0.598520    0    2
+
+Feature: tcp_options_len
+                  mean       std  min  max
+Label_binary                              
+0             0.003651  0.125918  0.0  5.0
+1             1.595445  1.828032  0.0  5.0
+Training set: 1180156 samples
+Test set: 505782 samples
+
+Accuracy: 0.932295
+
+Classification Report for Label_binary:
+================================================================================
+              precision    recall  f1-score   support
+
+           0   0.966875  0.824164  0.889834    167804
+           1   0.918659  0.985981  0.951131    337978
+
+    accuracy                       0.932295    505782
+   macro avg   0.942767  0.905073  0.920482    505782
+weighted avg   0.934656  0.932295  0.930794    505782
+
+
+Confusion Matrix:
+[[138298  29506]
+ [  4738 333240]]
+
+================================================================================
+COMPLETE FEATURE IMPORTANCE ANALYSIS FOR Label_binary
+================================================================================
+Rank Feature                   Importance   Percentage Risk Level
+----------------------------------------------------------------------
+1    packet_length             0.351415     35.14     % ⚡ MEDIUM
+2    tcp_flags                 0.297133     29.71     % ⚡ MEDIUM
+3    tcp_window                0.270258     27.03     % ⚡ MEDIUM
+4    udp_len                   0.026441     2.64      % ✅ MINIMAL
+5    udp_checksum              0.018432     1.84      % ✅ MINIMAL
+6    eth_type                  0.009267     0.93      % ✅ MINIMAL
+7    ip_proto                  0.007816     0.78      % ✅ MINIMAL
+8    ip_len                    0.007378     0.74      % ✅ MINIMAL
+9    ip_tos                    0.007363     0.74      % ✅ MINIMAL
+10   ip_flags                  0.001409     0.14      % ✅ MINIMAL
+11   dataset_id                0.001244     0.12      % ✅ MINIMAL
+12   ip_ttl                    0.001150     0.11      % ✅ MINIMAL
+13   tcp_options_len           0.000694     0.07      % ✅ MINIMAL
+14   ip_version                0.000000     0.00      % ✅ MINIMAL
+15   ip_frag_offset            0.000000     0.00      % ✅ MINIMAL
+16   icmp_type                 0.000000     0.00      % ✅ MINIMAL
+17   tcp_urgent                0.000000     0.00      % ✅ MINIMAL
+18   icmp_code                 0.000000     0.00      % ✅ MINIMAL
+19   transport_protocol        0.000000     0.00      % ✅ MINIMAL
+
+Decision Tree Rules (Max Depth 3):
+============================================================
+|--- packet_length <= 56.50
+|   |--- tcp_flags <= 5.50
+|   |   |--- tcp_window <= 14696.00
+|   |   |   |--- tcp_flags <= 0.50
+|   |   |   |   |--- class: 0
+|   |   |   |--- tcp_flags >  0.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |--- tcp_window >  14696.00
+|   |   |   |--- tcp_window <= 33174.00
+|   |   |   |   |--- truncated branch of depth 2
+|   |   |   |--- tcp_window >  33174.00
+|   |   |   |   |--- truncated branch of depth 7
+|   |--- tcp_flags >  5.50
+|   |   |--- tcp_window <= 4096.00
+|   |   |   |--- ip_proto <= 3.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- ip_proto >  3.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |--- tcp_window >  4096.00
+|   |   |   |--- tcp_flags <= 7.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- tcp_flags >  7.50
+|   |   |   |   |--- class: 0
+|--- packet_length >  56.50
+|   |--- packet_length <= 99.50
+|   |   |--- tcp_options_len <= 0.50
+|   |   |   |--- ip_len <= 57.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- ip_len >  57.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |--- tcp_options_len >  0.50
+|   |   |   |--- ip_ttl <= 96.00
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- ip_ttl >  96.00
+|   |   |   |   |--- truncated branch of depth 7
+|   |--- packet_length >  99.50
+|   |   |--- tcp_window <= 4138.50
+|   |   |   |--- packet_length <= 101.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- packet_length >  101.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |--- tcp_window >  4138.50
+|   |   |   |--- tcp_window <= 24536.00
+|   |   |   |   |--- class: 0
+|   |   |   |--- tcp_window >  24536.00
+|   |   |   |   |--- truncated branch of depth 7
+
+
+================================================================================
+COMPREHENSIVE DATA LEAKAGE ASSESSMENT FOR Label_binary
+================================================================================
+📊 MEDIUM: Accuracy > 90% - May indicate some leakage
+📊 CRITICAL: Top 3 features account for >90% of importance
+
+🎯 OVERALL ASSESSMENT: 🚨 CRITICAL DATA LEAKAGE DETECTED
+
+================================================================================
+FEATURE DROP RECOMMENDATIONS FOR Label_binary
+================================================================================
+
+🚨 HIGH PRIORITY - MUST DROP (9 features):
+   ❌ packet_length        (importance: 0.3514) - Total packet size - highly correlated with attack type payloads
+   ❌ tcp_flags            (importance: 0.2971) - CRITICAL: Protocol-specific flags create perfect separation
+   ❌ tcp_window           (importance: 0.2703) - Attack tool signature - different tools create distinct window patterns
+   ❌ udp_len              (importance: 0.0264) - UDP-specific field - only exists for UDP packets
+   ❌ udp_checksum         (importance: 0.0184) - UDP-specific field - attack tools create characteristic checksums
+   ❌ ip_proto             (importance: 0.0078) - Direct protocol identifier (ICMP=1, TCP=6, UDP=17)
+   ❌ icmp_type            (importance: 0.0000) - CRITICAL: Perfect attack discriminator (Echo=8, Unreachable=3, Reply=0)
+   ❌ icmp_code            (importance: 0.0000) - ICMP-specific field - creates protocol-based separation
+   ❌ transport_protocol   (importance: 0.0000) - Direct protocol encoding (TCP/UDP/ICMP) - explicit attack type
+
+⚠️  MEDIUM PRIORITY - CONSIDER DROPPING (0 features):
+
+🔧 PROTOCOL-SPECIFIC - DROP FOR GENERALIZATION (5 features):
+   📋 eth_type             (importance: 0.0093) - Ethernet type - may correlate with attack protocols
+   📋 tcp_options_len      (importance: 0.0007) - TCP-specific field - varies by attack tool configuration
+   📋 ip_version           (importance: 0.0000) - Constant value (IPv4=4) - no discriminative power
+   📋 ip_frag_offset       (importance: 0.0000) - Constant value (0) for unfragmented packets - no discriminative power
+   📋 tcp_urgent           (importance: 0.0000) - TCP-specific field - rarely used, creates perfect separation
+
+✅ SAFE TO KEEP (5 features):
+   ✓ ip_len               (importance: 0.0074) - Packet size - attack payloads create characteristic size patterns
+   ✓ ip_tos               (importance: 0.0074) - Type of Service - attack tools set specific QoS values
+   ✓ ip_flags             (importance: 0.0014) - IP fragmentation flags - attack patterns create distinct distributions
+   ✓ dataset_id           (importance: 0.0012) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ ip_ttl               (importance: 0.0011) - Time to Live - varies by attack tool and source routing
+
+================================================================================
+PYTHON CODE FOR FEATURE DROPPING
+================================================================================
+
+# Features to drop for Label_binary classification (data leakage prevention)
+features_to_drop = ['packet_length', 'tcp_flags', 'tcp_window', 'udp_len', 'udp_checksum', 'ip_proto', 'icmp_type', 'icmp_code', 'transport_protocol', 'eth_type', 'tcp_options_len', 'ip_version', 'ip_frag_offset', 'tcp_urgent']
+
+# Apply feature dropping
+df_clean = df.drop(columns=features_to_drop, errors='ignore')
+
+# Remaining safe features: ['ip_len', 'ip_tos', 'ip_flags', 'dataset_id', 'ip_ttl']
+# Expected accuracy after dropping: 60-75% (realistic for behavioral detection)
+

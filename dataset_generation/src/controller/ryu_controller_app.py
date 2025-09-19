@@ -135,15 +135,26 @@ class FlowMonitorController(app_manager.RyuApp):
         out = parser.OFPPacketOut(datapath=datapath, buffer_id=msg.buffer_id, in_port=in_port, actions=actions, data=data)
         datapath.send_msg(out)
 
-    def add_flow(self, datapath, priority, match, actions, buffer_id=None):
+    def add_flow(self, datapath, priority, match, actions, buffer_id=None, idle_timeout=30, hard_timeout=300):
+        """Add flow with explicit timeouts to ensure flow capture guarantees"""
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
         inst = [parser.OFPInstructionActions(ofproto.OFPIT_APPLY_ACTIONS, actions)]
-        mod_kwargs = {'datapath': datapath, 'priority': priority, 'match': match, 'instructions': inst}
+        mod_kwargs = {
+            'datapath': datapath, 
+            'priority': priority, 
+            'match': match, 
+            'instructions': inst,
+            'idle_timeout': idle_timeout,  # Keep flow for 30s after last packet
+            'hard_timeout': hard_timeout   # Maximum flow lifetime of 5 minutes
+        }
         if buffer_id:
             mod_kwargs['buffer_id'] = buffer_id
         mod = parser.OFPFlowMod(**mod_kwargs)
         datapath.send_msg(mod)
+        
+        # Log flow installation for monitoring
+        self.log_activity('debug', f'Flow installed: priority={priority}, idle_timeout={idle_timeout}s, hard_timeout={hard_timeout}s')
 
     @set_ev_cls(ofp_event.EventOFPFlowStatsReply, MAIN_DISPATCHER)
     def flow_stats_reply_handler(self, ev):

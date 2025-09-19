@@ -4,7 +4,12 @@ import signal
 import logging
 import uuid
 import threading
-import psutil
+# Optional psutil import - gracefully handle if missing
+try:
+    import psutil
+    PSUTIL_AVAILABLE = True
+except ImportError:
+    PSUTIL_AVAILABLE = False
 import random
 from scapy.all import Ether, IP, ICMP, sendp, sr1
 
@@ -147,7 +152,7 @@ enhanced_icmp_flood()
         if current_time >= next_monitor:
             # Estimate packets sent with enhanced timing considerations
             # Base rate is lower due to human-like timing (average ~20-30 pps instead of 100)
-            base_rate = 25  # More realistic rate with enhanced timing
+            base_rate = random.uniform(20, 30)  # Randomized rate with enhanced timing (±20%)
             if current_phase:
                 adjusted_rate = base_rate * current_phase['intensity'] * circadian_factor * workday_factor
             else:
@@ -198,7 +203,7 @@ enhanced_icmp_flood()
     process.wait()
     
     # Calculate enhanced final statistics
-    base_rate = 25  # Enhanced timing rate
+    base_rate = random.uniform(20, 30)  # Randomized enhanced timing rate (±20%)
     effective_rate = base_rate * circadian_factor * workday_factor
     final_packets_sent = int(actual_duration * effective_rate)
     avg_rate = final_packets_sent / actual_duration if actual_duration > 0 else 0

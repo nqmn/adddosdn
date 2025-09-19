@@ -11,10 +11,11 @@ This framework implements a **two-phase approach**:
 - **Train ML models** on the 15 packet-level features
 - **Save trained models** for real-time inference
 
-### Phase 2: Real-Time Detection Phase
+### Phase 2: Real-Time Detection Phase  
 - **Replay PCAP files** packet-by-packet in real-time
 - **Extract features** from each packet on-the-fly
-- **Run ML inference** using pre-trained models
+- **Use dynamic feature selection** - model selects relevant features from packet analysis
+- **Run ML inference** using pre-trained models with selected features only
 - **Monitor performance metrics** (accuracy, precision, recall, F1-score)
 - **Track system resources** (CPU, memory usage) during different phases
 - **Calculate percentage changes** between normal and attack phases
@@ -23,13 +24,13 @@ This framework implements a **two-phase approach**:
 
 ```
 Training Phase:
-packet_features.csv → Feature Engineering → ML Training → model.pkl
+packet_features.csv → Feature Engineering → Dynamic Feature Selection → ML Training → model.pkl
 
-Real-Time Phase:
-PCAP Replay → Feature Extraction → ML Inference → Performance Monitoring
+Real-Time Phase:  
+PCAP Replay → Live Feature Extraction → Selected Features Only → ML Inference → Performance Monitoring
 ```
 
-**Key Point**: Real-time detection works purely with PCAP files - no CSV files are involved in the live detection process.
+**Key Point**: Real-time detection works purely with PCAP files using dynamic feature selection - only relevant features are extracted and processed during live detection.
 
 ## 📋 Dataset Information
 
@@ -37,9 +38,10 @@ Based on the dataset analysis from `dataset_generation/main_output/analysis.md`:
 
 ### Available Training Data
 - **Total Records**: 178,473 packets across 4 datasets
-- **Features**: 15 packet-level attributes
-- **Labels**: 7 attack types (normal, syn_flood, udp_flood, icmp_flood, ad_syn, ad_udp, ad_slow)
+- **Features**: 15 packet-level attributes (with dynamic selection capability)
+- **Labels**: 7 attack types (normal, syn_flood, udp_flood, icmp_flood, ad_syn, ad_udp, ad_slow)  
 - **Quality**: 98.9% labeled data with conservative validation
+- **Feature Selection**: Models learn which features are most relevant for detection
 
 ### Attack Phase Timeline (for Ground Truth)
 | Phase | Attack Type | Duration | Packet Rate | Characteristics |
@@ -68,8 +70,8 @@ Based on the dataset analysis from `dataset_generation/main_output/analysis.md`:
 │  │  │• packet_features│    │• Normalization│    │• Random Forest              │   │   │
 │  │  │  .csv files     │    │• Label Encode │    │• XGBoost                    │   │   │
 │  │  │• Multi-dataset  │    │• Missing Val. │    │• Neural Network             │   │   │
-│  │  │  aggregation    │    │• Feature Sel. │    │• Ensemble Voting            │   │   │
-│  │  │• 178K packets   │    │• Validation   │    │• Cross-validation           │   │   │
+│  │  │  aggregation    │    │• Dynamic Feat.│    │• Ensemble Voting            │   │   │
+│  │  │• 178K packets   │    │• Selection    │    │• Cross-validation           │   │   │
 │  │  └─────────────────┘    └──────────────┘    └─────────────────────────────┘   │   │
 │  │                                                         │                      │   │
 │  │                                                         ▼                      │   │
@@ -92,8 +94,8 @@ Based on the dataset analysis from `dataset_generation/main_output/analysis.md`:
 │  │  │                 │    │              │    │• Load pre-trained models    │   │   │
 │  │  │• Real-time      │    │• Packet      │    │• Real-time prediction       │   │   │
 │  │  │  packet stream  │    │  parsing     │    │• Confidence scoring         │   │   │
-│  │  │• Timing sync    │    │• 15 features │    │• Attack classification      │   │   │
-│  │  │• Scapy parsing  │    │• Vectorization│    │• Ensemble aggregation       │   │   │
+│  │  │• Timing sync    │    │• Selected     │    │• Attack classification      │   │   │
+│  │  │• Scapy parsing  │    │  features only│    │• Ensemble aggregation       │   │   │
 │  │  │• Timeline track │    │• Normalization│    │• Prediction history         │   │   │
 │  │  └─────────────────┘    └──────────────┘    └─────────────────────────────┘   │   │
 │  │           │                       │                       │                    │   │
@@ -1029,22 +1031,22 @@ plotly>=5.3.0
 
 ### Real-Time Detection Features
 - **Live PCAP Replay**: Real-time packet stream processing with timing synchronization
-- **On-the-Fly Feature Extraction**: Extract 15 features from packets without CSV dependencies
-- **Multi-Model Inference**: Support for individual models and ensemble voting
+- **Dynamic Feature Extraction**: Extract only model-selected features from packets without CSV dependencies
+- **Multi-Model Inference**: Support for individual models and ensemble voting with selected features
 - **Performance Monitoring**: Real-time accuracy, precision, recall, and F1-score calculation
 - **Resource Tracking**: CPU, memory, and system resource monitoring during detection
 - **Phase-Based Analysis**: Compare performance across normal, attack, and adversarial phases
 
 ### Advanced Analytics
 - **Ground Truth Integration**: Synchronize predictions with attack timeline from `attack.log`
-- **Performance Benchmarking**: Compare detection accuracy across different attack types
-- **Resource Impact Analysis**: Measure computational overhead during different phases
+- **Performance Benchmarking**: Compare detection accuracy across different attack types using selected features
+- **Resource Impact Analysis**: Measure computational overhead during different phases with optimized feature processing
 - **Real-Time Dashboard**: Live visualization of detection metrics and system performance
-- **Comprehensive Reporting**: JSON export of results with detailed performance metrics
+- **Comprehensive Reporting**: JSON export of results with detailed performance metrics and feature usage
 
 ## 🔬 Technical Specifications
 
-### Packet Feature Set (15 Features)
+### Packet Feature Set (15 Features - Dynamically Selected)
 1. **packet_length**: Total packet size in bytes
 2. **eth_type**: Ethernet frame type (IPv4, IPv6, ARP, etc.)
 3. **ip_proto**: IP protocol number (TCP=6, UDP=17, ICMP=1)

@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-Clean packet_dataset.csv: Remove duplicates and encode missing values as -1
+Clean packet dataset: Remove duplicates and encode missing values as -1
 
 Usage:
-    python3 clean_packet_dataset.py [--path PATH]
+    python3 clean_packet_dataset.py [--path PATH] [--file FILENAME]
     
 Arguments:
-    --path PATH    Path to the dataset directory (default: ../main_output/v2_main)
+    --path PATH       Path to the dataset directory (default: ../main_output/v2_main)
+    --file FILENAME   Name of the CSV file to clean (default: packet_dataset.csv)
 """
 
 import pandas as pd
@@ -19,12 +20,14 @@ def main():
     parser = argparse.ArgumentParser(description='Clean packet dataset: remove duplicates and encode missing values as -1')
     parser.add_argument('--path', default='../main_output/v2_main', 
                        help='Path to dataset directory (default: ../main_output/v2_main)')
+    parser.add_argument('--file', default='packet_dataset.csv',
+                       help='Name of the CSV file to clean (default: packet_dataset.csv)')
     args = parser.parse_args()
     
     # File paths
     dataset_dir = Path(args.path)
-    input_file = dataset_dir / "packet_dataset.csv"
-    backup_file = dataset_dir / "packet_dataset.csv.backup_before_cleaning"
+    input_file = dataset_dir / args.file
+    backup_file = dataset_dir / f"{args.file}.backup_before_cleaning"
     
     if not input_file.exists():
         print(f"❌ Error: Input file not found: {input_file}")

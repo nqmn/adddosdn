@@ -1,0 +1,3418 @@
+{
+  "target": "Label_multi",
+  "timestamp": "2025-09-19T12:14:04.435434",
+  "accuracy": 1.0,
+  "feature_importance": [
+    {
+      "feature": "Attack_Type",
+      "importance": 1.0
+    },
+    {
+      "feature": "src_ip",
+      "importance": 0.0
+    },
+    {
+      "feature": "dst_ip",
+      "importance": 0.0
+    },
+    {
+      "feature": "protocol",
+      "importance": 0.0
+    },
+    {
+      "feature": "flow_duration",
+      "importance": 0.0
+    },
+    {
+      "feature": "flow_byts_s",
+      "importance": 0.0
+    },
+    {
+      "feature": "flow_pkts_s",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_pkts_s",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_pkts_s",
+      "importance": 0.0
+    },
+    {
+      "feature": "tot_fwd_pkts",
+      "importance": 0.0
+    },
+    {
+      "feature": "tot_bwd_pkts",
+      "importance": 0.0
+    },
+    {
+      "feature": "totlen_fwd_pkts",
+      "importance": 0.0
+    },
+    {
+      "feature": "totlen_bwd_pkts",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_pkt_len_max",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_pkt_len_min",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_pkt_len_mean",
+      "importance": 0.0
+    },
+    {
+      "feature": "dataset_id",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_pkt_len_std",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_pkt_len_max",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_pkt_len_mean",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_pkt_len_min",
+      "importance": 0.0
+    },
+    {
+      "feature": "pkt_len_max",
+      "importance": 0.0
+    },
+    {
+      "feature": "pkt_len_min",
+      "importance": 0.0
+    },
+    {
+      "feature": "pkt_len_mean",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_pkt_len_std",
+      "importance": 0.0
+    },
+    {
+      "feature": "pkt_len_var",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_header_len",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_header_len",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_seg_size_min",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_act_data_pkts",
+      "importance": 0.0
+    },
+    {
+      "feature": "flow_iat_mean",
+      "importance": 0.0
+    },
+    {
+      "feature": "flow_iat_max",
+      "importance": 0.0
+    },
+    {
+      "feature": "pkt_len_std",
+      "importance": 0.0
+    },
+    {
+      "feature": "flow_iat_std",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_iat_tot",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_iat_max",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_iat_min",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_iat_mean",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_iat_std",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_iat_tot",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_iat_max",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_iat_min",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_iat_mean",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_iat_std",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_psh_flags",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_psh_flags",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_urg_flags",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_urg_flags",
+      "importance": 0.0
+    },
+    {
+      "feature": "flow_iat_min",
+      "importance": 0.0
+    },
+    {
+      "feature": "fin_flag_cnt",
+      "importance": 0.0
+    },
+    {
+      "feature": "syn_flag_cnt",
+      "importance": 0.0
+    },
+    {
+      "feature": "psh_flag_cnt",
+      "importance": 0.0
+    },
+    {
+      "feature": "rst_flag_cnt",
+      "importance": 0.0
+    },
+    {
+      "feature": "urg_flag_cnt",
+      "importance": 0.0
+    },
+    {
+      "feature": "ece_flag_cnt",
+      "importance": 0.0
+    },
+    {
+      "feature": "down_up_ratio",
+      "importance": 0.0
+    },
+    {
+      "feature": "ack_flag_cnt",
+      "importance": 0.0
+    },
+    {
+      "feature": "init_fwd_win_byts",
+      "importance": 0.0
+    },
+    {
+      "feature": "init_bwd_win_byts",
+      "importance": 0.0
+    },
+    {
+      "feature": "active_max",
+      "importance": 0.0
+    },
+    {
+      "feature": "active_min",
+      "importance": 0.0
+    },
+    {
+      "feature": "active_mean",
+      "importance": 0.0
+    },
+    {
+      "feature": "active_std",
+      "importance": 0.0
+    },
+    {
+      "feature": "idle_max",
+      "importance": 0.0
+    },
+    {
+      "feature": "pkt_size_avg",
+      "importance": 0.0
+    },
+    {
+      "feature": "idle_min",
+      "importance": 0.0
+    },
+    {
+      "feature": "idle_mean",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_byts_b_avg",
+      "importance": 0.0
+    },
+    {
+      "feature": "idle_std",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_byts_b_avg",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_pkts_b_avg",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_blk_rate_avg",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_pkts_b_avg",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_blk_rate_avg",
+      "importance": 0.0
+    },
+    {
+      "feature": "fwd_seg_size_avg",
+      "importance": 0.0
+    },
+    {
+      "feature": "cwr_flag_count",
+      "importance": 0.0
+    },
+    {
+      "feature": "bwd_seg_size_avg",
+      "importance": 0.0
+    },
+    {
+      "feature": "subflow_fwd_pkts",
+      "importance": 0.0
+    },
+    {
+      "feature": "subflow_bwd_pkts",
+      "importance": 0.0
+    },
+    {
+      "feature": "subflow_fwd_byts",
+      "importance": 0.0
+    },
+    {
+      "feature": "subflow_bwd_byts",
+      "importance": 0.0
+    }
+  ],
+  "leakage_indicators": [
+    "CRITICAL: Accuracy > 99% - Near perfect classification",
+    "CRITICAL: Top 3 features account for >90% of importance",
+    "CRITICAL: Single feature 'Attack_Type' dominates with 1.000000 importance",
+    "MEDIUM: 80 features have zero importance (may indicate redundancy)"
+  ],
+  "overall_risk": "\ud83d\udea8 CRITICAL DATA LEAKAGE DETECTED",
+  "distribution_analysis": {
+    "dataset_id": {
+      "mean": {
+        "ad_slow": 47.75597356380275,
+        "ad_syn": 67.04446195407475,
+        "ad_udp": 66.0537766057638,
+        "icmp_flood": 64.93898178188171,
+        "normal": 65.79482364652384,
+        "syn_flood": 65.96567520913557,
+        "udp_flood": 66.0248368076303
+      },
+      "std": {
+        "ad_slow": 27.51280907005022,
+        "ad_syn": 19.523538952194084,
+        "ad_udp": 20.377690906193745,
+        "icmp_flood": 21.342761449424923,
+        "normal": 20.622686764916214,
+        "syn_flood": 20.537519414780974,
+        "udp_flood": 20.512437947210582
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 94,
+        "ad_syn": 94,
+        "ad_udp": 94,
+        "icmp_flood": 94,
+        "normal": 94,
+        "syn_flood": 94,
+        "udp_flood": 94
+      }
+    },
+    "src_ip": {
+      "mean": {
+        "ad_slow": 698.6771733604473,
+        "ad_syn": 695.1909049977488,
+        "ad_udp": 695.1218685251459,
+        "icmp_flood": 530.6932243573746,
+        "normal": 859.541684577272,
+        "syn_flood": 695.1879121851902,
+        "udp_flood": 695.9512734078174
+      },
+      "std": {
+        "ad_slow": 19.58768797966086,
+        "ad_syn": 4.535272566196465,
+        "ad_udp": 3.6232884365867117,
+        "icmp_flood": 301.99132645143635,
+        "normal": 10.489705626060754,
+        "syn_flood": 4.923595582825535,
+        "udp_flood": 15.094656281724909
+      },
+      "min": {
+        "ad_slow": 695,
+        "ad_syn": 695,
+        "ad_udp": 695,
+        "icmp_flood": 0,
+        "normal": 691,
+        "syn_flood": 695,
+        "udp_flood": 695
+      },
+      "max": {
+        "ad_slow": 806,
+        "ad_syn": 806,
+        "ad_udp": 803,
+        "icmp_flood": 1053,
+        "normal": 1056,
+        "syn_flood": 1054,
+        "udp_flood": 1054
+      }
+    },
+    "dst_ip": {
+      "mean": {
+        "ad_slow": 24.76970005083884,
+        "ad_syn": 24.98070367273429,
+        "ad_udp": 24.992183085326804,
+        "icmp_flood": 21.922448215622662,
+        "normal": 22.48010226012986,
+        "syn_flood": 24.98973133271367,
+        "udp_flood": 24.95644821249394
+      },
+      "std": {
+        "ad_slow": 1.9620864861053577,
+        "ad_syn": 0.5715817110648624,
+        "ad_udp": 0.34069545251034006,
+        "icmp_flood": 0.9691247551483281,
+        "normal": 1.8505762214871295,
+        "syn_flood": 0.4359428301056078,
+        "udp_flood": 0.72595474953365
+      },
+      "min": {
+        "ad_slow": 4,
+        "ad_syn": 5,
+        "ad_udp": 5,
+        "icmp_flood": 2,
+        "normal": 0,
+        "syn_flood": 4,
+        "udp_flood": 1
+      },
+      "max": {
+        "ad_slow": 42,
+        "ad_syn": 43,
+        "ad_udp": 38,
+        "icmp_flood": 42,
+        "normal": 43,
+        "syn_flood": 43,
+        "udp_flood": 43
+      }
+    },
+    "protocol": {
+      "mean": {
+        "ad_slow": 6.260803253685816,
+        "ad_syn": 6.0162089149031965,
+        "ad_udp": 6.010359766434357,
+        "icmp_flood": 1.0562141252807586,
+        "normal": 7.188479898644827,
+        "syn_flood": 6.011839950427124,
+        "udp_flood": 16.949356813492823
+      },
+      "std": {
+        "ad_slow": 1.7100635545379856,
+        "ad_syn": 0.42649446119238466,
+        "ad_udp": 0.3374327035062228,
+        "icmp_flood": 0.9154140298343026,
+        "normal": 5.305803989222079,
+        "syn_flood": 0.36798593275892233,
+        "udp_flood": 0.8862349686969316
+      },
+      "min": {
+        "ad_slow": 1,
+        "ad_syn": 1,
+        "ad_udp": 6,
+        "icmp_flood": 1,
+        "normal": 1,
+        "syn_flood": 1,
+        "udp_flood": 1
+      },
+      "max": {
+        "ad_slow": 17,
+        "ad_syn": 17,
+        "ad_udp": 17,
+        "icmp_flood": 17,
+        "normal": 17,
+        "syn_flood": 17,
+        "udp_flood": 17
+      }
+    },
+    "flow_duration": {
+      "mean": {
+        "ad_slow": 0.06498717132689374,
+        "ad_syn": 0.06004404608606162,
+        "ad_udp": 0.019074589470710113,
+        "icmp_flood": 0.1674462402670327,
+        "normal": 6.28997852369856,
+        "syn_flood": 0.308935888704466,
+        "udp_flood": 1.3175998020947248
+      },
+      "std": {
+        "ad_slow": 0.23451386307032795,
+        "ad_syn": 1.4661307993072563,
+        "ad_udp": 0.5618321844823837,
+        "icmp_flood": 1.3585955711371205,
+        "normal": 21.885111854950804,
+        "syn_flood": 3.7442736336889078,
+        "udp_flood": 10.608009295349431
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 3.764991,
+        "ad_syn": 69.893349,
+        "ad_udp": 18.831731,
+        "icmp_flood": 16.84529,
+        "normal": 183.485796,
+        "syn_flood": 80.813954,
+        "udp_flood": 174.085591
+      }
+    },
+    "flow_byts_s": {
+      "mean": {
+        "ad_slow": 96734.62267680212,
+        "ad_syn": 13460903.32259702,
+        "ad_udp": 7454744.008579542,
+        "icmp_flood": 4672391.062828063,
+        "normal": 20045827.24021954,
+        "syn_flood": 12973260.161992643,
+        "udp_flood": 23598351.43287182
+      },
+      "std": {
+        "ad_slow": 731848.5169582203,
+        "ad_syn": 2605444.8510974725,
+        "ad_udp": 5628747.623538264,
+        "icmp_flood": 2760921.61336493,
+        "normal": 58016855.2474086,
+        "syn_flood": 2233940.3158779168,
+        "udp_flood": 6022927.829869705
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 30000000.0,
+        "ad_syn": 29210526.315789472,
+        "ad_udp": 32903553.29949239,
+        "icmp_flood": 30000000.0,
+        "normal": 378750000.0,
+        "syn_flood": 38275862.06896552,
+        "udp_flood": 113000000.0
+      }
+    },
+    "flow_pkts_s": {
+      "mean": {
+        "ad_slow": 575.9499574959655,
+        "ad_syn": 238767.8476267759,
+        "ad_udp": 31747.21067592077,
+        "icmp_flood": 6296.41829151557,
+        "normal": 64701.51514218855,
+        "syn_flood": 217780.99169101098,
+        "udp_flood": 282385.9535186251
+      },
+      "std": {
+        "ad_slow": 2082.8743849053317,
+        "ad_syn": 45899.89378211513,
+        "ad_udp": 7207.153789636383,
+        "icmp_flood": 1548.163398938192,
+        "normal": 102562.40643152254,
+        "syn_flood": 43514.75676547025,
+        "udp_flood": 75729.90768711132
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 81081.08108108108,
+        "ad_syn": 428571.4285714286,
+        "ad_udp": 68010.07556675063,
+        "icmp_flood": 81081.08108108108,
+        "normal": 1000000.0,
+        "syn_flood": 277777.7777777777,
+        "udp_flood": 1000000.0
+      }
+    },
+    "fwd_pkts_s": {
+      "mean": {
+        "ad_slow": 352.97664527591354,
+        "ad_syn": 163990.45748949546,
+        "ad_udp": 16508.32769510389,
+        "icmp_flood": 2109.970467332893,
+        "normal": 55638.50118931948,
+        "syn_flood": 130671.0722468701,
+        "udp_flood": 282384.9874886986
+      },
+      "std": {
+        "ad_slow": 1944.699253848109,
+        "ad_syn": 67282.33484658698,
+        "ad_udp": 3728.8067833215387,
+        "icmp_flood": 1049.8492170967365,
+        "normal": 92236.62800964253,
+        "syn_flood": 26102.88191404115,
+        "udp_flood": 75733.37105579147
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 81081.08108108108,
+        "ad_syn": 428571.4285714286,
+        "ad_udp": 32745.5919395466,
+        "icmp_flood": 81081.08108108108,
+        "normal": 1000000.0,
+        "syn_flood": 166666.66666666666,
+        "udp_flood": 1000000.0
+      }
+    },
+    "bwd_pkts_s": {
+      "mean": {
+        "ad_slow": 222.9733122200518,
+        "ad_syn": 74777.39013728045,
+        "ad_udp": 15238.882980816885,
+        "icmp_flood": 4186.447824182677,
+        "normal": 9063.01395286907,
+        "syn_flood": 87109.91944414088,
+        "udp_flood": 0.9660299265015977
+      },
+      "std": {
+        "ad_slow": 338.04662550956357,
+        "ad_syn": 34135.8290776591,
+        "ad_udp": 3483.282695434387,
+        "icmp_flood": 839.8393099839159,
+        "normal": 26356.608972646718,
+        "syn_flood": 17415.87035309374,
+        "udp_flood": 64.82897856779934
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 9090.90909090909,
+        "ad_syn": 111111.11111111112,
+        "ad_udp": 35264.48362720403,
+        "icmp_flood": 6249.999999999999,
+        "normal": 133333.33333333334,
+        "syn_flood": 111111.11111111112,
+        "udp_flood": 8928.57142857143
+      }
+    },
+    "tot_fwd_pkts": {
+      "mean": {
+        "ad_slow": 11.926792069140824,
+        "ad_syn": 3.202933041744388,
+        "ad_udp": 13.03578828404596,
+        "icmp_flood": 5.460943349139007,
+        "normal": 7.689712902423022,
+        "syn_flood": 3.0237462930996326,
+        "udp_flood": 3.252753695081117
+      },
+      "std": {
+        "ad_slow": 1.9730454817412264,
+        "ad_syn": 0.6104638170268925,
+        "ad_udp": 1.4696195171224216,
+        "icmp_flood": 29.96427496893948,
+        "normal": 5.984662547060487,
+        "syn_flood": 0.22686260642357153,
+        "udp_flood": 4.253811481072858
+      },
+      "min": {
+        "ad_slow": 2,
+        "ad_syn": 2,
+        "ad_udp": 2,
+        "icmp_flood": 2,
+        "normal": 2,
+        "syn_flood": 2,
+        "udp_flood": 2
+      },
+      "max": {
+        "ad_slow": 13,
+        "ad_syn": 9,
+        "ad_udp": 29,
+        "icmp_flood": 627,
+        "normal": 661,
+        "syn_flood": 7,
+        "udp_flood": 149
+      }
+    },
+    "tot_bwd_pkts": {
+      "mean": {
+        "ad_slow": 8.984748347737671,
+        "ad_syn": 1.711326944104972,
+        "ad_udp": 12.037954417027688,
+        "icmp_flood": 8.349388570002496,
+        "normal": 5.96488767222461,
+        "syn_flood": 2.023325808878856,
+        "udp_flood": 0.00427287793548969
+      },
+      "std": {
+        "ad_slow": 1.7178291989843095,
+        "ad_syn": 0.713471189910588,
+        "ad_udp": 1.4748433431634962,
+        "icmp_flood": 29.649411944036792,
+        "normal": 6.881648994855832,
+        "syn_flood": 0.2285098828704663,
+        "udp_flood": 0.41070398953672177
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 10,
+        "ad_syn": 4,
+        "ad_udp": 28,
+        "icmp_flood": 626,
+        "normal": 803,
+        "syn_flood": 6,
+        "udp_flood": 113
+      }
+    },
+    "totlen_fwd_pkts": {
+      "mean": {
+        "ad_slow": 955.9872902897814,
+        "ad_syn": 181.0413584614395,
+        "ad_udp": 3192.610096063289,
+        "icmp_flood": 2291.4812203643623,
+        "normal": 1459.1316486052351,
+        "syn_flood": 190.74390297879873,
+        "udp_flood": 281.2930810944881
+      },
+      "std": {
+        "ad_slow": 158.10946071560954,
+        "ad_syn": 42.736405640329835,
+        "ad_udp": 3164.094011202291,
+        "icmp_flood": 1691.313441236604,
+        "normal": 1249.797136759746,
+        "syn_flood": 41.03641169999214,
+        "udp_flood": 498.4850311796948
+      },
+      "min": {
+        "ad_slow": 112,
+        "ad_syn": 168,
+        "ad_udp": 178,
+        "icmp_flood": 132,
+        "normal": 112,
+        "syn_flood": 112,
+        "udp_flood": 112
+      },
+      "max": {
+        "ad_slow": 2950,
+        "ad_syn": 4461,
+        "ad_udp": 16324,
+        "icmp_flood": 27588,
+        "normal": 38801,
+        "syn_flood": 3484,
+        "udp_flood": 17857
+      }
+    },
+    "totlen_bwd_pkts": {
+      "mean": {
+        "ad_slow": 1895.1169293340113,
+        "ad_syn": 96.89541390621984,
+        "ad_udp": 2457.785647014504,
+        "icmp_flood": 4486.917456950337,
+        "normal": 475.3265763218027,
+        "syn_flood": 113.73894569114327,
+        "udp_flood": 4.731237105266125
+      },
+      "std": {
+        "ad_slow": 306.80751460887456,
+        "ad_syn": 41.453621279211376,
+        "ad_udp": 1166.6416384833792,
+        "icmp_flood": 2697.036626773327,
+        "normal": 12810.472299369618,
+        "syn_flood": 18.748948908385604,
+        "udp_flood": 1063.9752745404844
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 2002,
+        "ad_syn": 876,
+        "ad_udp": 9380,
+        "icmp_flood": 55681,
+        "normal": 1980576,
+        "syn_flood": 1616,
+        "udp_flood": 311840
+      }
+    },
+    "fwd_pkt_len_max": {
+      "mean": {
+        "ad_slow": 128.9989832231825,
+        "ad_syn": 56.61970155013829,
+        "ad_udp": 1129.203239781503,
+        "icmp_flood": 727.844584477165,
+        "normal": 495.91529603402637,
+        "syn_flood": 63.24275217987872,
+        "udp_flood": 84.74762962378381
+      },
+      "std": {
+        "ad_slow": 63.83582228258375,
+        "ad_syn": 11.197382775574575,
+        "ad_udp": 1448.184974183463,
+        "icmp_flood": 416.46757694241154,
+        "normal": 423.61191352175643,
+        "syn_flood": 15.988994396911783,
+        "udp_flood": 18.61439741743829
+      },
+      "min": {
+        "ad_slow": 56,
+        "ad_syn": 56,
+        "ad_udp": 89,
+        "icmp_flood": 44,
+        "normal": 56,
+        "syn_flood": 56,
+        "udp_flood": 56
+      },
+      "max": {
+        "ad_slow": 1475,
+        "ad_syn": 1493,
+        "ad_udp": 5071,
+        "icmp_flood": 2976,
+        "normal": 2976,
+        "syn_flood": 1560,
+        "udp_flood": 2976
+      }
+    },
+    "fwd_pkt_len_min": {
+      "mean": {
+        "ad_slow": 73.0574478901881,
+        "ad_syn": 56.55657039943397,
+        "ad_udp": 68.08758711621775,
+        "icmp_flood": 727.3488894434739,
+        "normal": 136.1355399199113,
+        "syn_flood": 63.05295888106936,
+        "udp_flood": 84.38140227060057
+      },
+      "std": {
+        "ad_slow": 66.68714443697438,
+        "ad_syn": 10.926315605173482,
+        "ad_udp": 4.244400196756518,
+        "icmp_flood": 416.22531039891726,
+        "normal": 244.64313778197175,
+        "syn_flood": 14.020486654165934,
+        "udp_flood": 14.544192357152435
+      },
+      "min": {
+        "ad_slow": 56,
+        "ad_syn": 56,
+        "ad_udp": 56,
+        "icmp_flood": 44,
+        "normal": 56,
+        "syn_flood": 56,
+        "udp_flood": 56
+      },
+      "max": {
+        "ad_slow": 1475,
+        "ad_syn": 1475,
+        "ad_udp": 344,
+        "icmp_flood": 1475,
+        "normal": 1515,
+        "syn_flood": 1475,
+        "udp_flood": 1475
+      }
+    },
+    "fwd_pkt_len_mean": {
+      "mean": {
+        "ad_slow": 84.3275550072703,
+        "ad_syn": 56.58782080144079,
+        "ad_udp": 236.5333875995429,
+        "icmp_flood": 727.5080227114071,
+        "normal": 209.96660033485549,
+        "syn_flood": 63.12255144345172,
+        "udp_flood": 84.51511070675599
+      },
+      "std": {
+        "ad_slow": 66.36273257277222,
+        "ad_syn": 11.02755509987483,
+        "ad_udp": 226.63371660672672,
+        "icmp_flood": 416.14263203624984,
+        "normal": 234.98601528002686,
+        "syn_flood": 14.287685049272085,
+        "udp_flood": 14.776870768760627
+      },
+      "min": {
+        "ad_slow": 56.0,
+        "ad_syn": 56.0,
+        "ad_udp": 74.14285714285714,
+        "icmp_flood": 44.0,
+        "normal": 56.0,
+        "syn_flood": 56.0,
+        "udp_flood": 56.0
+      },
+      "max": {
+        "ad_slow": 1475.0,
+        "ad_syn": 1487.0,
+        "ad_udp": 1028.3636363636365,
+        "icmp_flood": 1475.0,
+        "normal": 1515.0,
+        "syn_flood": 1475.0,
+        "udp_flood": 1475.0
+      }
+    },
+    "fwd_pkt_len_std": {
+      "mean": {
+        "ad_slow": 20.14307693345182,
+        "ad_syn": 0.02846205873461245,
+        "ad_udp": 369.6709891692646,
+        "icmp_flood": 0.18967056621058517,
+        "normal": 143.37830683843103,
+        "syn_flood": 0.08759049426646899,
+        "udp_flood": 0.1438646838538837
+      },
+      "std": {
+        "ad_slow": 3.887423099344638,
+        "ad_syn": 0.6917390677768335,
+        "ad_udp": 501.89424829963076,
+        "icmp_flood": 8.492303448126272,
+        "normal": 163.87408437488418,
+        "syn_flood": 3.445358489686781,
+        "udp_flood": 3.6577568993285148
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 67.88225099390856,
+        "ad_syn": 67.88225099390856,
+        "ad_udp": 1909.044189904536,
+        "icmp_flood": 757.7086659637641,
+        "normal": 879.0069020132028,
+        "syn_flood": 692.9595146102613,
+        "udp_flood": 747.9379543743919
+      }
+    },
+    "bwd_pkt_len_max": {
+      "mean": {
+        "ad_slow": 526.8495170310117,
+        "ad_syn": 48.469833408374605,
+        "ad_udp": 692.837069127896,
+        "icmp_flood": 728.5074868979286,
+        "normal": 60.99115404628854,
+        "syn_flood": 56.36086398441995,
+        "udp_flood": 0.6952276801316813
+      },
+      "std": {
+        "ad_slow": 61.40420032389212,
+        "ad_syn": 21.550253757488377,
+        "ad_udp": 582.5283304133478,
+        "icmp_flood": 417.19956078570374,
+        "normal": 160.4155480117786,
+        "syn_flood": 11.508327473463456,
+        "udp_flood": 55.13661317616259
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 537,
+        "ad_syn": 438,
+        "ad_udp": 3009,
+        "icmp_flood": 5896,
+        "normal": 14656,
+        "syn_flood": 1176,
+        "udp_flood": 11736
+      }
+    },
+    "bwd_pkt_len_min": {
+      "mean": {
+        "ad_slow": 72.44738179969497,
+        "ad_syn": 48.4291503183894,
+        "ad_udp": 67.3893388585421,
+        "icmp_flood": 727.7626029448465,
+        "normal": 57.10429628288953,
+        "syn_flood": 56.26388704465985,
+        "udp_flood": 0.33475010992232157
+      },
+      "std": {
+        "ad_slow": 39.89430532243735,
+        "ad_syn": 21.353169560866725,
+        "ad_udp": 8.819095243369983,
+        "icmp_flood": 415.43228075156594,
+        "normal": 49.76374027362865,
+        "syn_flood": 9.528382452824836,
+        "udp_flood": 10.77517335647007
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 438,
+        "ad_syn": 438,
+        "ad_udp": 438,
+        "icmp_flood": 1444,
+        "normal": 543,
+        "syn_flood": 438,
+        "udp_flood": 438
+      }
+    },
+    "bwd_pkt_len_mean": {
+      "mean": {
+        "ad_slow": 212.48548551093035,
+        "ad_syn": 48.4393210908857,
+        "ad_udp": 205.53038290428097,
+        "icmp_flood": 727.999815600477,
+        "normal": 58.02161144535179,
+        "syn_flood": 56.28943367414686,
+        "udp_flood": 0.4050282910845089
+      },
+      "std": {
+        "ad_slow": 34.59024118747363,
+        "ad_syn": 21.370385275686342,
+        "ad_udp": 96.64361228451858,
+        "icmp_flood": 415.3617856376958,
+        "normal": 60.46858446687994,
+        "syn_flood": 9.719637974023664,
+        "udp_flood": 15.275456350854716
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 438.0,
+        "ad_syn": 438.0,
+        "ad_udp": 585.3333333333334,
+        "icmp_flood": 1546.6944444444443,
+        "normal": 2648.3097643097644,
+        "syn_flood": 438.0,
+        "udp_flood": 2759.646017699115
+      }
+    },
+    "bwd_pkt_len_std": {
+      "mean": {
+        "ad_slow": 179.65092928023083,
+        "ad_syn": 0.017616294715818406,
+        "ad_udp": 231.05114265175192,
+        "icmp_flood": 0.2890942007506668,
+        "normal": 1.0808530786801107,
+        "syn_flood": 0.04129121329949435,
+        "udp_flood": 0.08328076374406707
+      },
+      "std": {
+        "ad_slow": 31.259492360236205,
+        "ad_syn": 1.1740443531245663,
+        "ad_udp": 214.42220009660718,
+        "icmp_flood": 15.49124369559345,
+        "normal": 30.897232567263522,
+        "syn_flood": 2.6647232428343175,
+        "udp_flood": 9.403595886058735
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 190.1648955512032,
+        "ad_syn": 79.24132444627614,
+        "ad_udp": 1085.3392198857562,
+        "icmp_flood": 1781.6742877829588,
+        "normal": 2745.790738364614,
+        "syn_flood": 459.3386550248085,
+        "udp_flood": 1938.1724509047133
+      }
+    },
+    "pkt_len_max": {
+      "mean": {
+        "ad_slow": 531.4860193187595,
+        "ad_syn": 57.14184408567569,
+        "ad_udp": 1463.8818044829534,
+        "icmp_flood": 728.952271025705,
+        "normal": 502.1283681364675,
+        "syn_flood": 63.49300668348604,
+        "udp_flood": 85.2152335426555
+      },
+      "std": {
+        "ad_slow": 61.78854008161817,
+        "ad_syn": 13.296027251446485,
+        "ad_udp": 1378.7111009776465,
+        "icmp_flood": 416.8507608734669,
+        "normal": 444.4440235646496,
+        "syn_flood": 18.491067613871373,
+        "udp_flood": 56.18813142125097
+      },
+      "min": {
+        "ad_slow": 62,
+        "ad_syn": 56,
+        "ad_udp": 89,
+        "icmp_flood": 44,
+        "normal": 56,
+        "syn_flood": 56,
+        "udp_flood": 62
+      },
+      "max": {
+        "ad_slow": 1475,
+        "ad_syn": 1493,
+        "ad_udp": 5071,
+        "icmp_flood": 5896,
+        "normal": 14656,
+        "syn_flood": 1560,
+        "udp_flood": 11736
+      }
+    },
+    "pkt_len_min": {
+      "mean": {
+        "ad_slow": 73.0574478901881,
+        "ad_syn": 56.24035183636715,
+        "ad_udp": 67.27048408363157,
+        "icmp_flood": 727.3488894434739,
+        "normal": 136.13282504920704,
+        "syn_flood": 56.17149116983136,
+        "udp_flood": 84.381334626095
+      },
+      "std": {
+        "ad_slow": 66.68714443697438,
+        "ad_syn": 10.777677687050648,
+        "ad_udp": 5.224607314347334,
+        "icmp_flood": 416.22531039891726,
+        "normal": 244.64395493742342,
+        "syn_flood": 10.423983159911227,
+        "udp_flood": 14.54431040581859
+      },
+      "min": {
+        "ad_slow": 56,
+        "ad_syn": 56,
+        "ad_udp": 56,
+        "icmp_flood": 44,
+        "normal": 56,
+        "syn_flood": 56,
+        "udp_flood": 56
+      },
+      "max": {
+        "ad_slow": 1475,
+        "ad_syn": 1475,
+        "ad_udp": 344,
+        "icmp_flood": 1475,
+        "normal": 1515,
+        "syn_flood": 1475,
+        "udp_flood": 1475
+      }
+    },
+    "pkt_len_mean": {
+      "mean": {
+        "ad_slow": 140.93479777115698,
+        "ad_syn": 56.611871384049294,
+        "ad_udp": 221.45476271048773,
+        "icmp_flood": 727.8876598576089,
+        "normal": 178.69862218295427,
+        "syn_flood": 60.424409345455686,
+        "udp_flood": 84.61149819125438
+      },
+      "std": {
+        "ad_slow": 63.407551384067695,
+        "ad_syn": 11.289813485443997,
+        "ad_udp": 119.24088891203692,
+        "icmp_flood": 415.61602071036066,
+        "normal": 237.23349708336406,
+        "syn_flood": 12.628026128123613,
+        "udp_flood": 16.348865835867354
+      },
+      "min": {
+        "ad_slow": 58.0,
+        "ad_syn": 56.0,
+        "ad_udp": 84.33333333333333,
+        "icmp_flood": 44.0,
+        "normal": 56.0,
+        "syn_flood": 56.0,
+        "udp_flood": 58.0
+      },
+      "max": {
+        "ad_slow": 1475.0,
+        "ad_syn": 1487.0,
+        "ad_udp": 636.7619047619048,
+        "icmp_flood": 1475.0,
+        "normal": 1652.3367875647668,
+        "syn_flood": 1475.0,
+        "udp_flood": 1786.638418079096
+      }
+    },
+    "pkt_len_std": {
+      "mean": {
+        "ad_slow": 136.80630110201946,
+        "ad_syn": 0.4153822993200197,
+        "ad_udp": 375.78869825313893,
+        "icmp_flood": 0.6660314979112679,
+        "normal": 113.44289641817188,
+        "syn_flood": 3.5593234703040744,
+        "udp_flood": 0.27837523836206796
+      },
+      "std": {
+        "ad_slow": 17.33369972152156,
+        "ad_syn": 3.0963926454333395,
+        "ad_udp": 353.8793671711963,
+        "icmp_flood": 14.733546182305439,
+        "normal": 127.80009754733452,
+        "syn_flood": 6.653821364194522,
+        "udp_flood": 9.58485829120861
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 164.60571071502957,
+        "ad_syn": 164.60571071502957,
+        "ad_udp": 1447.244491017342,
+        "icmp_flood": 1519.2540504081087,
+        "normal": 2273.0018099397184,
+        "syn_flood": 616.4439958341715,
+        "udp_flood": 1829.027497544156
+      }
+    },
+    "pkt_len_var": {
+      "mean": {
+        "ad_slow": 19016.268418321917,
+        "ad_syn": 9.760035697296857,
+        "ad_udp": 266435.9580639674,
+        "icmp_flood": 217.50743742725405,
+        "normal": 29201.78616738102,
+        "syn_flood": 56.941142510745365,
+        "udp_flood": 91.94596549130361
+      },
+      "std": {
+        "ad_slow": 3018.4820526222757,
+        "ad_syn": 406.8568976225269,
+        "ad_udp": 421905.12674271787,
+        "icmp_flood": 18423.98708333367,
+        "normal": 62729.03609296771,
+        "syn_flood": 1867.3643430060627,
+        "udp_flood": 14410.481836686215
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 27095.04,
+        "ad_syn": 27095.04,
+        "ad_udp": 2094516.6167800447,
+        "icmp_flood": 2308132.869681444,
+        "normal": 5166537.227989235,
+        "syn_flood": 380003.2,
+        "udp_flood": 3345341.5867726384
+      }
+    },
+    "fwd_header_len": {
+      "mean": {
+        "ad_slow": 238.53584138281647,
+        "ad_syn": 64.05866083488776,
+        "ad_udp": 260.7157656809192,
+        "icmp_flood": 109.21886698278013,
+        "normal": 153.79425804846045,
+        "syn_flood": 60.47492586199265,
+        "udp_flood": 65.05507390162234
+      },
+      "std": {
+        "ad_slow": 39.460909634824525,
+        "ad_syn": 12.209276340537821,
+        "ad_udp": 29.39239034244846,
+        "icmp_flood": 599.2854993787882,
+        "normal": 119.69325094121005,
+        "syn_flood": 4.537252128471426,
+        "udp_flood": 85.0762296214572
+      },
+      "min": {
+        "ad_slow": 40,
+        "ad_syn": 40,
+        "ad_udp": 40,
+        "icmp_flood": 40,
+        "normal": 40,
+        "syn_flood": 40,
+        "udp_flood": 40
+      },
+      "max": {
+        "ad_slow": 260,
+        "ad_syn": 180,
+        "ad_udp": 580,
+        "icmp_flood": 12540,
+        "normal": 13220,
+        "syn_flood": 140,
+        "udp_flood": 2980
+      }
+    },
+    "bwd_header_len": {
+      "mean": {
+        "ad_slow": 179.69496695475343,
+        "ad_syn": 34.22653888209944,
+        "ad_udp": 240.75908834055377,
+        "icmp_flood": 166.98777140004992,
+        "normal": 119.2977534444922,
+        "syn_flood": 40.46651617757713,
+        "udp_flood": 0.0854575587097938
+      },
+      "std": {
+        "ad_slow": 34.3565839796862,
+        "ad_syn": 14.269423798211813,
+        "ad_udp": 29.49686686326997,
+        "icmp_flood": 592.9882388807385,
+        "normal": 137.63297989711714,
+        "syn_flood": 4.570197657409349,
+        "udp_flood": 8.214079790734482
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 200,
+        "ad_syn": 80,
+        "ad_udp": 560,
+        "icmp_flood": 12520,
+        "normal": 16060,
+        "syn_flood": 120,
+        "udp_flood": 2260
+      }
+    },
+    "fwd_seg_size_min": {
+      "mean": {
+        "ad_slow": 20.0,
+        "ad_syn": 20.0,
+        "ad_udp": 20.0,
+        "icmp_flood": 20.0,
+        "normal": 20.0,
+        "syn_flood": 20.0,
+        "udp_flood": 20.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 20,
+        "ad_syn": 20,
+        "ad_udp": 20,
+        "icmp_flood": 20,
+        "normal": 20,
+        "syn_flood": 20,
+        "udp_flood": 20
+      },
+      "max": {
+        "ad_slow": 20,
+        "ad_syn": 20,
+        "ad_udp": 20,
+        "icmp_flood": 20,
+        "normal": 20,
+        "syn_flood": 20,
+        "udp_flood": 20
+      }
+    },
+    "fwd_act_data_pkts": {
+      "mean": {
+        "ad_slow": 1.9959328927300457,
+        "ad_syn": 0.15102592139962695,
+        "ad_udp": 2.6116029384064796,
+        "icmp_flood": 2.9273146992762666,
+        "normal": 2.6235831768512026,
+        "syn_flood": 0.0031204355331297304,
+        "udp_flood": 3.2503184928804156
+      },
+      "std": {
+        "ad_slow": 0.11927097801333122,
+        "ad_syn": 0.6533258149797796,
+        "ad_udp": 0.9290681407984126,
+        "icmp_flood": 0.4600683866154482,
+        "normal": 2.592702851192232,
+        "syn_flood": 0.083436219431759,
+        "udp_flood": 4.247850131969827
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 1,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 3,
+        "ad_syn": 3,
+        "ad_udp": 8,
+        "icmp_flood": 9,
+        "normal": 58,
+        "syn_flood": 6,
+        "udp_flood": 149
+      }
+    },
+    "flow_iat_mean": {
+      "mean": {
+        "ad_slow": 0.008584990510724897,
+        "ad_syn": 0.008300766611591733,
+        "ad_udp": 0.0005410197198724863,
+        "icmp_flood": 0.0023951581988486625,
+        "normal": 0.28170089759363354,
+        "syn_flood": 0.038502912638339534,
+        "udp_flood": 0.33189143653207437
+      },
+      "std": {
+        "ad_slow": 0.07573759536806929,
+        "ad_syn": 0.20166559897652073,
+        "ad_udp": 0.014858894847291635,
+        "icmp_flood": 0.029562301380836688,
+        "normal": 0.9334945385288165,
+        "syn_flood": 0.4644801430547688,
+        "udp_flood": 3.0002184837799373
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 1.011564,
+        "ad_syn": 10.701389166666669,
+        "ad_udp": 0.6710193333333333,
+        "icmp_flood": 1.052830625,
+        "normal": 53.96302666666667,
+        "syn_flood": 10.10174425,
+        "udp_flood": 58.02853033333333
+      }
+    },
+    "flow_iat_max": {
+      "mean": {
+        "ad_slow": 0.0565205521098119,
+        "ad_syn": 0.05981485210973178,
+        "ad_udp": 0.01849980146920324,
+        "icmp_flood": 0.008702677252308461,
+        "normal": 1.4239296713422773,
+        "syn_flood": 0.30703026189527727,
+        "udp_flood": 1.2125905560942063
+      },
+      "std": {
+        "ad_slow": 0.14451475020426968,
+        "ad_syn": 1.4658166973375264,
+        "ad_udp": 0.5615948929247646,
+        "icmp_flood": 0.15707781248885963,
+        "normal": 4.287922009863962,
+        "syn_flood": 3.723085593548178,
+        "udp_flood": 10.340163518586117
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 2.023128,
+        "ad_syn": 69.893258,
+        "ad_udp": 18.829489,
+        "icmp_flood": 16.841588,
+        "normal": 180.926655,
+        "syn_flood": 80.813907,
+        "udp_flood": 174.08558
+      }
+    },
+    "flow_iat_min": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": -9.417969485778866e-11,
+        "icmp_flood": 0.0,
+        "normal": -2.2623922535689235e-11,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 9.704622344933828e-09,
+        "icmp_flood": 0.0,
+        "normal": 4.756461135727825e-09,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": -1e-06,
+        "icmp_flood": 0.0,
+        "normal": -1e-06,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      }
+    },
+    "flow_iat_std": {
+      "mean": {
+        "ad_slow": 0.015698976765044923,
+        "ad_syn": 0.020402907565125375,
+        "ad_udp": 0.0027778872903995422,
+        "icmp_flood": 0.0030997796709012013,
+        "normal": 0.5211022186242277,
+        "syn_flood": 0.10141004798003275,
+        "udp_flood": 0.5365661402271006
+      },
+      "std": {
+        "ad_slow": 0.07085682573649824,
+        "ad_syn": 0.4993252203772093,
+        "ad_udp": 0.08047859799534766,
+        "icmp_flood": 0.04383548031459779,
+        "normal": 1.5862336913203228,
+        "syn_flood": 1.2286305169200304,
+        "udp_flood": 4.652210093967852
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 1.011564,
+        "ad_syn": 23.92901976672536,
+        "ad_udp": 2.751647364568914,
+        "icmp_flood": 4.076639666956918,
+        "normal": 76.31523498631303,
+        "syn_flood": 26.7266853291468,
+        "udp_flood": 82.06472682380407
+      }
+    },
+    "fwd_iat_tot": {
+      "mean": {
+        "ad_slow": 0.052662820538891694,
+        "ad_syn": 0.059455402473145944,
+        "ad_udp": 0.019004837728385755,
+        "icmp_flood": 0.1645430272023958,
+        "normal": 6.277642745435624,
+        "syn_flood": 0.30838550022130745,
+        "udp_flood": 1.3170074176597255
+      },
+      "std": {
+        "ad_slow": 0.1019277306146723,
+        "ad_syn": 1.4656753726651384,
+        "ad_udp": 0.5616615734540865,
+        "icmp_flood": 1.3565497567017137,
+        "normal": 21.884724810336934,
+        "syn_flood": 3.744056288605221,
+        "udp_flood": 10.607981328757653
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 1.744488,
+        "ad_syn": 69.89332700000001,
+        "ad_udp": 18.831716,
+        "icmp_flood": 16.843598999999998,
+        "normal": 183.485796,
+        "syn_flood": 80.813939,
+        "udp_flood": 174.085591
+      }
+    },
+    "fwd_iat_max": {
+      "mean": {
+        "ad_slow": 0.05033085561769192,
+        "ad_syn": 0.059397101257477325,
+        "ad_udp": 0.01852733980033905,
+        "icmp_flood": 0.006778417706513601,
+        "normal": 1.4173926097599603,
+        "syn_flood": 0.306759291307042,
+        "udp_flood": 1.2122696408076754
+      },
+      "std": {
+        "ad_slow": 0.09551418596353209,
+        "ad_syn": 1.4656617954349491,
+        "ad_udp": 0.5615944527413412,
+        "icmp_flood": 0.15314794987879693,
+        "normal": 4.285719415071113,
+        "syn_flood": 3.723036869985401,
+        "udp_flood": 10.340170277329934
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 1.744488,
+        "ad_syn": 69.893279,
+        "ad_udp": 18.829506,
+        "icmp_flood": 16.843545,
+        "normal": 180.926655,
+        "syn_flood": 80.813919,
+        "udp_flood": 174.08558
+      }
+    },
+    "fwd_iat_min": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      }
+    },
+    "fwd_iat_mean": {
+      "mean": {
+        "ad_slow": 0.007519131215048271,
+        "ad_syn": 0.014214283905255032,
+        "ad_udp": 0.0009880623473805944,
+        "icmp_flood": 0.0035970897416404135,
+        "normal": 0.4592961775667964,
+        "syn_flood": 0.07659255960511367,
+        "udp_flood": 0.33175619122332073
+      },
+      "std": {
+        "ad_slow": 0.04888915127501787,
+        "ad_syn": 0.3528254020945474,
+        "ad_udp": 0.026210545090516176,
+        "icmp_flood": 0.044377195733185826,
+        "normal": 1.4200252468494756,
+        "syn_flood": 0.9285111752804208,
+        "udp_flood": 3.0002077803370817
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 0.872244,
+        "ad_syn": 17.47333175,
+        "ad_udp": 0.8813147500000001,
+        "icmp_flood": 4.210899749999999,
+        "normal": 53.96302666666667,
+        "syn_flood": 20.20348475,
+        "udp_flood": 58.02853033333333
+      }
+    },
+    "fwd_iat_std": {
+      "mean": {
+        "ad_slow": 0.015895819760619483,
+        "ad_syn": 0.02519763899139713,
+        "ad_udp": 0.003850549196516861,
+        "icmp_flood": 0.002059221525887556,
+        "normal": 0.607978041508208,
+        "syn_flood": 0.13257222933317664,
+        "udp_flood": 0.5364314428652474
+      },
+      "std": {
+        "ad_slow": 0.04831761601582871,
+        "ad_syn": 0.6225864074622008,
+        "ad_udp": 0.1122692831754739,
+        "icmp_flood": 0.06481424250490415,
+        "normal": 1.812094299343084,
+        "syn_flood": 1.6086559921835573,
+        "udp_flood": 4.652212593994128
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 0.872244,
+        "ad_syn": 30.26467065569508,
+        "ad_udp": 3.841196934357803,
+        "icmp_flood": 7.293461135673184,
+        "normal": 76.31523498631303,
+        "syn_flood": 34.99345052993785,
+        "udp_flood": 82.06472682380407
+      }
+    },
+    "bwd_iat_tot": {
+      "mean": {
+        "ad_slow": 0.0023302379257752843,
+        "ad_syn": 0.04154567942368302,
+        "ad_udp": 0.018628122433603306,
+        "icmp_flood": 0.16472944933865735,
+        "normal": 4.4169752393611,
+        "syn_flood": 0.3080575037400965,
+        "udp_flood": 0.0003648890630108569
+      },
+      "std": {
+        "ad_slow": 0.02214134601259753,
+        "ad_syn": 1.210705308922327,
+        "ad_udp": 0.5611406663448332,
+        "icmp_flood": 1.3558414498558036,
+        "normal": 17.312357157692375,
+        "syn_flood": 3.7440257500969887,
+        "udp_flood": 0.04183317466643524
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 0.299394,
+        "ad_syn": 69.893309,
+        "ad_udp": 18.831707,
+        "icmp_flood": 16.845239,
+        "normal": 119.999781,
+        "syn_flood": 80.813935,
+        "udp_flood": 6.531063
+      }
+    },
+    "bwd_iat_max": {
+      "mean": {
+        "ad_slow": 0.0021773085917641075,
+        "ad_syn": 0.04154557850389142,
+        "ad_udp": 0.01819073648521379,
+        "icmp_flood": 0.007302986585974544,
+        "normal": 1.0503007398927626,
+        "syn_flood": 0.30653000221307486,
+        "udp_flood": 0.00027858305054171973
+      },
+      "std": {
+        "ad_slow": 0.022117712725974424,
+        "ad_syn": 1.2107051317759692,
+        "ad_udp": 0.5611012589540223,
+        "icmp_flood": 0.14850524219289982,
+        "normal": 3.4138900504477125,
+        "syn_flood": 3.7230084425901935,
+        "udp_flood": 0.029478716198475332
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 0.298988,
+        "ad_syn": 69.893302,
+        "ad_udp": 18.829509,
+        "icmp_flood": 16.841631,
+        "normal": 60.005125,
+        "syn_flood": 80.81393,
+        "udp_flood": 4.999685
+      }
+    },
+    "bwd_iat_min": {
+      "mean": {
+        "ad_slow": 3.113879003558719e-06,
+        "ad_syn": 4.7758409982633305e-08,
+        "ad_udp": 1.704558297231117e-06,
+        "icmp_flood": 0.0021614051035687546,
+        "normal": 1.1730797945747834e-05,
+        "syn_flood": 1.0523170893639622e-07,
+        "udp_flood": 6.923415145604798e-08
+      },
+      "std": {
+        "ad_slow": 1.6933784200723268e-05,
+        "ad_syn": 2.9412648509247803e-06,
+        "ad_udp": 2.938158872874388e-06,
+        "icmp_flood": 0.016169180215559614,
+        "normal": 0.0017733118735063717,
+        "syn_flood": 4.006044517915116e-06,
+        "udp_flood": 3.7021935749814936e-06
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 0.00022,
+        "ad_syn": 0.000219,
+        "ad_udp": 0.000232,
+        "icmp_flood": 0.175749,
+        "normal": 0.372789,
+        "syn_flood": 0.000265,
+        "udp_flood": 0.000229
+      }
+    },
+    "bwd_iat_mean": {
+      "mean": {
+        "ad_slow": 0.0006942137490820762,
+        "ad_syn": 0.013848559807894342,
+        "ad_udp": 0.0008573217464612239,
+        "icmp_flood": 0.003277390688150999,
+        "normal": 0.3823096930387531,
+        "syn_flood": 0.10179928788157099,
+        "udp_flood": 6.019028626405329e-05
+      },
+      "std": {
+        "ad_slow": 0.0073876108428419865,
+        "ad_syn": 0.4035684363074403,
+        "ad_udp": 0.024369941340635724,
+        "icmp_flood": 0.023755946597870975,
+        "normal": 1.2462929747402685,
+        "syn_flood": 1.236444430185331,
+        "udp_flood": 0.007261746602174469
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 0.099798,
+        "ad_syn": 23.29776966666667,
+        "ad_udp": 0.9276994210526316,
+        "icmp_flood": 1.5313853636363637,
+        "normal": 10.0171505,
+        "syn_flood": 26.937978333333334,
+        "udp_flood": 2.0245943333333334
+      }
+    },
+    "bwd_iat_std": {
+      "mean": {
+        "ad_slow": 0.0009891224009414888,
+        "ad_syn": 0.019584749738687998,
+        "ad_udp": 0.0037540817678003565,
+        "icmp_flood": 0.0015988806377523668,
+        "normal": 0.4726073597613317,
+        "syn_flood": 0.1441323522174625,
+        "udp_flood": 8.613251005211409e-05
+      },
+      "std": {
+        "ad_slow": 0.010420919911068032,
+        "ad_syn": 0.5707318307159145,
+        "ad_udp": 0.11394022074784477,
+        "icmp_flood": 0.04144554343953352,
+        "normal": 1.5273650748915528,
+        "syn_flood": 1.7506408585138664,
+        "udp_flood": 0.0077887191736414375
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 0.1408485998960112,
+        "ad_syn": 32.94801688589704,
+        "ad_udp": 3.935523373156456,
+        "icmp_flood": 4.841524822830233,
+        "normal": 12.84351917346185,
+        "syn_flood": 38.09605076637868,
+        "udp_flood": 1.478490438181475
+      }
+    },
+    "fwd_psh_flags": {
+      "mean": {
+        "ad_slow": 1.9379766141331978,
+        "ad_syn": 0.00017688299993567891,
+        "ad_udp": 2.609530985119608,
+        "icmp_flood": -0.9942600449213875,
+        "normal": 0.8867446437863397,
+        "syn_flood": 0.00042048422077634663,
+        "udp_flood": -0.0023224613580761903
+      },
+      "std": {
+        "ad_slow": 0.34235818764732506,
+        "ad_syn": 0.01653292908150372,
+        "ad_udp": 0.9323503346339459,
+        "icmp_flood": 0.11043737505932294,
+        "normal": 1.2741161756735533,
+        "syn_flood": 0.02861256724046215,
+        "udp_flood": 0.06694581568146858
+      },
+      "min": {
+        "ad_slow": -1,
+        "ad_syn": -1,
+        "ad_udp": 0,
+        "icmp_flood": -1,
+        "normal": -1,
+        "syn_flood": -1,
+        "udp_flood": -1
+      },
+      "max": {
+        "ad_slow": 2,
+        "ad_syn": 1,
+        "ad_udp": 8,
+        "icmp_flood": 8,
+        "normal": 23,
+        "syn_flood": 4,
+        "udp_flood": 8
+      }
+    },
+    "bwd_psh_flags": {
+      "mean": {
+        "ad_slow": 3.8698525673614643,
+        "ad_syn": 0.00017688299993567891,
+        "ad_udp": 4.0021661329817295,
+        "icmp_flood": -0.9933241826803094,
+        "normal": -0.1509241872355829,
+        "syn_flood": 0.00039835347231443366,
+        "udp_flood": -0.0009808453308380028
+      },
+      "std": {
+        "ad_slow": 0.6990337238813046,
+        "ad_syn": 0.01653292908150372,
+        "ad_udp": 0.20471741273542376,
+        "icmp_flood": 0.2011208511743957,
+        "normal": 5.000864596620444,
+        "syn_flood": 0.024890077978926076,
+        "udp_flood": 0.36985002970208414
+      },
+      "min": {
+        "ad_slow": -1,
+        "ad_syn": -1,
+        "ad_udp": 0,
+        "icmp_flood": -1,
+        "normal": -1,
+        "syn_flood": -1,
+        "udp_flood": -1
+      },
+      "max": {
+        "ad_slow": 4,
+        "ad_syn": 1,
+        "ad_udp": 8,
+        "icmp_flood": 22,
+        "normal": 794,
+        "syn_flood": 2,
+        "udp_flood": 106
+      }
+    },
+    "fwd_urg_flags": {
+      "mean": {
+        "ad_slow": -0.001525165226232842,
+        "ad_syn": -4.824081816427607e-05,
+        "ad_udp": 0.0,
+        "icmp_flood": -0.9957574245071126,
+        "normal": -0.20612655822266465,
+        "syn_flood": -6.639224538573895e-05,
+        "udp_flood": -0.0028861655712014793
+      },
+      "std": {
+        "ad_slow": 0.03903349439650886,
+        "ad_syn": 0.006945449351071756,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0649987664288125,
+        "normal": 0.4045270107720767,
+        "syn_flood": 0.008147963346784186,
+        "udp_flood": 0.05364576464944994
+      },
+      "min": {
+        "ad_slow": -1,
+        "ad_syn": -1,
+        "ad_udp": 0,
+        "icmp_flood": -1,
+        "normal": -1,
+        "syn_flood": -1,
+        "udp_flood": -1
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      }
+    },
+    "bwd_urg_flags": {
+      "mean": {
+        "ad_slow": -0.001525165226232842,
+        "ad_syn": -4.824081816427607e-05,
+        "ad_udp": 0.0,
+        "icmp_flood": -0.9957574245071126,
+        "normal": -0.20612655822266465,
+        "syn_flood": -6.639224538573895e-05,
+        "udp_flood": -0.0028861655712014793
+      },
+      "std": {
+        "ad_slow": 0.03903349439650886,
+        "ad_syn": 0.006945449351071756,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0649987664288125,
+        "normal": 0.4045270107720767,
+        "syn_flood": 0.008147963346784186,
+        "udp_flood": 0.05364576464944994
+      },
+      "min": {
+        "ad_slow": -1,
+        "ad_syn": -1,
+        "ad_udp": 0,
+        "icmp_flood": -1,
+        "normal": -1,
+        "syn_flood": -1,
+        "udp_flood": -1
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      }
+    },
+    "fin_flag_cnt": {
+      "mean": {
+        "ad_slow": 1.945602440264362,
+        "ad_syn": 0.903598765035055,
+        "ad_udp": 3.861932567338482,
+        "icmp_flood": -0.9936361367606689,
+        "normal": -0.19241646116603697,
+        "syn_flood": 0.0007303146992431284,
+        "udp_flood": -0.002142076009876098
+      },
+      "std": {
+        "ad_slow": 0.33236678704920464,
+        "ad_syn": 1.3764539505321913,
+        "ad_udp": 0.5436224768670028,
+        "icmp_flood": 0.11264110856705203,
+        "normal": 0.44367087587950343,
+        "syn_flood": 0.04073462282683642,
+        "udp_flood": 0.06610450415648887
+      },
+      "min": {
+        "ad_slow": -1,
+        "ad_syn": -1,
+        "ad_udp": 0,
+        "icmp_flood": -1,
+        "normal": -1,
+        "syn_flood": -1,
+        "udp_flood": -1
+      },
+      "max": {
+        "ad_slow": 2,
+        "ad_syn": 5,
+        "ad_udp": 8,
+        "icmp_flood": 2,
+        "normal": 3,
+        "syn_flood": 2,
+        "udp_flood": 2
+      }
+    },
+    "syn_flag_cnt": {
+      "mean": {
+        "ad_slow": 4.851042196237926,
+        "ad_syn": 2.0040522287257994,
+        "ad_udp": 5.001318515728009,
+        "icmp_flood": -0.992575492887447,
+        "normal": 2.5908916087871314,
+        "syn_flood": 3.020072588854955,
+        "udp_flood": -0.0017700312292134072
+      },
+      "std": {
+        "ad_slow": 0.8284597492964462,
+        "ad_syn": 1.732189965231484,
+        "ad_udp": 0.223423814916512,
+        "icmp_flood": 0.14176869978488765,
+        "normal": 2.8996375688709266,
+        "syn_flood": 0.2452963133238603,
+        "udp_flood": 0.07893988751661092
+      },
+      "min": {
+        "ad_slow": -1,
+        "ad_syn": -1,
+        "ad_udp": 0,
+        "icmp_flood": -1,
+        "normal": -1,
+        "syn_flood": -1,
+        "udp_flood": -1
+      },
+      "max": {
+        "ad_slow": 5,
+        "ad_syn": 9,
+        "ad_udp": 9,
+        "icmp_flood": 3,
+        "normal": 15,
+        "syn_flood": 7,
+        "udp_flood": 3
+      }
+    },
+    "rst_flag_cnt": {
+      "mean": {
+        "ad_slow": -0.001525165226232842,
+        "ad_syn": 2.0009969769087284,
+        "ad_udp": 0.1403277453381051,
+        "icmp_flood": -0.9957574245071126,
+        "normal": 5.294970702020317,
+        "syn_flood": 2.020559465321117,
+        "udp_flood": -0.0028636174026764674
+      },
+      "std": {
+        "ad_slow": 0.03903349439650886,
+        "ad_syn": 0.556111305403119,
+        "ad_udp": 0.5123428650827205,
+        "icmp_flood": 0.0649987664288125,
+        "normal": 5.344659812045532,
+        "syn_flood": 0.23521455772248095,
+        "udp_flood": 0.05406565045236164
+      },
+      "min": {
+        "ad_slow": -1,
+        "ad_syn": -1,
+        "ad_udp": 0,
+        "icmp_flood": -1,
+        "normal": -1,
+        "syn_flood": -1,
+        "udp_flood": -1
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 5,
+        "ad_udp": 4,
+        "icmp_flood": 0,
+        "normal": 26,
+        "syn_flood": 6,
+        "udp_flood": 2
+      }
+    },
+    "psh_flag_cnt": {
+      "mean": {
+        "ad_slow": 5.809354346720895,
+        "ad_syn": 0.00040200681803563386,
+        "ad_udp": 6.611697118101337,
+        "icmp_flood": -0.9918268030945845,
+        "normal": 0.9419470147734215,
+        "syn_flood": 0.0008852299384765192,
+        "udp_flood": -0.00041714111771271376
+      },
+      "std": {
+        "ad_slow": 1.028462659766134,
+        "ad_syn": 0.03079918399347576,
+        "ad_udp": 0.9862971500445997,
+        "icmp_flood": 0.2692549742685651,
+        "normal": 5.1919643708380905,
+        "syn_flood": 0.0506600432962282,
+        "udp_flood": 0.39196110051320854
+      },
+      "min": {
+        "ad_slow": -1,
+        "ad_syn": -1,
+        "ad_udp": 0,
+        "icmp_flood": -1,
+        "normal": -1,
+        "syn_flood": -1,
+        "udp_flood": -1
+      },
+      "max": {
+        "ad_slow": 6,
+        "ad_syn": 2,
+        "ad_udp": 16,
+        "icmp_flood": 30,
+        "normal": 801,
+        "syn_flood": 6,
+        "udp_flood": 110
+      }
+    },
+    "ack_flag_cnt": {
+      "mean": {
+        "ad_slow": 17.92018301982715,
+        "ad_syn": 1.7106033318325078,
+        "ad_udp": 21.934168393294406,
+        "icmp_flood": -0.9845270776141752,
+        "normal": 5.466776769756341,
+        "syn_flood": 2.0236799008542468,
+        "udp_flood": 0.002683232054476375
+      },
+      "std": {
+        "ad_slow": 3.6549043636576393,
+        "ad_syn": 0.7193630561170219,
+        "ad_udp": 3.1363324607287475,
+        "icmp_flood": 0.5849638760944594,
+        "normal": 10.412431073127587,
+        "syn_flood": 0.2562341013762809,
+        "udp_flood": 0.6509918628846854
+      },
+      "min": {
+        "ad_slow": -1,
+        "ad_syn": -1,
+        "ad_udp": 0,
+        "icmp_flood": -1,
+        "normal": -1,
+        "syn_flood": -1,
+        "udp_flood": -1
+      },
+      "max": {
+        "ad_slow": 20,
+        "ad_syn": 7,
+        "ad_udp": 52,
+        "icmp_flood": 65,
+        "normal": 1461,
+        "syn_flood": 10,
+        "udp_flood": 175
+      }
+    },
+    "urg_flag_cnt": {
+      "mean": {
+        "ad_slow": -0.001525165226232842,
+        "ad_syn": -4.824081816427607e-05,
+        "ad_udp": 0.0,
+        "icmp_flood": -0.9957574245071126,
+        "normal": -0.20612655822266465,
+        "syn_flood": -6.639224538573895e-05,
+        "udp_flood": -0.0028861655712014793
+      },
+      "std": {
+        "ad_slow": 0.03903349439650886,
+        "ad_syn": 0.006945449351071756,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0649987664288125,
+        "normal": 0.4045270107720767,
+        "syn_flood": 0.008147963346784186,
+        "udp_flood": 0.05364576464944994
+      },
+      "min": {
+        "ad_slow": -1,
+        "ad_syn": -1,
+        "ad_udp": 0,
+        "icmp_flood": -1,
+        "normal": -1,
+        "syn_flood": -1,
+        "udp_flood": -1
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      }
+    },
+    "ece_flag_cnt": {
+      "mean": {
+        "ad_slow": -0.001525165226232842,
+        "ad_syn": -4.824081816427607e-05,
+        "ad_udp": 0.0,
+        "icmp_flood": -0.9957574245071126,
+        "normal": -0.20612655822266465,
+        "syn_flood": -6.639224538573895e-05,
+        "udp_flood": -0.0028861655712014793
+      },
+      "std": {
+        "ad_slow": 0.03903349439650886,
+        "ad_syn": 0.006945449351071756,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0649987664288125,
+        "normal": 0.4045270107720767,
+        "syn_flood": 0.008147963346784186,
+        "udp_flood": 0.05364576464944994
+      },
+      "min": {
+        "ad_slow": -1,
+        "ad_syn": -1,
+        "ad_udp": 0,
+        "icmp_flood": -1,
+        "normal": -1,
+        "syn_flood": -1,
+        "udp_flood": -1
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      }
+    },
+    "down_up_ratio": {
+      "mean": {
+        "ad_slow": 0.7433047379666597,
+        "ad_syn": 0.5429280492025715,
+        "ad_udp": 0.9221255512687911,
+        "icmp_flood": 1.9698999210486028,
+        "normal": 0.6625028823719289,
+        "syn_flood": 0.6679608939136226,
+        "udp_flood": 0.0007886037395600637
+      },
+      "std": {
+        "ad_slow": 0.07868904250009146,
+        "ad_syn": 0.238008064798311,
+        "ad_udp": 0.021510684866712825,
+        "icmp_flood": 0.1858007089898061,
+        "normal": 0.3535473946501382,
+        "syn_flood": 0.019402692971266577,
+        "udp_flood": 0.02300474700479235
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 0.8,
+        "ad_syn": 0.8,
+        "ad_udp": 1.0769230769230769,
+        "icmp_flood": 2.4,
+        "normal": 1.6101694915254237,
+        "syn_flood": 0.8571428571428571,
+        "udp_flood": 1.765625
+      }
+    },
+    "pkt_size_avg": {
+      "mean": {
+        "ad_slow": 140.93479777115698,
+        "ad_syn": 56.611871384049294,
+        "ad_udp": 221.45476271048773,
+        "icmp_flood": 727.8876598576089,
+        "normal": 178.69862218295427,
+        "syn_flood": 60.424409345455686,
+        "udp_flood": 84.61149819125438
+      },
+      "std": {
+        "ad_slow": 63.407551384067695,
+        "ad_syn": 11.289813485443997,
+        "ad_udp": 119.24088891203692,
+        "icmp_flood": 415.61602071036066,
+        "normal": 237.23349708336406,
+        "syn_flood": 12.628026128123613,
+        "udp_flood": 16.348865835867354
+      },
+      "min": {
+        "ad_slow": 58.0,
+        "ad_syn": 56.0,
+        "ad_udp": 84.33333333333333,
+        "icmp_flood": 44.0,
+        "normal": 56.0,
+        "syn_flood": 56.0,
+        "udp_flood": 58.0
+      },
+      "max": {
+        "ad_slow": 1475.0,
+        "ad_syn": 1487.0,
+        "ad_udp": 636.7619047619048,
+        "icmp_flood": 1475.0,
+        "normal": 1652.3367875647668,
+        "syn_flood": 1475.0,
+        "udp_flood": 1786.638418079096
+      }
+    },
+    "init_fwd_win_byts": {
+      "mean": {
+        "ad_slow": 41254.00711743772,
+        "ad_syn": 19122.441966295748,
+        "ad_udp": 42300.12431719721,
+        "icmp_flood": 43.91190416770652,
+        "normal": 5108.0577588742335,
+        "syn_flood": 15951.473133271367,
+        "udp_flood": 17.93683130587718
+      },
+      "std": {
+        "ad_slow": 6752.599293958683,
+        "ad_syn": 10255.278861693694,
+        "ad_udp": 1298.8091514957716,
+        "icmp_flood": 1378.2531148861503,
+        "normal": 5231.375044393474,
+        "syn_flood": 16790.91596924743,
+        "udp_flood": 898.9519488864509
+      },
+      "min": {
+        "ad_slow": -1,
+        "ad_syn": -1,
+        "ad_udp": 0,
+        "icmp_flood": -1,
+        "normal": -1,
+        "syn_flood": -1,
+        "udp_flood": -1
+      },
+      "max": {
+        "ad_slow": 65535,
+        "ad_syn": 42340,
+        "ad_udp": 42340,
+        "icmp_flood": 42340,
+        "normal": 65535,
+        "syn_flood": 65535,
+        "udp_flood": 65535
+      }
+    },
+    "init_bwd_win_byts": {
+      "mean": {
+        "ad_slow": 42482.88612099644,
+        "ad_syn": 4220.6836849552965,
+        "ad_udp": 43403.00621585986,
+        "icmp_flood": 67.14000499126529,
+        "normal": 4233.384108956811,
+        "syn_flood": 27.040499269685302,
+        "udp_flood": 25.082402281874653
+      },
+      "std": {
+        "ad_slow": 7180.258289505591,
+        "ad_syn": 12696.806195742305,
+        "ad_udp": 1362.9015707283547,
+        "icmp_flood": 2091.1258728492753,
+        "normal": 6525.280103671502,
+        "syn_flood": 1318.4352116516484,
+        "udp_flood": 1264.951217279019
+      },
+      "min": {
+        "ad_slow": -1,
+        "ad_syn": -1,
+        "ad_udp": 0,
+        "icmp_flood": -1,
+        "normal": -1,
+        "syn_flood": -1,
+        "udp_flood": -1
+      },
+      "max": {
+        "ad_slow": 64240,
+        "ad_syn": 64240,
+        "ad_udp": 64240,
+        "icmp_flood": 64240,
+        "normal": 65535,
+        "syn_flood": 65535,
+        "udp_flood": 64240
+      }
+    },
+    "active_max": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      }
+    },
+    "active_min": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      }
+    },
+    "active_mean": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      }
+    },
+    "active_std": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      }
+    },
+    "idle_max": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      }
+    },
+    "idle_min": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      }
+    },
+    "idle_mean": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      }
+    },
+    "idle_std": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      }
+    },
+    "fwd_byts_b_avg": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 1552.5929553588246,
+        "icmp_flood": 0.0,
+        "normal": 0.2195538562475962,
+        "syn_flood": 0.0,
+        "udp_flood": 1.1618761511118672
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 3007.0213909983904,
+        "icmp_flood": 0.0,
+        "normal": 17.2054313675372,
+        "syn_flood": 0.0,
+        "udp_flood": 21.154940621400378
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 10544.0,
+        "icmp_flood": 0.0,
+        "normal": 1668.0,
+        "syn_flood": 0.0,
+        "udp_flood": 587.0
+      }
+    },
+    "fwd_pkts_b_avg": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.9436805424750424,
+        "icmp_flood": 0.0,
+        "normal": 0.0018777855704622066,
+        "syn_flood": 0.0,
+        "udp_flood": 0.01698834443324612
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 1.6983700601747347,
+        "icmp_flood": 0.0,
+        "normal": 0.13544330965820575,
+        "syn_flood": 0.0,
+        "udp_flood": 0.30294126111919506
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 4.0,
+        "icmp_flood": 0.0,
+        "normal": 18.0,
+        "syn_flood": 0.0,
+        "udp_flood": 8.333333333333334
+      }
+    },
+    "bwd_byts_b_avg": {
+      "mean": {
+        "ad_slow": 1261.514997458058,
+        "ad_syn": 0.0,
+        "ad_udp": 1621.7665285364476,
+        "icmp_flood": 4115.078706014475,
+        "normal": 64.6789797365067,
+        "syn_flood": 0.004581064931615988,
+        "udp_flood": 3.7056280228638427
+      },
+      "std": {
+        "ad_slow": 236.95367136667875,
+        "ad_syn": 0.0,
+        "ad_udp": 1153.4967581439998,
+        "icmp_flood": 2483.886199064068,
+        "normal": 8055.526618886833,
+        "syn_flood": 0.9737969197140203,
+        "udp_flood": 1017.1823097458437
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 1306.0,
+        "ad_syn": 0.0,
+        "ad_udp": 6192.0,
+        "icmp_flood": 25025.5,
+        "normal": 1537222.0,
+        "syn_flood": 207.0,
+        "udp_flood": 301904.0
+      }
+    },
+    "bwd_pkts_b_avg": {
+      "mean": {
+        "ad_slow": 3.8637519064565327,
+        "ad_syn": 0.0,
+        "ad_udp": 4.0248634394424565,
+        "icmp_flood": 6.749812827551785,
+        "normal": 0.026973371643175495,
+        "syn_flood": 8.852299384765193e-05,
+        "udp_flood": 0.0014599939119944983
+      },
+      "std": {
+        "ad_slow": 0.7257386565595071,
+        "ad_syn": 0.0,
+        "ad_udp": 0.27199098337087574,
+        "icmp_flood": 8.144169337228568,
+        "normal": 3.1066417042247885,
+        "syn_flood": 0.018817331781913405,
+        "udp_flood": 0.35875769529602697
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 4.0,
+        "ad_syn": 0.0,
+        "ad_udp": 6.0,
+        "icmp_flood": 98.0,
+        "normal": 584.0,
+        "syn_flood": 4.0,
+        "udp_flood": 106.0
+      }
+    },
+    "fwd_blk_rate_avg": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 53398011.13298236,
+        "icmp_flood": 0.0,
+        "normal": 19.28863103347155,
+        "syn_flood": 0.0,
+        "udp_flood": 2.4142948934708026
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 102843152.54945287,
+        "icmp_flood": 0.0,
+        "normal": 2527.3822298862337,
+        "syn_flood": 0.0,
+        "udp_flood": 365.0207531643175
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 681571428.5714285,
+        "icmp_flood": 0.0,
+        "normal": 380952.38095238095,
+        "syn_flood": 0.0,
+        "udp_flood": 108342.36186348862
+      }
+    },
+    "bwd_blk_rate_avg": {
+      "mean": {
+        "ad_slow": 25927028.22939886,
+        "ad_syn": 0.0,
+        "ad_udp": 28581688.987778913,
+        "icmp_flood": 2994838.395923989,
+        "normal": 272.6595797563602,
+        "syn_flood": 0.01908785008110862,
+        "udp_flood": 2.5665159201900685
+      },
+      "std": {
+        "ad_slow": 9309903.897749944,
+        "ad_syn": 0.0,
+        "ad_udp": 16888728.157429557,
+        "icmp_flood": 1862334.0760430293,
+        "normal": 49783.337853831414,
+        "syn_flood": 4.057504071742047,
+        "udp_flood": 662.0199276664864
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 40812500.0,
+        "ad_syn": 0.0,
+        "ad_udp": 123760000.0,
+        "icmp_flood": 7219808.861859251,
+        "normal": 10438191.336941244,
+        "syn_flood": 862.5035937649741,
+        "udp_flood": 195121.5728955877
+      }
+    },
+    "fwd_seg_size_avg": {
+      "mean": {
+        "ad_slow": 84.3275550072703,
+        "ad_syn": 56.58782080144079,
+        "ad_udp": 236.5333875995429,
+        "icmp_flood": 727.5080227114071,
+        "normal": 209.96660033485549,
+        "syn_flood": 63.12255144345172,
+        "udp_flood": 84.51511070675599
+      },
+      "std": {
+        "ad_slow": 66.36273257277222,
+        "ad_syn": 11.02755509987483,
+        "ad_udp": 226.63371660672672,
+        "icmp_flood": 416.14263203624984,
+        "normal": 234.98601528002686,
+        "syn_flood": 14.287685049272085,
+        "udp_flood": 14.776870768760627
+      },
+      "min": {
+        "ad_slow": 56.0,
+        "ad_syn": 56.0,
+        "ad_udp": 74.14285714285714,
+        "icmp_flood": 44.0,
+        "normal": 56.0,
+        "syn_flood": 56.0,
+        "udp_flood": 56.0
+      },
+      "max": {
+        "ad_slow": 1475.0,
+        "ad_syn": 1487.0,
+        "ad_udp": 1028.3636363636365,
+        "icmp_flood": 1475.0,
+        "normal": 1515.0,
+        "syn_flood": 1475.0,
+        "udp_flood": 1475.0
+      }
+    },
+    "bwd_seg_size_avg": {
+      "mean": {
+        "ad_slow": 212.48548551093035,
+        "ad_syn": 48.4393210908857,
+        "ad_udp": 205.53038290428097,
+        "icmp_flood": 727.999815600477,
+        "normal": 58.02161144535179,
+        "syn_flood": 56.28943367414686,
+        "udp_flood": 0.4050282910845089
+      },
+      "std": {
+        "ad_slow": 34.59024118747363,
+        "ad_syn": 21.370385275686342,
+        "ad_udp": 96.64361228451858,
+        "icmp_flood": 415.3617856376958,
+        "normal": 60.46858446687994,
+        "syn_flood": 9.719637974023664,
+        "udp_flood": 15.275456350854716
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 438.0,
+        "ad_syn": 438.0,
+        "ad_udp": 585.3333333333334,
+        "icmp_flood": 1546.6944444444443,
+        "normal": 2648.3097643097644,
+        "syn_flood": 438.0,
+        "udp_flood": 2759.646017699115
+      }
+    },
+    "cwr_flag_count": {
+      "mean": {
+        "ad_slow": -0.001525165226232842,
+        "ad_syn": -4.824081816427607e-05,
+        "ad_udp": 0.0,
+        "icmp_flood": -0.9957574245071126,
+        "normal": -0.20612655822266465,
+        "syn_flood": -6.639224538573895e-05,
+        "udp_flood": -0.0028861655712014793
+      },
+      "std": {
+        "ad_slow": 0.03903349439650886,
+        "ad_syn": 0.006945449351071756,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0649987664288125,
+        "normal": 0.4045270107720767,
+        "syn_flood": 0.008147963346784186,
+        "udp_flood": 0.05364576464944994
+      },
+      "min": {
+        "ad_slow": -1,
+        "ad_syn": -1,
+        "ad_udp": 0,
+        "icmp_flood": -1,
+        "normal": -1,
+        "syn_flood": -1,
+        "udp_flood": -1
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      }
+    },
+    "subflow_fwd_pkts": {
+      "mean": {
+        "ad_slow": 11.926792069140824,
+        "ad_syn": 3.202933041744388,
+        "ad_udp": 13.03578828404596,
+        "icmp_flood": 5.460943349139007,
+        "normal": 7.689712902423022,
+        "syn_flood": 3.0237462930996326,
+        "udp_flood": 3.252753695081117
+      },
+      "std": {
+        "ad_slow": 1.9730454817412264,
+        "ad_syn": 0.6104638170268925,
+        "ad_udp": 1.4696195171224216,
+        "icmp_flood": 29.96427496893948,
+        "normal": 5.984662547060487,
+        "syn_flood": 0.22686260642357153,
+        "udp_flood": 4.253811481072858
+      },
+      "min": {
+        "ad_slow": 2,
+        "ad_syn": 2,
+        "ad_udp": 2,
+        "icmp_flood": 2,
+        "normal": 2,
+        "syn_flood": 2,
+        "udp_flood": 2
+      },
+      "max": {
+        "ad_slow": 13,
+        "ad_syn": 9,
+        "ad_udp": 29,
+        "icmp_flood": 627,
+        "normal": 661,
+        "syn_flood": 7,
+        "udp_flood": 149
+      }
+    },
+    "subflow_bwd_pkts": {
+      "mean": {
+        "ad_slow": 8.984748347737671,
+        "ad_syn": 1.711326944104972,
+        "ad_udp": 12.037954417027688,
+        "icmp_flood": 8.349388570002496,
+        "normal": 5.96488767222461,
+        "syn_flood": 2.023325808878856,
+        "udp_flood": 0.00427287793548969
+      },
+      "std": {
+        "ad_slow": 1.7178291989843095,
+        "ad_syn": 0.713471189910588,
+        "ad_udp": 1.4748433431634962,
+        "icmp_flood": 29.649411944036792,
+        "normal": 6.881648994855832,
+        "syn_flood": 0.2285098828704663,
+        "udp_flood": 0.41070398953672177
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 10,
+        "ad_syn": 4,
+        "ad_udp": 28,
+        "icmp_flood": 626,
+        "normal": 803,
+        "syn_flood": 6,
+        "udp_flood": 113
+      }
+    },
+    "subflow_fwd_byts": {
+      "mean": {
+        "ad_slow": 955.9872902897814,
+        "ad_syn": 181.0413584614395,
+        "ad_udp": 3192.610096063289,
+        "icmp_flood": 2291.4812203643623,
+        "normal": 1459.1316486052351,
+        "syn_flood": 190.74390297879873,
+        "udp_flood": 281.2930810944881
+      },
+      "std": {
+        "ad_slow": 158.10946071560954,
+        "ad_syn": 42.736405640329835,
+        "ad_udp": 3164.094011202291,
+        "icmp_flood": 1691.313441236604,
+        "normal": 1249.797136759746,
+        "syn_flood": 41.03641169999214,
+        "udp_flood": 498.4850311796948
+      },
+      "min": {
+        "ad_slow": 112,
+        "ad_syn": 168,
+        "ad_udp": 178,
+        "icmp_flood": 132,
+        "normal": 112,
+        "syn_flood": 112,
+        "udp_flood": 112
+      },
+      "max": {
+        "ad_slow": 2950,
+        "ad_syn": 4461,
+        "ad_udp": 16324,
+        "icmp_flood": 27588,
+        "normal": 38801,
+        "syn_flood": 3484,
+        "udp_flood": 17857
+      }
+    },
+    "subflow_bwd_byts": {
+      "mean": {
+        "ad_slow": 1895.1169293340113,
+        "ad_syn": 96.89541390621984,
+        "ad_udp": 2457.785647014504,
+        "icmp_flood": 4486.917456950337,
+        "normal": 475.3265763218027,
+        "syn_flood": 113.73894569114327,
+        "udp_flood": 4.731237105266125
+      },
+      "std": {
+        "ad_slow": 306.80751460887456,
+        "ad_syn": 41.453621279211376,
+        "ad_udp": 1166.6416384833792,
+        "icmp_flood": 2697.036626773327,
+        "normal": 12810.472299369618,
+        "syn_flood": 18.748948908385604,
+        "udp_flood": 1063.9752745404844
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 2002,
+        "ad_syn": 876,
+        "ad_udp": 9380,
+        "icmp_flood": 55681,
+        "normal": 1980576,
+        "syn_flood": 1616,
+        "udp_flood": 311840
+      }
+    },
+    "Attack_Type": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 1.0,
+        "ad_udp": 2.0,
+        "icmp_flood": 3.0,
+        "normal": 4.0,
+        "syn_flood": 5.0,
+        "udp_flood": 6.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 1,
+        "ad_udp": 2,
+        "icmp_flood": 3,
+        "normal": 4,
+        "syn_flood": 5,
+        "udp_flood": 6
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 1,
+        "ad_udp": 2,
+        "icmp_flood": 3,
+        "normal": 4,
+        "syn_flood": 5,
+        "udp_flood": 6
+      }
+    }
+  }
+}

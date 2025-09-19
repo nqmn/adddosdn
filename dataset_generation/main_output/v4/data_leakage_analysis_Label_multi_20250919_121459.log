@@ -1,0 +1,382 @@
+Data Leakage Analysis Report
+Target: Label_multi
+Timestamp: 2025-09-19 12:14:59.081492
+================================================================================
+
+Features shape: (1685938, 19)
+Feature columns: ['dataset_id', 'eth_type', 'ip_proto', 'ip_ttl', 'ip_flags', 'ip_len', 'ip_tos', 'ip_version', 'ip_frag_offset', 'tcp_flags', 'tcp_window', 'tcp_urgent', 'udp_len', 'udp_checksum', 'icmp_type', 'icmp_code', 'packet_length', 'transport_protocol', 'tcp_options_len']
+Target distribution:
+Label_multi
+ad_slow        39166
+ad_syn        243420
+ad_udp        255615
+icmp_flood    205324
+normal        559346
+syn_flood     182871
+udp_flood     200196
+Name: count, dtype: int64
+
+
+================================================================================
+FEATURE DISTRIBUTION ANALYSIS FOR Label_multi
+================================================================================
+
+Feature: dataset_id
+                  mean        std  min  max
+Label_multi                                
+ad_slow      47.216489  27.434675    0   94
+ad_syn       67.033436  19.551704    0   94
+ad_udp       66.094200  20.259484    0   94
+icmp_flood   66.456332  20.049465    0   94
+normal       65.836302  20.584089    0   94
+syn_flood    66.034615  20.484528    0   94
+udp_flood    65.994775  20.520862    0   94
+
+Feature: eth_type
+                 mean       std  min  max
+Label_multi                              
+ad_slow      3.999540  0.037129    1    4
+ad_syn       3.999938  0.013596    1    4
+ad_udp       4.000000  0.000000    4    4
+icmp_flood   0.700430  0.960165    0    4
+normal       3.739153  0.879029    0    4
+syn_flood    3.999902  0.017184    1    4
+udp_flood    3.714230  0.880710    1    4
+
+Feature: ip_proto
+                  mean       std  min  max
+Label_multi                               
+ad_slow       6.025634  0.541835    1   17
+ad_syn        6.008167  0.302347    1   17
+ad_udp        6.000861  0.097297    6   17
+icmp_flood    1.012824  0.390185    1   17
+normal        5.918812  2.460933    1   17
+syn_flood     6.006032  0.262557    1   17
+udp_flood    15.447102  4.721338    1   17
+
+Feature: ip_ttl
+                  mean        std  min  max
+Label_multi                                
+ad_slow      64.183731   3.876380   16  255
+ad_syn       64.040601   1.796544   16  255
+ad_udp       64.004378   0.645843   16  255
+icmp_flood   77.666814  49.173050   16  255
+normal       64.554557   6.681783    1  255
+syn_flood    64.045573   1.823979   16  255
+udp_flood    64.129128   3.133720    1  255
+
+Feature: ip_flags
+                 mean       std  min  max
+Label_multi                              
+ad_slow      0.003013  0.054807    0    1
+ad_syn       0.511975  0.499858    0    1
+ad_udp       0.000070  0.008391    0    1
+icmp_flood   0.999299  0.026473    0    1
+normal       0.529295  0.499142    0    1
+syn_flood    0.500030  0.500001    0    1
+udp_flood    0.998357  0.040506    0    1
+
+Feature: ip_len
+                   mean         std  min    max
+Label_multi                                    
+ad_slow      123.110810  142.273056   40   1459
+ad_syn        40.545062    7.806223   40   1477
+ad_udp       215.551458  553.564876   40   5055
+icmp_flood   455.060636  467.523819   28   5880
+normal       125.851927  284.425757   40  14640
+syn_flood     43.643776   11.628338   40   1544
+udp_flood     73.298083   83.840959   40  11720
+
+Feature: ip_tos
+                  mean        std  min  max
+Label_multi                                
+ad_slow       0.032069   2.384809    0  192
+ad_syn        0.007296   0.900442    0  192
+ad_udp        0.000125   0.044755    0   16
+icmp_flood    0.007013   1.124376    0  192
+normal        5.524881  32.084837    0  192
+syn_flood     0.006956   1.103728    0  192
+udp_flood    18.290435  56.365183    0  192
+
+Feature: ip_version
+             mean  std  min  max
+Label_multi                     
+ad_slow       4.0  0.0    4    4
+ad_syn        4.0  0.0    4    4
+ad_udp        4.0  0.0    4    4
+icmp_flood    4.0  0.0    4    4
+normal        4.0  0.0    4    4
+syn_flood     4.0  0.0    4    4
+udp_flood     4.0  0.0    4    4
+⚠️  WARNING: ip_version may have perfect class separation
+
+Feature: ip_frag_offset
+             mean  std  min  max
+Label_multi                     
+ad_slow       0.0  0.0    0    0
+ad_syn        0.0  0.0    0    0
+ad_udp        0.0  0.0    0    0
+icmp_flood    0.0  0.0    0    0
+normal        0.0  0.0    0    0
+syn_flood     0.0  0.0    0    0
+udp_flood     0.0  0.0    0    0
+⚠️  WARNING: ip_frag_offset may have perfect class separation
+
+Feature: tcp_flags
+                 mean       std  min  max
+Label_multi                              
+ad_slow      2.736455  2.894986    0    9
+ad_syn       5.539841  2.064828    0    9
+ad_udp       2.637756  2.722226    0    9
+icmp_flood   8.993917  0.213914    0    9
+normal       5.013291  2.777531    0    9
+syn_flood    6.498401  0.521267    0    9
+udp_flood    8.983466  0.347934    0    9
+
+Feature: tcp_window
+                     mean           std      min      max
+Label_multi                                              
+ad_slow       8578.171351  17136.483988     83.0  65535.0
+ad_syn       11973.893230  13793.218936      0.0  64240.0
+ad_udp        7203.550727  15943.709137      0.0  64240.0
+icmp_flood   52987.355330  11922.260923  24820.0  64240.0
+normal        4821.065500   7572.347533      0.0  65535.0
+syn_flood     8050.113257  14407.933869      0.0  65535.0
+udp_flood    56626.601145  10736.772902  33580.0  65535.0
+
+Feature: tcp_urgent
+             mean  std  min  max
+Label_multi                     
+ad_slow       0.0  0.0  0.0  0.0
+ad_syn        0.0  0.0  0.0  0.0
+ad_udp        0.0  0.0  0.0  0.0
+icmp_flood    0.0  0.0  0.0  0.0
+normal        0.0  0.0  0.0  0.0
+syn_flood     0.0  0.0  0.0  0.0
+udp_flood     0.0  0.0  0.0  0.0
+⚠️  WARNING: tcp_urgent may have perfect class separation
+
+Feature: udp_len
+                   mean         std   min     max
+Label_multi                                      
+ad_slow      259.340426  282.060870  49.0  1439.0
+ad_syn       159.349727  226.538423  49.0  1457.0
+ad_udp       200.100000  134.653122  53.0   402.0
+icmp_flood   228.320388  215.675101  53.0  1439.0
+normal       375.583825  444.039307  35.0  1479.0
+syn_flood    230.495146  217.300726  53.0  1439.0
+udp_flood     48.437149   13.101244  37.0  1439.0
+
+Feature: udp_checksum
+                     mean           std     min      max
+Label_multi                                             
+ad_slow      42811.031915  12258.723961  5866.0  61748.0
+ad_syn       42678.174863  16288.896108   242.0  64927.0
+ad_udp       37599.350000  15832.912361  7415.0  54917.0
+icmp_flood   42095.427184  13476.988484  1727.0  65353.0
+normal       34124.818667  18738.562921     1.0  65535.0
+syn_flood    39827.475728  16570.455980   758.0  63834.0
+udp_flood    32872.769371  18901.700169     3.0  65535.0
+
+Feature: icmp_type
+                 mean       std  min  max
+Label_multi                              
+ad_slow      3.000000  0.000000  3.0  3.0
+ad_syn       3.000000  0.000000  3.0  3.0
+ad_udp            NaN       NaN  NaN  NaN
+icmp_flood   2.782372  3.810110  0.0  8.0
+normal       3.669326  3.306171  0.0  8.0
+syn_flood    3.000000  0.000000  3.0  3.0
+udp_flood    3.000000  0.000000  3.0  3.0
+
+Feature: icmp_code
+                 mean       std  min  max
+Label_multi                              
+ad_slow      3.000000  0.000000  3.0  3.0
+ad_syn       3.000000  0.000000  3.0  3.0
+ad_udp            NaN       NaN  NaN  NaN
+icmp_flood   0.000102  0.017529  0.0  3.0
+normal       0.992022  1.411382  0.0  3.0
+syn_flood    3.000000  0.000000  3.0  3.0
+udp_flood    3.000000  0.000000  3.0  3.0
+
+Feature: packet_length
+                   mean         std  min    max
+Label_multi                                    
+ad_slow      139.116325  142.269961   56   1475
+ad_syn        56.545867    7.806506   56   1493
+ad_udp       231.551591  553.564835   56   5071
+icmp_flood   472.345581  466.371648   44   5896
+normal       141.861578  284.422953   56  14656
+syn_flood     59.645285   11.628288   56   1560
+udp_flood     89.301135   83.839864   56  11736
+
+Feature: transport_protocol
+                 mean       std  min  max
+Label_multi                              
+ad_slow      1.002247  0.050480    0    2
+ad_syn       1.000731  0.027781    0    2
+ad_udp       1.000078  0.008845    1    2
+icmp_flood   0.001963  0.054426    0    2
+normal       0.945193  0.340713    0    2
+syn_flood    1.000530  0.024408    0    2
+udp_flood    1.806869  0.588512    0    2
+
+Feature: tcp_options_len
+                 mean       std  min  max
+Label_multi                              
+ad_slow      3.382020  0.810256  0.0  5.0
+ad_syn       0.051194  0.222990  0.0  5.0
+ad_udp       3.315300  0.785637  0.0  5.0
+icmp_flood   0.517766  1.409132  0.0  5.0
+normal       0.003651  0.125918  0.0  5.0
+syn_flood    0.868167  1.893871  0.0  5.0
+udp_flood    0.377863  1.223717  0.0  5.0
+Training set: 1180156 samples
+Test set: 505782 samples
+
+Accuracy: 0.844714
+
+Classification Report for Label_multi:
+================================================================================
+              precision    recall  f1-score   support
+
+     ad_slow   0.601636  0.344340  0.437997     11750
+      ad_syn   0.616194  0.812943  0.701026     73026
+      ad_udp   0.904643  0.959640  0.931330     76685
+  icmp_flood   0.999902  0.998409  0.999155     61597
+      normal   0.967131  0.824140  0.889929    167804
+   syn_flood   0.537781  0.558229  0.547814     54861
+   udp_flood   0.998331  0.996037  0.997183     60059
+
+    accuracy                       0.844714    505782
+   macro avg   0.803660  0.784820  0.786348    505782
+weighted avg   0.859622  0.844714  0.847362    505782
+
+
+Confusion Matrix:
+[[  4046      0   7637      1     66      0      0]
+ [     0  59366      8      0   3760   9890      2]
+ [  2678      0  73590      0    417      0      0]
+ [     0      0      4  61499     93      1      0]
+ [     1  12899     84      0 138294  16429     97]
+ [     0  24077      9      2    147  30625      1]
+ [     0      1     15      3    217      2  59821]]
+
+================================================================================
+COMPLETE FEATURE IMPORTANCE ANALYSIS FOR Label_multi
+================================================================================
+Rank Feature                   Importance   Percentage Risk Level
+----------------------------------------------------------------------
+1    tcp_flags                 0.337698     33.77     % ⚡ MEDIUM
+2    tcp_options_len           0.218099     21.81     % ⚡ MEDIUM
+3    udp_len                   0.144082     14.41     % 📊 LOW
+4    tcp_window                0.104124     10.41     % 📊 LOW
+5    ip_flags                  0.073046     7.30      % 📊 LOW
+6    packet_length             0.053637     5.36      % 📊 LOW
+7    ip_tos                    0.031714     3.17      % ✅ MINIMAL
+8    ip_len                    0.015050     1.51      % ✅ MINIMAL
+9    udp_checksum              0.012664     1.27      % ✅ MINIMAL
+10   dataset_id                0.009566     0.96      % ✅ MINIMAL
+11   ip_ttl                    0.000290     0.03      % ✅ MINIMAL
+12   icmp_type                 0.000030     0.00      % ✅ MINIMAL
+13   eth_type                  0.000000     0.00      % ✅ MINIMAL
+14   ip_proto                  0.000000     0.00      % ✅ MINIMAL
+15   ip_frag_offset            0.000000     0.00      % ✅ MINIMAL
+16   ip_version                0.000000     0.00      % ✅ MINIMAL
+17   tcp_urgent                0.000000     0.00      % ✅ MINIMAL
+18   icmp_code                 0.000000     0.00      % ✅ MINIMAL
+19   transport_protocol        0.000000     0.00      % ✅ MINIMAL
+
+Decision Tree Rules (Max Depth 3):
+============================================================
+|--- tcp_options_len <= 2.00
+|   |--- tcp_flags <= 8.50
+|   |   |--- tcp_flags <= 5.50
+|   |   |   |--- tcp_window <= 14696.00
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- tcp_window >  14696.00
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |--- tcp_flags >  5.50
+|   |   |   |--- tcp_window <= 12288.00
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- tcp_window >  12288.00
+|   |   |   |   |--- truncated branch of depth 7
+|   |--- tcp_flags >  8.50
+|   |   |--- udp_len <= 37.50
+|   |   |   |--- ip_tos <= 96.00
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- ip_tos >  96.00
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |--- udp_len >  37.50
+|   |   |   |--- packet_length <= 120.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- packet_length >  120.50
+|   |   |   |   |--- truncated branch of depth 7
+|--- tcp_options_len >  2.00
+|   |--- ip_flags <= 0.50
+|   |   |--- dataset_id <= 45.50
+|   |   |   |--- packet_length <= 551.00
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- packet_length >  551.00
+|   |   |   |   |--- class: ad_udp
+|   |   |--- dataset_id >  45.50
+|   |   |   |--- ip_len <= 236.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- ip_len >  236.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |--- ip_flags >  0.50
+|   |   |--- class: syn_flood
+
+
+================================================================================
+COMPREHENSIVE DATA LEAKAGE ASSESSMENT FOR Label_multi
+================================================================================
+📊 LOW: Accuracy < 90% - Acceptable performance
+
+🎯 OVERALL ASSESSMENT: ✅ LOW RISK - DATASET APPEARS CLEAN
+
+================================================================================
+FEATURE DROP RECOMMENDATIONS FOR Label_multi
+================================================================================
+
+🚨 HIGH PRIORITY - MUST DROP (9 features):
+   ❌ tcp_flags            (importance: 0.3377) - CRITICAL: Protocol-specific flags create perfect separation
+   ❌ tcp_options_len      (importance: 0.2181) - TCP-specific field - varies by attack tool configuration
+   ❌ udp_len              (importance: 0.1441) - UDP-specific field - only exists for UDP packets
+   ❌ tcp_window           (importance: 0.1041) - Attack tool signature - different tools create distinct window patterns
+   ❌ udp_checksum         (importance: 0.0127) - UDP-specific field - attack tools create characteristic checksums
+   ❌ icmp_type            (importance: 0.0000) - CRITICAL: Perfect attack discriminator (Echo=8, Unreachable=3, Reply=0)
+   ❌ ip_proto             (importance: 0.0000) - Direct protocol identifier (ICMP=1, TCP=6, UDP=17)
+   ❌ icmp_code            (importance: 0.0000) - ICMP-specific field - creates protocol-based separation
+   ❌ transport_protocol   (importance: 0.0000) - Direct protocol encoding (TCP/UDP/ICMP) - explicit attack type
+
+⚠️  MEDIUM PRIORITY - CONSIDER DROPPING (2 features):
+   ⚡ ip_flags             (importance: 0.0730) - IP fragmentation flags - attack patterns create distinct distributions
+   ⚡ packet_length        (importance: 0.0536) - Total packet size - highly correlated with attack type payloads
+
+🔧 PROTOCOL-SPECIFIC - DROP FOR GENERALIZATION (4 features):
+   📋 eth_type             (importance: 0.0000) - Ethernet type - may correlate with attack protocols
+   📋 ip_frag_offset       (importance: 0.0000) - Constant value (0) for unfragmented packets - no discriminative power
+   📋 ip_version           (importance: 0.0000) - Constant value (IPv4=4) - no discriminative power
+   📋 tcp_urgent           (importance: 0.0000) - TCP-specific field - rarely used, creates perfect separation
+
+✅ SAFE TO KEEP (4 features):
+   ✓ ip_tos               (importance: 0.0317) - Type of Service - attack tools set specific QoS values
+   ✓ ip_len               (importance: 0.0151) - Packet size - attack payloads create characteristic size patterns
+   ✓ dataset_id           (importance: 0.0096) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ ip_ttl               (importance: 0.0003) - Time to Live - varies by attack tool and source routing
+
+================================================================================
+PYTHON CODE FOR FEATURE DROPPING
+================================================================================
+
+# Features to drop for Label_multi classification (data leakage prevention)
+features_to_drop = ['tcp_flags', 'tcp_options_len', 'udp_len', 'tcp_window', 'udp_checksum', 'icmp_type', 'ip_proto', 'icmp_code', 'transport_protocol', 'ip_flags', 'packet_length', 'eth_type', 'ip_frag_offset', 'ip_version', 'tcp_urgent']
+
+# Apply feature dropping
+df_clean = df.drop(columns=features_to_drop, errors='ignore')
+
+# Remaining safe features: ['ip_tos', 'ip_len', 'dataset_id', 'ip_ttl']
+# Expected accuracy after dropping: 60-75% (realistic for behavioral detection)
+

@@ -16,13 +16,22 @@ except ImportError:
 
 def run_benign_traffic(net, duration, output_dir, host_ips):
     """
-    Generates various types of benign traffic (ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP, HTTPS, DNS)
-    between h3 and h5 in the Mininet network.
+    Generates various types of benign traffic with protocol separation:
+    - h2 ↔ h5: ICMP ping traffic only
+    - h3 ↔ h5: TCP and UDP traffic (Telnet, SSH, FTP, HTTP, HTTPS, DNS)
     """
     # Get standardized logger
     benign_logger = get_benign_logger(Path(output_dir))
     
     benign_logger.info(f"Starting benign traffic for {duration} seconds...")
+    benign_logger.info("Protocol separation: h2↔h5 (ICMP), h3↔h5 (TCP/UDP)")
+    
+    # ICMP traffic hosts: h2 ↔ h5
+    h2 = net.get('h2')
+    h2_ip = host_ips["h2"]
+    h2_intf = h2.intfNames()[0]
+    
+    # TCP/UDP traffic hosts: h3 ↔ h5  
     h3 = net.get('h3')
     h5 = net.get('h5')
     h3_ip = host_ips["h3"]
@@ -39,17 +48,17 @@ def run_benign_traffic(net, duration, output_dir, host_ips):
     session_count = 0
     packet_count = 0
     while time.time() < end_time:
-        # ICMP traffic (using Mininet's ping command)
-        h3.cmd(f'ping -c 1 {h5_ip} > /dev/null')
-        h5.cmd(f'ping -c 1 {h3_ip} > /dev/null')
+        # ICMP traffic (h2 ↔ h5 using Mininet's ping command)
+        h2.cmd(f'ping -c 1 {h5_ip} > /dev/null')
+        h5.cmd(f'ping -c 1 {h2_ip} > /dev/null')
         # Standard ICMP echo request is 84 bytes
-        benign_logger.debug(f"Generated ICMP traffic {traffic_count} [len=84B]")
+        benign_logger.debug(f"Generated ICMP traffic h2↔h5 {traffic_count} [len=84B]")
         packet_count += 2 # For ping and pong
 
-        # Scapy commands to be executed within h3's namespace
+        # Scapy commands to be executed within h3's namespace (TCP/UDP traffic only)
         scapy_base_cmd = "from scapy.all import Ether, IP, TCP, UDP, DNS, DNSQR, Raw, RandShort, sendp, sr1;"
 
-        # TCP traffic (h3 to h5, port 12345) with handshake and random payload/length
+        # TCP traffic (h3 ↔ h5, port 12345) with handshake and random payload/length
         sport_tcp = random.randint(1024, 65535)
         dport_tcp = 12345
         
@@ -332,4 +341,7 @@ def run_benign_traffic(net, duration, output_dir, host_ips):
         time.sleep(0.1) # Send traffic every 100ms
     
     benign_logger.info("Benign traffic finished.")
-    benign_logger.info(f"Summary: {session_count} protocol sessions [ICMP, TCP, UDP, Telnet, SSH, FTP, HTTP, HTTPS, DNS], {packet_count} packets sent.")
+    benign_logger.info(f"Summary: {session_count} protocol sessions with protocol separation:")
+    benign_logger.info(f"  - h2↔h5: ICMP ping traffic")  
+    benign_logger.info(f"  - h3↔h5: TCP/UDP traffic [TCP, UDP, Telnet, SSH, FTP, HTTP, HTTPS, DNS]")
+    benign_logger.info(f"Total packets sent: {packet_count}")

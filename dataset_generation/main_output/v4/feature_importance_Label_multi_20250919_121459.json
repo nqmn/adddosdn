@@ -1,0 +1,811 @@
+{
+  "target": "Label_multi",
+  "timestamp": "2025-09-19T12:15:19.612817",
+  "accuracy": 0.8447137304214068,
+  "feature_importance": [
+    {
+      "feature": "tcp_flags",
+      "importance": 0.33769753403985203
+    },
+    {
+      "feature": "tcp_options_len",
+      "importance": 0.21809924605198414
+    },
+    {
+      "feature": "udp_len",
+      "importance": 0.14408157756119486
+    },
+    {
+      "feature": "tcp_window",
+      "importance": 0.10412388142483006
+    },
+    {
+      "feature": "ip_flags",
+      "importance": 0.07304570722606463
+    },
+    {
+      "feature": "packet_length",
+      "importance": 0.053637439926675336
+    },
+    {
+      "feature": "ip_tos",
+      "importance": 0.03171412540107952
+    },
+    {
+      "feature": "ip_len",
+      "importance": 0.015050111124955886
+    },
+    {
+      "feature": "udp_checksum",
+      "importance": 0.012663865387581732
+    },
+    {
+      "feature": "dataset_id",
+      "importance": 0.009566442587030087
+    },
+    {
+      "feature": "ip_ttl",
+      "importance": 0.0002902096803809853
+    },
+    {
+      "feature": "icmp_type",
+      "importance": 2.9859588370795407e-05
+    },
+    {
+      "feature": "eth_type",
+      "importance": 0.0
+    },
+    {
+      "feature": "ip_proto",
+      "importance": 0.0
+    },
+    {
+      "feature": "ip_frag_offset",
+      "importance": 0.0
+    },
+    {
+      "feature": "ip_version",
+      "importance": 0.0
+    },
+    {
+      "feature": "tcp_urgent",
+      "importance": 0.0
+    },
+    {
+      "feature": "icmp_code",
+      "importance": 0.0
+    },
+    {
+      "feature": "transport_protocol",
+      "importance": 0.0
+    }
+  ],
+  "leakage_indicators": [
+    "LOW: Accuracy < 90% - Acceptable performance"
+  ],
+  "overall_risk": "\u2705 LOW RISK - DATASET APPEARS CLEAN",
+  "distribution_analysis": {
+    "dataset_id": {
+      "mean": {
+        "ad_slow": 47.21648879129857,
+        "ad_syn": 67.03343603648015,
+        "ad_udp": 66.09420026211295,
+        "icmp_flood": 66.4563324306949,
+        "normal": 65.83630168089161,
+        "syn_flood": 66.03461456436504,
+        "udp_flood": 65.99477512038203
+      },
+      "std": {
+        "ad_slow": 27.434674981353893,
+        "ad_syn": 19.55170438641977,
+        "ad_udp": 20.259484003547072,
+        "icmp_flood": 20.049465122343907,
+        "normal": 20.584089197207216,
+        "syn_flood": 20.4845279418202,
+        "udp_flood": 20.520862421550838
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 94,
+        "ad_syn": 94,
+        "ad_udp": 94,
+        "icmp_flood": 94,
+        "normal": 94,
+        "syn_flood": 94,
+        "udp_flood": 94
+      }
+    },
+    "eth_type": {
+      "mean": {
+        "ad_slow": 3.9995404177092375,
+        "ad_syn": 3.9999383781119056,
+        "ad_udp": 4.0,
+        "icmp_flood": 0.7004295649802263,
+        "normal": 3.7391525102530454,
+        "syn_flood": 3.9999015699591514,
+        "udp_flood": 3.7142300545465443
+      },
+      "std": {
+        "ad_slow": 0.037129110608228336,
+        "ad_syn": 0.013596419619363002,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.9601649832509376,
+        "normal": 0.8790289092029785,
+        "syn_flood": 0.017183772832931613,
+        "udp_flood": 0.8807095145876376
+      },
+      "min": {
+        "ad_slow": 1,
+        "ad_syn": 1,
+        "ad_udp": 4,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 1,
+        "udp_flood": 1
+      },
+      "max": {
+        "ad_slow": 4,
+        "ad_syn": 4,
+        "ad_udp": 4,
+        "icmp_flood": 4,
+        "normal": 4,
+        "syn_flood": 4,
+        "udp_flood": 4
+      }
+    },
+    "ip_proto": {
+      "mean": {
+        "ad_slow": 6.025634478884747,
+        "ad_syn": 6.008166954235477,
+        "ad_udp": 6.0008606693660385,
+        "icmp_flood": 1.0128236348405446,
+        "normal": 5.918812327253614,
+        "syn_flood": 6.00603157416977,
+        "udp_flood": 15.447101840196607
+      },
+      "std": {
+        "ad_slow": 0.5418349978519491,
+        "ad_syn": 0.3023465285658359,
+        "ad_udp": 0.09729675898766345,
+        "icmp_flood": 0.3901848248331277,
+        "normal": 2.4609332984311854,
+        "syn_flood": 0.262556877715291,
+        "udp_flood": 4.721337764649723
+      },
+      "min": {
+        "ad_slow": 1,
+        "ad_syn": 1,
+        "ad_udp": 6,
+        "icmp_flood": 1,
+        "normal": 1,
+        "syn_flood": 1,
+        "udp_flood": 1
+      },
+      "max": {
+        "ad_slow": 17,
+        "ad_syn": 17,
+        "ad_udp": 17,
+        "icmp_flood": 17,
+        "normal": 17,
+        "syn_flood": 17,
+        "udp_flood": 17
+      }
+    },
+    "ip_ttl": {
+      "mean": {
+        "ad_slow": 64.183730786907,
+        "ad_syn": 64.04060060800263,
+        "ad_udp": 64.00437767736635,
+        "icmp_flood": 77.66681440065457,
+        "normal": 64.55455657142448,
+        "syn_flood": 64.04557310891283,
+        "udp_flood": 64.12912845411496
+      },
+      "std": {
+        "ad_slow": 3.876379920535318,
+        "ad_syn": 1.7965437697764677,
+        "ad_udp": 0.6458434022756604,
+        "icmp_flood": 49.17304968060684,
+        "normal": 6.681782927133601,
+        "syn_flood": 1.823979152622256,
+        "udp_flood": 3.133719803500581
+      },
+      "min": {
+        "ad_slow": 16,
+        "ad_syn": 16,
+        "ad_udp": 16,
+        "icmp_flood": 16,
+        "normal": 1,
+        "syn_flood": 16,
+        "udp_flood": 1
+      },
+      "max": {
+        "ad_slow": 255,
+        "ad_syn": 255,
+        "ad_udp": 255,
+        "icmp_flood": 255,
+        "normal": 255,
+        "syn_flood": 255,
+        "udp_flood": 255
+      }
+    },
+    "ip_flags": {
+      "mean": {
+        "ad_slow": 0.0030128172394423736,
+        "ad_syn": 0.5119751869197272,
+        "ad_udp": 7.04184026758993e-05,
+        "icmp_flood": 0.9992986694200385,
+        "normal": 0.5292949265749644,
+        "syn_flood": 0.5000300758458148,
+        "udp_flood": 0.9983566105216888
+      },
+      "std": {
+        "ad_slow": 0.054807087737135864,
+        "ad_syn": 0.4998576010673361,
+        "ad_udp": 0.008391288303492766,
+        "icmp_flood": 0.026473423064016007,
+        "normal": 0.49914151569873944,
+        "syn_flood": 0.5000013661849458,
+        "udp_flood": 0.040505517461045255
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 1,
+        "ad_syn": 1,
+        "ad_udp": 1,
+        "icmp_flood": 1,
+        "normal": 1,
+        "syn_flood": 1,
+        "udp_flood": 1
+      }
+    },
+    "ip_len": {
+      "mean": {
+        "ad_slow": 123.1108103967727,
+        "ad_syn": 40.545062032700685,
+        "ad_udp": 215.55145824775542,
+        "icmp_flood": 455.06063587305914,
+        "normal": 125.85192707197334,
+        "syn_flood": 43.643776213833796,
+        "udp_flood": 73.2980828787788
+      },
+      "std": {
+        "ad_slow": 142.27305575743557,
+        "ad_syn": 7.806223132505081,
+        "ad_udp": 553.5648760063368,
+        "icmp_flood": 467.52381871645105,
+        "normal": 284.42575657936675,
+        "syn_flood": 11.628337792184304,
+        "udp_flood": 83.8409586111609
+      },
+      "min": {
+        "ad_slow": 40,
+        "ad_syn": 40,
+        "ad_udp": 40,
+        "icmp_flood": 28,
+        "normal": 40,
+        "syn_flood": 40,
+        "udp_flood": 40
+      },
+      "max": {
+        "ad_slow": 1459,
+        "ad_syn": 1477,
+        "ad_udp": 5055,
+        "icmp_flood": 5880,
+        "normal": 14640,
+        "syn_flood": 1544,
+        "udp_flood": 11720
+      }
+    },
+    "ip_tos": {
+      "mean": {
+        "ad_slow": 0.03206863095542052,
+        "ad_syn": 0.007296031550406704,
+        "ad_udp": 0.00012518827142382098,
+        "icmp_flood": 0.007013305799614268,
+        "normal": 5.524880842984485,
+        "syn_flood": 0.006955722886624998,
+        "udp_flood": 18.290435373334134
+      },
+      "std": {
+        "ad_slow": 2.384809376346362,
+        "ad_syn": 0.9004418643524162,
+        "ad_udp": 0.04475493834984973,
+        "icmp_flood": 1.1243763736216354,
+        "normal": 32.08483729914816,
+        "syn_flood": 1.1037282085926292,
+        "udp_flood": 56.36518319493555
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 192,
+        "ad_syn": 192,
+        "ad_udp": 16,
+        "icmp_flood": 192,
+        "normal": 192,
+        "syn_flood": 192,
+        "udp_flood": 192
+      }
+    },
+    "ip_version": {
+      "mean": {
+        "ad_slow": 4.0,
+        "ad_syn": 4.0,
+        "ad_udp": 4.0,
+        "icmp_flood": 4.0,
+        "normal": 4.0,
+        "syn_flood": 4.0,
+        "udp_flood": 4.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 4,
+        "ad_syn": 4,
+        "ad_udp": 4,
+        "icmp_flood": 4,
+        "normal": 4,
+        "syn_flood": 4,
+        "udp_flood": 4
+      },
+      "max": {
+        "ad_slow": 4,
+        "ad_syn": 4,
+        "ad_udp": 4,
+        "icmp_flood": 4,
+        "normal": 4,
+        "syn_flood": 4,
+        "udp_flood": 4
+      }
+    },
+    "ip_frag_offset": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      }
+    },
+    "tcp_flags": {
+      "mean": {
+        "ad_slow": 2.7364550885972525,
+        "ad_syn": 5.539840604716129,
+        "ad_udp": 2.6377560002347282,
+        "icmp_flood": 8.993916931289085,
+        "normal": 5.013290521430385,
+        "syn_flood": 6.498400511836213,
+        "udp_flood": 8.983466203120942
+      },
+      "std": {
+        "ad_slow": 2.894986088226971,
+        "ad_syn": 2.0648281476865837,
+        "ad_udp": 2.722225849288988,
+        "icmp_flood": 0.21391384232754998,
+        "normal": 2.777531121432377,
+        "syn_flood": 0.5212668764683264,
+        "udp_flood": 0.347934381437377
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 0,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 9,
+        "ad_syn": 9,
+        "ad_udp": 9,
+        "icmp_flood": 9,
+        "normal": 9,
+        "syn_flood": 9,
+        "udp_flood": 9
+      }
+    },
+    "tcp_window": {
+      "mean": {
+        "ad_slow": 8578.171351046945,
+        "ad_syn": 11973.893229509275,
+        "ad_udp": 7203.550726735656,
+        "icmp_flood": 52987.35532994924,
+        "normal": 4821.065499843729,
+        "syn_flood": 8050.113256585067,
+        "udp_flood": 56626.60114503817
+      },
+      "std": {
+        "ad_slow": 17136.483988405693,
+        "ad_syn": 13793.218936002606,
+        "ad_udp": 15943.709136582132,
+        "icmp_flood": 11922.260922566218,
+        "normal": 7572.347533085688,
+        "syn_flood": 14407.93386905747,
+        "udp_flood": 10736.77290227147
+      },
+      "min": {
+        "ad_slow": 83.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 24820.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 33580.0
+      },
+      "max": {
+        "ad_slow": 65535.0,
+        "ad_syn": 64240.0,
+        "ad_udp": 64240.0,
+        "icmp_flood": 64240.0,
+        "normal": 65535.0,
+        "syn_flood": 65535.0,
+        "udp_flood": 65535.0
+      }
+    },
+    "tcp_urgent": {
+      "mean": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      }
+    },
+    "udp_len": {
+      "mean": {
+        "ad_slow": 259.3404255319149,
+        "ad_syn": 159.34972677595627,
+        "ad_udp": 200.1,
+        "icmp_flood": 228.32038834951456,
+        "normal": 375.5838246746023,
+        "syn_flood": 230.49514563106797,
+        "udp_flood": 48.43714909026478
+      },
+      "std": {
+        "ad_slow": 282.0608701632262,
+        "ad_syn": 226.53842331696382,
+        "ad_udp": 134.65312160471711,
+        "icmp_flood": 215.67510121968698,
+        "normal": 444.0393071327384,
+        "syn_flood": 217.3007256507924,
+        "udp_flood": 13.10124418967186
+      },
+      "min": {
+        "ad_slow": 49.0,
+        "ad_syn": 49.0,
+        "ad_udp": 53.0,
+        "icmp_flood": 53.0,
+        "normal": 35.0,
+        "syn_flood": 53.0,
+        "udp_flood": 37.0
+      },
+      "max": {
+        "ad_slow": 1439.0,
+        "ad_syn": 1457.0,
+        "ad_udp": 402.0,
+        "icmp_flood": 1439.0,
+        "normal": 1479.0,
+        "syn_flood": 1439.0,
+        "udp_flood": 1439.0
+      }
+    },
+    "udp_checksum": {
+      "mean": {
+        "ad_slow": 42811.03191489362,
+        "ad_syn": 42678.174863387976,
+        "ad_udp": 37599.35,
+        "icmp_flood": 42095.42718446602,
+        "normal": 34124.818667259984,
+        "syn_flood": 39827.47572815534,
+        "udp_flood": 32872.76937132479
+      },
+      "std": {
+        "ad_slow": 12258.723960898547,
+        "ad_syn": 16288.896108079403,
+        "ad_udp": 15832.912360599395,
+        "icmp_flood": 13476.988484080486,
+        "normal": 18738.562921231325,
+        "syn_flood": 16570.455979528844,
+        "udp_flood": 18901.700169451862
+      },
+      "min": {
+        "ad_slow": 5866.0,
+        "ad_syn": 242.0,
+        "ad_udp": 7415.0,
+        "icmp_flood": 1727.0,
+        "normal": 1.0,
+        "syn_flood": 758.0,
+        "udp_flood": 3.0
+      },
+      "max": {
+        "ad_slow": 61748.0,
+        "ad_syn": 64927.0,
+        "ad_udp": 54917.0,
+        "icmp_flood": 65353.0,
+        "normal": 65535.0,
+        "syn_flood": 63834.0,
+        "udp_flood": 65535.0
+      }
+    },
+    "icmp_type": {
+      "mean": {
+        "ad_slow": 3.0,
+        "ad_syn": 3.0,
+        "ad_udp": NaN,
+        "icmp_flood": 2.782371819884501,
+        "normal": 3.669325985935765,
+        "syn_flood": 3.0,
+        "udp_flood": 3.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": NaN,
+        "icmp_flood": 3.8101102721413906,
+        "normal": 3.3061713871440537,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 3.0,
+        "ad_syn": 3.0,
+        "ad_udp": NaN,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 3.0,
+        "udp_flood": 3.0
+      },
+      "max": {
+        "ad_slow": 3.0,
+        "ad_syn": 3.0,
+        "ad_udp": NaN,
+        "icmp_flood": 8.0,
+        "normal": 8.0,
+        "syn_flood": 3.0,
+        "udp_flood": 3.0
+      }
+    },
+    "icmp_code": {
+      "mean": {
+        "ad_slow": 3.0,
+        "ad_syn": 3.0,
+        "ad_udp": NaN,
+        "icmp_flood": 0.00010242703293272983,
+        "normal": 0.9920220421927047,
+        "syn_flood": 3.0,
+        "udp_flood": 3.0
+      },
+      "std": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": NaN,
+        "icmp_flood": 0.01752917870905473,
+        "normal": 1.411382072072805,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "min": {
+        "ad_slow": 3.0,
+        "ad_syn": 3.0,
+        "ad_udp": NaN,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 3.0,
+        "udp_flood": 3.0
+      },
+      "max": {
+        "ad_slow": 3.0,
+        "ad_syn": 3.0,
+        "ad_udp": NaN,
+        "icmp_flood": 3.0,
+        "normal": 3.0,
+        "syn_flood": 3.0,
+        "udp_flood": 3.0
+      }
+    },
+    "packet_length": {
+      "mean": {
+        "ad_slow": 139.11632538426187,
+        "ad_syn": 56.545867225371786,
+        "ad_udp": 231.5515912602938,
+        "icmp_flood": 472.345580643276,
+        "normal": 141.8615776281586,
+        "syn_flood": 59.64528547446014,
+        "udp_flood": 89.30113488780995
+      },
+      "std": {
+        "ad_slow": 142.26996093802424,
+        "ad_syn": 7.806505778545688,
+        "ad_udp": 553.5648346014195,
+        "icmp_flood": 466.37164779636896,
+        "normal": 284.42295260055033,
+        "syn_flood": 11.62828799579214,
+        "udp_flood": 83.83986363446125
+      },
+      "min": {
+        "ad_slow": 56,
+        "ad_syn": 56,
+        "ad_udp": 56,
+        "icmp_flood": 44,
+        "normal": 56,
+        "syn_flood": 56,
+        "udp_flood": 56
+      },
+      "max": {
+        "ad_slow": 1475,
+        "ad_syn": 1493,
+        "ad_udp": 5071,
+        "icmp_flood": 5896,
+        "normal": 14656,
+        "syn_flood": 1560,
+        "udp_flood": 11736
+      }
+    },
+    "transport_protocol": {
+      "mean": {
+        "ad_slow": 1.0022468467548384,
+        "ad_syn": 1.00073124640539,
+        "ad_udp": 1.00007824266964,
+        "icmp_flood": 0.001962751553642049,
+        "normal": 0.945193136269858,
+        "syn_flood": 1.000530428553461,
+        "udp_flood": 1.8068692681172451
+      },
+      "std": {
+        "ad_slow": 0.05048021088697037,
+        "ad_syn": 0.02778121871786417,
+        "ad_udp": 0.008845159907969502,
+        "icmp_flood": 0.05442615129153399,
+        "normal": 0.34071321409294825,
+        "syn_flood": 0.024408410110372113,
+        "udp_flood": 0.5885119194121063
+      },
+      "min": {
+        "ad_slow": 0,
+        "ad_syn": 0,
+        "ad_udp": 1,
+        "icmp_flood": 0,
+        "normal": 0,
+        "syn_flood": 0,
+        "udp_flood": 0
+      },
+      "max": {
+        "ad_slow": 2,
+        "ad_syn": 2,
+        "ad_udp": 2,
+        "icmp_flood": 2,
+        "normal": 2,
+        "syn_flood": 2,
+        "udp_flood": 2
+      }
+    },
+    "tcp_options_len": {
+      "mean": {
+        "ad_slow": 3.382020170992679,
+        "ad_syn": 0.051193921852387844,
+        "ad_udp": 3.315299595062501,
+        "icmp_flood": 0.5177664974619289,
+        "normal": 0.0036510571626881846,
+        "syn_flood": 0.8681673433208216,
+        "udp_flood": 0.37786259541984735
+      },
+      "std": {
+        "ad_slow": 0.8102556978315897,
+        "ad_syn": 0.22298984947868458,
+        "ad_udp": 0.7856374670419282,
+        "icmp_flood": 1.4091316932323437,
+        "normal": 0.12591784818608048,
+        "syn_flood": 1.8938711283649294,
+        "udp_flood": 1.223716564262267
+      },
+      "min": {
+        "ad_slow": 0.0,
+        "ad_syn": 0.0,
+        "ad_udp": 0.0,
+        "icmp_flood": 0.0,
+        "normal": 0.0,
+        "syn_flood": 0.0,
+        "udp_flood": 0.0
+      },
+      "max": {
+        "ad_slow": 5.0,
+        "ad_syn": 5.0,
+        "ad_udp": 5.0,
+        "icmp_flood": 5.0,
+        "normal": 5.0,
+        "syn_flood": 5.0,
+        "udp_flood": 5.0
+      }
+    }
+  }
+}

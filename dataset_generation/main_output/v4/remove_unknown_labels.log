@@ -1,0 +1,48 @@
+2025-09-19 12:00:05,881 - INFO - 🧹 Remove Unknown Labels from Combined Datasets
+2025-09-19 12:00:05,882 - INFO - 📁 Dataset directory: /mnt/c/Users/Intel/Desktop/adddosdn/dataset_generation/dataset_cleanup/../main_output/v4
+2025-09-19 12:00:05,882 - INFO - 
+============================================================
+2025-09-19 12:00:05,882 - INFO - ANALYZING DATASETS FOR UNKNOWN LABELS
+2025-09-19 12:00:05,882 - INFO - ============================================================
+2025-09-19 12:00:05,883 - INFO - Analyzing Packet Dataset...
+2025-09-19 12:00:15,446 - INFO - Packet Dataset Analysis:
+2025-09-19 12:00:15,449 - INFO -   Total records: 1,685,938
+2025-09-19 12:00:15,450 - INFO -   Unique labels: 7
+2025-09-19 12:00:15,450 - INFO -   Unknown records: 0 (0.00%)
+2025-09-19 12:00:15,450 - INFO -   Label distribution:
+2025-09-19 12:00:15,451 - INFO -     normal: 559,346 (33.18%)
+2025-09-19 12:00:15,451 - INFO -     ad_udp: 255,615 (15.16%)
+2025-09-19 12:00:15,451 - INFO -     ad_syn: 243,420 (14.44%)
+2025-09-19 12:00:15,451 - INFO -     icmp_flood: 205,324 (12.18%)
+2025-09-19 12:00:15,452 - INFO -     udp_flood: 200,196 (11.87%)
+2025-09-19 12:00:15,452 - INFO -     syn_flood: 182,871 (10.85%)
+2025-09-19 12:00:15,452 - INFO -     ad_slow: 39,166 (2.32%)
+2025-09-19 12:00:15,453 - INFO - Analyzing Flow Dataset...
+2025-09-19 12:00:19,703 - INFO - Flow Dataset Analysis:
+2025-09-19 12:00:19,704 - INFO -   Total records: 1,559,778
+2025-09-19 12:00:19,704 - INFO -   Unique labels: 7
+2025-09-19 12:00:19,704 - INFO -   Unknown records: 0 (0.00%)
+2025-09-19 12:00:19,705 - INFO -   Label distribution:
+2025-09-19 12:00:19,705 - INFO -     normal: 1,160,015 (74.37%)
+2025-09-19 12:00:19,705 - INFO -     udp_flood: 131,215 (8.41%)
+2025-09-19 12:00:19,706 - INFO -     icmp_flood: 69,636 (4.46%)
+2025-09-19 12:00:19,706 - INFO -     syn_flood: 68,159 (4.37%)
+2025-09-19 12:00:19,706 - INFO -     ad_syn: 55,167 (3.54%)
+2025-09-19 12:00:19,707 - INFO -     ad_slow: 53,963 (3.46%)
+2025-09-19 12:00:19,707 - INFO -     ad_udp: 21,623 (1.39%)
+2025-09-19 12:00:19,708 - INFO - Analyzing CICFlow Dataset...
+2025-09-19 12:00:22,535 - INFO - CICFlow Dataset Analysis:
+2025-09-19 12:00:22,535 - INFO -   Total records: 268,887
+2025-09-19 12:00:22,536 - INFO -   Unique labels: 7
+2025-09-19 12:00:22,536 - INFO -   Unknown records: 0 (0.00%)
+2025-09-19 12:00:22,536 - INFO -   Label distribution:
+2025-09-19 12:00:22,537 - INFO -     udp_flood: 88,699 (32.99%)
+2025-09-19 12:00:22,537 - INFO -     ad_syn: 62,188 (23.13%)
+2025-09-19 12:00:22,537 - INFO -     syn_flood: 45,186 (16.80%)
+2025-09-19 12:00:22,538 - INFO -     normal: 44,201 (16.44%)
+2025-09-19 12:00:22,538 - INFO -     icmp_flood: 16,028 (5.96%)
+2025-09-19 12:00:22,538 - INFO -     ad_udp: 10,618 (3.95%)
+2025-09-19 12:00:22,539 - INFO -     ad_slow: 1,967 (0.73%)
+2025-09-19 12:00:22,539 - INFO - 
+🎉 No unknown labels found in any dataset!
+2025-09-19 12:00:22,539 - INFO - All datasets are already clean and ready for ML training.

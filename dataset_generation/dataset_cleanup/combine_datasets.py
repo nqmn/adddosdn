@@ -24,30 +24,74 @@ import re
 from pathlib import Path
 import logging
 from datetime import datetime
+import shutil
 
-def setup_logging():
+def setup_logging(log_path=None):
     """Set up logging configuration."""
+    log_file = log_path if log_path else 'combine_datasets.log'
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
         handlers=[
             logging.StreamHandler(),
-            logging.FileHandler('combine_datasets.log', mode='w')
+            logging.FileHandler(log_file, mode='w')
         ]
     )
     return logging.getLogger(__name__)
 
 def find_dataset_directories(base_path):
     """Find all dataset directories matching the pattern."""
-    v2_main_path = Path(base_path) / "main_output" / "v2_main"
     datasets = []
-    
-    if v2_main_path.exists():
-        for item in v2_main_path.iterdir():
+
+    if base_path.exists():
+        for item in base_path.iterdir():
             if item.is_dir() and re.match(r'^\d{6}-\d+$', item.name):
                 datasets.append(item)
-    
+
     return sorted(datasets)
+
+def copy_cicflow_files(main_output_path, logger):
+    """Copy cicflow_features_all.csv files from cicflow_output to main_output."""
+
+    # Determine version from main_output path
+    version = main_output_path.name
+
+    # Construct cicflow_output path
+    cicflow_output_path = main_output_path.parent.parent / "cicflow_output" / version
+
+    logger.info(f"Copying cicflow files from {cicflow_output_path} to {main_output_path}")
+
+    if not cicflow_output_path.exists():
+        logger.warning(f"CICFlow output directory not found: {cicflow_output_path}")
+        return 0
+
+    copied_count = 0
+
+    # Find all dataset directories in cicflow_output
+    cicflow_datasets = find_dataset_directories(cicflow_output_path)
+
+    for cicflow_dataset_dir in cicflow_datasets:
+        cicflow_file = cicflow_dataset_dir / "cicflow_features_all.csv"
+
+        if cicflow_file.exists():
+            # Create corresponding directory in main_output if it doesn't exist
+            main_dataset_dir = main_output_path / cicflow_dataset_dir.name
+            main_dataset_dir.mkdir(parents=True, exist_ok=True)
+
+            # Copy the file
+            destination = main_dataset_dir / "cicflow_features_all.csv"
+
+            try:
+                shutil.copy2(cicflow_file, destination)
+                logger.info(f"  Copied: {cicflow_dataset_dir.name}/cicflow_features_all.csv")
+                copied_count += 1
+            except Exception as e:
+                logger.error(f"  Failed to copy {cicflow_file}: {e}")
+        else:
+            logger.warning(f"  CICFlow file not found: {cicflow_file}")
+
+    logger.info(f"Total cicflow files copied: {copied_count}")
+    return copied_count
 
 def combine_csv_files(datasets, filename, output_name, logger):
     """Combine CSV files of the same type from all datasets."""
@@ -86,8 +130,8 @@ def combine_csv_files(datasets, filename, output_name, logger):
         # Combine all dataframes
         final_df = pd.concat(combined_data, ignore_index=True)
         
-        # Save to output directory
-        output_path = Path("main_output") / "v2_main" / output_name
+        # Save to output directory (use the same base path)
+        output_path = datasets[0].parent / output_name
         final_df.to_csv(output_path, index=False)
         
         logger.info(f"  Combined dataset saved: {output_name}")
@@ -110,26 +154,30 @@ def main():
     parser = argparse.ArgumentParser(description='Combine individual datasets into unified CSV files')
     parser.add_argument('--path', default='../main_output/v2_main', 
                        help='Path to dataset directory (default: ../main_output/v2_main)')
+    parser.add_argument('--version', help='Version directory (v2_main, v3, etc.)')
     args = parser.parse_args()
     
-    logger = setup_logging()
+    # Determine the correct path
+    if args.version:
+        dataset_base_path = Path("../main_output") / args.version
+    else:
+        dataset_base_path = Path(args.path)
+    
+    if not dataset_base_path.exists():
+        logger.error(f"Dataset path not found: {dataset_base_path}")
+        return 1
+    
+    # Set up logging with path to version directory
+    log_path = dataset_base_path / "combine_datasets.log"
+    logger = setup_logging(log_path)
     
     logger.info("=" * 60)
     logger.info("DATASET COMBINATION STARTED")
     logger.info("=" * 60)
     
-    # Change to the specified directory
-    dataset_base_path = Path(args.path)
-    if not dataset_base_path.exists():
-        logger.error(f"Dataset path not found: {dataset_base_path}")
-        return 1
-    
-    original_dir = Path.cwd()
-    os.chdir(dataset_base_path)
-    
     try:
         # Find all dataset directories
-        datasets = find_dataset_directories(".")
+        datasets = find_dataset_directories(dataset_base_path)
         
         if not datasets:
             logger.error("No dataset directories found!")
@@ -138,7 +186,15 @@ def main():
         logger.info(f"Found {len(datasets)} dataset directories:")
         for dataset in datasets:
             logger.info(f"  - {dataset.name}")
-        
+
+        # Copy cicflow files from cicflow_output to main_output before combining
+        logger.info(f"\n{'='*50}")
+        logger.info("COPYING CICFLOW FILES")
+        copy_cicflow_files(dataset_base_path, logger)
+
+        # Re-scan dataset directories after copying (in case new ones were created)
+        datasets = find_dataset_directories(dataset_base_path)
+
         # Define the file combinations
         file_combinations = [
             ("packet_features.csv", "packet_dataset.csv"),
@@ -181,9 +237,9 @@ def main():
             logger.error(f"⚠️  {3 - successful_combinations} dataset(s) failed to combine")
             return 1
     
-    finally:
-        # Return to original directory
-        os.chdir(original_dir)
+    except Exception as e:
+        logger.error(f"Error during dataset combination: {e}")
+        return 1
 
 if __name__ == "__main__":
     exit(main())

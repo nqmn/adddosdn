@@ -1,0 +1,46 @@
+2025-09-19 12:00:32,192 - INFO - 🧹 Remove Duplicates from Combined Datasets
+2025-09-19 12:00:32,193 - INFO - 📁 Dataset directory: /mnt/c/Users/Intel/Desktop/adddosdn/dataset_generation/dataset_cleanup/../main_output/v4
+2025-09-19 12:00:32,193 - INFO - ============================================================
+2025-09-19 12:00:32,193 - INFO - DUPLICATE REMOVAL STARTED
+2025-09-19 12:00:32,194 - INFO - ============================================================
+2025-09-19 12:00:32,195 - INFO - 
+==================================================
+2025-09-19 12:00:32,196 - INFO - Processing packet_dataset.csv...
+2025-09-19 12:00:38,833 - INFO -   Original records: 1,685,938
+2025-09-19 12:00:41,542 - INFO -   Duplicates found: 0
+2025-09-19 12:00:41,543 - INFO -   ✅ No duplicates found - skipping packet_dataset.csv
+2025-09-19 12:00:41,615 - INFO - 
+==================================================
+2025-09-19 12:00:41,615 - INFO - Processing flow_dataset.csv...
+2025-09-19 12:00:46,332 - INFO -   Original records: 1,559,778
+2025-09-19 12:00:50,342 - INFO -   Duplicates found: 0
+2025-09-19 12:00:50,343 - INFO -   ✅ No duplicates found - skipping flow_dataset.csv
+2025-09-19 12:00:50,374 - INFO - 
+==================================================
+2025-09-19 12:00:50,374 - INFO - Processing cicflow_dataset.csv...
+2025-09-19 12:00:53,321 - INFO -   Original records: 268,887
+2025-09-19 12:00:53,761 - INFO -   Duplicates found: 0
+2025-09-19 12:00:53,761 - INFO -   ✅ No duplicates found - skipping cicflow_dataset.csv
+2025-09-19 12:00:53,776 - INFO - 
+============================================================
+2025-09-19 12:00:53,776 - INFO - DUPLICATE REMOVAL SUMMARY
+2025-09-19 12:00:53,776 - INFO - ============================================================
+2025-09-19 12:00:53,777 - INFO - ✅ packet_dataset.csv:
+2025-09-19 12:00:53,777 - INFO -    Original: 1,685,938
+2025-09-19 12:00:53,777 - INFO -    Cleaned:  1,685,938
+2025-09-19 12:00:53,777 - INFO -    Removed:  0
+2025-09-19 12:00:53,778 - INFO - ✅ flow_dataset.csv:
+2025-09-19 12:00:53,778 - INFO -    Original: 1,559,778
+2025-09-19 12:00:53,778 - INFO -    Cleaned:  1,559,778
+2025-09-19 12:00:53,779 - INFO -    Removed:  0
+2025-09-19 12:00:53,779 - INFO - ✅ cicflow_dataset.csv:
+2025-09-19 12:00:53,779 - INFO -    Original: 268,887
+2025-09-19 12:00:53,780 - INFO -    Cleaned:  268,887
+2025-09-19 12:00:53,780 - INFO -    Removed:  0
+2025-09-19 12:00:53,781 - INFO - 
+📊 TOTALS:
+2025-09-19 12:00:53,781 - INFO -    Files processed: 3/3
+2025-09-19 12:00:53,781 - INFO -    Original records: 3,514,603
+2025-09-19 12:00:53,782 - INFO -    Cleaned records:  3,514,603
+2025-09-19 12:00:53,782 - INFO -    Total removed:    0
+2025-09-19 12:00:53,782 - INFO - 🎉 No duplicates found - datasets are clean!

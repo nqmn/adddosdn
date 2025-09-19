@@ -1,0 +1,134 @@
+2025-09-19 09:23:25,058 - attack_logger - INFO - Attack: Enhanced SYN Flood (88s) | h1 -> h6
+2025-09-19 09:23:27,578 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Starting Enhanced SYN Flood from h1 to 192.168.30.10 for 88 seconds.
+2025-09-19 09:23:27,578 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Attack Phase: Enhanced Traditional SYN Flood - Attacker: h1, Target: 192.168.30.10:80, Duration: 88s
+2025-09-19 09:23:27,578 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Enhanced Features: Human-like timing, protocol compliance, network delay simulation
+2025-09-19 09:23:27,578 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Session pattern: 1 phases, Circadian factor: 0.70, Workday factor: 0.84
+2025-09-19 09:23:27,578 - attack_logger - DEBUG - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Starting enhanced SYN packet generation with human-like timing
+2025-09-19 09:23:27,578 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Stress phase: 26s, Advanced phase: 62s
+2025-09-19 09:23:54,214 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Stress phase completed
+2025-09-19 09:23:54,223 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Enhanced SYN flood process started (PID: 41786)
+2025-09-19 09:24:06,234 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Attack progress: 12.0s elapsed, ~137 packets sent, Rate: 11.4 pps, Phase: active (intensity: 0.88)
+2025-09-19 09:24:06,235 - attack_logger - DEBUG - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Process stats - CPU: 0.0%, Memory: 60.2MB
+2025-09-19 09:24:06,235 - attack_logger - DEBUG - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 11.4 pps
+2025-09-19 09:24:18,334 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Attack progress: 24.1s elapsed, ~336 packets sent, Rate: 13.9 pps, Phase: active (intensity: 0.88)
+2025-09-19 09:24:18,335 - attack_logger - DEBUG - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Process stats - CPU: 0.0%, Memory: 60.2MB
+2025-09-19 09:24:18,335 - attack_logger - DEBUG - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 13.9 pps
+2025-09-19 09:24:30,363 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Attack progress: 36.1s elapsed, ~482 packets sent, Rate: 13.3 pps, Phase: active (intensity: 0.88)
+2025-09-19 09:24:30,363 - attack_logger - DEBUG - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Process stats - CPU: 0.0%, Memory: 60.2MB
+2025-09-19 09:24:30,363 - attack_logger - DEBUG - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 13.3 pps
+2025-09-19 09:24:42,462 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Attack progress: 48.2s elapsed, ~617 packets sent, Rate: 12.8 pps, Phase: active (intensity: 0.88)
+2025-09-19 09:24:42,462 - attack_logger - DEBUG - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Process stats - CPU: 0.0%, Memory: 60.3MB
+2025-09-19 09:24:42,462 - attack_logger - DEBUG - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 12.8 pps
+2025-09-19 09:24:54,498 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Attack progress: 60.3s elapsed, ~687 packets sent, Rate: 11.4 pps, Phase: active (intensity: 0.88)
+2025-09-19 09:24:54,498 - attack_logger - DEBUG - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Process stats - CPU: 0.0%, Memory: 60.3MB
+2025-09-19 09:24:54,498 - attack_logger - DEBUG - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 11.4 pps
+2025-09-19 09:24:56,277 - attack_logger - DEBUG - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Sent SIGINT to SYN flood process 41786
+2025-09-19 09:24:56,784 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Enhanced SYN Flood from h1 to 192.168.30.10 finished.
+2025-09-19 09:24:56,785 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Attack completed. Total packets sent = 900, Average rate = 14.50 packets/sec.
+2025-09-19 09:24:56,785 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] --- Enhanced Attack Summary ---
+2025-09-19 09:24:56,785 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Total packets sent: 900
+2025-09-19 09:24:56,785 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Actual duration: 62.06s
+2025-09-19 09:24:56,785 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Average rate: 14.50 packets/sec
+2025-09-19 09:24:56,785 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Base rate: 24.7 pps
+2025-09-19 09:24:56,785 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Circadian factor: 0.70
+2025-09-19 09:24:56,785 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Workday factor: 0.84
+2025-09-19 09:24:56,785 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Session phases: 1
+2025-09-19 09:24:56,786 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Target port: 80
+2025-09-19 09:24:56,786 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Attack method: Enhanced SYN Flood with Human-like Timing
+2025-09-19 09:24:56,786 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] Enhancement features: Human timing patterns, protocol compliance, network delay simulation
+2025-09-19 09:24:56,786 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] TCP options: MSS, WScale, Timestamp, SAckOK
+2025-09-19 09:24:56,786 - attack_logger - INFO - [syn_flood] [Run ID: 85eebd5a-83c0-4c95-8717-d2fcfb369077] ----------------------------------------
+2025-09-19 09:24:56,870 - attack_logger - INFO - Attack: Enhanced SYN Flood completed.
+2025-09-19 09:24:56,870 - attack_logger - INFO - Attack: Enhanced UDP Flood (176s) | h1 -> h6
+2025-09-19 09:24:59,385 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Starting Enhanced UDP Flood from h1 to 192.168.30.10 for 176 seconds.
+2025-09-19 09:24:59,385 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Attack Phase: Enhanced Traditional UDP Flood - Attacker: h1, Target: 192.168.30.10:53, Duration: 176s
+2025-09-19 09:24:59,385 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Enhanced Features: Human-like timing, protocol compliance, network delay simulation
+2025-09-19 09:24:59,385 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Stress phase: 52s, Advanced phase: 124s
+2025-09-19 09:25:51,954 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Stress phase completed
+2025-09-19 09:25:51,955 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Session pattern: 3 phases, Circadian factor: 0.70, Workday factor: 0.84
+2025-09-19 09:25:51,955 - attack_logger - DEBUG - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Starting enhanced UDP packet generation with human-like timing
+2025-09-19 09:25:51,963 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Enhanced UDP flood process started (PID: 41807)
+2025-09-19 09:26:16,019 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Attack progress: 24.1s elapsed, ~361 packets sent, Rate: 15.0 pps, Phase: active (intensity: 0.93)
+2025-09-19 09:26:16,019 - attack_logger - DEBUG - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Process stats - CPU: 0.0%, Memory: 60.2MB
+2025-09-19 09:26:16,019 - attack_logger - DEBUG - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 15.0 pps
+2025-09-19 09:26:40,028 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Attack progress: 48.1s elapsed, ~745 packets sent, Rate: 15.5 pps, Phase: active (intensity: 0.93)
+2025-09-19 09:26:40,028 - attack_logger - DEBUG - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Process stats - CPU: 0.0%, Memory: 60.2MB
+2025-09-19 09:26:40,028 - attack_logger - DEBUG - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 15.5 pps
+2025-09-19 09:26:52,374 - attack_logger - DEBUG - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Entering break phase (intensity: 0.19)
+2025-09-19 09:27:04,137 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Attack progress: 72.2s elapsed, ~208 packets sent, Rate: 2.9 pps, Phase: break (intensity: 0.19)
+2025-09-19 09:27:04,137 - attack_logger - DEBUG - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Process stats - CPU: 0.0%, Memory: 60.2MB
+2025-09-19 09:27:04,137 - attack_logger - DEBUG - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 2.9 pps
+2025-09-19 09:27:07,988 - attack_logger - DEBUG - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Entering active phase (intensity: 0.78)
+2025-09-19 09:27:28,190 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Attack progress: 96.2s elapsed, ~1113 packets sent, Rate: 11.6 pps, Phase: active (intensity: 0.78)
+2025-09-19 09:27:28,190 - attack_logger - DEBUG - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Process stats - CPU: 0.0%, Memory: 60.2MB
+2025-09-19 09:27:28,190 - attack_logger - DEBUG - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 11.6 pps
+2025-09-19 09:27:52,198 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Attack progress: 120.2s elapsed, ~1352 packets sent, Rate: 11.2 pps, Phase: active (intensity: 0.78)
+2025-09-19 09:27:52,198 - attack_logger - DEBUG - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Process stats - CPU: 0.0%, Memory: 60.2MB
+2025-09-19 09:27:52,198 - attack_logger - DEBUG - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 11.2 pps
+2025-09-19 09:27:55,962 - attack_logger - DEBUG - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Sent SIGINT to UDP flood process 41807
+2025-09-19 09:27:56,464 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Enhanced UDP Flood from h1 to 192.168.30.10 finished.
+2025-09-19 09:27:56,464 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Attack completed. Total packets sent = 1501, Average rate = 12.10 packets/sec.
+2025-09-19 09:27:56,464 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] --- Enhanced Attack Summary ---
+2025-09-19 09:27:56,465 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Total packets sent: 1501
+2025-09-19 09:27:56,465 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Actual duration: 124.01s
+2025-09-19 09:27:56,465 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Average rate: 12.10 packets/sec
+2025-09-19 09:27:56,465 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Base rate: 20.6 pps
+2025-09-19 09:27:56,465 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Circadian factor: 0.70
+2025-09-19 09:27:56,465 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Workday factor: 0.84
+2025-09-19 09:27:56,465 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Session phases: 3
+2025-09-19 09:27:56,465 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Target port: 53 (DNS)
+2025-09-19 09:27:56,465 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Attack method: Enhanced UDP Flood with Human-like Timing
+2025-09-19 09:27:56,465 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] Enhancement features: Human timing patterns, protocol compliance, network delay simulation
+2025-09-19 09:27:56,465 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] DNS payloads: Realistic query patterns with varied domains
+2025-09-19 09:27:56,465 - attack_logger - INFO - [udp_flood] [Run ID: 3a2442b0-7d19-4e7e-80a0-1723f6130da1] ----------------------------------------
+2025-09-19 09:27:56,553 - attack_logger - INFO - Attack: Enhanced UDP Flood completed.
+2025-09-19 09:27:56,554 - attack_logger - INFO - Attack: Enhanced ICMP Flood (88s) | h1 -> h4
+2025-09-19 09:27:59,079 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Starting Enhanced ICMP Flood with RFC 1918 IP Rotation from h1 to 192.168.20.12 for 88 seconds.
+2025-09-19 09:27:59,079 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Attack Phase: Enhanced Traditional ICMP Flood - Attacker: h1, Target: 192.168.20.12, Duration: 88s
+2025-09-19 09:27:59,079 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Enhanced Features: RFC 1918 IP rotation, human-like timing, protocol compliance, network delay simulation
+2025-09-19 09:27:59,079 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] IP Pool Size: 50 source IPs from RFC 1918 ranges (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16)
+2025-09-19 09:27:59,079 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Stress phase total: 26s (host: 13s, gateway: 13s), Advanced phase: 62s
+2025-09-19 09:28:12,685 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Host stress sub-phase completed
+2025-09-19 09:28:26,289 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Gateway stress sub-phase completed
+2025-09-19 09:28:26,289 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Session pattern: 2 phases, Circadian factor: 0.70, Workday factor: 0.84
+2025-09-19 09:28:26,289 - attack_logger - DEBUG - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Starting enhanced ICMP packet generation with IP rotation and human-like timing
+2025-09-19 09:28:26,298 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Enhanced ICMP flood with IP rotation process started (PID: 41826)
+2025-09-19 09:28:37,478 - attack_logger - DEBUG - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Entering active phase (intensity: 0.80)
+2025-09-19 09:28:38,326 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Attack progress: 12.0s elapsed, ~168 packets sent, Rate: 14.0 pps, IP rotations: ~11, Phase: active (intensity: 0.80)
+2025-09-19 09:28:38,326 - attack_logger - DEBUG - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Process stats - CPU: 0.0%, Memory: 60.4MB
+2025-09-19 09:28:38,326 - attack_logger - DEBUG - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 14.0 pps
+2025-09-19 09:28:50,404 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Attack progress: 24.1s elapsed, ~259 packets sent, Rate: 10.7 pps, IP rotations: ~17, Phase: active (intensity: 0.80)
+2025-09-19 09:28:50,404 - attack_logger - DEBUG - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Process stats - CPU: 0.0%, Memory: 60.4MB
+2025-09-19 09:28:50,404 - attack_logger - DEBUG - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 10.8 pps
+2025-09-19 09:29:02,499 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Attack progress: 36.2s elapsed, ~449 packets sent, Rate: 12.4 pps, IP rotations: ~29, Phase: active (intensity: 0.80)
+2025-09-19 09:29:02,499 - attack_logger - DEBUG - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Process stats - CPU: 0.0%, Memory: 60.4MB
+2025-09-19 09:29:02,499 - attack_logger - DEBUG - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 12.4 pps
+2025-09-19 09:29:14,584 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Attack progress: 48.3s elapsed, ~503 packets sent, Rate: 10.4 pps, IP rotations: ~33, Phase: active (intensity: 0.80)
+2025-09-19 09:29:14,584 - attack_logger - DEBUG - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Process stats - CPU: 0.0%, Memory: 60.4MB
+2025-09-19 09:29:14,584 - attack_logger - DEBUG - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 10.4 pps
+2025-09-19 09:29:26,596 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Attack progress: 60.3s elapsed, ~598 packets sent, Rate: 9.9 pps, IP rotations: ~39, Phase: active (intensity: 0.80)
+2025-09-19 09:29:26,596 - attack_logger - DEBUG - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Process stats - CPU: 0.0%, Memory: 60.6MB
+2025-09-19 09:29:26,596 - attack_logger - DEBUG - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Timing factors - Circadian: 0.70, Workday: 0.84, Adjusted rate: 9.9 pps
+2025-09-19 09:29:28,324 - attack_logger - DEBUG - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Sent SIGINT to ICMP flood process 41826
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Enhanced ICMP Flood with RFC 1918 IP Rotation from h1 to 192.168.20.12 finished.
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Attack completed. Total packets sent = 850, Average rate = 13.70 packets/sec.
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] --- Enhanced Attack Summary ---
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Total packets sent: 850
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Total IP rotations: ~56
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] RFC 1918 IP pool size: 50
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] IP ranges used: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Actual duration: 62.04s
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Average rate: 13.70 packets/sec
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Base rate: 23.3 pps
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Circadian factor: 0.70
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Workday factor: 0.84
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Session phases: 2
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] ICMP type: Echo Request (8) with ID/Seq variations
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Attack method: Enhanced ICMP Flood with RFC 1918 IP Rotation
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] Enhancement features: RFC 1918 IP rotation, human timing patterns, protocol compliance, network delay simulation
+2025-09-19 09:29:28,831 - attack_logger - INFO - [icmp_flood] [Run ID: 66554c3d-7ae0-475a-8fb9-ecd6d831fbc0] ----------------------------------------
+2025-09-19 09:29:28,915 - attack_logger - INFO - Attack: Enhanced ICMP Flood completed.
+2025-09-19 09:29:29,427 - attack_logger - INFO - Attack: ENHANCED Adversarial TCP State Exhaustion (72s) | h1 -> h6
+2025-09-19 09:30:44,632 - attack_logger - INFO - Attack: ENHANCED Adversarial Application Layer (24s) | h1 -> h6
+2025-09-19 09:31:11,955 - attack_logger - INFO - Attack: ENHANCED Adversarial Slow Read (72s) | h1 -> h6
+2025-09-19 09:32:27,228 - attack_logger - INFO - Attack: ENHANCED Adversarial Slow Read completed.

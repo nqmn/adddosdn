@@ -1,0 +1,256 @@
+Data Leakage Analysis Report
+Target: Label_binary
+Timestamp: 2025-09-19 12:14:09.505747
+================================================================================
+
+Features shape: (1559778, 16)
+Feature columns: ['dataset_id', 'switch_id', 'table_id', 'cookie', 'priority', 'in_port', 'eth_src', 'eth_dst', 'out_port', 'packet_count', 'byte_count', 'duration_sec', 'duration_nsec', 'avg_pkt_size', 'pkt_rate', 'byte_rate']
+Target distribution:
+Label_binary
+0    1160015
+1     399763
+Name: count, dtype: int64
+
+
+================================================================================
+FEATURE DISTRIBUTION ANALYSIS FOR Label_binary
+================================================================================
+
+Feature: dataset_id
+                   mean        std  min  max
+Label_binary                                
+0             65.798203  20.704865    0   94
+1             64.651368  21.643602    0   94
+
+Feature: switch_id
+              mean  std  min  max
+Label_binary                     
+0              1.0  0.0    1    1
+1              1.0  0.0    1    1
+⚠️  WARNING: switch_id may have perfect class separation
+
+Feature: table_id
+              mean  std  min  max
+Label_binary                     
+0              0.0  0.0    0    0
+1              0.0  0.0    0    0
+⚠️  WARNING: table_id may have perfect class separation
+
+Feature: cookie
+              mean  std  min  max
+Label_binary                     
+0              0.0  0.0    0    0
+1              0.0  0.0    0    0
+⚠️  WARNING: cookie may have perfect class separation
+
+Feature: priority
+                  mean       std  min  max
+Label_binary                              
+0             8.559044  3.511867    0   10
+1             8.571429  3.499275    0   10
+
+Feature: in_port
+              mean  std  min  max
+Label_binary                     
+0              NaN  NaN  NaN  NaN
+1              NaN  NaN  NaN  NaN
+
+Feature: eth_src
+              mean  std  min  max
+Label_binary                     
+0              NaN  NaN  NaN  NaN
+1              NaN  NaN  NaN  NaN
+
+Feature: eth_dst
+              mean  std  min  max
+Label_binary                     
+0              NaN  NaN  NaN  NaN
+1              NaN  NaN  NaN  NaN
+
+Feature: out_port
+              mean  std  min  max
+Label_binary                     
+0              NaN  NaN  NaN  NaN
+1              NaN  NaN  NaN  NaN
+
+Feature: packet_count
+                    mean          std  min   max
+Label_binary                                    
+0              681.98318  1112.588923    9  5260
+1             1907.05954  1801.989597    9  5883
+
+Feature: byte_count
+                       mean            std  min     max
+Label_binary                                           
+0              59689.699913  103706.126467  882  536759
+1             180896.339671  180579.249320  882  677621
+
+Feature: duration_sec
+                     mean         std  min   max
+Label_binary                                    
+0              724.499654  494.271382    6  1647
+1             1646.079665  598.701659  209  2187
+
+Feature: duration_nsec
+                      mean           std       min        max
+Label_binary                                                 
+0             2.652175e+08  1.493979e+08         0  999000000
+1             5.163121e+08  1.725384e+08  72000000  784000000
+
+Feature: avg_pkt_size
+                    mean        std        min         max
+Label_binary                                              
+0              99.231932  40.772321  42.574938  255.214286
+1             110.297994  82.892828  42.548818  558.189189
+
+Feature: pkt_rate
+                  mean       std       min       max
+Label_binary                                        
+0             0.947023  1.114140  0.005530  3.354246
+1             1.137640  0.933824  0.004738  3.208170
+
+Feature: byte_rate
+                    mean         std       min         max
+Label_binary                                              
+0              84.106493  106.268424  0.541943  375.000000
+1             107.147327   93.477747  0.464298  352.557474
+Training set: 1091844 samples
+Test set: 467934 samples
+
+Accuracy: 0.997091
+
+Classification Report for Label_binary:
+================================================================================
+              precision    recall  f1-score   support
+
+           0   0.998553  0.997535  0.998044    348005
+           1   0.992867  0.995806  0.994334    119929
+
+    accuracy                       0.997091    467934
+   macro avg   0.995710  0.996670  0.996189    467934
+weighted avg   0.997096  0.997091  0.997093    467934
+
+
+Confusion Matrix:
+[[347147    858]
+ [   503 119426]]
+
+================================================================================
+COMPLETE FEATURE IMPORTANCE ANALYSIS FOR Label_binary
+================================================================================
+Rank Feature                   Importance   Percentage Risk Level
+----------------------------------------------------------------------
+1    duration_sec              0.936662     93.67     % 🚨 CRITICAL
+2    dataset_id                0.051216     5.12      % 📊 LOW
+3    pkt_rate                  0.007509     0.75      % ✅ MINIMAL
+4    byte_count                0.001515     0.15      % ✅ MINIMAL
+5    packet_count              0.001426     0.14      % ✅ MINIMAL
+6    avg_pkt_size              0.000968     0.10      % ✅ MINIMAL
+7    duration_nsec             0.000541     0.05      % ✅ MINIMAL
+8    byte_rate                 0.000082     0.01      % ✅ MINIMAL
+9    priority                  0.000082     0.01      % ✅ MINIMAL
+10   eth_src                   0.000000     0.00      % ✅ MINIMAL
+11   eth_dst                   0.000000     0.00      % ✅ MINIMAL
+12   cookie                    0.000000     0.00      % ✅ MINIMAL
+13   switch_id                 0.000000     0.00      % ✅ MINIMAL
+14   table_id                  0.000000     0.00      % ✅ MINIMAL
+15   in_port                   0.000000     0.00      % ✅ MINIMAL
+16   out_port                  0.000000     0.00      % ✅ MINIMAL
+
+Decision Tree Rules (Max Depth 3):
+============================================================
+|--- duration_sec <= 1618.00
+|   |--- dataset_id <= 45.50
+|   |   |--- duration_sec <= 204.00
+|   |   |   |--- class: 0
+|   |   |--- duration_sec >  204.00
+|   |   |   |--- pkt_rate <= 3.07
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- pkt_rate >  3.07
+|   |   |   |   |--- truncated branch of depth 7
+|   |--- dataset_id >  45.50
+|   |   |--- duration_sec <= 1608.00
+|   |   |   |--- avg_pkt_size <= 357.76
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- avg_pkt_size >  357.76
+|   |   |   |   |--- class: 1
+|   |   |--- duration_sec >  1608.00
+|   |   |   |--- dataset_id <= 68.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- dataset_id >  68.50
+|   |   |   |   |--- truncated branch of depth 7
+|--- duration_sec >  1618.00
+|   |--- duration_sec <= 1626.50
+|   |   |--- pkt_rate <= 1.69
+|   |   |   |--- dataset_id <= 68.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- dataset_id >  68.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |--- pkt_rate >  1.69
+|   |   |   |--- duration_nsec <= 541500000.00
+|   |   |   |   |--- truncated branch of depth 5
+|   |   |   |--- duration_nsec >  541500000.00
+|   |   |   |   |--- class: 0
+|   |--- duration_sec >  1626.50
+|   |   |--- pkt_rate <= 3.17
+|   |   |   |--- pkt_rate <= 3.11
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- pkt_rate >  3.11
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |--- pkt_rate >  3.17
+|   |   |   |--- byte_count <= 221713.00
+|   |   |   |   |--- truncated branch of depth 5
+|   |   |   |--- byte_count >  221713.00
+|   |   |   |   |--- truncated branch of depth 7
+
+
+================================================================================
+COMPREHENSIVE DATA LEAKAGE ASSESSMENT FOR Label_binary
+================================================================================
+📊 CRITICAL: Accuracy > 99% - Near perfect classification
+📊 CRITICAL: Top 3 features account for >90% of importance
+📊 CRITICAL: Single feature 'duration_sec' dominates with 0.936662 importance
+
+🎯 OVERALL ASSESSMENT: 🚨 CRITICAL DATA LEAKAGE DETECTED
+
+================================================================================
+FEATURE DROP RECOMMENDATIONS FOR Label_binary
+================================================================================
+
+🚨 HIGH PRIORITY - MUST DROP (1 features):
+   ❌ duration_sec         (importance: 0.9367) - Extremely high importance - dominates classification decisions
+
+⚠️  MEDIUM PRIORITY - CONSIDER DROPPING (1 features):
+   ⚡ dataset_id           (importance: 0.0512) - Medium importance - moderate contributor to classification
+
+🔧 PROTOCOL-SPECIFIC - DROP FOR GENERALIZATION (0 features):
+
+✅ SAFE TO KEEP (14 features):
+   ✓ pkt_rate             (importance: 0.0075) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ byte_count           (importance: 0.0015) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ packet_count         (importance: 0.0014) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ avg_pkt_size         (importance: 0.0010) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ duration_nsec        (importance: 0.0005) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ byte_rate            (importance: 0.0001) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ priority             (importance: 0.0001) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ eth_src              (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ eth_dst              (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ cookie               (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ switch_id            (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ table_id             (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ in_port              (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ out_port             (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+
+================================================================================
+PYTHON CODE FOR FEATURE DROPPING
+================================================================================
+
+# Features to drop for Label_binary classification (data leakage prevention)
+features_to_drop = ['duration_sec', 'dataset_id']
+
+# Apply feature dropping
+df_clean = df.drop(columns=features_to_drop, errors='ignore')
+
+# Remaining safe features: ['pkt_rate', 'byte_count', 'packet_count', 'avg_pkt_size', 'duration_nsec', 'byte_rate', 'priority', 'eth_src', 'eth_dst', 'cookie', 'switch_id', 'table_id', 'in_port', 'out_port']
+# Expected accuracy after dropping: 60-75% (realistic for behavioral detection)
+

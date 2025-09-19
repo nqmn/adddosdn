@@ -1,0 +1,757 @@
+Data Leakage Analysis Report
+Target: Label_binary
+Timestamp: 2025-09-19 12:13:53.660106
+================================================================================
+
+Features shape: (268887, 81)
+Feature columns: ['dataset_id', 'src_ip', 'dst_ip', 'protocol', 'flow_duration', 'flow_byts_s', 'flow_pkts_s', 'fwd_pkts_s', 'bwd_pkts_s', 'tot_fwd_pkts', 'tot_bwd_pkts', 'totlen_fwd_pkts', 'totlen_bwd_pkts', 'fwd_pkt_len_max', 'fwd_pkt_len_min', 'fwd_pkt_len_mean', 'fwd_pkt_len_std', 'bwd_pkt_len_max', 'bwd_pkt_len_min', 'bwd_pkt_len_mean', 'bwd_pkt_len_std', 'pkt_len_max', 'pkt_len_min', 'pkt_len_mean', 'pkt_len_std', 'pkt_len_var', 'fwd_header_len', 'bwd_header_len', 'fwd_seg_size_min', 'fwd_act_data_pkts', 'flow_iat_mean', 'flow_iat_max', 'flow_iat_min', 'flow_iat_std', 'fwd_iat_tot', 'fwd_iat_max', 'fwd_iat_min', 'fwd_iat_mean', 'fwd_iat_std', 'bwd_iat_tot', 'bwd_iat_max', 'bwd_iat_min', 'bwd_iat_mean', 'bwd_iat_std', 'fwd_psh_flags', 'bwd_psh_flags', 'fwd_urg_flags', 'bwd_urg_flags', 'fin_flag_cnt', 'syn_flag_cnt', 'rst_flag_cnt', 'psh_flag_cnt', 'ack_flag_cnt', 'urg_flag_cnt', 'ece_flag_cnt', 'down_up_ratio', 'pkt_size_avg', 'init_fwd_win_byts', 'init_bwd_win_byts', 'active_max', 'active_min', 'active_mean', 'active_std', 'idle_max', 'idle_min', 'idle_mean', 'idle_std', 'fwd_byts_b_avg', 'fwd_pkts_b_avg', 'bwd_byts_b_avg', 'bwd_pkts_b_avg', 'fwd_blk_rate_avg', 'bwd_blk_rate_avg', 'fwd_seg_size_avg', 'bwd_seg_size_avg', 'cwr_flag_count', 'subflow_fwd_pkts', 'subflow_bwd_pkts', 'subflow_fwd_byts', 'subflow_bwd_byts', 'Attack_Type']
+Target distribution:
+Label_binary
+0     44201
+1    224686
+Name: count, dtype: int64
+
+
+================================================================================
+FEATURE DISTRIBUTION ANALYSIS FOR Label_binary
+================================================================================
+
+Feature: dataset_id
+                   mean        std  min  max
+Label_binary                                
+0             65.794824  20.622687    0   94
+1             66.059123  20.456136    0   94
+
+Feature: src_ip
+                    mean        std  min   max
+Label_binary                                  
+0             859.541685  10.489706  691  1056
+1             683.783271  91.707629    0  1054
+
+Feature: dst_ip
+                   mean       std  min  max
+Label_binary                               
+0             22.480102  1.850576    0   43
+1             24.753478  1.029107    1   43
+
+Feature: protocol
+                  mean       std  min  max
+Label_binary                              
+0             7.188480  5.305804    1   17
+1             9.979438  5.806461    1   17
+
+Feature: flow_duration
+                  mean        std  min         max
+Label_binary                                      
+0             6.289979  21.885112  0.0  183.485796
+1             0.612310   6.951045  0.0  174.085591
+
+Feature: flow_byts_s
+                      mean           std  min          max
+Label_binary                                              
+0             2.004583e+07  5.801686e+07  0.0  378750000.0
+1             1.633702e+07  7.769936e+06  0.0  113000000.0
+
+Feature: flow_pkts_s
+                       mean            std  min        max
+Label_binary                                              
+0              64701.515142  102562.406432  0.0  1000000.0
+1             223314.502278  101037.581096  0.0  1000000.0
+
+Feature: fwd_pkts_s
+                       mean            std  min        max
+Label_binary                                              
+0              55638.501189   92236.628010  0.0  1000000.0
+1             184078.251343  110181.433938  0.0  1000000.0
+
+Feature: bwd_pkts_s
+                      mean           std  min            max
+Label_binary                                                
+0              9063.013953  26356.608973  0.0  133333.333333
+1             39236.250935  43938.126202  0.0  111111.111111
+
+Feature: tot_fwd_pkts
+                  mean       std  min  max
+Label_binary                              
+0             7.689713  5.984663    2  661
+1             3.888685  8.750667    2  627
+
+Feature: tot_bwd_pkts
+                  mean       std  min  max
+Label_binary                              
+0             5.964888  6.881649    0  803
+1             2.125388  8.526265    0  626
+
+Feature: totlen_fwd_pkts
+                     mean          std  min    max
+Label_binary                                      
+0             1459.131649  1249.797137  112  38801
+1              522.219413  1189.723278  112  27588
+
+Feature: totlen_bwd_pkts
+                    mean           std  min      max
+Label_binary                                        
+0             475.326576  12810.472299    0  1980576
+1             504.373090   1592.268109    0   311840
+
+Feature: fwd_pkt_len_max
+                    mean         std  min   max
+Label_binary                                   
+0             495.915296  423.611914   56  2976
+1             168.258356  431.440547   44  5071
+
+Feature: fwd_pkt_len_min
+                    mean         std  min   max
+Label_binary                                   
+0             136.135540  244.643138   56  1515
+1             117.387835  203.160189   44  1475
+
+Feature: fwd_pkt_len_mean
+                    mean         std   min     max
+Label_binary                                      
+0             209.966600  234.986015  56.0  1515.0
+1             125.533532  210.213212  44.0  1487.0
+
+Feature: fwd_pkt_len_std
+                    mean         std  min          max
+Label_binary                                          
+0             143.378307  163.874084  0.0   879.006902
+1              17.741722  134.397826  0.0  1909.044190
+
+Feature: bwd_pkt_len_max
+                    mean         std  min    max
+Label_binary                                    
+0              60.991154  160.415548    0  14656
+1             114.346265  284.651759    0  11736
+
+Feature: bwd_pkt_len_min
+                   mean         std  min   max
+Label_binary                                  
+0             57.104296   49.763740    0   543
+1             80.585203  212.962062    0  1444
+
+Feature: bwd_pkt_len_mean
+                   mean         std  min          max
+Label_binary                                         
+0             58.021611   60.468584  0.0  2648.309764
+1             88.391916  216.026437  0.0  2759.646018
+
+Feature: bwd_pkt_len_std
+                   mean        std  min          max
+Label_binary                                        
+0              1.080853  30.897233  0.0  2745.790738
+1             12.558220  69.875465  0.0  1938.172451
+
+Feature: pkt_len_max
+                    mean         std  min    max
+Label_binary                                    
+0             502.128368  444.444024   56  14656
+1             188.056287  463.116410   44  11736
+
+Feature: pkt_len_min
+                    mean         std  min   max
+Label_binary                                   
+0             136.132825  244.643955   56  1515
+1             115.877758  203.538889   44  1475
+
+Feature: pkt_len_mean
+                    mean         std   min          max
+Label_binary                                           
+0             178.698622  237.233497  56.0  1652.336788
+1             124.845698  205.788322  44.0  1786.638418
+
+Feature: pkt_len_std
+                    mean         std  min          max
+Label_binary                                          
+0             113.442896  127.800098  0.0  2273.001810
+1              19.944512  111.470601  0.0  1829.027498
+
+Feature: pkt_len_var
+                      mean            std  min           max
+Label_binary                                                
+0             29201.786167   62729.036093  0.0  5.166537e+06
+1             12823.423029  108220.343108  0.0  3.345342e+06
+
+Feature: fwd_header_len
+                    mean         std  min    max
+Label_binary                                    
+0             153.794258  119.693251   40  13220
+1              77.773693  175.013334   40  12540
+
+Feature: bwd_header_len
+                    mean         std  min    max
+Label_binary                                    
+0             119.297753  137.632980    0  16060
+1              42.507766  170.525296    0  12520
+
+Feature: fwd_seg_size_min
+              mean  std  min  max
+Label_binary                     
+0             20.0  0.0   20   20
+1             20.0  0.0   20   20
+⚠️  WARNING: fwd_seg_size_min may have perfect class separation
+
+Feature: fwd_act_data_pkts
+                  mean       std  min  max
+Label_binary                              
+0             2.623583  2.592703    0   58
+1             1.675262  3.104457    0  149
+
+Feature: flow_iat_mean
+                  mean       std  min        max
+Label_binary                                    
+0             0.281701  0.933495  0.0  53.963027
+1             0.141333  1.905782  0.0  58.028530
+
+Feature: flow_iat_max
+                  mean       std  min         max
+Label_binary                                     
+0             1.423930  4.287922  0.0  180.926655
+1             0.558984  6.774590  0.0  174.085580
+
+Feature: flow_iat_min
+              mean  std       min  max
+Label_binary                          
+0             -0.0  0.0 -0.000001  0.0
+1             -0.0  0.0 -0.000001  0.0
+
+Feature: flow_iat_std
+                  mean       std  min        max
+Label_binary                                    
+0             0.521102  1.586234  0.0  76.315235
+1             0.238351  2.996004  0.0  82.064727
+
+Feature: fwd_iat_tot
+                  mean        std  min         max
+Label_binary                                      
+0             6.277643  21.884725  0.0  183.485796
+1             0.611485   6.950936  0.0  174.085591
+
+Feature: fwd_iat_max
+                  mean       std  min         max
+Label_binary                                     
+0             1.417393  4.285719  0.0  180.926655
+1             0.558497  6.774579  0.0  174.085580
+
+Feature: fwd_iat_min
+              mean  std  min  max
+Label_binary                     
+0              0.0  0.0  0.0  0.0
+1              0.0  0.0  0.0  0.0
+⚠️  WARNING: fwd_iat_min may have perfect class separation
+
+Feature: fwd_iat_mean
+                  mean       std  min        max
+Label_binary                                    
+0             0.459296  1.420025  0.0  53.963027
+1             0.150674  1.945096  0.0  58.028530
+
+Feature: fwd_iat_std
+                  mean       std  min        max
+Label_binary                                    
+0             0.607978  1.812094  0.0  76.315235
+1             0.245870  3.037996  0.0  82.064727
+
+Feature: bwd_iat_tot
+                  mean        std  min         max
+Label_binary                                      
+0             4.416975  17.312357  0.0  119.999781
+1             0.086247   1.839971  0.0   80.813935
+
+Feature: bwd_iat_max
+                  mean       std  min        max
+Label_binary                                    
+0             1.050301  3.413890  0.0  60.005125
+1             0.074654  1.795487  0.0  80.813930
+
+Feature: bwd_iat_min
+                  mean       std  min       max
+Label_binary                                   
+0             0.000012  0.001773  0.0  0.372789
+1             0.000154  0.004354  0.0  0.175749
+
+Feature: bwd_iat_mean
+                 mean       std  min        max
+Label_binary                                   
+0             0.38231  1.246293  0.0  10.017150
+1             0.02461  0.595102  0.0  26.937978
+
+Feature: bwd_iat_std
+                  mean       std  min        max
+Label_binary                                    
+0             0.472607  1.527365  0.0  12.843519
+1             0.034741  0.842808  0.0  38.096051
+
+Feature: fwd_psh_flags
+                  mean       std  min  max
+Label_binary                              
+0             0.886745  1.274116   -1   23
+1             0.068576  0.682264   -1    8
+
+Feature: bwd_psh_flags
+                  mean       std  min  max
+Label_binary                              
+0            -0.150924  5.000865   -1  794
+1             0.151892  0.999348   -1  106
+
+Feature: fwd_urg_flags
+                  mean       std  min  max
+Label_binary                              
+0            -0.206127  0.404527   -1    0
+1            -0.072212  0.258839   -1    0
+
+Feature: bwd_urg_flags
+                  mean       std  min  max
+Label_binary                              
+0            -0.206127  0.404527   -1    0
+1            -0.072212  0.258839   -1    0
+
+Feature: fin_flag_cnt
+                  mean       std  min  max
+Label_binary                              
+0            -0.192416  0.443671   -1    3
+1             0.378052  1.197386   -1    8
+
+Feature: syn_flag_cnt
+                  mean       std  min  max
+Label_binary                              
+0             2.590892  2.899638   -1   15
+1             1.369347  1.839546   -1    9
+
+Feature: rst_flag_cnt
+                  mean       std  min  max
+Label_binary                              
+0             5.294971  5.344660   -1   26
+1             0.894635  1.145058   -1    6
+
+Feature: psh_flag_cnt
+                  mean       std  min  max
+Label_binary                              
+0             0.941947  5.191964   -1  801
+1             0.292680  1.570864   -1  110
+
+Feature: ack_flag_cnt
+                  mean        std  min   max
+Label_binary                                
+0             5.466777  10.412431   -1  1461
+1             2.004687   4.915371   -1   175
+
+Feature: urg_flag_cnt
+                  mean       std  min  max
+Label_binary                              
+0            -0.206127  0.404527   -1    0
+1            -0.072212  0.258839   -1    0
+
+Feature: ece_flag_cnt
+                  mean       std  min  max
+Label_binary                              
+0            -0.206127  0.404527   -1    0
+1            -0.072212  0.258839   -1    0
+
+Feature: down_up_ratio
+                  mean       std  min       max
+Label_binary                                   
+0             0.662503  0.353547  0.0  1.610169
+1             0.475521  0.534354  0.0  2.400000
+
+Feature: pkt_size_avg
+                    mean         std   min          max
+Label_binary                                           
+0             178.698622  237.233497  56.0  1652.336788
+1             124.845698  205.788322  44.0  1786.638418
+
+Feature: init_fwd_win_byts
+                      mean           std  min    max
+Label_binary                                        
+0              5108.057759   5231.375044   -1  65535
+1             10870.965868  14845.851326   -1  65535
+
+Feature: init_bwd_win_byts
+                     mean           std  min    max
+Label_binary                                       
+0             4233.384109   6525.280104   -1  65535
+1             3611.331325  11965.128748   -1  65535
+
+Feature: active_max
+              mean  std  min  max
+Label_binary                     
+0              0.0  0.0    0    0
+1              0.0  0.0    0    0
+⚠️  WARNING: active_max may have perfect class separation
+
+Feature: active_min
+              mean  std  min  max
+Label_binary                     
+0              0.0  0.0    0    0
+1              0.0  0.0    0    0
+⚠️  WARNING: active_min may have perfect class separation
+
+Feature: active_mean
+              mean  std  min  max
+Label_binary                     
+0              0.0  0.0    0    0
+1              0.0  0.0    0    0
+⚠️  WARNING: active_mean may have perfect class separation
+
+Feature: active_std
+              mean  std  min  max
+Label_binary                     
+0              0.0  0.0    0    0
+1              0.0  0.0    0    0
+⚠️  WARNING: active_std may have perfect class separation
+
+Feature: idle_max
+              mean  std  min  max
+Label_binary                     
+0              0.0  0.0    0    0
+1              0.0  0.0    0    0
+⚠️  WARNING: idle_max may have perfect class separation
+
+Feature: idle_min
+              mean  std  min  max
+Label_binary                     
+0              0.0  0.0    0    0
+1              0.0  0.0    0    0
+⚠️  WARNING: idle_min may have perfect class separation
+
+Feature: idle_mean
+              mean  std  min  max
+Label_binary                     
+0              0.0  0.0    0    0
+1              0.0  0.0    0    0
+⚠️  WARNING: idle_mean may have perfect class separation
+
+Feature: idle_std
+              mean  std  min  max
+Label_binary                     
+0              0.0  0.0    0    0
+1              0.0  0.0    0    0
+⚠️  WARNING: idle_std may have perfect class separation
+
+Feature: fwd_byts_b_avg
+                   mean         std  min      max
+Label_binary                                     
+0              0.219554   17.205431  0.0   1668.0
+1             73.829652  732.059105  0.0  10544.0
+
+Feature: fwd_pkts_b_avg
+                  mean       std  min        max
+Label_binary                                    
+0             0.001878  0.135443  0.0  18.000000
+1             0.051302  0.460537  0.0   8.333333
+
+Feature: bwd_byts_b_avg
+                    mean          std  min        max
+Label_binary                                         
+0              64.678980  8055.526619  0.0  1537222.0
+1             382.697146  1453.155142  0.0   301904.0
+
+Feature: bwd_pkts_b_avg
+                  mean       std  min    max
+Label_binary                                
+0             0.026973  3.106642  0.0  584.0
+1             0.706121  2.904799  0.0  106.0
+
+Feature: fwd_blk_rate_avg
+                      mean           std  min           max
+Label_binary                                               
+0             1.928863e+01  2.527382e+03  0.0  3.809524e+05
+1             2.523434e+06  2.506309e+07  0.0  6.815714e+08
+
+Feature: bwd_blk_rate_avg
+                      mean           std  min           max
+Label_binary                                               
+0             2.726596e+02  4.978334e+04  0.0  1.043819e+07
+1             1.791301e+06  7.510303e+06  0.0  1.237600e+08
+
+Feature: fwd_seg_size_avg
+                    mean         std   min     max
+Label_binary                                      
+0             209.966600  234.986015  56.0  1515.0
+1             125.533532  210.213212  44.0  1487.0
+
+Feature: bwd_seg_size_avg
+                   mean         std  min          max
+Label_binary                                         
+0             58.021611   60.468584  0.0  2648.309764
+1             88.391916  216.026437  0.0  2759.646018
+
+Feature: cwr_flag_count
+                  mean       std  min  max
+Label_binary                              
+0            -0.206127  0.404527   -1    0
+1            -0.072212  0.258839   -1    0
+
+Feature: subflow_fwd_pkts
+                  mean       std  min  max
+Label_binary                              
+0             7.689713  5.984663    2  661
+1             3.888685  8.750667    2  627
+
+Feature: subflow_bwd_pkts
+                  mean       std  min  max
+Label_binary                              
+0             5.964888  6.881649    0  803
+1             2.125388  8.526265    0  626
+
+Feature: subflow_fwd_byts
+                     mean          std  min    max
+Label_binary                                      
+0             1459.131649  1249.797137  112  38801
+1              522.219413  1189.723278  112  27588
+
+Feature: subflow_bwd_byts
+                    mean           std  min      max
+Label_binary                                        
+0             475.326576  12810.472299    0  1980576
+1             504.373090   1592.268109    0   311840
+
+Feature: Attack_Type
+                  mean       std  min  max
+Label_binary                              
+0             4.000000  0.000000    4    4
+1             3.959446  2.161016    0    6
+Training set: 188220 samples
+Test set: 80667 samples
+
+Accuracy: 0.999975
+
+Classification Report for Label_binary:
+================================================================================
+              precision    recall  f1-score   support
+
+           0   0.999849  1.000000  0.999925     13260
+           1   1.000000  0.999970  0.999985     67407
+
+    accuracy                       0.999975     80667
+   macro avg   0.999925  0.999985  0.999955     80667
+weighted avg   0.999975  0.999975  0.999975     80667
+
+
+Confusion Matrix:
+[[13260     0]
+ [    2 67405]]
+
+================================================================================
+COMPLETE FEATURE IMPORTANCE ANALYSIS FOR Label_binary
+================================================================================
+Rank Feature                   Importance   Percentage Risk Level
+----------------------------------------------------------------------
+1    src_ip                    0.894009     89.40     % 🚨 CRITICAL
+2    Attack_Type               0.105972     10.60     % 📊 LOW
+3    totlen_bwd_pkts           0.000019     0.00      % ✅ MINIMAL
+4    dst_ip                    0.000001     0.00      % ✅ MINIMAL
+5    dataset_id                0.000000     0.00      % ✅ MINIMAL
+6    flow_byts_s               0.000000     0.00      % ✅ MINIMAL
+7    flow_pkts_s               0.000000     0.00      % ✅ MINIMAL
+8    fwd_pkts_s                0.000000     0.00      % ✅ MINIMAL
+9    protocol                  0.000000     0.00      % ✅ MINIMAL
+10   bwd_pkts_s                0.000000     0.00      % ✅ MINIMAL
+11   tot_fwd_pkts              0.000000     0.00      % ✅ MINIMAL
+12   tot_bwd_pkts              0.000000     0.00      % ✅ MINIMAL
+13   totlen_fwd_pkts           0.000000     0.00      % ✅ MINIMAL
+14   fwd_pkt_len_max           0.000000     0.00      % ✅ MINIMAL
+15   fwd_pkt_len_min           0.000000     0.00      % ✅ MINIMAL
+16   fwd_pkt_len_mean          0.000000     0.00      % ✅ MINIMAL
+17   flow_duration             0.000000     0.00      % ✅ MINIMAL
+18   fwd_pkt_len_std           0.000000     0.00      % ✅ MINIMAL
+19   bwd_pkt_len_max           0.000000     0.00      % ✅ MINIMAL
+20   bwd_pkt_len_mean          0.000000     0.00      % ✅ MINIMAL
+21   bwd_pkt_len_min           0.000000     0.00      % ✅ MINIMAL
+22   pkt_len_max               0.000000     0.00      % ✅ MINIMAL
+23   pkt_len_min               0.000000     0.00      % ✅ MINIMAL
+24   pkt_len_mean              0.000000     0.00      % ✅ MINIMAL
+25   bwd_pkt_len_std           0.000000     0.00      % ✅ MINIMAL
+26   pkt_len_var               0.000000     0.00      % ✅ MINIMAL
+27   fwd_header_len            0.000000     0.00      % ✅ MINIMAL
+28   bwd_header_len            0.000000     0.00      % ✅ MINIMAL
+29   fwd_seg_size_min          0.000000     0.00      % ✅ MINIMAL
+30   fwd_act_data_pkts         0.000000     0.00      % ✅ MINIMAL
+31   flow_iat_mean             0.000000     0.00      % ✅ MINIMAL
+32   flow_iat_max              0.000000     0.00      % ✅ MINIMAL
+33   pkt_len_std               0.000000     0.00      % ✅ MINIMAL
+34   flow_iat_std              0.000000     0.00      % ✅ MINIMAL
+35   fwd_iat_tot               0.000000     0.00      % ✅ MINIMAL
+36   fwd_iat_max               0.000000     0.00      % ✅ MINIMAL
+37   fwd_iat_min               0.000000     0.00      % ✅ MINIMAL
+38   fwd_iat_mean              0.000000     0.00      % ✅ MINIMAL
+39   fwd_iat_std               0.000000     0.00      % ✅ MINIMAL
+40   bwd_iat_tot               0.000000     0.00      % ✅ MINIMAL
+41   bwd_iat_max               0.000000     0.00      % ✅ MINIMAL
+42   bwd_iat_min               0.000000     0.00      % ✅ MINIMAL
+43   bwd_iat_mean              0.000000     0.00      % ✅ MINIMAL
+44   bwd_iat_std               0.000000     0.00      % ✅ MINIMAL
+45   fwd_psh_flags             0.000000     0.00      % ✅ MINIMAL
+46   bwd_psh_flags             0.000000     0.00      % ✅ MINIMAL
+47   fwd_urg_flags             0.000000     0.00      % ✅ MINIMAL
+48   bwd_urg_flags             0.000000     0.00      % ✅ MINIMAL
+49   flow_iat_min              0.000000     0.00      % ✅ MINIMAL
+50   fin_flag_cnt              0.000000     0.00      % ✅ MINIMAL
+51   syn_flag_cnt              0.000000     0.00      % ✅ MINIMAL
+52   psh_flag_cnt              0.000000     0.00      % ✅ MINIMAL
+53   rst_flag_cnt              0.000000     0.00      % ✅ MINIMAL
+54   urg_flag_cnt              0.000000     0.00      % ✅ MINIMAL
+55   ece_flag_cnt              0.000000     0.00      % ✅ MINIMAL
+56   down_up_ratio             0.000000     0.00      % ✅ MINIMAL
+57   ack_flag_cnt              0.000000     0.00      % ✅ MINIMAL
+58   init_fwd_win_byts         0.000000     0.00      % ✅ MINIMAL
+59   init_bwd_win_byts         0.000000     0.00      % ✅ MINIMAL
+60   active_max                0.000000     0.00      % ✅ MINIMAL
+61   active_min                0.000000     0.00      % ✅ MINIMAL
+62   active_mean               0.000000     0.00      % ✅ MINIMAL
+63   active_std                0.000000     0.00      % ✅ MINIMAL
+64   idle_max                  0.000000     0.00      % ✅ MINIMAL
+65   pkt_size_avg              0.000000     0.00      % ✅ MINIMAL
+66   idle_min                  0.000000     0.00      % ✅ MINIMAL
+67   idle_mean                 0.000000     0.00      % ✅ MINIMAL
+68   fwd_byts_b_avg            0.000000     0.00      % ✅ MINIMAL
+69   idle_std                  0.000000     0.00      % ✅ MINIMAL
+70   bwd_byts_b_avg            0.000000     0.00      % ✅ MINIMAL
+71   bwd_pkts_b_avg            0.000000     0.00      % ✅ MINIMAL
+72   fwd_blk_rate_avg          0.000000     0.00      % ✅ MINIMAL
+73   fwd_pkts_b_avg            0.000000     0.00      % ✅ MINIMAL
+74   bwd_blk_rate_avg          0.000000     0.00      % ✅ MINIMAL
+75   fwd_seg_size_avg          0.000000     0.00      % ✅ MINIMAL
+76   cwr_flag_count            0.000000     0.00      % ✅ MINIMAL
+77   bwd_seg_size_avg          0.000000     0.00      % ✅ MINIMAL
+78   subflow_fwd_pkts          0.000000     0.00      % ✅ MINIMAL
+79   subflow_bwd_pkts          0.000000     0.00      % ✅ MINIMAL
+80   subflow_fwd_byts          0.000000     0.00      % ✅ MINIMAL
+81   subflow_bwd_byts          0.000000     0.00      % ✅ MINIMAL
+
+Decision Tree Rules (Max Depth 3):
+============================================================
+|--- src_ip <= 800.50
+|   |--- dst_ip <= 17.00
+|   |   |--- totlen_bwd_pkts <= 713.00
+|   |   |   |--- class: 0
+|   |   |--- totlen_bwd_pkts >  713.00
+|   |   |   |--- class: 1
+|   |--- dst_ip >  17.00
+|   |   |--- class: 1
+|--- src_ip >  800.50
+|   |--- Attack_Type <= 3.50
+|   |   |--- class: 1
+|   |--- Attack_Type >  3.50
+|   |   |--- Attack_Type <= 4.50
+|   |   |   |--- class: 0
+|   |   |--- Attack_Type >  4.50
+|   |   |   |--- class: 1
+
+
+================================================================================
+COMPREHENSIVE DATA LEAKAGE ASSESSMENT FOR Label_binary
+================================================================================
+📊 CRITICAL: Accuracy > 99% - Near perfect classification
+📊 CRITICAL: Top 3 features account for >90% of importance
+📊 CRITICAL: Single feature 'src_ip' dominates with 0.894009 importance
+📊 MEDIUM: 77 features have zero importance (may indicate redundancy)
+
+🎯 OVERALL ASSESSMENT: 🚨 CRITICAL DATA LEAKAGE DETECTED
+
+================================================================================
+FEATURE DROP RECOMMENDATIONS FOR Label_binary
+================================================================================
+
+🚨 HIGH PRIORITY - MUST DROP (1 features):
+   ❌ src_ip               (importance: 0.8940) - Extremely high importance - dominates classification decisions
+
+⚠️  MEDIUM PRIORITY - CONSIDER DROPPING (1 features):
+   ⚡ Attack_Type          (importance: 0.1060) - Medium importance - moderate contributor to classification
+
+🔧 PROTOCOL-SPECIFIC - DROP FOR GENERALIZATION (0 features):
+
+✅ SAFE TO KEEP (79 features):
+   ✓ totlen_bwd_pkts      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ dst_ip               (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ dataset_id           (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ flow_byts_s          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ flow_pkts_s          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_pkts_s           (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ protocol             (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_pkts_s           (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ tot_fwd_pkts         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ tot_bwd_pkts         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ totlen_fwd_pkts      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_pkt_len_max      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_pkt_len_min      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_pkt_len_mean     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ flow_duration        (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_pkt_len_std      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_pkt_len_max      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_pkt_len_mean     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_pkt_len_min      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ pkt_len_max          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ pkt_len_min          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ pkt_len_mean         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_pkt_len_std      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ pkt_len_var          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_header_len       (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_header_len       (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_seg_size_min     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_act_data_pkts    (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ flow_iat_mean        (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ flow_iat_max         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ pkt_len_std          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ flow_iat_std         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_iat_tot          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_iat_max          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_iat_min          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_iat_mean         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_iat_std          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_iat_tot          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_iat_max          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_iat_min          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_iat_mean         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_iat_std          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_psh_flags        (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_psh_flags        (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_urg_flags        (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_urg_flags        (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ flow_iat_min         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fin_flag_cnt         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ syn_flag_cnt         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ psh_flag_cnt         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ rst_flag_cnt         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ urg_flag_cnt         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ ece_flag_cnt         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ down_up_ratio        (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ ack_flag_cnt         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ init_fwd_win_byts    (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ init_bwd_win_byts    (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ active_max           (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ active_min           (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ active_mean          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ active_std           (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ idle_max             (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ pkt_size_avg         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ idle_min             (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ idle_mean            (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_byts_b_avg       (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ idle_std             (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_byts_b_avg       (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_pkts_b_avg       (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_blk_rate_avg     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_pkts_b_avg       (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_blk_rate_avg     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_seg_size_avg     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ cwr_flag_count       (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_seg_size_avg     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ subflow_fwd_pkts     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ subflow_bwd_pkts     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ subflow_fwd_byts     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ subflow_bwd_byts     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+
+================================================================================
+PYTHON CODE FOR FEATURE DROPPING
+================================================================================
+
+# Features to drop for Label_binary classification (data leakage prevention)
+features_to_drop = ['src_ip', 'Attack_Type']
+
+# Apply feature dropping
+df_clean = df.drop(columns=features_to_drop, errors='ignore')
+
+# Remaining safe features: ['totlen_bwd_pkts', 'dst_ip', 'dataset_id', 'flow_byts_s', 'flow_pkts_s', 'fwd_pkts_s', 'protocol', 'bwd_pkts_s', 'tot_fwd_pkts', 'tot_bwd_pkts', 'totlen_fwd_pkts', 'fwd_pkt_len_max', 'fwd_pkt_len_min', 'fwd_pkt_len_mean', 'flow_duration', 'fwd_pkt_len_std', 'bwd_pkt_len_max', 'bwd_pkt_len_mean', 'bwd_pkt_len_min', 'pkt_len_max', 'pkt_len_min', 'pkt_len_mean', 'bwd_pkt_len_std', 'pkt_len_var', 'fwd_header_len', 'bwd_header_len', 'fwd_seg_size_min', 'fwd_act_data_pkts', 'flow_iat_mean', 'flow_iat_max', 'pkt_len_std', 'flow_iat_std', 'fwd_iat_tot', 'fwd_iat_max', 'fwd_iat_min', 'fwd_iat_mean', 'fwd_iat_std', 'bwd_iat_tot', 'bwd_iat_max', 'bwd_iat_min', 'bwd_iat_mean', 'bwd_iat_std', 'fwd_psh_flags', 'bwd_psh_flags', 'fwd_urg_flags', 'bwd_urg_flags', 'flow_iat_min', 'fin_flag_cnt', 'syn_flag_cnt', 'psh_flag_cnt', 'rst_flag_cnt', 'urg_flag_cnt', 'ece_flag_cnt', 'down_up_ratio', 'ack_flag_cnt', 'init_fwd_win_byts', 'init_bwd_win_byts', 'active_max', 'active_min', 'active_mean', 'active_std', 'idle_max', 'pkt_size_avg', 'idle_min', 'idle_mean', 'fwd_byts_b_avg', 'idle_std', 'bwd_byts_b_avg', 'bwd_pkts_b_avg', 'fwd_blk_rate_avg', 'fwd_pkts_b_avg', 'bwd_blk_rate_avg', 'fwd_seg_size_avg', 'cwr_flag_count', 'bwd_seg_size_avg', 'subflow_fwd_pkts', 'subflow_bwd_pkts', 'subflow_fwd_byts', 'subflow_bwd_byts']
+# Expected accuracy after dropping: 60-75% (realistic for behavioral detection)
+

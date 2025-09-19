@@ -1,0 +1,1178 @@
+Data Leakage Analysis Report
+Target: Label_multi
+Timestamp: 2025-09-19 12:13:57.458448
+================================================================================
+
+Features shape: (268887, 81)
+Feature columns: ['dataset_id', 'src_ip', 'dst_ip', 'protocol', 'flow_duration', 'flow_byts_s', 'flow_pkts_s', 'fwd_pkts_s', 'bwd_pkts_s', 'tot_fwd_pkts', 'tot_bwd_pkts', 'totlen_fwd_pkts', 'totlen_bwd_pkts', 'fwd_pkt_len_max', 'fwd_pkt_len_min', 'fwd_pkt_len_mean', 'fwd_pkt_len_std', 'bwd_pkt_len_max', 'bwd_pkt_len_min', 'bwd_pkt_len_mean', 'bwd_pkt_len_std', 'pkt_len_max', 'pkt_len_min', 'pkt_len_mean', 'pkt_len_std', 'pkt_len_var', 'fwd_header_len', 'bwd_header_len', 'fwd_seg_size_min', 'fwd_act_data_pkts', 'flow_iat_mean', 'flow_iat_max', 'flow_iat_min', 'flow_iat_std', 'fwd_iat_tot', 'fwd_iat_max', 'fwd_iat_min', 'fwd_iat_mean', 'fwd_iat_std', 'bwd_iat_tot', 'bwd_iat_max', 'bwd_iat_min', 'bwd_iat_mean', 'bwd_iat_std', 'fwd_psh_flags', 'bwd_psh_flags', 'fwd_urg_flags', 'bwd_urg_flags', 'fin_flag_cnt', 'syn_flag_cnt', 'rst_flag_cnt', 'psh_flag_cnt', 'ack_flag_cnt', 'urg_flag_cnt', 'ece_flag_cnt', 'down_up_ratio', 'pkt_size_avg', 'init_fwd_win_byts', 'init_bwd_win_byts', 'active_max', 'active_min', 'active_mean', 'active_std', 'idle_max', 'idle_min', 'idle_mean', 'idle_std', 'fwd_byts_b_avg', 'fwd_pkts_b_avg', 'bwd_byts_b_avg', 'bwd_pkts_b_avg', 'fwd_blk_rate_avg', 'bwd_blk_rate_avg', 'fwd_seg_size_avg', 'bwd_seg_size_avg', 'cwr_flag_count', 'subflow_fwd_pkts', 'subflow_bwd_pkts', 'subflow_fwd_byts', 'subflow_bwd_byts', 'Attack_Type']
+Target distribution:
+Label_multi
+ad_slow        1967
+ad_syn        62188
+ad_udp        10618
+icmp_flood    16028
+normal        44201
+syn_flood     45186
+udp_flood     88699
+Name: count, dtype: int64
+
+
+================================================================================
+FEATURE DISTRIBUTION ANALYSIS FOR Label_multi
+================================================================================
+
+Feature: dataset_id
+                  mean        std  min  max
+Label_multi                                
+ad_slow      47.755974  27.512809    0   94
+ad_syn       67.044462  19.523539    0   94
+ad_udp       66.053777  20.377691    0   94
+icmp_flood   64.938982  21.342761    0   94
+normal       65.794824  20.622687    0   94
+syn_flood    65.965675  20.537519    0   94
+udp_flood    66.024837  20.512438    0   94
+
+Feature: src_ip
+                   mean         std  min   max
+Label_multi                                   
+ad_slow      698.677173   19.587688  695   806
+ad_syn       695.190905    4.535273  695   806
+ad_udp       695.121869    3.623288  695   803
+icmp_flood   530.693224  301.991326    0  1053
+normal       859.541685   10.489706  691  1056
+syn_flood    695.187912    4.923596  695  1054
+udp_flood    695.951273   15.094656  695  1054
+
+Feature: dst_ip
+                  mean       std  min  max
+Label_multi                               
+ad_slow      24.769700  1.962086    4   42
+ad_syn       24.980704  0.571582    5   43
+ad_udp       24.992183  0.340695    5   38
+icmp_flood   21.922448  0.969125    2   42
+normal       22.480102  1.850576    0   43
+syn_flood    24.989731  0.435943    4   43
+udp_flood    24.956448  0.725955    1   43
+
+Feature: protocol
+                  mean       std  min  max
+Label_multi                               
+ad_slow       6.260803  1.710064    1   17
+ad_syn        6.016209  0.426494    1   17
+ad_udp        6.010360  0.337433    6   17
+icmp_flood    1.056214  0.915414    1   17
+normal        7.188480  5.305804    1   17
+syn_flood     6.011840  0.367986    1   17
+udp_flood    16.949357  0.886235    1   17
+
+Feature: flow_duration
+                 mean        std  min         max
+Label_multi                                      
+ad_slow      0.064987   0.234514  0.0    3.764991
+ad_syn       0.060044   1.466131  0.0   69.893349
+ad_udp       0.019075   0.561832  0.0   18.831731
+icmp_flood   0.167446   1.358596  0.0   16.845290
+normal       6.289979  21.885112  0.0  183.485796
+syn_flood    0.308936   3.744274  0.0   80.813954
+udp_flood    1.317600  10.608009  0.0  174.085591
+
+Feature: flow_byts_s
+                     mean           std  min           max
+Label_multi                                               
+ad_slow      9.673462e+04  7.318485e+05  0.0  3.000000e+07
+ad_syn       1.346090e+07  2.605445e+06  0.0  2.921053e+07
+ad_udp       7.454744e+06  5.628748e+06  0.0  3.290355e+07
+icmp_flood   4.672391e+06  2.760922e+06  0.0  3.000000e+07
+normal       2.004583e+07  5.801686e+07  0.0  3.787500e+08
+syn_flood    1.297326e+07  2.233940e+06  0.0  3.827586e+07
+udp_flood    2.359835e+07  6.022928e+06  0.0  1.130000e+08
+
+Feature: flow_pkts_s
+                      mean            std  min             max
+Label_multi                                                   
+ad_slow         575.949957    2082.874385  0.0    81081.081081
+ad_syn       238767.847627   45899.893782  0.0   428571.428571
+ad_udp        31747.210676    7207.153790  0.0    68010.075567
+icmp_flood     6296.418292    1548.163399  0.0    81081.081081
+normal        64701.515142  102562.406432  0.0  1000000.000000
+syn_flood    217780.991691   43514.756765  0.0   277777.777778
+udp_flood    282385.953519   75729.907687  0.0  1000000.000000
+
+Feature: fwd_pkts_s
+                      mean           std  min             max
+Label_multi                                                  
+ad_slow         352.976645   1944.699254  0.0    81081.081081
+ad_syn       163990.457489  67282.334847  0.0   428571.428571
+ad_udp        16508.327695   3728.806783  0.0    32745.591940
+icmp_flood     2109.970467   1049.849217  0.0    81081.081081
+normal        55638.501189  92236.628010  0.0  1000000.000000
+syn_flood    130671.072247  26102.881914  0.0   166666.666667
+udp_flood    282384.987489  75733.371056  0.0  1000000.000000
+
+Feature: bwd_pkts_s
+                     mean           std  min            max
+Label_multi                                                
+ad_slow        222.973312    338.046626  0.0    9090.909091
+ad_syn       74777.390137  34135.829078  0.0  111111.111111
+ad_udp       15238.882981   3483.282695  0.0   35264.483627
+icmp_flood    4186.447824    839.839310  0.0    6250.000000
+normal        9063.013953  26356.608973  0.0  133333.333333
+syn_flood    87109.919444  17415.870353  0.0  111111.111111
+udp_flood        0.966030     64.828979  0.0    8928.571429
+
+Feature: tot_fwd_pkts
+                  mean        std  min  max
+Label_multi                                
+ad_slow      11.926792   1.973045    2   13
+ad_syn        3.202933   0.610464    2    9
+ad_udp       13.035788   1.469620    2   29
+icmp_flood    5.460943  29.964275    2  627
+normal        7.689713   5.984663    2  661
+syn_flood     3.023746   0.226863    2    7
+udp_flood     3.252754   4.253811    2  149
+
+Feature: tot_bwd_pkts
+                  mean        std  min  max
+Label_multi                                
+ad_slow       8.984748   1.717829    0   10
+ad_syn        1.711327   0.713471    0    4
+ad_udp       12.037954   1.474843    0   28
+icmp_flood    8.349389  29.649412    0  626
+normal        5.964888   6.881649    0  803
+syn_flood     2.023326   0.228510    0    6
+udp_flood     0.004273   0.410704    0  113
+
+Feature: totlen_fwd_pkts
+                    mean          std  min    max
+Label_multi                                      
+ad_slow       955.987290   158.109461  112   2950
+ad_syn        181.041358    42.736406  168   4461
+ad_udp       3192.610096  3164.094011  178  16324
+icmp_flood   2291.481220  1691.313441  132  27588
+normal       1459.131649  1249.797137  112  38801
+syn_flood     190.743903    41.036412  112   3484
+udp_flood     281.293081   498.485031  112  17857
+
+Feature: totlen_bwd_pkts
+                    mean           std  min      max
+Label_multi                                         
+ad_slow      1895.116929    306.807515    0     2002
+ad_syn         96.895414     41.453621    0      876
+ad_udp       2457.785647   1166.641638    0     9380
+icmp_flood   4486.917457   2697.036627    0    55681
+normal        475.326576  12810.472299    0  1980576
+syn_flood     113.738946     18.748949    0     1616
+udp_flood       4.731237   1063.975275    0   311840
+
+Feature: fwd_pkt_len_max
+                    mean          std  min   max
+Label_multi                                     
+ad_slow       128.998983    63.835822   56  1475
+ad_syn         56.619702    11.197383   56  1493
+ad_udp       1129.203240  1448.184974   89  5071
+icmp_flood    727.844584   416.467577   44  2976
+normal        495.915296   423.611914   56  2976
+syn_flood      63.242752    15.988994   56  1560
+udp_flood      84.747630    18.614397   56  2976
+
+Feature: fwd_pkt_len_min
+                   mean         std  min   max
+Label_multi                                   
+ad_slow       73.057448   66.687144   56  1475
+ad_syn        56.556570   10.926316   56  1475
+ad_udp        68.087587    4.244400   56   344
+icmp_flood   727.348889  416.225310   44  1475
+normal       136.135540  244.643138   56  1515
+syn_flood     63.052959   14.020487   56  1475
+udp_flood     84.381402   14.544192   56  1475
+
+Feature: fwd_pkt_len_mean
+                   mean         std        min          max
+Label_multi                                                
+ad_slow       84.327555   66.362733  56.000000  1475.000000
+ad_syn        56.587821   11.027555  56.000000  1487.000000
+ad_udp       236.533388  226.633717  74.142857  1028.363636
+icmp_flood   727.508023  416.142632  44.000000  1475.000000
+normal       209.966600  234.986015  56.000000  1515.000000
+syn_flood     63.122551   14.287685  56.000000  1475.000000
+udp_flood     84.515111   14.776871  56.000000  1475.000000
+
+Feature: fwd_pkt_len_std
+                   mean         std  min          max
+Label_multi                                          
+ad_slow       20.143077    3.887423  0.0    67.882251
+ad_syn         0.028462    0.691739  0.0    67.882251
+ad_udp       369.670989  501.894248  0.0  1909.044190
+icmp_flood     0.189671    8.492303  0.0   757.708666
+normal       143.378307  163.874084  0.0   879.006902
+syn_flood      0.087590    3.445358  0.0   692.959515
+udp_flood      0.143865    3.657757  0.0   747.937954
+
+Feature: bwd_pkt_len_max
+                   mean         std  min    max
+Label_multi                                    
+ad_slow      526.849517   61.404200    0    537
+ad_syn        48.469833   21.550254    0    438
+ad_udp       692.837069  582.528330    0   3009
+icmp_flood   728.507487  417.199561    0   5896
+normal        60.991154  160.415548    0  14656
+syn_flood     56.360864   11.508327    0   1176
+udp_flood      0.695228   55.136613    0  11736
+
+Feature: bwd_pkt_len_min
+                   mean         std  min   max
+Label_multi                                   
+ad_slow       72.447382   39.894305    0   438
+ad_syn        48.429150   21.353170    0   438
+ad_udp        67.389339    8.819095    0   438
+icmp_flood   727.762603  415.432281    0  1444
+normal        57.104296   49.763740    0   543
+syn_flood     56.263887    9.528382    0   438
+udp_flood      0.334750   10.775173    0   438
+
+Feature: bwd_pkt_len_mean
+                   mean         std  min          max
+Label_multi                                          
+ad_slow      212.485486   34.590241  0.0   438.000000
+ad_syn        48.439321   21.370385  0.0   438.000000
+ad_udp       205.530383   96.643612  0.0   585.333333
+icmp_flood   727.999816  415.361786  0.0  1546.694444
+normal        58.021611   60.468584  0.0  2648.309764
+syn_flood     56.289434    9.719638  0.0   438.000000
+udp_flood      0.405028   15.275456  0.0  2759.646018
+
+Feature: bwd_pkt_len_std
+                   mean         std  min          max
+Label_multi                                          
+ad_slow      179.650929   31.259492  0.0   190.164896
+ad_syn         0.017616    1.174044  0.0    79.241324
+ad_udp       231.051143  214.422200  0.0  1085.339220
+icmp_flood     0.289094   15.491244  0.0  1781.674288
+normal         1.080853   30.897233  0.0  2745.790738
+syn_flood      0.041291    2.664723  0.0   459.338655
+udp_flood      0.083281    9.403596  0.0  1938.172451
+
+Feature: pkt_len_max
+                    mean          std  min    max
+Label_multi                                      
+ad_slow       531.486019    61.788540   62   1475
+ad_syn         57.141844    13.296027   56   1493
+ad_udp       1463.881804  1378.711101   89   5071
+icmp_flood    728.952271   416.850761   44   5896
+normal        502.128368   444.444024   56  14656
+syn_flood      63.493007    18.491068   56   1560
+udp_flood      85.215234    56.188131   62  11736
+
+Feature: pkt_len_min
+                   mean         std  min   max
+Label_multi                                   
+ad_slow       73.057448   66.687144   56  1475
+ad_syn        56.240352   10.777678   56  1475
+ad_udp        67.270484    5.224607   56   344
+icmp_flood   727.348889  416.225310   44  1475
+normal       136.132825  244.643955   56  1515
+syn_flood     56.171491   10.423983   56  1475
+udp_flood     84.381335   14.544310   56  1475
+
+Feature: pkt_len_mean
+                   mean         std        min          max
+Label_multi                                                
+ad_slow      140.934798   63.407551  58.000000  1475.000000
+ad_syn        56.611871   11.289813  56.000000  1487.000000
+ad_udp       221.454763  119.240889  84.333333   636.761905
+icmp_flood   727.887660  415.616021  44.000000  1475.000000
+normal       178.698622  237.233497  56.000000  1652.336788
+syn_flood     60.424409   12.628026  56.000000  1475.000000
+udp_flood     84.611498   16.348866  58.000000  1786.638418
+
+Feature: pkt_len_std
+                   mean         std  min          max
+Label_multi                                          
+ad_slow      136.806301   17.333700  0.0   164.605711
+ad_syn         0.415382    3.096393  0.0   164.605711
+ad_udp       375.788698  353.879367  0.0  1447.244491
+icmp_flood     0.666031   14.733546  0.0  1519.254050
+normal       113.442896  127.800098  0.0  2273.001810
+syn_flood      3.559323    6.653821  0.0   616.443996
+udp_flood      0.278375    9.584858  0.0  1829.027498
+
+Feature: pkt_len_var
+                      mean            std  min           max
+Label_multi                                                 
+ad_slow       19016.268418    3018.482053  0.0  2.709504e+04
+ad_syn            9.760036     406.856898  0.0  2.709504e+04
+ad_udp       266435.958064  421905.126743  0.0  2.094517e+06
+icmp_flood      217.507437   18423.987083  0.0  2.308133e+06
+normal        29201.786167   62729.036093  0.0  5.166537e+06
+syn_flood        56.941143    1867.364343  0.0  3.800032e+05
+udp_flood        91.945965   14410.481837  0.0  3.345342e+06
+
+Feature: fwd_header_len
+                   mean         std  min    max
+Label_multi                                    
+ad_slow      238.535841   39.460910   40    260
+ad_syn        64.058661   12.209276   40    180
+ad_udp       260.715766   29.392390   40    580
+icmp_flood   109.218867  599.285499   40  12540
+normal       153.794258  119.693251   40  13220
+syn_flood     60.474926    4.537252   40    140
+udp_flood     65.055074   85.076230   40   2980
+
+Feature: bwd_header_len
+                   mean         std  min    max
+Label_multi                                    
+ad_slow      179.694967   34.356584    0    200
+ad_syn        34.226539   14.269424    0     80
+ad_udp       240.759088   29.496867    0    560
+icmp_flood   166.987771  592.988239    0  12520
+normal       119.297753  137.632980    0  16060
+syn_flood     40.466516    4.570198    0    120
+udp_flood      0.085458    8.214080    0   2260
+
+Feature: fwd_seg_size_min
+             mean  std  min  max
+Label_multi                     
+ad_slow      20.0  0.0   20   20
+ad_syn       20.0  0.0   20   20
+ad_udp       20.0  0.0   20   20
+icmp_flood   20.0  0.0   20   20
+normal       20.0  0.0   20   20
+syn_flood    20.0  0.0   20   20
+udp_flood    20.0  0.0   20   20
+⚠️  WARNING: fwd_seg_size_min may have perfect class separation
+
+Feature: fwd_act_data_pkts
+                 mean       std  min  max
+Label_multi                              
+ad_slow      1.995933  0.119271    0    3
+ad_syn       0.151026  0.653326    0    3
+ad_udp       2.611603  0.929068    1    8
+icmp_flood   2.927315  0.460068    0    9
+normal       2.623583  2.592703    0   58
+syn_flood    0.003120  0.083436    0    6
+udp_flood    3.250318  4.247850    0  149
+
+Feature: flow_iat_mean
+                 mean       std  min        max
+Label_multi                                    
+ad_slow      0.008585  0.075738  0.0   1.011564
+ad_syn       0.008301  0.201666  0.0  10.701389
+ad_udp       0.000541  0.014859  0.0   0.671019
+icmp_flood   0.002395  0.029562  0.0   1.052831
+normal       0.281701  0.933495  0.0  53.963027
+syn_flood    0.038503  0.464480  0.0  10.101744
+udp_flood    0.331891  3.000218  0.0  58.028530
+
+Feature: flow_iat_max
+                 mean        std  min         max
+Label_multi                                      
+ad_slow      0.056521   0.144515  0.0    2.023128
+ad_syn       0.059815   1.465817  0.0   69.893258
+ad_udp       0.018500   0.561595  0.0   18.829489
+icmp_flood   0.008703   0.157078  0.0   16.841588
+normal       1.423930   4.287922  0.0  180.926655
+syn_flood    0.307030   3.723086  0.0   80.813907
+udp_flood    1.212591  10.340164  0.0  174.085580
+
+Feature: flow_iat_min
+             mean  std       min  max
+Label_multi                          
+ad_slow       0.0  0.0  0.000000  0.0
+ad_syn        0.0  0.0  0.000000  0.0
+ad_udp       -0.0  0.0 -0.000001  0.0
+icmp_flood    0.0  0.0  0.000000  0.0
+normal       -0.0  0.0 -0.000001  0.0
+syn_flood     0.0  0.0  0.000000  0.0
+udp_flood     0.0  0.0  0.000000  0.0
+
+Feature: flow_iat_std
+                 mean       std  min        max
+Label_multi                                    
+ad_slow      0.015699  0.070857  0.0   1.011564
+ad_syn       0.020403  0.499325  0.0  23.929020
+ad_udp       0.002778  0.080479  0.0   2.751647
+icmp_flood   0.003100  0.043835  0.0   4.076640
+normal       0.521102  1.586234  0.0  76.315235
+syn_flood    0.101410  1.228631  0.0  26.726685
+udp_flood    0.536566  4.652210  0.0  82.064727
+
+Feature: fwd_iat_tot
+                 mean        std  min         max
+Label_multi                                      
+ad_slow      0.052663   0.101928  0.0    1.744488
+ad_syn       0.059455   1.465675  0.0   69.893327
+ad_udp       0.019005   0.561662  0.0   18.831716
+icmp_flood   0.164543   1.356550  0.0   16.843599
+normal       6.277643  21.884725  0.0  183.485796
+syn_flood    0.308386   3.744056  0.0   80.813939
+udp_flood    1.317007  10.607981  0.0  174.085591
+
+Feature: fwd_iat_max
+                 mean        std  min         max
+Label_multi                                      
+ad_slow      0.050331   0.095514  0.0    1.744488
+ad_syn       0.059397   1.465662  0.0   69.893279
+ad_udp       0.018527   0.561594  0.0   18.829506
+icmp_flood   0.006778   0.153148  0.0   16.843545
+normal       1.417393   4.285719  0.0  180.926655
+syn_flood    0.306759   3.723037  0.0   80.813919
+udp_flood    1.212270  10.340170  0.0  174.085580
+
+Feature: fwd_iat_min
+             mean  std  min  max
+Label_multi                     
+ad_slow       0.0  0.0  0.0  0.0
+ad_syn        0.0  0.0  0.0  0.0
+ad_udp        0.0  0.0  0.0  0.0
+icmp_flood    0.0  0.0  0.0  0.0
+normal        0.0  0.0  0.0  0.0
+syn_flood     0.0  0.0  0.0  0.0
+udp_flood     0.0  0.0  0.0  0.0
+⚠️  WARNING: fwd_iat_min may have perfect class separation
+
+Feature: fwd_iat_mean
+                 mean       std  min        max
+Label_multi                                    
+ad_slow      0.007519  0.048889  0.0   0.872244
+ad_syn       0.014214  0.352825  0.0  17.473332
+ad_udp       0.000988  0.026211  0.0   0.881315
+icmp_flood   0.003597  0.044377  0.0   4.210900
+normal       0.459296  1.420025  0.0  53.963027
+syn_flood    0.076593  0.928511  0.0  20.203485
+udp_flood    0.331756  3.000208  0.0  58.028530
+
+Feature: fwd_iat_std
+                 mean       std  min        max
+Label_multi                                    
+ad_slow      0.015896  0.048318  0.0   0.872244
+ad_syn       0.025198  0.622586  0.0  30.264671
+ad_udp       0.003851  0.112269  0.0   3.841197
+icmp_flood   0.002059  0.064814  0.0   7.293461
+normal       0.607978  1.812094  0.0  76.315235
+syn_flood    0.132572  1.608656  0.0  34.993451
+udp_flood    0.536431  4.652213  0.0  82.064727
+
+Feature: bwd_iat_tot
+                 mean        std  min         max
+Label_multi                                      
+ad_slow      0.002330   0.022141  0.0    0.299394
+ad_syn       0.041546   1.210705  0.0   69.893309
+ad_udp       0.018628   0.561141  0.0   18.831707
+icmp_flood   0.164729   1.355841  0.0   16.845239
+normal       4.416975  17.312357  0.0  119.999781
+syn_flood    0.308058   3.744026  0.0   80.813935
+udp_flood    0.000365   0.041833  0.0    6.531063
+
+Feature: bwd_iat_max
+                 mean       std  min        max
+Label_multi                                    
+ad_slow      0.002177  0.022118  0.0   0.298988
+ad_syn       0.041546  1.210705  0.0  69.893302
+ad_udp       0.018191  0.561101  0.0  18.829509
+icmp_flood   0.007303  0.148505  0.0  16.841631
+normal       1.050301  3.413890  0.0  60.005125
+syn_flood    0.306530  3.723008  0.0  80.813930
+udp_flood    0.000279  0.029479  0.0   4.999685
+
+Feature: bwd_iat_min
+                 mean       std  min       max
+Label_multi                                   
+ad_slow      0.000003  0.000017  0.0  0.000220
+ad_syn       0.000000  0.000003  0.0  0.000219
+ad_udp       0.000002  0.000003  0.0  0.000232
+icmp_flood   0.002161  0.016169  0.0  0.175749
+normal       0.000012  0.001773  0.0  0.372789
+syn_flood    0.000000  0.000004  0.0  0.000265
+udp_flood    0.000000  0.000004  0.0  0.000229
+
+Feature: bwd_iat_mean
+                 mean       std  min        max
+Label_multi                                    
+ad_slow      0.000694  0.007388  0.0   0.099798
+ad_syn       0.013849  0.403568  0.0  23.297770
+ad_udp       0.000857  0.024370  0.0   0.927699
+icmp_flood   0.003277  0.023756  0.0   1.531385
+normal       0.382310  1.246293  0.0  10.017150
+syn_flood    0.101799  1.236444  0.0  26.937978
+udp_flood    0.000060  0.007262  0.0   2.024594
+
+Feature: bwd_iat_std
+                 mean       std  min        max
+Label_multi                                    
+ad_slow      0.000989  0.010421  0.0   0.140849
+ad_syn       0.019585  0.570732  0.0  32.948017
+ad_udp       0.003754  0.113940  0.0   3.935523
+icmp_flood   0.001599  0.041446  0.0   4.841525
+normal       0.472607  1.527365  0.0  12.843519
+syn_flood    0.144132  1.750641  0.0  38.096051
+udp_flood    0.000086  0.007789  0.0   1.478490
+
+Feature: fwd_psh_flags
+                 mean       std  min  max
+Label_multi                              
+ad_slow      1.937977  0.342358   -1    2
+ad_syn       0.000177  0.016533   -1    1
+ad_udp       2.609531  0.932350    0    8
+icmp_flood  -0.994260  0.110437   -1    8
+normal       0.886745  1.274116   -1   23
+syn_flood    0.000420  0.028613   -1    4
+udp_flood   -0.002322  0.066946   -1    8
+
+Feature: bwd_psh_flags
+                 mean       std  min  max
+Label_multi                              
+ad_slow      3.869853  0.699034   -1    4
+ad_syn       0.000177  0.016533   -1    1
+ad_udp       4.002166  0.204717    0    8
+icmp_flood  -0.993324  0.201121   -1   22
+normal      -0.150924  5.000865   -1  794
+syn_flood    0.000398  0.024890   -1    2
+udp_flood   -0.000981  0.369850   -1  106
+
+Feature: fwd_urg_flags
+                 mean       std  min  max
+Label_multi                              
+ad_slow     -0.001525  0.039033   -1    0
+ad_syn      -0.000048  0.006945   -1    0
+ad_udp       0.000000  0.000000    0    0
+icmp_flood  -0.995757  0.064999   -1    0
+normal      -0.206127  0.404527   -1    0
+syn_flood   -0.000066  0.008148   -1    0
+udp_flood   -0.002886  0.053646   -1    0
+
+Feature: bwd_urg_flags
+                 mean       std  min  max
+Label_multi                              
+ad_slow     -0.001525  0.039033   -1    0
+ad_syn      -0.000048  0.006945   -1    0
+ad_udp       0.000000  0.000000    0    0
+icmp_flood  -0.995757  0.064999   -1    0
+normal      -0.206127  0.404527   -1    0
+syn_flood   -0.000066  0.008148   -1    0
+udp_flood   -0.002886  0.053646   -1    0
+
+Feature: fin_flag_cnt
+                 mean       std  min  max
+Label_multi                              
+ad_slow      1.945602  0.332367   -1    2
+ad_syn       0.903599  1.376454   -1    5
+ad_udp       3.861933  0.543622    0    8
+icmp_flood  -0.993636  0.112641   -1    2
+normal      -0.192416  0.443671   -1    3
+syn_flood    0.000730  0.040735   -1    2
+udp_flood   -0.002142  0.066105   -1    2
+
+Feature: syn_flag_cnt
+                 mean       std  min  max
+Label_multi                              
+ad_slow      4.851042  0.828460   -1    5
+ad_syn       2.004052  1.732190   -1    9
+ad_udp       5.001319  0.223424    0    9
+icmp_flood  -0.992575  0.141769   -1    3
+normal       2.590892  2.899638   -1   15
+syn_flood    3.020073  0.245296   -1    7
+udp_flood   -0.001770  0.078940   -1    3
+
+Feature: rst_flag_cnt
+                 mean       std  min  max
+Label_multi                              
+ad_slow     -0.001525  0.039033   -1    0
+ad_syn       2.000997  0.556111   -1    5
+ad_udp       0.140328  0.512343    0    4
+icmp_flood  -0.995757  0.064999   -1    0
+normal       5.294971  5.344660   -1   26
+syn_flood    2.020559  0.235215   -1    6
+udp_flood   -0.002864  0.054066   -1    2
+
+Feature: psh_flag_cnt
+                 mean       std  min  max
+Label_multi                              
+ad_slow      5.809354  1.028463   -1    6
+ad_syn       0.000402  0.030799   -1    2
+ad_udp       6.611697  0.986297    0   16
+icmp_flood  -0.991827  0.269255   -1   30
+normal       0.941947  5.191964   -1  801
+syn_flood    0.000885  0.050660   -1    6
+udp_flood   -0.000417  0.391961   -1  110
+
+Feature: ack_flag_cnt
+                  mean        std  min   max
+Label_multi                                 
+ad_slow      17.920183   3.654904   -1    20
+ad_syn        1.710603   0.719363   -1     7
+ad_udp       21.934168   3.136332    0    52
+icmp_flood   -0.984527   0.584964   -1    65
+normal        5.466777  10.412431   -1  1461
+syn_flood     2.023680   0.256234   -1    10
+udp_flood     0.002683   0.650992   -1   175
+
+Feature: urg_flag_cnt
+                 mean       std  min  max
+Label_multi                              
+ad_slow     -0.001525  0.039033   -1    0
+ad_syn      -0.000048  0.006945   -1    0
+ad_udp       0.000000  0.000000    0    0
+icmp_flood  -0.995757  0.064999   -1    0
+normal      -0.206127  0.404527   -1    0
+syn_flood   -0.000066  0.008148   -1    0
+udp_flood   -0.002886  0.053646   -1    0
+
+Feature: ece_flag_cnt
+                 mean       std  min  max
+Label_multi                              
+ad_slow     -0.001525  0.039033   -1    0
+ad_syn      -0.000048  0.006945   -1    0
+ad_udp       0.000000  0.000000    0    0
+icmp_flood  -0.995757  0.064999   -1    0
+normal      -0.206127  0.404527   -1    0
+syn_flood   -0.000066  0.008148   -1    0
+udp_flood   -0.002886  0.053646   -1    0
+
+Feature: down_up_ratio
+                 mean       std  min       max
+Label_multi                                   
+ad_slow      0.743305  0.078689  0.0  0.800000
+ad_syn       0.542928  0.238008  0.0  0.800000
+ad_udp       0.922126  0.021511  0.0  1.076923
+icmp_flood   1.969900  0.185801  0.0  2.400000
+normal       0.662503  0.353547  0.0  1.610169
+syn_flood    0.667961  0.019403  0.0  0.857143
+udp_flood    0.000789  0.023005  0.0  1.765625
+
+Feature: pkt_size_avg
+                   mean         std        min          max
+Label_multi                                                
+ad_slow      140.934798   63.407551  58.000000  1475.000000
+ad_syn        56.611871   11.289813  56.000000  1487.000000
+ad_udp       221.454763  119.240889  84.333333   636.761905
+icmp_flood   727.887660  415.616021  44.000000  1475.000000
+normal       178.698622  237.233497  56.000000  1652.336788
+syn_flood     60.424409   12.628026  56.000000  1475.000000
+udp_flood     84.611498   16.348866  58.000000  1786.638418
+
+Feature: init_fwd_win_byts
+                     mean           std  min    max
+Label_multi                                        
+ad_slow      41254.007117   6752.599294   -1  65535
+ad_syn       19122.441966  10255.278862   -1  42340
+ad_udp       42300.124317   1298.809151    0  42340
+icmp_flood      43.911904   1378.253115   -1  42340
+normal        5108.057759   5231.375044   -1  65535
+syn_flood    15951.473133  16790.915969   -1  65535
+udp_flood       17.936831    898.951949   -1  65535
+
+Feature: init_bwd_win_byts
+                     mean           std  min    max
+Label_multi                                        
+ad_slow      42482.886121   7180.258290   -1  64240
+ad_syn        4220.683685  12696.806196   -1  64240
+ad_udp       43403.006216   1362.901571    0  64240
+icmp_flood      67.140005   2091.125873   -1  64240
+normal        4233.384109   6525.280104   -1  65535
+syn_flood       27.040499   1318.435212   -1  65535
+udp_flood       25.082402   1264.951217   -1  64240
+
+Feature: active_max
+             mean  std  min  max
+Label_multi                     
+ad_slow       0.0  0.0    0    0
+ad_syn        0.0  0.0    0    0
+ad_udp        0.0  0.0    0    0
+icmp_flood    0.0  0.0    0    0
+normal        0.0  0.0    0    0
+syn_flood     0.0  0.0    0    0
+udp_flood     0.0  0.0    0    0
+⚠️  WARNING: active_max may have perfect class separation
+
+Feature: active_min
+             mean  std  min  max
+Label_multi                     
+ad_slow       0.0  0.0    0    0
+ad_syn        0.0  0.0    0    0
+ad_udp        0.0  0.0    0    0
+icmp_flood    0.0  0.0    0    0
+normal        0.0  0.0    0    0
+syn_flood     0.0  0.0    0    0
+udp_flood     0.0  0.0    0    0
+⚠️  WARNING: active_min may have perfect class separation
+
+Feature: active_mean
+             mean  std  min  max
+Label_multi                     
+ad_slow       0.0  0.0    0    0
+ad_syn        0.0  0.0    0    0
+ad_udp        0.0  0.0    0    0
+icmp_flood    0.0  0.0    0    0
+normal        0.0  0.0    0    0
+syn_flood     0.0  0.0    0    0
+udp_flood     0.0  0.0    0    0
+⚠️  WARNING: active_mean may have perfect class separation
+
+Feature: active_std
+             mean  std  min  max
+Label_multi                     
+ad_slow       0.0  0.0    0    0
+ad_syn        0.0  0.0    0    0
+ad_udp        0.0  0.0    0    0
+icmp_flood    0.0  0.0    0    0
+normal        0.0  0.0    0    0
+syn_flood     0.0  0.0    0    0
+udp_flood     0.0  0.0    0    0
+⚠️  WARNING: active_std may have perfect class separation
+
+Feature: idle_max
+             mean  std  min  max
+Label_multi                     
+ad_slow       0.0  0.0    0    0
+ad_syn        0.0  0.0    0    0
+ad_udp        0.0  0.0    0    0
+icmp_flood    0.0  0.0    0    0
+normal        0.0  0.0    0    0
+syn_flood     0.0  0.0    0    0
+udp_flood     0.0  0.0    0    0
+⚠️  WARNING: idle_max may have perfect class separation
+
+Feature: idle_min
+             mean  std  min  max
+Label_multi                     
+ad_slow       0.0  0.0    0    0
+ad_syn        0.0  0.0    0    0
+ad_udp        0.0  0.0    0    0
+icmp_flood    0.0  0.0    0    0
+normal        0.0  0.0    0    0
+syn_flood     0.0  0.0    0    0
+udp_flood     0.0  0.0    0    0
+⚠️  WARNING: idle_min may have perfect class separation
+
+Feature: idle_mean
+             mean  std  min  max
+Label_multi                     
+ad_slow       0.0  0.0    0    0
+ad_syn        0.0  0.0    0    0
+ad_udp        0.0  0.0    0    0
+icmp_flood    0.0  0.0    0    0
+normal        0.0  0.0    0    0
+syn_flood     0.0  0.0    0    0
+udp_flood     0.0  0.0    0    0
+⚠️  WARNING: idle_mean may have perfect class separation
+
+Feature: idle_std
+             mean  std  min  max
+Label_multi                     
+ad_slow       0.0  0.0    0    0
+ad_syn        0.0  0.0    0    0
+ad_udp        0.0  0.0    0    0
+icmp_flood    0.0  0.0    0    0
+normal        0.0  0.0    0    0
+syn_flood     0.0  0.0    0    0
+udp_flood     0.0  0.0    0    0
+⚠️  WARNING: idle_std may have perfect class separation
+
+Feature: fwd_byts_b_avg
+                    mean          std  min      max
+Label_multi                                        
+ad_slow         0.000000     0.000000  0.0      0.0
+ad_syn          0.000000     0.000000  0.0      0.0
+ad_udp       1552.592955  3007.021391  0.0  10544.0
+icmp_flood      0.000000     0.000000  0.0      0.0
+normal          0.219554    17.205431  0.0   1668.0
+syn_flood       0.000000     0.000000  0.0      0.0
+udp_flood       1.161876    21.154941  0.0    587.0
+
+Feature: fwd_pkts_b_avg
+                 mean       std  min        max
+Label_multi                                    
+ad_slow      0.000000  0.000000  0.0   0.000000
+ad_syn       0.000000  0.000000  0.0   0.000000
+ad_udp       0.943681  1.698370  0.0   4.000000
+icmp_flood   0.000000  0.000000  0.0   0.000000
+normal       0.001878  0.135443  0.0  18.000000
+syn_flood    0.000000  0.000000  0.0   0.000000
+udp_flood    0.016988  0.302941  0.0   8.333333
+
+Feature: bwd_byts_b_avg
+                    mean          std  min        max
+Label_multi                                          
+ad_slow      1261.514997   236.953671  0.0     1306.0
+ad_syn          0.000000     0.000000  0.0        0.0
+ad_udp       1621.766529  1153.496758  0.0     6192.0
+icmp_flood   4115.078706  2483.886199  0.0    25025.5
+normal         64.678980  8055.526619  0.0  1537222.0
+syn_flood       0.004581     0.973797  0.0      207.0
+udp_flood       3.705628  1017.182310  0.0   301904.0
+
+Feature: bwd_pkts_b_avg
+                 mean       std  min    max
+Label_multi                                
+ad_slow      3.863752  0.725739  0.0    4.0
+ad_syn       0.000000  0.000000  0.0    0.0
+ad_udp       4.024863  0.271991  0.0    6.0
+icmp_flood   6.749813  8.144169  0.0   98.0
+normal       0.026973  3.106642  0.0  584.0
+syn_flood    0.000089  0.018817  0.0    4.0
+udp_flood    0.001460  0.358758  0.0  106.0
+
+Feature: fwd_blk_rate_avg
+                     mean           std  min           max
+Label_multi                                               
+ad_slow      0.000000e+00  0.000000e+00  0.0  0.000000e+00
+ad_syn       0.000000e+00  0.000000e+00  0.0  0.000000e+00
+ad_udp       5.339801e+07  1.028432e+08  0.0  6.815714e+08
+icmp_flood   0.000000e+00  0.000000e+00  0.0  0.000000e+00
+normal       1.928863e+01  2.527382e+03  0.0  3.809524e+05
+syn_flood    0.000000e+00  0.000000e+00  0.0  0.000000e+00
+udp_flood    2.414295e+00  3.650208e+02  0.0  1.083424e+05
+
+Feature: bwd_blk_rate_avg
+                     mean           std  min           max
+Label_multi                                               
+ad_slow      2.592703e+07  9.309904e+06  0.0  4.081250e+07
+ad_syn       0.000000e+00  0.000000e+00  0.0  0.000000e+00
+ad_udp       2.858169e+07  1.688873e+07  0.0  1.237600e+08
+icmp_flood   2.994838e+06  1.862334e+06  0.0  7.219809e+06
+normal       2.726596e+02  4.978334e+04  0.0  1.043819e+07
+syn_flood    1.908800e-02  4.057504e+00  0.0  8.625036e+02
+udp_flood    2.566516e+00  6.620199e+02  0.0  1.951216e+05
+
+Feature: fwd_seg_size_avg
+                   mean         std        min          max
+Label_multi                                                
+ad_slow       84.327555   66.362733  56.000000  1475.000000
+ad_syn        56.587821   11.027555  56.000000  1487.000000
+ad_udp       236.533388  226.633717  74.142857  1028.363636
+icmp_flood   727.508023  416.142632  44.000000  1475.000000
+normal       209.966600  234.986015  56.000000  1515.000000
+syn_flood     63.122551   14.287685  56.000000  1475.000000
+udp_flood     84.515111   14.776871  56.000000  1475.000000
+
+Feature: bwd_seg_size_avg
+                   mean         std  min          max
+Label_multi                                          
+ad_slow      212.485486   34.590241  0.0   438.000000
+ad_syn        48.439321   21.370385  0.0   438.000000
+ad_udp       205.530383   96.643612  0.0   585.333333
+icmp_flood   727.999816  415.361786  0.0  1546.694444
+normal        58.021611   60.468584  0.0  2648.309764
+syn_flood     56.289434    9.719638  0.0   438.000000
+udp_flood      0.405028   15.275456  0.0  2759.646018
+
+Feature: cwr_flag_count
+                 mean       std  min  max
+Label_multi                              
+ad_slow     -0.001525  0.039033   -1    0
+ad_syn      -0.000048  0.006945   -1    0
+ad_udp       0.000000  0.000000    0    0
+icmp_flood  -0.995757  0.064999   -1    0
+normal      -0.206127  0.404527   -1    0
+syn_flood   -0.000066  0.008148   -1    0
+udp_flood   -0.002886  0.053646   -1    0
+
+Feature: subflow_fwd_pkts
+                  mean        std  min  max
+Label_multi                                
+ad_slow      11.926792   1.973045    2   13
+ad_syn        3.202933   0.610464    2    9
+ad_udp       13.035788   1.469620    2   29
+icmp_flood    5.460943  29.964275    2  627
+normal        7.689713   5.984663    2  661
+syn_flood     3.023746   0.226863    2    7
+udp_flood     3.252754   4.253811    2  149
+
+Feature: subflow_bwd_pkts
+                  mean        std  min  max
+Label_multi                                
+ad_slow       8.984748   1.717829    0   10
+ad_syn        1.711327   0.713471    0    4
+ad_udp       12.037954   1.474843    0   28
+icmp_flood    8.349389  29.649412    0  626
+normal        5.964888   6.881649    0  803
+syn_flood     2.023326   0.228510    0    6
+udp_flood     0.004273   0.410704    0  113
+
+Feature: subflow_fwd_byts
+                    mean          std  min    max
+Label_multi                                      
+ad_slow       955.987290   158.109461  112   2950
+ad_syn        181.041358    42.736406  168   4461
+ad_udp       3192.610096  3164.094011  178  16324
+icmp_flood   2291.481220  1691.313441  132  27588
+normal       1459.131649  1249.797137  112  38801
+syn_flood     190.743903    41.036412  112   3484
+udp_flood     281.293081   498.485031  112  17857
+
+Feature: subflow_bwd_byts
+                    mean           std  min      max
+Label_multi                                         
+ad_slow      1895.116929    306.807515    0     2002
+ad_syn         96.895414     41.453621    0      876
+ad_udp       2457.785647   1166.641638    0     9380
+icmp_flood   4486.917457   2697.036627    0    55681
+normal        475.326576  12810.472299    0  1980576
+syn_flood     113.738946     18.748949    0     1616
+udp_flood       4.731237   1063.975275    0   311840
+
+Feature: Attack_Type
+             mean  std  min  max
+Label_multi                     
+ad_slow       0.0  0.0    0    0
+ad_syn        1.0  0.0    1    1
+ad_udp        2.0  0.0    2    2
+icmp_flood    3.0  0.0    3    3
+normal        4.0  0.0    4    4
+syn_flood     5.0  0.0    5    5
+udp_flood     6.0  0.0    6    6
+⚠️  WARNING: Attack_Type may have perfect class separation
+Training set: 188220 samples
+Test set: 80667 samples
+
+Accuracy: 1.000000
+
+Classification Report for Label_multi:
+================================================================================
+              precision    recall  f1-score   support
+
+     ad_slow   1.000000  1.000000  1.000000       590
+      ad_syn   1.000000  1.000000  1.000000     18657
+      ad_udp   1.000000  1.000000  1.000000      3185
+  icmp_flood   1.000000  1.000000  1.000000      4809
+      normal   1.000000  1.000000  1.000000     13260
+   syn_flood   1.000000  1.000000  1.000000     13556
+   udp_flood   1.000000  1.000000  1.000000     26610
+
+    accuracy                       1.000000     80667
+   macro avg   1.000000  1.000000  1.000000     80667
+weighted avg   1.000000  1.000000  1.000000     80667
+
+
+Confusion Matrix:
+[[  590     0     0     0     0     0     0]
+ [    0 18657     0     0     0     0     0]
+ [    0     0  3185     0     0     0     0]
+ [    0     0     0  4809     0     0     0]
+ [    0     0     0     0 13260     0     0]
+ [    0     0     0     0     0 13556     0]
+ [    0     0     0     0     0     0 26610]]
+
+================================================================================
+COMPLETE FEATURE IMPORTANCE ANALYSIS FOR Label_multi
+================================================================================
+Rank Feature                   Importance   Percentage Risk Level
+----------------------------------------------------------------------
+1    Attack_Type               1.000000     100.00    % 🚨 CRITICAL
+2    src_ip                    0.000000     0.00      % ✅ MINIMAL
+3    dst_ip                    0.000000     0.00      % ✅ MINIMAL
+4    protocol                  0.000000     0.00      % ✅ MINIMAL
+5    flow_duration             0.000000     0.00      % ✅ MINIMAL
+6    flow_byts_s               0.000000     0.00      % ✅ MINIMAL
+7    flow_pkts_s               0.000000     0.00      % ✅ MINIMAL
+8    fwd_pkts_s                0.000000     0.00      % ✅ MINIMAL
+9    bwd_pkts_s                0.000000     0.00      % ✅ MINIMAL
+10   tot_fwd_pkts              0.000000     0.00      % ✅ MINIMAL
+11   tot_bwd_pkts              0.000000     0.00      % ✅ MINIMAL
+12   totlen_fwd_pkts           0.000000     0.00      % ✅ MINIMAL
+13   totlen_bwd_pkts           0.000000     0.00      % ✅ MINIMAL
+14   fwd_pkt_len_max           0.000000     0.00      % ✅ MINIMAL
+15   fwd_pkt_len_min           0.000000     0.00      % ✅ MINIMAL
+16   fwd_pkt_len_mean          0.000000     0.00      % ✅ MINIMAL
+17   dataset_id                0.000000     0.00      % ✅ MINIMAL
+18   fwd_pkt_len_std           0.000000     0.00      % ✅ MINIMAL
+19   bwd_pkt_len_max           0.000000     0.00      % ✅ MINIMAL
+20   bwd_pkt_len_mean          0.000000     0.00      % ✅ MINIMAL
+21   bwd_pkt_len_min           0.000000     0.00      % ✅ MINIMAL
+22   pkt_len_max               0.000000     0.00      % ✅ MINIMAL
+23   pkt_len_min               0.000000     0.00      % ✅ MINIMAL
+24   pkt_len_mean              0.000000     0.00      % ✅ MINIMAL
+25   bwd_pkt_len_std           0.000000     0.00      % ✅ MINIMAL
+26   pkt_len_var               0.000000     0.00      % ✅ MINIMAL
+27   fwd_header_len            0.000000     0.00      % ✅ MINIMAL
+28   bwd_header_len            0.000000     0.00      % ✅ MINIMAL
+29   fwd_seg_size_min          0.000000     0.00      % ✅ MINIMAL
+30   fwd_act_data_pkts         0.000000     0.00      % ✅ MINIMAL
+31   flow_iat_mean             0.000000     0.00      % ✅ MINIMAL
+32   flow_iat_max              0.000000     0.00      % ✅ MINIMAL
+33   pkt_len_std               0.000000     0.00      % ✅ MINIMAL
+34   flow_iat_std              0.000000     0.00      % ✅ MINIMAL
+35   fwd_iat_tot               0.000000     0.00      % ✅ MINIMAL
+36   fwd_iat_max               0.000000     0.00      % ✅ MINIMAL
+37   fwd_iat_min               0.000000     0.00      % ✅ MINIMAL
+38   fwd_iat_mean              0.000000     0.00      % ✅ MINIMAL
+39   fwd_iat_std               0.000000     0.00      % ✅ MINIMAL
+40   bwd_iat_tot               0.000000     0.00      % ✅ MINIMAL
+41   bwd_iat_max               0.000000     0.00      % ✅ MINIMAL
+42   bwd_iat_min               0.000000     0.00      % ✅ MINIMAL
+43   bwd_iat_mean              0.000000     0.00      % ✅ MINIMAL
+44   bwd_iat_std               0.000000     0.00      % ✅ MINIMAL
+45   fwd_psh_flags             0.000000     0.00      % ✅ MINIMAL
+46   bwd_psh_flags             0.000000     0.00      % ✅ MINIMAL
+47   fwd_urg_flags             0.000000     0.00      % ✅ MINIMAL
+48   bwd_urg_flags             0.000000     0.00      % ✅ MINIMAL
+49   flow_iat_min              0.000000     0.00      % ✅ MINIMAL
+50   fin_flag_cnt              0.000000     0.00      % ✅ MINIMAL
+51   syn_flag_cnt              0.000000     0.00      % ✅ MINIMAL
+52   psh_flag_cnt              0.000000     0.00      % ✅ MINIMAL
+53   rst_flag_cnt              0.000000     0.00      % ✅ MINIMAL
+54   urg_flag_cnt              0.000000     0.00      % ✅ MINIMAL
+55   ece_flag_cnt              0.000000     0.00      % ✅ MINIMAL
+56   down_up_ratio             0.000000     0.00      % ✅ MINIMAL
+57   ack_flag_cnt              0.000000     0.00      % ✅ MINIMAL
+58   init_fwd_win_byts         0.000000     0.00      % ✅ MINIMAL
+59   init_bwd_win_byts         0.000000     0.00      % ✅ MINIMAL
+60   active_max                0.000000     0.00      % ✅ MINIMAL
+61   active_min                0.000000     0.00      % ✅ MINIMAL
+62   active_mean               0.000000     0.00      % ✅ MINIMAL
+63   active_std                0.000000     0.00      % ✅ MINIMAL
+64   idle_max                  0.000000     0.00      % ✅ MINIMAL
+65   pkt_size_avg              0.000000     0.00      % ✅ MINIMAL
+66   idle_min                  0.000000     0.00      % ✅ MINIMAL
+67   idle_mean                 0.000000     0.00      % ✅ MINIMAL
+68   fwd_byts_b_avg            0.000000     0.00      % ✅ MINIMAL
+69   idle_std                  0.000000     0.00      % ✅ MINIMAL
+70   bwd_byts_b_avg            0.000000     0.00      % ✅ MINIMAL
+71   bwd_pkts_b_avg            0.000000     0.00      % ✅ MINIMAL
+72   fwd_blk_rate_avg          0.000000     0.00      % ✅ MINIMAL
+73   fwd_pkts_b_avg            0.000000     0.00      % ✅ MINIMAL
+74   bwd_blk_rate_avg          0.000000     0.00      % ✅ MINIMAL
+75   fwd_seg_size_avg          0.000000     0.00      % ✅ MINIMAL
+76   cwr_flag_count            0.000000     0.00      % ✅ MINIMAL
+77   bwd_seg_size_avg          0.000000     0.00      % ✅ MINIMAL
+78   subflow_fwd_pkts          0.000000     0.00      % ✅ MINIMAL
+79   subflow_bwd_pkts          0.000000     0.00      % ✅ MINIMAL
+80   subflow_fwd_byts          0.000000     0.00      % ✅ MINIMAL
+81   subflow_bwd_byts          0.000000     0.00      % ✅ MINIMAL
+
+Decision Tree Rules (Max Depth 3):
+============================================================
+|--- Attack_Type <= 5.50
+|   |--- Attack_Type <= 1.50
+|   |   |--- Attack_Type <= 0.50
+|   |   |   |--- class: ad_slow
+|   |   |--- Attack_Type >  0.50
+|   |   |   |--- class: ad_syn
+|   |--- Attack_Type >  1.50
+|   |   |--- Attack_Type <= 4.50
+|   |   |   |--- Attack_Type <= 3.50
+|   |   |   |   |--- truncated branch of depth 2
+|   |   |   |--- Attack_Type >  3.50
+|   |   |   |   |--- class: normal
+|   |   |--- Attack_Type >  4.50
+|   |   |   |--- class: syn_flood
+|--- Attack_Type >  5.50
+|   |--- class: udp_flood
+
+
+================================================================================
+COMPREHENSIVE DATA LEAKAGE ASSESSMENT FOR Label_multi
+================================================================================
+📊 CRITICAL: Accuracy > 99% - Near perfect classification
+📊 CRITICAL: Top 3 features account for >90% of importance
+📊 CRITICAL: Single feature 'Attack_Type' dominates with 1.000000 importance
+📊 MEDIUM: 80 features have zero importance (may indicate redundancy)
+
+🎯 OVERALL ASSESSMENT: 🚨 CRITICAL DATA LEAKAGE DETECTED
+
+================================================================================
+FEATURE DROP RECOMMENDATIONS FOR Label_multi
+================================================================================
+
+🚨 HIGH PRIORITY - MUST DROP (1 features):
+   ❌ Attack_Type          (importance: 1.0000) - Extremely high importance - dominates classification decisions
+
+⚠️  MEDIUM PRIORITY - CONSIDER DROPPING (0 features):
+
+🔧 PROTOCOL-SPECIFIC - DROP FOR GENERALIZATION (0 features):
+
+✅ SAFE TO KEEP (80 features):
+   ✓ src_ip               (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ dst_ip               (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ protocol             (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ flow_duration        (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ flow_byts_s          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ flow_pkts_s          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_pkts_s           (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_pkts_s           (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ tot_fwd_pkts         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ tot_bwd_pkts         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ totlen_fwd_pkts      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ totlen_bwd_pkts      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_pkt_len_max      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_pkt_len_min      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_pkt_len_mean     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ dataset_id           (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_pkt_len_std      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_pkt_len_max      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_pkt_len_mean     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_pkt_len_min      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ pkt_len_max          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ pkt_len_min          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ pkt_len_mean         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_pkt_len_std      (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ pkt_len_var          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_header_len       (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_header_len       (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_seg_size_min     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_act_data_pkts    (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ flow_iat_mean        (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ flow_iat_max         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ pkt_len_std          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ flow_iat_std         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_iat_tot          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_iat_max          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_iat_min          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_iat_mean         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_iat_std          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_iat_tot          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_iat_max          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_iat_min          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_iat_mean         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_iat_std          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_psh_flags        (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_psh_flags        (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_urg_flags        (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_urg_flags        (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ flow_iat_min         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fin_flag_cnt         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ syn_flag_cnt         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ psh_flag_cnt         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ rst_flag_cnt         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ urg_flag_cnt         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ ece_flag_cnt         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ down_up_ratio        (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ ack_flag_cnt         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ init_fwd_win_byts    (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ init_bwd_win_byts    (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ active_max           (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ active_min           (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ active_mean          (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ active_std           (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ idle_max             (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ pkt_size_avg         (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ idle_min             (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ idle_mean            (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_byts_b_avg       (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ idle_std             (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_byts_b_avg       (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_pkts_b_avg       (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_blk_rate_avg     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_pkts_b_avg       (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_blk_rate_avg     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ fwd_seg_size_avg     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ cwr_flag_count       (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ bwd_seg_size_avg     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ subflow_fwd_pkts     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ subflow_bwd_pkts     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ subflow_fwd_byts     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ subflow_bwd_byts     (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+
+================================================================================
+PYTHON CODE FOR FEATURE DROPPING
+================================================================================
+
+# Features to drop for Label_multi classification (data leakage prevention)
+features_to_drop = ['Attack_Type']
+
+# Apply feature dropping
+df_clean = df.drop(columns=features_to_drop, errors='ignore')
+
+# Remaining safe features: ['src_ip', 'dst_ip', 'protocol', 'flow_duration', 'flow_byts_s', 'flow_pkts_s', 'fwd_pkts_s', 'bwd_pkts_s', 'tot_fwd_pkts', 'tot_bwd_pkts', 'totlen_fwd_pkts', 'totlen_bwd_pkts', 'fwd_pkt_len_max', 'fwd_pkt_len_min', 'fwd_pkt_len_mean', 'dataset_id', 'fwd_pkt_len_std', 'bwd_pkt_len_max', 'bwd_pkt_len_mean', 'bwd_pkt_len_min', 'pkt_len_max', 'pkt_len_min', 'pkt_len_mean', 'bwd_pkt_len_std', 'pkt_len_var', 'fwd_header_len', 'bwd_header_len', 'fwd_seg_size_min', 'fwd_act_data_pkts', 'flow_iat_mean', 'flow_iat_max', 'pkt_len_std', 'flow_iat_std', 'fwd_iat_tot', 'fwd_iat_max', 'fwd_iat_min', 'fwd_iat_mean', 'fwd_iat_std', 'bwd_iat_tot', 'bwd_iat_max', 'bwd_iat_min', 'bwd_iat_mean', 'bwd_iat_std', 'fwd_psh_flags', 'bwd_psh_flags', 'fwd_urg_flags', 'bwd_urg_flags', 'flow_iat_min', 'fin_flag_cnt', 'syn_flag_cnt', 'psh_flag_cnt', 'rst_flag_cnt', 'urg_flag_cnt', 'ece_flag_cnt', 'down_up_ratio', 'ack_flag_cnt', 'init_fwd_win_byts', 'init_bwd_win_byts', 'active_max', 'active_min', 'active_mean', 'active_std', 'idle_max', 'pkt_size_avg', 'idle_min', 'idle_mean', 'fwd_byts_b_avg', 'idle_std', 'bwd_byts_b_avg', 'bwd_pkts_b_avg', 'fwd_blk_rate_avg', 'fwd_pkts_b_avg', 'bwd_blk_rate_avg', 'fwd_seg_size_avg', 'cwr_flag_count', 'bwd_seg_size_avg', 'subflow_fwd_pkts', 'subflow_bwd_pkts', 'subflow_fwd_byts', 'subflow_bwd_byts']
+# Expected accuracy after dropping: 60-75% (realistic for behavioral detection)
+

@@ -20,6 +20,7 @@ from pathlib import Path
 import json
 from datetime import datetime
 import argparse
+import logging
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -36,6 +37,19 @@ class NumpyEncoder(json.JSONEncoder):
             return bool(obj)
         return super(NumpyEncoder, self).default(obj)
 
+def setup_logging(log_path=None):
+    """Set up logging configuration."""
+    log_file = log_path if log_path else 'investigate_csv_quality.log'
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(log_file, mode='w')
+        ]
+    )
+    return logging.getLogger(__name__)
+
 class CombinedDatasetInvestigator:
     def __init__(self, base_path):
         self.base_path = Path(base_path)
@@ -46,11 +60,12 @@ class CombinedDatasetInvestigator:
             'flow_dataset.csv', 
             'cicflow_dataset.csv'
         ]
+        self.logger = logging.getLogger(__name__)
         
     def analyze_combined_dataset(self, file_path, dataset_type):
         """Analyze a combined CSV dataset for quality issues and cross-dataset integrity"""
         try:
-            print(f"Analyzing {dataset_type}...")
+            self.logger.info(f"Analyzing {dataset_type}...")
             
             # Read CSV file
             df = pd.read_csv(file_path)
@@ -327,11 +342,11 @@ class CombinedDatasetInvestigator:
             dataset_type = csv_file.replace('_dataset.csv', '').replace('.csv', '')
             
             if csv_path.exists():
-                print(f"Found {csv_file}")
+                self.logger.info(f"Found {csv_file}")
                 analysis = self.analyze_combined_dataset(csv_path, dataset_type)
                 self.results[dataset_type] = analysis
             else:
-                print(f"Missing {csv_file}")
+                self.logger.warning(f"Missing {csv_file}")
                 self.results[dataset_type] = {
                     'file_path': str(csv_path),
                     'dataset_type': dataset_type,
@@ -856,7 +871,7 @@ class CombinedDatasetInvestigator:
         with open(output_path / 'combined_datasets_quality_report.md', 'w') as f:
             f.write(report)
         
-        print(f"Results saved to {output_path}")
+        self.logger.info(f"Results saved to {output_path}")
         return report
 
 def main():
@@ -870,21 +885,24 @@ def main():
         print(f"❌ Error: Dataset path not found: {base_path}")
         return 1
     
+    # Set up logging with path to dataset directory
+    log_path = base_path / "investigate_csv_quality.log"
+    logger = setup_logging(log_path)
+    
     investigator = CombinedDatasetInvestigator(base_path)
     
-    print("Starting combined datasets quality investigation...")
+    logger.info("Starting combined datasets quality investigation...")
     investigator.investigate_combined_datasets()
     
-    print("Generating summary statistics...")
+    logger.info("Generating summary statistics...")
     investigator.generate_summary_statistics()
     
-    print("Generating comprehensive report...")
+    logger.info("Generating comprehensive report...")
     report = investigator.save_results(base_path)
     
-    print("\n" + "="*60)
-    print("COMBINED DATASETS INVESTIGATION COMPLETE")
-    print("="*60)
-    print(report)
+    logger.info("\n" + "="*60)
+    logger.info("COMBINED DATASETS INVESTIGATION COMPLETE")
+    logger.info("="*60)
     
     return 0
 

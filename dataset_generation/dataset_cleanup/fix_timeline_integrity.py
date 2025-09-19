@@ -43,7 +43,7 @@ def setup_logging(log_file='fix_timeline_integrity.log'):
 def create_backups(dataset_dir, logger):
     """Create backup files for all CSV formats."""
     csv_files = {
-        'packet_features': dataset_dir / "packet_features.csv",
+        'packet_features': dataset_dir / "packet_features_30.csv",
         'flow_features': dataset_dir / "flow_features.csv", 
         'cicflow_features': dataset_dir / "cicflow_features_all.csv"
     }
@@ -361,7 +361,7 @@ def process_dataset_timeline_integrity(dataset_dir, logger):
     
     # Step 3: Process each CSV file
     csv_files = [
-        dataset_dir / "packet_features.csv",
+        dataset_dir / "packet_features_30.csv",
         dataset_dir / "flow_features.csv", 
         dataset_dir / "cicflow_features_all.csv"
     ]
@@ -381,33 +381,42 @@ def process_dataset_timeline_integrity(dataset_dir, logger):
 
 def main():
     parser = argparse.ArgumentParser(description='Fix timeline integrity while preserving data integrity')
+    parser.add_argument('--path', default='../main_output/v2_main', help='Path to version directory (default: ../main_output/v2_main)')
     parser.add_argument('--dataset', help='Process specific dataset directory (e.g., 1607-1)')
     parser.add_argument('--all', action='store_true', help='Process all dataset directories')
     parser.add_argument('-v', '--verbose', action='store_true', help='Enable verbose logging')
     
     args = parser.parse_args()
     
+    # Determine version path for log file
+    version_path = Path(args.path)
+    if not version_path.exists():
+        print(f"❌ Error: Version directory not found: {version_path}")
+        return 1
+    
+    log_path = version_path / "fix_timeline_integrity.log"
+    
     # Set up logging
-    logger = setup_logging()
+    logger = setup_logging(log_path)
     if args.verbose:
         logger.setLevel(logging.DEBUG)
     
     logger.info("=" * 60)
     logger.info("TIMELINE INTEGRITY FIX STARTED")
     logger.info("=" * 60)
+    logger.info(f"📁 Version directory: {version_path.absolute()}")
     
     # Find datasets to process
     if args.dataset:
-        dataset_path = Path("main_output") / "v2_main" / args.dataset
+        dataset_path = version_path / args.dataset
         if not dataset_path.exists():
             logger.error(f"Dataset directory not found: {dataset_path}")
             return 1
         datasets = [dataset_path]
     elif args.all:
         datasets = []
-        v2_main_path = Path("main_output") / "v2_main"
-        if v2_main_path.exists():
-            for item in v2_main_path.iterdir():
+        if version_path.exists():
+            for item in version_path.iterdir():
                 if item.is_dir() and re.match(r'^\d{6}-\d+$', item.name):
                     datasets.append(item)
         datasets = sorted(datasets)

@@ -1,0 +1,351 @@
+Data Leakage Analysis Report
+Target: Label_multi
+Timestamp: 2025-09-19 12:14:17.095146
+================================================================================
+
+Features shape: (1559778, 16)
+Feature columns: ['dataset_id', 'switch_id', 'table_id', 'cookie', 'priority', 'in_port', 'eth_src', 'eth_dst', 'out_port', 'packet_count', 'byte_count', 'duration_sec', 'duration_nsec', 'avg_pkt_size', 'pkt_rate', 'byte_rate']
+Target distribution:
+Label_multi
+ad_slow         53963
+ad_syn          55167
+ad_udp          21623
+icmp_flood      69636
+normal        1160015
+syn_flood       68159
+udp_flood      131215
+Name: count, dtype: int64
+
+
+================================================================================
+FEATURE DISTRIBUTION ANALYSIS FOR Label_multi
+================================================================================
+
+Feature: dataset_id
+                  mean        std  min  max
+Label_multi                                
+ad_slow      65.081074  21.308284    0   94
+ad_syn       64.975764  21.393901    0   94
+ad_udp       61.991583  23.460197    0   94
+icmp_flood   64.094089  22.063173    0   94
+normal       65.798203  20.704865    0   94
+syn_flood    64.479922  21.759943    0   94
+udp_flood    65.161376  21.244336    0   94
+
+Feature: switch_id
+             mean  std  min  max
+Label_multi                     
+ad_slow       1.0  0.0    1    1
+ad_syn        1.0  0.0    1    1
+ad_udp        1.0  0.0    1    1
+icmp_flood    1.0  0.0    1    1
+normal        1.0  0.0    1    1
+syn_flood     1.0  0.0    1    1
+udp_flood     1.0  0.0    1    1
+⚠️  WARNING: switch_id may have perfect class separation
+
+Feature: table_id
+             mean  std  min  max
+Label_multi                     
+ad_slow       0.0  0.0    0    0
+ad_syn        0.0  0.0    0    0
+ad_udp        0.0  0.0    0    0
+icmp_flood    0.0  0.0    0    0
+normal        0.0  0.0    0    0
+syn_flood     0.0  0.0    0    0
+udp_flood     0.0  0.0    0    0
+⚠️  WARNING: table_id may have perfect class separation
+
+Feature: cookie
+             mean  std  min  max
+Label_multi                     
+ad_slow       0.0  0.0    0    0
+ad_syn        0.0  0.0    0    0
+ad_udp        0.0  0.0    0    0
+icmp_flood    0.0  0.0    0    0
+normal        0.0  0.0    0    0
+syn_flood     0.0  0.0    0    0
+udp_flood     0.0  0.0    0    0
+⚠️  WARNING: cookie may have perfect class separation
+
+Feature: priority
+                 mean       std  min  max
+Label_multi                              
+ad_slow      8.571429  3.499303    0   10
+ad_syn       8.571429  3.499303    0   10
+ad_udp       8.571429  3.499352    0   10
+icmp_flood   8.571429  3.499296    0   10
+normal       8.559044  3.511867    0   10
+syn_flood    8.571429  3.499297    0   10
+udp_flood    8.571429  3.499284    0   10
+
+Feature: in_port
+             mean  std  min  max
+Label_multi                     
+ad_slow       NaN  NaN  NaN  NaN
+ad_syn        NaN  NaN  NaN  NaN
+ad_udp        NaN  NaN  NaN  NaN
+icmp_flood    NaN  NaN  NaN  NaN
+normal        NaN  NaN  NaN  NaN
+syn_flood     NaN  NaN  NaN  NaN
+udp_flood     NaN  NaN  NaN  NaN
+
+Feature: eth_src
+             mean  std  min  max
+Label_multi                     
+ad_slow       NaN  NaN  NaN  NaN
+ad_syn        NaN  NaN  NaN  NaN
+ad_udp        NaN  NaN  NaN  NaN
+icmp_flood    NaN  NaN  NaN  NaN
+normal        NaN  NaN  NaN  NaN
+syn_flood     NaN  NaN  NaN  NaN
+udp_flood     NaN  NaN  NaN  NaN
+
+Feature: eth_dst
+             mean  std  min  max
+Label_multi                     
+ad_slow       NaN  NaN  NaN  NaN
+ad_syn        NaN  NaN  NaN  NaN
+ad_udp        NaN  NaN  NaN  NaN
+icmp_flood    NaN  NaN  NaN  NaN
+normal        NaN  NaN  NaN  NaN
+syn_flood     NaN  NaN  NaN  NaN
+udp_flood     NaN  NaN  NaN  NaN
+
+Feature: out_port
+             mean  std  min  max
+Label_multi                     
+ad_slow       NaN  NaN  NaN  NaN
+ad_syn        NaN  NaN  NaN  NaN
+ad_udp        NaN  NaN  NaN  NaN
+icmp_flood    NaN  NaN  NaN  NaN
+normal        NaN  NaN  NaN  NaN
+syn_flood     NaN  NaN  NaN  NaN
+udp_flood     NaN  NaN  NaN  NaN
+
+Feature: packet_count
+                    mean          std  min   max
+Label_multi                                     
+ad_slow      2637.627541  2080.704710   29  5883
+ad_syn       2112.900593  1773.702351   29  5883
+ad_udp       2241.679462  1915.234648   29  5883
+icmp_flood   1874.168304  1694.172940    9  5877
+normal        681.983180  1112.588923    9  5260
+syn_flood    1454.553456  1705.706690    9  5287
+udp_flood    1717.431948  1658.980713    9  5297
+
+Feature: byte_count
+                      mean            std   min     max
+Label_multi                                            
+ad_slow      304228.589534  208791.587219  2842  677621
+ad_syn       217673.883100  171612.758635  2842  536759
+ad_udp       235763.288859  181588.766846  2842  654619
+icmp_flood   167889.705483  160608.583013   882  536759
+normal        59689.699913  103706.126467   882  536759
+syn_flood    122875.648014  163790.036768   882  536759
+udp_flood    142712.361628  159255.634177   882  536759
+
+Feature: duration_sec
+                    mean         std  min   max
+Label_multi                                    
+ad_slow      1867.211923  633.942706  279  2187
+ad_syn       1772.748400  609.323258  259  2087
+ad_udp       1704.351478  722.376484  269  2109
+icmp_flood   1667.618904  615.398628  249  2009
+normal        724.499654  494.271382    6  1647
+syn_flood    1444.173770  520.106373  209  1739
+udp_flood    1585.727508  539.177673  219  1919
+
+Feature: duration_nsec
+                     mean           std       min        max
+Label_multi                                                 
+ad_slow      5.819662e+08  1.847002e+08  89000000  784000000
+ad_syn       5.524342e+08  1.758711e+08  87000000  741000000
+ad_udp       5.316255e+08  2.037888e+08  89000000  756000000
+icmp_flood   5.239170e+08  1.765865e+08  82000000  722000000
+normal       2.652175e+08  1.493979e+08         0  999000000
+syn_flood    4.580388e+08  1.495989e+08  72000000  643000000
+udp_flood    4.978348e+08  1.554036e+08  73000000  695000000
+
+Feature: avg_pkt_size
+                   mean         std        min         max
+Label_multi                                               
+ad_slow      152.321935  112.098209  60.242105  558.189189
+ad_syn       139.400157  117.870068  48.203346  558.189189
+ad_udp       144.055016  118.716178  57.038418  558.189189
+icmp_flood   103.748212   69.658787  42.548818  558.189189
+normal        99.231932   40.772321  42.574938  255.214286
+syn_flood     88.884110   45.645168  42.573727  201.564841
+udp_flood     89.816376   44.663322  42.572849  201.564841
+
+Feature: pkt_rate
+                 mean       std       min       max
+Label_multi                                        
+ad_slow      1.399142  0.941943  0.075582  2.790385
+ad_syn       1.175374  0.852676  0.079258  2.924337
+ad_udp       1.286895  0.876436  0.078119  2.856283
+icmp_flood   1.113101  0.860449  0.004738  2.924337
+normal       0.947023  1.114140  0.005530  3.354246
+syn_flood    0.998807  1.051208  0.005240  3.208170
+udp_flood    1.074775  0.919795  0.004743  3.056780
+
+Feature: byte_rate
+                   mean         std       min         max
+Label_multi                                              
+ad_slow      161.677922   91.527119  7.406999  352.557474
+ad_syn       121.981752   82.101597  7.767332  271.188910
+ad_udp       135.240373   80.338680  7.655630  313.720538
+icmp_flood    99.192550   82.347957  0.464298  284.176656
+normal        84.106493  106.268424  0.541943  375.000000
+syn_flood     84.903663  102.620843  0.513535  331.857145
+udp_flood     89.630912   90.372622  0.464809  319.173306
+Training set: 1091844 samples
+Test set: 467934 samples
+
+Accuracy: 0.982981
+
+Classification Report for Label_multi:
+================================================================================
+              precision    recall  f1-score   support
+
+     ad_slow   0.965758  0.932053  0.948606     16189
+      ad_syn   0.948469  0.920846  0.934453     16550
+      ad_udp   0.761657  0.881301  0.817123      6487
+  icmp_flood   0.918941  0.963764  0.940819     20891
+      normal   0.999090  0.996727  0.997907    348005
+   syn_flood   0.912573  0.960192  0.935777     20448
+   udp_flood   0.977996  0.947312  0.962410     39364
+
+    accuracy                       0.982981    467934
+   macro avg   0.926355  0.943171  0.933871    467934
+weighted avg   0.983721  0.982981  0.983201    467934
+
+
+Confusion Matrix:
+[[ 15089      0   1100      0      0      0      0]
+ [   165  15240    689    456      0      0      0]
+ [   306    464   5717      0      0      0      0]
+ [    60    364      0  20134      0      0    333]
+ [     0      0      0      0 346866   1131      8]
+ [     0      0      0      0    316  19634    498]
+ [     4      0      0   1320      0    750  37290]]
+
+================================================================================
+COMPLETE FEATURE IMPORTANCE ANALYSIS FOR Label_multi
+================================================================================
+Rank Feature                   Importance   Percentage Risk Level
+----------------------------------------------------------------------
+1    duration_sec              0.926580     92.66     % 🚨 CRITICAL
+2    dataset_id                0.035048     3.50      % ✅ MINIMAL
+3    pkt_rate                  0.020351     2.04      % ✅ MINIMAL
+4    avg_pkt_size              0.005685     0.57      % ✅ MINIMAL
+5    packet_count              0.005589     0.56      % ✅ MINIMAL
+6    byte_count                0.002269     0.23      % ✅ MINIMAL
+7    priority                  0.001972     0.20      % ✅ MINIMAL
+8    duration_nsec             0.001805     0.18      % ✅ MINIMAL
+9    byte_rate                 0.000701     0.07      % ✅ MINIMAL
+10   eth_src                   0.000000     0.00      % ✅ MINIMAL
+11   eth_dst                   0.000000     0.00      % ✅ MINIMAL
+12   cookie                    0.000000     0.00      % ✅ MINIMAL
+13   switch_id                 0.000000     0.00      % ✅ MINIMAL
+14   table_id                  0.000000     0.00      % ✅ MINIMAL
+15   in_port                   0.000000     0.00      % ✅ MINIMAL
+16   out_port                  0.000000     0.00      % ✅ MINIMAL
+
+Decision Tree Rules (Max Depth 3):
+============================================================
+|--- duration_sec <= 1622.50
+|   |--- dataset_id <= 45.50
+|   |   |--- duration_sec <= 204.00
+|   |   |   |--- class: normal
+|   |   |--- duration_sec >  204.00
+|   |   |   |--- duration_sec <= 244.00
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- duration_sec >  244.00
+|   |   |   |   |--- truncated branch of depth 7
+|   |--- dataset_id >  45.50
+|   |   |--- duration_sec <= 1612.50
+|   |   |   |--- avg_pkt_size <= 357.76
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- avg_pkt_size >  357.76
+|   |   |   |   |--- truncated branch of depth 5
+|   |   |--- duration_sec >  1612.50
+|   |   |   |--- packet_count <= 2732.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- packet_count >  2732.50
+|   |   |   |   |--- truncated branch of depth 2
+|--- duration_sec >  1622.50
+|   |--- duration_sec <= 1892.50
+|   |   |--- duration_sec <= 1712.50
+|   |   |   |--- duration_sec <= 1702.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- duration_sec >  1702.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |--- duration_sec >  1712.50
+|   |   |   |--- duration_sec <= 1882.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- duration_sec >  1882.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |--- duration_sec >  1892.50
+|   |   |--- duration_sec <= 1982.50
+|   |   |   |--- duration_sec <= 1972.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- duration_sec >  1972.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |--- duration_sec >  1982.50
+|   |   |   |--- duration_sec <= 2072.50
+|   |   |   |   |--- truncated branch of depth 7
+|   |   |   |--- duration_sec >  2072.50
+|   |   |   |   |--- truncated branch of depth 7
+
+
+================================================================================
+COMPREHENSIVE DATA LEAKAGE ASSESSMENT FOR Label_multi
+================================================================================
+📊 HIGH: Accuracy > 95% - Suspiciously high performance
+📊 CRITICAL: Top 3 features account for >90% of importance
+📊 CRITICAL: Single feature 'duration_sec' dominates with 0.926580 importance
+
+🎯 OVERALL ASSESSMENT: 🚨 CRITICAL DATA LEAKAGE DETECTED
+
+================================================================================
+FEATURE DROP RECOMMENDATIONS FOR Label_multi
+================================================================================
+
+🚨 HIGH PRIORITY - MUST DROP (1 features):
+   ❌ duration_sec         (importance: 0.9266) - Extremely high importance - dominates classification decisions
+
+⚠️  MEDIUM PRIORITY - CONSIDER DROPPING (0 features):
+
+🔧 PROTOCOL-SPECIFIC - DROP FOR GENERALIZATION (0 features):
+
+✅ SAFE TO KEEP (15 features):
+   ✓ dataset_id           (importance: 0.0350) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ pkt_rate             (importance: 0.0204) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ avg_pkt_size         (importance: 0.0057) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ packet_count         (importance: 0.0056) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ byte_count           (importance: 0.0023) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ priority             (importance: 0.0020) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ duration_nsec        (importance: 0.0018) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ byte_rate            (importance: 0.0007) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ eth_src              (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ eth_dst              (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ cookie               (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ switch_id            (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ table_id             (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ in_port              (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+   ✓ out_port             (importance: 0.0000) - Low importance - minimal leakage risk, behavioral pattern
+
+================================================================================
+PYTHON CODE FOR FEATURE DROPPING
+================================================================================
+
+# Features to drop for Label_multi classification (data leakage prevention)
+features_to_drop = ['duration_sec']
+
+# Apply feature dropping
+df_clean = df.drop(columns=features_to_drop, errors='ignore')
+
+# Remaining safe features: ['dataset_id', 'pkt_rate', 'avg_pkt_size', 'packet_count', 'byte_count', 'priority', 'duration_nsec', 'byte_rate', 'eth_src', 'eth_dst', 'cookie', 'switch_id', 'table_id', 'in_port', 'out_port']
+# Expected accuracy after dropping: 60-75% (realistic for behavioral detection)
+

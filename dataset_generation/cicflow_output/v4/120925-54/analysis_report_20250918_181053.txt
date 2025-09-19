@@ -1,0 +1,194 @@
+CICFlow Dataset Analysis Report
+==================================================
+Generated: 2025-09-18 18:10:53
+
+Dataset Overview:
+  Total flows: 5290
+  Total features: 85
+  Analysis output directory: /home/user/Desktop/cicflowmeter/cicflow_output/v4/120925-54
+
+Attack Distribution:
+  udp_flood: 1757 flows (33.21%)
+  ad_syn: 1245 flows (23.53%)
+  syn_flood: 889 flows (16.81%)
+  normal: 864 flows (16.33%)
+  icmp_flood: 304 flows (5.75%)
+  ad_udp: 211 flows (3.99%)
+  ad_slow: 20 flows (0.38%)
+
+Protocol Distribution:
+  Protocol 6: 2875 flows (54.35%)
+  Protocol 17: 1927 flows (36.43%)
+  Protocol 1: 488 flows (9.22%)
+
+Enhanced Attack Features:
+  syn_flood:
+    packet_rate: 224471.53690517487
+    is_enhanced: False
+    ephemeral_ratio: 100.0
+    ephemeral_enhanced: True
+  udp_flood:
+    packet_rate: 293381.3119311918
+    is_enhanced: False
+    ephemeral_ratio: 99.65850882185543
+    ephemeral_enhanced: True
+  icmp_flood:
+    packet_rate: 6532.323230223898
+    is_enhanced: False
+
+Flow Characteristics by Attack Type:
+  ad_slow:
+    flow_count: 20
+    ephemeral_ratio: 100.0
+    duration_mean: 0.04649355
+    duration_median: 0.044479
+    fwd_pkts_mean: 12.6
+    fwd_pkts_median: 13.0
+    bwd_pkts_mean: 9.6
+    bwd_pkts_median: 10.0
+  ad_syn:
+    flow_count: 1245
+    port_80_ratio: 14.698795180722893
+    ephemeral_ratio: 99.91967871485944
+    duration_mean: 0.017968310040160647
+    duration_median: 2.1e-05
+    fwd_pkts_mean: 3.183132530120482
+    fwd_pkts_median: 3.0
+    bwd_pkts_mean: 1.7004016064257028
+    bwd_pkts_median: 2.0
+  ad_udp:
+    flow_count: 211
+    port_53_ratio: 0.0
+    ephemeral_ratio: 100.0
+    duration_mean: 0.0008227203791469196
+    duration_median: 0.000769
+    fwd_pkts_mean: 13.549763033175356
+    fwd_pkts_median: 13.0
+    bwd_pkts_mean: 12.559241706161137
+    bwd_pkts_median: 12.0
+  icmp_flood:
+    flow_count: 304
+    icmp_ports: [-1]
+    ephemeral_ratio: 0.0
+    duration_mean: 0.16720952960526314
+    duration_median: 0.001332
+    fwd_pkts_mean: 5.625
+    fwd_pkts_median: 3.0
+    bwd_pkts_mean: 8.572368421052632
+    bwd_pkts_median: 6.0
+  normal:
+    flow_count: 864
+    ephemeral_ratio: 40.85648148148148
+    duration_mean: 6.24622777199074
+    duration_median: 1.904206
+    fwd_pkts_mean: 7.672453703703703
+    fwd_pkts_median: 9.0
+    bwd_pkts_mean: 5.94212962962963
+    bwd_pkts_median: 6.0
+  syn_flood:
+    flow_count: 889
+    port_80_ratio: 100.0
+    ephemeral_ratio: 100.0
+    duration_mean: 0.22222795725534308
+    duration_median: 2.1e-05
+    fwd_pkts_mean: 3.0179977502812148
+    fwd_pkts_median: 3.0
+    bwd_pkts_mean: 2.0179977502812148
+    bwd_pkts_median: 2.0
+  udp_flood:
+    flow_count: 1757
+    port_53_ratio: 99.60159362549801
+    ephemeral_ratio: 99.65850882185543
+    duration_mean: 1.1541478047808766
+    duration_median: 1e-05
+    fwd_pkts_mean: 3.245304496300512
+    fwd_pkts_median: 3.0
+    bwd_pkts_mean: 0.00398406374501992
+    bwd_pkts_median: 0.0
+
+Feature columns:
+   1. src_ip
+   2. dst_ip
+   3. src_port
+   4. dst_port
+   5. protocol
+   6. timestamp
+   7. flow_duration
+   8. flow_byts_s
+   9. flow_pkts_s
+  10. fwd_pkts_s
+  11. bwd_pkts_s
+  12. tot_fwd_pkts
+  13. tot_bwd_pkts
+  14. totlen_fwd_pkts
+  15. totlen_bwd_pkts
+  16. fwd_pkt_len_max
+  17. fwd_pkt_len_min
+  18. fwd_pkt_len_mean
+  19. fwd_pkt_len_std
+  20. bwd_pkt_len_max
+  21. bwd_pkt_len_min
+  22. bwd_pkt_len_mean
+  23. bwd_pkt_len_std
+  24. pkt_len_max
+  25. pkt_len_min
+  26. pkt_len_mean
+  27. pkt_len_std
+  28. pkt_len_var
+  29. fwd_header_len
+  30. bwd_header_len
+  31. fwd_seg_size_min
+  32. fwd_act_data_pkts
+  33. flow_iat_mean
+  34. flow_iat_max
+  35. flow_iat_min
+  36. flow_iat_std
+  37. fwd_iat_tot
+  38. fwd_iat_max
+  39. fwd_iat_min
+  40. fwd_iat_mean
+  41. fwd_iat_std
+  42. bwd_iat_tot
+  43. bwd_iat_max
+  44. bwd_iat_min
+  45. bwd_iat_mean
+  46. bwd_iat_std
+  47. fwd_psh_flags
+  48. bwd_psh_flags
+  49. fwd_urg_flags
+  50. bwd_urg_flags
+  51. fin_flag_cnt
+  52. syn_flag_cnt
+  53. rst_flag_cnt
+  54. psh_flag_cnt
+  55. ack_flag_cnt
+  56. urg_flag_cnt
+  57. ece_flag_cnt
+  58. down_up_ratio
+  59. pkt_size_avg
+  60. init_fwd_win_byts
+  61. init_bwd_win_byts
+  62. active_max
+  63. active_min
+  64. active_mean
+  65. active_std
+  66. idle_max
+  67. idle_min
+  68. idle_mean
+  69. idle_std
+  70. fwd_byts_b_avg
+  71. fwd_pkts_b_avg
+  72. bwd_byts_b_avg
+  73. bwd_pkts_b_avg
+  74. fwd_blk_rate_avg
+  75. bwd_blk_rate_avg
+  76. fwd_seg_size_avg
+  77. bwd_seg_size_avg
+  78. cwr_flag_count
+  79. subflow_fwd_pkts
+  80. subflow_bwd_pkts
+  81. subflow_fwd_byts
+  82. subflow_bwd_byts
+  83. Label_multi
+  84. Label_binary
+  85. Attack_Type

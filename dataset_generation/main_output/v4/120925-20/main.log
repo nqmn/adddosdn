@@ -1,0 +1,260 @@
+2025-09-12 17:59:26 - [MAIN] - INFO - 🎯 30-FEATURE REAL-TIME DDOS DETECTION DATASET
+2025-09-12 17:59:26 - [MAIN] - INFO - 📊 Feature Set: 24 pure live + 4 minimal calculation + 2 labels = 30 total
+2025-09-12 17:59:26 - [MAIN] - INFO - ⚡ Optimized for <1ms real-time extraction latency
+2025-09-12 17:59:26 - [MAIN] - INFO - 🏢 4-Subnet Enterprise Topology with Layer 3 Routing
+2025-09-12 17:59:26 - [MAIN] - INFO - 🌐 Network Configuration:
+2025-09-12 17:59:26 - [MAIN] - INFO -    • h1: 192.168.10.0/24 (Isolated/External Network)
+2025-09-12 17:59:26 - [MAIN] - INFO -    • h2-h5: 192.168.20.0/24 (Corporate Internal Network)
+2025-09-12 17:59:26 - [MAIN] - INFO -    • h6: 192.168.30.0/24 (Server/DMZ Network)
+2025-09-12 17:59:26 - [MAIN] - INFO -    • Controller: 192.168.0.0/24 (Management Network)
+2025-09-12 17:59:26 - [MAIN] - INFO - 🔧 CPU Affinity Optimization ENABLED
+2025-09-12 17:59:26,205 - __main__ - INFO - 🔧 CPU Core Allocation:
+2025-09-12 17:59:26,205 - __main__ - INFO -   System: Cores 0
+2025-09-12 17:59:26,205 - __main__ - INFO -   Ryu: Cores 1
+2025-09-12 17:59:26,205 - __main__ - INFO -   Mininet: Cores 2,3,4
+2025-09-12 17:59:26,205 - __main__ - INFO -   Attacks: Cores 5,6,7,8,9,10
+2025-09-12 17:59:26,206 - __main__ - INFO -   Background: Cores 11
+2025-09-12 17:59:26,206 - __main__ - INFO -   Pcap: Cores 0-15 (all cores, post-simulation)
+2025-09-12 17:59:26 - [MAIN] - INFO - Cleaning up any previous Mininet instances...
+2025-09-12 17:59:27 - [MAIN] - INFO - Mininet cleanup complete.
+2025-09-12 17:59:27,575 - __main__ - INFO - Verifying required tools...
+2025-09-12 17:59:27,807 - __main__ - INFO - TShark version: Running as user "root" and group "root". This could be dangerous.
+2025-09-12 17:59:27,807 - __main__ - INFO - All required tools are available.
+2025-09-12 17:59:27 - [MAIN] - INFO - Using configuration file: /home/user/Desktop/dataset_generation/test_config.json
+2025-09-12 17:59:27,808 - __main__ - INFO - Starting Ryu SDN controller with CPU affinity...
+2025-09-12 17:59:27,808 - __main__ - INFO - 🚀 Starting ryu on cores [1]: ryu-manager --verbose /home/user/Desktop/dataset_generation/src/controller/ryu_l3_router_app.py
+2025-09-12 17:59:27,815 - __main__ - INFO - ✅ Started ryu with PID 123960 on cores [1]
+2025-09-12 17:59:27,815 - __main__ - INFO - Ryu controller started with PID: 123960. See main_output/v4/120925-20/ryu.log for logs.
+2025-09-12 17:59:27,815 - __main__ - INFO - Checking for controller on port 6653 (timeout: 30s)...
+2025-09-12 17:59:28,834 - __main__ - INFO - Controller is up and listening.
+2025-09-12 17:59:28 - [MAIN] - INFO - Testing /hello endpoint...
+2025-09-12 17:59:28 - [MAIN] - INFO - Response status code: 200
+2025-09-12 17:59:28 - [MAIN] - INFO - Response headers: {'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '51', 'Date': 'Fri, 12 Sep 2025 09:59:28 GMT', 'Connection': 'keep-alive'}
+2025-09-12 17:59:28 - [MAIN] - INFO - Response text: {"message": "Hello from Ryu L3 Router Controller!"}...
+2025-09-12 17:59:28 - [MAIN] - INFO - Test /hello endpoint: PASSED
+2025-09-12 17:59:28,841 - __main__ - INFO - Setting up Mininet topology...
+2025-09-12 17:59:29,086 - __main__ - INFO - Mininet version: 
+2025-09-12 17:59:29,095 - __main__ - INFO - Connecting to remote controller at 127.0.0.1:6653
+2025-09-12 17:59:29,383 - __main__ - INFO - Mininet network started successfully.
+2025-09-12 17:59:29,383 - __main__ - INFO - Waiting for Layer 3 routing to stabilize...
+2025-09-12 17:59:44,384 - __main__ - INFO - Testing gateway connectivity for debugging...
+2025-09-12 17:59:44,384 - __main__ - INFO - h1 -> 192.168.10.1 (gateway): testing...
+2025-09-12 17:59:44,395 - __main__ - INFO - SUCCESS
+2025-09-12 17:59:44,395 - __main__ - INFO - h2 -> 192.168.20.1 (gateway): testing...
+2025-09-12 17:59:44,400 - __main__ - INFO - SUCCESS
+2025-09-12 17:59:44,400 - __main__ - INFO - Running Mininet pingall test...
+2025-09-12 17:59:49,469 - __main__ - INFO - Mininet pingall test completed successfully. Packet loss: 0.0%
+2025-09-12 17:59:49,469 - __main__ - INFO - Starting v4.0 traffic generation scenario with 30-feature extraction and 4-subnet topology...
+2025-09-12 17:59:49,469 - __main__ - INFO - ✅ Set current process affinity to cores [5, 6, 7, 8, 9, 10] for attacks
+2025-09-12 17:59:49,469 - __main__ - INFO - ✅ Set CPU affinity for attack generation processes
+2025-09-12 17:59:49,469 - __main__ - INFO - Phase 1: Initialization (5s)...
+2025-09-12 17:59:54,482 - __main__ - INFO - Timeline updated: normal phase started at 1757671194.4826317
+2025-09-12 17:59:54,483 - __main__ - INFO - Starting flow statistics collection for 389 seconds...
+2025-09-12 17:59:54,483 - __main__ - INFO - Flow statistics collection started in background.
+2025-09-12 17:59:54,483 - __main__ - INFO - Enhanced flow capture with 0.5s polling and flow timeout guarantees
+2025-09-12 17:59:54,483 - __main__ - INFO - Phase 2: Normal Traffic (200s)...
+2025-09-12 17:59:54,485 - __main__ - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/main_output/v4/120925-20/normal.pcap
+2025-09-12 17:59:54,485 - __main__ - INFO - Capturing on switch s1 interface any
+2025-09-12 17:59:54,486 - __main__ - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/main_output/v4/120925-20/normal.pcap -s 0 ip and not ip6 and net 192.168.0.0/16
+2025-09-12 17:59:56,498 - __main__ - INFO - tcpdump started successfully with PID: 124243
+2025-09-12 18:03:20,431 - __main__ - INFO - Stopping packet capture (PID: 124243)...
+2025-09-12 18:03:20,475 - __main__ - INFO - Packet capture stopped.
+2025-09-12 18:03:20,475 - __main__ - INFO - Phase 3.1: Enhanced Traditional DDoS Attacks...
+2025-09-12 18:03:20,475 - __main__ - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/main_output/v4/120925-20/syn_flood.pcap
+2025-09-12 18:03:20,476 - __main__ - INFO - Capturing on switch s1 interface any
+2025-09-12 18:03:20,476 - __main__ - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/main_output/v4/120925-20/syn_flood.pcap -s 0 ip and not ip6 and net 192.168.0.0/16
+2025-09-12 18:03:22,486 - __main__ - INFO - tcpdump started successfully with PID: 125551
+2025-09-12 18:03:22,486 - __main__ - INFO - Timeline updated: syn_flood phase started at 1757671402.4865518
+2025-09-12 18:03:35,148 - __main__ - INFO - Stopping packet capture (PID: 125551)...
+2025-09-12 18:03:35,222 - __main__ - INFO - Packet capture stopped.
+2025-09-12 18:03:35,222 - __main__ - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/main_output/v4/120925-20/udp_flood.pcap
+2025-09-12 18:03:35,222 - __main__ - INFO - Capturing on switch s1 interface any
+2025-09-12 18:03:35,222 - __main__ - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/main_output/v4/120925-20/udp_flood.pcap -s 0 ip and not ip6 and net 192.168.0.0/16
+2025-09-12 18:03:37,232 - __main__ - INFO - tcpdump started successfully with PID: 125560
+2025-09-12 18:03:37,232 - __main__ - INFO - Timeline updated: udp_flood phase started at 1757671417.2323318
+2025-09-12 18:04:00,889 - __main__ - INFO - Stopping packet capture (PID: 125560)...
+2025-09-12 18:04:01,038 - __main__ - INFO - Packet capture stopped.
+2025-09-12 18:04:01,038 - __main__ - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/main_output/v4/120925-20/icmp_flood.pcap
+2025-09-12 18:04:01,038 - __main__ - INFO - Capturing on switch s1 interface any
+2025-09-12 18:04:01,038 - __main__ - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/main_output/v4/120925-20/icmp_flood.pcap -s 0 ip and not ip6 and net 192.168.0.0/16
+2025-09-12 18:04:03,053 - __main__ - INFO - tcpdump started successfully with PID: 125571
+2025-09-12 18:04:03,054 - __main__ - INFO - Timeline updated: icmp_flood phase started at 1757671443.0541635
+2025-09-12 18:04:16,234 - __main__ - INFO - Stopping packet capture (PID: 125571)...
+2025-09-12 18:04:16,272 - __main__ - INFO - Packet capture stopped.
+2025-09-12 18:04:16,272 - __main__ - INFO - Phase 3.2: ENHANCED Adversarial DDoS Attacks...
+2025-09-12 18:04:16,281 - __main__ - INFO - Started simple HTTP server on h6:80 for adversarial phases
+2025-09-12 18:04:16,785 - __main__ - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/main_output/v4/120925-20/ad_syn.pcap
+2025-09-12 18:04:16,785 - __main__ - INFO - Capturing on switch s1 interface any
+2025-09-12 18:04:16,785 - __main__ - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/main_output/v4/120925-20/ad_syn.pcap -s 0 ip and not ip6 and net 192.168.0.0/16
+2025-09-12 18:04:18,800 - __main__ - INFO - tcpdump started successfully with PID: 125587
+2025-09-12 18:04:18,800 - __main__ - INFO - Timeline updated: ad_syn phase started at 1757671458.8008814
+2025-09-12 18:04:27,929 - __main__ - INFO - Stopping packet capture (PID: 125587)...
+2025-09-12 18:04:27,999 - __main__ - INFO - Packet capture stopped.
+2025-09-12 18:04:28,000 - __main__ - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/main_output/v4/120925-20/ad_udp.pcap
+2025-09-12 18:04:28,000 - __main__ - INFO - Capturing on switch s1 interface any
+2025-09-12 18:04:28,000 - __main__ - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/main_output/v4/120925-20/ad_udp.pcap -s 0 ip and not ip6 and net 192.168.0.0/16
+2025-09-12 18:04:30,011 - __main__ - INFO - tcpdump started successfully with PID: 125593
+2025-09-12 18:04:30,012 - __main__ - INFO - Timeline updated: ad_udp phase started at 1757671470.0121284
+2025-09-12 18:04:34,164 - __main__ - INFO - Stopping packet capture (PID: 125593)...
+2025-09-12 18:04:34,248 - __main__ - INFO - Packet capture stopped.
+2025-09-12 18:04:34,248 - __main__ - INFO - Starting packet capture. Output file: /home/user/Desktop/dataset_generation/main_output/v4/120925-20/ad_slow.pcap
+2025-09-12 18:04:34,248 - __main__ - INFO - Capturing on switch s1 interface any
+2025-09-12 18:04:34,249 - __main__ - INFO - Starting tcpdump with command: tcpdump -i any -w /home/user/Desktop/dataset_generation/main_output/v4/120925-20/ad_slow.pcap -s 0 ip and not ip6 and net 192.168.0.0/16
+2025-09-12 18:04:36,259 - __main__ - INFO - tcpdump started successfully with PID: 125598
+2025-09-12 18:04:36,259 - __main__ - INFO - Timeline updated: ad_slow phase started at 1757671476.25993
+2025-09-12 18:04:36,764 - __main__ - INFO - Proceeding with ENHANCED adversarial slow attack
+2025-09-12 18:04:36,764 - __main__ - INFO - Attack traffic will be captured via ad_slow.pcap
+2025-09-12 18:04:46,451 - __main__ - INFO - Stopping packet capture (PID: 125598)...
+2025-09-12 18:04:46,528 - __main__ - INFO - Packet capture stopped.
+2025-09-12 18:04:46,528 - __main__ - INFO - Signaling flow collection thread to stop before cooldown...
+2025-09-12 18:04:46,528 - __main__ - INFO - Waiting for flow collection thread to finish...
+2025-09-12 18:04:46,973 - __main__ - INFO - Flow collection received stop signal, ending gracefully.
+2025-09-12 18:04:46,973 - __main__ - INFO - Flow timeline collection completed.
+2025-09-12 18:04:46,973 - __main__ - INFO - === Flow Capture Guarantee Report ===
+2025-09-12 18:04:46,973 - __main__ - INFO - Total polling duration: 297.50s
+2025-09-12 18:04:46,974 - __main__ - INFO - Total polls attempted: 596
+2025-09-12 18:04:46,974 - __main__ - INFO - Successful polls: 596 (100.0%)
+2025-09-12 18:04:46,974 - __main__ - INFO - Total flow entries captured: 4058
+2025-09-12 18:04:46,974 - __main__ - INFO - Unique flows tracked: 7
+2025-09-12 18:04:46,974 - __main__ - INFO - Average flows per poll: 6.81
+2025-09-12 18:04:46,974 - __main__ - INFO - Polling interval: 0.5s (improved from 1.0s)
+2025-09-12 18:04:46,974 - __main__ - INFO - Flow timeout settings: idle=30s, hard=300s
+2025-09-12 18:04:47,026 - __main__ - INFO - Flow statistics saved to main_output/v4/120925-20/flow_features.csv
+2025-09-12 18:04:47,027 - __main__ - INFO - Flow collection thread finished successfully
+2025-09-12 18:04:47,027 - __main__ - INFO - Phase 4: Cooldown (5s)...
+2025-09-12 18:04:47,028 - __main__ - INFO - Note: Flow collection stopped before cooldown to ensure dataset consistency
+2025-09-12 18:04:52,033 - __main__ - INFO - Stopping HTTP server on h6
+2025-09-12 18:04:52,033 - __main__ - INFO - ============================================================
+2025-09-12 18:04:52,034 - __main__ - INFO - v4.0 30-FEATURE TIMING SUMMARY (4-Subnet Topology)
+2025-09-12 18:04:52,034 - __main__ - INFO - ============================================================
+2025-09-12 18:04:52,034 - __main__ - INFO - Configuration File: /home/user/Desktop/dataset_generation/test_config.json
+2025-09-12 18:04:52,034 - __main__ - INFO - 
+2025-09-12 18:04:52,034 - __main__ - INFO - Total Scenario Runtime: 302.56 seconds (5.04 minutes)
+2025-09-12 18:04:52,034 - __main__ - INFO - 
+2025-09-12 18:04:52,034 - __main__ - INFO - Phase-by-Phase Breakdown:
+2025-09-12 18:04:52,034 - __main__ - INFO -   Enhanced Traditional Attacks:
+2025-09-12 18:04:52,034 - __main__ - INFO -     Enhanced Syn Flood: 14.75s (configured: 11s)
+2025-09-12 18:04:52,034 - __main__ - INFO -     Enhanced Udp Flood: 25.82s (configured: 22s)
+2025-09-12 18:04:52,034 - __main__ - INFO -     Enhanced Icmp Flood: 15.23s (configured: 11s)
+2025-09-12 18:04:52,034 - __main__ - INFO -   ENHANCED Adversarial Attacks:
+2025-09-12 18:04:52,034 - __main__ - INFO -     ENHANCED TCP State Exhaustion: 11.21s (configured: 8s)
+2025-09-12 18:04:52,034 - __main__ - INFO -     ENHANCED Application Layer: 6.25s (configured: 3s)
+2025-09-12 18:04:52,034 - __main__ - INFO -     ENHANCED Slow Read: 12.28s (configured: 9s)
+2025-09-12 18:04:52,034 - __main__ - INFO -   Initialization: 5.01s (configured: 5s)
+2025-09-12 18:04:52,034 - __main__ - INFO -   Normal_Traffic: 205.99s (configured: 200s)
+2025-09-12 18:04:52,034 - __main__ - INFO -   Cooldown: 5.01s (configured: 5s)
+2025-09-12 18:04:52,034 - __main__ - INFO - ============================================================
+2025-09-12 18:04:52,034 - __main__ - INFO - v4.0 30-feature 4-subnet traffic generation scenario finished.
+2025-09-12 18:04:52 - [MAIN] - INFO - v4.0 PCAP generation complete.
+2025-09-12 18:04:52 - [MAIN] - INFO - Processing 7 PCAP files using 4 CPU cores for 30-feature extraction...
+2025-09-12 18:04:52,035 - __main__ - INFO - === PARALLEL PCAP PROCESSING START ===
+2025-09-12 18:04:52,035 - __main__ - INFO - Files to process: 7
+2025-09-12 18:04:52,035 - __main__ - INFO - Max workers: 4
+2025-09-12 18:04:52,035 - __main__ - INFO - Output directory: /home/user/Desktop/dataset_generation/main_output/v4/120925-20
+2025-09-12 18:04:52,035 - __main__ - INFO -   - normal.pcap -> normal
+2025-09-12 18:04:52,036 - __main__ - INFO -   - syn_flood.pcap -> syn_flood
+2025-09-12 18:04:52,036 - __main__ - INFO -   - udp_flood.pcap -> udp_flood
+2025-09-12 18:04:52,036 - __main__ - INFO -   - icmp_flood.pcap -> icmp_flood
+2025-09-12 18:04:52,036 - __main__ - INFO -   - ad_syn.pcap -> ad_syn
+2025-09-12 18:04:52,036 - __main__ - INFO -   - ad_udp.pcap -> ad_udp
+2025-09-12 18:04:52,036 - __main__ - INFO -   - ad_slow.pcap -> ad_slow
+2025-09-12 18:04:52,036 - __main__ - INFO - ✅ Set current process affinity to cores [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] for pcap
+2025-09-12 18:04:52,036 - __main__ - INFO - ✅ Set CPU affinity for PCAP processing (all cores)
+2025-09-12 18:04:52,037 - __main__ - INFO - Submitting processing jobs...
+2025-09-12 18:04:52,053 - __main__ - INFO - ✓ Submitted job for normal.pcap
+2025-09-12 18:04:52,055 - __main__ - INFO - ✓ Submitted job for syn_flood.pcap
+2025-09-12 18:04:52,055 - __main__ - INFO - ✓ Submitted job for udp_flood.pcap
+2025-09-12 18:04:52,055 - __main__ - INFO - ✓ Submitted job for icmp_flood.pcap
+2025-09-12 18:04:52,055 - __main__ - INFO - ✓ Submitted job for ad_syn.pcap
+2025-09-12 18:04:52,055 - __main__ - INFO - ✓ Submitted job for ad_udp.pcap
+2025-09-12 18:04:52,057 - __main__ - INFO - ✓ Submitted job for ad_slow.pcap
+2025-09-12 18:04:52,057 - __main__ - INFO - Processing 7 submitted jobs...
+2025-09-12 18:04:52,057 - __main__ - INFO - Waiting for result from normal.pcap...
+2025-09-12 18:04:53,166 - __main__ - INFO - ✓ Completed processing normal.pcap (1353 records with 32 features)
+2025-09-12 18:04:53,166 - __main__ - INFO - Waiting for result from syn_flood.pcap...
+2025-09-12 18:04:53,166 - __main__ - INFO - ✓ Completed processing syn_flood.pcap (432 records with 32 features)
+2025-09-12 18:04:53,166 - __main__ - INFO - Waiting for result from udp_flood.pcap...
+2025-09-12 18:04:53,166 - __main__ - INFO - ✓ Completed processing udp_flood.pcap (470 records with 32 features)
+2025-09-12 18:04:53,166 - __main__ - INFO - Waiting for result from icmp_flood.pcap...
+2025-09-12 18:04:53,166 - __main__ - INFO - ✓ Completed processing icmp_flood.pcap (378 records with 32 features)
+2025-09-12 18:04:53,166 - __main__ - INFO - Waiting for result from ad_syn.pcap...
+2025-09-12 18:04:53,166 - __main__ - INFO - ✓ Completed processing ad_syn.pcap (466 records with 32 features)
+2025-09-12 18:04:53,166 - __main__ - INFO - Waiting for result from ad_udp.pcap...
+2025-09-12 18:04:53,166 - __main__ - INFO - ✓ Completed processing ad_udp.pcap (500 records with 32 features)
+2025-09-12 18:04:53,166 - __main__ - INFO - Waiting for result from ad_slow.pcap...
+2025-09-12 18:04:53,166 - __main__ - INFO - ✓ Completed processing ad_slow.pcap (416 records with 32 features)
+2025-09-12 18:04:53,175 - __main__ - INFO - === PARALLEL PROCESSING SUMMARY ===
+2025-09-12 18:04:53,175 - __main__ - INFO - Total files submitted: 7
+2025-09-12 18:04:53,175 - __main__ - INFO - Successful processing: 7
+2025-09-12 18:04:53,175 - __main__ - INFO - Failed processing: 0
+2025-09-12 18:04:53,175 - __main__ - INFO - Individual file results:
+2025-09-12 18:04:53,175 - __main__ - INFO -   ✓ normal.pcap: SUCCESS (1353 rows)
+2025-09-12 18:04:53,175 - __main__ - INFO -   ✓ syn_flood.pcap: SUCCESS (432 rows)
+2025-09-12 18:04:53,175 - __main__ - INFO -   ✓ udp_flood.pcap: SUCCESS (470 rows)
+2025-09-12 18:04:53,175 - __main__ - INFO -   ✓ icmp_flood.pcap: SUCCESS (378 rows)
+2025-09-12 18:04:53,175 - __main__ - INFO -   ✓ ad_syn.pcap: SUCCESS (466 rows)
+2025-09-12 18:04:53,175 - __main__ - INFO -   ✓ ad_udp.pcap: SUCCESS (500 rows)
+2025-09-12 18:04:53,175 - __main__ - INFO -   ✓ ad_slow.pcap: SUCCESS (416 rows)
+2025-09-12 18:04:53,175 - __main__ - INFO - ✓ Parallel PCAP processing completed. 7 files processed successfully.
+2025-09-12 18:04:53,176 - __main__ - INFO - === PARALLEL PCAP PROCESSING END ===
+2025-09-12 18:04:53 - [MAIN] - INFO - Parallel 30-feature PCAP processing completed in 1.14 seconds (0.02 minutes)
+2025-09-12 18:04:53 - [MAIN] - INFO - v4.0 30-feature combined labeled CSV generated at: main_output/v4/120925-20/packet_features.csv
+2025-09-12 18:04:53 - [MAIN] - INFO - v4.0 final 30-feature combined CSV created successfully.
+2025-09-12 18:04:53 - [MAIN] - INFO - 
+--- v4.0 30-Feature Packet Counts by Class (4-Subnet Topology) ---
+2025-09-12 18:04:53 - [MAIN] - INFO -   normal: 1353 packets
+2025-09-12 18:04:53 - [MAIN] - INFO -   ad_udp: 500 packets
+2025-09-12 18:04:53 - [MAIN] - INFO -   udp_flood: 470 packets
+2025-09-12 18:04:53 - [MAIN] - INFO -   ad_syn: 466 packets
+2025-09-12 18:04:53 - [MAIN] - INFO -   syn_flood: 432 packets
+2025-09-12 18:04:53 - [MAIN] - INFO -   ad_slow: 416 packets
+2025-09-12 18:04:53 - [MAIN] - INFO -   icmp_flood: 378 packets
+2025-09-12 18:04:53 - [MAIN] - INFO - v4.0 flow-level dataset generated at: main_output/v4/120925-20/flow_features.csv
+2025-09-12 18:04:53 - [MAIN] - INFO - 
+--- v4.0 Flow Feature Counts by Class (4-Subnet Topology) ---
+2025-09-12 18:04:53 - [MAIN] - INFO -   normal: 2875 flows
+2025-09-12 18:04:53 - [MAIN] - INFO -   udp_flood: 364 flows
+2025-09-12 18:04:53 - [MAIN] - INFO -   icmp_flood: 217 flows
+2025-09-12 18:04:53 - [MAIN] - INFO -   syn_flood: 203 flows
+2025-09-12 18:04:53 - [MAIN] - INFO -   ad_syn: 161 flows
+2025-09-12 18:04:53 - [MAIN] - INFO -   ad_slow: 154 flows
+2025-09-12 18:04:53 - [MAIN] - INFO -   ad_udp: 84 flows
+2025-09-12 18:04:53 - [MAIN] - INFO - Generating v4.0 dataset summary...
+2025-09-12 18:04:53 - [MAIN] - INFO - Dataset generation summary displayed above
+2025-09-12 18:04:53 - [MAIN] - INFO - Running v4.0 timeline analysis...
+2025-09-12 18:04:53 - [MAIN] - INFO - Starting timeline analysis...
+2025-09-12 18:04:53 - [MAIN] - INFO - Timeline Analysis Results:
+2025-09-12 18:04:53 - [MAIN] - INFO -   Total attack types: 7
+2025-09-12 18:04:53 - [MAIN] - INFO -   Good alignment: 7
+2025-09-12 18:04:53 - [MAIN] - INFO -   Overall score: 100.0%
+2025-09-12 18:04:53 - [MAIN] - INFO -   Status: 🎉 EXCELLENT: Timeline alignment is very good!
+2025-09-12 18:04:53 - [MAIN] - INFO - ================================================================================
+2025-09-12 18:04:53 - [MAIN] - INFO - v4.0 30-FEATURE FINAL EXECUTION SUMMARY (4-SUBNET TOPOLOGY)
+2025-09-12 18:04:53 - [MAIN] - INFO - ================================================================================
+2025-09-12 18:04:53 - [MAIN] - INFO - 🚀 Framework Version: v4.0 (4-Subnet Enterprise Topology)
+2025-09-12 18:04:53 - [MAIN] - INFO - 📊 Feature Set: 30 features optimized for real-time DDoS detection
+2025-09-12 18:04:53 - [MAIN] - INFO - 🎯 Target Latency: <1ms per packet extraction
+2025-09-12 18:04:53 - [MAIN] - INFO - ⚡ CPU Affinity Optimization: ENABLED
+2025-09-12 18:04:53 - [MAIN] - INFO - 🖥️  Total Cores Utilized: 16
+2025-09-12 18:04:53 - [MAIN] - INFO - ⏱️  Total Execution Time: 327.16 seconds (5.45 minutes | 0.09 hours)
+2025-09-12 18:04:53 - [MAIN] - INFO - 📅 v4.0 Dataset Generation Complete: 2025-09-12 18:04:53
+2025-09-12 18:04:53 - [MAIN] - INFO - 📈 Timeline Alignment Score: 100.0%
+2025-09-12 18:04:53 - [MAIN] - INFO - ✅ Timeline Quality: EXCELLENT
+2025-09-12 18:04:53 - [MAIN] - INFO - ================================================================================
+2025-09-12 18:04:53 - [MAIN] - INFO - 🎉 v4.0 30-FEATURE REAL-TIME DDOS DETECTION DATASET COMPLETED (4-SUBNET TOPOLOGY)
+2025-09-12 18:04:53 - [MAIN] - INFO - 📋 30-Feature Set:
+2025-09-12 18:04:53 - [MAIN] - INFO -    • 24 Pure Live Extractable Features (direct packet header fields)
+2025-09-12 18:04:53 - [MAIN] - INFO -    • 4 Minimal Calculation Features (lightweight processing)
+2025-09-12 18:04:53 - [MAIN] - INFO -    • 2 Labels (multi-class + binary)
+2025-09-12 18:04:53 - [MAIN] - INFO -    • Timeline-ordered for ML training compatibility
+2025-09-12 18:04:53 - [MAIN] - INFO -    • Optimized for production real-time deployment
+2025-09-12 18:04:53 - [MAIN] - INFO - 🏢 4-Subnet Enterprise Network Topology:
+2025-09-12 18:04:53 - [MAIN] - INFO -    • Inter-subnet attack scenarios (cross-network DDoS)
+2025-09-12 18:04:53 - [MAIN] - INFO -    • Realistic enterprise network segmentation
+2025-09-12 18:04:53 - [MAIN] - INFO -    • Layer 3 routing with SDN controller
+2025-09-12 18:04:53 - [MAIN] - INFO -    • Enhanced attack diversity and realism
+2025-09-12 18:04:53 - [MAIN] - INFO - ================================================================================
+2025-09-12 18:04:53,366 - __main__ - INFO - Cleaning up resources...
+2025-09-12 18:04:53,366 - __main__ - INFO - Terminating Ryu controller (PID: 123960)...
+2025-09-12 18:04:53,370 - __main__ - INFO - Cleaning up Mininet environment...
+2025-09-12 18:04:54,985 - __main__ - INFO - Cleanup complete.

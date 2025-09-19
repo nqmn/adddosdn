@@ -342,20 +342,26 @@ def analyze_dataset_summary(output_dir: Path, logger: Optional[logging.Logger] =
             # Count multi-class distribution
             try:
                 result = subprocess.run(
-                    f"tail -n +2 '{csv_file}' | cut -d',' -f14 | sort | uniq -c",
+                    f"tail -n +2 '{csv_file}' | cut -d',' -f31 | sort | uniq -c",
                     shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True
                 )
                 if result.returncode == 0:
                     class_counts = {}
                     total_packets = 0
                     for line in result.stdout.strip().split('\n'):
-                        if line.strip():
-                            parts = line.strip().split()
+                        if not line.strip():
+                            continue
+                        parts = line.strip().split()
+                        if len(parts) < 2:
+                            # Skip malformed lines (e.g., missing class name)
+                            continue
+                        try:
                             count = int(parts[0])
-                            class_name = parts[1] if len(parts) > 1 else 'unknown'
-                            class_counts[class_name] = count
-                            total_packets += count
-                    
+                        except ValueError:
+                            continue
+                        class_name = parts[1]
+                        class_counts[class_name] = count
+                        total_packets += count
                     summary['multi_class'] = class_counts
                     summary['total_packets'] = total_packets
             except Exception as e:
@@ -365,18 +371,25 @@ def analyze_dataset_summary(output_dir: Path, logger: Optional[logging.Logger] =
             # Count binary classification
             try:
                 result = subprocess.run(
-                    f"tail -n +2 '{csv_file}' | cut -d',' -f15 | sort | uniq -c",
+                    f"tail -n +2 '{csv_file}' | cut -d',' -f32 | sort | uniq -c",
                     shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True
                 )
                 if result.returncode == 0:
                     binary_counts = {}
                     for line in result.stdout.strip().split('\n'):
-                        if line.strip():
-                            parts = line.strip().split()
+                        if not line.strip():
+                            continue
+                        parts = line.strip().split()
+                        if len(parts) < 2:
+                            # Skip malformed lines (e.g., missing label value)
+                            continue
+                        try:
                             count = int(parts[0])
-                            label = 'benign' if parts[1] == '0' else 'attack'
-                            binary_counts[label] = count
-                    
+                        except ValueError:
+                            continue
+                        label_value = parts[1]
+                        label = 'benign' if label_value == '0' else 'attack'
+                        binary_counts[label] = count
                     summary['binary_class'] = binary_counts
             except Exception as e:
                 if logger:

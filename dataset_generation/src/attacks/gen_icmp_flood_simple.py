@@ -4,7 +4,12 @@ import signal
 import logging
 import uuid
 import threading
-import psutil
+# Optional psutil import - gracefully handle if missing
+try:
+    import psutil
+    PSUTIL_AVAILABLE = True
+except ImportError:
+    PSUTIL_AVAILABLE = False
 import random
 from scapy.all import Ether, IP, ICMP, sendp, sr1
 

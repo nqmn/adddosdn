@@ -15,7 +15,11 @@ from datetime import datetime
 from collections import defaultdict
 
 def read_csv_timeline(csv_file, timestamp_col, label_col):
-    """Read CSV file and extract timeline information for each attack type."""
+    """Read CSV file and extract timeline information for each attack type.
+
+    Notes:
+    - Excludes 'cooldown' label to avoid merging it with pre-attack 'normal'.
+    """
     if not os.path.exists(csv_file):
         return {}
     
@@ -30,7 +34,9 @@ def read_csv_timeline(csv_file, timestamp_col, label_col):
                 if len(row) > max(timestamp_col, label_col):
                     timestamp = float(row[timestamp_col])
                     label = row[label_col]
-                    timeline_data[label].append(timestamp)
+                    # Exclude cooldown and unknown from analysis to prevent skewing
+                    if label and label.strip() and label not in ('cooldown', 'unknown'):
+                        timeline_data[label].append(timestamp)
                     
     except Exception as e:
         logging.error(f"Error reading {csv_file}: {e}")
@@ -143,7 +149,7 @@ def analyze_dataset_timeline(packet_csv, flow_csv, logger=None):
     logger.info("Starting timeline analysis...")
     
     # Read timeline data
-    packet_timeline = read_csv_timeline(packet_csv, timestamp_col=0, label_col=13)  # timestamp, Label_multi
+    packet_timeline = read_csv_timeline(packet_csv, timestamp_col=0, label_col=30)  # timestamp, Label_multi
     flow_timeline = read_csv_timeline(flow_csv, timestamp_col=0, label_col=16)      # timestamp, Label_multi
     
     if not packet_timeline and not flow_timeline:
