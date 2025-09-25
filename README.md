@@ -2,14 +2,6 @@
 
 A comprehensive framework for generating network security datasets in Software-Defined Networks (SDN). This tool creates realistic datasets containing both normal traffic and various types of DDoS attacks for cybersecurity research and machine learning.
 
-## 🎯 What Does This Do?
-
-This framework helps researchers and security professionals create datasets for:
-- **DDoS Attack Detection**: Training machine learning models to identify attacks
-- **Network Security Research**: Studying attack patterns and defense mechanisms  
-- **Cybersecurity Education**: Learning about SDN security and attack types
-- **Defense System Testing**: Evaluating security tools and detection systems
-
 ## 🚀 Quick Start Guide
 
 ### Step 1: Setup Your Environment
@@ -37,6 +29,10 @@ source venv/bin/activate
 
 # Install Python dependencies
 pip install -r dataset_generation/requirements.txt
+
+# Install Python dependencies (Uses --break-system-package)
+pip install -r dataset_generation/requirements.txt --break-system-package --ignore-installed
+
 ```
 
 ### Step 2: Run Your First Test
