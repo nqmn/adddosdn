@@ -517,13 +517,23 @@ class CPUCoreManager:
                 'background': [7],
                 'pcap': list(range(self.total_cores))
             }
-        else:
-            # Default allocation for < 8 cores
+        elif self.total_cores == 1:
+            # Single core system - all processes share core 0
             return {
                 'system': [0],
-                'ryu': [1],
-                'mininet': [2],
-                'attacks': [3],
+                'ryu': [0],
+                'mininet': [0],
+                'attacks': [0],
+                'background': [0],
+                'pcap': [0]
+            }
+        else:
+            # Default allocation for 2-7 cores
+            return {
+                'system': [0],
+                'ryu': [1] if self.total_cores > 1 else [0],
+                'mininet': [2] if self.total_cores > 2 else [0],
+                'attacks': [3] if self.total_cores > 3 else [0],
                 'background': [0],  # Share with system
                 'pcap': list(range(self.total_cores))
             }
@@ -2234,11 +2244,25 @@ def main():
                        help='OpenFlow port for the controller (default: 6653)')
     parser.add_argument('--controller-rest-host', type=str, default='localhost',
                        help='Host/IP to use when checking the controller REST API (default: localhost)')
+    parser.add_argument('--disable-cpu-affinity', action='store_true',
+                       help='Disable CPU affinity optimization (default: enabled with auto-detection)')
     args = parser.parse_args()
     
-    # Initialize CPU core manager
+    # Initialize CPU core manager with actual system CPU detection
     global cpu_manager
-    cpu_manager = CPUCoreManager(total_cores=args.max_cores)
+    actual_cpu_count = cpu_count()
+
+    if args.disable_cpu_affinity:
+        cpu_manager = None
+        logger.info(f"🔧 CPU Affinity Optimization DISABLED (user requested)")
+    else:
+        effective_cores = min(args.max_cores, actual_cpu_count)
+
+        if args.max_cores > actual_cpu_count:
+            logger.warning(f"⚠️  Requested max cores ({args.max_cores}) exceeds system CPU count ({actual_cpu_count})")
+            logger.warning(f"⚠️  Using {effective_cores} cores for CPU affinity optimization")
+
+        cpu_manager = CPUCoreManager(total_cores=effective_cores)
     
     main_start_time = time.time()
 
@@ -2258,10 +2282,12 @@ def main():
     logger.info("   • h2-h5: 192.168.20.0/24 (Corporate Internal Network)")
     logger.info("   • h6: 192.168.30.0/24 (Server/DMZ Network)")
     logger.info("   • Controller: 192.168.0.0/24 (Management Network)")
-    logger.info("🔧 CPU Affinity Optimization ENABLED")
-    
-    # Print CPU core allocation
-    cpu_manager.print_allocation()
+    if cpu_manager:
+        logger.info(f"🔧 CPU Affinity Optimization ENABLED (using {cpu_manager.total_cores}/{actual_cpu_count} cores)")
+        # Print CPU core allocation
+        cpu_manager.print_allocation()
+    else:
+        logger.info("🔧 CPU Affinity Optimization DISABLED")
 
     logger.info("Cleaning up any previous Mininet instances...")
     subprocess.run(["mn", "-c"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -2455,8 +2481,11 @@ def main():
         logger.info(f"🚀 Framework Version: v4.0 (4-Subnet Enterprise Topology)")
         logger.info(f"📊 Feature Set: 30 features optimized for real-time DDoS detection")
         logger.info(f"🎯 Target Latency: <1ms per packet extraction")
-        logger.info(f"⚡ CPU Affinity Optimization: ENABLED")
-        logger.info(f"🖥️  Total Cores Utilized: {cpu_manager.total_cores if cpu_manager else 'Unknown'}")
+        if cpu_manager:
+            logger.info(f"⚡ CPU Affinity Optimization: ENABLED ({cpu_manager.total_cores}/{actual_cpu_count} cores)")
+        else:
+            logger.info(f"⚡ CPU Affinity Optimization: DISABLED")
+        logger.info(f"🖥️  Total Cores Available: {actual_cpu_count}")
         logger.info(f"⏱️  Total Execution Time: {total_execution_time:.2f} seconds ({total_execution_time/60:.2f} minutes | {total_execution_time/3600:.2f} hours)")
         logger.info(f"📅 v4.0 Dataset Generation Complete: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         
