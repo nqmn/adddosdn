@@ -18,6 +18,7 @@ sudo apt update
 
 # Install essential tools
 sudo apt install -y python3-pip python3-venv git tshark mininet ryu-manager slowhttptest
+pip install -r requirements.txt --break-system-package --ignore-installed
 
 # Clone this project
 git clone https://github.com/nqmn/AdDDoSDN_dataset.git
